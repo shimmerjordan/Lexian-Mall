@@ -25,10 +25,10 @@ const tableRouter = {
       meta: { title: 'Drag Table' }
     },
     {
-      path: 'inline-edit-table',
-      component: () => import('@/views/table/inline-edit-table'),
-      name: 'InlineTable',
-      meta: { title: 'inline Edit' }
+      path: 'line',
+      component: () => import('@/views/charts/line'),
+      name: 'LineChart',
+      meta: { title: '订单统计图表', noCache: true }
     },
     {
       path: 'complex-table',
