@@ -177,6 +177,10 @@
 				"navigationBarTitleText": "商品列表"
 			}
         }
+        ,{
+            "path" : "pages/public/register",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
