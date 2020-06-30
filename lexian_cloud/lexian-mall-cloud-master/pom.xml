@@ -15,6 +15,7 @@
     <name>demo</name>
     <description>Demo project for Lexian Mall based on Spring Cloud</description>
 
+
     <packaging>pom</packaging>
     <modules>
         <module>lexian-mall-basics</module>
