@@ -1,29 +1,59 @@
 <template>
   <div class="app-container">
-    <div class="filter-container">
-      <el-input v-model="listQuery.title" placeholder="商品" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
-        <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
-      </el-select>
-      <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
-      </el-select>
-      <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
-        <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
-      </el-select>
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        Search
-      </el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
-        Add
-      </el-button>
-      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-        Export
-      </el-button>
-      <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-        reviewer
-      </el-checkbox>
-    </div>
+    <transition name="component-fade" mode="out-in">
+      <div v-if="!selectShops.length" class="filter-container">
+        <el-input v-model="listQuery.title" placeholder="商品" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
+          <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
+        </el-select>
+        <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
+          <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+        </el-select>
+        <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
+          <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
+        </el-select>
+        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
+          查找
+        </el-button>
+        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
+          新增
+        </el-button>
+        <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
+          导出
+        </el-button>
+        <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
+          reviewer
+        </el-checkbox>
+      </div>
+      <div v-else class="filter-container order-operation-meun">
+        <el-row>
+          <el-col :span="2">
+            已选中<span style="color: #13c19f">{{ selectShops.length }}</span>项
+          </el-col>
+          <el-col :span="1">
+            |
+          </el-col>
+          <!-- <el-col :span="2">
+            <i class="fa fa-truck fa-lg"></i> 确认开店
+          </el-col> -->
+          <el-button :span="2">
+            <i class="fa fa-trash fa-lg" /> 确认开店
+          </el-button>
+          <el-button :span="2">
+            <i class="fa fa-trash fa-lg" /> 店铺休息
+          </el-button>
+          <el-button :span="2">
+            <i class="fa fa-trash fa-lg" /> 关闭店铺
+          </el-button>
+          <!-- <el-col :span="2">
+            <i class="fa fa-trash fa-lg"></i> 店铺休息
+          </el-col>
+          <el-col :span="2">
+            <i class="fa fa-trash fa-lg"></i> 关闭店铺
+          </el-col> -->
+        </el-row>
+      </div>
+    </transition>
 
     <el-table
       :key="tableKey"
@@ -34,7 +64,14 @@
       highlight-current-row
       style="width: 100%;"
       @sort-change="sortChange"
+      @select="handleSelection"
+      @select-all="handleSelectionAll"
     >
+      <el-table-column
+        align="center"
+        type="selection"
+        width="55"
+      />
       <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
@@ -217,7 +254,8 @@ export default {
         timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
         title: [{ required: true, message: 'title is required', trigger: 'blur' }]
       },
-      downloadLoading: false
+      downloadLoading: false,
+      selectShops: []
     }
   },
   created() {
@@ -240,7 +278,6 @@ export default {
       this.listQuery.page = 1
       this.getList()
     },
-
     sortChange(data) {
       const { prop, order } = data
       if (prop === 'id') {
@@ -267,11 +304,13 @@ export default {
       }
     },
     handleCreate() {
-      this.resetTemp()
-      this.dialogStatus = 'create'
-      this.dialogFormVisible = true
+      // this.resetTemp()
+      // this.dialogStatus = 'create'
+      // this.dialogFormVisible = true
       this.$nextTick(() => {
-        this.$refs['dataForm'].clearValidate()
+        // this.$refs['dataForm'].clearValidate()
+        this.$router.push({ path: 'add-shop' })
+        // this.jump({path: '/shop/add-shop'});
       })
     },
     createData() {
@@ -361,6 +400,12 @@ export default {
     getSortClass: function(key) {
       const sort = this.listQuery.sort
       return sort === `+${key}` ? 'ascending' : 'descending'
+    },
+    handleSelection(selection, row) {
+      this.selectShops = selection
+    },
+    handleSelectionAll(selection) {
+      this.selectShops = selection
     }
   }
 }

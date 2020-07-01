@@ -9,7 +9,7 @@ import Layout from '@/layout'
 /* Router Modules */
 // import componentsRouter from './modules/components'
 
-import chartsRouter from './modules/charts'
+// import chartsRouter from './modules/charts'
 // import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
@@ -88,8 +88,6 @@ export const constantRoutes = [
 
   tableRouter,
 
-  chartsRouter,
-
   { path: '*', redirect: '/404', hidden: true },
   /*
   author:yjy
@@ -107,25 +105,16 @@ export const constantRoutes = [
     },
     children: [
       {
-        path: 'shop-manager',
+        path: '/shop/shop-manager',
         component: () => import('@/views/shop-manage/shopList'),
         name: 'shopList',
         meta: {
           title: '门店列表展示',
-          affix: true
+          hidden: true
         }
       },
       {
-        path: 'edit-shop',
-        component: () => import('@/views/shop-manage/editShop'),
-        name: 'editShop',
-        meta: {
-          title: '门店详情',
-          affix: true
-        }
-      },
-      {
-        path: 'add-shop',
+        path: '/shop/add-shop',
         component: () => import('@/views/shop-manage/addShop'),
         name: 'addShop',
         meta: {
