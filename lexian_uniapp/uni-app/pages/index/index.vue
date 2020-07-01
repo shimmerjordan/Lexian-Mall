@@ -3,7 +3,11 @@
 		<!-- 小程序头部兼容 -->
 		<!-- #ifdef MP -->
 		<view class="mp-search-box">
-			<input class="ser-input" type="text" value="输入关键字搜索" disabled />
+			 <input class="ser-input" type="text" placeholder="请输入关键字搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请输入关键字搜索'">
+					<!--<swiper-item class="swiper-item" v-for="(item,index) in data.img_list" :key="index" @click="$LinkTo(item)">
+						<image class="img" :src="item.url"></image>
+					</swiper-item>-->
+		  </input>
 		</view>
 		<!-- #endif -->
 		
@@ -26,43 +30,45 @@
 			</view>
 		</view>
 		<!-- 分类 -->
-		<view class="cate-section">
-			<view class="cate-item">
-				<image src="/static/temp/c3.png"></image>
-				<text>环球美食</text>
-			</view>
-			<view class="cate-item">
-				<image src="/static/temp/c5.png"></image>
-				<text>个护美妆</text>
-			</view>
-			<view class="cate-item">
-				<image src="/static/temp/c6.png"></image>
-				<text>营养保健</text>
-			</view>
-			<view class="cate-item">
-				<image src="/static/temp/c7.png"></image>
-				<text>家居厨卫</text>
-			</view>
-			<view class="cate-item">
-				<image src="/static/temp/c8.png"></image>
-				<text>速食生鲜</text>
-			</view>
-		</view>
-		
+		<!-- 需要参数传递跳转 -->
+		<navigator class="cate-section">
+			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+				<image src="/static/temp/i3.png"></image>
+				<text >品牌美食</text>
+			</navigator>
+			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+				<image src="/static/temp/i5.png"></image>
+				<text >个护美妆</text>
+			</navigator>
+			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+				<image src="/static/temp/i6.png"></image>
+				<text >日用百货</text>
+			</navigator>
+			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+				<image src="/static/temp/i7.png"></image>
+				<text >数码家电</text>
+			</navigator>
+			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+				<image src="/static/temp/i8.png"></image>
+				<text >水果生鲜</text>
+			</navigator>	
+		</navigator>
+		<!-- 店铺活动宣传 -->
 		<view class="ad-1">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
 		</view>
 		
 		<!-- 秒杀楼层 -->
-		<view class="seckill-section m-t">
-			<view class="s-header">
-				<image class="s-img" src="/static/temp/secskill-img.jpg" mode="widthFix"></image>
-				<text class="tip">8点场</text>
-				<text class="hour timer">07</text>
-				<text class="minute timer">13</text>
-				<text class="second timer">55</text>
-				<text class="yticon icon-you"></text>
-			</view>
+		<!-- 需要获取时间 添加script -->
+           <view class="seckill-section m-t">
+           	<view class="s-header">
+           		<image class="s-img" src="/static/temp/secskill-img.jpg" mode="widthFix"></image>
+           		<text class="tip">12点场</text>
+           		<text class="hour timer">11</text>
+           		<text class="minute timer">20</text>
+           		<text class="second timer">55</text>
+           		<text class="yticon icon-you"></text>
+           	</view>
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
 					<view 
@@ -82,8 +88,8 @@
 		<view class="f-header m-t">
 			<image src="/static/temp/h1.png"></image>
 			<view class="tit-box">
-				<text class="tit">精品团购</text>
-				<text class="tit2">Boutique Group Buying</text>
+				<text class="tit">精选折扣商品</text>
+				<text class="tit2">Selected Discounted Products </text>
 			</view>
 			<text class="yticon icon-you"></text>
 		</view>
@@ -106,7 +112,7 @@
 							
 							<view class="pro-box">
 							  	<view class="progress-box">
-							  		<progress percent="72" activeColor="#fa436a" active stroke-width="6" />
+							  		<progress percent="72" activeColor="#fa0919" active stroke-width="6" />
 							  	</view>
 								<text>6人成团</text>
 							</view>
@@ -140,7 +146,7 @@
 		<view class="f-header m-t">
 			<image src="/static/temp/h1.png"></image>
 			<view class="tit-box">
-				<text class="tit">分类精选</text>
+				<text class="tit">活动精选</text>
 				<text class="tit2">Competitive Products For You</text>
 			</view>
 			<text class="yticon icon-you"></text>
@@ -161,7 +167,7 @@
 						<text class="price">￥{{item.price}}</text>
 					</view>
 					<view class="more">
-						<text>查看全部</text>
+						<text>查看更多</text>
 						<text>More+</text>
 					</view>
 				</view>
@@ -183,7 +189,7 @@
 						<text class="price">￥{{item.price}}</text>
 					</view>
 					<view class="more">
-						<text>查看全部</text>
+						<text>查看更多</text>
 						<text>More+</text>
 					</view>
 				</view>
@@ -205,7 +211,7 @@
 						<text class="price">￥{{item.price}}</text>
 					</view>
 					<view class="more">
-						<text>查看全部</text>
+						<text>查看更多</text>
 						<text>More+</text>
 					</view>
 				</view>
@@ -217,7 +223,7 @@
 			<image src="/static/temp/h1.png"></image>
 			<view class="tit-box">
 				<text class="tit">猜你喜欢</text>
-				<text class="tit2">Guess You Like It</text>
+				<text class="tit2">Guess Your Interests</text>
 			</view>
 			<text class="yticon icon-you"></text>
 		</view>
@@ -331,7 +337,7 @@
 			font-size: 28upx;
 			color:$font-color-base;
 			border-radius: 20px;
-			background: rgba(255,255,255,.6);
+			background: rgba(255, 255, 255, 0.6);
 		}
 	}
 	page{
