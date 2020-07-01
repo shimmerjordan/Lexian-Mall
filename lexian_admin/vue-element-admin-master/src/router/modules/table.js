@@ -9,7 +9,7 @@ const tableRouter = {
   name: 'Order',
   meta: {
     title: '订单管理',
-    icon: 'table'
+    icon: 'list'
   },
   children: [
     {
