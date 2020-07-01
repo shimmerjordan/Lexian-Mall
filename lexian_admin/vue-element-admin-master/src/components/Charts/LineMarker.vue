@@ -1,5 +1,28 @@
 <template>
-  <div :id="id" :class="className" :style="{height:height,width:width}" />
+  <el-container>
+    <el-main>
+      <el-row :gutter="20">
+        <el-col :span="16">
+          <el-date-picker
+            v-model="dateRange"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          />
+        </el-col>
+        <el-col :span="8">
+          <el-row type="flex" justify="end">
+            <el-col :span="12">总订单数：1500</el-col>
+            <el-col :span="12">平均订单数：100/天</el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <el-row />
+
+    </el-main>
+    <el-footer><div :id="id" :class="className" :style="container" /></el-footer>
+  </el-container>
 </template>
 
 <script>
@@ -16,23 +39,26 @@ export default {
     id: {
       type: String,
       default: 'chart'
-    },
-    width: {
-      type: String,
-      default: '200px'
-    },
-    height: {
-      type: String,
-      default: '200px'
     }
   },
   data() {
     return {
-      chart: null
+      chart: null,
+      container: {
+        width: '',
+        height: '601px'
+      },
+      dateRange: ''
     }
   },
   mounted() {
     this.initChart()
+    this.container.width = document.body.clientWidth
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth
+      })()
+    }
   },
   beforeDestroy() {
     if (!this.chart) {
@@ -44,7 +70,6 @@ export default {
   methods: {
     initChart() {
       this.chart = echarts.init(document.getElementById(this.id))
-
       this.chart.setOption({
         backgroundColor: '#394056',
         title: {

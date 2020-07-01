@@ -9,7 +9,7 @@ import Layout from '@/layout'
 /* Router Modules */
 // import componentsRouter from './modules/components'
 
-import chartsRouter from './modules/charts'
+// import chartsRouter from './modules/charts'
 // import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
@@ -88,12 +88,44 @@ export const constantRoutes = [
   },
 
   tableRouter,
+  goodManage,
 
-  chartsRouter,
+  { path: '*', redirect: '/404', hidden: true },
+  /*
+  author:yjy
+  */
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/shop/shop-manage',
 
-  goodRouter,
-
-  { path: '*', redirect: '/404', hidden: true }
+    alwaysShow: true,
+    meta: {
+      title: '店铺管理',
+      icon: 'el-icon-house',
+      affix: true
+    },
+    children: [
+      {
+        path: '/shop/shop-manager',
+        component: () => import('@/views/shop-manage/shopList'),
+        name: 'shopList',
+        meta: {
+          title: '门店列表展示',
+          hidden: true
+        }
+      },
+      {
+        path: '/shop/add-shop',
+        component: () => import('@/views/shop-manage/addShop'),
+        name: 'addShop',
+        meta: {
+          title: '新增门店信息',
+          hidden: true
+        }
+      }
+    ]
+  }
 ]
 
 const createRouter = () => new Router({
@@ -104,6 +136,7 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
