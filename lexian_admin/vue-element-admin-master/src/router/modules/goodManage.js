@@ -3,7 +3,7 @@ import Layout from '@/layout'
 const goodRouter = {
   path: '/goodManage',
   component: Layout,
-  redirect: '/goodManager/goodList',
+  redirect: '/goodManage/goodList',
   name: 'goodManage',
   meta: {
     title: '商品管理',
