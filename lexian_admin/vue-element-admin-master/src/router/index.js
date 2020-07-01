@@ -88,7 +88,7 @@ export const constantRoutes = [
   },
 
   tableRouter,
-  goodManage,
+  goodRouter,
 
   { path: '*', redirect: '/404', hidden: true },
   /*
@@ -107,16 +107,25 @@ export const constantRoutes = [
     },
     children: [
       {
-        path: '/shop/shop-manager',
+        path: 'shop-manager',
         component: () => import('@/views/shop-manage/shopList'),
         name: 'shopList',
         meta: {
           title: '门店列表展示',
-          hidden: true
+          affix: true
         }
       },
+      // {
+      //   path: 'edit-shop',
+      //   component: () => import('@/views/shop-manage/editShop'),
+      //   name: 'editShop',
+      //   meta: {
+      //     title: '门店详情',
+      //     affix: true
+      //   }
+      // },
       {
-        path: '/shop/add-shop',
+        path: 'add-shop',
         component: () => import('@/views/shop-manage/addShop'),
         name: 'addShop',
         meta: {
