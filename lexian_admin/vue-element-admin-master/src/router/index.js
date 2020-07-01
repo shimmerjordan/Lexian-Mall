@@ -13,6 +13,7 @@ import chartsRouter from './modules/charts'
 // import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
+import goodRouter from './modules/goodManage'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -90,6 +91,8 @@ export const constantRoutes = [
 
   chartsRouter,
 
+  goodRouter,
+
   { path: '*', redirect: '/404', hidden: true }
 ]
 
@@ -101,7 +104,6 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
