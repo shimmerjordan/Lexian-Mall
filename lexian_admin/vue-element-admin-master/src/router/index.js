@@ -88,7 +88,7 @@ export const constantRoutes = [
   },
 
   tableRouter,
-  goodManage,
+  goodRouter,
 
   { path: '*', redirect: '/404', hidden: true },
   /*
