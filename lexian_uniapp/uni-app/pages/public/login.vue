@@ -15,6 +15,7 @@
 					<input 
 						type="number" 
 						:value="mobile" 
+						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
 						data-key="mobile"
@@ -31,6 +32,7 @@
 						maxlength="20"
 						password 
 						data-key="password"
+						v-model="loginPassword"
 						@input="inputChange"
 						@confirm="toLogin"
 					/>
@@ -62,7 +64,7 @@
 			}
 		},
 		onLoad(){
-			
+			console.log('login页面onLoad');
 		},
 		methods: {
 			...mapMutations(['login']),
@@ -75,6 +77,12 @@
 			},
 			toRegist(){
 				this.$api.msg('去注册');
+				uni.navigateTo({
+					url: '/pages/public/register',
+					success: res => {},
+					fail: () => {},
+					complete: () => {}
+				});
 			},
 			async toLogin(){
 				this.logining = true;
@@ -95,7 +103,7 @@
 				const result = await this.$api.json('userInfo');
 				if(result.status === 1){
 					this.login(result.data);
-                    uni.navigateBack();  
+                    uni.navigateBack();
 				}else{
 					this.$api.msg(result.msg);
 					this.logining = false;
@@ -105,6 +113,8 @@
 
 	}
 </script>
+
+
 
 <style lang='scss'>
 	page{
