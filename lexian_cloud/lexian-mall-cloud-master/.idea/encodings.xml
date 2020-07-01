@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-cart-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-item-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-member-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-order-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-pay-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-search-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-sso-dto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-apollo-config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-elk-kafka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-lcn/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-xxljob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-xxlsso-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-zipkin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-zuul/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-common/lexian-mall-common-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-common/lexian-mall-common-xxlsso-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-portal/lexian-mall-porta-cms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-pay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-search/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-sso/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-goods/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-integral/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-member/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-pay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-search/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-sso/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-goods/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-integral/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-member/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-pay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-search/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-sso/src/main/java" charset="UTF-8" />
+  </component>
+</project>

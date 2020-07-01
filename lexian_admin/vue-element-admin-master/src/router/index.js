@@ -8,7 +8,9 @@ import Layout from '@/layout'
 
 /* Router Modules */
 // import componentsRouter from './modules/components'
+
 import chartsRouter from './modules/charts'
+// import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
 
@@ -85,6 +87,7 @@ export const constantRoutes = [
   },
 
   tableRouter,
+
   chartsRouter,
 
   { path: '*', redirect: '/404', hidden: true }
