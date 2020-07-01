@@ -13,30 +13,10 @@ const tableRouter = {
   },
   children: [
     {
-      path: 'dynamic-table',
-      component: () => import('@/views/table/dynamic-table/index'),
-      name: 'DynamicTable',
-      meta: { title: 'Dynamic Table' }
-    },
-    {
-      path: 'drag-table',
-      component: () => import('@/views/table/drag-table'),
-      name: 'DragTable',
-      meta: { title: 'Drag Table' }
-    },
-    {
-
       path: 'line',
       component: () => import('@/views/charts/line'),
       name: 'LineChart',
       meta: { title: '订单统计图表', noCache: true }
-    },
-    {
-      path: 'inline-edit-table',
-      component: () => import('@/views/table/inline-edit-table'),
-      name: 'InlineTable',
-      meta: { title: 'inline Edit' }
-
     },
     {
       path: 'complex-table',
