@@ -15,7 +15,6 @@
 					<input 
 						type="number" 
 						:value="mobile" 
-						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
 						data-key="mobile"
