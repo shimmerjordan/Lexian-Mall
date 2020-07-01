@@ -85,6 +85,8 @@
 			},
 			async toLogin(){
 				this.logining = true;
+				let loginPhone = this.loginPhone;
+				let loginPassword = this.loginPassword;
 				const {mobile, password} = this;
 				/* 数据验证模块
 				if(!this.$api.match({

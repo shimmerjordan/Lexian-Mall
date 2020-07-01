@@ -77,6 +77,16 @@
 				}
 			}
 		}, {
+            "path" : "pages/public/register",
+            "style" : {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "slide-in-bottom"
+				}
+			}
+        }, {
 			"path": "pages/user/user",
 			"style": {
 				"navigationBarTitleText": "我的",
@@ -177,9 +187,18 @@
 				"navigationBarTitleText": "商品列表"
 			}
         }
+        
         ,{
-            "path" : "pages/public/register",
-            "style" : {}
+            "path" : "pages/public/guidance",
+            "style": {
+            	"navigationBarTitleText": "帮助"
+            }
+        }
+        ,{
+            "path" : "pages/public/agreement",
+            "style": {
+            	"navigationBarTitleText": "用户协议"
+            }
         }
     ],
 	"globalStyle": {

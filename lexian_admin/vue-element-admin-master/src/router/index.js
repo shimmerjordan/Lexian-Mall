@@ -9,10 +9,11 @@ import Layout from '@/layout'
 /* Router Modules */
 // import componentsRouter from './modules/components'
 
-import chartsRouter from './modules/charts'
+// import chartsRouter from './modules/charts'
 // import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
+import goodRouter from './modules/goodManage'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -87,10 +88,53 @@ export const constantRoutes = [
   },
 
   tableRouter,
+  goodRouter,
 
-  chartsRouter,
+  { path: '*', redirect: '/404', hidden: true },
+  /*
+  author:yjy
+  */
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/shop/shop-manage',
 
-  { path: '*', redirect: '/404', hidden: true }
+    alwaysShow: true,
+    meta: {
+      title: '店铺管理',
+      icon: 'el-icon-house',
+      affix: true
+    },
+    children: [
+      {
+        path: 'shop-manager',
+        component: () => import('@/views/shop-manage/shopList'),
+        name: 'shopList',
+        meta: {
+          title: '门店列表展示',
+          affix: true
+        }
+      },
+      // {
+      //   path: 'edit-shop',
+      //   component: () => import('@/views/shop-manage/editShop'),
+      //   name: 'editShop',
+      //   meta: {
+      //     title: '门店详情',
+      //     affix: true
+      //   }
+      // },
+      {
+        path: 'add-shop',
+        component: () => import('@/views/shop-manage/addShop'),
+        name: 'addShop',
+        meta: {
+          title: '新增门店信息',
+          hidden: true
+        }
+      }
+    ]
+  }
 ]
 
 const createRouter = () => new Router({
