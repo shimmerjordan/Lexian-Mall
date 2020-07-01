@@ -121,7 +121,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="商品单价" prop="price">
-          <el-input v-model="temp.price" class="filter-item"/>
+          <el-input v-model="temp.price" class="filter-item" />
         </el-form-item>
         <el-form-item label="商品描述">
           <el-input v-model="temp.remark" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
