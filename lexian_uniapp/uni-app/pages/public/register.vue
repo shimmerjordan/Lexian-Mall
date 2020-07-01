@@ -114,6 +114,7 @@
 				confirmPassword:'',
 				loginName: '',
 				logining: false
+				
 			}
 		},
 		onLoad(){
