@@ -22,21 +22,7 @@
 						@input="inputChange"
 					/>
 				</view>
-				<view class="input-item">
-					<text class="code">验证码</text>
-					<input 
-						type="string" 
-						value="" 
-						placeholder="验证码"
-						placeholder-class="input-empty"
-						maxlength="20"
-						password 
-						data-key="code"
-						v-model="code"
-						@input="inputChange"
-						@confirm="toLogin"
-					/>
-				</view>
+				
 				<view class="input-item">
 					<text class="tit">用户登录名</text>
 					<input 
@@ -127,7 +113,6 @@
 				loginPassword: '',
 				confirmPassword:'',
 				loginName: '',
-				code:'',
 				logining: false
 			}
 		},
@@ -297,13 +282,6 @@
 			line-height: 56upx;
 			font-size: $font-sm+2upx;
 			color: $font-color-base;
-		}
-		.code{
-			height: 50upx;
-			line-height: 56upx;
-			font-size: $font-sm+2upx;
-			color: $font-color-base;
-			width: 60%;
 		}
 		input{
 			height: 60upx;
