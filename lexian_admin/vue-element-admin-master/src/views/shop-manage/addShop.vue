@@ -9,7 +9,7 @@
       label-position="right"
     >
       <sticky :class-name="'sub-navbar published'" :z-index="2" width="100px">
-        <div style="float: left;">新增店铺信息</div>
+        <div style="float: left;">新增门店信息</div>
         <el-button style="float: right: 40px;" type="success" :span="4" @click="submitForm()">新增</el-button>
 
         <el-button style="float: right: 40px;" type="warning" :span="4" @click="cancel()">取消</el-button>
@@ -60,17 +60,16 @@
           </el-col>
         </el-row>
 
-        <h3>店铺简介<span style="font-size: 12px;color: darkgrey;">可以展示店铺的营业执照等。最多20张，默认第一张图片作为主图，可以拖动图片调整</span></h3>
+        <h3>门店简介<span style="font-size: 12px;color: darkgrey;">可以展示店铺的营业执照等。最多20张，默认第一张图片作为主图，可以拖动图片调整</span></h3>
         <div class="components-container">
           <!--店铺图片-->
-          <aside>上传店铺图片</aside>
+          <aside>上传门店图片</aside>
           <div class="editor-container">
             <dropzone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS" />
-          </div>
-          <!--店铺详情-->
-          <aside>店铺详情</aside>
-          <div style="margin: 20px 0;">
-            <el-input v-model="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
+            <div style="margin: 20px 0;">
+              <aside>门店详情</aside>
+              <el-input v-model="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
+            </div>
           </div>
         </div>
       </div>
