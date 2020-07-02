@@ -21,6 +21,7 @@
 						@input="inputChange"
 					/>
 				</view>
+				<move-verify @result='verifyResult' ref="verifyElement"></move-verify>
 				<view class="input-item">
 					<text class="tit">密码</text>
 					<input 
@@ -50,15 +51,23 @@
 </template>
 
 <script>
+	
+	import moveVerify from "@/components/moveVerify.vue"
+
 	import {  
         mapMutations  
     } from 'vuex';
 	
 	export default{
+		components: {
+		        "move-verify":moveVerify
+		},
+		
 		data(){
 			return {
 				mobile: '',
 				password: '',
+				resultData:{},
 				logining: false
 			}
 		},
@@ -67,6 +76,18 @@
 		},
 		methods: {
 			...mapMutations(['login']),
+			/* 校验结果回调函数 */
+			verifyResult(res){
+				console.log(res);
+				this.resultData = res;
+			},
+			/* 校验插件重置 */
+			verifyReset(){
+				this.$refs.verifyElement.reset();
+
+				/* 删除当前页面的数据 */
+				this.resultData = {};
+			},
 			inputChange(e){
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;

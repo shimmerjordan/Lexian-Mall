@@ -1,13 +1,13 @@
 <template>
 	<view class="container">
 		<view class="left-bottom-sign"></view>
-		<view class="back-btn yticon icon-zuojiantou-up" @click="toLogin"></view>
+		<view class="back-btn yticon icon-zuojiantou-up" @click="navBack"></view>
 		<view class="right-top-sign"></view>
 		<!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
 		<view class="wrapper">
 			<view class="left-top-sign">LOGIN</view>
 			<view class="welcome">
-				欢迎注册！
+				欢迎回来！
 			</view>
 			<view class="input-content">
 				<view class="input-item">
@@ -15,50 +15,17 @@
 					<input 
 						type="number" 
 						:value="mobile" 
-						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
 						data-key="mobile"
 						@input="inputChange"
 					/>
 				</view>
-				
-				<view class="input-item">
-					<text class="tit">用户昵称</text>
-					<input 
-						type="string" 
-						value="" 
-						placeholder="用户昵称"
-						placeholder-class="input-empty"
-						maxlength="20"
-						password 
-						data-key="nickName"
-						v-model="nickName"
-						@input="inputChange"
-						@confirm="toLogin"
-					/>
-				</view>
-				
-				<view class="input-item">
-					<text class="tit">用户登录名</text>
-					<input 
-						type="string" 
-						value="" 
-						placeholder="用户登录名(唯一标识)"
-						placeholder-class="input-empty"
-						maxlength="20"
-						password 
-						data-key="loginName"
-						v-model="loginName"
-						@input="inputChange"
-						@confirm="toLogin"
-					/>
-				</view>
-				
+				<move-verify @result='verifyResult' ref="verifyElement"></move-verify>
 				<view class="input-item">
 					<text class="tit">密码</text>
 					<input 
-						type="password" 
+						type="mobile" 
 						value="" 
 						placeholder="8-18位不含特殊字符的数字、字母组合"
 						placeholder-class="input-empty"
@@ -70,52 +37,38 @@
 						@confirm="toLogin"
 					/>
 				</view>
-				<view class="input-item">
-					<text class="tit">再次输入密码</text>
-					<input 
-						type="password" 
-						value="" 
-						placeholder="确认登录密码"
-						placeholder-class="input-empty"
-						maxlength="20"
-						password 
-						data-key="confirmPassword"
-						v-model="confirmPassword"
-						@input="inputChange"
-						@confirm="toLogin"
-					/>
-				</view>
-				
 			</view>
-			<button class="confirm-btn" @click="toLogin" :disabled="logining">注册</button>
+			<button class="confirm-btn" @click="toLogin" :disabled="logining">登录</button>
 			<view class="forget-section">
 				忘记密码?
 			</view>
 		</view>
 		<view class="register-section">
-			出现问题?
-			<text @click="toGuidance">查看帮助</text>
-			<text @click="toAgreement">《用户协议》</text>
+			还没有账号?
+			<text @click="toRegist">马上注册</text>
 		</view>
 	</view>
 </template>
 
 <script>
+	
+	import moveVerify from "@/components/moveVerify.vue"
+
 	import {  
         mapMutations  
     } from 'vuex';
 	
 	export default{
+		components: {
+		        "move-verify":moveVerify
+		},
+		
 		data(){
 			return {
 				mobile: '',
 				password: '',
+				resultData:{},
 				loginPassword: '',
-				loginPhone: '',
-				nickName: '',
-				loginPassword: '',
-				confirmPassword:'',
-				loginName: '',
 				logining: false
 			}
 		},
@@ -124,35 +77,29 @@
 		},
 		methods: {
 			...mapMutations(['login']),
+			/* 校验结果回调函数 */
+			verifyResult(res){
+				console.log(res);
+				this.resultData = res;
+			},
+			/* 校验插件重置 */
+			verifyReset(){
+				this.$refs.verifyElement.reset();
+
+				/* 删除当前页面的数据 */
+				this.resultData = {};
+			},
 			inputChange(e){
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;
 			},
-			toLogin(){
-				uni.navigateTo({
-					url: '/pages/public/login'
-				});
+			navBack(){
+				uni.navigateBack();
 			},
 			toRegist(){
 				this.$api.msg('去注册');
 				uni.navigateTo({
 					url: '/pages/public/register',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
-			},
-			toGuidance(){
-				uni.navigateTo({
-					url: '/pages/public/guidance',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
-			},
-			toAgreement(){
-				uni.navigateTo({
-					url: '/pages/public/agreement',
 					success: res => {},
 					fail: () => {},
 					complete: () => {}
@@ -328,53 +275,4 @@
 			margin-left: 10upx;
 		}
 	}
-	.form-item {
-	  position: relative;
-	  background: #fff;
-	  height: 96rpx;
-	  border-bottom: 1px solid #d9d9d9;
-	}
-	
-	.form-item .username, .form-item .password, .form-item .mobile, .form-item .code {
-	  position: absolute;
-	  top: 26rpx;
-	  left: 0;
-	  display: block;
-	  width: 100%;
-	  height: 44rpx;
-	  background: #fff;
-	  color: #333;
-	  font-size: 30rpx;
-	}
-	
-	.form-item-code {
-	  margin-top: 32rpx;
-	  height: auto;
-	  overflow: hidden;
-	  width: 100%;
-	}
-	
-	.form-item-code .form-item {
-	  float: left;
-	  width: 350rpx;
-	}
-	
-	.form-item-code .code-btn {
-	  float: right;
-	  padding: 20rpx 40rpx;
-	  border: 1px solid #d9d9d9;
-	  border-radius: 10rpx;
-	  color: #fff;
-	  background: green;
-	}
-	
-	.form-item .clear {
-	  position: absolute;
-	  top: 32rpx;
-	  right: 18rpx;
-	  z-index: 2;
-	  display: block;
-	  background: #fff;
-	}
-	
 </style>
