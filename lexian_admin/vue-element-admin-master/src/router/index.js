@@ -16,6 +16,8 @@ import tableRouter from './modules/table'
 import goodRouter from './modules/goodManage'
 import shopManage from './modules/shopManage'
 import infoManage from './modules/infoManage'
+import permissionManage from './modules/permissionManage'
+import shopActivityManage from './modules/shopActivityManage'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -89,9 +91,11 @@ export const constantRoutes = [
     ]
   },
 
+  permissionManage,
   tableRouter,
   goodRouter,
   shopManage,
+  shopActivityManage,
   infoManage,
 
   { path: '*', redirect: '/404', hidden: true }

@@ -4,11 +4,10 @@ const shopManage = {
   path: '/',
   component: Layout,
   redirect: '/shop/shop-manage',
-
   alwaysShow: true,
   meta: {
     title: '店铺管理',
-    icon: 'el-icon-house',
+    icon: 'el-icon-s-shop',
     affix: true
   },
   children: [

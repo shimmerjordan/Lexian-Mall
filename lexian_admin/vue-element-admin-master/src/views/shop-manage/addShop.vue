@@ -4,14 +4,15 @@
       ref="postForm"
       class="form-container"
       :model="postForm"
-      :rules="rules"
+
       label-width="80px"
       label-position="right"
     >
-      <sticky :class-name="'sub-navbar published'" :z-index="2" style="wdith:100px">
-        <div style="float: left;" :span="4">新增店铺信息</div>
-        <el-button style="float: right;" type="success" :span="4" @click="submitForm()">新增</el-button>
-        <el-button style="float: right;" type="warning" :span="4" @click="cancel()">取消</el-button>
+      <sticky :class-name="'sub-navbar published'" :z-index="2" width="100px">
+        <div style="float: left;">新增店铺信息</div>
+        <el-button style="float: right: 40px;" type="success" :span="4" @click="submitForm()">新增</el-button>
+
+        <el-button style="float: right: 40px;" type="warning" :span="4" @click="cancel()">取消</el-button>
       </sticky>
       <div
         class="createPost-main-container"
@@ -79,14 +80,15 @@
 
 <script>
 import Dropzone from '@/components/Dropzone'
+import Sticky from '../../components/Sticky/index.vue'
 export default {
   name: 'AddShop',
-  components: { Dropzone },
+  components: { Dropzone, Sticky },
   filters: {},
   data() {
     return {
       textarea: '',
-      data: '',
+      date: '',
       shopId: 19,
       postForm: {
         name: '',
