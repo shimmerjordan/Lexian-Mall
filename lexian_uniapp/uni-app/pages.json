@@ -214,6 +214,14 @@
             "path" : "components/moveVerify",
             "style" : {}
         }
+        ,{
+            "path" : "pages/money/vip/vip",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/money/vip",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
