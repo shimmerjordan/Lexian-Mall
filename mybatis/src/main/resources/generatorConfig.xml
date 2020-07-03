@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--mysql 连接数据库jar 这里选择自己本地位置-->
+    <classPathEntry location="D:/mysql-connector-java-8.0.16.jar" />
+    <context id="testTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://server.natappfree.cc:35788/lexian?serverTimezone=GMT%2B8" userId="root"
+                        password="password">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.neu.quickapp.pojo"
+                            targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置
+           如果maven工程只是单独的一个工程，targetProject="src/main/java"
+           若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
+           targetProject="ecps-manager-mapper"，下同-->
+        <sqlMapGenerator targetPackage="com.neu.quickapp.mapper"
+                         targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.neu.quickapp.mapper"
+                             targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 指定数据库表 -->
+        <table schema="" tableName="activity"></table>
+        <table schema="" tableName="activity_commodity"></table>
+        <table schema="" tableName="activity_shop"></table>
+        <table schema="" tableName="address"></table>
+        <table schema="" tableName="activity"></table>
+        <table schema="" tableName="authority"></table>
+        <table schema="" tableName="bill"></table>
+        <table schema="" tableName="browsing_record"></table>
+        <table schema="" tableName="cart"></table>
+        <table schema="" tableName="category"></table>
+        <table schema="" tableName="category_commodity"></table>
+        <table schema="" tableName="comment"></table>
+        <table schema="" tableName="commodity"></table>
+        <table schema="" tableName="coupon"></table>
+        <table schema="" tableName="customer"></table>
+        <table schema="" tableName="customer_address"></table>
+        <table schema="" tableName="customer_order"></table>
+        <table schema="" tableName="customer_settings"></table>
+        <table schema="" tableName="cutomer_coupon"></table>
+        <table schema="" tableName="favorites"></table>
+        <table schema="" tableName="index"></table>
+        <table schema="" tableName="index_commodity"></table>
+        <table schema="" tableName="jiufen"></table>
+        <table schema="" tableName="order"></table>
+        <table schema="" tableName="order_address"></table>
+        <table schema="" tableName="order_item"></table>
+        <table schema="" tableName="settings"></table>
+        <table schema="" tableName="shop"></table>
+        <table schema="" tableName="shop_commodity"></table>
+        <table schema="" tableName="shop_manager"></table>
+        <table schema="" tableName="shop_manager_authority"></table>
+        <table schema="" tableName="shop_manager_shop"></table>
+        <table schema="" tableName="shop_order"></table>
+        <table schema="" tableName="system_manager"></table>
+        <table schema="" tableName="system_manager_authority"></table>
+        <table schema="" tableName="wallet"></table>
+        <table schema="" tableName="wallet_bill"></table>
+    </context>
+</generatorConfiguration>
