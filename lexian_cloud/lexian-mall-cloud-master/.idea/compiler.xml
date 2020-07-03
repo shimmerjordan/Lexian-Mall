@@ -6,53 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lexian-mall-portal-cart" />
-        <module name="lexian-mall-service-member" />
-        <module name="lexian-mall-service-sso" />
-        <module name="lexian-mall-common-core" />
-        <module name="lexian-mall-basics-zuul" />
-        <module name="lexian-mall-api-dto-sso-dto" />
-        <module name="lexian-mall-api-dto-cart-dto" />
-        <module name="lexian-mall-api-dto-order-dto" />
-        <module name="lexian-mall-basics-lcn" />
-        <module name="lexian-mall-service-goods" />
-        <module name="lexian-mall-service-order" />
-        <module name="lexian-mall-api-dto-search-dto" />
-        <module name="lexian-mall-portal-search" />
-        <module name="lexian-mall-service" />
-        <module name="lexian-mall-service-auth" />
-        <module name="lexian-mall-api-dto-pay-dto" />
-        <module name="lexian-mall-service-api-pay" />
-        <module name="lexian-mall-service-pay" />
-        <module name="lexian-mall-service-search" />
-        <module name="lexian-mall-service-api-member" />
-        <module name="lexian-mall-service-api-sso" />
-        <module name="lexian-mall-basics-apollo-config-server" />
-        <module name="lexian-mall-service-api-search" />
-        <module name="lexian-mall-portal" />
-        <module name="lexian-mall-service-cart" />
-        <module name="lexian-mall-service-integral" />
-        <module name="lexian-mall-portal-sso" />
-        <module name="lexian-mall-basics-elk-kafka" />
-        <module name="lexian-mall-service-api-integral" />
-        <module name="lexian-mall-basics-xxlsso-server" />
-        <module name="lexian-mall-service-api-goods" />
-        <module name="lexian-mall-service-api-order" />
-        <module name="lexian-mall-basics" />
-        <module name="lexian-mall-api-dto-item-dto" />
-        <module name="lexian-mall-api-dto-member-dto" />
-        <module name="lexian-mall-service-api" />
-        <module name="lexian-mall-basics-eureka" />
-        <module name="lexian-mall-common-xxlsso-core" />
-        <module name="lexian-mall-service-api-auth" />
-        <module name="lexian-mall-basics-xxljob" />
-        <module name="lexian-mall-basics-zipkin" />
         <module name="lexian-mall-portal-pay" />
-        <module name="lexian-mall-porta-cms" />
-        <module name="lexian-mall-service-api-cart" />
+        <module name="server" />
+        <module name="system" />
+        <module name="service" />
+        <module name="gateway" />
+        <module name="eureka" />
+        <module name="lexian-mall-basics-apollo-config-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="api-gateway" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="gateway" target="1.8" />
       <module name="lexian-mall" target="1.8" />
       <module name="lexian-mall-api-dto" target="1.8" />
       <module name="lexian-mall-api-dto-cart-dto" target="1.8" />
@@ -102,11 +69,18 @@
       <module name="lexian-mall-service-pay" target="1.8" />
       <module name="lexian-mall-service-search" target="1.8" />
       <module name="lexian-mall-service-sso" target="1.8" />
+      <module name="server" target="1.8" />
+      <module name="service" target="1.8" />
+      <module name="system" target="1.8" />
       <module name="untitled" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="config" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="lexian-mall" options="-parameters" />
       <module name="lexian-mall-api-dto" options="-parameters" />
       <module name="lexian-mall-api-dto-cart-dto" options="-parameters" />
@@ -156,6 +130,9 @@
       <module name="lexian-mall-service-pay" options="-parameters" />
       <module name="lexian-mall-service-search" options="-parameters" />
       <module name="lexian-mall-service-sso" options="-parameters" />
+      <module name="server" options="-parameters" />
+      <module name="service" options="-parameters" />
+      <module name="system" options="-parameters" />
       <module name="untitled" options="-parameters" />
     </option>
   </component>

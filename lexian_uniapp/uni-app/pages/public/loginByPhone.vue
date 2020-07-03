@@ -21,26 +21,29 @@
 						@input="inputChange"
 					/>
 				</view>
-				<move-verify @result='verifyResult' ref="verifyElement"></move-verify>
+				<move-verify @result='verifyResult' ref="verifyElement" :mobile="mobile"></move-verify>
 				<view class="input-item">
-					<text class="tit">密码</text>
+					<text class="tit">验证码</text>
 					<input 
 						type="mobile" 
 						value="" 
-						placeholder="8-18位不含特殊字符的数字、字母组合"
+						placeholder="请输入短信验证码"
 						placeholder-class="input-empty"
 						maxlength="20"
 						password 
-						data-key="password"
-						v-model="loginPassword"
+						data-key="verifyCode"
+						v-model="verifyCode"
 						@input="inputChange"
 						@confirm="toLogin"
 					/>
 				</view>
 			</view>
 			<button class="confirm-btn" @click="toLogin" :disabled="logining">登录</button>
-			<view class="forget-section">
+			<view class="forget-section-left">
 				忘记密码?
+			</view>
+			<view class="login-by-name-right">
+				账号登录
 			</view>
 		</view>
 		<view class="register-section">
@@ -68,7 +71,7 @@
 				mobile: '',
 				password: '',
 				resultData:{},
-				loginPassword: '',
+				verifyCode: '',
 				logining: false
 			}
 		},
@@ -256,10 +259,17 @@
 			border-radius: 100px;
 		}
 	}
-	.forget-section{
-		font-size: $font-sm+2upx;
+	.forget-section-left{
+		font-size: $font-sm+5upx;
+		position:relative;
 		color: $font-color-spec;
-		text-align: center;
+		left: 60upx;
+		margin-top: 40upx;
+	}
+	.login-by-name-right{
+		font-size: $font-sm+5upx;
+		color: $font-color-spec;
+		right: 60upx;
 		margin-top: 40upx;
 	}
 	.register-section{

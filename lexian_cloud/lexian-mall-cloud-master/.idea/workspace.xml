@@ -2,68 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="115349a3-8b2e-4787-ba4a-a1cf3f13d605" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-cart-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-item-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-member-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-order-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-pay-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-search-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-sso-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-api-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-apollo-config-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-elk-kafka/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-eureka/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-lcn/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-xxljob/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-xxlsso-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-zipkin/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/lexian-mall-basics-zuul/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-basics/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-common/lexian-mall-common-core/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-common/lexian-mall-common-xxlsso-core/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-plugin/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-portal/lexian-mall-porta-cms/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-cart/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-pay/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-search/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-portal/lexian-mall-portal-sso/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-portal/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-auth/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-cart/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-goods/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-integral/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-member/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-order/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-pay/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-search/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/lexian-mall-service-api-sso/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-auth/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-cart/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-goods/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-integral/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-member/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-order/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-pay/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-search/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/lexian-mall-service-sso/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexian-mall-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/NEU_Lexian.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/components/moveVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/components/moveVerify.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/pages/public/loginByPhone.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/pages/public/loginByPhone.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -84,7 +46,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\实训_workspace\NEU_Lexian-master\lexian_cloud\lexian-mall-cloud-master" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -108,6 +78,7 @@
       <workItem from="1593330057510" duration="5889000" />
       <workItem from="1593350000948" duration="5176000" />
       <workItem from="1593408413589" duration="2915000" />
+      <workItem from="1593757623656" duration="4817000" />
     </task>
     <servers />
   </component>
@@ -115,6 +86,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Project_Structure" timestamp="1593758398234">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Project_Structure/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1593758398234" />
     <state x="389" y="90" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1593332892090">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -135,13 +110,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593479010125" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1593350000590">
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1593757639432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1593757639432" />
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1593350000590" />
-    <state x="356" y="104" key="new project wizard" timestamp="1593334174927">
+    <state x="377" y="189" width="782" height="600" key="find.popup" timestamp="1593761803423">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="377" y="189" width="782" height="600" key="find.popup/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1593761803423" />
+    <state x="110" y="112" key="new project wizard" timestamp="1593758298625">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="110" y="112" key="new project wizard/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1593758298625" />
     <state x="356" y="104" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1593334174927" />
   </component>
 </project>

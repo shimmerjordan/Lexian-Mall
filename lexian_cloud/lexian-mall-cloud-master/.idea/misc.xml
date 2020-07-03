@@ -9,6 +9,13 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/lexian-mall-api-dto/lexian-mall-api-dto-spike-dto/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-api-dto/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-basics/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-common/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-plugin/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-portal/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/lexian-mall-service/pom.xml" />
         <option value="$PROJECT_DIR$/lexian-mall-service/untitled/pom.xml" />
       </set>
     </option>

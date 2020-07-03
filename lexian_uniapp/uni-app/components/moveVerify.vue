@@ -1,7 +1,7 @@
 <template>
 	<view class="pathway on-pathway" @touchend="onEnd">
 		<view class="tips">
-			<text v-if="isOk" v-show='timestatus' style="color: #FFFFFF;">{{countdown}}秒重获</text>
+			<text v-if="isOk" v-show='timestatus' style="color: #FFFFFF;">{{countdown}}秒重新获取验证码</text>
 			<text v-else>滑动获取验证码</text>
 		</view>
 		<view class="track" :style="{'transform':'translateX('+oldx+'px)'}"></view>
@@ -16,6 +16,7 @@
 
 <script>
 	export default {
+		props: ["mobile"],
 		name: 'move-verify',
 		data() {
 			return {
@@ -67,20 +68,7 @@
 					this.isOk = true;
 					this.$emit("result",{flag:true,count:this.count});
 					
-					this.timestatus = true
-					this.countdown = 3
-					var interval = setInterval(() => {
-						let times = --this.countdown
-						this.countdown = times <= '0' ? + times : times
-					}, 1000)
-					setTimeout(() => {
-						clearInterval(interval)
-						this.countdown = ''
-						this.timestatus = false;
-						this.x = 0;
-						this.oldx = 0;
-						this.isOk = false;
-					}, 3000)
+					this.countDown();
 					
 				} else {
 					this.$nextTick(() => {
@@ -99,17 +87,24 @@
 				this.count = 0;
 				this.isOk = false;
 			},
+			/* 倒计时 */
 			countDown(){
-				var that = this;
-				that.clear = setInterVal(that.countdown, 1000)
-				if(!that.countdown){
-					that.timestatus = false;
-					that.countdown = '获取验证码';
-					clearInterval(that.clear);
-				}else{
-					--that.countdown;
-					consle.info(countdown);
-				}
+				//倒计时
+				this.timestatus = true
+				this.countdown = 60
+				var interval = setInterval(() => {
+					let times = --this.countdown
+					this.countdown = times <= '0' ? + times : times
+				}, 1000)
+				//设置超时
+				setTimeout(() => {
+					clearInterval(interval)
+					this.countdown = ''
+					this.timestatus = false;
+					this.x = 0;
+					this.oldx = 0;
+					this.isOk = false;
+				}, 60000)
 			}
 		}
 	}
