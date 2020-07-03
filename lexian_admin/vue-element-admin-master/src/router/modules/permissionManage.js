@@ -19,6 +19,15 @@ const permissionManage = {
         title: '角色权限',
         hidden: true
       }
+    },
+    {
+      path: '/personnel-manage',
+      component: () => import('@/views/permission-manage/personnel-manage/index'),
+      name: 'personnelManage',
+      meta: {
+        title: '人事管理',
+        hidden: true
+      }
     }
   ]
 }
