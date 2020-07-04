@@ -3,7 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.OrderMapper">
+    <resultMap id="order_map" type="Order">
+        <id property="ID" column="orders.ID"/>
+        <result property="date" column="orders.date"/>
+        <result property="description" column="orders.description"/>
+        <result property="name" column="commodity.`name`"/>
+        <result property="comment" column="orders.`comment`"/>
+        <result property="status" column="orders.`status`"/>
+        <result property="quantity" column="order_item.commodity_quantity"/>
+        <result property="price" column="commodity.price"/>
+    </resultMap>
     <select id="getAllOrder" resultType="Order">
-        select * from orders
+        SELECT
+        orders.ID,
+        orders.date,
+        orders.description,
+        orders.`comment`,
+        orders.total,
+        orders.`status`,
+        commodity.`name`,
+        order_item.commodity_quantity,
+        commodity.price
+        FROM
+        orders
+        INNER JOIN order_item ON order_item.order_id = orders.ID
+        INNER JOIN commodity ON order_item.commodity_id = commodity.ID
     </select>
 </mapper>

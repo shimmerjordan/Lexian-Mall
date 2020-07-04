@@ -55,10 +55,9 @@
           <svg-icon v-for="n in + row.comment" :key="n" icon-class="star" class="meta-item__icon" />
         </template>
       </el-table-column>
-      <el-table-column label="总价" align="center" width="95">
+      <el-table-column label="价格" align="center" width="95">
         <template slot-scope="{row}">
-          <span v-if="row.total" class="link-type" @click="handleFetchPv(row.total)">{{ row.total }}</span>
-          <span v-else>0</span>
+          <el-tag type="info">{{ row.price }}</el-tag>/<el-tag type="info">{{ row.quantity }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="当前状态" class-name="status-col" width="100">
@@ -130,7 +129,7 @@
 </template>
 
 <script>
-import { fetchPv, createArticle, updateArticle } from '@/api/article'
+import { createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -149,7 +148,7 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
 }, {})
 
 const testdata = [
-  { ID: 1, date: 604854303958, description: '淦，好货', name: '三只老鼠', comment: 2, total: 150, status: 'published' }
+  { ID: 1, date: 604854303958, description: '淦，好货', name: '三只老鼠', comment: 2, status: 0, quantity: 50, price: 12 }
 ]
 export default {
   name: 'ComplexTable',
@@ -158,9 +157,11 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
+        0: '订单已被取消',
+        1: '发货',
+        2: '已收获',
+        3: '已退货',
+        4: '正在申请退货'
       }
       return statusMap[status]
     },
@@ -324,13 +325,6 @@ export default {
       })
       this.list.splice(index, 1)
     },
-    handleFetchPv(pv) {
-      fetchPv(pv).then(response => {
-        this.pvData = response.data.pvData
-        this.dialogPvVisible = true
-      })
-    },
-
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
         if (j === 'timestamp') {
