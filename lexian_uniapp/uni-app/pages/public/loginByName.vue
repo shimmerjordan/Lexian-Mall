@@ -11,21 +11,20 @@
 			</view>
 			<view class="input-content">
 				<view class="input-item">
-					<text class="tit">手机号码</text>
+					<text class="tit">登录名</text>
 					<input 
-						type="number" 
-						:value="mobile" 
-						placeholder="请输入手机号码"
+						type="text" 
+						:value="loginName" 
+						placeholder="请输入登录名"
 						maxlength="11"
-						data-key="mobile"
+						data-key="loginName"
 						@input="inputChange"
 					/>
 				</view>
-				<move-verify @result='verifyResult' ref="verifyElement"></move-verify>
 				<view class="input-item">
 					<text class="tit">密码</text>
 					<input 
-						type="mobile" 
+						type="loginName" 
 						value="" 
 						placeholder="8-18位不含特殊字符的数字、字母组合"
 						placeholder-class="input-empty"
@@ -39,8 +38,11 @@
 				</view>
 			</view>
 			<button class="confirm-btn" @click="toLogin" :disabled="logining">登录</button>
-			<view class="forget-section">
-				忘记密码?
+			<view class="forget-section-left">
+				<text @click="toForgetPwd">忘记密码？</text>
+			</view>
+			<view class="login-by-name-right">
+				<text @click="toLoginByPhone">手机号登录</text>
 			</view>
 		</view>
 		<view class="register-section">
@@ -51,22 +53,18 @@
 </template>
 
 <script>
-	
-	import moveVerify from "@/components/moveVerify.vue"
 
 	import {  
         mapMutations  
     } from 'vuex';
 	
 	export default{
-		components: {
-		        "move-verify":moveVerify
-		},
 		
 		data(){
 			return {
-				mobile: '',
+				loginName: '',
 				password: '',
+				loginPassword: '',
 				resultData:{},
 				logining: false
 			}
@@ -76,18 +74,6 @@
 		},
 		methods: {
 			...mapMutations(['login']),
-			/* 校验结果回调函数 */
-			verifyResult(res){
-				console.log(res);
-				this.resultData = res;
-			},
-			/* 校验插件重置 */
-			verifyReset(){
-				this.$refs.verifyElement.reset();
-
-				/* 删除当前页面的数据 */
-				this.resultData = {};
-			},
 			inputChange(e){
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;
@@ -104,14 +90,30 @@
 					complete: () => {}
 				});
 			},
+			toLoginByPhone(){
+				uni.navigateTo({
+					url: '/pages/public/loginByPhone',
+					success: res => {},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
+			toForgetPwd(){
+				uni.navigateTo({
+					url: '/pages/public/forgetPwd',
+					success: res => {},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
 			async toLogin(){
 				this.logining = true;
 				let loginPhone = this.loginPhone;
 				let loginPassword = this.loginPassword;
-				const {mobile, password} = this;
+				const {loginName, password} = this;
 				/* 数据验证模块
 				if(!this.$api.match({
-					mobile,
+					loginName,
 					password
 				})){
 					this.logining = false;
@@ -119,7 +121,7 @@
 				}
 				*/
 				const sendData = {
-					mobile,
+					loginName,
 					password
 				};
 				const result = await this.$api.json('userInfo');
@@ -132,7 +134,6 @@
 				}
 			}
 		},
-
 	}
 </script>
 
@@ -255,11 +256,22 @@
 			border-radius: 100px;
 		}
 	}
-	.forget-section{
-		font-size: $font-sm+2upx;
+	.forget-section-left{
+		font-size: $font-sm+5upx;
+		position:relative;
 		color: $font-color-spec;
-		text-align: center;
+		left: 60upx;
 		margin-top: 40upx;
+		width: 200upx;
+	}
+	.login-by-name-right{
+		font-size: $font-sm+5upx;
+		color: $font-color-spec;
+		position: relative;
+		text-align:right;
+		right: -485upx;
+		margin-top: -40upx;
+		width: 200upx;
 	}
 	.register-section{
 		position:absolute;

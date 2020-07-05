@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="115349a3-8b2e-4787-ba4a-a1cf3f13d605" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/NEU_Lexian.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.keep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/components/moveVerify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/components/moveVerify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/pages/public/loginByPhone.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../lexian_uniapp/uni-app/pages/public/loginByPhone.vue" afterDir="false" />
-    </list>
+    <list default="true" id="115349a3-8b2e-4787-ba4a-a1cf3f13d605" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +68,7 @@
       <workItem from="1593330057510" duration="5889000" />
       <workItem from="1593350000948" duration="5176000" />
       <workItem from="1593408413589" duration="2915000" />
-      <workItem from="1593757623656" duration="4817000" />
+      <workItem from="1593757623656" duration="5997000" />
     </task>
     <servers />
   </component>

@@ -214,6 +214,21 @@
             "path" : "components/moveVerify",
             "style" : {}
         }
+        ,{
+            "path" : "pages/public/forgetPwd",
+            "style" : {
+            	"navigationBarTitleText": "",
+            	"navigationStyle": "custom",
+            	"app-plus": {
+            		"titleNView": false,
+            		"animationType": "slide-in-bottom"
+            	}
+            }
+        }
+        ,{
+            "path" : "components/popup",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

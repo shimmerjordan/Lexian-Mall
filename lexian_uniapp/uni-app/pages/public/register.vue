@@ -1,7 +1,8 @@
 <template>
 	<view class="container">
+		<popup ref="mapState" protocolPath='/pages/public/guidance'  policyPath='/pages/public/agreement'  @popupState="popupState"></popup>
 		<view class="left-bottom-sign"></view>
-		<view class="back-btn yticon icon-zuojiantou-up" @click="toLogin"></view>
+		<view class="back-btn yticon icon-zuojiantou-up" @click="navBack"></view>
 		<view class="right-top-sign"></view>
 		<!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
 		<view class="wrapper">
@@ -20,38 +21,39 @@
 						maxlength="11"
 						data-key="mobile"
 						@input="inputChange"
+						@change="checkExistPhone"
+						@confirm="checkExistPhone"
 					/>
 				</view>
+				
+				<move-verify @result='verifyResult' ref="verifyElement" :mobile="mobile"></move-verify>
 				
 				<view class="input-item">
-					<text class="tit">用户昵称</text>
+					<text class="tit">验证码</text>
 					<input 
-						type="string" 
+						type="text" 
 						value="" 
-						placeholder="用户昵称"
+						placeholder="请输入短信验证码"
 						placeholder-class="input-empty"
 						maxlength="20"
-						password 
-						data-key="nickName"
-						v-model="nickName"
+						data-key="verifyCode"
+						v-model="verifyCode"
 						@input="inputChange"
-						@confirm="toLogin"
 					/>
 				</view>
-				
 				<view class="input-item">
 					<text class="tit">用户登录名</text>
 					<input 
-						type="string" 
+						type="text" 
 						value="" 
 						placeholder="用户登录名(唯一标识)"
 						placeholder-class="input-empty"
 						maxlength="20"
-						password 
 						data-key="loginName"
 						v-model="loginName"
 						@input="inputChange"
-						@confirm="toLogin"
+						@confirm="checkExistName"
+						@change="checkExistName"
 					/>
 				</view>
 				
@@ -67,30 +69,13 @@
 						data-key="password"
 						v-model="loginPassword"
 						@input="inputChange"
-						@confirm="toLogin"
-					/>
-				</view>
-				<view class="input-item">
-					<text class="tit">再次输入密码</text>
-					<input 
-						type="password" 
-						value="" 
-						placeholder="确认登录密码"
-						placeholder-class="input-empty"
-						maxlength="20"
-						password 
-						data-key="confirmPassword"
-						v-model="confirmPassword"
-						@input="inputChange"
-						@confirm="toLogin"
 					/>
 				</view>
 				
+				
 			</view>
 			<button class="confirm-btn" @click="toLogin" :disabled="logining">注册</button>
-			<view class="forget-section">
-				忘记密码?
-			</view>
+			
 		</view>
 		<view class="register-section">
 			出现问题?
@@ -101,20 +86,25 @@
 </template>
 
 <script>
+	import moveVerify from "@/components/moveVerify.vue"
+	import popup from '@/components/popup.vue'
 	import {  
         mapMutations  
     } from 'vuex';
 	
 	export default{
+		components: {
+		        "move-verify":moveVerify,
+				"popup": popup  
+		},
 		data(){
 			return {
 				mobile: '',
 				password: '',
 				loginPassword: '',
 				loginPhone: '',
-				nickName: '',
 				loginPassword: '',
-				confirmPassword:'',
+				verifyCode:'',
 				loginName: '',
 				logining: false
 			}
@@ -124,23 +114,47 @@
 		},
 		methods: {
 			...mapMutations(['login']),
+			/* 校验结果回调函数 */
+			verifyResult(res){
+				console.log(res);
+				this.resultData = res;
+			},
+			/* 校验插件重置 */
+			verifyReset(){
+				this.$refs.verifyElement.reset();
+			
+				/* 删除当前页面的数据 */
+				this.resultData = {};
+			},
+			
+			/* 协议弹窗状态 */
+			popupState(e){ //e->false取消 true确认
+				
+			},
+			navBack(){
+				uni.navigateBack();
+			},
+			checkExistPhone(){
+				console.log(this.mobile);
+				/* 这里判断数据库中是否存在该用户手机号 */
+				if(1){
+					this.$api.msg('该手机号已注册，请登录或找回密码');
+				}else{
+					
+				}
+			},
+			checkExistName(){
+				console.log(this.loginName);
+				/* 这里判断数据库中是否存在该用户手机号 */
+				if(1){
+					this.$api.msg('抱歉，该用户名已被占用');
+				}else{
+					
+				}
+			},
 			inputChange(e){
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;
-			},
-			toLogin(){
-				uni.navigateTo({
-					url: '/pages/public/login'
-				});
-			},
-			toRegist(){
-				this.$api.msg('去注册');
-				uni.navigateTo({
-					url: '/pages/public/register',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
 			},
 			toGuidance(){
 				uni.navigateTo({
@@ -158,8 +172,11 @@
 					complete: () => {}
 				});
 			},
+			addCustomer(){
+				
+			},
 			async toLogin(){
-				this.logining = true;
+				this.addCustomer();
 				let loginPhone = this.loginPhone;
 				let loginPassword = this.loginPassword;
 				const {mobile, password} = this;
@@ -179,11 +196,13 @@
 				const result = await this.$api.json('userInfo');
 				if(result.status === 1){
 					this.login(result.data);
-                    uni.navigateBack();
+					uni.navigateTo({
+						url: '/pages/public/loginByPhone',
+                   });
 				}else{
 					this.$api.msg(result.msg);
-					this.logining = false;
 				}
+				
 			}
 		},
 

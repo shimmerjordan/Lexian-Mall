@@ -7,7 +7,7 @@
 		<view class="wrapper">
 			<view class="left-top-sign">LOGIN</view>
 			<view class="welcome">
-				欢迎回来！
+				密码找回
 			</view>
 			<view class="input-content">
 				<view class="input-item">
@@ -15,48 +15,77 @@
 					<input 
 						type="number" 
 						:value="mobile" 
+						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
 						data-key="mobile"
 						@input="inputChange"
+						@change="checkExistPhone"
+						@confirm="checkExistPhone"
 					/>
 				</view>
+				
 				<move-verify @result='verifyResult' ref="verifyElement" :mobile="mobile"></move-verify>
+				
 				<view class="input-item">
 					<text class="tit">验证码</text>
 					<input 
-						type="mobile" 
+						type="text" 
 						value="" 
 						placeholder="请输入短信验证码"
 						placeholder-class="input-empty"
 						maxlength="20"
-						password 
 						data-key="verifyCode"
 						v-model="verifyCode"
 						@input="inputChange"
-						@confirm="toLogin"
 					/>
 				</view>
+				<view class="input-item">
+					<text class="tit">用户登录名</text>
+					<input 
+						type="text" 
+						value="" 
+						placeholder="用户登录名(唯一标识)"
+						placeholder-class="input-empty"
+						maxlength="20"
+						data-key="loginName"
+						v-model="loginName"
+						@input="inputChange"
+						@confirm="checkExistName"
+						@change="checkExistName"
+					/>
+				</view>
+				
+				<view class="input-item">
+					<text class="tit">重设密码</text>
+					<input 
+						type="password" 
+						value="" 
+						placeholder="8-18位不含特殊字符的数字、字母组合"
+						placeholder-class="input-empty"
+						maxlength="20"
+						password 
+						data-key="password"
+						v-model="loginPassword"
+						@input="inputChange"
+					/>
+				</view>
+				
+				
 			</view>
-			<button class="confirm-btn" @click="toLogin" :disabled="logining">登录</button>
-			<view class="forget-section-left">
-				<text @click="toForgetPwd">忘记密码？</text>
-			</view>
-			<view class="login-by-name-right">
-				<text @click="toLoginByName">账号登录</text>
-			</view>
+			<button class="confirm-btn" @click="updateCustomer" :disabled="logining">确认</button>
+			
 		</view>
 		<view class="register-section">
-			还没有账号?
-			<text @click="toRegist">马上注册</text>
+			出现问题?
+			<text @click="toGuidance">查看帮助</text>
+			<text @click="toAgreement">《用户协议》</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	
 	import moveVerify from "@/components/moveVerify.vue"
-
 	import {  
         mapMutations  
     } from 'vuex';
@@ -65,13 +94,15 @@
 		components: {
 		        "move-verify":moveVerify
 		},
-		
 		data(){
 			return {
 				mobile: '',
 				password: '',
-				resultData:{},
-				verifyCode: '',
+				loginPassword: '',
+				loginPhone: '',
+				loginPassword: '',
+				verifyCode:'',
+				loginName: '',
 				logining: false
 			}
 		},
@@ -88,44 +119,66 @@
 			/* 校验插件重置 */
 			verifyReset(){
 				this.$refs.verifyElement.reset();
-
+			
 				/* 删除当前页面的数据 */
 				this.resultData = {};
+			},
+			navBack(){
+				uni.navigateBack();
+			},
+			checkExistPhone(){
+				console.log(this.mobile);
+				/* 这里判断数据库中是否存在该用户手机号 */
+				if(1){
+					this.$api.msg('该手机号已注册，请登录或找回密码');
+				}else{
+					
+				}
+			},
+			checkExistName(){
+				console.log(this.loginName);
+				/* 这里判断数据库中是否存在该用户手机号 */
+				if(1){
+					this.$api.msg('抱歉，该用户名已被占用');
+				}else{
+					
+				}
 			},
 			inputChange(e){
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;
 			},
-			navBack(){
-				uni.navigateBack();
-			},
-			toRegist(){
-				this.$api.msg('去注册');
+			toGuidance(){
 				uni.navigateTo({
-					url: '/pages/public/register',
+					url: '/pages/public/guidance',
 					success: res => {},
 					fail: () => {},
 					complete: () => {}
 				});
 			},
-			toLoginByName(){
+			toAgreement(){
 				uni.navigateTo({
-					url: '/pages/public/loginByName',
+					url: '/pages/public/agreement',
 					success: res => {},
 					fail: () => {},
 					complete: () => {}
 				});
 			},
-			toForgetPwd(){
-				uni.navigateTo({
-					url: '/pages/public/forgetPwd',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
+			
+			updateCustomer(){
+				
+				if(1){
+					var that = this
+					this.$api.msg('修改密码成功，请使用新密码登录');
+					setTimeout(function() {
+						that.toLogin();
+					}, 2000)
+					
+				}else{
+					this.$api.msg('操作失败，请稍后重试');
+				}
 			},
 			async toLogin(){
-				this.logining = true;
 				let loginPhone = this.loginPhone;
 				let loginPassword = this.loginPassword;
 				const {mobile, password} = this;
@@ -145,11 +198,14 @@
 				const result = await this.$api.json('userInfo');
 				if(result.status === 1){
 					this.login(result.data);
-                    uni.navigateBack();
+					uni.navigateTo({
+						url: '/pages/public/loginByName',
+                   });
 				}else{
 					this.$api.msg(result.msg);
 					this.logining = false;
 				}
+				
 			}
 		},
 
@@ -275,22 +331,11 @@
 			border-radius: 100px;
 		}
 	}
-	.forget-section-left{
-		font-size: $font-sm+5upx;
-		position:relative;
+	.forget-section{
+		font-size: $font-sm+2upx;
 		color: $font-color-spec;
-		left: 60upx;
+		text-align: center;
 		margin-top: 40upx;
-		width: 200upx;
-	}
-	.login-by-name-right{
-		font-size: $font-sm+5upx;
-		color: $font-color-spec;
-		position: relative;
-		text-align:right;
-		right: -485upx;
-		margin-top: -40upx;
-		width: 200upx;
 	}
 	.register-section{
 		position:absolute;
@@ -305,4 +350,53 @@
 			margin-left: 10upx;
 		}
 	}
+	.form-item {
+	  position: relative;
+	  background: #fff;
+	  height: 96rpx;
+	  border-bottom: 1px solid #d9d9d9;
+	}
+	
+	.form-item .username, .form-item .password, .form-item .mobile, .form-item .code {
+	  position: absolute;
+	  top: 26rpx;
+	  left: 0;
+	  display: block;
+	  width: 100%;
+	  height: 44rpx;
+	  background: #fff;
+	  color: #333;
+	  font-size: 30rpx;
+	}
+	
+	.form-item-code {
+	  margin-top: 32rpx;
+	  height: auto;
+	  overflow: hidden;
+	  width: 100%;
+	}
+	
+	.form-item-code .form-item {
+	  float: left;
+	  width: 350rpx;
+	}
+	
+	.form-item-code .code-btn {
+	  float: right;
+	  padding: 20rpx 40rpx;
+	  border: 1px solid #d9d9d9;
+	  border-radius: 10rpx;
+	  color: #fff;
+	  background: green;
+	}
+	
+	.form-item .clear {
+	  position: absolute;
+	  top: 32rpx;
+	  right: 18rpx;
+	  z-index: 2;
+	  display: block;
+	  background: #fff;
+	}
+	
 </style>
