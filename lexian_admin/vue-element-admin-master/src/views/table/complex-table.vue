@@ -31,7 +31,7 @@
     >
       <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
         <template slot-scope="{row}">
-          <span>{{ row.ID }}</span>
+          <span>{{ row.id }}</span>
         </template>
       </el-table-column>
       <el-table-column label="订单日期" width="150px" align="center">
@@ -39,7 +39,7 @@
           <span>{{ row.date | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="订单描述" min-width="150px">
+      <el-table-column label="订单描述" min-width="100px">
         <template slot-scope="{row}">
           <span class="link-type" @click="handleUpdate(row)">{{ row.description }}</span>
         </template>
@@ -55,7 +55,7 @@
           <svg-icon v-for="n in + row.comment" :key="n" icon-class="star" class="meta-item__icon" />
         </template>
       </el-table-column>
-      <el-table-column label="价格" align="center" width="95">
+      <el-table-column label="价格" align="center" width="130">
         <template slot-scope="{row}">
           <el-tag type="info">{{ row.price }}</el-tag>/<el-tag type="info">{{ row.quantity }}</el-tag>
         </template>
@@ -130,6 +130,7 @@
 
 <script>
 import { createArticle, updateArticle } from '@/api/article'
+import { getAllOrder } from '@/api/order'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -147,9 +148,6 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
   return acc
 }, {})
 
-const testdata = [
-  { ID: 1, date: 604854303958, description: '淦，好货', name: '三只老鼠', comment: 2, status: 0, quantity: 50, price: 12 }
-]
 export default {
   name: 'ComplexTable',
   components: { Pagination },
@@ -229,7 +227,13 @@ export default {
       //     this.listLoading = false
       //   }, 1.5 * 1000)
       // })
-      this.list = testdata
+      getAllOrder().then(response => {
+        this.list = response.data
+        console.log(this.list)
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
       this.listLoading = false
     },
     handleFilter() {
