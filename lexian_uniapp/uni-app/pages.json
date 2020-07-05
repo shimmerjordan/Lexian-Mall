@@ -215,6 +215,7 @@
             "style" : {}
         }
         ,{
+<<<<<<< HEAD
             "path" : "pages/public/forgetPwd",
             "style" : {
             	"navigationBarTitleText": "",
@@ -227,6 +228,13 @@
         }
         ,{
             "path" : "components/popup",
+=======
+            "path" : "pages/money/vip/vip",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/money/vip",
+>>>>>>> 1f47c3bd47326992b83db320a50f9beddabbd15c
             "style" : {}
         }
     ],

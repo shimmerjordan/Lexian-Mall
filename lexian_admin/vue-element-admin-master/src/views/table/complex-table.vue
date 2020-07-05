@@ -17,12 +17,6 @@
       <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
         Add
       </el-button>
-      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-        Export
-      </el-button>
-      <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-        reviewer
-      </el-checkbox>
     </div>
 
     <el-table
@@ -42,34 +36,28 @@
       </el-table-column>
       <el-table-column label="订单日期" width="150px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ row.date | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="订单描述" min-width="150px">
+      <el-table-column label="订单描述" min-width="100px">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <span class="link-type" @click="handleUpdate(row)">{{ row.description }}</span>
         </template>
       </el-table-column>
       <el-table-column label="商品名称" width="110px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column v-if="showReviewer" label="Reviewer" width="110px" align="center">
-        <template slot-scope="{row}">
-          <span style="color:red;">{{ row.reviewer }}</span>
-        </template>
-      </el-table-column>
+
       <el-table-column label="评价" width="80px">
         <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon" />
+          <svg-icon v-for="n in + row.comment" :key="n" icon-class="star" class="meta-item__icon" />
         </template>
       </el-table-column>
-      <el-table-column label="总价" align="center" width="95">
+      <el-table-column label="价格" align="center" width="130">
         <template slot-scope="{row}">
-          <span v-if="row.pageviews" class="link-type" @click="handleFetchPv(row.pageviews)">{{ row.pageviews }}</span>
-          <span v-else>0</span>
+          <el-tag type="info">{{ row.price }}</el-tag>/<el-tag type="info">{{ row.quantity }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="当前状态" class-name="status-col" width="100">
@@ -141,7 +129,8 @@
 </template>
 
 <script>
-import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+import { createArticle, updateArticle } from '@/api/article'
+import { getAllOrder } from '@/api/order'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -166,9 +155,11 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
+        0: '订单已被取消',
+        1: '发货',
+        2: '已收获',
+        3: '已退货',
+        4: '正在申请退货'
       }
       return statusMap[status]
     },
@@ -226,15 +217,24 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchList(this.listQuery).then(response => {
-        this.list = response.data.items
-        this.total = response.data.total
-
-        // Just to simulate the time of the request
+      // fetchList(this.listQuery).then(response => {
+      //   this.list = response.data.items
+      //   this.total = response.data.total
+      //   alert("sadga");
+      //   console.log(this.list);
+      //   // Just to simulate the time of the request
+      //   setTimeout(() => {
+      //     this.listLoading = false
+      //   }, 1.5 * 1000)
+      // })
+      getAllOrder().then(response => {
+        this.list = response.data
+        console.log(this.list)
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+      this.listLoading = false
     },
     handleFilter() {
       this.listQuery.page = 1
@@ -328,26 +328,6 @@ export default {
         duration: 2000
       })
       this.list.splice(index, 1)
-    },
-    handleFetchPv(pv) {
-      fetchPv(pv).then(response => {
-        this.pvData = response.data.pvData
-        this.dialogPvVisible = true
-      })
-    },
-    handleDownload() {
-      this.downloadLoading = true
-      import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
-        const data = this.formatJson(filterVal)
-        excel.export_json_to_excel({
-          header: tHeader,
-          data,
-          filename: 'table-list'
-        })
-        this.downloadLoading = false
-      })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
