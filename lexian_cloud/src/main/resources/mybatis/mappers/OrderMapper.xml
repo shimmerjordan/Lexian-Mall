@@ -28,5 +28,7 @@
         orders
         INNER JOIN order_item ON order_item.order_id = orders.ID
         INNER JOIN commodity ON order_item.commodity_id = commodity.ID
+        WHERE
+        isDelete = 0
     </select>
 </mapper>

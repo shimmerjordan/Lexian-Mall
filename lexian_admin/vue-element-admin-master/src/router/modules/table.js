@@ -14,13 +14,13 @@ const tableRouter = {
   children: [
     {
       path: 'line',
-      component: () => import('@/views/charts/line'),
+      component: () => import('@/views/order/line'),
       name: 'LineChart',
       meta: { title: '订单统计图表', noCache: true }
     },
     {
       path: 'complex-table',
-      component: () => import('@/views/table/complex-table'),
+      component: () => import('@/views/order/complex-table'),
       name: 'ComplexTable',
       meta: { title: '订单列表' }
     }

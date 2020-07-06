@@ -39,9 +39,9 @@
           <span>{{ row.date | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="订单描述" min-width="100px">
+      <el-table-column label="订单描述" min-width="70px">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.description }}</span>
+          <span @click="handleUpdate(row)">{{ row.description }}</span>
         </template>
       </el-table-column>
       <el-table-column label="商品名称" width="110px" align="center">
@@ -57,13 +57,14 @@
       </el-table-column>
       <el-table-column label="价格" align="center" width="130">
         <template slot-scope="{row}">
-          <el-tag type="info">{{ row.price }}</el-tag>/<el-tag type="info">{{ row.quantity }}</el-tag>
+          <el-tag type="info">单价：{{ row.price }}</el-tag>
+          <el-tag type="info">数量：{{ row.quantity }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="当前状态" class-name="status-col" width="100">
+      <el-table-column label="当前状态" class-name="status-col" width="130">
         <template slot-scope="{row}">
-          <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
+          <el-tag>
+            {{ row.status | statusFilter }}
           </el-tag>
         </template>
       </el-table-column>
@@ -155,11 +156,11 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        0: '订单已被取消',
-        1: '发货',
-        2: '已收获',
-        3: '已退货',
-        4: '正在申请退货'
+        '0': '订单已被取消',
+        '1': '发货',
+        '2': '已收获',
+        '3': '已退货',
+        '4': '正在申请退货'
       }
       return statusMap[status]
     },
@@ -217,19 +218,8 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      // fetchList(this.listQuery).then(response => {
-      //   this.list = response.data.items
-      //   this.total = response.data.total
-      //   alert("sadga");
-      //   console.log(this.list);
-      //   // Just to simulate the time of the request
-      //   setTimeout(() => {
-      //     this.listLoading = false
-      //   }, 1.5 * 1000)
-      // })
       getAllOrder().then(response => {
         this.list = response.data
-        console.log(this.list)
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
