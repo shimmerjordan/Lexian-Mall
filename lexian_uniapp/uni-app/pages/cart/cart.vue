@@ -69,7 +69,7 @@
   					<text class="price">¥{{total}}</text>
   					<text class="coupon">
   						已优惠
-  						<text>0.00</text>
+  						<text>{{discounted}}</text>
   						元
   					</text>
   				</view>
@@ -94,6 +94,7 @@
   				allChecked: false, //全选状态  true|false
   				empty: false, //空白页现实  true|false
   				cartList: [],
+				discounted: "0.00"
   			};
   		},
   		onLoad(){
