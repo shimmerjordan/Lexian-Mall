@@ -19,7 +19,7 @@
         SELECT
         Commodity.ID,
         Commodity.modify_time,
-        Commodity.introduction,
+        Commodity.`introduction`,
         Commodity.`name`,
         Commodity.`image`,
         Commodity.`price`,
