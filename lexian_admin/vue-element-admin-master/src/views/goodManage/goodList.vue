@@ -36,45 +36,53 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+      <el-table-column label="ID" prop="ID" sortable="custom" align="center" width="80" :class-name="getSortClass('ID')">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.ID }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="商品修改日期" width="165px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ row.modify_time | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="商品图片" width="170px">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <span>{{ row.name }}</span>
+          <!-- <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
+          <el-tag>{{ row.type | typeFilter }}</el-tag> -->
         </template>
 
       </el-table-column>
       <el-table-column label="商品名称" width="180px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.name }}</span>
         </template>
       </el-table-column>
       <el-table-column v-if="showReviewer" label="商品描述" width="180px" align="center">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.reviewer }}</span>
+          <span style="color:red;">{{ row.introduction }}</span>
         </template>
       </el-table-column>
       <el-table-column label="商品单价" align="center" width="100px">
         <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon" />
+          <span style="color:red;">{{ row.price }}</span>
         </template>
       </el-table-column>
+
       <el-table-column label="库存" align="center" width="100px">
         <template slot-scope="{row}">
-          <span v-if="row.pageviews" class="link-type" @click="handleFetchPv(row.pageviews)">{{ row.pageviews }}</span>
-          <span v-else>0</span>
+          <span style="color:red;">{{ row.storage }}</span>
         </template>
       </el-table-column>
+
+      <el-table-column label="规格" align="center" width="100px">
+        <template slot-scope="{row}">
+          <span style="color:red;">{{ row.specification }}</span>
+        </template>
+      </el-table-column>
+
       <el-table-column label="当前状态" class-name="status-col" width="100">
         <template slot-scope="{row}">
           <el-tag :type="row.status | statusFilter">
@@ -150,9 +158,11 @@
 </template>
 
 <script>
-import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+// import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchPv, createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
+import { getAllShopGoods } from '@/api/shopGood'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 const calendarTypeOptions = [
@@ -235,16 +245,26 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchList(this.listQuery).then(response => {
-        this.list = response.data.items
-        this.total = response.data.total
+      // fetchList(this.listQuery).then(response => {
+      //   this.list = response.data.items
+      //   this.total = response.data.total
 
-        // Just to simulate the time of the request
+      //   // Just to simulate the time of the request
+      //   setTimeout(() => {
+      //     this.listLoading = false
+      //   }, 1.5 * 1000)
+      // })
+      getAllShopGoods().then(response => {
+        this.list = response.data
+        console.log(this.list)
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+
+      this.listLoading = false
     },
+
     handleFilter() {
       this.listQuery.page = 1
       this.getList()

@@ -23,7 +23,7 @@ const shopActivityManage = {
     {
       path: 'add-shopActivity',
       component: () => import('@/views/shopActivity-manage/addshopActivity'),
-      name: 'addShop',
+      name: 'addShopActivity',
       meta: {
         title: '新增门店活动信息',
         hidden: true
