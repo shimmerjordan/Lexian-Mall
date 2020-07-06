@@ -6,7 +6,7 @@
     <resultMap id="commodity_map" type="Commodity">
         <id property="ID" column="Commodity.ID"/>
         <result property="modify_time" column="Commodity.modify_time"/>
-        <result property="introduction" column="Commodity.introduction"/>
+        <result property="introduction" column="Commodity.`introduction`"/>
         <result property="name" column="Commodity.`name`"/>
         <result property="image" column="Commodity.`image`"/>
         <result property="price" column="Commodity.`price`"/>
