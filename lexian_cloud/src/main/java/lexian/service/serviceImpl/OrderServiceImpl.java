@@ -6,7 +6,10 @@ import lexian.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -21,4 +24,10 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrder(){
         return orderMapper.getAllOrder();
     }
+
+    @Override
+    public int[] getDateRange(int start, int end) {
+        return orderMapper.getDateRange(start,end);
+    }
+
 }
