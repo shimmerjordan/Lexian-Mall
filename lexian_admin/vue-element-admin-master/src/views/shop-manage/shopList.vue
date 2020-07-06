@@ -2,10 +2,9 @@
   <div class="app-container">
     <transition name="component-fade" mode="out-in">
       <div v-if="!selectShops.length" class="filter-container">
-        <el-input v-model="listQuery.title" placeholder="商品" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-        <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
-          <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
-        </el-select>
+        <el-input v-model="listQuery.title" placeholder="店铺ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.importance" placeholder="店铺名称" style="width: 200px" class="filter-item" @keyup.enter.native="handleFilter" />
+        <!-- <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" /> -->
         <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
           <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
@@ -22,7 +21,7 @@
           导出
         </el-button>
         <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-          reviewer
+          操作员
         </el-checkbox>
       </div>
       <div v-else class="filter-container order-operation-meun">
@@ -77,20 +76,19 @@
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="订单日期" width="150px" align="center">
+      <el-table-column label="店铺名称" width="110px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="订单描述" min-width="150px">
+      <el-table-column label="店铺图片" width="150px" align="center">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <img :src="row.img">
         </template>
       </el-table-column>
-      <el-table-column label="商品名称" width="110px" align="center">
+      <el-table-column label="开店日期" width="150px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.establishTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column v-if="showReviewer" label="Reviewer" width="110px" align="center">
@@ -98,15 +96,14 @@
           <span style="color:red;">{{ row.reviewer }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="评价" width="80px">
+      <el-table-column label="店铺类型" width="80px">
         <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon" />
+          <span>{{ row.kind }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="总价" align="center" width="95">
+      <el-table-column label="店铺标签" width="80px">
         <template slot-scope="{row}">
-          <span v-if="row.pageviews" class="link-type" @click="handleFetchPv(row.pageviews)">{{ row.pageviews }}</span>
-          <span v-else>0</span>
+          <span>{{ row.tag }}</span>
         </template>
       </el-table-column>
       <el-table-column label="当前状态" class-name="status-col" width="100">
@@ -116,12 +113,12 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
+      <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
             编辑
           </el-button>
-          <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
+          <el-button size="mini" type="danger" @click="handleDelete(row,$index)">
             删除
           </el-button>
         </template>
@@ -178,10 +175,12 @@
 </template>
 
 <script>
-import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchPv, createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
+
+import { getAllShop } from '@/api/shop'
 
 const calendarTypeOptions = [
   { key: 'CN', display_name: 'China' },
@@ -203,9 +202,9 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
+        0: 'sucess',
+        1: 'info',
+        2: 'danger'
       }
       return statusMap[status]
     },
@@ -227,10 +226,10 @@ export default {
         type: undefined,
         sort: '+id'
       },
-      importanceOptions: [1, 2, 3],
+      status: [{ label: '正在营业', key: '0' }, { label: '暂停营业', key: '1' }, { label: '店铺关闭', key: '2' }],
       calendarTypeOptions,
       sortOptions: [{ label: 'ID 递增排序', key: '+id' }, { label: 'ID 递减排序', key: '-id' }],
-      statusOptions: ['published', 'draft', 'deleted'],
+      statusOptions: ['正在营业', '暂停营业', '关闭店铺'],
       showReviewer: false,
       temp: {
         id: undefined,
@@ -239,7 +238,7 @@ export default {
         timestamp: new Date(),
         title: '',
         type: '',
-        status: 'published'
+        status: '0'
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -264,15 +263,15 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchList(this.listQuery).then(response => {
-        this.list = response.data.items
-        this.total = response.data.total
-
+      getAllShop().then(response => {
+        this.list = response.data
+        console.log(this.list)
         // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+      this.listLoading = false
     },
     handleFilter() {
       this.listQuery.page = 1
@@ -299,7 +298,7 @@ export default {
         remark: '',
         timestamp: new Date(),
         title: '',
-        status: 'published',
+        status: '0',
         type: ''
       }
     },

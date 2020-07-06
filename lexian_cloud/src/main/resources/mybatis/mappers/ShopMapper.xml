@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lexian.mapper.ShopMapper" >
+  <resultMap id="BaseResultMap" type="Shop" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="establishTime" property="establishTime" jdbcType="TIMESTAMP" />
+    <result column="kind" property="kind" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="isDelete" property="isDelete" jdbcType="INTEGER" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getAllShop" resultType="Shop">
+    select
+    shop.ID, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag
+    from
+    shop
+    where shop.isDelete = 0
+  </select>
+</mapper>
