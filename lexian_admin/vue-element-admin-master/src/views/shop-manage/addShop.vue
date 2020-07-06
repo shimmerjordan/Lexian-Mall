@@ -110,8 +110,8 @@ export default {
     const dd = new Date().getDate()
     const hh = new Date().getHours()
     const mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
-    // const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
-    this.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf
+    const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
+    this.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
   },
   methods: {
     dropzoneS(file) {

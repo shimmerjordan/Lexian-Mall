@@ -31,4 +31,15 @@
         WHERE
         isDelete = 0
     </select>
+
+    <select id="getDateRange" resultType="java.lang.Integer">
+        SELECT
+        count(*)
+        FROM
+        orders
+        WHERE
+        orders.date BETWEEN #{0} AND #{1}
+        GROUP BY
+        orders.date
+    </select>
 </mapper>

@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface OrderMapper {
     List<Order> getAllOrder();
+    int[] getDateRange(int start, int end);
 }

@@ -57,8 +57,8 @@
       </el-table-column>
       <el-table-column label="价格" align="center" width="130">
         <template slot-scope="{row}">
-          <el-tag type="info">单价：{{ row.price }}</el-tag>
-          <el-tag type="info">数量：{{ row.quantity }}</el-tag>
+          <el-row><el-tag type="info">单价：{{ row.price }}</el-tag></el-row>
+          <el-row><el-tag type="info">数量：{{ row.quantity }}</el-tag></el-row>
         </template>
       </el-table-column>
       <el-table-column label="当前状态" class-name="status-col" width="130">

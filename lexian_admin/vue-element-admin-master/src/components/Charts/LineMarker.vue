@@ -9,17 +9,16 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+            @change="changeData"
           />
         </el-col>
         <el-col :span="8">
           <el-row type="flex" justify="end">
-            <el-col :span="12"><el-tag type="success">订单总数：1321</el-tag></el-col>
-            <el-col :span="12"><el-tag type="info">平均订单数：96/天</el-tag></el-col>
+            <el-col :span="12"><el-tag type="success">订单总数：{{ total }}</el-tag></el-col>
+            <el-col :span="12"><el-tag type="info">平均订单数：{{ average }}/天</el-tag></el-col>
           </el-row>
         </el-col>
       </el-row>
-      <el-row />
-
     </el-main>
     <el-footer><div :id="id" :class="className" :style="container" /></el-footer>
   </el-container>
@@ -28,6 +27,8 @@
 <script>
 import echarts from 'echarts'
 import resize from './mixins/resize'
+import { getDateRange } from '@/api/order'
+import { initlist } from '@/utils/order_data'
 
 export default {
   mixins: [resize],
@@ -48,7 +49,11 @@ export default {
         width: '',
         height: '601px'
       },
-      dateRange: ''
+      dateRange: '',
+      total: 0,
+      average: 0,
+      x: ['07.06', '07.07', '07.08', '07.09', '07.10', '07.11', '07.12', '07.13', '07.14'],
+      point: [3, 0, 2, 1, 5, 2, 0, 0, 1]
     }
   },
   mounted() {
@@ -68,13 +73,60 @@ export default {
     this.chart = null
   },
   methods: {
+    getDateRangeData(start, end) {
+      getDateRange(start, end).then(response => {
+        this.point = response.data.orders
+      })
+    },
+    changeData() {
+      const sm = this.dateRange[0].getMonth() + 1
+      let sd = this.dateRange[0].getDate()
+      const em = this.dateRange[1].getMonth() + 1
+      const ed = this.dateRange[1].getDate()
+      const odd = [1, 3, 5, 7, 8, 10, 12]
+      let maxDay
+      let i = 1
+      this.x = []
+      this.point = []
+      if (odd.indexOf(sm) !== -1) {
+        maxDay = 31
+      } else {
+        maxDay = 30
+      }
+      if (em > sm) {
+        while (sd <= maxDay) {
+          this.x.push(sm + '.' + sd)
+          sd += 1
+        }
+        while (i <= ed) {
+          this.x.push(em + '.' + i)
+          i += 1
+        }
+      } else {
+        while (sd <= ed) {
+          this.x.push(sm + '.' + sd)
+          sd += 1
+        }
+      }
+      for (let j = 0; j < this.x.length; j++) {
+        this.point.push(parseInt(Math.random() * (6) + 1, 10))
+      }
+      this.point = initlist(this.x.length)
+      this.getDateRangeData(this.x.length)
+      this.initChart()
+      this.total = 0
+      for (let j = 0; j < this.point.length; j++) {
+        this.total += this.point[j]
+      }
+      this.average = (this.total / this.x.length).toFixed(2)
+    },
     initChart() {
       this.chart = echarts.init(document.getElementById(this.id))
       this.chart.setOption({
         backgroundColor: '#394056',
         title: {
           top: 20,
-          text: '订单数量曲线',
+          text: '订单数量',
           textStyle: {
             fontWeight: 'normal',
             fontSize: 16,
@@ -88,19 +140,6 @@ export default {
             lineStyle: {
               color: '#57617B'
             }
-          }
-        },
-        legend: {
-          top: 20,
-          icon: 'rect',
-          itemWidth: 14,
-          itemHeight: 5,
-          itemGap: 13,
-          data: ['商品一', '商品二', '商品三'],
-          right: '4%',
-          textStyle: {
-            fontSize: 12,
-            color: '#F1F1F3'
           }
         },
         grid: {
@@ -118,11 +157,11 @@ export default {
               color: '#57617B'
             }
           },
-          data: ['13:00', '13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
+          data: this.x
         }],
         yAxis: [{
           type: 'value',
-          name: '(%)',
+          name: '单',
           axisTick: {
             show: false
           },
@@ -144,7 +183,7 @@ export default {
           }
         }],
         series: [{
-          name: '商品一',
+          name: '订单',
           type: 'line',
           smooth: true,
           symbol: 'circle',
@@ -176,76 +215,9 @@ export default {
 
             }
           },
-          data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
-        }, {
-          name: '商品二',
-          type: 'line',
-          smooth: true,
-          symbol: 'circle',
-          symbolSize: 5,
-          showSymbol: false,
-          lineStyle: {
-            normal: {
-              width: 1
-            }
-          },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(0, 136, 212, 0.3)'
-              }, {
-                offset: 0.8,
-                color: 'rgba(0, 136, 212, 0)'
-              }], false),
-              shadowColor: 'rgba(0, 0, 0, 0.1)',
-              shadowBlur: 10
-            }
-          },
-          itemStyle: {
-            normal: {
-              color: 'rgb(0,136,212)',
-              borderColor: 'rgba(0,136,212,0.2)',
-              borderWidth: 12
-
-            }
-          },
-          data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
-        }, {
-          name: '商品三',
-          type: 'line',
-          smooth: true,
-          symbol: 'circle',
-          symbolSize: 5,
-          showSymbol: false,
-          lineStyle: {
-            normal: {
-              width: 1
-            }
-          },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(219, 50, 51, 0.3)'
-              }, {
-                offset: 0.8,
-                color: 'rgba(219, 50, 51, 0)'
-              }], false),
-              shadowColor: 'rgba(0, 0, 0, 0.1)',
-              shadowBlur: 10
-            }
-          },
-          itemStyle: {
-            normal: {
-              color: 'rgb(219,50,51)',
-              borderColor: 'rgba(219,50,51,0.2)',
-              borderWidth: 12
-            }
-          },
-          data: [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 165, 122]
+          data: this.point
         }]
-      })
+      }, true)
     }
   }
 }
