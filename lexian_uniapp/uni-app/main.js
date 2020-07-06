@@ -1,6 +1,24 @@
 import Vue from 'vue'
-import store from './store'
+//import store from './store'
 import App from './App'
+
+
+import store from '@/common/store'
+import router from '@/common/router'
+import tools from '@/common/utils/tools'
+import '@/common/utils/sdk/sdk-h5.js'
+import {
+	API_URL
+} from './env.js'
+
+
+import shoproShare from '@/common/mixins/shopro-share'
+Vue.mixin(shoproShare);
+
+import {
+	RouterMount
+} from 'uni-simple-router'
+import api from '@/common/request/index'
 
 
 import Json from './Json' //测试用数据

@@ -80,6 +80,7 @@
 <script>
 import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
+
 export default {
   name: 'AddShop',
   components: { Dropzone, Sticky },
@@ -88,7 +89,7 @@ export default {
     return {
       textarea: '',
       date: '',
-      shopId: 19,
+      shopId: '',
       postForm: {
         name: '',
         categoryId: undefined,

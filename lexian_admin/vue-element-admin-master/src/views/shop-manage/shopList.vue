@@ -5,8 +5,8 @@
         <el-input v-model="listQuery.title" placeholder="店铺ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
         <el-input v-model="listQuery.importance" placeholder="店铺名称" style="width: 200px" class="filter-item" @keyup.enter.native="handleFilter" />
         <!-- <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" /> -->
-        <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
-          <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+        <el-select v-model="listQuery.type" placeholder="店铺状态" clearable class="filter-item" style="width: 130px">
+          <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
         <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
           <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
@@ -129,35 +129,40 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item label="Type" prop="type">
-          <el-select v-model="temp.type" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
-          </el-select>
+        <el-form-item label="ID" prop="ID">
+          <el-input v-model="temp.id" :disabled="true" />
         </el-form-item>
-        <el-form-item label="Date" prop="timestamp">
-          <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
+        <el-form-item label="开店日期" prop="establishTime">
+          <span style="color:darkolivegreen;font-weight:bold">{{ temp.establishTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </el-form-item>
-        <el-form-item label="Title" prop="title">
-          <el-input v-model="temp.title" />
+        <el-form-item label="name" prop="name">
+          <el-input v-model="temp.name" />
         </el-form-item>
-        <el-form-item label="Status">
-          <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
+        <el-form-item label="店铺状态">
+          <el-select v-model="temp.status" class="filter-item" placeholder="请选择店铺状态">
             <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
           </el-select>
         </el-form-item>
-        <el-form-item label="Imp">
-          <el-rate v-model="temp.importance" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
+        <el-form-item label="店铺类型">
+          <el-select v-model="temp.kind" class="filter-item" placeholder="请选择店铺类型">
+            <el-option v-for="item in kindOptions" :key="item" :label="item" :value="item" />
+          </el-select>
         </el-form-item>
-        <el-form-item label="Remark">
-          <el-input v-model="temp.remark" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
+        <el-form-item label="店铺标签">
+          <el-select v-model="temp.tag" class="filter-item" placeholder="请选择店铺标签">
+            <el-option v-for="item in tagOptions" :key="item" :label="item" :value="item" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="店铺图片">
+          <img :src="temp.img">
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          Cancel
+          取消
         </el-button>
         <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-          Confirm
+          提交
         </el-button>
       </div>
     </el-dialog>
@@ -182,15 +187,21 @@ import Pagination from '@/components/Pagination' // secondary package based on e
 
 import { getAllShop } from '@/api/shop'
 
-const calendarTypeOptions = [
-  { key: 'CN', display_name: 'China' },
-  { key: 'US', display_name: 'USA' },
-  { key: 'JP', display_name: 'Japan' },
-  { key: 'EU', display_name: 'Eurozone' }
+const statusOptions = [
+  { key: '0', display_name: '正在营业' },
+  { key: '1', display_name: '暂停营业' },
+  { key: '2', display_name: '关闭店铺' }
+
 ]
+// const calendarTypeOptions = [
+//   { key: 'CN', display_name: 'China' },
+//   { key: 'US', display_name: 'USA' },
+//   { key: 'JP', display_name: 'Japan' },
+//   { key: 'EU', display_name: 'Eurozone' }
+// ]
 
 // arr to obj, such as { CN : "China", US : "USA" }
-const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
+const statusKeyValue = statusOptions.reduce((acc, cur) => {
   acc[cur.key] = cur.display_name
   return acc
 }, {})
@@ -209,7 +220,7 @@ export default {
       return statusMap[status]
     },
     typeFilter(type) {
-      return calendarTypeKeyValue[type]
+      return statusKeyValue[type]
     }
   },
   data() {
@@ -227,9 +238,11 @@ export default {
         sort: '+id'
       },
       status: [{ label: '正在营业', key: '0' }, { label: '暂停营业', key: '1' }, { label: '店铺关闭', key: '2' }],
-      calendarTypeOptions,
+      statusOptions,
       sortOptions: [{ label: 'ID 递增排序', key: '+id' }, { label: 'ID 递减排序', key: '-id' }],
-      statusOptions: ['正在营业', '暂停营业', '关闭店铺'],
+      // statusOptions: ['正在营业', '暂停营业', '关闭店铺'],
+      kindOptions: ['旗舰店', '自营店', '普通店', '进口店'],
+      tagOptions: ['服饰', '食品', '日常用品'],
       showReviewer: false,
       temp: {
         id: undefined,
@@ -243,7 +256,7 @@ export default {
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
-        update: 'Edit',
+        update: '编辑',
         create: 'Create'
       },
       dialogPvVisible: false,
