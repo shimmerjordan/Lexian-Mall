@@ -6,6 +6,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
     <result column="beginTime" property="begintime" jdbcType="TIMESTAMP" />
     <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="VARCHAR" />
@@ -141,7 +142,7 @@
 
   <select id="getAllActivity" resultType="Activity">
     select
-    activity.`name`, activity.description, activity.img, activity.beginTime, activity.endTime, activity.type, activity.status
+    activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
     where activity.is_delete = 0
   </select>
