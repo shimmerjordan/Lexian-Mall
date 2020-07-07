@@ -1,20 +1,8 @@
 import Vue from 'vue'
-//import store from './store'
+import store from './store'
 import App from './App'
 
-
-import store from '@/common/store'
-import router from '@/common/router'
-import tools from '@/common/utils/tools'
-import '@/common/utils/sdk/sdk-h5.js'
 import cuCustom from '@/static/colorui/components/cu-custom.vue'
-import {
-	API_URL
-} from './env.js'
-
-
-import shoproShare from '@/common/mixins/shopro-share'
-Vue.mixin(shoproShare);
 
 import {
 	RouterMount
@@ -66,6 +54,7 @@ Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, json, prePage};
 Vue.component('cu-custom', cuCustom);
+Vue.prototype.apiServer = 'http://localhost:8080/api'
 
 App.mpType = 'app'
 

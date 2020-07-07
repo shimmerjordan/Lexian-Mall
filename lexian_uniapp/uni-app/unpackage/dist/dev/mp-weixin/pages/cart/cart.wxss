@@ -900,7 +900,12 @@
   font-size: 28rpx;
   color: #fff;
   background: #c0c4cc;
+<<<<<<< HEAD
   border-radius: 0 50px 50px 0;
+=======
+  -webkit-border-radius: 0 50px 50px 0;
+          border-radius: 0 50px 50px 0;
+>>>>>>> 6e63e1018b63c4ea2ba9a3675bf149827a4d52b8
   opacity: 0;
   -webkit-transition: .2s;
   transition: .2s;

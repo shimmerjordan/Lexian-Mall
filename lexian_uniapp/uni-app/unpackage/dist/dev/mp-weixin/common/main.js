@@ -8,21 +8,9 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni, createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 12));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 
-
-var _store = _interopRequireDefault(__webpack_require__(/*! @/common/store */ 12));
-var _router = _interopRequireDefault(__webpack_require__(/*! @/common/router */ 21));
-var _tools = _interopRequireDefault(__webpack_require__(/*! @/common/utils/tools */ 53));
-__webpack_require__(/*! @/common/utils/sdk/sdk-h5.js */ 56);
-
-var _env = __webpack_require__(/*! ./env.js */ 19);
-
-
-
-
-var _shoproShare = _interopRequireDefault(__webpack_require__(/*! @/common/mixins/shopro-share */ 57));
 
 
 var _uniSimpleRouter = __webpack_require__(/*! uni-simple-router */ 22);
@@ -31,7 +19,7 @@ var _uniSimpleRouter = __webpack_require__(/*! uni-simple-router */ 22);
 
 
 
-var _Json = _interopRequireDefault(__webpack_require__(/*! ./Json */ 58));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var cuCustom = function cuCustom() {__webpack_require__.e(/*! require.ensure | static/colorui/components/cu-custom */ "static/colorui/components/cu-custom").then((function () {return resolve(__webpack_require__(/*! @/static/colorui/components/cu-custom.vue */ 265));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};_vue.default.mixin(_shoproShare.default); //测试用数据
+var _Json = _interopRequireDefault(__webpack_require__(/*! ./Json */ 58));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var cuCustom = function cuCustom() {__webpack_require__.e(/*! require.ensure | static/colorui/components/cu-custom */ "static/colorui/components/cu-custom").then((function () {return resolve(__webpack_require__(/*! @/static/colorui/components/cu-custom.vue */ 265));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);}; //测试用数据
 /**
  *  因工具函数属于公司资产, 所以直接在Vue实例挂载几个常用的函数
  *  所有测试用数据均存放于根目录json.js
@@ -75,6 +63,7 @@ _vue.default.prototype.$fire = new _vue.default();
 _vue.default.prototype.$store = _store.default;
 _vue.default.prototype.$api = { msg: msg, json: json, prePage: prePage };
 _vue.default.component('cu-custom', cuCustom);
+_vue.default.prototype.apiServer = 'http://localhost:8080/api';
 
 _App.default.mpType = 'app';
 

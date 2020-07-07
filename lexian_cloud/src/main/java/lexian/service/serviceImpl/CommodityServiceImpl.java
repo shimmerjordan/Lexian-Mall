@@ -24,9 +24,8 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     @Override
-    public boolean updateGood(Map<String, Object> map) {
+    public boolean updateGood(Map<String,Object> map) {
         int flag=commodityMapper.updateGood(map);
-        System.out.println(flag);
         return  flag>0;
     }
 }
