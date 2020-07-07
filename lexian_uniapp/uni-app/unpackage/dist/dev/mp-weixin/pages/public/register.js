@@ -518,7 +518,9 @@ var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(o
 
     },
     navBack: function navBack() {
-      uni.navigateBack();
+      uni.navigateBack({
+        delta: 1 });
+
     },
     checkExistPhone: function checkExistPhone() {
       console.log(this.mobile);

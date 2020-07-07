@@ -211,7 +211,9 @@ var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(o
       this[key] = e.detail.value;
     },
     navBack: function navBack() {
-      uni.navigateBack();
+      uni.navigateBack({
+        delta: 1 });
+
     },
     toRegist: function toRegist() {
       this.$api.msg('去注册');

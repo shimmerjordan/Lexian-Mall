@@ -793,8 +793,7 @@
   font-size: 32rpx;
   color: #fff;
   background-color: #fa436a;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .mix-btn.hollow {
   background: #fff;

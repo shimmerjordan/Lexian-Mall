@@ -1003,22 +1003,19 @@ audio,
 camera,
 image,
 video {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 /* 骨架屏替代方案 */
 .Skeleton {
   background: #f3f3f3;
   padding: 20rpx 0;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
 }
 /* 图片载入替代方案 */
 .image-wrapper {
   font-size: 0;
   background: #f3f3f3;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
 }
 .image-wrapper image {
   width: 100%;
