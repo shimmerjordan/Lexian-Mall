@@ -23,7 +23,8 @@
     "pages/public/guidance",
     "pages/public/agreement",
     "components/moveVerify",
-    "pages/money/vip/vip",
+    "pages/public/forgetPwd",
+    "components/popup",
     "pages/money/vip"
   ],
   "subPackages": [],
@@ -65,5 +66,7 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "cu-custom": "/static/colorui/components/cu-custom"
+  }
 }
