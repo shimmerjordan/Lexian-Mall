@@ -1,9 +1,32 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["components/moveVerify"],{
 
+<<<<<<< HEAD
 /***/ 105:
 /*!***************************************************************************************************!*\
   !*** D:/Workspace/实训_workspace/NEU_Lexian-master/lexian_uniapp/uni-app/components/moveVerify.vue ***!
   \***************************************************************************************************/
+=======
+/***/ 201:
+/*!**************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/main.js?{"page":"components%2FmoveVerify"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _moveVerify = _interopRequireDefault(__webpack_require__(/*! ./components/moveVerify.vue */ 63));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_moveVerify.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 63:
+/*!*********************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/components/moveVerify.vue ***!
+  \*********************************************************************/
+>>>>>>> af1f5c6eab2a94eac0ab77c87450498a0c00db18
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -271,5 +294,9 @@ createPage(_moveVerify.default);
 
 /***/ })
 
+<<<<<<< HEAD
 },[[243,"common/runtime","common/vendor"]]]);
+=======
+},[[201,"common/runtime","common/vendor"]]]);
+>>>>>>> af1f5c6eab2a94eac0ab77c87450498a0c00db18
 //# sourceMappingURL=../../.sourcemap/mp-weixin/components/moveVerify.js.map

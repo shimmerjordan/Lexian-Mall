@@ -2,11 +2,11 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.title" placeholder="商品名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
+      <el-input v-model="listQuery.name" placeholder="商品名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <!-- <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
         <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
-      </el-select>
-      <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
+      </el-select> -->
+      <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
       </el-select>
       <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
@@ -38,7 +38,7 @@
     >
       <el-table-column label="ID" prop="ID" sortable="custom" align="center" width="80" :class-name="getSortClass('ID')">
         <template slot-scope="{row}">
-          <span>{{ row.ID }}</span>
+          <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
@@ -47,9 +47,9 @@
           <span>{{ row.modify_time | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="商品图片" width="170px">
+      <el-table-column label="商品图片" width="170px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.name }}</span>
+          <img :src="row.image" width="80px" height="80px" align="center">
           <!-- <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
           <el-tag>{{ row.type | typeFilter }}</el-tag> -->
         </template>
@@ -67,7 +67,7 @@
       </el-table-column>
       <el-table-column label="商品单价" align="center" width="100px">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.price }}</span>
+          <span>{{ row.price }}</span>
         </template>
       </el-table-column>
 
@@ -79,14 +79,20 @@
 
       <el-table-column label="规格" align="center" width="100px">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.specification }}</span>
+          <span>{{ row.specification }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="当前状态" class-name="status-col" width="100">
         <template slot-scope="{row}">
-          <el-tag :type="row.status | statusFilter">
+          <!-- <el-tag :type="row.status | statusFilter">
             {{ row.status }}
+          </el-tag> -->
+          <el-tag v-if="row.status==1" type="success">
+            已上架
+          </el-tag>
+          <el-tag v-if="row.status==0" type="danger">
+            已下架
           </el-tag>
         </template>
       </el-table-column>
@@ -107,40 +113,33 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="80px" style="width: 400px; margin-left:50px;">
-        <el-form-item label="商品名称" prop="title">
-          <el-input v-model="temp.title" />
+        <el-form-item label="商品名称" prop="name">
+          <el-input v-model="temp.name" />
         </el-form-item>
-        <el-form-item label="修改时间" prop="timestamp">
-          <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
+        <el-form-item label="修改时间" prop="modify_time">
+          <el-date-picker v-model="temp.modify_time" type="datetime" placeholder="Please pick a date" />
         </el-form-item>
-        <el-form-item label="商品产地" prop="type">
-          <el-select v-model="temp.type" class="filter-item" placeholder="Please select">
+        <!-- <el-form-item label="商品状态" prop="status">
+          <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
           </el-select>
-        </el-form-item>
-        <el-form-item label="商品状态" prop="status">
-          <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="商品状态" prop="status">
-          <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
-          </el-select>
+        </el-form-item> -->
+        <el-form-item label="商品库存" prop="storage">
+          <el-input v-model="temp.storage" />
         </el-form-item>
         <el-form-item label="商品单价" prop="price">
           <el-input v-model="temp.price" class="filter-item" />
         </el-form-item>
         <el-form-item label="商品描述">
-          <el-input v-model="temp.remark" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
+          <el-input v-model="temp.introduction" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          Cancel
+          取消修改
         </el-button>
-        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-          Confirm
+        <el-button type="primary" @click="updateData()">
+          确认修改
         </el-button>
       </div>
     </el-dialog>
@@ -159,17 +158,17 @@
 
 <script>
 // import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
-import { fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchPv, createArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
-import { getAllShopGoods } from '@/api/shopGood'
+import { getAllShopGoods, UpdateShopGood } from '@/api/shopGood'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 const calendarTypeOptions = [
-  { key: 'CN', display_name: 'China' },
-  { key: 'US', display_name: 'USA' },
-  { key: 'JP', display_name: 'Japan' },
-  { key: 'EU', display_name: 'Eurozone' }
+  { key: '已上架', display_name: '已上架' },
+  { key: '已下架', display_name: '已下架' },
+  { key: '无库存', display_name: '无库存' }
+  // { key: 'EU', display_name: 'Eurozone' }
 ]
 
 // arr to obj, such as { CN : "China", US : "USA" }
@@ -226,8 +225,8 @@ export default {
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
-        update: 'Edit',
-        create: 'Create'
+        update: '商品编辑',
+        create: '添加商品'
       },
       dialogPvVisible: false,
       pvData: [],
@@ -254,8 +253,9 @@ export default {
       //     this.listLoading = false
       //   }, 1.5 * 1000)
       // })
-      getAllShopGoods().then(response => {
+      getAllShopGoods(this.listQuery.page).then(response => {
         this.list = response.data
+        this.total = 100
         console.log(this.list)
         setTimeout(() => {
           this.listLoading = false
@@ -334,17 +334,28 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
-          tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateArticle(tempData).then(() => {
-            const index = this.list.findIndex(v => v.id === this.temp.id)
-            this.list.splice(index, 1, this.temp)
-            this.dialogFormVisible = false
+          tempData.modify_time = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
+          // updateArticle(tempData).then(() => {
+          //   const index = this.list.findIndex(v => v.id === this.temp.id)
+          //   this.list.splice(index, 1, this.temp)
+          //   this.dialogFormVisible = false
+          //   this.$notify({
+          //     title: 'Success',
+          //     message: 'Update Successfully',
+          //     type: 'success',
+          //     duration: 2000
+          //   })
+          // })
+          UpdateShopGood(this.temp).then(response => {
             this.$notify({
               title: 'Success',
               message: 'Update Successfully',
               type: 'success',
               duration: 2000
             })
+            setTimeout(() => {
+              this.listLoading = false
+            }, 1.5 * 1000)
           })
         }
       })

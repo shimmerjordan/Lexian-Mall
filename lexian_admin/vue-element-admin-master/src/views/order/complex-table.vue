@@ -8,9 +8,7 @@
       <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
       </el-select>
-      <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
-        <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
-      </el-select>
+
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         Search
       </el-button>
@@ -83,36 +81,34 @@
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item label="Type" prop="type">
-          <el-select v-model="temp.type" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
-          </el-select>
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="80px" style="width: 400px; margin-left:50px;">
+        <el-form-item label="商品ID" prop="commodity">
+          <el-input v-model="temp.commodity" />
         </el-form-item>
-        <el-form-item label="Date" prop="timestamp">
+        <el-form-item label="日期" prop="timestamp">
           <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
         </el-form-item>
-        <el-form-item label="Title" prop="title">
-          <el-input v-model="temp.title" />
+        <el-form-item label="描述" prop="description">
+          <el-input v-model="temp.description" />
         </el-form-item>
-        <el-form-item label="Status">
+        <el-form-item label="状态" prop="status">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
           </el-select>
         </el-form-item>
-        <el-form-item label="Imp">
-          <el-rate v-model="temp.importance" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
+        <el-form-item label="评价">
+          <el-rate v-model="temp.comment" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
         </el-form-item>
-        <el-form-item label="Remark">
-          <el-input v-model="temp.remark" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
+        <el-form-item label="数量" prop="quantity">
+          <el-input v-model="temp.quantity" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          Cancel
+          取消
         </el-button>
         <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-          Confirm
+          提交
         </el-button>
       </div>
     </el-dialog>
@@ -130,8 +126,8 @@
 </template>
 
 <script>
-import { createArticle, updateArticle } from '@/api/article'
-import { getAllOrder } from '@/api/order'
+import { updateArticle } from '@/api/article'
+import { getAllOrder, createOrder } from '@/api/order'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -179,35 +175,33 @@ export default {
         limit: 20,
         importance: undefined,
         title: undefined,
-        type: undefined,
-        sort: '+id'
+        type: undefined
       },
       importanceOptions: [1, 2, 3],
       calendarTypeOptions,
-      sortOptions: [{ label: 'ID 递增排序', key: '+id' }, { label: 'ID 递减排序', key: '-id' }],
-      statusOptions: ['published', 'draft', 'deleted'],
+      statusOptions: [0, 1, 2, 3, 4],
       showReviewer: false,
       temp: {
-        id: undefined,
-        importance: 1,
-        remark: '',
+        commodity: undefined,
+        comment: 1,
         timestamp: new Date(),
-        title: '',
-        type: '',
-        status: 'published'
+        description: '',
+        status: 0,
+        quantity: ''
       },
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
-        update: 'Edit',
-        create: 'Create'
+        update: '编辑',
+        create: '新建'
       },
       dialogPvVisible: false,
       pvData: [],
       rules: {
-        type: [{ required: true, message: 'type is required', trigger: 'change' }],
-        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-        title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+        commodity: [{ required: true, message: '请输入商品ID', trigger: 'change' }],
+        timestamp: [{ type: 'date', required: true, message: '请输入时间', trigger: 'change' }],
+        status: [{ required: true, message: '请输入订单状态', trigger: 'blur' }],
+        quantity: [{ required: true, message: '请输入数量', trigger: 'change' }]
       },
       downloadLoading: false
     }
@@ -248,12 +242,9 @@ export default {
     resetTemp() {
       this.temp = {
         id: undefined,
-        importance: 1,
-        remark: '',
+        comment: 1,
         timestamp: new Date(),
-        title: '',
-        status: 'published',
-        type: ''
+        status: ''
       }
     },
     handleCreate() {
@@ -267,18 +258,19 @@ export default {
     createData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
-          this.temp.author = 'vue-element-admin'
-          createArticle(this.temp).then(() => {
-            this.list.unshift(this.temp)
-            this.dialogFormVisible = false
-            this.$notify({
-              title: 'Success',
-              message: 'Created Successfully',
-              type: 'success',
-              duration: 2000
-            })
+          createOrder(this.temp).then(response => {
+            console.log(response.date)
           })
+          // createArticle(this.temp).then(() => {
+          //   this.list.unshift(this.temp)
+          //   this.dialogFormVisible = false
+          //   this.$notify({
+          //     title: 'Success',
+          //     message: 'Created Successfully',
+          //     type: 'success',
+          //     duration: 2000
+          //   })
+          // })
         }
       })
     },

@@ -36,7 +36,7 @@
 			<image class="arc" src="/static/arc.png"></image>
 			
 			<view class="tj-sction">
-				<view class="tj-item">
+				<view class="tj-item" @click="navTo('/pages/user/favorites')">
 					<text class="num">30</text>
 					<text>收藏夹商品</text>
 				</view>

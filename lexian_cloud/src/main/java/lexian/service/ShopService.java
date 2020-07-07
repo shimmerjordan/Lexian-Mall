@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface ShopService {
     List<Shop> getAllShop();
+
+    int getMaxShopId();
+
+//    List<Shop> updateShop(Shop record);
 }

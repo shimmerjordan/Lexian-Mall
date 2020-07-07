@@ -753,10 +753,11 @@
 .mp-search-box {
   position: absolute;
   left: 0;
-  top: 30rpx;
+  top: 10rpx;
   z-index: 9999;
   width: 100%;
   padding: 0 80rpx;
+  display: inline-block;
 }
 .mp-search-box .ser-input {
   -webkit-box-flex: 1;

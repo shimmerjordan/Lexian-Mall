@@ -17,6 +17,7 @@
 }
 .popup_content {
   overflow: hidden;
+<<<<<<< HEAD
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 40rpx 20rpx 0 20rpx;
@@ -24,6 +25,13 @@
   bottom: 30%;
   -webkit-border-radius: 8px;
           border-radius: 8px;
+=======
+  box-sizing: border-box;
+  padding: 40rpx 20rpx 0 20rpx;
+  position: fixed;
+  bottom: 30%;
+  border-radius: 8px;
+>>>>>>> af1f5c6eab2a94eac0ab77c87450498a0c00db18
   left: 50%;
   margin-left: -40%;
   right: 0;

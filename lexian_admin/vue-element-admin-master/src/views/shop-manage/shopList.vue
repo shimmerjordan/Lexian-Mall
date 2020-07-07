@@ -2,10 +2,10 @@
   <div class="app-container">
     <transition name="component-fade" mode="out-in">
       <div v-if="!selectShops.length" class="filter-container">
-        <el-input v-model="listQuery.title" placeholder="店铺ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
         <el-input v-model="listQuery.importance" placeholder="店铺名称" style="width: 200px" class="filter-item" @keyup.enter.native="handleFilter" />
         <!-- <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" /> -->
-        <el-select v-model="listQuery.type" placeholder="店铺状态" clearable class="filter-item" style="width: 130px">
+        <el-select v-model="listQuery.status" placeholder="店铺状态" clearable class="filter-item" style="width: 130px">
           <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
         <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
@@ -83,7 +83,7 @@
       </el-table-column>
       <el-table-column label="店铺图片" width="150px" align="center">
         <template slot-scope="{row}">
-          <img :src="row.img">
+          <img :src="row.img" width="150px" height="120px" align="center">
         </template>
       </el-table-column>
       <el-table-column label="开店日期" width="150px" align="center">
@@ -140,7 +140,8 @@
         </el-form-item>
         <el-form-item label="店铺状态">
           <el-select v-model="temp.status" class="filter-item" placeholder="请选择店铺状态">
-            <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
+            <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+            <!-- <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" /> -->
           </el-select>
         </el-form-item>
         <el-form-item label="店铺类型">
@@ -154,7 +155,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="店铺图片">
-          <img :src="temp.img">
+          <img :src="temp.img" width="200px" height="200px" align="center">
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -180,12 +181,12 @@
 </template>
 
 <script>
-import { fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchPv, createArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
-import { getAllShop } from '@/api/shop'
+import { getAllShop, updateShop } from '@/api/shop'
 
 const statusOptions = [
   { key: '0', display_name: '正在营业' },
@@ -207,7 +208,7 @@ const statusKeyValue = statusOptions.reduce((acc, cur) => {
 }, {})
 
 export default {
-  name: 'ComplexTable',
+  name: 'ShopList',
   components: { Pagination },
   directives: { waves },
   filters: {
@@ -345,7 +346,7 @@ export default {
     },
     handleUpdate(row) {
       this.temp = Object.assign({}, row) // copy obj
-      this.temp.timestamp = new Date(this.temp.timestamp)
+      // this.temp.timestamp = new Date(this.temp.timestamp)
       this.dialogStatus = 'update'
       this.dialogFormVisible = true
       this.$nextTick(() => {
@@ -356,8 +357,8 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
-          tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateArticle(tempData).then(() => {
+          // tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
+          updateShop(tempData).then(() => {
             const index = this.list.findIndex(v => v.id === this.temp.id)
             this.list.splice(index, 1, this.temp)
             this.dialogFormVisible = false

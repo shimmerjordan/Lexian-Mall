@@ -25,7 +25,12 @@
     "components/moveVerify",
     "pages/public/forgetPwd",
     "components/popup",
+<<<<<<< HEAD
     "pages/money/vip"
+=======
+    "pages/money/vip",
+    "pages/user/favorites"
+>>>>>>> af1f5c6eab2a94eac0ab77c87450498a0c00db18
   ],
   "subPackages": [],
   "window": {
@@ -66,7 +71,12 @@
       }
     ]
   },
+<<<<<<< HEAD
   "usingComponents": {
     "cu-custom": "/static/colorui/components/cu-custom"
   }
+=======
+  "usingComponents": {},
+  "sitemapLocation": "sitemap87.json"
+>>>>>>> af1f5c6eab2a94eac0ab77c87450498a0c00db18
 }

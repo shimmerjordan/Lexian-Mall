@@ -21,4 +21,12 @@ public class ShopServiceImpl implements ShopService{
     public List<Shop> getAllShop() {
         return shopMapper.getAllShop();
     }
+
+    public int getMaxShopId() {
+        return shopMapper.getMaxShopId();
+    }
+
+//    public List<Shop> updateShop(Shop record) {
+//        return shopMapper. updateShop(record);
+//    }
 }

@@ -14,7 +14,7 @@
 					<text class="tit">手机号码</text>
 					<input 
 						type="number" 
-						v-model="mobile"
+						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
 						data-key="mobile"

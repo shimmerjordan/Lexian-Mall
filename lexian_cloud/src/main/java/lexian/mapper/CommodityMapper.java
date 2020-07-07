@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface CommodityMapper {
     List<Commodity> getAllShopCommodity();
+    void updateGood(Commodity updateGood);
 }
