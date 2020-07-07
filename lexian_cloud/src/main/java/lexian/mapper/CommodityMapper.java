@@ -12,4 +12,5 @@ import java.util.Map;
 public interface CommodityMapper {
     List<Commodity> getAllShopCommodity();
     int updateGood(Map<String,Object> map);
+    int deleteGood(Integer id);
 }
