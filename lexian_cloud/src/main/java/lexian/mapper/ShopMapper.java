@@ -23,4 +23,8 @@ public interface ShopMapper {
     int updateByPrimaryKey(Shop record);
 
     List<Shop> getAllShop();
+
+    int getMaxShopId();
+
+//    List<Shop> updateShop(Shop record);
 }

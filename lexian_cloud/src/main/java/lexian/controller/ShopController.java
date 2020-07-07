@@ -23,4 +23,14 @@ public class ShopController {
     public List<Shop> getAllShop() {
         return shopService.getAllShop();
     }
+
+    @GetMapping("/getMaxShopId")
+    public int getMaxShopId() {
+        return shopService.getMaxShopId();
+    }
+
+//    @GetMapping("/updateShop")
+//    public List<Shop> updateShop(Shop record) {
+//        return shopService.updateShop(record);
+//    }
 }
