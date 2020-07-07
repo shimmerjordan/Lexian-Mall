@@ -23,14 +23,14 @@
     select max(shop.id)
     from shop
   </select>
-<!--  <update id="updateShop" parameterType="Shop">-->
-<!--    update shop-->
-<!--    set-->
-<!--    shop.`name` = #{data.`name`,jdbcTyep=VARCHAR},-->
-<!--    shop.kind = #{data.kind},-->
-<!--    shop.status = #{data.status},-->
-<!--    shop.tag = #{data.tag}-->
-<!--    where-->
-<!--    shop.id = #{data.id}-->
-<!--  </update>-->
+  <update id="updateShop" parameterType="java.util.HashMap">
+    update shop
+    set
+    shop.`name` = #{name},
+    shop.kind = #{kind},
+    shop.status = #{status},
+    shop.tag = #{tag}
+    where
+    shop.id = #{id}
+  </update>
 </mapper>
