@@ -266,6 +266,7 @@
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6da2277c]
 [DEBUG][20-07-07][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+<<<<<<< HEAD
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58621dc] was not registered for synchronization because synchronization is not active
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58621dc]
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
@@ -337,3 +338,15 @@
 [DEBUG][20-07-07][lexian.mapper.CommodityMapper.updateGood]==> Parameters: null, null, null, null, null
 [DEBUG][20-07-07][lexian.mapper.CommodityMapper.updateGood]<==    Updates: 0
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50228b43]
+=======
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69592fbb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69592fbb]
+[DEBUG][20-07-07][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@13878f27] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-07][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1092397869 wrapping com.mysql.cj.jdbc.ConnectionImpl@5c3c7b4a] will not be managed by Spring
+[DEBUG][20-07-07][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-07][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-07][lexian.mapper.CategoryMapper.selectAll]<==      Total: 8
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@13878f27]
+>>>>>>> fb48a7f7ddcc6411a54e1b5708b0180c23e5234b
