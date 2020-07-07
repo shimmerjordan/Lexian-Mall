@@ -94,3 +94,11 @@
 [DEBUG][20-07-07][lexian.mapper.OrderMapper.getAllOrder]==> Parameters: 
 [DEBUG][20-07-07][lexian.mapper.OrderMapper.getAllOrder]<==      Total: 22
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c4b20a5]
+[DEBUG][20-07-07][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@84dda10] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-07][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1213720726 wrapping com.mysql.cj.jdbc.ConnectionImpl@30832351] will not be managed by Spring
+[DEBUG][20-07-07][lexian.mapper.ShopMapper.getAllShop]==>  Preparing: select shop.ID, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description from shop where shop.isDelete = 0 
+[DEBUG][20-07-07][lexian.mapper.ShopMapper.getAllShop]==> Parameters: 
+[DEBUG][20-07-07][lexian.mapper.ShopMapper.getAllShop]<==      Total: 14
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@84dda10]
