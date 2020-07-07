@@ -1,0 +1,7 @@
+[DEBUG][20-07-07][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16487462] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-07][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1713022357 wrapping com.mysql.cj.jdbc.ConnectionImpl@13e5c7d2] will not be managed by Spring
+[DEBUG][20-07-07][lexian.mapper.OrderMapper.addOrder]==>  Preparing: INSERT INTO orders(orders.date,orders.description,orders.`comment`,orders.`status`) VALUES (?,?,?,?); INSERT INTO order_item(order_id,commodity_id,commodity_quantity) VALUES ((SELECT LAST_INSERT_ID()),?,?) 
+[DEBUG][20-07-07][lexian.mapper.OrderMapper.addOrder]==> Parameters: 2020-07-07T10:04:41.673Z(String), 1(String), 3(Integer), 0(Integer), 1(String), 1(String)
+[DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16487462]
