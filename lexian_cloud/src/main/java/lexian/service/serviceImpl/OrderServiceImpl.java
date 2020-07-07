@@ -6,10 +6,12 @@ import lexian.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -31,9 +33,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean addOrder(Map<String, Object> map) {
-        int flag=orderMapper.addOrder(map);
-        return  flag>0;
+    public boolean addOrder(Map<String, Object> map)  {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+        try {
+            Date temp=df.parse((String)map.get("timestamp"));
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            map.put("timestamp",sf.format(temp));
+            orderMapper.addOrder(map);
+            int flag=orderMapper.addOrder_Item(map);
+            return flag>0;
+        }catch (ParseException e){
+            return false;
+        }
     }
 
 }

@@ -46,11 +46,15 @@
         INSERT INTO
         orders(orders.date,orders.description,orders.`comment`,orders.`status`)
         VALUES
-        (#{timestamp },#{description},#{comment},#{status});
+        (#{timestamp },#{description},#{comment},#{status})
+    </insert>
+
+    <insert id="addOrder_Item" parameterType="java.util.HashMap">
         INSERT INTO
         order_item(order_id,commodity_id,commodity_quantity)
         VALUES
         ((SELECT LAST_INSERT_ID()),#{commodity},#{quantity})
     </insert>
+
 
 </mapper>
