@@ -34,15 +34,16 @@
         WHERE
         commodity.is_delete=0
     </select>
-    <update id="updateGood">
+
+    <update id="updateGood" parameterType="java.util.HashMap">
         UPDATE commodity
         SET
-        commodity.name=#{updateGood.name},
-        commodity.modify_time=new DATE(),
-        commodity.storage=#{updateGood.storage},
-        commodity.price=#{updateGood.price},
-        commodity.introduction=#{updateGood.introduction},
+        commodity.name=#{`name`},
+        commodity.modify_time=NOW(),
+        commodity.storage=#{storage},
+        commodity.price=#{price},
+        commodity.introduction=#{introduction}
         WHERE
-        commodity.id=updateGood.id
+        commodity.ID=#{id}
     </update>
 </mapper>

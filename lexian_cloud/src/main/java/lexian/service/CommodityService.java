@@ -4,9 +4,10 @@ import lexian.entity.Commodity;
 import lexian.entity.Order;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface CommodityService {
     List<Commodity> getAllShopCommodity();
-    void updateGood(Commodity updateGood);
+    boolean updateGood(Map<String,Object> map);
 }
