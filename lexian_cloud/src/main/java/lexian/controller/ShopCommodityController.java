@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import lexian.entity.Commodity;
 import lexian.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class ShopCommodityController {
         return commodityService.getAllShopCommodity();
     }
 
-    @RequestMapping("/api/shop/updateGood")
+    @PostMapping("/api/shop/updateGood")
     public boolean updateGood(@RequestParam Map<String,Object> map){
 //        commodityService.updateGood(updateGood);
 //        return commodityService.getAllShopCommodity();

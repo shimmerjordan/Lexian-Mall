@@ -12,7 +12,7 @@ export function getAllShopGoods() {
 export function UpdateShopGood(data) {
   return myrequest({
     url: '/api/shop/updateGood',
-    method: 'get',
-    params: { data }
+    method: 'post',
+    data
   })
 }
