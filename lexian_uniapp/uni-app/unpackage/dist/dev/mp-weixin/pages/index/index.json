@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "Dloud商城",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-search": "/components/lee-search/lee-search"
+  }
 }

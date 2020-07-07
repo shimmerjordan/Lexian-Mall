@@ -80,6 +80,7 @@
 <script>
 import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
+import { getMaxShopId } from '@/api/shop'
 
 export default {
   name: 'AddShop',
@@ -89,7 +90,7 @@ export default {
     return {
       textarea: '',
       date: '',
-      shopId: '',
+      shopId: null,
       postForm: {
         name: '',
         categoryId: undefined,
@@ -115,6 +116,14 @@ export default {
     this.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
   },
   methods: {
+    getMaxId() {
+      getMaxShopId().then(response => {
+        this.shopId = response.data
+        console.log(this.shopId)
+        setTimeout(() => {
+        }, 1.5 * 1000)
+      })
+    },
     dropzoneS(file) {
       console.log(file)
       this.$message({ message: 'Upload success', type: 'success' })

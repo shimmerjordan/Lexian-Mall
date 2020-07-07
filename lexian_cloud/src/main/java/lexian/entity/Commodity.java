@@ -7,7 +7,7 @@ public class Commodity {
     private String name;
     private double price;
     private String image;
-    private String introdution;
+    private String introduction;
     private int storage;
     private String specification;
     private Date modify_time;
@@ -16,13 +16,12 @@ public class Commodity {
 
     public Commodity(){}
 
-
-    public Commodity(int ID, String name, double price, String image, String introdution, int storage, String specification, Date modify_time, int status, int is_delete) {
+    public Commodity(int ID, String name, double price, String image, String introduction, int storage, String specification, Date modify_time, int status, int is_delete) {
         this.ID = ID;
         this.name = name;
         this.price = price;
         this.image = image;
-        this.introdution = introdution;
+        this.introduction = introduction;
         this.storage = storage;
         this.specification = specification;
         this.modify_time = modify_time;
@@ -62,12 +61,12 @@ public class Commodity {
         this.image = image;
     }
 
-    public String getIntrodution() {
-        return introdution;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setIntrodution(String introdution) {
-        this.introdution = introdution;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public int getStorage() {

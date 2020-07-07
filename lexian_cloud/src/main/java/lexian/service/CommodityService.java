@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CommodityService {
     List<Commodity> getAllShopCommodity();
+    void updateGood(Commodity updateGood);
 }

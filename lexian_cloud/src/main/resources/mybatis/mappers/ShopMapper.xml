@@ -18,4 +18,18 @@
     shop
     where shop.isDelete = 0
   </select>
+  <select id="getMaxShopId" resultType="java.lang.Integer">
+    select max(shop.id)
+    from shop
+  </select>
+<!--  <update id="updateShop" parameterType="Shop">-->
+<!--    update shop-->
+<!--    set-->
+<!--    shop.`name` = #{data.`name`,jdbcTyep=VARCHAR},-->
+<!--    shop.kind = #{data.kind},-->
+<!--    shop.status = #{data.status},-->
+<!--    shop.tag = #{data.tag}-->
+<!--    where-->
+<!--    shop.id = #{data.id}-->
+<!--  </update>-->
 </mapper>

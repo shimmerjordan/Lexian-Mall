@@ -2,13 +2,13 @@
 	<view class="container">
 		<!-- 小程序头部兼容 -->
 		<!-- #ifdef MP -->
-		<view class="mp-search-box">
-			 <input class="ser-input" type="text" placeholder="请输入关键字搜索" onfocus="this.placeholder=''" onblur="this.placeholder='请输入关键字搜索'">
-					<!--<swiper-item class="swiper-item" v-for="(item,index) in data.img_list" :key="index" @click="$LinkTo(item)">
-						<image class="img" :src="item.url"></image>
-					</swiper-item>-->
-		  </input>
+		<!-- 搜索框数据传递与页面跳转待实现-->
+		<view class="welcome">
 		</view>
+		<view class="mp-search-box">
+		  <uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" class="ser-input" type="text" btnLinkInput=true>
+		  </uni-search>
+		 </view>
 		<!-- #endif -->
 		
 		<!-- 头部轮播 -->
@@ -18,7 +18,7 @@
 			<!-- 背景色区域 -->
 			<view class="titleNview-background" :style="{backgroundColor:titleNViewBackground}"></view>
 			<swiper class="carousel" circular @change="swiperChange">
-				<swiper-item v-for="(item, index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({title: '轮播广告'})">
+				<swiper-item v-for="(item , index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({title: '轮播广告'})">
 					<image :src="item.src" />
 				</swiper-item>
 			</swiper>
@@ -30,29 +30,28 @@
 			</view>
 		</view>
 		<!-- 分类 -->
-		<!-- 需要参数传递跳转 -->
-		<navigator class="cate-section">
-			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
-				<image src="/static/temp/i3.png"></image>
+		<view class="cate-section">
+			<view class="cate-item" @click="navToCategory('')">
+				<image src="/static/temp/i3.png" ></image>
 				<text >品牌美食</text>
-			</navigator>
-			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+			</view>
+			<view class="cate-item" @click="navToCategory('')">
 				<image src="/static/temp/i5.png"></image>
 				<text >个护美妆</text>
-			</navigator>
-			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+			</view>
+			<view class="cate-item" @click="navToCategory('')">
 				<image src="/static/temp/i6.png"></image>
 				<text >日用百货</text>
-			</navigator>
-			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+			</view>
+			<view class="cate-item" @click="navToCategory('')">
 				<image src="/static/temp/i7.png"></image>
 				<text >数码家电</text>
-			</navigator>
-			<navigator url="/pages/category/category" open-type="navigate" class="cate-item">
+		     </view>
+			<view class="cate-item" @click="navToCategory('')">
 				<image src="/static/temp/i8.png"></image>
 				<text >水果生鲜</text>
-			</navigator>	
-		</navigator>
+			</view>	
+		</view>
 		<!-- 店铺活动宣传 -->
 		<view class="ad-1">
 			<navigator url="/pages/category/category" open-type="navigate" class="ad-1">
@@ -256,9 +255,9 @@
 </template>
 
 <script>
-
+import uniSearch from '../../components/lee-search/lee-search.vue'
 	export default {
-
+ 
 		data() {
 			return {
 				titleNViewBackground: '',
@@ -266,10 +265,23 @@
 				swiperLength: 0,
 				carouselList: [],
 				goodsList: [],
-				date: new Date(+new Date(new Date().toJSON())+8*3600*1000).toISOString()
+				date: new Date(+new Date(new Date().toJSON())+8*3600*1000).toISOString(),
+				
+					iconSrc: {
+						logo: '../../static/lee-search/icon_search.png',
+						voice: '../../static/lee-search/icon_voice.png',
+						scan: '../../static/lee-search/icon_scan.png',
+						clear:'../../static/lee-search/icon_clear.png'
+					},
+					inputAttr: {
+						backgroundColor: '#ccc',
+						placeholderText: '请输入关键字'
+					}
 			};
 		},
-
+      components:{
+     	 uniSearch
+      },
 		onLoad() {
 			this.loadData();
 		},
@@ -278,6 +290,9 @@
 			 * 请求静态数据只是为了代码不那么乱
 			 * 分次请求未作整合
 			 */
+			search (){
+				
+			},
 			async loadData() {
 				let carouselList = await this.$api.json('carouselList');
 				this.titleNViewBackground = carouselList[0].background;
@@ -302,6 +317,12 @@
 				})
 			},
 		},
+		navToCategory(id) {
+				//测试数据没有写id，用title代替
+				uni.navigateTo({
+					url: `/pages/category/category?pid=${id}`
+				})
+			},
 		// #ifndef MP
 		// 标题栏input搜索框点击
 		onNavigationBarSearchInputClicked: async function(e) {
@@ -335,10 +356,11 @@
 	.mp-search-box{
 		position:absolute;
 		left: 0;
-		top: 30upx;
+		top: 10upx;
 		z-index: 9999;
 		width: 100%;
 		padding: 0 80upx;
+		display: inline-block;
 		.ser-input{
 			flex:1;
 			height: 56upx;
@@ -349,6 +371,7 @@
 			border-radius: 20px;
 			background: rgba(255, 255, 255, 0.6);
 		}
+	
 	}
 	page{
 		.cate-section{
