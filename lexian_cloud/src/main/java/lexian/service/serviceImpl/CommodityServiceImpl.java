@@ -21,4 +21,9 @@ public class CommodityServiceImpl implements CommodityService {
     public List<Commodity> getAllShopCommodity() {
         return commodityMapper.getAllShopCommodity();
     }
+
+    @Override
+    public void updateGood(Commodity updateGood) {
+        commodityMapper.updateGood(updateGood);
+    }
 }
