@@ -38,7 +38,7 @@
     <update id="updateGood" parameterType="java.util.HashMap">
         UPDATE commodity
         SET
-        commodity.name=#{`name`},
+        commodity.name=#{name},
         commodity.modify_time=NOW(),
         commodity.storage=#{storage},
         commodity.price=#{price},
