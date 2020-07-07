@@ -31,37 +31,35 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" @click="navToCategory('')">
+			<view class="cate-item" @click="navToCategory('1')">
 				<image src="/static/temp/i3.png" ></image>
 				<text >品牌美食</text>
 			</view>
-			<view class="cate-item" @click="navToCategory('')">
+			<view class="cate-item" @click="navToCategory('1')">
 				<image src="/static/temp/i5.png"></image>
 				<text >个护美妆</text>
 			</view>
-			<view class="cate-item" @click="navToCategory('')">
+			<view class="cate-item" @click="navToCategory('1')">
 				<image src="/static/temp/i6.png"></image>
 				<text >日用百货</text>
 			</view>
-			<view class="cate-item" @click="navToCategory('')">
+			<view class="cate-item" @click="navToCategory('1')">
 				<image src="/static/temp/i7.png"></image>
 				<text >数码家电</text>
 		     </view>
-			<view class="cate-item" @click="navToCategory('')">
+			<view class="cate-item" @click="navToCategory('1')">
 				<image src="/static/temp/i8.png"></image>
 				<text >水果生鲜</text>
 			</view>	
 		</view>
 		<!-- 店铺活动宣传 -->
-		<view class="ad-1">
-			<navigator url="/pages/category/category" open-type="navigate" class="ad-1">
+		<view class="ad-1" @click="navToSale('')">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
-			</navigator>
 		<!-- 店铺活动宣传的页面跳转 -->	
 		</view>
 		
 		<!-- 秒杀楼层 -->
-		<!-- 时区不对，添加了时间获取，仍然需要时间动态刷新功能 -->
+		<!-- 动态刷新功能 -->
            <view class="seckill-section m-t">
            	<view class="s-header">
            		<image class="s-img" src="/static/temp/secskill-img.jpg" mode="widthFix"></image>
@@ -317,8 +315,8 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				})
 			},
 		},
-		navToCategory(id) {
-				//测试数据没有写id，用title代替
+		navToCategory(num) {
+				let id = num;
 				uni.navigateTo({
 					url: `/pages/category/category?pid=${id}`
 				})
