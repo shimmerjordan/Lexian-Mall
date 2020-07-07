@@ -113,20 +113,33 @@
 				let loginPhone = this.loginPhone;
 				let loginPassword = this.loginPassword;
 				const {loginName, password} = this;
-				/* 数据验证模块
-				if(!this.$api.match({
-					loginName,
-					password
-				})){
-					this.logining = false;
-					return;
-				}
-				*/
+				/* 数据验证模块*/
+				// if(!this.$api.match({
+				// 	loginName,
+				// 	password
+				// })){
+				// 	this.logining = false;
+				// 	return;
+				// }
+				
+			   uni.request({
+				   // url:'http://localhost:8888/api/getAll',
+				   url: this.apiServer+'/verifyPwdByName',
+				   method: 'POST',
+				   header: { 'content-type': 'application/json'},
+				   data: {
+					   "loginName": this.loginName,
+					   "pwd": this.password
+				   },
+				   success: res => {
+					  const result = res.data
+				   }
+				});
 				const sendData = {
 					loginName,
 					password
 				};
-				const result = await this.$api.json('userInfo');
+				//const result = await this.$api.json('userInfo');
 				if(result.status === 1){
 					this.login(result.data);
                     uni.navigateBack();

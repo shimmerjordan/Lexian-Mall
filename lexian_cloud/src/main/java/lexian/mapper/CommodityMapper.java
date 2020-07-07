@@ -5,10 +5,11 @@ import org.mapstruct.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
 public interface CommodityMapper {
     List<Commodity> getAllShopCommodity();
-    void updateGood(Commodity updateGood);
+    int updateGood(Map<String,Object> map);
 }
