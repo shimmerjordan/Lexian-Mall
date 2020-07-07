@@ -240,6 +240,22 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
         complete: function complete() {} });
 
     },
+    toLoginByName: function toLoginByName() {
+      uni.navigateTo({
+        url: '/pages/public/loginByName',
+        success: function success(res) {},
+        fail: function fail() {},
+        complete: function complete() {} });
+
+    },
+    toForgetPwd: function toForgetPwd() {
+      uni.navigateTo({
+        url: '/pages/public/forgetPwd',
+        success: function success(res) {},
+        fail: function fail() {},
+        complete: function complete() {} });
+
+    },
     toLogin: function toLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var loginPhone, loginPassword, mobile, password, sendData, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 _this.logining = true;
                 loginPhone = _this.loginPhone;
