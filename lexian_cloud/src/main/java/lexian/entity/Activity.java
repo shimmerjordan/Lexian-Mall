@@ -11,6 +11,8 @@ public class Activity {
 
     private String img;
 
+    private Date createTime;
+
     private Date begintime;
 
     private Date endtime;
@@ -21,11 +23,12 @@ public class Activity {
 
     private Integer is_delete;
 
-    public Activity(Integer id, String name, String description, String img, Date begintime, Date endtime, String type, Integer status, Integer is_delete) {
+    public Activity(Integer id, String name, String description, String img, Date createTime,Date begintime, Date endtime, String type, Integer status, Integer is_delete) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.img = img;
+        this.createTime = createTime;
         this.begintime = begintime;
         this.endtime = endtime;
         this.type = type;
@@ -66,6 +69,14 @@ public class Activity {
 
     public void setImg(String img) {
         this.img = img == null ? null : img.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getBegintime() {

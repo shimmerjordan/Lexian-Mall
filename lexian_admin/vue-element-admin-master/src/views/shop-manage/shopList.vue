@@ -35,13 +35,13 @@
           <!-- <el-col :span="2">
             <i class="fa fa-truck fa-lg"></i> 确认开店
           </el-col> -->
-          <el-button :span="2">
+          <el-button :span="2" type="success">
             <i class="fa fa-trash fa-lg" /> 确认开店
           </el-button>
-          <el-button :span="2">
+          <el-button :span="2" type="info">
             <i class="fa fa-trash fa-lg" /> 店铺休息
           </el-button>
-          <el-button :span="2">
+          <el-button :span="2" type="danger">
             <i class="fa fa-trash fa-lg" /> 关闭店铺
           </el-button>
           <!-- <el-col :span="2">
@@ -108,8 +108,14 @@
       </el-table-column>
       <el-table-column label="当前状态" class-name="status-col" width="100">
         <template slot-scope="{row}">
-          <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
+          <el-tag v-if="row.status == 0" type="success">
+            正在营业
+          </el-tag>
+          <el-tag v-if="row.status == 1" type="info">
+            暂停营业
+          </el-tag>
+          <el-tag v-if="row.status == 2" type="danger">
+            店铺关闭
           </el-tag>
         </template>
       </el-table-column>
@@ -135,7 +141,7 @@
         <el-form-item label="开店日期" prop="establishTime">
           <span style="color:darkolivegreen;font-weight:bold">{{ temp.establishTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </el-form-item>
-        <el-form-item label="name" prop="name">
+        <el-form-item label="店铺名称" prop="name">
           <el-input v-model="temp.name" />
         </el-form-item>
         <el-form-item label="店铺状态">
@@ -156,6 +162,9 @@
         </el-form-item>
         <el-form-item label="店铺图片">
           <img :src="temp.img" width="200px" height="200px" align="center">
+        </el-form-item>
+        <el-form-item label="店铺描述" prop="description">
+          <el-input v-model="temp.description" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -212,14 +221,6 @@ export default {
   components: { Pagination },
   directives: { waves },
   filters: {
-    statusFilter(status) {
-      const statusMap = {
-        0: 'sucess',
-        1: 'info',
-        2: 'danger'
-      }
-      return statusMap[status]
-    },
     typeFilter(type) {
       return statusKeyValue[type]
     }
@@ -279,6 +280,7 @@ export default {
       this.listLoading = true
       getAllShop().then(response => {
         this.list = response.data
+        this.total = 100
         console.log(this.list)
         // Just to simulate the time of the request
         setTimeout(() => {
