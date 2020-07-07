@@ -1,7 +1,5 @@
 {
   "navigationBarTitleText": "",
   "navigationStyle": "custom",
-  "usingComponents": {
-    "move-verify": "/components/moveVerify"
-  }
+  "usingComponents": {}
 }

@@ -7,6 +7,7 @@ import store from '@/common/store'
 import router from '@/common/router'
 import tools from '@/common/utils/tools'
 import '@/common/utils/sdk/sdk-h5.js'
+import cuCustom from '@/static/colorui/components/cu-custom.vue'
 import {
 	API_URL
 } from './env.js'
@@ -18,7 +19,7 @@ Vue.mixin(shoproShare);
 import {
 	RouterMount
 } from 'uni-simple-router'
-import api from '@/common/request/index'
+//import api from '@/common/request/index'
 
 
 import Json from './Json' //测试用数据
@@ -64,6 +65,7 @@ Vue.config.productionTip = false
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, json, prePage};
+Vue.component('cu-custom', cuCustom);
 
 App.mpType = 'app'
 

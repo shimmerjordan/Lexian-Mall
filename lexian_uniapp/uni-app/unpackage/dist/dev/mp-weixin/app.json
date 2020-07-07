@@ -23,8 +23,10 @@
     "pages/public/guidance",
     "pages/public/agreement",
     "components/moveVerify",
-    "pages/money/vip/vip",
-    "pages/money/vip"
+    "pages/public/forgetPwd",
+    "components/popup",
+    "pages/money/vip",
+    "pages/user/favorites"
   ],
   "subPackages": [],
   "window": {
@@ -65,5 +67,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap4.json"
 }

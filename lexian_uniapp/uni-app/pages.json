@@ -232,6 +232,10 @@
         ,{
             "path" : "pages/money/vip",
             "style" : {}
+        }     
+        ,{
+            "path" : "pages/user/favorites",
+            "style" : {}
         }
     ],
 	"globalStyle": {

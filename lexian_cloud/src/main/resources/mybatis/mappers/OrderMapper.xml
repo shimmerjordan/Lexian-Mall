@@ -19,7 +19,6 @@
         orders.date,
         orders.description,
         orders.`comment`,
-        orders.total,
         orders.`status`,
         commodity.`name`,
         order_item.commodity_quantity,
@@ -42,4 +41,16 @@
         GROUP BY
         orders.date
     </select>
+
+    <insert id="addOrder"  parameterType="java.util.HashMap">
+        INSERT INTO
+        orders(orders.date,orders.description,orders.`comment`,orders.`status`)
+        VALUES
+        (#{timestamp },#{description},#{comment},#{status});
+        INSERT INTO
+        order_item(order_id,commodity_id,commodity_quantity)
+        VALUES
+        ((SELECT LAST_INSERT_ID()),#{commodity},#{quantity})
+    </insert>
+
 </mapper>

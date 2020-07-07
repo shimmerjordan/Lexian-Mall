@@ -79,7 +79,9 @@
 				this[key] = e.detail.value;
 			},
 			navBack(){
-				uni.navigateBack();
+				uni.navigateBack({
+					delta: 1
+				});
 			},
 			toRegist(){
 				this.$api.msg('去注册');

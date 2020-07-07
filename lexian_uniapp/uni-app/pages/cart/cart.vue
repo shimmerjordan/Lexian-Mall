@@ -2,11 +2,13 @@
   	<view class="container">
   		<!-- 空白页 -->
   		<view v-if="!hasLogin || empty===true" class="empty">
+			<!-- 登录但购物车中无商品 -->
   			<image src="/static/emptyCart.jpg" mode="aspectFit"></image>
   			<view v-if="hasLogin" class="empty-tips">
   				空空如也
   				<navigator class="navigator" v-if="hasLogin" url="../index/index" open-type="switchTab">随便逛逛></navigator>
   			</view>
+			<!-- 未登录的情况 -->
   			<view v-else class="empty-tips">
   				空空如也
   				<view class="navigator" @click="navToLogin">登陆></view>

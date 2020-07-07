@@ -5,7 +5,9 @@ import lexian.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/order")
@@ -27,4 +29,10 @@ public class OrderController {
                               @RequestParam(name = "end") int end){
         return orderService.getDateRange(start,end);
     }
+
+    @PostMapping("/addOrder")
+    public boolean addOrder(@RequestBody Map<String,Object> map){
+        return orderService.addOrder(map);
+    }
+
 }

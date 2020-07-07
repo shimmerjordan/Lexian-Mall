@@ -36,7 +36,7 @@
 			<image class="arc" src="/static/arc.png"></image>
 			
 			<view class="tj-sction">
-				<view class="tj-item">
+				<view class="tj-item" @click="navTo('/pages/user/favorites')">
 					<text class="num">30</text>
 					<text>收藏夹商品</text>
 				</view>
@@ -87,15 +87,15 @@
 				
 				<list-cell icon="icon-iconfontweixin" iconColor="#e07472" title="我的钱包" tips="管理支付信息" @click="navTo('/pages/money/pay')"></list-cell>
 			
-				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="地址管理" @eventClick="navTo('/pages/address/addressManage')"></list-cell>
+				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="地址管理" @Click="navTo('/pages/address/address')"></list-cell>
 			
 				<list-cell icon="icon-share" iconColor="#9789f7" title="分享" tips="邀请好友赢10万大礼"></list-cell>
 
 				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="晒单" tips="晒单抢红包"></list-cell>
 
-				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的收藏"></list-cell>	
+				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的收藏" @Click="navTo('/pages/user/favorites')"></list-cell>	
 	
-				<list-cell icon="icon-shezhi1" iconColor="#e07472" title="设置" border="" @eventClick="navTo('/pages/set/set')"></list-cell>
+				<list-cell icon="icon-shezhi1" iconColor="#e07472" title="设置" border="" @Click="navTo('/pages/set/set')"></list-cell>
 
 			</view>
 		</view>
