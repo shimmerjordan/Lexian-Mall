@@ -1,15 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/public/loginByName"],{
 
 /***/ 114:
-<<<<<<< HEAD
-/*!*************************************************************************************************************************!*\
-  !*** D:/Workspace/实训_workspace/NEU_Lexian-master/lexian_uniapp/uni-app/main.js?{"page":"pages%2Fpublic%2FloginByName"} ***!
-  \*************************************************************************************************************************/
-=======
 /*!*******************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/main.js?{"page":"pages%2Fpublic%2FloginByName"} ***!
   \*******************************************************************************************/
->>>>>>> 258a3bcaf9e68bbe9c940919f816740e388dbd37
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -217,7 +211,9 @@ var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(o
       this[key] = e.detail.value;
     },
     navBack: function navBack() {
-      uni.navigateBack();
+      uni.navigateBack({
+        delta: 1 });
+
     },
     toRegist: function toRegist() {
       this.$api.msg('去注册');
@@ -244,32 +240,45 @@ var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(o
         complete: function complete() {} });
 
     },
-    toLogin: function toLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var loginPhone, loginPassword, loginName, password, sendData, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    toLogin: function toLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var loginPhone, loginPassword, loginName, password, sendData;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 _this.logining = true;
                 loginPhone = _this.loginPhone;
                 loginPassword = _this.loginPassword;
                 loginName = _this.loginName, password = _this.password;
-                /* 数据验证模块
-                                                                        if(!this.$api.match({
-                                                                        	loginName,
-                                                                        	password
-                                                                        })){
-                                                                        	this.logining = false;
-                                                                        	return;
-                                                                        }
-                                                                        */
+                /* 数据验证模块*/
+                // if(!this.$api.match({
+                // 	loginName,
+                // 	password
+                // })){
+                // 	this.logining = false;
+                // 	return;
+                // }
+
+                uni.request({
+                  // url:'http://localhost:8888/api/getAll',
+                  url: _this.apiServer + '/verifyPwdByName',
+                  method: 'POST',
+                  header: { 'content-type': 'application/json' },
+                  data: {
+                    "loginName": _this.loginName,
+                    "pwd": _this.password },
+
+                  success: function success(res) {
+                    var result = res.data;
+                  } });
+
                 sendData = {
                   loginName: loginName,
-                  password: password };_context.next = 7;return (
+                  password: password };
 
-                  _this.$api.json('userInfo'));case 7:result = _context.sent;
+                //const result = await this.$api.json('userInfo');
                 if (result.status === 1) {
                   _this.login(result.data);
                   uni.navigateBack();
                 } else {
                   _this.$api.msg(result.msg);
                   _this.logining = false;
-                }case 9:case "end":return _context.stop();}}}, _callee);}))();
+                }case 7:case "end":return _context.stop();}}}, _callee);}))();
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

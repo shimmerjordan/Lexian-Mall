@@ -583,8 +583,14 @@ var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(o
         delta: 1 });
 
 =======
+<<<<<<< HEAD
+      uni.navigateBack({
+        delta: 1 });
+
+=======
       uni.navigateBack();
 >>>>>>> 258a3bcaf9e68bbe9c940919f816740e388dbd37
+>>>>>>> 6e63e1018b63c4ea2ba9a3675bf149827a4d52b8
     },
     checkExistPhone: function checkExistPhone() {
       console.log(this.mobile);
