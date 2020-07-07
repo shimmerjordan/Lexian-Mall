@@ -215,6 +215,7 @@ export default {
       this.listLoading = true
       getAllOrder().then(response => {
         this.list = response.data
+        this.total = this.list.length
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
@@ -260,18 +261,23 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           createOrder(this.temp).then(response => {
-            console.log(response.date)
+            if (response.data) {
+              this.$notify({
+                title: 'Success',
+                message: '成功创建订单',
+                type: 'success',
+                duration: 2000
+              })
+            } else {
+              this.$notify({
+                title: 'Fail',
+                message: '订单创建失败',
+                type: 'fail',
+                duration: 2000
+              })
+            }
+            this.dialogFormVisible = false
           })
-          // createArticle(this.temp).then(() => {
-          //   this.list.unshift(this.temp)
-          //   this.dialogFormVisible = false
-          //   this.$notify({
-          //     title: 'Success',
-          //     message: 'Created Successfully',
-          //     type: 'success',
-          //     duration: 2000
-          //   })
-          // })
         }
       })
     },
