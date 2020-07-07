@@ -22,13 +22,22 @@ public class ShopCommodityController {
     }
 
     @RequestMapping("/api/shop/goodsInfo")
-    public PageInfo<Commodity> getAllShopCommodity(@RequestParam("pageNo") Integer pageNo){
-        if(pageNo==null)
-            pageNo=1;
-        PageHelper.startPage(pageNo,10);
-        List<Commodity> resultList = commodityService.getAllShopCommodity();
-        PageInfo<Commodity> result = new PageInfo<>(resultList);
-        return result;
+    public List<Commodity> getAllShopCommodity() {
+        return commodityService.getAllShopCommodity();
     }
 
+    @RequestMapping("/api/shop/updateGood")
+    public int UpdateGood(@RequestParam("tempData")Object tempData) {
+//        commodityService.updateGood(updateGood);
+//        return commodityService.getAllShopCommodity();
+        return 1111;
+    }
 }
+//    public PageInfo<Commodity> getAllShopCommodity(@RequestParam("pageNo") Integer pageNo){
+//        if(pageNo==null)
+//            pageNo=1;
+//        PageHelper.startPage(pageNo,10);
+//        List<Commodity> resultList = commodityService.getAllShopCommodity();
+//        PageInfo<Commodity> result = new PageInfo<>(resultList);
+//        return result;
+

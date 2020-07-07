@@ -6,3 +6,11 @@ export function getAllShopGoods() {
     method: 'get'
   })
 }
+
+export function UpdateShopGood(tempData) {
+  return myrequest({
+    url: '/api/shop/updateGood',
+    method: 'get',
+    params: { tempData }
+  })
+}
