@@ -19,7 +19,9 @@ public class Shop {
 
     private String tag;
 
-    public Shop(Integer id, String name, Date establishTime, String kind, Integer status, Integer isDelete, String img, String tag) {
+    private  String description;
+
+    public Shop(Integer id, String name, Date establishTime, String kind, Integer status, Integer isDelete, String img, String tag, String description) {
         this.id = id;
         this.name = name;
         this.establishTime = establishTime;
@@ -28,9 +30,8 @@ public class Shop {
         this.isDelete = isDelete;
         this.img = img;
         this.tag = tag;
+        this.description = description;
     }
-
-
 
     public Integer getId() {
         return id;
@@ -94,5 +95,13 @@ public class Shop {
 
     public void setTag(String tag) {
         this.tag = tag == null ? null : tag.trim();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }

@@ -10,10 +10,11 @@
     <result column="isDelete" property="isDelete" jdbcType="INTEGER" />
     <result column="img" property="img" jdbcType="VARCHAR" />
     <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
   <select id="getAllShop" resultType="Shop">
     select
-    shop.ID, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag
+    shop.ID, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description
     from
     shop
     where shop.isDelete = 0

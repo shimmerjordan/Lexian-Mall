@@ -52,15 +52,14 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="店铺标签" prop="tags">
-              <el-checkbox v-model="checkAllTag" size="small" :indeterminate="isIndeterminateTag" @change="handleCheckAllTagChange">全选</el-checkbox>
-              <el-checkbox-group v-model="postForm.tags" style="display: inline-block;margin-left: 15px;" @change="handleCheckedTagsChange">
+              <el-checkbox-group v-model="postForm.tags" style="display: inline-block;margin-left: 15px;" :max="max" @change="handleCheckedTagsChange">
                 <el-checkbox v-for="tag in tags" :key="tag.id" size="small" :label="tag.id">{{ tag.name }}</el-checkbox>
               </el-checkbox-group>
             </el-form-item>
           </el-col>
         </el-row>
 
-        <h3>门店简介<span style="font-size: 12px;color: darkgrey;">可以展示店铺的营业执照等。最多20张，默认第一张图片作为主图，可以拖动图片调整</span></h3>
+        <h3>门店简介<span style="font-size: 12px;color: darkgrey;">展示店铺图片，不可更改</span></h3>
         <div class="components-container">
           <!--店铺图片-->
           <aside>上传门店图片</aside>
@@ -88,6 +87,7 @@ export default {
   filters: {},
   data() {
     return {
+      max: 1, // checkbox可选最大值
       textarea: '',
       date: '',
       shopId: null,
@@ -99,7 +99,7 @@ export default {
       },
       loading: false,
       unitList: [{ label: '普通店', value: 3 }, { label: '进口店', value: 2 }, { label: '旗舰店', value: 1 }, { label: '自营店', value: 0 }],
-      tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }],
+      tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }, { id: 4, name: '电子产品' }],
       checkAllTag: true,
       isIndeterminateTag: true
     }
