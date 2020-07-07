@@ -3,47 +3,67 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.CommodityMapper">
-    <resultMap id="commodity_map" type="Commodity">
-        <id property="ID" column="Commodity.ID"/>
-        <result property="modify_time" column="Commodity.modify_time"/>
-        <result property="introduction" column="Commodity.introduction"/>
-        <result property="name" column="Commodity.`name`"/>
-        <result property="image" column="Commodity.`image`"/>
-        <result property="price" column="Commodity.`price`"/>
-        <result property="storage" column="Commodity.`storage`"/>
-        <result property="specification" column="Commodity.`specification`"/>
-        <result property="status" column="Commodity.`status`"/>
-        <result property="is_delete" column="Commodity.`is_delete`"/>
-    </resultMap>
-    <select id="getAllShopCommodity" resultType="Commodity">
-        SELECT
-        Commodity.ID,
-        Commodity.modify_time,
-        Commodity.introduction,
-        Commodity.`name`,
-        Commodity.`image`,
-        Commodity.`price`,
-        Commodity.`storage`,
-        Commodity.`specification`,
-        Commodity.`status`,
-        Commodity.`is_delete`
-        FROM
-        commodity
-        INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id
-        INNER JOIN shop ON shop.ID = shop_commodity.shop_id
-        WHERE
-        commodity.is_delete=0
-    </select>
+	<resultMap id="commodity_map" type="Commodity">
+		<id property="ID" column="Commodity.ID" />
+		<result property="modify_time" column="Commodity.modify_time" />
+		<result property="introduction" column="Commodity.introduction" />
+		<result property="name" column="Commodity.`name`" />
+		<result property="image" column="Commodity.`image`" />
+		<result property="price" column="Commodity.`price`" />
+		<result property="storage" column="Commodity.`storage`" />
+		<result property="specification" column="Commodity.`specification`" />
+		<result property="status" column="Commodity.`status`" />
+		<result property="is_delete" column="Commodity.`is_delete`" />
+	</resultMap>
+	<select id="getAllShopCommodity" resultType="Commodity">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		INNER JOIN shop_commodity ON commodity.ID =
+		shop_commodity.commodity_id
+		INNER JOIN shop ON shop.ID =
+		shop_commodity.shop_id
+		WHERE
+		commodity.is_delete=0
+	</select>
 
-    <update id="updateGood" parameterType="java.util.HashMap">
-        UPDATE commodity
-        SET
-        commodity.name=#{name},
-        commodity.modify_time=NOW(),
-        commodity.storage=#{storage},
-        commodity.price=#{price},
-        commodity.introduction=#{introduction}
-        WHERE
-        commodity.ID=#{id}
-    </update>
+	<update id="updateGood" parameterType="java.util.HashMap">
+		UPDATE commodity
+		SET
+		commodity.name=#{name},
+		commodity.modify_time=NOW(),
+		commodity.storage=#{storage},
+		commodity.price=#{price},
+		commodity.introduction=#{introduction}
+		WHERE
+		commodity.ID=#{id}
+	</update>
+
+	<select id="selectCommodityByCommodityId" resultType="lexian.entity.Commodity"
+		parameterType="java.lang.String">
+		SELECT g.ID,
+		g.modify_time,
+		g.introduction,
+		g.name,
+		g.image,
+		g.price,
+		g.storage,
+		g.specification,
+		g.status,
+		g.sales,
+		g.is_delete FROM
+		commodity g join category_commodity gc on g.ID =
+		gc.commodity_id WHERE
+		gc.commodity_id = #{commodityId}
+	</select>
 </mapper>

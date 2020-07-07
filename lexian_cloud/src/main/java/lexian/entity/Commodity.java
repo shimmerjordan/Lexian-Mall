@@ -13,6 +13,8 @@ public class Commodity {
     private Date modify_time;
     private int status;
     private int is_delete;
+    
+    private int sales;
 
     public Commodity(){}
 
@@ -108,4 +110,14 @@ public class Commodity {
     public void setIs_delete(int is_delete) {
         this.is_delete = is_delete;
     }
+
+	public int getSales() {
+		return sales;
+	}
+
+	public void setSales(int sales) {
+		this.sales = sales;
+	}
+    
+    
 }
