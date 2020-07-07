@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ShopCommodityController {
@@ -27,10 +28,12 @@ public class ShopCommodityController {
     }
 
     @RequestMapping("/api/shop/updateGood")
-    public int UpdateGood(@RequestParam("tempData")Object tempData) {
+    public boolean updateGood(@RequestParam Map<String,Object> map){
 //        commodityService.updateGood(updateGood);
 //        return commodityService.getAllShopCommodity();
-        return 1111;
+        System.out.println(map);
+        System.out.println(commodityService.updateGood(map));
+        return commodityService.updateGood(map);
     }
 }
 //    public PageInfo<Commodity> getAllShopCommodity(@RequestParam("pageNo") Integer pageNo){

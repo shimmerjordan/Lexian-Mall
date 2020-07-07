@@ -88,19 +88,20 @@
         <el-form-item label="日期" prop="timestamp">
           <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
         </el-form-item>
-        <el-form-item label="描述" prop="description">
-          <el-input v-model="temp.description" />
-        </el-form-item>
         <el-form-item label="状态" prop="status">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
           </el-select>
         </el-form-item>
-        <el-form-item label="评价">
-          <el-rate v-model="temp.comment" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
-        </el-form-item>
         <el-form-item label="数量" prop="quantity">
           <el-input v-model="temp.quantity" />
+        </el-form-item>
+        <el-form-item label="描述" prop="description">
+          <el-input v-model="temp.description" />
+        </el-form-item>
+
+        <el-form-item label="评价">
+          <el-rate v-model="temp.comment" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
