@@ -26,13 +26,20 @@ public class ShopCommodityController {
     }
 
     @PostMapping("/api/shop/updateGood")
-    public boolean updateGood(@RequestBody Map<String,Object> map){
+    public boolean updateGood(@RequestBody Map<String, Object> map) {
 //        commodityService.updateGood(updateGood);
 //        return commodityService.getAllShopCommodity();
         System.out.println(map);
         System.out.println(commodityService.updateGood(map));
         return commodityService.updateGood(map);
     }
+
+    @PostMapping("/api/shop/deleteGood")
+    public boolean deleteGood(@RequestBody Integer id) {
+        System.out.println("asdasdsadsadddddddddddddddddddddddd");
+        return commodityService.deleteGood(id);
+    }
+
 }
 //    public PageInfo<Commodity> getAllShopCommodity(@RequestParam("pageNo") Integer pageNo){
 //        if(pageNo==null)

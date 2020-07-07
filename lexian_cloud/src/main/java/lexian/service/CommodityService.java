@@ -10,4 +10,5 @@ import java.util.Map;
 public interface CommodityService {
     List<Commodity> getAllShopCommodity();
     boolean updateGood(Map<String,Object> map);
+    boolean deleteGood(Integer id);
 }

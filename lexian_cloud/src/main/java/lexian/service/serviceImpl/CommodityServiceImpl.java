@@ -28,4 +28,10 @@ public class CommodityServiceImpl implements CommodityService {
         int flag=commodityMapper.updateGood(map);
         return  flag>0;
     }
+
+    @Override
+    public boolean deleteGood(Integer id) {
+        int flag=commodityMapper.deleteGood(id);
+        return flag>0;
+    }
 }

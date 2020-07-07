@@ -16,3 +16,12 @@ export function UpdateShopGood(data) {
     data
   })
 }
+
+// 删除店铺商品
+export function DeleteShopGood(data) {
+  return myrequest({
+    url: '/api/shop/deleteGood',
+    method: 'post',
+    data
+  })
+}
