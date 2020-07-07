@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: password
-    url: "jdbc:mysql://server.natappfree.cc:38869/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+    url: "jdbc:mysql://server.natappfree.cc:40772/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #整合mybatis
@@ -23,4 +23,12 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countsql
+
+
+logging:
+  level:
+    com:
+      yundaex:
+        aicaizhaopin:
+          mapper: DEBUG
 
