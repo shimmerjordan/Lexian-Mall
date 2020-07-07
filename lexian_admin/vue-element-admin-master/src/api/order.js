@@ -7,10 +7,18 @@ export function getAllOrder() {
   })
 }
 
-export function getDateRange(start, end) {
+export function getDateRange(data) {
   return myrequest({
     url: '/order/getDateRange',
     method: 'post',
-    start, end
+    data
+  })
+}
+
+export function createOrder(data) {
+  return myrequest({
+    url: '/order/addOrder',
+    method: 'post',
+    data
   })
 }

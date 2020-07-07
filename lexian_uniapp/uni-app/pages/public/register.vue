@@ -131,7 +131,9 @@
 				
 			},
 			navBack(){
-				uni.navigateBack();
+				uni.navigateBack({
+					delta: 1
+				});
 			},
 			checkExistPhone(){
 				console.log(this.mobile);

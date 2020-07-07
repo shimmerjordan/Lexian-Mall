@@ -14,7 +14,6 @@
 					<text class="tit">手机号码</text>
 					<input 
 						type="number" 
-				
 						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
@@ -98,7 +97,6 @@
 			return {
 				mobile: '',
 				password: '',
-				loginPassword: '',
 				loginPhone: '',
 				loginPassword: '',
 				verifyCode:'',

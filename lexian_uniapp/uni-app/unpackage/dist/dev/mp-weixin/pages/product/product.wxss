@@ -824,7 +824,8 @@ page {
   background: #fa436a;
   font-size: 24rpx;
   color: #fff;
-  border-radius: 6rpx;
+  -webkit-border-radius: 6rpx;
+          border-radius: 6rpx;
   line-height: 1;
   -webkit-transform: translateY(-4rpx);
           transform: translateY(-4rpx);
@@ -854,6 +855,7 @@ page {
   -webkit-align-items: center;
           align-items: center;
   color: #606266;
+  background: -webkit-gradient(linear, left top, right top, from(#fdf5f6), to(#fbebf6));
   background: -webkit-linear-gradient(left, #fdf5f6, #fbebf6);
   background: linear-gradient(left, #fdf5f6, #fbebf6);
   padding: 12rpx 30rpx;
@@ -869,7 +871,8 @@ page {
   height: 30rpx;
   line-height: 1;
   border: 1px solid #fa436a;
-  border-radius: 4rpx;
+  -webkit-border-radius: 4rpx;
+          border-radius: 4rpx;
   position: relative;
   overflow: hidden;
   font-size: 22rpx;
@@ -879,7 +882,8 @@ page {
   content: '';
   width: 50rpx;
   height: 50rpx;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   left: -20rpx;
   top: -12rpx;
   position: absolute;
@@ -1018,7 +1022,8 @@ page {
           flex-shrink: 0;
   width: 80rpx;
   height: 80rpx;
-  border-radius: 100px;
+  -webkit-border-radius: 100px;
+          border-radius: 100px;
 }
 .eva-box .right {
   -webkit-box-flex: 1;
@@ -1102,7 +1107,8 @@ page {
   -webkit-flex-shrink: 0;
           flex-shrink: 0;
   margin-top: -40rpx;
-  border-radius: 8rpx;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
 }
 .attr-content .a-t .right {
   display: -webkit-box;
@@ -1159,7 +1165,8 @@ page {
   background: #eee;
   margin-right: 20rpx;
   margin-bottom: 20rpx;
-  border-radius: 100rpx;
+  -webkit-border-radius: 100rpx;
+          border-radius: 100rpx;
   min-width: 60rpx;
   height: 60rpx;
   padding: 0 20rpx;
@@ -1215,13 +1222,15 @@ page {
   bottom: 0;
   width: 100%;
   min-height: 40vh;
-  border-radius: 10rpx 10rpx 0 0;
+  -webkit-border-radius: 10rpx 10rpx 0 0;
+          border-radius: 10rpx 10rpx 0 0;
   background-color: #fff;
 }
 .popup .layer .btn {
   height: 66rpx;
   line-height: 66rpx;
-  border-radius: 100rpx;
+  -webkit-border-radius: 100rpx;
+          border-radius: 100rpx;
   background: #fa436a;
   font-size: 30rpx;
   color: #fff;
@@ -1317,8 +1326,10 @@ page {
   width: 690rpx;
   height: 100rpx;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
-  border-radius: 16rpx;
+  -webkit-box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 16rpx;
+          border-radius: 16rpx;
 }
 .page-bottom .p-b-btn {
   display: -webkit-box;
@@ -1360,10 +1371,14 @@ page {
   display: -webkit-flex;
   display: flex;
   height: 76rpx;
-  border-radius: 100px;
+  -webkit-border-radius: 100px;
+          border-radius: 100px;
   overflow: hidden;
-  box-shadow: 0 20rpx 40rpx -16rpx #fa436a;
-  box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
+  -webkit-box-shadow: 0 20rpx 40rpx -16rpx #fa436a;
+          box-shadow: 0 20rpx 40rpx -16rpx #fa436a;
+  -webkit-box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
+          box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
+  background: -webkit-gradient(linear, left top, right top, from(#ffac30), color-stop(#fa436a), to(#F56C6C));
   background: -webkit-linear-gradient(left, #ffac30, #fa436a, #F56C6C);
   background: linear-gradient(to right, #ffac30, #fa436a, #F56C6C);
   margin-left: 20rpx;
@@ -1394,7 +1409,8 @@ page {
   height: 100%;
   font-size: 28rpx;
   padding: 0;
-  border-radius: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
   background: transparent;
 }
 

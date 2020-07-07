@@ -14,8 +14,8 @@
         </el-col>
         <el-col :span="8">
           <el-row type="flex" justify="end">
-            <el-col :span="12"><el-tag type="success">订单总数：{{ total }}</el-tag></el-col>
-            <el-col :span="12"><el-tag type="info">平均订单数：{{ average }}/天</el-tag></el-col>
+            <el-col :span="7"><el-tag type="success">订单总数：{{ total }}</el-tag></el-col>
+            <el-col :span="17"><el-tag type="info">平均订单数：{{ average }}/天</el-tag></el-col>
           </el-row>
         </el-col>
       </el-row>
