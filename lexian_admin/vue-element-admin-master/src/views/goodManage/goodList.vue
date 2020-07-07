@@ -346,7 +346,9 @@ export default {
           //     duration: 2000
           //   })
           // })
+
           UpdateShopGood(this.temp).then(response => {
+            alert('修改成功')
             this.dialogFormVisible = false
             this.$notify({
               title: 'Success',

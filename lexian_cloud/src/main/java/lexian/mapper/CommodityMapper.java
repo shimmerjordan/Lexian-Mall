@@ -11,5 +11,5 @@ import java.util.Map;
 @Repository
 public interface CommodityMapper {
     List<Commodity> getAllShopCommodity();
-    int updateGood(Map m);
+    int updateGood(Map<String,Object> map);
 }

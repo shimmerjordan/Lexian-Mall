@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "description": "项目配置文件。",
   "packOptions": {
     "ignore": []
@@ -7,7 +8,7 @@
     "urlCheck": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.9.2",
+  "libVersion": "",
   "appid": "touristappid",
   "projectname": "uni-app",
   "condition": {
@@ -28,4 +29,37 @@
       "list": []
     }
   }
+=======
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.2",
+	"appid": "touristappid",
+	"projectname": "uni-app",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
+>>>>>>> 6e63e1018b63c4ea2ba9a3675bf149827a4d52b8
 }
