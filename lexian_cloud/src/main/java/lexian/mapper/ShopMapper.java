@@ -16,4 +16,6 @@ public interface ShopMapper {
     int getMaxShopId();
 
     int updateShop(Map<String,Object> map);
+
+    int deleteShop(Map<String,Object> map);
 }

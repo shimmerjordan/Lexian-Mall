@@ -195,7 +195,7 @@ import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
-import { getAllShop, updateShop } from '@/api/shop'
+import { getAllShop, updateShop, deleteShop } from '@/api/shop'
 
 const statusOptions = [
   { key: '0', display_name: '正在营业' },
@@ -379,14 +379,22 @@ export default {
       this.getList()
     },
     handleDelete(row, index) {
-      this.$notify({
-        title: 'Success',
-        message: 'Delete Successfully',
-        type: 'success',
-        duration: 2000
+      //  console.log(row)
+      deleteShop(row).then(response => {
+        alert('删除成功')
+        this.$notify({
+          title: 'Success',
+          message: 'Delete Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
       })
       this.list.splice(index, 1)
     },
+
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {
         this.pvData = response.data.pvData

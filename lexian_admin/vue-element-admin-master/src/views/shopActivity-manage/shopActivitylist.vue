@@ -60,12 +60,12 @@
       </el-table-column>
       <el-table-column label="开始时间" width="150px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.begintime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ row.beginTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="结束时间" width="150px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.endtime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ row.endTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column v-if="showReviewer" label="审核人" width="110px" align="center">
@@ -88,10 +88,10 @@
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
             编辑
           </el-button>
-          <el-button v-if="row.status!='0'" size="mini" type="success" @click="handleModifyStatus(row,'published')">
+          <el-button v-if="row.status!='0'" size="mini" type="success" @click="handleModifyStatus0(row,$index)">
             发布
           </el-button>
-          <el-button v-if="row.status!='1'" size="mini" @click="handleModifyStatus(row,'draft')">
+          <el-button v-if="row.status!='1'" size="mini" @click="handleModifyStatus1(row,$index)">
             草稿
           </el-button>
           <el-button size="mini" type="danger" @click="handleDelete(row,$index)">
@@ -111,17 +111,17 @@
         <el-form-item label="活动名称" prop="name">
           <el-input v-model="temp.name" />
         </el-form-item>
-        <el-form-item label="创建时间" prop="endtime">
+        <el-form-item label="创建时间" prop="createTime">
           <el-date-picker v-model="temp.createTime" type="datetime" disabled />
         </el-form-item>
-        <el-form-item label="开始时间" prop="begintime">
-          <el-date-picker v-model="temp.begintime" type="datetime" placeholder="请选择开始日期" />
+        <el-form-item label="开始时间" prop="beginTime">
+          <el-date-picker v-model="temp.beginTime" type="datetime" placeholder="请选择开始日期" />
         </el-form-item>
-        <el-form-item label="结束时间" prop="endtime">
-          <el-date-picker v-model="temp.endtime" type="datetime" placeholder="请选择结束日期" />
+        <el-form-item label="结束时间" prop="endTime">
+          <el-date-picker v-model="temp.endTime" type="datetime" placeholder="请选择结束日期" />
         </el-form-item>
-        <el-form-item label="活动状态">
-          <el-select v-model="temp.status" class="filter-item" placeholder="请选择活动状态">
+        <el-form-item label="活动状态" prop="status">
+          <el-select v-model="statusOptions[temp.status]" class="filter-item" placeholder="请选择活动状态">
             <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
           </el-select>
         </el-form-item>
@@ -134,10 +134,10 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          Cancel
+          取消
         </el-button>
-        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-          Confirm
+        <el-button type="primary" @click="updateData()">
+          提交
         </el-button>
       </div>
     </el-dialog>
@@ -155,15 +155,15 @@
 </template>
 
 <script>
-import { fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchPv, createArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
-import { getAllActivity } from '@/api/activity'
+import { getAllActivity, updateActivity, deleteActivity, updateActivityStatus0, updateActivityStatus1 } from '@/api/activity'
 
 const statusOptions = [
-  { key: '0', display_name: '已发布' },
+  { key: '0', display_name: '发布' },
   { key: '1', display_name: '草稿' }
 ]
 
@@ -247,13 +247,44 @@ export default {
       this.listQuery.page = 1
       this.getList()
     },
-    handleModifyStatus(row, status) {
-      this.$message({
-        message: '操作Success',
-        type: 'success'
+    handleModifyStatus0(row, index) {
+      updateActivityStatus0(row).then(response => {
+        alert('发布成功')
+        this.$notify({
+          title: 'Success',
+          message: 'publish Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
       })
-      row.status = status
+      this.list.splice(index, 1)
     },
+    handleModifyStatus1(row, index) {
+      updateActivityStatus1(row).then(response => {
+        alert('存为草稿')
+        this.$notify({
+          title: 'Success',
+          message: 'draft Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
+      this.list.splice(index, 1)
+    },
+    // handleModifyStatus(row, status) {
+    //   this.$message({
+    //     message: '操作Success',
+    //     type: 'success'
+    //   })
+    //   row.status = status
+    // },
+
     sortChange(data) {
       const { prop, order } = data
       if (prop === 'id') {
@@ -310,7 +341,7 @@ export default {
     },
     handleUpdate(row) {
       this.temp = Object.assign({}, row) // copy obj
-      this.temp.timestamp = new Date(this.temp.timestamp)
+      // this.temp.timestamp = new Date(this.temp.timestupdateDataamp)
       this.dialogStatus = 'update'
       this.dialogFormVisible = true
       this.$nextTick(() => {
@@ -318,13 +349,17 @@ export default {
       })
     },
     updateData() {
+      // console.log(statusOptions[this.temp.status])
       this.$refs['dataForm'].validate((valid) => {
+        this.temp.beginTime
         if (valid) {
-          const tempData = Object.assign({}, this.temp)
-          tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateArticle(tempData).then(() => {
-            const index = this.list.findIndex(v => v.id === this.temp.id)
-            this.list.splice(index, 1, this.temp)
+          console.log(this.temp)
+          // console.log(this.temp.endtime)
+          // this.temp.begintime =
+          updateActivity(this.temp).then(response => {
+            alert('修改成功')
+            // const index = this.list.findIndex(v => v.id === this.temp.id)
+            // this.list.splice(index, 1, this.temp)
             this.dialogFormVisible = false
             this.$notify({
               title: 'Success',
@@ -332,16 +367,26 @@ export default {
               type: 'success',
               duration: 2000
             })
+            setTimeout(() => {
+              this.listLoading = false
+            }, 1.5 * 1000)
           })
         }
       })
+      this.getList()
     },
     handleDelete(row, index) {
-      this.$notify({
-        title: 'Success',
-        message: 'Delete Successfully',
-        type: 'success',
-        duration: 2000
+      deleteActivity(row).then(response => {
+        alert('删除成功')
+        this.$notify({
+          title: 'Success',
+          message: 'Delete Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
       })
       this.list.splice(index, 1)
     },
