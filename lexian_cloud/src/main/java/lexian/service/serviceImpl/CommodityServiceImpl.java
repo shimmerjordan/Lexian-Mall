@@ -36,8 +36,8 @@ public class CommodityServiceImpl implements CommodityService {
 
 
     @Override
-    public boolean deleteGood(Integer id) {
-        int flag=commodityMapper.deleteGood(id);
+    public boolean deleteGood(Map<String,Object> map) {
+        int flag=commodityMapper.deleteGood(map);
         return flag>0;
     }
 }

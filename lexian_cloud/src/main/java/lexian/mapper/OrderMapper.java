@@ -12,6 +12,8 @@ import java.util.Map;
 public interface OrderMapper {
     List<Order> getAllOrder();
     int[] getDateRange(int start, int end);
-    void addOrder(Map m);
-    int addOrder_Item(Map m);
+    void addOrder(Map<String,Object> m);
+    int addOrder_Item(Map<String,Object> m);
+    void updateOrder(Map<String,Object> m);
+    int updateOrder_Item(Map<String,Object> m);
 }

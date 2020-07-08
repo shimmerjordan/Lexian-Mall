@@ -67,7 +67,7 @@
 		gc.commodity_id WHERE
 		gc.commodity_id = #{commodityId}
 	</select>
-	
+
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
