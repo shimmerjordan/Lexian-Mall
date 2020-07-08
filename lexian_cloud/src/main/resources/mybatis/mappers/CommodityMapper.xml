@@ -73,4 +73,23 @@
         SET shop_commodity.isDelete=1
         WHERE shop_commodity.commodity_id=#{id}
     </update>
+
+	<select id="getIndexCommodity" resultType="Commodity">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		WHERE
+		commodity.is_delete=0 AND
+		commodity.status=0
+	</select>
 </mapper>
