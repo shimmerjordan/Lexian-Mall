@@ -21,13 +21,13 @@
     values (#{name}, #{phone}, #{login_name})
   </insert>
 
-  <select id="getPwdByName" parameterType="java.util.HashMap" resultType="java.lang.String">
+  <select id="getPwdByName" resultType="java.lang.String">
         SELECT
         pwd
         FROM
         customer
         WHERE
-        login_name = #{arg0}
+        login_name = #{loginName}
     </select>
 
 
