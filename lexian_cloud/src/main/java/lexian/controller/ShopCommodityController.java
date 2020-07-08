@@ -1,13 +1,11 @@
 package lexian.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import lexian.entity.Commodity;
 import lexian.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,19 +20,27 @@ public class ShopCommodityController {
         this.commodityService = commodityService;
     }
 
-    @RequestMapping("/api/shop/goodsInfo")
+    @GetMapping("/api/shop/goodsInfo")
     public List<Commodity> getAllShopCommodity() {
         return commodityService.getAllShopCommodity();
     }
 
-    @RequestMapping("/api/shop/updateGood")
-    public boolean updateGood(@RequestParam Map<String,Object> map){
+    @PostMapping("/api/shop/updateGood")
+    public boolean updateGood(@RequestBody Map<String, Object> map) {
 //        commodityService.updateGood(updateGood);
 //        return commodityService.getAllShopCommodity();
         System.out.println(map);
         System.out.println(commodityService.updateGood(map));
         return commodityService.updateGood(map);
     }
+
+    @PostMapping("/api/shop/deleteGood")
+    public boolean deleteGood(@RequestBody Map<String, Object> map) {
+        System.out.println("asdasdsadsadddddddddddddddddddddddd");
+        System.out.println(map);
+        return commodityService.deleteGood(map);
+    }
+
 }
 //    public PageInfo<Commodity> getAllShopCommodity(@RequestParam("pageNo") Integer pageNo){
 //        if(pageNo==null)

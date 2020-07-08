@@ -39,7 +39,7 @@
       </el-table-column>
       <el-table-column label="订单描述" min-width="70px">
         <template slot-scope="{row}">
-          <span @click="handleUpdate(row)">{{ row.description }}</span>
+          <span>{{ row.description }}</span>
         </template>
       </el-table-column>
       <el-table-column label="商品名称" width="110px" align="center">
@@ -127,17 +127,17 @@
 </template>
 
 <script>
-import { updateArticle } from '@/api/article'
-import { getAllOrder, createOrder } from '@/api/order'
+import { getAllOrder, createOrder, updateOrder } from '@/api/order'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 const calendarTypeOptions = [
-  { key: 'CN', display_name: 'China' },
-  { key: 'US', display_name: 'USA' },
-  { key: 'JP', display_name: 'Japan' },
-  { key: 'EU', display_name: 'Eurozone' }
+  { key: '0', display_name: '订单已被取消' },
+  { key: '1', display_name: '发货' },
+  { key: '2', display_name: '已收获' },
+  { key: '3', display_name: '已退货' },
+  { key: '4', display_name: '正在申请退货' }
 ]
 
 // arr to obj, such as { CN : "China", US : "USA" }
@@ -183,6 +183,7 @@ export default {
       statusOptions: [0, 1, 2, 3, 4],
       showReviewer: false,
       temp: {
+        id: '',
         commodity: undefined,
         comment: 1,
         timestamp: new Date(),
@@ -215,6 +216,8 @@ export default {
       this.listLoading = true
       getAllOrder().then(response => {
         this.list = response.data
+        console.log(response.data)
+        this.total = this.list.length
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
@@ -242,7 +245,6 @@ export default {
     },
     resetTemp() {
       this.temp = {
-        id: undefined,
         comment: 1,
         timestamp: new Date(),
         status: ''
@@ -260,25 +262,31 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           createOrder(this.temp).then(response => {
-            console.log(response.date)
+            if (response.data) {
+              this.$notify({
+                title: 'Success',
+                message: '成功创建订单',
+                type: 'success',
+                duration: 2000
+              })
+            } else {
+              this.$notify({
+                title: 'Fail',
+                message: '订单创建失败',
+                type: 'fail',
+                duration: 2000
+              })
+            }
+            this.dialogFormVisible = false
+            this.getList()
           })
-          // createArticle(this.temp).then(() => {
-          //   this.list.unshift(this.temp)
-          //   this.dialogFormVisible = false
-          //   this.$notify({
-          //     title: 'Success',
-          //     message: 'Created Successfully',
-          //     type: 'success',
-          //     duration: 2000
-          //   })
-          // })
         }
       })
     },
     handleUpdate(row) {
-      this.temp = Object.assign({}, row) // copy obj
-      this.temp.timestamp = new Date(this.temp.timestamp)
+      this.resetTemp()
       this.dialogStatus = 'update'
+      this.temp.id = row.id
       this.dialogFormVisible = true
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
@@ -287,18 +295,23 @@ export default {
     updateData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          const tempData = Object.assign({}, this.temp)
-          tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateArticle(tempData).then(() => {
-            const index = this.list.findIndex(v => v.id === this.temp.id)
-            this.list.splice(index, 1, this.temp)
+          updateOrder(this.temp).then(response => {
+            if (response.data) {
+              this.$notify({
+                title: 'Success',
+                message: '成功修改订单',
+                type: 'success',
+                duration: 2000
+              })
+            } else {
+              this.$notify({
+                title: 'Fail',
+                message: '订单修改失败',
+                type: 'fail',
+                duration: 2000
+              })
+            }
             this.dialogFormVisible = false
-            this.$notify({
-              title: 'Success',
-              message: 'Update Successfully',
-              type: 'success',
-              duration: 2000
-            })
           })
         }
       })

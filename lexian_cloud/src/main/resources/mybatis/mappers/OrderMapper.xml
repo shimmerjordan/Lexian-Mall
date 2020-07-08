@@ -4,16 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.OrderMapper">
     <resultMap id="order_map" type="Order">
-        <id property="ID" column="orders.ID"/>
-        <result property="date" column="orders.date"/>
-        <result property="description" column="orders.description"/>
-        <result property="name" column="commodity.`name`"/>
-        <result property="comment" column="orders.`comment`"/>
-        <result property="status" column="orders.`status`"/>
-        <result property="quantity" column="order_item.commodity_quantity"/>
-        <result property="price" column="commodity.price"/>
+        <id property="ID" column="ID"/>
+        <result property="date" column="date"/>
+        <result property="description" column="description"/>
+        <result property="name" column="name"/>
+        <result property="comment" column="comment"/>
+        <result property="status" column="status"/>
+        <result property="quantity" column="commodity_quantity"/>
+        <result property="price" column="price"/>
     </resultMap>
-    <select id="getAllOrder" resultType="Order">
+
+    <select id="getAllOrder" resultMap="order_map">
         SELECT
         orders.ID,
         orders.date,
@@ -56,5 +57,25 @@
         ((SELECT LAST_INSERT_ID()),#{commodity},#{quantity})
     </insert>
 
+    <update id="updateOrder" parameterType="java.util.HashMap">
+        UPDATE
+        orders
+        SET
+        orders.date=#{ timestamp },
+        orders.description=#{ description },
+        orders.`comment`=#{ comment },
+        orders.`status`=#{ status }
+        WHERE
+        orders.ID=#{id}
+    </update>
+
+    <update id="updateOrder_Item" parameterType="java.util.HashMap">
+        UPDATE
+        order_item
+        SET
+        order_item.commodity_quantity=#{ quantity }
+        WHERE
+        order_item.order_id=#{ id }
+    </update>
 
 </mapper>

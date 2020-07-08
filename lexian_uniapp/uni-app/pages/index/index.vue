@@ -31,29 +31,29 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" @click="navToCategory('1')">
-				<image src="/static/temp/i3.png" ></image>
+			<view class="cate-item" >
+				<image src="/static/temp/i3.png" @click="navToCategory()"></image>
 				<text >品牌美食</text>
 			</view>
-			<view class="cate-item" @click="navToCategory('1')">
+			<view class="cate-item" @click="navToCategory()">
 				<image src="/static/temp/i5.png"></image>
 				<text >个护美妆</text>
 			</view>
-			<view class="cate-item" @click="navToCategory('1')">
+			<view class="cate-item" @click="navTo('/pages/category/category')">
 				<image src="/static/temp/i6.png"></image>
 				<text >日用百货</text>
 			</view>
-			<view class="cate-item" @click="navToCategory('1')">
+			<view class="cate-item" @click="navTo('/pages/category/category')">
 				<image src="/static/temp/i7.png"></image>
 				<text >数码家电</text>
 		     </view>
-			<view class="cate-item" @click="navToCategory('1')">
+			<view class="cate-item" @click="navTo('/pages/category/category')">
 				<image src="/static/temp/i8.png"></image>
 				<text >水果生鲜</text>
 			</view>	
 		</view>
 		<!-- 店铺活动宣传 -->
-		<view class="ad-1" @click="navToSale('')">
+		<view class="ad-1" @click="navTo('')">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
 		<!-- 店铺活动宣传的页面跳转 -->	
 		</view>
@@ -284,13 +284,16 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			this.loadData();
 		},
 		methods: {
+			
 			/**
 			 * 请求静态数据只是为了代码不那么乱
 			 * 分次请求未作整合
 			 */
-			search (){
-				
-			},
+			navTo(url){
+				uni.navigateTo({  
+					url
+				})  
+			}, 
 			async loadData() {
 				let carouselList = await this.$api.json('carouselList');
 				this.titleNViewBackground = carouselList[0].background;
@@ -314,13 +317,13 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					url: `/pages/product/product?id=${id}`
 				})
 			},
-		},
-		navToCategory(num) {
-				let id = num;
+			navToCategory() {
 				uni.navigateTo({
-					url: `/pages/category/category?pid=${id}`
+					url: `/pages/category/category`
 				})
 			},
+		},
+
 		// #ifndef MP
 		// 标题栏input搜索框点击
 		onNavigationBarSearchInputClicked: async function(e) {

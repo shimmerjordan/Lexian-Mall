@@ -4,9 +4,12 @@ import lexian.entity.Shop;
 import lexian.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ShopController {
@@ -29,8 +32,12 @@ public class ShopController {
         return shopService.getMaxShopId();
     }
 
-//    @GetMapping("/updateShop")
-//    public List<Shop> updateShop(Shop record) {
-//        return shopService.updateShop(record);
-//    }
+    @PostMapping("/updateShop")
+    public boolean updateShop(@RequestBody Map<String,Object> map){
+//        commodityService.updateGood(updateGood);
+//        return commodityService.getAllShopCommodity();
+        System.out.println(map);
+        System.out.println(shopService.updateShop(map));
+        return shopService.updateShop(map);
+    }
 }

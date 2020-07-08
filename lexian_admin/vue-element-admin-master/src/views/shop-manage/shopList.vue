@@ -171,7 +171,7 @@
         <el-button @click="dialogFormVisible = false">
           取消
         </el-button>
-        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
+        <el-button type="primary" @click="updateData()">
           提交
         </el-button>
       </div>
@@ -358,11 +358,11 @@ export default {
     updateData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          const tempData = Object.assign({}, this.temp)
           // tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateShop(tempData).then(() => {
-            const index = this.list.findIndex(v => v.id === this.temp.id)
-            this.list.splice(index, 1, this.temp)
+          updateShop(this.temp).then(response => {
+            alert('修改成功')
+            // const index = this.list.findIndex(v => v.id === this.temp.id)
+            // this.list.splice(index, 1, this.temp)
             this.dialogFormVisible = false
             this.$notify({
               title: 'Success',
@@ -370,9 +370,13 @@ export default {
               type: 'success',
               duration: 2000
             })
+            setTimeout(() => {
+              this.listLoading = false
+            }, 1.5 * 1000)
           })
         }
       })
+      this.getList()
     },
     handleDelete(row, index) {
       this.$notify({

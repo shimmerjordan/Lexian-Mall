@@ -9,8 +9,8 @@
 			<view v-for="item in slist" :key="item.id" class="s-list" :id="'main-'+item.id">
 				<text class="s-item">{{item.name}}</text>
 				<view class="t-list">
-					<view @click="navToList(item.id, titem.id)" v-if="titem.pid === item.id" class="t-item" v-for="titem in tlist" :key="titem.id">
-						<image :src="titem.picture"></image>
+					<view @click="navToList(item.id, titem.id)" v-if="titem.level === item.id" class="t-item" v-for="titem in tlist" :key="titem.id">
+						<image :src="titem.description"></image>
 						<text>{{titem.name}}</text>
 					</view>
 				</view>
@@ -36,26 +36,37 @@
 		},
 		methods: {
 			async loadData(){
-				let list = await this.$api.json('cateList');
-				list.forEach(item=>{
-					if(!item.pid){
-						this.flist.push(item);  //pid为父级id, 没有pid或者pid=0是一级分类
-					}else if(!item.picture){
-						this.slist.push(item); //没有图的是2级分类
-					}else{
-						this.tlist.push(item); //3级分类
-					}
-				}) 
+				//let list = await this.$api.json('cateList');
+				var _this = this;
+				uni.request({
+				    url: this.apiServer + "/api/category/list",
+				    dataType: "JSON",
+				    success: function(res) {
+				      let list = res.data;
+						list.forEach(item=>{
+							if(!item.level){
+								_this.flist.push(item);  //pid为父级id, 没有pid或者pid=0是一级分类
+							}else if(!item.description){
+								_this.slist.push(item); //没有图的是2级分类
+							}else{
+								_this.tlist.push(item); //3级分类
+							}
+						})
+				    }
+				});
+
 			},
 			//一级分类点击
 			tabtap(item){
 				if(!this.sizeCalcState){
 					this.calcSize();
-				}
-				
+				}				
 				this.currentId = item.id;
-				let index = this.slist.findIndex(sitem=>sitem.pid === item.id);
-				this.tabScrollTop = this.slist[index].top;
+				let index = this.slist.findIndex(sitem=>sitem.level === item.id);
+				if(index != -1){
+					this.tabScrollTop = this.slist[index].top;
+				}
+
 			},
 			//右侧栏滚动
 			asideScroll(e){
@@ -64,8 +75,9 @@
 				}
 				let scrollTop = e.detail.scrollTop;
 				let tabs = this.slist.filter(item=>item.top <= scrollTop).reverse();
+				console.log(tabs)
 				if(tabs.length > 0){
-					this.currentId = tabs[0].pid;
+					this.currentId = tabs[0].level;
 				}
 			},
 			//计算右侧栏每个tab的高度等信息
@@ -90,6 +102,7 @@
 			}
 		}
 	}
+	
 </script>
 
 <style lang='scss'>

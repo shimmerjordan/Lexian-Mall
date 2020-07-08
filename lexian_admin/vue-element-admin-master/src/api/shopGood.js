@@ -12,7 +12,16 @@ export function getAllShopGoods() {
 export function UpdateShopGood(data) {
   return myrequest({
     url: '/api/shop/updateGood',
-    method: 'get',
-    params: { data }
+    method: 'post',
+    data
+  })
+}
+
+// 删除店铺商品
+export function DeleteShopGood(data) {
+  return myrequest({
+    url: '/api/shop/deleteGood',
+    method: 'post',
+    data
   })
 }
