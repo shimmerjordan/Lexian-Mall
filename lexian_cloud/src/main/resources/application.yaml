@@ -12,6 +12,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
+  port: 8088
   servlet:
     encoding:
       charset: UTF-8
