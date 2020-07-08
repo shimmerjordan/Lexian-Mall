@@ -40,4 +40,10 @@ public class ShopController {
         System.out.println(shopService.updateShop(map));
         return shopService.updateShop(map);
     }
+
+    @PostMapping("/deleteShop")
+    public boolean deleteShop(@RequestBody Map<String,Object> map) {
+        System.out.println(map);
+        return shopService.deleteShop(map);
+    }
 }

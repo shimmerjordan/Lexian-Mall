@@ -10,4 +10,8 @@ public interface ShopService {
 
     int getMaxShopId();
 
-    boolean updateShop(Map<String,Object> map);}
+    boolean updateShop(Map<String,Object> map);
+
+    boolean deleteShop(Map<String,Object> map);
+
+}

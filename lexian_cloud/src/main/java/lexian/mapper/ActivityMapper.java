@@ -5,21 +5,18 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
 public interface ActivityMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Activity record);
-
-    int insertSelective(Activity record);
-
-    Activity selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Activity record);
-
-    int updateByPrimaryKey(Activity record);
-
     List<Activity> getAllActivity();
+
+    int updateActivity(Map<String,Object> map);
+
+    int deleteActivity(Map<String,Object> map);
+
+    int updateActivityStatus0(Map<String,Object> map);
+
+    int updateActivityStatus1(Map<String,Object> map);
 }

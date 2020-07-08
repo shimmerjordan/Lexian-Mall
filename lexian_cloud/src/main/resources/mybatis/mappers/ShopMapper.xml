@@ -33,4 +33,9 @@
     where
     shop.id = #{id}
   </update>
+  <update id="deleteShop">
+    update shop
+    set shop.isDelete = 1
+    where shop.id = #{id}
+  </update>
 </mapper>
