@@ -25,7 +25,7 @@
 				<view class="image-wrapper">
 					<image :src="item.image" mode="aspectFill"></image>
 				</view>
-				<text class="title clamp">{{item.title}}</text>
+				<text class="title clamp">{{item.name}}</text>
 				<view class="price-box">
 					<text class="price">{{item.price}}</text>
 					<text>已售 {{item.sales}}</text>
@@ -42,7 +42,7 @@
 						<view 
 							v-for="tItem in item.child" :key="tItem.id" 
 							class="cate-item b-b" 
-							:class="{active: tItem.id==cateId}"
+							:class="{active: tItem.id==categoryId}"
 							@click="changeCate(tItem)">
 							{{tItem.name}}
 						</view>
@@ -63,15 +63,17 @@
 		data() {
 			return {
 				cateMaskState: 0, //分类面板展开状态
-				commodityId:-1,
+				categoryId:-1,
 				headerPosition:"fixed",
 				headerTop:"0px",
 				loadingType: 'more', //加载更多状态
 				filterIndex: 0, 
-				cateId: 0, //已选三级分类id
+				//cateId: 0, //已选三级分类id
 				priceOrder: 0, //1 价格从低到高 2价格从高到低
 				cateList: [],
-				goodsList: []
+				goodsList: [],
+				pageNo:1,
+				pageSize:10
 			};
 		},
 		
@@ -79,8 +81,8 @@
 			// #ifdef H5
 			this.headerTop = document.getElementsByTagName('uni-page-head')[0].offsetHeight+'px';
 			// #endif
-			this.cateId = options.tid;
-			this.commodityId = options.sid;
+			//this.cateId = options.tid;
+			this.categoryId = options.tid;
 			this.loadCateList(options.fid,options.sid);
 			this.loadData();
 		},
@@ -98,6 +100,7 @@
 		},
 		//加载更多
 		onReachBottom(){
+			this.pageNo = this.pageNo + 1;
 			this.loadData();
 		},
 		methods: {
@@ -133,32 +136,35 @@
 					this.loadingType = 'more'
 				}
 				//let goodsList = await this.$api.json('goodsList');
-				let commodityId = this.commodityId;
 				let _this = this;
+				let params = {
+				          "categoryId":this.categoryId,
+				          "pageNo":this.pageNo,
+						  "pageSize":this.pageSize					  
+				    }
+				if(this.filterIndex === 1){	
+					params.sortType = 1;
+				}
+			     if(_this.filterIndex === 2){
+				    if(_this.priceOrder == 1){
+					    params.sortType = 2;
+					  }else{
+					 	params.sortType = 3; 
+				     }
+		    	  }
 				uni.request({
-				    url: this.apiServer + "/api/category/listByCommodityId?commodityId=" + commodityId,
-				    dataType: "JSON",
+				    url: this.apiServer + "/api/category/listByCommodityId",
+				    method: 'POST',
+					dataType: "JSON",
+					data:params,
 				    success: function(res) {
-				     let goodsList = res.data;
+				     let goodsList = res.data.list;
 					  if(type === 'refresh'){
 					  	_this.goodsList = [];
 					  }
-					  //筛选，测试数据直接前端筛选了
-					  if(_this.filterIndex === 1){
-					  	goodsList.sort((a,b)=>b.sales - a.sales)
-					  }
-					  if(_this.filterIndex === 2){
-					  	goodsList.sort((a,b)=>{
-					  		if(_this.priceOrder == 1){
-					  			return a.price - b.price;
-					  		}
-					  		return b.price - a.price;
-					  	})
-					  }
-					  _this.goodsList = _this.goodsList.concat(goodsList);
-					  
+					  _this.goodsList = _this.goodsList.concat(goodsList);  
 					  //判断是否还有下一页，有是more  没有是nomore(测试数据判断大于20就没有了)
-					  _this.loadingType  = _this.goodsList.length > 20 ? 'nomore' : 'more';
+					  _this.loadingType  = _this.goodsList.length >= res.data.total ? 'nomore' : 'more';
 					  if(type === 'refresh'){
 					  	if(loading == 1){
 					  		uni.hideLoading()
@@ -185,6 +191,7 @@
 					duration: 300,
 					scrollTop: 0
 				})
+				this.pageNo = 1;
 				this.loadData('refresh', 1);
 				uni.showLoading({
 					title: '正在加载'
@@ -201,12 +208,13 @@
 			},
 			//分类点击
 			changeCate(item){
-				this.cateId = item.id;
+				this.categoryId = item.id;
 				this.toggleCateMask();
 				uni.pageScrollTo({
 					duration: 300,
 					scrollTop: 0
 				})
+				this.pageNo = 1;
 				this.loadData('refresh', 1);
 				uni.showLoading({
 					title: '正在加载'

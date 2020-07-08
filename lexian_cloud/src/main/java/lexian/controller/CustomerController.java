@@ -16,9 +16,9 @@ public class CustomerController {
     }
 
     @RequestMapping("/verifyPwdByName")
-    public String getPwdByName(@RequestBody String name){
-        System.out.println(name);
-        return customerService.getPwdByName(name);
+    public String getPwdByName(@RequestBody String loginName){
+        System.out.println(loginName);
+        return customerService.getPwdByName(loginName);
     }
 
 
