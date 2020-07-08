@@ -1,4 +1,4 @@
-package com.etc.pojo;
+package lexian.entity;
 
 import java.util.Date;
 
