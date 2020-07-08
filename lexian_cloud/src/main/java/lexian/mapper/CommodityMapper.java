@@ -14,4 +14,5 @@ public interface CommodityMapper {
     int updateGood(Map<String,Object> map);
     int deleteGood(Map<String,Object> map);
     List<Commodity> selectCommodityByCommodityId(String commodityId);
+    int addGood(Map<String,Object> map);
 }

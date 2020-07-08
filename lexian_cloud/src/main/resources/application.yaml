@@ -1,18 +1,8 @@
 spring:
   datasource:
     username: root
-<<<<<<< HEAD
     password: Xy990919
     url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-=======
-<<<<<<< HEAD
-    password: 123
-    url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-=======
-    password: password
-    url: "jdbc:mysql://server.natappfree.cc:34802/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
->>>>>>> 63c7393d5c135d96fdd4759bf247166172444009
->>>>>>> f8d79bcd21dd4a0dd6b3ca821cc5f3d42ecc47c3
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #整合mybatis
@@ -22,18 +12,9 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
-<<<<<<< HEAD
-  port: 8088
-=======
-<<<<<<< HEAD
-  port: 8080
->>>>>>> aeec5e05453e18d45a374ef7439a6a24eba63625
-  servlet:
-=======
   #port: 8088
   servlet:
     #context-path: /ocp
->>>>>>> 63c7393d5c135d96fdd4759bf247166172444009
     encoding:
       charset: UTF-8
       force: true

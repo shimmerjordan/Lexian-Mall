@@ -34,7 +34,7 @@
 		INNER JOIN shop ON shop.ID =
 		shop_commodity.shop_id
 		WHERE
-		commodity.is_delete=0
+		commodity.is_delete=0 AND shop_commodity.isDelete=0
 	</select>
 
 	<update id="updateGood" parameterType="java.util.HashMap">
@@ -72,4 +72,12 @@
         SET shop_commodity.isDelete=1
         WHERE shop_commodity.commodity_id=#{id}
     </update>
+
+	<insert id="addGood" parameterType="java.util.HashMap">
+        INSERT INTO
+        commodity(name,modify_time,price,storage,specification,status,image,introduction,is_delete)
+        VALUES
+        (#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
+    </insert>
+
 </mapper>
