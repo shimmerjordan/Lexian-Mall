@@ -161,7 +161,7 @@
 import { fetchPv, createArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
-import { getAllShopGoods, UpdateShopGood } from '@/api/shopGood'
+import { getAllShopGoods, UpdateShopGood, DeleteShopGood } from '@/api/shopGood'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 const calendarTypeOptions = [
@@ -346,7 +346,9 @@ export default {
           //     duration: 2000
           //   })
           // })
+
           UpdateShopGood(this.temp).then(response => {
+            alert('修改成功')
             this.dialogFormVisible = false
             this.$notify({
               title: 'Success',
@@ -360,17 +362,25 @@ export default {
           })
         }
       })
+      this.getList()
     },
 
     handleDelete(row, index) {
-      this.$notify({
-        title: 'Success',
-        message: 'Delete Successfully',
-        type: 'success',
-        duration: 2000
+      DeleteShopGood(row.id).then(response => {
+        alert('删除成功')
+        this.$notify({
+          title: 'Success',
+          message: 'Delete Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
       })
       this.list.splice(index, 1)
     },
+
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {
         this.pvData = response.data.pvData

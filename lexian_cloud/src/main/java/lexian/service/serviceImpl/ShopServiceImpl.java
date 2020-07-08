@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import  java.util.List;
+import java.util.Map;
 
 @Service
 public class ShopServiceImpl implements ShopService{
@@ -22,11 +23,14 @@ public class ShopServiceImpl implements ShopService{
         return shopMapper.getAllShop();
     }
 
+    @Override
     public int getMaxShopId() {
         return shopMapper.getMaxShopId();
     }
 
-//    public List<Shop> updateShop(Shop record) {
-//        return shopMapper. updateShop(record);
-//    }
+    @Override
+    public boolean updateShop(Map<String,Object> map) {
+        int flag = shopMapper.updateShop(map);
+        return flag > 0;
+    }
 }

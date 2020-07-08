@@ -17,7 +17,7 @@ export function getMaxShopId() {
 export function updateShop(data) {
   return myrequest({
     url: '/updateShop',
-    method: 'get',
+    method: 'post',
     data
   })
 }
