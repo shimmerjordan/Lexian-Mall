@@ -1,13 +1,8 @@
 spring:
   datasource:
     username: root
-<<<<<<< HEAD
     password: password
     url: "jdbc:mysql://server.natappfree.cc:34802/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-=======
-    password: Xy990919
-    url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
->>>>>>> 122c06bec5b91ce7f9e6cd31ce6e172106c86c08
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #整合mybatis
