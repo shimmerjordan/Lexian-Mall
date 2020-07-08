@@ -93,7 +93,7 @@
 import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
 import { getMaxShopId } from '@/api/shop'
-// import { AddShopGood } from '@/api/shopGood'
+import { AddShopGood } from '@/api/shopGood'
 
 export default {
   name: 'GoodAdd',
@@ -148,9 +148,27 @@ export default {
       console.log(file)
       this.$message({ message: 'Delete success', type: 'success' })
     },
+
     submitForm() {
+      this.$refs['postForm'].validate((valid) => {
+        if (valid) {
+          AddShopGood(this.postForm).then(response => {
+            alert('添加成功')
+            this.$notify({
+              title: 'Success',
+              message: '添加成功',
+              type: 'success',
+              duration: 2000
+            })
+            setTimeout(() => {
+              this.listLoading = false
+            }, 1.5 * 1000)
+          })
+        }
+      })
       this.$router.go(-1)
     },
+
     cancel() {
       this.$router.go(-1)
     },

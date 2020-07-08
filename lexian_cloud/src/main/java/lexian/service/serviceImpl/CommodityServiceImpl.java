@@ -46,4 +46,10 @@ public class CommodityServiceImpl implements CommodityService {
 		int flag = commodityMapper.deleteGood(map);
 		return flag > 0;
 	}
+
+	@Override
+	public boolean addGood(Map<String, Object> map) {
+		int flag = commodityMapper.addGood(map);
+		return flag > 0;
+	}
 }

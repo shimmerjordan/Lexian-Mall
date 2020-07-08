@@ -15,4 +15,6 @@ public interface CommodityService {
 	boolean updateGood(Map<String, Object> map);
 
 	PageInfo<Commodity> listCommodityByCategoryId(Commodity commodity);
+
+	boolean addGood(Map<String, Object> map);
 }

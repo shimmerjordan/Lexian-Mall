@@ -7,6 +7,8 @@ spring:
     #url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
     password: password
     url: "jdbc:mysql://server.natappfree.cc:37903/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+    #password: Xy990919
+    #url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #整合mybatis
