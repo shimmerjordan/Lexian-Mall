@@ -64,7 +64,6 @@ _vue.default.prototype.$store = _store.default;
 _vue.default.prototype.$api = { msg: msg, json: json, prePage: prePage };
 _vue.default.component('cu-custom', cuCustom);
 _vue.default.prototype.apiServer = 'http://localhost:8088';
-
 //Vue.prototype.apiServer = 'http://127.0.0.1:8088/ocp';
 
 

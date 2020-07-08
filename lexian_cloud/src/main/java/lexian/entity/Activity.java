@@ -1,5 +1,8 @@
 package lexian.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Activity {
@@ -10,12 +13,12 @@ public class Activity {
     private String description;
 
     private String img;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
-    private Date begintime;
+    private Date beginTime;
 
-    private Date endtime;
+    private Date endTime;
 
     private String type;
 
@@ -23,14 +26,14 @@ public class Activity {
 
     private Integer is_delete;
 
-    public Activity(Integer id, String name, String description, String img, Date createTime,Date begintime, Date endtime, String type, Integer status, Integer is_delete) {
+    public Activity(Integer id, String name, String description, String img, Date createTime,Date beginTime, Date endTime, String type, Integer status, Integer is_delete) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.img = img;
         this.createTime = createTime;
-        this.begintime = begintime;
-        this.endtime = endtime;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
         this.type = type;
         this.status = status;
         this.is_delete = is_delete;
@@ -79,20 +82,20 @@ public class Activity {
         this.createTime = createTime;
     }
 
-    public Date getBegintime() {
-        return begintime;
+    public Date getBeginTime() {
+        return beginTime;
     }
 
-    public void setBegintime(Date begintime) {
-        this.begintime = begintime;
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public Date getEndtime() {
-        return endtime;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public String getType() {

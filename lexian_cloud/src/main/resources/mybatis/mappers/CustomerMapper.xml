@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="lexian.mapper.CustomerMapper" >
+<<<<<<< .merge_file_a24832
   <resultMap id="BaseResultMap" type="Customer" >
+=======
+  <resultMap id="BaseResultMap" type="lexian.entity.Customer" >
+>>>>>>> .merge_file_a03544
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -31,7 +35,11 @@
     </select>
 
 
+<<<<<<< .merge_file_a24832
   <update id="updateByPrimaryKey" parameterType="Customer" >
+=======
+  <update id="updateByPrimaryKey" parameterType="lexian.entity.Customer" >
+>>>>>>> .merge_file_a03544
     update customer
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

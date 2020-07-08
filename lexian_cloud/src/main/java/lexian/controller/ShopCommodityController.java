@@ -40,6 +40,12 @@ public class ShopCommodityController {
         return commodityService.deleteGood(map);
     }
 
+    @PostMapping("/api/shop/addGood")
+    public boolean addGood(@RequestBody Map<String,Object> map){
+        System.out.println(map);
+        return commodityService.addGood(map);
+    }
+
 }
 //    public PageInfo<Commodity> getAllShopCommodity(@RequestParam("pageNo") Integer pageNo){
 //        if(pageNo==null)
