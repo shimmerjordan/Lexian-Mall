@@ -10,8 +10,14 @@ import java.util.Map;
 @Mapper
 @Repository
 public interface CommodityMapper {
-    List<Commodity> getAllShopCommodity();
-    int updateGood(Map<String,Object> map);
-    int deleteGood(Map<String,Object> map);
-    List<Commodity> selectCommodityByCommodityId(String commodityId);
+	List<Commodity> getAllShopCommodity();
+
+	int updateGood(Map<String, Object> map);
+
+	int deleteGood(Map<String, Object> map);
+
+	List<Commodity> selectCommodityByCategoryId(Commodity commodity);
+
+	int addGood(Map<String, Object> map);
+
 }
