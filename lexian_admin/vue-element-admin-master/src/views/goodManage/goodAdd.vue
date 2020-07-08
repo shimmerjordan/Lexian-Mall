@@ -4,49 +4,51 @@
       ref="postForm"
       class="form-container"
       :model="postForm"
-      :rules="rules"
+
       label-width="80px"
       label-position="right"
     >
-      <sticky :class-name="'sub-navbar published'" :z-index="2">
-        <el-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm()">保存
-        </el-button>
-        <el-button type="warning" @click="cancel()">取消</el-button>
+      <sticky :class-name="'sub-navbar published'" :z-index="2" width="50px">
+        <div align="center">新增商品</div>
       </sticky>
-
-      <div class="createPost-main-container">
-        <!--基础信息-->
+      <div
+        class="createPost-main-container"
+      >
         <h3>基础信息</h3>
         <el-row>
-          <el-col :span="12">
+          <el-col :span="10">
             <el-form-item label="商品名称" prop="name">
               <el-input v-model="postForm.name" size="small" />
             </el-form-item>
           </el-col>
-
-          <el-col :span="10" :push="1">
-            <el-form-item label="商品分类" prop="categoryId">
-              <el-cascader
-                v-model="postForm.categoryId"
-                expand-trigger="hover"
-                :options="data2"
-                :show-all-levels="false"
-                size="small"
-              />
+        </el-row>
+        <el-row>
+          <el-col :span="10">
+            <el-form-item label="操作时间" prop="modify_time">
+              <el-input v-model="postForm.modify_time" disabled />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="10">
+            <el-form-item label="商品单价" prop="price">
+              <el-input v-model="postForm.price" size="small" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="10">
+            <el-form-item label="商品库存" prop="storage">
+              <el-input v-model="postForm.storage" size="small" />
             </el-form-item>
           </el-col>
         </el-row>
 
         <el-row>
           <el-col :span="12">
-            <el-form-item label="计量单位" prop="unitId">
-              <el-select v-model="postForm.unitId" clearable placeholder="请选择" size="small">
-                <el-option
-                  v-for="item in unitList"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
+            <el-form-item label="计量单位" prop="specification">
+              <el-select v-model="postForm.specification" clearable placeholder="请选择" size="small">
+                <el-option v-for="item in unitList" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
           </el-col>
@@ -54,96 +56,197 @@
 
         <el-row>
           <el-col :span="12">
-            <el-form-item label="商品标签" prop="tags">
-              <el-checkbox
-                v-model="checkAllTag"
-                size="small"
-                :indeterminate="isIndeterminateTag"
-                @change="handleCheckAllTagChange"
-              >全选
-              </el-checkbox>
-              <el-checkbox-group
-                v-model="postForm.tags"
-                style="display: inline-block;margin-left: 15px;"
-                @change="handleCheckedTagsChange"
-              >
-                <el-checkbox v-for="tag in tags" :key="tag.id" size="small" :label="tag.id">{{ tag.name }}
-                </el-checkbox>
-              </el-checkbox-group>
+            <el-form-item label="直接上架" prop="status">
+              <el-radio-group v-model="postForm.status">
+                <el-radio :label="1">是</el-radio>
+                <el-radio :label="0">否</el-radio>
+              </el-radio-group>
             </el-form-item>
           </el-col>
+
         </el-row>
 
-        <!--商品规格-->
-        <h3>商品规格</h3>
-        <div class="filter-container">
-          <el-button size="small" type="success" icon="plus" @click="addSku">新增</el-button>
-        </div>
-        <el-table :data="postForm.skus" border fit highlight-current-row style="width: 100%">
-          <el-table-column align="center" min-width="300px" label="规格名称">
-            <template scope="scope">
-              <el-input v-model="scope.row.name" size="small" />
-            </template>
-          </el-table-column>
-
-          <el-table-column align="center" width="200px" label="价格">
-            <template scope="scope">
-              <el-input-number v-model="scope.row.price" :controls="false" size="small" :min="1" />
-            </template>
-          </el-table-column>
-
-          <el-table-column align="center" width="300px" label="库存">
-            <template scope="scope">
-              <el-input-number v-model="scope.row.stock" size="small" :min="1" />
-              <el-checkbox size="small">无限库存</el-checkbox>
-            </template>
-          </el-table-column>
-
-          <el-table-column align="center" label="操作" width="120">
-            <template>
-              <el-button size="small" type="danger" icon="delete">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-
-        <!--商品图片-->
-        <h3>商品图片<span style="font-size: 12px;color: darkgrey;">最多20张，默认第一张图片作为主图，可以拖动图片调整</span></h3>
-        <el-upload
-          action="https://jsonplaceholder.typicode.com/posts/"
-          list-type="picture-card"
-          :on-preview="handlePictureCardPreview"
-          :on-remove="handlePictureRemove"
-          :before-upload="beforeAvatarUpload"
-          :on-success="handlePictureSuccess"
-          multiple
-        >
-          <i class="el-icon-plus" />
-        </el-upload>
-
-        <el-dialog v-model="showImagePreview" size="tiny">
-          <img width="100%" :src="previewImageUrl" alt="">
-        </el-dialog>
-
-        <!--商品详情-->
-        <h3>商品详情</h3>
-        <div id="editor">
-          <p>请在此编辑商品详情</p>
+        <h3>商品介绍</h3>
+        <div class="components-container">
+          <!--店铺图片-->
+          <aside width="{100}">商品图片</aside>
+          <div class="editor-container" width="50px">
+            <dropzone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS" />
+            <div style="margin: 10px 0;">
+              <aside>商品简介</aside>
+              <el-input v-model="postForm.introduction" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
+            </div>
+            <div magin="10px 0">
+              <el-row>
+                <el-button style="float: right: 40px;" type="success" @click="submitForm()">新增</el-button>
+                <el-button style="float: right: 40px;" type="warning" @click="cancel()">取消</el-button>
+              </el-row>
+            </div>
+          </div>
         </div>
       </div>
     </el-form>
-
-    <el-tooltip placement="top" content="回到顶部">
-      <back-to-top transition-name="fade" :visibility-height="300" :back-position="50" />
-    </el-tooltip>
   </div>
 </template>
 
 <script>
+import Dropzone from '@/components/Dropzone'
+import Sticky from '../../components/Sticky/index.vue'
+import { getMaxShopId } from '@/api/shop'
+import { AddShopGood } from '@/api/shopGood'
+
 export default {
-  name: 'GoodAdd'
+  name: 'GoodAdd',
+  components: { Dropzone, Sticky },
+  filters: {},
+  data() {
+    return {
+      textarea: '',
+      date: '',
+      postForm: {
+        name: '',
+        modify_time: '',
+        price: undefined,
+        storage: undefined,
+        specification: '',
+        status: undefined,
+        image: '',
+        introduction: ''
+      },
+      loading: false,
+      unitList: [{ label: '件', value: 0 }, { label: '条', value: 2 }, { label: '桶', value: 3 }, { label: '个', value: 4 }],
+      tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }, { id: 4, name: '电子产品' }],
+      checkAllTag: true,
+      isIndeterminateTag: true
+    }
+  },
+  computed: {},
+  created() {},
+  mounted() {
+    const yy = new Date().getFullYear()
+    const mm = new Date().getMonth() + 1
+    const dd = new Date().getDate()
+    const hh = new Date().getHours()
+    const mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
+    const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
+    this.postForm.modify_time = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
+  },
+  methods: {
+    getMaxId() {
+      getMaxShopId().then(response => {
+        this.shopId = response.data
+        console.log(this.shopId)
+        setTimeout(() => {
+        }, 1.5 * 1000)
+      })
+    },
+    dropzoneS(file) {
+      console.log(file)
+      this.$message({ message: 'Upload success', type: 'success' })
+    },
+    dropzoneR(file) {
+      console.log(file)
+      this.$message({ message: 'Delete success', type: 'success' })
+    },
+
+    submitForm() {
+      this.$refs['postForm'].validate((valid) => {
+        if (valid) {
+          AddShopGood(this.postForm).then(response => {
+            alert('添加成功')
+            this.$notify({
+              title: 'Success',
+              message: '添加成功',
+              type: 'success',
+              duration: 2000
+            })
+            setTimeout(() => {
+              this.listLoading = false
+            }, 1.5 * 1000)
+          })
+        }
+      })
+      this.$router.go(-1)
+    },
+
+    cancel() {
+      this.$router.go(-1)
+    },
+    handleCheckAllTagChange(event) {
+      const tags = []
+      for (const tag of this.tags) {
+        tags.push(tag.id)
+      }
+      this.postForm.tags = event.target.checked ? tags : []
+      this.isIndeterminateTag = false
+    },
+    handleCheckedTagsChange(value) {
+      const checkedCount = value.length
+      this.checkAllTag = checkedCount === this.tags.length
+      this.isIndeterminateTag = checkedCount > 0 && checkedCount < this.tags.length
+    }
+
+  }
 }
+
 </script>
 
-<style>
+<style rel="stylesheet/scss" lang="scss">
+  @import "../../assets/css/mixin.scss";
+  .title-prompt {
+    position: absolute;
+    right: 0px;
+    font-size: 12px;
+    top: 10px;
+    color: #ff4949;
+  }
 
+  .createPost-container {
+    position: relative;
+    .createPost-main-container {
+      margin: 20px;
+      .my-sortable-placeholder{
+        height: 148px;
+        display: inline-block;
+        width: 148px;
+        border: 1px dashed #ccc;
+        margin: 0 8px 8px 0;
+        border-radius: 6px;
+      }
+
+      h3 {
+        color: #03b8cc;
+        font-size: inherit;
+        font-weight: 400;
+        margin-bottom: 10px;
+        margin-top: 30px;
+      }
+      .postInfo-container {
+        position: relative;
+        @include clearfix;
+        margin-bottom: 10px;
+        .postInfo-container-item {
+          float: left;
+        }
+      }
+      .editor-container {
+        min-height: 500px;
+        margin: 0 0 30px;
+        .editor-upload-btn-container {
+          text-align: right;
+          margin-right: 10px;
+          .editor-upload-btn {
+            display: inline-block;
+          }
+        }
+      }
+    }
+    .word-counter {
+      width: 40px;
+      position: absolute;
+      right: -10px;
+      top: 0px;
+    }
+  }
 </style>
+

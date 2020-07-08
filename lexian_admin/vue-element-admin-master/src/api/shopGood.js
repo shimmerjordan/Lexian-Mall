@@ -25,3 +25,12 @@ export function DeleteShopGood(data) {
     data
   })
 }
+
+// 添加新的商品
+export function AddShopGood(data) {
+  return myrequest({
+    url: '/api/shop/addGood',
+    method: 'post',
+    data
+  })
+}
