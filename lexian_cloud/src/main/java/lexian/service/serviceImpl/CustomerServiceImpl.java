@@ -1,7 +1,10 @@
 package lexian.service.serviceImpl;
 
+import lexian.entity.Customer;
 import lexian.mapper.CustomerMapper;
 import lexian.service.CustomerService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -10,6 +13,7 @@ import java.util.Map;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+	@Autowired
     private CustomerMapper customerMapper;
 
     @Override
@@ -18,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String getPwdByName(String name) {
+    public Map<String, Object> getPwdByName(String name) {
         return customerMapper.getPwdByName(name);
     }
 

@@ -17,4 +17,7 @@ public interface CommodityService {
 	PageInfo<Commodity> listCommodityByCategoryId(Commodity commodity);
 
 	boolean addGood(Map<String, Object> map);
+	
+	Commodity getCommodity(String commodityId);
+	
 }

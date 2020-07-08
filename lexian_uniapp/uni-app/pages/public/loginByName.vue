@@ -121,32 +121,34 @@
 				// 	this.logining = false;
 				// 	return;
 				// }
-				
+			   let params = {
+				   "loginName": this.loginName
+			   }
+			   var _this = this;
 			   uni.request({
 				   // url:'http://localhost:8888/api/getAll',
 				   url: this.apiServer+'/customer/verifyPwdByName',
 				   method: 'POST',
 				   dataType: "json",
-				   data: {
-					   "loginName": this.loginName,
-				   },
+				   data: params,
 				   success: res => {
 					  const result = res.data
 					  console.log(result)
+					  //const result = await this.$api.json('userInfo');
+					  if(result){
+					  	_this.login(result);
+					      uni.navigateBack();
+					  }else{
+					  	_this.$api.msg("登陆失败,用户名或密码错误");
+					  	_this.logining = false;
+					  }
 				   }
 				});
 				const sendData = {
 					loginName,
 					password
 				};
-				//const result = await this.$api.json('userInfo');
-				if(result.status === 1){
-					this.login(result.data);
-                    uni.navigateBack();
-				}else{
-					this.$api.msg(result.msg);
-					this.logining = false;
-				}
+
 			}
 		},
 	}

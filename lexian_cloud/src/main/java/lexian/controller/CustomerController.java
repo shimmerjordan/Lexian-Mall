@@ -1,13 +1,20 @@
 package lexian.controller;
 
 
-import lexian.service.CustomerService;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lexian.service.CustomerService;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
+	
+	@Autowired
     private CustomerService customerService;
 
     @Autowired
@@ -16,9 +23,9 @@ public class CustomerController {
     }
 
     @RequestMapping("/verifyPwdByName")
-    public String getPwdByName(@RequestBody String loginName){
-        System.out.println(loginName);
-        return customerService.getPwdByName(loginName);
+    public Map<String, Object> getPwdByName(@RequestBody Map<String, String> params){
+    
+        return customerService.getPwdByName(params.get("loginName"));
     }
 
 
