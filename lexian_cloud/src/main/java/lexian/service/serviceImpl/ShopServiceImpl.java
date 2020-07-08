@@ -33,4 +33,10 @@ public class ShopServiceImpl implements ShopService{
         int flag = shopMapper.updateShop(map);
         return flag > 0;
     }
+
+    @Override
+    public boolean deleteShop(Map<String,Object> map) {
+        int flag = shopMapper.deleteShop(map);
+        return flag>0;
+    }
 }

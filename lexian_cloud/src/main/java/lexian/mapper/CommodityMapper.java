@@ -15,4 +15,13 @@ public interface CommodityMapper {
     int deleteGood(Map<String,Object> map);
 
     List<Commodity> selectCommodityByCommodityId(String commodityId);
+<<<<<<< .merge_file_a11348
+    List<Commodity> getIndexCommodity();
+=======
+    int deleteGood(Integer id);
+	List<Commodity> selectCommodityByCategoryId(Commodity commodity);
+
+	int addGood(Map<String, Object> map);
+
+>>>>>>> .merge_file_a26072
 }

@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.CommodityMapper">
+
 	<resultMap id="commodity_map" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -34,7 +35,8 @@
 		INNER JOIN shop ON shop.ID =
 		shop_commodity.shop_id
 		WHERE
-		commodity.is_delete=0
+		commodity.is_delete=0 AND
+		shop_commodity.isDelete=0
 	</select>
 
 	<update id="updateGood" parameterType="java.util.HashMap">
@@ -49,27 +51,82 @@
 		commodity.ID=#{id}
 	</update>
 
-	<select id="selectCommodityByCommodityId" resultType="lexian.entity.Commodity"
-		parameterType="java.lang.String">
-		SELECT g.ID,
+	<select id="selectCommodityByCategoryId" resultType="lexian.entity.Commodity"
+		parameterType="lexian.entity.Commodity">
+		SELECT
+		g.ID,
 		g.modify_time,
 		g.introduction,
-		g.name,
+		g.NAME,
 		g.image,
 		g.price,
-		g.storage,
+		g.STORAGE,
 		g.specification,
-		g.status,
-		g.sales,
-		g.is_delete FROM
-		commodity g join category_commodity gc on g.ID =
-		gc.commodity_id WHERE
-		gc.commodity_id = #{commodityId}
+		g.STATUS,
+		g.is_delete,
+		oi.sales
+		FROM
+		commodity g
+		JOIN category_commodity gc ON g.ID = gc.commodity_id
+		LEFT JOIN ( SELECT
+		sum( commodity_quantity ) AS sales, commodity_id FROM
+		order_item GROUP
+		BY commodity_id ) oi ON g.id = oi.commodity_id
+		where gc.category_id =
+		#{categoryId}
+		<if test="sortType != null and sortType !=''">
+			<if test="sortType == 1">
+				order by oi.sales desc
+			</if>
+			<if test="sortType == 2">
+				order by g.price
+			</if>
+			<if test="sortType == 3">
+				order by g.price desc
+			</if>
+
+		</if>
 	</select>
 
+<<<<<<< .merge_file_a09952
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
         WHERE shop_commodity.commodity_id=#{id}
     </update>
+
+	<select id="getIndexCommodity" resultType="Commodity">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		WHERE
+		commodity.is_delete=0 AND
+		commodity.status=0
+	</select>
+=======
+
+	<update id="deleteGood">
+		UPDATE shop_commodity
+		SET shop_commodity.isDelete=1
+		WHERE shop_commodity.commodity_id=#{id}
+	</update>
+
+
+	<insert id="addGood" parameterType="java.util.HashMap">
+		INSERT INTO
+		commodity(name,modify_time,price,storage,specification,status,image,introduction,is_delete)
+		VALUES
+		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
+	</insert>
+>>>>>>> .merge_file_a23768
 </mapper>

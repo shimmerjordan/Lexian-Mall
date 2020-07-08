@@ -281,6 +281,8 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
      	 uniSearch
       },
 		onLoad() {
+			this.initIndex();
+			
 			this.loadData();
 		},
 		methods: {
@@ -294,6 +296,15 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					url
 				})  
 			}, 
+			initIndex(){
+				uni.request({
+					url:'http://localhost:8080/uniIndex/init' ,
+					method: 'GET',
+					success: (res) => {
+					console.log(res.data);
+					}
+				})
+			},
 			async loadData() {
 				let carouselList = await this.$api.json('carouselList');
 				this.titleNViewBackground = carouselList[0].background;

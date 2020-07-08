@@ -21,3 +21,11 @@ export function updateShop(data) {
     data
   })
 }
+
+export function deleteShop(data) {
+  return myrequest({
+    url: '/deleteShop',
+    method: 'post',
+    data
+  })
+}

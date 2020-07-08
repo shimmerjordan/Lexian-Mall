@@ -2,15 +2,7 @@
   <div class="app-container">
     <div class="filter-container">
       <el-checkbox-group v-model="checkboxVal">
-        <el-checkbox label="admin">
-          管理员
-        </el-checkbox>
-        <el-checkbox label="editor">
-          编辑者
-        </el-checkbox>
-        <el-checkbox label="visitor">
-          访问者
-        </el-checkbox>
+        <el-checkbox v-for="role in formTheadOptions" :key="role" :label="role">{{ role }}</el-checkbox>
       </el-checkbox-group>
     </div>
 
@@ -29,26 +21,26 @@
 </template>
 
 <script>
-const defaultFormThead = ['admin', 'editor']
+const defaultFormThead = ['管理者', '编辑者']
 export default {
   data() {
     return {
       tableData: [
         {
           name: '人员姓名',
-          admin: '小红',
-          editor: '小蓝',
-          visitor: '小绿'
+          '管理者': '小红',
+          '编辑者': '小蓝',
+          '访问者': '小绿'
         },
         {
           name: '',
-          admin: '小白',
-          editor: '小青',
-          visitor: '小紫'
+          '管理者': '小白',
+          '编辑者': '小青',
+          '访问者': '小紫'
         }
       ],
       key: 1, // table key
-      formTheadOptions: ['admin', 'editor', 'visitor'],
+      formTheadOptions: ['管理者', '编辑者', '访问者'],
       checkboxVal: defaultFormThead, // checkboxVal
       formThead: defaultFormThead // 默认表头 Default header
     }

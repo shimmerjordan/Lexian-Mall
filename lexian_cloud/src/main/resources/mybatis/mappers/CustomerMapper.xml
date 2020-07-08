@@ -40,7 +40,8 @@
         login_name = #{loginName}
     </select>
 
-  <update id="updateByPrimaryKey" parameterType="Customer" >
+
+  <update id="updateByPrimaryKey" parameterType="lexian.entity.Customer" >
     update customer
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
