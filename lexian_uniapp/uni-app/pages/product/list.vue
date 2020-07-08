@@ -63,6 +63,7 @@
 		data() {
 			return {
 				cateMaskState: 0, //分类面板展开状态
+				commodityId:-1,
 				headerPosition:"fixed",
 				headerTop:"0px",
 				loadingType: 'more', //加载更多状态
@@ -79,6 +80,7 @@
 			this.headerTop = document.getElementsByTagName('uni-page-head')[0].offsetHeight+'px';
 			// #endif
 			this.cateId = options.tid;
+			this.commodityId = options.sid;
 			this.loadCateList(options.fid,options.sid);
 			this.loadData();
 		},
@@ -101,14 +103,23 @@
 		methods: {
 			//加载分类
 			async loadCateList(fid, sid){
-				let list = await this.$api.json('cateList');
-				let cateList = list.filter(item=>item.pid == fid);
+				let _this = this;
+				uni.request({
+				    url: this.apiServer + "/api/category/list",
+				    dataType: "JSON",
+				    success: function(res) {
+				      let list = res.data;
+					  let cateList = list.filter(item=>item.level == fid); 
+					  cateList.forEach(item=>{
+					  	let tempList = list.filter(val=>val.level == item.id);
+					  	item.child = tempList;
+					  })
+					  _this.cateList = cateList;
+				    }
+				});
 				
-				cateList.forEach(item=>{
-					let tempList = list.filter(val=>val.pid == item.id);
-					item.child = tempList;
-				})
-				this.cateList = cateList;
+				//let list = await this.$api.json('cateList');
+				
 			},
 			//加载商品 ，带下拉刷新和上滑加载
 			async loadData(type='add', loading) {
@@ -121,35 +132,43 @@
 				}else{
 					this.loadingType = 'more'
 				}
+				//let goodsList = await this.$api.json('goodsList');
+				let commodityId = this.commodityId;
+				let _this = this;
+				uni.request({
+				    url: this.apiServer + "/api/category/listByCommodityId?commodityId=" + commodityId,
+				    dataType: "JSON",
+				    success: function(res) {
+				     let goodsList = res.data;
+					  if(type === 'refresh'){
+					  	_this.goodsList = [];
+					  }
+					  //筛选，测试数据直接前端筛选了
+					  if(_this.filterIndex === 1){
+					  	goodsList.sort((a,b)=>b.sales - a.sales)
+					  }
+					  if(_this.filterIndex === 2){
+					  	goodsList.sort((a,b)=>{
+					  		if(_this.priceOrder == 1){
+					  			return a.price - b.price;
+					  		}
+					  		return b.price - a.price;
+					  	})
+					  }
+					  _this.goodsList = _this.goodsList.concat(goodsList);
+					  
+					  //判断是否还有下一页，有是more  没有是nomore(测试数据判断大于20就没有了)
+					  _this.loadingType  = _this.goodsList.length > 20 ? 'nomore' : 'more';
+					  if(type === 'refresh'){
+					  	if(loading == 1){
+					  		uni.hideLoading()
+					  	}else{
+					  		uni.stopPullDownRefresh();
+					  	}
+					  }
+				    }
+				});
 				
-				let goodsList = await this.$api.json('goodsList');
-				if(type === 'refresh'){
-					this.goodsList = [];
-				}
-				//筛选，测试数据直接前端筛选了
-				if(this.filterIndex === 1){
-					goodsList.sort((a,b)=>b.sales - a.sales)
-				}
-				if(this.filterIndex === 2){
-					goodsList.sort((a,b)=>{
-						if(this.priceOrder == 1){
-							return a.price - b.price;
-						}
-						return b.price - a.price;
-					})
-				}
-				
-				this.goodsList = this.goodsList.concat(goodsList);
-				
-				//判断是否还有下一页，有是more  没有是nomore(测试数据判断大于20就没有了)
-				this.loadingType  = this.goodsList.length > 20 ? 'nomore' : 'more';
-				if(type === 'refresh'){
-					if(loading == 1){
-						uni.hideLoading()
-					}else{
-						uni.stopPullDownRefresh();
-					}
-				}
 			},
 			//筛选点击
 			tabClick(index){
