@@ -275,3 +275,582 @@
 [DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e8dca8e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@788422652 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e8dca8e]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c52d495] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1798367322 wrapping com.mysql.cj.jdbc.ConnectionImpl@583fddde] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c52d495]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c5b2345] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1946181922 wrapping com.mysql.cj.jdbc.ConnectionImpl@78ba578] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c5b2345]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@608b0e18] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1003479598 wrapping com.mysql.cj.jdbc.ConnectionImpl@78ba578] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@608b0e18]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7ec0d844] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a7c8080] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@228002720 wrapping com.mysql.cj.jdbc.ConnectionImpl@6242aa82] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a7c8080]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56dc0e21] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@143946169 wrapping com.mysql.cj.jdbc.ConnectionImpl@6242aa82] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56dc0e21]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eae1dbd] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69c096fb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6eae1dbd]
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@858193668 wrapping com.mysql.cj.jdbc.ConnectionImpl@461590c7] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69c096fb]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2cf8904c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@673354760 wrapping com.mysql.cj.jdbc.ConnectionImpl@461590c7] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2cf8904c]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e8dca8e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@788422652 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e8dca8e]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d280690] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1861585274 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d280690]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e1634b2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1892799744 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e1634b2]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@31ecdf3b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2115030544 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@31ecdf3b]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@483c14a1] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1190912982 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@483c14a1]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c6e9ed] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@804748456 wrapping com.mysql.cj.jdbc.ConnectionImpl@7900fe0] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c6e9ed]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71860a14] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71860a14]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c52d495] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1798367322 wrapping com.mysql.cj.jdbc.ConnectionImpl@583fddde] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c52d495]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bbc5612] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1947071643 wrapping com.mysql.cj.jdbc.ConnectionImpl@583fddde] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bbc5612]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71860a14] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2135030356 wrapping com.mysql.cj.jdbc.ConnectionImpl@583fddde] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71860a14]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3e7cf06f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2146147102 wrapping com.mysql.cj.jdbc.ConnectionImpl@583fddde] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==>  Preparing: SELECT pwd FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getPwdByName]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3e7cf06f]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44a43090] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1228327461 wrapping com.mysql.cj.jdbc.ConnectionImpl@2311e995] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44a43090]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f735c04] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1210221422 wrapping com.mysql.cj.jdbc.ConnectionImpl@2311e995] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f735c04]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ab9a72c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b588cae] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@69444407 wrapping com.mysql.cj.jdbc.ConnectionImpl@4675d72e] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b588cae]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16a86632] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@822260088 wrapping com.mysql.cj.jdbc.ConnectionImpl@4675d72e] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16a86632]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25aa3be9] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40a919bb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1064418234 wrapping com.mysql.cj.jdbc.ConnectionImpl@527b0afb] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40a919bb]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3c7eea17] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@456394787 wrapping com.mysql.cj.jdbc.ConnectionImpl@527b0afb] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3c7eea17]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d976c7b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@55608249 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d976c7b]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c4ddf5f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@574781133 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c4ddf5f]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@152ad27c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@468528809 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@152ad27c]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5ad02492] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@422229126 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5ad02492]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1665615964 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@227a4267] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1246646767 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@227a4267]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25aa3be9] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@728617260 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25aa3be9]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a50db17] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@517066951 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a50db17]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9dc417d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@119258678 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9dc417d]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4626b40d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@756732445 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4626b40d]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@449016225 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bfe7b9a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1805650865 wrapping com.mysql.cj.jdbc.ConnectionImpl@76f070b] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bfe7b9a]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15268219] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5182b4d7] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5182b4d7]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c938ec0] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@899566302 wrapping com.mysql.cj.jdbc.ConnectionImpl@7fbfff60] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c938ec0]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4db8e8ce] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@7009449 wrapping com.mysql.cj.jdbc.ConnectionImpl@7fbfff60] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4db8e8ce]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40a919bb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40a919bb]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@188435b5] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1595477503 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@188435b5]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44ece6f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1300285569 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44ece6f]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1665615964 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392e552] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@843884668 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392e552]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25aa3be9] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@728617260 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25aa3be9]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a50db17] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@517066951 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a50db17]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9dc417d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@119258678 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9dc417d]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4626b40d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@756732445 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4626b40d]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@449016225 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bfe7b9a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1805650865 wrapping com.mysql.cj.jdbc.ConnectionImpl@5ab60e13] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bfe7b9a]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@570d7f8e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@570d7f8e]
+[DEBUG][20-07-08][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b588cae] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1239430372 wrapping com.mysql.cj.jdbc.ConnectionImpl@14d9f2c1] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b588cae]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@581f9629] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1128390556 wrapping com.mysql.cj.jdbc.ConnectionImpl@14d9f2c1] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@581f9629]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a7f38ab] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1689832340 wrapping com.mysql.cj.jdbc.ConnectionImpl@14d9f2c1] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a7f38ab]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@146a86fe] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1319704099 wrapping com.mysql.cj.jdbc.ConnectionImpl@14d9f2c1] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@146a86fe]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9dc417d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@119258678 wrapping com.mysql.cj.jdbc.ConnectionImpl@3242a0d] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9dc417d]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d1ad21d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2007643014 wrapping com.mysql.cj.jdbc.ConnectionImpl@3242a0d] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d1ad21d]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7775fd09] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2041712023 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7775fd09]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60ca3801] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@159211322 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@60ca3801]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@570d7f8e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1506446111 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@570d7f8e]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@18f78124] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@607808699 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@18f78124]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ebf84c9] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@366617747 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ebf84c9]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f4c89f8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@761777940 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f4c89f8]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@132e4b2e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1395876547 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@132e4b2e]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41e407e3] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@552752074 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41e407e3]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1665615964 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d80bb9c]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@24d6fd67] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@7573605 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: juqiaodan(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@24d6fd67]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b68d18e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1316487220 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b68d18e]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@38d85fd1] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@92343781 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@38d85fd1]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@449016225 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14048d51]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bfe7b9a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1805650865 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bfe7b9a]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7094ae87] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2119392997 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7094ae87]
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f6e54de] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-08][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1784362274 wrapping com.mysql.cj.jdbc.ConnectionImpl@7d8d9679] will not be managed by Spring
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-08][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-08][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f6e54de]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c465966] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1652664990 wrapping com.mysql.cj.jdbc.ConnectionImpl@66be3216] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c465966]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d6f50dd] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@307609780 wrapping com.mysql.cj.jdbc.ConnectionImpl@66be3216] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.getUserInfo]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.getUserInfo]==> Parameters: xinyi(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.getUserInfo]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d6f50dd]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a0939fe] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1978040421 wrapping com.mysql.cj.jdbc.ConnectionImpl@66be3216] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-09][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-09][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a0939fe]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56f872d8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@935505147 wrapping com.mysql.cj.jdbc.ConnectionImpl@66be3216] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-09][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-09][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56f872d8]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cdd0e37] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1938558166 wrapping com.mysql.cj.jdbc.ConnectionImpl@66be3216] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CommodityMapper.selectCommodityByCommodityId]==>  Preparing: SELECT g.ID, g.modify_time, g.introduction, g.name, g.image, g.price, g.storage, g.specification, g.status, g.sales, g.is_delete FROM commodity g join category_commodity gc on g.ID = gc.commodity_id WHERE gc.commodity_id = ? 
+[DEBUG][20-07-09][lexian.mapper.CommodityMapper.selectCommodityByCommodityId]==> Parameters: 5(String)
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cdd0e37]

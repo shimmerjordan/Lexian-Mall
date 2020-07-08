@@ -58,10 +58,10 @@ Vue.prototype.apiServer = 'http://localhost:8088'
 
 //Vue.prototype.apiServer = 'http://127.0.0.1:8088/ocp';
 
-
 App.mpType = 'app'
 
 const app = new Vue({
+	store,
     ...App
 })
 app.$mount()

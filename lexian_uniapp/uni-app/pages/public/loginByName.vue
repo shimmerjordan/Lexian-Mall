@@ -55,6 +55,7 @@
 <script>
 
 	import {  
+		mapState,
         mapMutations  
     } from 'vuex';
 	
@@ -71,6 +72,9 @@
 		},
 		onLoad(){
 			console.log('login页面onLoad');
+		},
+		computed: {
+			...mapState(['hasLogin','uerInfo'])
 		},
 		methods: {
 			...mapMutations(['login']),
@@ -121,32 +125,35 @@
 				// 	this.logining = false;
 				// 	return;
 				// }
-				
-			   uni.request({
+				uni.request({
 				   // url:'http://localhost:8888/api/getAll',
-				   url: this.apiServer+'/customer/verifyPwdByName',
+				   url: this.apiServer+'/customer/register',
 				   method: 'POST',
 				   dataType: "json",
-				   data: {
+				   data: { 
 					   "loginName": this.loginName,
 				   },
-				   success: res => {
-					  const result = res.data
-					  console.log(result)
-				   }
+				   success: (res) => {
+						const result = res.data
+						console.log(result[0])
+						//const result = await this.$api.json('userInfo');
+						if(result[0].pwd == this.password){
+							this.login(result[0]);
+							uni.reLaunch({
+								url: "/pages/user/user",
+								success: res => {}
+							});
+						}else{
+							this.$api.msg("用户名或密码错误");
+							this.logining = false;
+						}
+				    }
 				});
 				const sendData = {
 					loginName,
 					password
 				};
-				//const result = await this.$api.json('userInfo');
-				if(result.status === 1){
-					this.login(result.data);
-                    uni.navigateBack();
-				}else{
-					this.$api.msg(result.msg);
-					this.logining = false;
-				}
+				
 			}
 		},
 	}

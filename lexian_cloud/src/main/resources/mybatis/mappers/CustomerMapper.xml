@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.etc.dao.CustomerMapper" >
-  <resultMap id="BaseResultMap" type="com.etc.pojo.Customer" >
+<mapper namespace="lexian.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="Customer" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -12,6 +12,7 @@
     <result column="user_image" property="userImage" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
 
@@ -21,7 +22,7 @@
     values (#{name}, #{phone}, #{login_name})
   </insert>
 
-  <select id="getPwdByName" resultType="java.lang.String">
+  <select id="getPwdByName" parameterType="java.util.HashMap" resultType="java.lang.String">
         SELECT
         pwd
         FROM
@@ -30,8 +31,16 @@
         login_name = #{loginName}
     </select>
 
+  <select id="getUserInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        login_name = #{loginName}
+    </select>
 
-  <update id="updateByPrimaryKey" parameterType="com.etc.pojo.Customer" >
+  <update id="updateByPrimaryKey" parameterType="Customer" >
     update customer
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

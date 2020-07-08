@@ -15,6 +15,4 @@ public interface CommodityMapper {
     int deleteGood(Map<String,Object> map);
 
     List<Commodity> selectCommodityByCommodityId(String commodityId);
-    
-    int deleteGood(Integer id);
 }
