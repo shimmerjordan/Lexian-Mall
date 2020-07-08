@@ -366,7 +366,7 @@ export default {
     },
 
     handleDelete(row, index) {
-      DeleteShopGood(row.id).then(response => {
+      DeleteShopGood(row).then(response => {
         alert('删除成功')
         this.$notify({
           title: 'Success',

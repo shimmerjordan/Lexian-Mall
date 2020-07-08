@@ -35,9 +35,10 @@ public class ShopCommodityController {
     }
 
     @PostMapping("/api/shop/deleteGood")
-    public boolean deleteGood(@RequestBody Integer id) {
+    public boolean deleteGood(@RequestBody Map<String, Object> map) {
         System.out.println("asdasdsadsadddddddddddddddddddddddd");
-        return commodityService.deleteGood(id);
+        System.out.println(map);
+        return commodityService.deleteGood(map);
     }
 
 }
