@@ -22,3 +22,11 @@ export function createOrder(data) {
     data
   })
 }
+
+export function updateOrder(data) {
+  return myrequest({
+    url: '/order/updateOrder',
+    method: 'post',
+    data
+  })
+}
