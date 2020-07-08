@@ -124,15 +124,15 @@
 				
 			   uni.request({
 				   // url:'http://localhost:8888/api/getAll',
-				   url: this.apiServer+'/verifyPwdByName',
+				   url: this.apiServer+'/customer/verifyPwdByName',
 				   method: 'POST',
-				   header: { 'content-type': 'application/json'},
+				   dataType: "json",
 				   data: {
 					   "loginName": this.loginName,
-					   "pwd": this.password
 				   },
 				   success: res => {
 					  const result = res.data
+					  console.log(result)
 				   }
 				});
 				const sendData = {
