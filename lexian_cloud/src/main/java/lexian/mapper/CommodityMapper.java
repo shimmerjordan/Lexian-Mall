@@ -1,5 +1,6 @@
 package lexian.mapper;
 
+import lexian.entity.Category;
 import lexian.entity.Commodity;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Repository;
@@ -20,5 +21,9 @@ public interface CommodityMapper {
 	List<Commodity> selectCommodityByCategoryId(Commodity commodity);
 
 	int addGood(Map<String, Object> map);
+	
+	Commodity selectCommodityById(String commodityId);
+
+	List<Category> getAllCategory();
 
 }

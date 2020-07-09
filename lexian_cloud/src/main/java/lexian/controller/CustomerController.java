@@ -1,17 +1,19 @@
 package lexian.controller;
 
-
 import lexian.entity.Customer;
 import lexian.service.CustomerService;
+import java.util.Map;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
+	
+	@Autowired
     private CustomerService customerService;
 
     @Autowired
@@ -33,7 +35,7 @@ public class CustomerController {
     }
 
     @PostMapping("/checkPhoneExistance")
-    public int checkPhoneExistance(@RequestBody Map<String,Object> map){
+    public int checkPhoneExistance(@RequestBody Map<String,Object> map) {
         return customerService.checkPhoneExistance(map);
     }
 

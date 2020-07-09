@@ -28,7 +28,7 @@
 				isMove:false,
 				countdown: '',
 				timestatus: true,
-				phoneExistance: false
+				phoneExistance: true
 			};
 		},
 		mounted() {

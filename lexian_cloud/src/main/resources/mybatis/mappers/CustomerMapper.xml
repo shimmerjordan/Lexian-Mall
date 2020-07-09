@@ -29,7 +29,8 @@
         customer
         WHERE
         login_name = #{loginName}
-    </select>
+   </select>
+
 
   <select id="loginByName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         SELECT
@@ -72,18 +73,21 @@
     where phone = #{mobile}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="lexian.entity.Customer" >
-    update customer
-    set name = #{name,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      sex = #{sex,jdbcType=INTEGER},
-      pwd = #{pwd,jdbcType=VARCHAR},
-      nick_name = #{nickName,jdbcType=VARCHAR},
-      user_image = #{userImage,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=INTEGER}
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
+	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
+		update customer
+		set name = #{name,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		age = #{age,jdbcType=INTEGER},
+		sex = #{sex,jdbcType=INTEGER},
+		pwd =
+		#{pwd,jdbcType=VARCHAR},
+		nick_name = #{nickName,jdbcType=VARCHAR},
+		user_image = #{userImage,jdbcType=VARCHAR},
+		birthday =
+		#{birthday,jdbcType=DATE},
+		login_name = #{loginName,jdbcType=VARCHAR},
+		is_delete = #{isDelete,jdbcType=INTEGER}
+		where ID =
+		#{id,jdbcType=INTEGER}
+	</update>
 </mapper>

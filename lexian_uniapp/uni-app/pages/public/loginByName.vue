@@ -118,14 +118,7 @@
 				let loginPhone = this.loginPhone;
 				let loginPassword = this.loginPassword;
 				const {loginName, password} = this;
-				/* 数据验证模块*/
-				// if(!this.$api.match({
-				// 	loginName,
-				// 	password
-				// })){
-				// 	this.logining = false;
-				// 	return;
-				// }
+				
 				uni.request({
 				   // url:'http://localhost:8888/api/getAll',
 				   url: this.apiServer+'/customer/loginByName',
@@ -137,7 +130,6 @@
 				   success: (res) => {
 						this.result = res.data
 						console.log(this.result)
-						// console.log(this.result[0])
 						
 				    }
 				});
@@ -153,6 +145,7 @@
 						 });
 					 }
 				}
+
 			}
 		},
 	}

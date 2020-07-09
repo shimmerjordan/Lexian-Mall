@@ -3,6 +3,7 @@ package lexian.service.serviceImpl;
 import lexian.entity.Customer;
 import lexian.mapper.CustomerMapper;
 import lexian.service.CustomerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+	@Autowired
     private CustomerMapper customerMapper;
 
     @Autowired
