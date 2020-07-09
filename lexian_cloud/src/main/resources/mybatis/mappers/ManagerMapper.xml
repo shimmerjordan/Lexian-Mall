@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lexian.mapper.ManagerMapper">
+    <resultMap id="ManagerMap" type="Manager">
+        <id property="ID" column="system_manager.ID"/>
+        <result property="role" column="system_manager.role"/>
+        <result property="name" column="system_manager.`name`"/>
+        <result property="age" column="system_manager.age"/>
+        <result property="sex" column="system_manager.sex"/>
+        <result property="nickname" column="system_manager.nick_name"/>
+        <result property="birthday" column="system_manager.birthday"/>
+        <result property="phone" column="system_manager.phone"/>
+    </resultMap>
+    <select id="getAllManagers" parameterType="java.lang.Integer">
+        SELECT
+        system_manager.ID,
+        system_manager.`name`,
+        system_manager.phone,
+        system_manager.age,
+        system_manager.sex,
+        system_manager.nick_name,
+        system_manager.birthday,
+        system_manager.role
+        FROM
+        system_manager
+        WHERE
+        role = #{ i }
+    </select>
+</mapper>
