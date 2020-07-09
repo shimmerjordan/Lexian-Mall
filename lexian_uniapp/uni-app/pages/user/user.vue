@@ -7,15 +7,15 @@
 					<image class="portrait" :src="userInfo.portrait || '/static/missing-face.png'"></image>
 				</view>
 				<view class="info-box">
-					<text class="username">{{userInfo.nickname || '游客'}}</text>
+					<text class="username">{{userInfo.nick_name || '游客'}}</text>
 				</view>
 			</view>
 			<view class="vip-card-box">
 				<image class="card-bg" src="/static/vip-card-bg.png" mode=""></image>
 				<view class="b-btn" @click="navTo('/pages/money/vip')">
-					<navigater   open-type="navigate">
+					<navigator   open-type="navigate">
 					立即开通
-					</navigater>
+					</navigator>
 				</view>
 				<view class="tit">
 					<text class="yticon icon-iLinkapp-" @eventClick="navTo('/pages/money/vip')">金牌会员</text>

@@ -12,13 +12,14 @@
     <result column="user_image" property="userImage" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
 
   <!-- 注册使用，添加手机、登录名和密码，其他自增或默认 -->
   <insert id="addNewCustomer" parameterType="java.util.HashMap" >
-    insert into customer (name, phone, login_name)
-    values (#{name}, #{phone}, #{login_name})
+    insert into customer (phone, pwd, login_name, nick_name)
+    values (#{mobile}, #{password}, #{loginName}, #{nickName})
   </insert>
 
   <select id="getPwdByName" parameterType="java.util.HashMap" resultType="java.lang.String">
@@ -27,23 +28,71 @@
         FROM
         customer
         WHERE
-        login_name = #{arg0}
+        login_name = #{loginName}
+   </select>
+
+
+  <select id="loginByName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        login_name = #{loginName}
     </select>
 
+    <select id="loginByPhone" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        phone = #{mobile}
+    </select>
 
+    <select id="checkPhoneExistance" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select IFNULL(
+        (select id
+        from customer
+        where phone = #{mobile}
+        ), 0)
+    </select>
+
+    <select id="checkNameExistance" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select IFNULL(
+        (select id
+        from customer
+        where login_name = #{loginName}
+        ), 0)
+    </select>
+
+<<<<<<< .merge_file_a03428
   <update id="updateByPrimaryKey" parameterType="Customer" >
 
+=======
+    <update id="updateCustomerPwd" parameterType="java.util.HashMap" >
+>>>>>>> .merge_file_a17820
     update customer
-    set name = #{name,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      sex = #{sex,jdbcType=INTEGER},
-      pwd = #{pwd,jdbcType=VARCHAR},
-      nick_name = #{nickName,jdbcType=VARCHAR},
-      user_image = #{userImage,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=INTEGER}
-    where ID = #{id,jdbcType=INTEGER}
+    set
+      pwd = #{password}
+    where phone = #{mobile}
   </update>
+
+	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
+		update customer
+		set name = #{name,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		age = #{age,jdbcType=INTEGER},
+		sex = #{sex,jdbcType=INTEGER},
+		pwd =
+		#{pwd,jdbcType=VARCHAR},
+		nick_name = #{nickName,jdbcType=VARCHAR},
+		user_image = #{userImage,jdbcType=VARCHAR},
+		birthday =
+		#{birthday,jdbcType=DATE},
+		login_name = #{loginName,jdbcType=VARCHAR},
+		is_delete = #{isDelete,jdbcType=INTEGER}
+		where ID =
+		#{id,jdbcType=INTEGER}
+	</update>
 </mapper>

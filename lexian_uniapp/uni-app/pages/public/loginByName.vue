@@ -55,6 +55,7 @@
 <script>
 
 	import {  
+		mapState,
         mapMutations  
     } from 'vuex';
 	
@@ -66,11 +67,15 @@
 				password: '',
 				loginPassword: '',
 				resultData:{},
+				result: '',
 				logining: false
 			}
 		},
 		onLoad(){
 			console.log('login页面onLoad');
+		},
+		computed: {
+			...mapState(['hasLogin','uerInfo'])
 		},
 		methods: {
 			...mapMutations(['login']),
@@ -113,40 +118,34 @@
 				let loginPhone = this.loginPhone;
 				let loginPassword = this.loginPassword;
 				const {loginName, password} = this;
-				/* 数据验证模块*/
-				// if(!this.$api.match({
-				// 	loginName,
-				// 	password
-				// })){
-				// 	this.logining = false;
-				// 	return;
-				// }
 				
-			   uni.request({
+				uni.request({
 				   // url:'http://localhost:8888/api/getAll',
-				   url: this.apiServer+'/customer/verifyPwdByName',
+				   url: this.apiServer+'/customer/loginByName',
 				   method: 'POST',
 				   dataType: "json",
-				   data: {
+				   data: { 
 					   "loginName": this.loginName,
 				   },
-				   success: res => {
-					  const result = res.data
-					  console.log(result)
-				   }
+				   success: (res) => {
+						this.result = res.data
+						console.log(this.result)
+						
+				    }
 				});
-				const sendData = {
-					loginName,
-					password
-				};
-				//const result = await this.$api.json('userInfo');
-				if(result.status === 1){
-					this.login(result.data);
-                    uni.navigateBack();
-				}else{
-					this.$api.msg(result.msg);
+				if(this.result.length == 0){
+					this.$api.msg("用户名或密码错误");
 					this.logining = false;
+				}else{
+					 if(this.result[0].pwd == this.password){
+						 this.login(this.result[0]);
+						 uni.reLaunch({
+						 	url: "/pages/user/user",
+						 	success: res => {}
+						 });
+					 }
 				}
+
 			}
 		},
 	}

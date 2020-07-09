@@ -1,5 +1,6 @@
 package lexian.service.serviceImpl;
 
+import lexian.entity.Category;
 import lexian.entity.Commodity;
 import lexian.mapper.CommodityMapper;
 import lexian.service.CommodityService;
@@ -57,15 +58,31 @@ public class CommodityServiceImpl implements CommodityService {
 		return false;
 	}
 
+<<<<<<< .merge_file_a16064
 
 
 
 
 
+=======
+>>>>>>> .merge_file_a20184
 	@Override
 	public boolean addGood(Map<String, Object> map) {
 		int flag = commodityMapper.addGood(map);
 		return flag > 0;
 	}
 
+<<<<<<< .merge_file_a16064
+=======
+	@Override
+	public Commodity getCommodity(String commodityId) {
+		Commodity commodity = commodityMapper.selectCommodityById(commodityId);		
+		return commodity;
+	}
+
+	@Override
+	public List<Category> getAllCategory() {
+		return commodityMapper.getAllCategory();
+	}
+>>>>>>> .merge_file_a20184
 }

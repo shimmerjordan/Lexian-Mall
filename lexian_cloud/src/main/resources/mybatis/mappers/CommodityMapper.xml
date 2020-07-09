@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.CommodityMapper">
-
 	<resultMap id="commodity_map" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -88,7 +87,10 @@
 		</if>
 	</select>
 
+<<<<<<< .merge_file_a19280
 
+=======
+>>>>>>> .merge_file_a13124
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
@@ -113,7 +115,10 @@
 		commodity.is_delete=0 AND
 		commodity.ID=0
 	</select>
+<<<<<<< .merge_file_a19280
 
+=======
+>>>>>>> .merge_file_a13124
 
 
 	<insert id="addGood" parameterType="java.util.HashMap">
@@ -123,4 +128,47 @@
 		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
 	</insert>
 
+<<<<<<< .merge_file_a19280
+=======
+
+	<select id="selectCommodityById" parameterType="java.lang.String"
+		resultType="lexian.entity.Commodity">
+		SELECT
+		g.ID,
+		g.modify_time,
+		g.introduction,
+		g.NAME,
+		g.image,
+		g.price,
+		g.STORAGE,
+		g.specification,
+		g.STATUS,
+		g.is_delete,
+		oi.sales,
+		bi.browseCount
+		FROM
+		`commodity` g
+		LEFT JOIN ( SELECT sum( commodity_quantity ) AS sales, commodity_id FROM
+		order_item GROUP BY commodity_id ) oi ON g.id = oi.commodity_id
+		LEFT JOIN (SELECT commodity_id,COUNT(*) as browseCount FROM
+		`browsing_record` GROUP BY commodity_id ) bi on g.id = bi.commodity_id
+		WHERE
+		g.id = #{commodityId}
+	</select>
+
+	<resultMap id="Category_map" type="Category">
+		<id property="ID" column="Category.ID" />
+		<result property="name" column="Category.`name`" />
+		<result property="description" column="Category.`description`" />
+		<result property="level" column="Category.`level`" />
+		<result property="is_delete" column="Category.`is_delete`" />
+	</resultMap>
+	<select id="getAllCategory" resultType="Category">
+		SELECT *
+		FROM
+		category
+		WHERE
+		is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1)
+	</select>
+>>>>>>> .merge_file_a13124
 </mapper>
