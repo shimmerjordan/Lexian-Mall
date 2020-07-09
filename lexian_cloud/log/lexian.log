@@ -1651,3 +1651,95 @@
 [DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@324644b]
 [DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e62a773] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@549636273 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==>  Preparing: select IFNULL( (select id from customer where phone = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==> Parameters: 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e62a773]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d668758] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@60909700 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==>  Preparing: select IFNULL( (select id from customer where phone = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==> Parameters: 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d668758]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b063396] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1438766726 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==>  Preparing: select IFNULL( (select id from customer where login_name = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==> Parameters: adandan(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b063396]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ba3cd2b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@895759407 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==>  Preparing: select IFNULL( (select id from customer where phone = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==> Parameters: 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ba3cd2b]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@67f7384f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1764805313 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==>  Preparing: select IFNULL( (select id from customer where login_name = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==> Parameters: adandan(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@67f7384f]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37f21d31] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@959837631 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==>  Preparing: select IFNULL( (select id from customer where phone = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==> Parameters: 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37f21d31]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7dc85c77] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1930407358 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==>  Preparing: select IFNULL( (select id from customer where login_name = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==> Parameters: adandan(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7dc85c77]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ed6d444] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@269564398 wrapping com.mysql.cj.jdbc.ConnectionImpl@b10a6aa] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.updateCustomerPwd]==>  Preparing: update customer set pwd = ?, where phone = ? 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.updateCustomerPwd]==> Parameters: taiyangjiejie(String), 18540171008(String)
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ed6d444]
+[DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3327ff21] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@619829293 wrapping com.mysql.cj.jdbc.ConnectionImpl@2823f565] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==>  Preparing: select IFNULL( (select id from customer where phone = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==> Parameters: 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3327ff21]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@222fc15b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@753412974 wrapping com.mysql.cj.jdbc.ConnectionImpl@2823f565] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==>  Preparing: select IFNULL( (select id from customer where login_name = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==> Parameters: adandan(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@222fc15b]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@137a458a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@498968981 wrapping com.mysql.cj.jdbc.ConnectionImpl@2823f565] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==>  Preparing: select IFNULL( (select id from customer where phone = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]==> Parameters: 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkPhoneExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@137a458a]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ffdd0a9] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1094334246 wrapping com.mysql.cj.jdbc.ConnectionImpl@2823f565] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==>  Preparing: select IFNULL( (select id from customer where login_name = ? ), 0) 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]==> Parameters: adandan(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.checkNameExistance]<==      Total: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ffdd0a9]
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2335d087] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@770849425 wrapping com.mysql.cj.jdbc.ConnectionImpl@2823f565] will not be managed by Spring
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.updateCustomerPwd]==>  Preparing: update customer set pwd = ? where phone = ? 
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.updateCustomerPwd]==> Parameters: taiyangjiejie(String), 18540171008(String)
+[DEBUG][20-07-09][lexian.mapper.CustomerMapper.updateCustomerPwd]<==    Updates: 1
+[DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2335d087]
