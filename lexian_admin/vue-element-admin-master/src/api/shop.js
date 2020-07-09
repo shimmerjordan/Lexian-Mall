@@ -10,7 +10,7 @@ export function getAllShop() {
 
 export function getMaxShopId() {
   return myrequest({
-    url: '/getMaxShopID',
+    url: '/getMaxShopId',
     method: 'get'
   })
 }

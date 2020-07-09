@@ -51,4 +51,9 @@ public class ActivityController {
         System.out.println(map);
         return activityService.updateActivityStatus1(map);
     }
+
+    @GetMapping("/getMaxActivityId")
+    public int getMaxActivityId() {
+        return activityService.getMaxActivityId();
+    }
 }

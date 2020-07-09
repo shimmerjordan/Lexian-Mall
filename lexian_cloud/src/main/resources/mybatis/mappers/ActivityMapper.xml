@@ -50,4 +50,14 @@
     set activity.status = 0
     where activity.id = #{id}
   </update>
+
+  <select id="getMaxActivityId" resultType="java.lang.Integer">
+    select max(activity.id)
+    from activity
+  </select>
+
+  <insert id="insertActivity" parameterType="java.util.HashMap">
+  insert into
+
+  </insert>
 </mapper>

@@ -19,4 +19,6 @@ public interface ActivityMapper {
     int updateActivityStatus0(Map<String,Object> map);
 
     int updateActivityStatus1(Map<String,Object> map);
+
+    int getMaxActivityId();
 }

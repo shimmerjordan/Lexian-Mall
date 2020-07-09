@@ -33,7 +33,7 @@
 
         <el-row>
           <el-col :span="12">
-            <el-form-item label="开店时间" prop="unitId">
+            <el-form-item label="开店时间" prop="establishTime">
               <el-input v-model="date" disabled />
             </el-form-item>
           </el-col>
@@ -90,7 +90,7 @@ export default {
       max: 1, // checkbox可选最大值
       textarea: '',
       date: '',
-      shopId: null,
+      shopId: '',
       postForm: {
         name: '',
         categoryId: undefined,
@@ -105,7 +105,9 @@ export default {
     }
   },
   computed: {},
-  created() {},
+  created() {
+    this.getMaxId()
+  },
   mounted() {
     const yy = new Date().getFullYear()
     const mm = new Date().getMonth() + 1
@@ -118,7 +120,7 @@ export default {
   methods: {
     getMaxId() {
       getMaxShopId().then(response => {
-        this.shopId = response.data
+        this.shopId = response.data + 1
         console.log(this.shopId)
         setTimeout(() => {
         }, 1.5 * 1000)

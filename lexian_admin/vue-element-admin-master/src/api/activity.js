@@ -38,3 +38,10 @@ export function updateActivityStatus1(data) {
     data
   })
 }
+
+export function getMaxActivityId() {
+  return myrequest({
+    url: '/getMaxActivityId',
+    method: 'get'
+  })
+}

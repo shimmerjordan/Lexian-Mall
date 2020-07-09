@@ -20,13 +20,22 @@
         <h3>基础信息</h3>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="门店活动号" prop="shopActivityId" label-width="100px">
-              <el-input v-model="shopActivityId" disabled size="small" />
+            <el-form-item label="对应店铺" prop="activityShop" label-width="100px">
+              <el-select v-model="postForm.activityShop" clearable placeholder="请选择该活动对应店铺" size="small">
+                <el-option v-for="item in activityShopList" :key="item.value" :value="item.value" :label="item.id +'-' + item.name" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="活动编号" prop="shopActivityId" label-width="100px">
+              <el-input v-model="postForm.shopActivityId" disabled />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="门店活动名称" prop="shopActivityName" label-width="100px">
-              <el-input v-model="postForm.shopActivityName" size="small" />
+            <el-form-item label="活动名称" prop="shopActivityName" label-width="100px">
+              <el-input v-model="postForm.shopActivityName" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -34,17 +43,18 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="创建时间" prop="unitId">
-              <el-input v-model="date" disabled />
+              <el-input v-model="postForm.date" disabled />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="活动时间" prop="unitId">
               <!-- <span class="demonstration">活动时间：</span> -->
               <el-date-picker
                 v-model="value2"
-                type="daterange"
+                value-format="yyyy-MM-dd HH:mm:ss"
+                type="datetimerange"
                 align="right"
                 unlink-panels
                 range-separator="至"
@@ -52,16 +62,19 @@
                 end-placeholder="结束日期"
                 :picker-options="pickerOptions"
               />
+              <!-- <el-date-picker prop="beginTime" type="datetime" placeholder="请选择开始日期" />
+               至
+               <el-date-picker prop="endTime" type="datetime" placeholder="请选择结束日期" /> -->
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="门店活动类型" prop="unitId" label-width="100px">
-              <el-select v-model="postForm.unitId" clearable placeholder="请选择" size="small">
-                <el-option v-for="item in unitList" :key="item.value" :label="item.label" :value="item.value" />
+            <el-form-item label="活动类型" prop="type" label-width="100px">
+              <el-select v-model="postForm.type" clearable placeholder="请选择" size="small">
+                <el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
-              <el-button icon="el-icon-plus" circle style="margin-left: 40px;" @click="addActivityType()" />
+              <!-- <el-button icon="el-icon-plus" circle style="margin-left: 40px;" @click="addActivityType()" /> -->
             </el-form-item>
           </el-col>
         </el-row>
@@ -72,7 +85,7 @@
           <div class="editor-container">
             <div style="margin: 20px 0;">
               <aside>门店活动介绍</aside>
-              <el-input v-model="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
+              <el-input v-model="postForm.description" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
             </div>
             <aside>上传门店活动图片</aside>
             <dropzone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS" />
@@ -81,7 +94,7 @@
       </div>
     </el-form>
 
-    <el-dialog :visible.sync="dialogFormVisible">
+    <!-- <el-dialog :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
         <el-form-item label="活动类型" prop="type">
           <el-input v-model="temp.type" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="请输入新增的活动类型" />
@@ -89,13 +102,13 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          Cancel
+          取消
         </el-button>
         <el-button type="primary" @click="createData()">
-          Confirm
+          提交
         </el-button>
       </div>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -103,22 +116,26 @@
 import { createArticle } from '@/api/article'
 import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
+import { getMaxActivityId } from '@/api/activity'
+import { getAllShop } from '@/api/shop'
+
 export default {
   name: 'AddShopActivity',
   components: { Dropzone, Sticky },
   filters: {},
   data() {
     return {
+      activityShopList: [],
       textarea: '',
-      date: '',
-      shopId: 19,
       postForm: {
+        shopActivityId: '',
+        date: '',
         name: '',
         categoryId: undefined,
         unitId: undefined
       },
       loading: false,
-      unitList: [{ label: '普通店', value: 3 }, { label: '进口店', value: 2 }, { label: '旗舰店', value: 1 }, { label: '自营店', value: 0 }],
+      typeList: [{ label: '秒杀', value: 0 }, { label: '团购', value: 1 }, { label: '节日限定', value: 2 }],
       //   tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }],
       checkAllTag: true,
       isIndeterminateTag: true,
@@ -151,7 +168,6 @@ export default {
       },
       value1: '',
       value2: '',
-      shopActivityId: '',
       temp: {
         type: ''
       },
@@ -163,7 +179,10 @@ export default {
     }
   },
   computed: {},
-  created() {},
+  created() {
+    this.getMaxActivity()
+    this.getActivityShopList()
+  },
   mounted() {
     const yy = new Date().getFullYear()
     const mm = new Date().getMonth() + 1
@@ -171,10 +190,27 @@ export default {
     const hh = new Date().getHours()
     const mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
     // const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
-    this.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf
-    this.shopActivityId = yy + '' + mm + '' + dd + '0001'
+    this.postForm.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf
   },
   methods: {
+    getActivityShopList() {
+      getAllShop().then(response => {
+        this.activityShopList = response.data
+        console.log((this.activityShopList).length)
+        //  for(let i = 0; i < (this.activityShopList).length; i++){
+        //    this.activityShopList[i] = this.activityShopList[i].id +'--' +this.activityShopList[i].name
+        //  }
+        //  console.log(this.activityShopList)
+      })
+    },
+    getMaxActivity() {
+      getMaxActivityId().then(response => {
+        this.postForm.shopActivityId = response.data + 1
+        // console.log(Object.keys($shopActivityId).length)
+        setTimeout(() => {
+        }, 1.5 * 1000)
+      })
+    },
     dropzoneS(file) {
       console.log(file)
       this.$message({ message: 'Upload success', type: 'success' })
