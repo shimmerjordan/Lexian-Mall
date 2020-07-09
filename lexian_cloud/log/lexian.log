@@ -3214,6 +3214,7 @@
 [DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-09][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+<<<<<<< HEAD
 [DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
 [DEBUG][20-07-09][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64fc6f99] was not registered for synchronization because synchronization is not active
 [DEBUG][20-07-09][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1906914600 wrapping com.mysql.cj.jdbc.ConnectionImpl@54247097] will not be managed by Spring
@@ -3679,3 +3680,5 @@
 [DEBUG][20-07-10][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@731c4479]
 [DEBUG][20-07-10][lexian.mapper.ShopMapper.getAllShop]<==      Total: 11
 [DEBUG][20-07-10][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6565cbb7]
+=======
+>>>>>>> 116bbb9616bc0c4b1cff167530ccebc55101d341
