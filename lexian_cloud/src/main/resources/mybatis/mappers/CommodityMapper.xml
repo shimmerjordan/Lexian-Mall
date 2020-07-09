@@ -128,4 +128,19 @@
 		WHERE
 		g.id = #{commodityId}
 	</select>
+
+	<resultMap id="Category_map" type="Category">
+		<id property="ID" column="Category.ID" />
+		<result property="name" column="Category.`name`" />
+		<result property="description" column="Category.`description`" />
+		<result property="level" column="Category.`level`" />
+		<result property="is_delete" column="Category.`is_delete`" />
+	</resultMap>
+	<select id="getAllCategory" resultType="Category">
+		SELECT *
+		FROM
+		category
+		WHERE
+		is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1)
+	</select>
 </mapper>

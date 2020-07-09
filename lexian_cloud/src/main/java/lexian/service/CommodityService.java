@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
 
+import lexian.entity.Category;
 import lexian.entity.Commodity;
 
 public interface CommodityService {
@@ -22,5 +23,7 @@ public interface CommodityService {
 	boolean addGood(Map<String, Object> map);
 	
 	Commodity getCommodity(String commodityId);
+
+	List<Category> getAllCategory();
 	
 }

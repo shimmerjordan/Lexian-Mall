@@ -1,5 +1,6 @@
 package lexian.controller;
 
+import lexian.entity.Category;
 import lexian.entity.Commodity;
 import lexian.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,13 @@ public class ShopCommodityController {
     public boolean addGood(@RequestBody Map<String,Object> map){
         System.out.println(map);
         return commodityService.addGood(map);
+    }
+
+    @PostMapping("/api/shop/getAllCategory")
+    public List<Category> getAllCategory(){
+        List<Category> result = commodityService.getAllCategory();
+        System.out.println(result);
+        return result;
     }
 
 }

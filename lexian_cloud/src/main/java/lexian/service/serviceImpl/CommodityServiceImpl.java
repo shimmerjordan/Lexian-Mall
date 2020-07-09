@@ -1,5 +1,6 @@
 package lexian.service.serviceImpl;
 
+import lexian.entity.Category;
 import lexian.entity.Commodity;
 import lexian.mapper.CommodityMapper;
 import lexian.service.CommodityService;
@@ -67,5 +68,10 @@ public class CommodityServiceImpl implements CommodityService {
 	public Commodity getCommodity(String commodityId) {
 		Commodity commodity = commodityMapper.selectCommodityById(commodityId);		
 		return commodity;
+	}
+
+	@Override
+	public List<Category> getAllCategory() {
+		return commodityMapper.getAllCategory();
 	}
 }
