@@ -18,8 +18,8 @@
 
   <!-- 注册使用，添加手机、登录名和密码，其他自增或默认 -->
   <insert id="addNewCustomer" parameterType="java.util.HashMap" >
-    insert into customer (name, phone, login_name)
-    values (#{name}, #{phone}, #{login_name})
+    insert into customer (phone, pwd, login_name, nick_name)
+    values (#{mobile}, #{password}, #{loginName}, #{nickName})
   </insert>
 
   <select id="getPwdByName" parameterType="java.util.HashMap" resultType="java.lang.String">
@@ -31,7 +31,7 @@
         login_name = #{loginName}
     </select>
 
-  <select id="getUserInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  <select id="loginByName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         SELECT
         *
         FROM
@@ -40,6 +40,37 @@
         login_name = #{loginName}
     </select>
 
+    <select id="loginByPhone" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        phone = #{mobile}
+    </select>
+
+    <select id="checkPhoneExistance" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select IFNULL(
+        (select id
+        from customer
+        where phone = #{mobile}
+        ), 0)
+    </select>
+
+    <select id="checkNameExistance" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select IFNULL(
+        (select id
+        from customer
+        where login_name = #{loginName}
+        ), 0)
+    </select>
+
+    <update id="updateCustomerPwd" parameterType="java.util.HashMap" >
+    update customer
+    set
+      pwd = #{password}
+    where phone = #{mobile}
+  </update>
 
   <update id="updateByPrimaryKey" parameterType="lexian.entity.Customer" >
     update customer

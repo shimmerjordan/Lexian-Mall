@@ -57,19 +57,9 @@ public class CommodityServiceImpl implements CommodityService {
 		return false;
 	}
 
-<<<<<<< .merge_file_a22124
-
-
-	@Override
-    public boolean deleteGood(Map<String,Object> map) {
-        int flag=commodityMapper.deleteGood(map);
-        return flag>0;
-    }
-=======
 	@Override
 	public boolean addGood(Map<String, Object> map) {
 		int flag = commodityMapper.addGood(map);
 		return flag > 0;
 	}
->>>>>>> .merge_file_a17852
 }

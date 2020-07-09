@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.CommodityMapper">
-
 	<resultMap id="commodity_map" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -88,7 +87,6 @@
 		</if>
 	</select>
 
-<<<<<<< .merge_file_a09952
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
@@ -113,13 +111,6 @@
 		commodity.is_delete=0 AND
 		commodity.status=0
 	</select>
-=======
-
-	<update id="deleteGood">
-		UPDATE shop_commodity
-		SET shop_commodity.isDelete=1
-		WHERE shop_commodity.commodity_id=#{id}
-	</update>
 
 
 	<insert id="addGood" parameterType="java.util.HashMap">
@@ -128,5 +119,4 @@
 		VALUES
 		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
 	</insert>
->>>>>>> .merge_file_a23768
 </mapper>

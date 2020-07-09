@@ -25,22 +25,28 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String getPwdByName(Map<String,Object> map) {
-        return customerMapper.getPwdByName(map);
+    public boolean updateCustomerPwd(Map<String, Object> map) {
+        return customerMapper.updateCustomerPwd(map);
     }
 
     @Override
-    public boolean checkLoginName(String loginName) {
-        return customerMapper.checkLoginName(loginName);
+    public List<Customer> loginByPhone(Map<String,Object> map) {
+        map.put("code",(int)((Math.random()) * 1000000));
+        return customerMapper.loginByPhone(map);
     }
 
     @Override
-    public boolean checkPhone(String phone) {
-        return customerMapper.checkPhone(phone);
+    public int checkPhoneExistance(Map<String, Object> map) {
+        return customerMapper.checkPhoneExistance(map);
     }
 
     @Override
-    public List<Customer> getUserInfo(Map<String, Object> map) {
-        return customerMapper.getUserInfo(map);
+    public int checkNameExistance(Map<String, Object> map) {
+        return  customerMapper.checkNameExistance(map);
+    }
+
+    @Override
+    public List<Customer> loginByName(Map<String, Object> map) {
+        return customerMapper.loginByName(map);
     }
 }

@@ -28,6 +28,7 @@
 				isMove:false,
 				countdown: '',
 				timestatus: true,
+				phoneExistance: false
 			};
 		},
 		mounted() {
@@ -67,7 +68,8 @@
 				
 					this.isOk = true;
 					this.$emit("result",{flag:true,count:this.count});
-					
+				
+					this.checkPhoneExistance();
 					this.countDown();
 					
 				} else {
@@ -105,7 +107,27 @@
 					this.oldx = 0;
 					this.isOk = false;
 				}, 60000)
+			},
+			checkPhoneExistance(){
+				uni.request({
+					url: this.apiServer+'/customer/checkPhoneExistance',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+					   "mobile": this.mobile,
+					},
+					success: (res) => {
+						const result = res.data
+						console.log(result)
+						if(result != 0){
+							this.phoneExistance = true;
+						}else{
+							this.phoneExistance = false;
+						}
+				    }
+				});
 			}
+			
 		}
 	}
 </script>
@@ -114,7 +136,7 @@
 	.pathway {
 		height: 80rpx;
 		width: 100%;
-		margin-bottom: 24px;
+		margin-bottom: 18px;
 		background-color: #7ac23c;
 		position: relative;
 		overflow: hidden;

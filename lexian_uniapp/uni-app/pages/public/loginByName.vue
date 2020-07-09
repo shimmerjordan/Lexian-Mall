@@ -67,6 +67,7 @@
 				password: '',
 				loginPassword: '',
 				resultData:{},
+				result: '',
 				logining: false
 			}
 		},
@@ -127,33 +128,31 @@
 				// }
 				uni.request({
 				   // url:'http://localhost:8888/api/getAll',
-				   url: this.apiServer+'/customer/register',
+				   url: this.apiServer+'/customer/loginByName',
 				   method: 'POST',
 				   dataType: "json",
 				   data: { 
 					   "loginName": this.loginName,
 				   },
 				   success: (res) => {
-						const result = res.data
-						console.log(result[0])
-						//const result = await this.$api.json('userInfo');
-						if(result[0].pwd == this.password){
-							this.login(result[0]);
-							uni.reLaunch({
-								url: "/pages/user/user",
-								success: res => {}
-							});
-						}else{
-							this.$api.msg("用户名或密码错误");
-							this.logining = false;
-						}
+						this.result = res.data
+						console.log(this.result)
+						// console.log(this.result[0])
+						
 				    }
 				});
-				const sendData = {
-					loginName,
-					password
-				};
-				
+				if(this.result.length == 0){
+					this.$api.msg("用户名或密码错误");
+					this.logining = false;
+				}else{
+					 if(this.result[0].pwd == this.password){
+						 this.login(this.result[0]);
+						 uni.reLaunch({
+						 	url: "/pages/user/user",
+						 	success: res => {}
+						 });
+					 }
+				}
 			}
 		},
 	}
