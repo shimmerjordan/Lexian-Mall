@@ -15,17 +15,17 @@
 		</view>
 		
 		<view class="introduce-section">
-			<text class="title">恒源祥2019春季长袖白色t恤 新款春装</text>
+			<text class="title">{{commodity.name}}</text>
 			<view class="price-box">
 				<text class="price-tip">¥</text>
-				<text class="price">341.6</text>
-				<text class="m-price">¥488</text>
-				<text class="coupon-tip">7折</text>
+				<text class="price">{{commodity.price}}</text>
+				<!-- <text class="m-price">¥{{commodity.price}}</text> -->
+				<!-- <text class="coupon-tip">7折</text> -->
 			</view>
 			<view class="bot-row">
-				<text>销量: 108</text>
-				<text>库存: 4690</text>
-				<text>浏览量: 768</text>
+				<text>销量: {{commodity.sales}}</text>
+				<text>库存: {{commodity.storage}}</text>
+				<text>浏览量: {{commodity.browseCount}}</text>
 			</view>
 		</view>
 		
@@ -81,19 +81,24 @@
 		<view class="eva-section">
 			<view class="e-header">
 				<text class="tit">评价</text>
-				<text>(86)</text>
+				<text>({{commodity.commentList.length}})</text>
 				<text class="tip">好评率 100%</text>
 				<text class="yticon icon-you"></text>
 			</view> 
-			<view class="eva-box">
+			<view class="eva-box" v-if="commodity.commentList.length > 0">
 				<image class="portrait" src="http://img3.imgtn.bdimg.com/it/u=1150341365,1327279810&fm=26&gp=0.jpg" mode="aspectFill"></image>
 				<view class="right">
 					<text class="name">Leo yo</text>
-					<text class="con">商品收到了，79元两件，质量不错，试了一下有点瘦，但是加个外罩很漂亮，我很喜欢</text>
+					<text class="con">{{onecomment.commentContent}}</text>
 					<view class="bot">
 						<text class="attr">购买类型：XL 红色</text>
-						<text class="time">2019-04-01 19:21</text>
+						<text class="time">{{onecomment.commentTime | timeStamp}}</text>
 					</view>
+				</view>
+			</view>
+			<view class="eva-box" v-if="commodity.commentList.length == 0">
+				<view class="right">
+					<text class="con">该商品暂无评价</text>
 				</view>
 			</view>
 		</view>
@@ -189,17 +194,7 @@
 				
 				favorite: true,
 				shareList: [],
-				imgList: [
-					{
-						src: 'https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg'
-					},
-					{
-						src: 'https://gd3.alicdn.com/imgextra/i3/TB1RPFPPFXXXXcNXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg'
-					},
-					{
-						src: 'https://gd2.alicdn.com/imgextra/i2/38832490/O1CN01IYq7gu1UGShvbEFnd_!!38832490.jpg_400x400.jpg'
-					}
-				],
+				imgList: [],
 				desc: `
 					<div style="width:100%">
 						<img style="width:100%;display:block;" src="https://gd3.alicdn.com/imgextra/i4/479184430/O1CN01nCpuLc1iaz4bcSN17_!!479184430.jpg_400x400.jpg" />
@@ -265,15 +260,33 @@
 						pid: 2,
 						name: '草木绿',
 					},
-				]
+				],
+				commodity:{},
+				onecomment:{}
 			};
 		},
 		async onLoad(options){
 			
 			//接收传值,id里面放的是标题，因为测试数据并没写id 
 			let id = options.id;
+			let uid = options.uid ? options.uid : "";
+			let _this = this;
 			if(id){
-				this.$api.msg(`点击了${id}`);
+				uni.request({
+				    url: this.apiServer + "/api/category/getCommodity?commodityId="+id+"&uid="+uid,
+				    dataType: "JSON",
+				    success: function(res) {
+				      _this.commodity = res.data;
+					  _this.imgList = [];
+				      _this.imgList.push({"src":res.data.image})
+					  let commentList = res.data.commentList;
+					  if(commentList && commentList.length > 0){
+						 _this.onecomment = res.data.commentList[0]; 
+					  }
+					  
+				    }
+				});
+				
 			}
 			
 			
@@ -340,6 +353,36 @@
 			},
 			stopPrevent(){}
 		},
+		filters: {
+			 dateStamp: function(value) {
+				if (!value) return '';
+				var now = new Date(value);
+				console.log("time:" + JSON.stringify(now));
+				var year = now.getFullYear();
+				var month = now.getMonth() + 1;
+				if (month < 10) {
+					month = '0' + month
+				}
+				var date = now.getDate();
+				if (date < 10) {
+					date = '0' + date
+				}
+				return year + "-" + month + "-" + date
+			},
+			 timeStamp: function(value) {//具体到时分秒
+			 	var date = new Date(value); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+			 	var year = date.getFullYear();
+			 	var month = ("0" + (date.getMonth() + 1)).slice(-2);
+			 	var sdate = ("0" + date.getDate()).slice(-2);
+			 	var hour = ("0" + date.getHours()).slice(-2);
+			 	var minute = ("0" + date.getMinutes()).slice(-2);
+			 	var second = ("0" + date.getSeconds()).slice(-2);
+			 	// 拼接
+			 	var result = year + "-" + month + "-" + sdate + " " + hour + ":" + minute + ":" + second;
+			 	// 返回
+			 	return result;
+			 }
+				},
 
 	}
 </script>

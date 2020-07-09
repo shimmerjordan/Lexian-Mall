@@ -18,5 +18,7 @@ public interface CommodityMapper {
 	List<Commodity> selectCommodityByCategoryId(Commodity commodity);
 
 	int addGood(Map<String, Object> map);
+	
+	Commodity selectCommodityById(String commodityId);
 
 }

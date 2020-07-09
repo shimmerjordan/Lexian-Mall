@@ -15,4 +15,7 @@ public interface CommodityService {
 	boolean deleteGood(Map<String, Object> map);
 	PageInfo<Commodity> listCommodityByCategoryId(Commodity commodity);
 	boolean addGood(Map<String, Object> map);
+	
+	Commodity getCommodity(String commodityId);
+	
 }
