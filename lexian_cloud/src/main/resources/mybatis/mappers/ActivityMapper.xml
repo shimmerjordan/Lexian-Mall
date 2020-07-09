@@ -27,7 +27,7 @@
     update activity
     set
     activity.`name` = #{name},
-    activity.beginTime = #{beginTime},
+    activity.beginTime = #{beginTime} ,
     activity.endTime = #{endTime},
     activity.status = #{status},
     activity.description = #{description}

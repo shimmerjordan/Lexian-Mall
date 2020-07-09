@@ -38,4 +38,27 @@
     set shop.isDelete = 1
     where shop.id = #{id}
   </update>
+  <update id="updateShopStstus0">
+    update shop
+    set shop.status = 0
+    where shop.id = #{id}
+  </update>
+
+  <select id="searchShop" resultType="Shop">
+    select
+    shop.ID, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description
+    from shop
+    <where>
+      <if test="shop.id != null">
+        shop.id like #{id} and
+      </if>
+      <if test="shop.name != null">
+        shop.`name` like #{name} and
+      </if>
+      <if test="shop.status != null">
+        shop.status like #{status} and
+      </if>
+      shop.isDelete = 0
+    </where>
+  </select>
 </mapper>

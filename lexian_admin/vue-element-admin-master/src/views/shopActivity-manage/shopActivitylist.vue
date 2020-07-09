@@ -351,6 +351,9 @@ export default {
     updateData() {
       // console.log(statusOptions[this.temp.status])
       this.$refs['dataForm'].validate((valid) => {
+        //  this.temp.beginTime = +new Date().setTime(this.temp.beginTime)
+        // this.temp.endTime = +new Date(this.temp.endTime)
+        console.log(this.temp.beginTime)
         this.temp.beginTime
         if (valid) {
           console.log(this.temp)

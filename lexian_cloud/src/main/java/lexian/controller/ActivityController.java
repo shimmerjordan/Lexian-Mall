@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,7 @@ public class ActivityController {
 
     @PostMapping("/updateActivity")
     public boolean updateActivity(@RequestBody Map<String,Object> map){
+
         System.out.println(map);
         return activityService.updateActivity(map);
     }

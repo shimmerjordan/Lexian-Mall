@@ -46,6 +46,10 @@ public class ActivityServiceImpl implements ActivityService {
             return false;
         }
     }
+//    public boolean updateActivity(Map<String,Object> map) {
+//        int flag = activityMapper.updateActivity(map);
+//        return flag > 0;
+//    }
 
     @Override
     public boolean deleteActivity(Map<String,Object> map) {

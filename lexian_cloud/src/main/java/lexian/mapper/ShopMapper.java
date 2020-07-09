@@ -18,4 +18,8 @@ public interface ShopMapper {
     int updateShop(Map<String,Object> map);
 
     int deleteShop(Map<String,Object> map);
+
+    int updateShopStstus0(Object select[]);
+
+    List<Shop> searchShop(Map<String,Object> map);
 }

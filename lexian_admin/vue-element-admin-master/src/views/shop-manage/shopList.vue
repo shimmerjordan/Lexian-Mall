@@ -1,58 +1,58 @@
 <template>
   <div class="app-container">
-    <transition name="component-fade" mode="out-in">
-      <div v-if="!selectShops.length" class="filter-container">
-        <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-        <el-input v-model="listQuery.importance" placeholder="店铺名称" style="width: 200px" class="filter-item" @keyup.enter.native="handleFilter" />
-        <!-- <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" /> -->
-        <el-select v-model="listQuery.status" placeholder="店铺状态" clearable class="filter-item" style="width: 130px">
-          <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
-        </el-select>
-        <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
-          <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
-        </el-select>
-        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-          查找
-        </el-button>
-        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
-          新增
-        </el-button>
-        <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-          导出
-        </el-button>
-        <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-          操作员
-        </el-checkbox>
-      </div>
-      <div v-else class="filter-container order-operation-meun">
-        <el-row>
-          <el-col :span="2">
-            已选中<span style="color: #13c19f">{{ selectShops.length }}</span>项
-          </el-col>
-          <el-col :span="1">
-            |
-          </el-col>
-          <!-- <el-col :span="2">
+    <!-- <transition name="component-fade" mode="out-in"> -->
+    <div v-if="!selectShops.length" class="filter-container">
+      <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px;" class="filter-item" @keyup.enter.native="searchShop" />
+      <el-input v-model="listQuery.name" placeholder="店铺名称" style="width: 200px" class="filter-item" @keyup.enter.native="searchShop" />
+      <!-- <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" /> -->
+      <el-select v-model="listQuery.status" placeholder="店铺状态" clearable class="filter-item" style="width: 130px">
+        <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+      </el-select>
+      <!-- <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
+          <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key"/>
+        </el-select> -->
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="searchShop">
+        查找
+      </el-button>
+      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
+        新增
+      </el-button>
+      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
+        导出
+      </el-button>
+      <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
+        操作员
+      </el-checkbox>
+    </div>
+    <div v-else class="filter-container order-operation-meun">
+      <el-row>
+        <el-col :span="2">
+          已选中<span style="color: #13c19f">{{ selectShops.length }}</span>项
+        </el-col>
+        <el-col :span="1">
+          |
+        </el-col>
+        <!-- <el-col :span="2">
             <i class="fa fa-truck fa-lg"></i> 确认开店
           </el-col> -->
-          <el-button :span="2" type="success">
-            <i class="fa fa-trash fa-lg" /> 确认开店
-          </el-button>
-          <el-button :span="2" type="info">
-            <i class="fa fa-trash fa-lg" /> 店铺休息
-          </el-button>
-          <el-button :span="2" type="danger">
-            <i class="fa fa-trash fa-lg" /> 关闭店铺
-          </el-button>
-          <!-- <el-col :span="2">
+        <el-button :span="2" type="success">
+          <i class="fa fa-trash fa-lg" /> 确认开店
+        </el-button>
+        <el-button :span="2" type="info">
+          <i class="fa fa-trash fa-lg" /> 店铺休息
+        </el-button>
+        <el-button :span="2" type="danger">
+          <i class="fa fa-trash fa-lg" /> 关闭店铺
+        </el-button>
+        <!-- <el-col :span="2">
             <i class="fa fa-trash fa-lg"></i> 店铺休息
           </el-col>
           <el-col :span="2">
             <i class="fa fa-trash fa-lg"></i> 关闭店铺
           </el-col> -->
-        </el-row>
-      </div>
-    </transition>
+      </el-row>
+    </div>
+    <!-- </transition> -->
 
     <el-table
       :key="tableKey"
@@ -71,7 +71,7 @@
         type="selection"
         width="55"
       />
-      <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+      <el-table-column label="ID" prop="id" sortable align="center" width="80" :class-name="getSortClass('id')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
@@ -190,12 +190,12 @@
 </template>
 
 <script>
-import { fetchPv, createArticle } from '@/api/article'
+import { fetchPv } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
-import { getAllShop, updateShop, deleteShop } from '@/api/shop'
+import { getAllShop, updateShop, deleteShop, searchShop } from '@/api/shop'
 
 const statusOptions = [
   { key: '0', display_name: '正在营业' },
@@ -234,15 +234,14 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        importance: undefined,
-        title: undefined,
-        type: undefined,
+        id: undefined,
+        name: undefined,
+        status: undefined,
         sort: '+id'
       },
       status: [{ label: '正在营业', key: '0' }, { label: '暂停营业', key: '1' }, { label: '店铺关闭', key: '2' }],
       statusOptions,
       sortOptions: [{ label: 'ID 递增排序', key: '+id' }, { label: 'ID 递减排序', key: '-id' }],
-      // statusOptions: ['正在营业', '暂停营业', '关闭店铺'],
       kindOptions: ['旗舰店', '自营店', '普通店', '进口店'],
       tagOptions: ['服饰', '食品', '日常用品'],
       showReviewer: false,
@@ -280,8 +279,8 @@ export default {
       this.listLoading = true
       getAllShop().then(response => {
         this.list = response.data
-        this.total = 100
-        console.log(this.list)
+        this.total = 50
+        // console.log(this.list)
         // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
@@ -290,11 +289,13 @@ export default {
       this.listLoading = false
     },
     handleFilter() {
+      // console.log(this.listQuery.sort)
       this.listQuery.page = 1
       this.getList()
     },
     sortChange(data) {
       const { prop, order } = data
+      // console.log(prop)
       if (prop === 'id') {
         this.sortByID(order)
       }
@@ -326,24 +327,6 @@ export default {
         // this.$refs['dataForm'].clearValidate()
         this.$router.push({ path: 'add-shop' })
         // this.jump({path: '/shop/add-shop'});
-      })
-    },
-    createData() {
-      this.$refs['dataForm'].validate((valid) => {
-        if (valid) {
-          this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
-          this.temp.author = 'vue-element-admin'
-          createArticle(this.temp).then(() => {
-            this.list.unshift(this.temp)
-            this.dialogFormVisible = false
-            this.$notify({
-              title: 'Success',
-              message: 'Created Successfully',
-              type: 'success',
-              duration: 2000
-            })
-          })
-        }
       })
     },
     handleUpdate(row) {
@@ -394,6 +377,17 @@ export default {
       })
       this.list.splice(index, 1)
     },
+    searchShop() {
+      console.log(this.listQuery)
+      this.listLoading = true
+      searchShop(this.listQuery).then(response => {
+        this.list = response.data.items
+
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
+    },
 
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {
@@ -426,10 +420,13 @@ export default {
     },
     getSortClass: function(key) {
       const sort = this.listQuery.sort
+      // console.log('sort)
       return sort === `+${key}` ? 'ascending' : 'descending'
     },
     handleSelection(selection, row) {
       this.selectShops = selection
+      // this.selectShops = row.id
+      console.log(this.selectShops)
     },
     handleSelectionAll(selection) {
       this.selectShops = selection

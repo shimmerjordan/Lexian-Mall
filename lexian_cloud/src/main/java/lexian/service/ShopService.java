@@ -14,4 +14,5 @@ public interface ShopService {
 
     boolean deleteShop(Map<String,Object> map);
 
+    List<Shop> searchShop(Map<String,Object> map);
 }

@@ -3,10 +3,7 @@ package lexian.controller;
 import lexian.entity.Shop;
 import lexian.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -45,5 +42,10 @@ public class ShopController {
     public boolean deleteShop(@RequestBody Map<String,Object> map) {
         System.out.println(map);
         return shopService.deleteShop(map);
+    }
+
+    @GetMapping("/searchShop")
+    public List<Shop> searchShop(@RequestBody Map<String,Object> map) {
+        return shopService.searchShop(map);
     }
 }
