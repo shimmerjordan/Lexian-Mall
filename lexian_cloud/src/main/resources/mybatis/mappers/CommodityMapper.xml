@@ -88,7 +88,7 @@
 		</if>
 	</select>
 
-<<<<<<< .merge_file_a09952
+
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
@@ -111,15 +111,9 @@
 		commodity
 		WHERE
 		commodity.is_delete=0 AND
-		commodity.status=0
+		commodity.ID=0
 	</select>
-=======
 
-	<update id="deleteGood">
-		UPDATE shop_commodity
-		SET shop_commodity.isDelete=1
-		WHERE shop_commodity.commodity_id=#{id}
-	</update>
 
 
 	<insert id="addGood" parameterType="java.util.HashMap">
@@ -128,5 +122,5 @@
 		VALUES
 		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
 	</insert>
->>>>>>> .merge_file_a23768
+
 </mapper>

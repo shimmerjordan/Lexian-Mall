@@ -397,12 +397,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
 {
-
   data: function data() {
     return {
       titleNViewBackground: '',
@@ -411,7 +406,6 @@ __webpack_require__.r(__webpack_exports__);
       carouselList: [],
       goodsList: [],
       date: new Date(+new Date(new Date().toJSON()) + 8 * 3600 * 1000).toISOString(),
-
       iconSrc: {
         logo: '../../static/lee-search/icon_search.png',
         voice: '../../static/lee-search/icon_voice.png',
@@ -428,38 +422,34 @@ __webpack_require__.r(__webpack_exports__);
     uniSearch: uniSearch },
 
   onLoad: function onLoad() {
-    this.initIndex();
-
     this.loadData();
   },
   methods: {
 
-    /**
-              * 请求静态数据只是为了代码不那么乱
-              * 分次请求未作整合
-              */
-    navTo: function navTo(url) {
-      uni.navigateTo({
-        url: url });
+    loadData: function loadData() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                uni.request({
+                  url: _this.apiServer + "/getAllActivity",
+                  //url:'http://localhost:8080/getAllActivity"' ,
+                  method: 'GET',
+                  success: function success(res) {
+                    var carouselList = res.data;
+                    console.log(carouselList);
+                    _this.carouselList = carouselList;
+                    _this.titleNViewBackground = "rgb(205, 215, 218)";
+                    _this.swiperLength = carouselList.length;
+                  } });
 
-    },
-    initIndex: function initIndex() {
-      uni.request({
-        url: 'http://localhost:8080/uniIndex/init',
-        method: 'GET',
-        success: function success(res) {
-          console.log(res.data);
-        } });
 
-    },
-    loadData: function loadData() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var carouselList, goodsList;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.$api.json('carouselList'));case 2:carouselList = _context.sent;
-                _this.titleNViewBackground = carouselList[0].background;
-                _this.swiperLength = carouselList.length;
-                _this.carouselList = carouselList;_context.next = 8;return (
+                uni.request({
+                  url: _this.apiServer + "/uniIndex/init",
+                  //url:'http://localhost:8080/uniIndex/init' ,
+                  method: 'GET',
+                  success: function success(res) {
+                    var goodsList = res.data;
+                    console.log(goodsList);
+                    _this.goodsList = goodsList;
+                  } });case 2:case "end":return _context.stop();}}}, _callee);}))();
 
-                  _this.$api.json('goodsList'));case 8:goodsList = _context.sent;
-                _this.goodsList = goodsList || [];case 10:case "end":return _context.stop();}}}, _callee);}))();
     },
     //轮播图切换修改背景色
     swiperChange: function swiperChange(e) {
@@ -470,14 +460,15 @@ __webpack_require__.r(__webpack_exports__);
     //详情页
     navToDetailPage: function navToDetailPage(item) {
       //测试数据没有写id，用title代替
-      var id = item.title;
+      var id = item.name;
       uni.navigateTo({
         url: "/pages/product/product?id=".concat(id) });
 
     },
-    navToCategory: function navToCategory() {
+    navTo: function navTo() {
+      //测试数据没有写id，用title代替
       uni.navigateTo({
-        url: "/pages/category/category" });
+        url: "/pages/product/list" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
