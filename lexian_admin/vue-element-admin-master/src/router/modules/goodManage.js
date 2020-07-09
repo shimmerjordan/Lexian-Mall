@@ -21,7 +21,21 @@ const goodRouter = {
       component: () => import('@/views/goodManage/goodAdd'),
       name: 'goodAdd',
       meta: { title: '添加商品' }
+    },
+    {
+      path: 'goodCategory',
+      component: () => import('@/views/goodManage/goodCategory'),
+      name: 'goodCategory',
+      meta: { title: '商品分类' }
+    },
+    {
+      path: 'categoryGood',
+      component: () => import('@/views/goodManage/categoryGood'),
+      name: 'categoryGood',
+      meta: { title: '分类商品详情' },
+      hidden: true
     }
+
   ]
 }
 export default goodRouter

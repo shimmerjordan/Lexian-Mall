@@ -1,12 +1,19 @@
 package lexian.service;
 
+
+import lexian.entity.Customer;
+
+import java.util.List;
 import java.util.Map;
 
 import lexian.entity.Customer;
 
 public interface CustomerService {
     boolean addNewCustomer(Map<String,Object> map);
-    Map<String, Object> getPwdByName(String name);
-    boolean checkLoginName(String loginName);
-    boolean checkPhone(String phone);
+    boolean updateCustomerPwd(Map<String,Object> map);
+    List<Customer> loginByPhone(Map<String,Object> map);
+    List<Customer> loginByName(Map<String,Object> map);
+    int checkPhoneExistance(Map<String,Object> map);
+    int checkNameExistance(Map<String,Object> map);
+
 }

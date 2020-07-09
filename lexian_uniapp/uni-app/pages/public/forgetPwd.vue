@@ -14,7 +14,6 @@
 					<text class="tit">手机号码</text>
 					<input 
 						type="number" 
-						v-model="loginPhone"
 						placeholder="请输入手机号码"
 						maxlength="11"
 						data-key="mobile"
@@ -35,7 +34,6 @@
 						placeholder-class="input-empty"
 						maxlength="20"
 						data-key="verifyCode"
-						v-model="verifyCode"
 						@input="inputChange"
 					/>
 				</view>
@@ -48,7 +46,6 @@
 						placeholder-class="input-empty"
 						maxlength="20"
 						data-key="loginName"
-						v-model="loginName"
 						@input="inputChange"
 						@confirm="checkExistName"
 						@change="checkExistName"
@@ -65,14 +62,13 @@
 						maxlength="20"
 						password 
 						data-key="password"
-						v-model="loginPassword"
 						@input="inputChange"
 					/>
 				</view>
 				
 				
 			</view>
-			<button class="confirm-btn" @click="updateCustomer" :disabled="logining">确认</button>
+			<button class="confirm-btn" @click="updateCustomerPwd" :disabled="logining">确认</button>
 			
 		</view>
 		<view class="register-section">
@@ -97,11 +93,11 @@
 			return {
 				mobile: '',
 				password: '',
-				loginPhone: '',
-				loginPassword: '',
 				verifyCode:'',
 				loginName: '',
-				logining: false
+				logining: false,
+				phoneExistance: true,
+				nameExistance: true
 			}
 		},
 		onLoad(){
@@ -121,30 +117,42 @@
 				/* 删除当前页面的数据 */
 				this.resultData = {};
 			},
+			inputChange(e){
+				const key = e.currentTarget.dataset.key;
+				this[key] = e.detail.value;
+			},
 			navBack(){
 				uni.navigateBack();
 			},
 			checkExistPhone(){
-				console.log(this.mobile);
-				/* 这里判断数据库中是否存在该用户手机号 */
-				if(1){
-					this.$api.msg('该手机号已注册，请登录或找回密码');
+				if(this.$refs.verifyElement.phoneExistance == true){
+					this.phoneExistance = true;
 				}else{
-					
+					this.$api.msg("手机号有误或未注册");
+					this.phoneExistance = false;
 				}
 			},
 			checkExistName(){
 				console.log(this.loginName);
-				/* 这里判断数据库中是否存在该用户手机号 */
-				if(1){
-					this.$api.msg('抱歉，该用户名已被占用');
-				}else{
-					
-				}
-			},
-			inputChange(e){
-				const key = e.currentTarget.dataset.key;
-				this[key] = e.detail.value;
+				/* 这里判断数据库中是否存在该用户名 */
+				uni.request({
+					url: this.apiServer+'/customer/checkNameExistance',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+					   "loginName": this.loginName,
+					},
+					success: (res) => {
+						const result = res.data
+						console.log(result)
+						if(result != 0){
+							this.nameExistance = true;
+						}else{
+							this.$api.msg("用户名有误或未注册")
+							this.nameExistance = false;
+						}
+				    }
+				});
 			},
 			toGuidance(){
 				uni.navigateTo({
@@ -162,46 +170,29 @@
 					complete: () => {}
 				});
 			},
-			
-			updateCustomer(){
-				
-				if(1){
-					var that = this
-					this.$api.msg('修改密码成功，请使用新密码登录');
-					setTimeout(function() {
-						that.toLogin();
-					}, 2000)
-					
-				}else{
-					this.$api.msg('操作失败，请稍后重试');
-				}
-			},
-			async toLogin(){
-				let loginPhone = this.loginPhone;
-				let loginPassword = this.loginPassword;
-				const {mobile, password} = this;
-				/* 数据验证模块
-				if(!this.$api.match({
-					mobile,
-					password
-				})){
-					this.logining = false;
-					return;
-				}
-				*/
-				const sendData = {
-					mobile,
-					password
-				};
-				const result = await this.$api.json('userInfo');
-				if(result.status === 1){
-					this.login(result.data);
-					uni.navigateTo({
-						url: '/pages/public/loginByName',
-                   });
-				}else{
-					this.$api.msg(result.msg);
-					this.logining = false;
+			async updateCustomerPwd(){
+				if(this.nameExistance == true && this.phoneExistance == true){
+					//if(verifyCode验证正确)
+					uni.request({
+						url: this.apiServer+'/customer/updateCustomerPwd',
+						method: 'POST',
+						dataType: "json",
+						data: { 
+						   "password": this.password,
+						   "mobile": this.mobile
+						},
+						success: (res) => {
+							console.log(result)
+							const result = res.data
+							
+							this.$api.msg("找回成功，请登录")
+							setTimeout(() => {
+								uni.navigateTo({
+									url: '/pages/public/loginByName',
+								});
+							}, 3000)
+					    }
+					});
 				}
 				
 			}

@@ -7634,10 +7634,53 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */
+/* 5 */
+/*!**********************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/store/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 6));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+_vue.default.use(_vuex.default);
+
+var store = new _vuex.default.Store({
+  state: {
+    hasLogin: false,
+    userInfo: {} },
+
+  mutations: {
+    login: function login(state, provider) {
+
+      state.hasLogin = true;
+      state.userInfo = provider;
+      uni.setStorage({ //缓存用户登陆状态
+        key: 'userInfo',
+        data: provider });
+
+      console.log(state.userInfo);
+    },
+    logout: function logout(state) {
+      state.hasLogin = false;
+      state.userInfo = {};
+      uni.removeStorage({
+        key: 'userInfo' });
+
+    } },
+
+  actions: {} });var _default =
+
+
+
+
+store;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 6 */
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
@@ -8587,9 +8630,12 @@ var index_esm = {
 
 
 /***/ }),
+/* 7 */,
+/* 8 */,
 /* 9 */,
 /* 10 */,
-/* 11 */
+/* 11 */,
+/* 12 */
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -8717,66 +8763,1136 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 12 */
-/*!**********************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/store/index.js ***!
-  \**********************************************************/
+/* 13 */
+/*!***********************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 8));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-_vue.default.use(_vuex.default);
-
-var store = new _vuex.default.Store({
-  state: {
-    hasLogin: false,
-    userInfo: {} },
-
-  mutations: {
-    login: function login(state, provider) {
-
-      state.hasLogin = true;
-      state.userInfo = provider;
-      uni.setStorage({ //缓存用户登陆状态
-        key: 'userInfo',
-        data: provider });
-
-      console.log(state.userInfo);
-    },
-    logout: function logout(state) {
-      state.hasLogin = false;
-      state.userInfo = {};
-      uni.removeStorage({
-        key: 'userInfo' });
-
-    } },
-
-  actions: {} });var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.RouterMount = exports.default = void 0;var _util = __webpack_require__(/*! ./helpers/util */ 14);
+var _navJump = _interopRequireDefault(__webpack_require__(/*! ./helpers/navJump */ 18));
+var _util2 = __webpack_require__(/*! ./vueRouter/util */ 30);
+var _util3 = __webpack_require__(/*! ./appRouter/util */ 23);
+var _util4 = __webpack_require__(/*! ./appletsRouter/util */ 26);
+var _config = __webpack_require__(/*! ./helpers/config */ 15);
+var _warn = __webpack_require__(/*! ./helpers/warn */ 17);
+var _hooks = __webpack_require__(/*! ./lifeCycle/hooks */ 34);
+var _base = __webpack_require__(/*! ./vueRouter/base */ 16);
+var _appletsPatch = _interopRequireDefault(__webpack_require__(/*! ./patch/applets-patch */ 35));
+var _appPatch = _interopRequireDefault(__webpack_require__(/*! ./patch/app-patch */ 36));
+var _mixins = _interopRequireDefault(__webpack_require__(/*! ./helpers/mixins */ 37));
+var _urlQuery = _interopRequireDefault(__webpack_require__(/*! ./helpers/urlQuery */ 41));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
 
 
 
 
-store;exports.default = _default;
+var H5PATCH = null;
+
+
+
+
+var parseQuery = new _urlQuery.default();
+
+_config.Global.H5RouterReady = new Promise(function (resolve) {return _config.Global.RouterReadyPromise = resolve;});var
+
+Router = /*#__PURE__*/function () {
+  function Router(arg) {_classCallCheck(this, Router);
+    Router.$root = this;
+    _config.Global.Router = this; // 全局缓存一个对象，不必使用时都传递
+    _config.Global.$parseQuery = parseQuery;
+    this.CONFIG = (0, _util.formatConfig)(arg);
+    this.lifeCycle = _config.lifeCycle;
+    _hooks.registerRouterHooks.call(this); // 注册全局Router生命钩子
+    if ((0, _util.appPlatform)() === 'H5') {
+      H5PATCH.setLoadingStatus(this.CONFIG.h5);
+    }
+  }_createClass(Router, [{ key: "push",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /** 动态的导航到一个新 URL 保留浏览历史
+                                        * navigateTo
+                                        * @param {Object} rule
+                                        */value: function push(
+    rule) {
+      _navJump.default.call(this, rule, 'push');
+    }
+
+    /** 动态的导航到一个新 URL 关闭当前页面，跳转到的某个页面。
+      * redirectTo
+      * @param {Object} rule
+      */ }, { key: "replace", value: function replace(
+    rule) {
+      _navJump.default.call(this, rule, 'replace');
+    }
+
+    /** 动态的导航到一个新 URL 关闭所有页面，打开到应用内的某个页面
+      * 	reLaunch
+      * @param {Object} rule
+      */ }, { key: "replaceAll", value: function replaceAll(
+    rule) {
+      _navJump.default.call(this, rule, 'replaceAll');
+    }
+
+    /** 动态的导航到一个新 url 关闭所有页面，打开到应用内的某个tab
+      * @param {Object} rule
+      */ }, { key: "pushTab", value: function pushTab(
+    rule) {
+      _navJump.default.call(this, rule, 'pushTab');
+    }
+
+    /**
+      * 返回到指定层级页面上
+       * @param {Number} backLayer 需要返回的页面层级 默认 1
+       * @param {Object} delta 暂时无用
+       * @param {enforce} 是否强制越过跳转加锁检查 默认 false
+      */ }, { key: "back", value: function back()
+    {var backLayer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;var delta = arguments.length > 1 ? arguments[1] : undefined;var enforce = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      if (backLayer.constructor != Number) {
+        return (0, _warn.err)("\u8FD4\u56DE\u5C42\u7EA7\u53C2\u6570\u5FC5\u987B\u662F\u4E00\u4E2ANumber\u7C7B\u578B\u4E14\u5FC5\u987B\u5927\u4E8E1\uFF1A".concat(
+        backLayer));
+
+      }
+      _navJump.default.call(this, {
+        backLayer: backLayer, delta: delta, H5PATCH: H5PATCH },
+      'back', true, enforce);
+    }
+
+    /**
+      * 获取当前页面下的 Route 信息
+      *
+      * @param {Object} Vim 当前开发者可以传递一个 vue 组件对象 来获取当前下的 Route 信息
+      */ }, { key: "getPageRoute", value: function getPageRoute(
+    Vim) {
+      var pages = getCurrentPages();
+      switch ((0, _util.appPlatform)(true)) {
+        case 'H5':
+          return _util2.H5GetPageRoute.call(this, pages, Vim);
+        case 'APP':
+          return (0, _util3.APPGetPageRoute)(pages, Vim);
+        case 'APPLETS':
+          return (0, _util4.AppletsPageRoute)(pages, Vim);
+        default:
+          break;}
+
+    } }, { key: "beforeEach", value: function beforeEach(
+
+    fn) {
+      return (0, _hooks.registerHook)(this.lifeCycle.beforeHooks, fn);
+    } }, { key: "afterEach", value: function afterEach(
+
+    fn) {
+      return (0, _hooks.registerHook)(this.lifeCycle.afterHooks, fn);
+    } }, { key: "$Route", get: function get() {return this.getPageRoute();} /**
+                                                                             * 获取 url 参数帮助类实例
+                                                                             */ }, { key: "$parseQuery", get: function get() {return _config.Global.$parseQuery;} /**
+                                                                                                                                                                   * 获取当前是否处于正在跳转的状态
+                                                                                                                                                                   * H5 状态下始终为false
+                                                                                                                                                                   */ }, { key: "$lockStatus", get: function get() {return _config.Global.LockStatus;} /**
+                                                                                                                                                                                                                                                        * 动态设置拦截状态
+                                                                                                                                                                                                                                                        */, set: function set(status) {(0, _warn.warn)('你确定要这么做？你知道后果？', true);_config.Global.LockStatus = status;} }]);return Router;}();Router.install = function (Vue) {(0, _mixins.default)(Vue, Router);Object.defineProperty(Vue.prototype, '$Router', { get: function get() {return Router.$root;
+    } });
+
+  Object.defineProperty(Vue.prototype, '$Route', {
+    get: function get() {
+      return Router.$root.getPageRoute(this);
+    } });
+
+};var _default =
+Router;
+/**
+         *
+         * @param {VueComponent } Vim vue实例对象
+         * @param {dom} el	dom节点选择器
+         */exports.default = _default;
+var RouterMount = function RouterMount(Vim, el) {
+  switch ((0, _util.appPlatform)(true)) {
+    case 'APP':
+      (0, _appPatch.default)(Vim, el);
+      break;
+    case 'APPLETS':
+      (0, _appletsPatch.default)(Vim, el);
+      break;
+    case 'H5':
+      _base.vueMount.push({ Vim: Vim, el: el });
+      break;
+    default:
+      (0, _warn.warn)('糟糕！！！还有其他的执行环境？？？没听说过啊。一脸懵逼？？？加QQ群问问：769241495');
+      break;}
+
+};exports.RouterMount = RouterMount;
+
+/***/ }),
+/* 14 */
+/*!******************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.copyObject = exports.formatURLQuery = exports.resolveRule = exports.exactRule = exports.parseQuery = exports.parseQueryD = exports.parseQueryN = exports.filter = exports.formatConfig = exports.noop = exports.appPlatform = exports.isObject = exports.isH5 = void 0;var _config = __webpack_require__(/*! ./config */ 15);
+var _base = __webpack_require__(/*! ../vueRouter/base */ 16);
+var _warn = __webpack_require__(/*! ./warn */ 17);function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
+/**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 当前是不是H5运行环境
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
+var isH5 = function isH5() {
+  return typeof window !== 'undefined' && typeof document !== 'undefined';
+};
+/**
+    * 判断当前变量是否为Object
+    * @param {Object} strObj
+    */exports.isH5 = isH5;
+var isObject = function isObject(strObj) {
+  return strObj.toString() === '[object Object]' && strObj.constructor === Object;
+};
+/**
+    * 获取当前运行平台
+    * @param {Boolean} applets 默认false  true时所有小程序平台统一返回 APPLETS
+    */exports.isObject = isObject;
+var appPlatform = function appPlatform() {var applets = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+  var platform = '';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  platform = 'WEIXIN';
+
+
+
+
+
+
+  if (applets) {
+
+    platform = 'APPLETS';
+
+  }
+
+  return platform;
+};
+/**
+    * 定义一个空方法 如果最后一个参数为true则打印所有参数
+    * @param  {...any} args
+    */exports.appPlatform = appPlatform;
+var noop = function noop() {for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
+  if (args[args.length - 1] === true) {
+    (0, _warn.log)(args);
+  }
+};
+/**
+    * 格式化基础配置信息 通过new Router传递过来的参数
+    */exports.noop = noop;
+var formatConfig = function formatConfig(userConfig) {
+  if (!userConfig.routes || userConfig.routes.constructor !== Array) {
+    return (0, _warn.err)("\u8DEF\u7531\u53C2\u6570 'routes' \u5FC5\u987B\u4F20\u9012 \r\n\r\n".concat(JSON.stringify(userConfig)));
+  }
+  if (userConfig.h5 != null && userConfig.h5.constructor !== Object) {
+    return (0, _warn.err)("h5\u53C2\u6570\u4F20\u9012\u9519\u8BEF\uFF0C\u5E94\u8BE5\u662F\u4E00\u4E2A 'Object' \u7C7B\u578B \u793A\u4F8B\uFF1A\r\n\r\n".concat(JSON.stringify(_config.baseConfig.h5)));
+  }
+  var config = Object.create(null);
+  var baseConfigKeys = Object.keys(_config.baseConfig);
+  for (var i = 0; i < baseConfigKeys.length; i += 1) {
+    var key = baseConfigKeys[i];
+    if (userConfig[key] != null) {
+      if (userConfig[key].constructor === Object) {
+        config[key] = _objectSpread({},
+        _config.baseConfig[key], {},
+        userConfig[key]);
+
+      } else if (key == 'routes') {// 需要加入已知的白名单
+        config[key] = [].concat(_toConsumableArray(_config.baseConfig[key]), _toConsumableArray(userConfig[key]), _toConsumableArray(_base.builtIn));
+      } else {
+        config[key] = userConfig[key];
+      }
+    } else {
+      config[key] = _config.baseConfig[key];
+    }
+  }
+  return config;
+};exports.formatConfig = formatConfig;
+var filter = function filter(str) {
+  str += '';
+  str = str.replace(/%/g, '%25');
+  str = str.replace(/\+/g, '%2B');
+  str = str.replace(/ /g, '%20');
+  str = str.replace(/\//g, '%2F');
+  str = str.replace(/\?/g, '%3F');
+  str = str.replace(/&/g, '%26');
+  str = str.replace(/=/g, '%3D');
+  str = str.replace(/#/g, '%23');
+  return str;
+};
+/**
+    * 使用encodeURI:true的情况	需要进行编码后再传递，解码等等 可以传递深度对象并会在路径后面加入一个query=
+    *
+    * @param {String} routerName //路径名称
+    * @param {JSON} query 	//需要格式化参数
+    * @param {Boolean} Encode 	//是获取还是编码后传递
+    */exports.filter = filter;
+var parseQueryN = function parseQueryN(routerName, query, Encode) {
+  if (Encode) {
+    return {
+      url: routerName,
+      query: JSON.parse(decodeURIComponent(query.replace(/^query=/, ''))) };
+
+  }
+  return {
+    url: routerName,
+    query: "query=".concat(encodeURIComponent(JSON.stringify(query))) };
+
+};
+/**
+    * 使用encodeURI:false的情况 直接格式化为普通的queryURl参数形式传递即可 扁平深度对象
+    *
+    * @param {String} routerName //路径名称
+    * @param {JSON} query 	//需要格式化参数
+    * @param {Boolean} Encode 	//是获取还是编码后传递
+    */exports.parseQueryN = parseQueryN;
+var parseQueryD = function parseQueryD(routerName, query, Encode) {
+  if (Encode) {
+    var obj = {};
+    var reg = /([^=&\s]+)[=\s]*([^&\s]*)/g;
+    while (reg.exec(query)) {
+      obj[RegExp.$1] = RegExp.$2;
+    }
+    return {
+      url: routerName,
+      query: obj };
+
+  }
+  var encodeArr = [];
+  var queryKeys = Object.keys(query);
+  for (var i = 0; i < queryKeys.length; i += 1) {
+    var attr = queryKeys[i];
+    var encodeStr = '';
+    if (query[attr].constructor == Object) {
+      encodeStr = parseQueryD(routerName, query[attr], Encode).query;
+      encodeArr.push(encodeStr);
+    } else {
+      encodeStr = filter(query[attr]);
+      encodeArr.push("".concat(attr, "=").concat(encodeStr));
+    }
+  }
+  return {
+    url: routerName,
+    query: encodeArr.join('&') };
+
+};
+/**
+    * @param {String} routerName //路径名称
+    * @param {JSON} query 	//需要格式化参数
+    * @param {Boolean} Encode 	//是获取还是编码后传递
+    */exports.parseQueryD = parseQueryD;
+var parseQuery = function parseQuery(routerName, query) {var Encode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  if (_config.Global.Router.CONFIG.encodeURI) {
+    return parseQueryN(routerName, query, Encode);
+  }
+  return parseQueryD(routerName, query, Encode);
+};exports.parseQuery = parseQuery;
+
+var exactRule = function exactRule(cloneRule, routes, ruleKey) {var getRule = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  var params = {};
+  var i = 0;
+  // eslint-disable-next-line
+  while (true) {
+    var item = routes[i];
+    if (item == null) {
+      if (!getRule) {
+        (0, _warn.err)("\u8DEF\u7531\u8868\u4E2D\u672A\u67E5\u627E\u5230 '".concat(ruleKey, "' \u4E3A '").concat(cloneRule[ruleKey], "'"));
+      }
+      return {
+        path: '',
+        name: '' };
+
+    }
+    if (item[ruleKey] != null && item[ruleKey] === cloneRule[ruleKey]) {
+      if (!getRule) {
+        params.url = item.path;
+        params.rule = item;
+        if (isH5()) {// 如果是h5 则使用优先使用自定义路径名称
+          params.url = item.aliasPath || item.path;
+        }
+        return params;
+      }
+      return item;
+    }
+    i += 1;
+  }
+};exports.exactRule = exactRule;
+
+var resolveRule = function resolveRule(router, rule) {var query = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};var ruleKey = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'path';
+  var ruleInfo = (0, _config.route)(
+  exactRule(_objectSpread({},
+  rule),
+
+  router.CONFIG.routes,
+  ruleKey,
+  router));
+
+  return _objectSpread({},
+  ruleInfo, {
+    query: query });
+
+};
+/**
+    * 把一些不必要的参数进行格式化掉，完成url的美观
+    * @param {String} URLQuery URL中传递的参数
+    */exports.resolveRule = resolveRule;
+var formatURLQuery = function formatURLQuery(URLQuery) {
+  switch (URLQuery.trim()) {
+    case 'query=%7B%7D':
+    case '%7B%7D':
+    case '?query=%7B%7D':
+    case '?':
+    case '?[object Object]':
+    case '?query={}':
+      URLQuery = '';
+      break;
+    default:
+      (0, _warn.warn)('url已经很完美啦，不需要格式化！');
+      break;}
+
+  return URLQuery;
+};
+/**
+    * 拷贝对象
+    * @param {Object} object
+    */exports.formatURLQuery = formatURLQuery;
+var copyObject = function copyObject(object) {
+  return JSON.parse(JSON.stringify(object));
+};exports.copyObject = copyObject;
+
+/***/ }),
+/* 15 */
+/*!********************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.route = exports.appletsConfig = exports.uniAppHook = exports.Global = exports.lifeCycle = exports.H5FnTypeToggle = exports.methods = exports.baseConfig = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var baseConfig = {
+  h5: {
+    rewriteFun: true, // 是否对uni-app reLaunch/navigateBack 两个方法重写 处理uni刷新直接返回到首页和触发路由守卫
+    paramsToQuery: false, // h5端上通过params传参时规则是vue-router 刷新会丢失 开启此开关将变成?连接的方式
+    loading: true, // 是否显示加载动画
+    hinderTab: false, // 是否拦截uni-app自带底部菜单   TODO
+    vueRouterDev: false, // 完全使用采用vue-router的开发模式
+    useUniConfig: true, // 是否采用在pages.json下的所有页面配置信息,false时需开发者自行设置页面
+    keepUniIntercept: false, // 保留uni-app使用vue-router的拦截器
+    vueNext: false, // 在next管道函数中是否获取vueRouter next的原本参数
+    replaceStyle: false, // 是否对resetStyle函数中返回的style节点进行全部替换，否则为追加
+    resetStyle: function resetStyle() {return JSON.parse('{}');}, // 自定义加载样式函数 可返回一个包涵 html、style、script 的对象来重置Router内置的加载动画
+    mode: 'hash',
+    base: '/',
+    linkActiveClass: 'router-link-active',
+    linkExactActiveClass: 'router-link-exact-active',
+    scrollBehavior: function scrollBehavior(to, from, savedPostion) {return savedPostion;},
+    fallback: true },
+
+  APP: {
+    holdTabbar: true, // 是否开启底部菜单拦截
+    loddingPageStyle: function loddingPageStyle() {return JSON.parse('{"backgroundColor":"#FFF"}');}, // 当前等待页面的样式 必须返回一个json
+    loddingPageHook: function loddingPageHook(view) {plus.navigator.closeSplashscreen();view.show();}, // 刚刚打开页面处于等待状态,会触发此事件
+    animation: { animationType: 'pop-in', animationDuration: 300 }, // 页面切换动画
+    switchPageOutTime: 1000 // 最高能忍耐的页面切换时间 达到此时间 不管切换有没有完成都会显示页面出来 这对启动页帮助很大
+  },
+  debugger: false, // 是否处于开发阶段 设置为true则打印日志
+  encodeURI: true, // 是否对url传递的参数进行编码
+  routerBeforeEach: function routerBeforeEach() {}, // router 前置路由函数 每次触发跳转前先会触发此函数
+  routerAfterEach: function routerAfterEach() {}, // router 后置路由函数 每次触发跳转后会触发此函数
+  routes: [] };exports.baseConfig = baseConfig;
+
+
+var methods = {
+  push: 'navigateTo',
+  replace: 'redirectTo',
+  replaceAll: 'reLaunch',
+  pushTab: 'switchTab',
+  back: 'navigateBack' };exports.methods = methods;
+
+
+var H5FnTypeToggle = {
+  push: 'push',
+  replace: 'replace',
+  replaceAll: 'replace',
+  pushTab: 'replace' };exports.H5FnTypeToggle = H5FnTypeToggle;
+
+
+var lifeCycle = {
+  beforeHooks: [],
+  afterHooks: [],
+  routerHooks: [],
+  routerbeforeHooks: [], // 内部跳转前生命周期
+  routerAfterHooks: [] // 内部跳转后生命周期
+};exports.lifeCycle = lifeCycle;
+
+var Global = { // 缓存一些必要的对象，作为全局可以访问的参数
+  $parseQuery: null, // url query 帮助类实例
+  Router: {},
+  vueRouter: {},
+  addedRoutes: [], // 用于缓存用户动态添加的路由
+  RouterReadyPromise: function RouterReadyPromise() {},
+  H5RouterReady: null, // 当前router是否就绪
+  backLayerC: 1, // 返回api调用时开发者传递的 delta
+  LockStatus: false // 当前是否正在进行跳转 正在跳转调用api是不给跳转的
+};exports.Global = Global;
+
+var uniAppHook = {
+  indexVue: {}, // 首页 组件对象
+  toutiaoIndexThis: {}, // 头条小程序Index this对象
+  appVue: {}, // 同getApp()获取到的对象一毛一样的  其实就是app.vue组件
+  onLaunch: { fun: [], args: {}, isHijack: false }, // 这两个是app.vue
+  onShow: { fun: [], args: {}, isHijack: false },
+  variationFuns: ['onReady', 'onUnload'], // 一些uni-app的变异方法 需要处理下
+  waitHooks: {}, // 首页等待中的生命钩子 一些需要等待的Hooks,就是在页面没有进来之前一些提前触发的生命钩子 主要是用户已经声明好的
+  indexCallHooks: ['onLoad', 'onReady', 'created', 'onShow'], // 在首页首次启动时需要触发的生命周期
+  needHooks: ['onLoad', 'onReady', 'onShow', 'created', 'onHide', 'onUnload', 'onResize'], // 首页需要拦截的生命钩子
+  pageReady: false,
+  onLaunched: false // 否触发onLaunch事件
+};exports.uniAppHook = uniAppHook;
+
+var appletsConfig = { // 小程序端的一些路由所需配置
+  onLaunchEd: false // 当前小程序端是否触发onLaunch事件
+};exports.appletsConfig = appletsConfig;
+
+var route = function route() {var object = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return _objectSpread({},
+  object, {
+    params: {},
+    query: {} });
+
+};exports.route = route;
+
+/***/ }),
+/* 16 */
+/*!********************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.vueMount = exports.vuelifeHooks = exports.builtIn = void 0;var builtIn = [{
+  path: '/preview-image',
+  name: 'previewImage',
+  component: {
+    render: function render() {} } },
+
+{
+  path: '/choose-location',
+  name: 'chooseLocation',
+  component: {
+    render: function render() {} } },
+
+{
+  path: '/open-location',
+  name: 'openLocation',
+  component: {
+    render: function render() {} } }];
+
+// uni-app内置路由
+exports.builtIn = builtIn;var vuelifeHooks = { // vueRouter的原始生命周期
+  beforeHooks: [],
+  afterHooks: [] };exports.vuelifeHooks = vuelifeHooks;
+
+var vueMount = []; // 使用内部对象保留实例化下的appVue,并使用Router进行挂载触发第一次路由钩子
+exports.vueMount = vueMount;
+
+/***/ }),
+/* 17 */
+/*!******************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.warnLock = exports.log = exports.warn = exports.err = void 0;var _config = __webpack_require__(/*! ./config */ 15);
+
+
+var isLog = function isLog(type, errText, enforce) {
+  if (!enforce) {
+    var dev = _config.Global.Router.CONFIG.debugger;
+    var isObject = dev.toString() === '[object Object]';
+    if (dev === false) {
+      return false;
+    }if (dev === false) {
+      return false;
+    }if (isObject) {
+      if (dev[type] === false) {
+        return false;
+      }
+    }
+  }
+  /* eslint no-console:"off" */
+  console[type](errText);
+};
+var err = function err(errInfo) {var enforce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  isLog('error', errInfo, enforce);
+};exports.err = err;
+
+var warn = function warn(errInfo) {var enforce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  isLog('warn', errInfo, enforce);
+};exports.warn = warn;
+
+var log = function log(errInfo) {var enforce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  isLog('log', errInfo, enforce);
+};exports.log = log;
+var warnLock = function warnLock(errInfo) {
+  console.warn(errInfo);
+};exports.warnLock = warnLock;
+
+/***/ }),
+/* 18 */
+/*!*********************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _util = __webpack_require__(/*! ./util */ 14);
+var _config = __webpack_require__(/*! ./config */ 15);
+var _hooks = __webpack_require__(/*! ../appRouter/hooks */ 19);
+var _hooks2 = __webpack_require__(/*! ../appletsRouter/hooks */ 25);
+var _uniNav = _interopRequireDefault(__webpack_require__(/*! ../appRouter/uniNav */ 24));
+var _appletsNav = _interopRequireDefault(__webpack_require__(/*! ../appletsRouter/appletsNav */ 28));
+var _warn = __webpack_require__(/*! ./warn */ 17);
+var _routerNav = _interopRequireDefault(__webpack_require__(/*! ../vueRouter/routerNav */ 29));
+var compile = _interopRequireWildcard(__webpack_require__(/*! ./compile */ 27));function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+
+/**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 返回api 触发的公共函数
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @param {Object/String} rule  当前跳转规则
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @param {String} fnType    跳转页面的类型方法
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * this 为当前 Router 实例
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
+var isBcakNav = function isBcakNav(_ref)
+
+
+
+{var _this = this;var backLayer = _ref.backLayer,delta = _ref.delta,H5PATCH = _ref.H5PATCH;
+  compile.H5(function () {
+    H5PATCH.on('historyBack', {
+      backLayer: backLayer,
+      delta: delta });
+
+  });
+  compile.APP(function () {
+    _config.Global.backLayerC = backLayer; // 告诉路由需要返回几层
+    uni.navigateBack({
+      delta: backLayer,
+      complete: function complete() {
+        _config.Global.LockStatus = false; // 跳转完成解锁状态
+      } });
+
+  });
+  compile.mp(function () {
+    _hooks2.backCallHook.call(_this, backLayer, function () {
+      uni.navigateBack({
+        delta: backLayer });
+
+    });
+  });
+};
+
+/**
+    * 非 返回api 触发的公共函数
+    * @param {Object/String} rule  当前跳转规则
+    * @param {String} fnType    跳转页面的类型方法
+    *
+    * this 为当前 Router 实例
+    */
+
+var notBackNav = function notBackNav(rule, fnType) {
+  if (rule == null) {
+    return (0, _warn.err)('跳转规则为空，不允许这样操作');
+  }
+  if (rule.constructor === String) {// 单独 path 的情况   允许？拼接参数
+    var ruleArray = rule.split('?');
+    if (ruleArray.length > 1) {
+      rule = {
+        path: ruleArray[0],
+        query: _config.Global.$parseQuery.parse(ruleArray[1]) };
+
+    }
+  }
+  switch ((0, _util.appPlatform)(true)) {
+    case 'H5':
+      return _routerNav.default.call(this, _config.H5FnTypeToggle[fnType], rule, _config.methods[fnType]);
+    case 'APP':
+      _config.Global.LockStatus = true; // 设置为锁住状态
+      return _hooks.transitionTo.call(this, rule, fnType, _uniNav.default);
+    case 'APPLETS':
+      _config.Global.LockStatus = true; // 设置为锁住状态
+      return _hooks2.appletsTransitionTo.call(this, rule, fnType, _appletsNav.default);
+    default:
+      (0, _warn.err)('糟糕！！！还有其他的执行环境？？？没听说过啊。一脸懵逼？？？加QQ群问问：769241495');
+      break;}
+
+};
+
+/**
+    * 处理正在跳转的公共api
+    * @param {Object/String} rule  当前跳转规则
+    * @param {String} fnType    跳转页面的类型方法
+    * @param {Boolean} isBack  是否通过 back() api 调用的 默认为false
+    * @param {Boolean} enforce 是否强制越过跳转加锁检查 默认false  目前只有back() api 传递了
+    *
+    * this 为当前 Router 实例
+    */
+var navjump = function navjump(rule, fnType) {var isBack = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;var enforce = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  if (_config.Global.LockStatus && !enforce) {// 正在跳转的状态下 给出提示正在跳转
+    return (0, _warn.warn)('当前页面正在处于跳转状态，请稍后再进行跳转....');
+  }
+  if (isBack) {// 是返回api触发的
+    return isBcakNav.call(this, rule, fnType);
+  }
+  return notBackNav.call(this, rule, fnType);
+};var _default =
+
+navjump;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
+/* 19 */
+/*!*********************************************************************************************!*\
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.beforeTabHooks = exports.triggerLifeCycle = exports.transitionTo = exports.backApiCallHook = exports.beforeBackHooks = exports.proxyIndexHook = exports.proxyLaunchHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));var _config = __webpack_require__(/*! ../helpers/config */ 15);
+var _util = __webpack_require__(/*! ./util */ 23);
+
+
+var _util2 = __webpack_require__(/*! ../helpers/util */ 14);
+var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _uniNav = _interopRequireDefault(__webpack_require__(/*! ./uniNav */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+
+var startBack = false; // 主要是兼容低端手机返回卡 然后多次返回直接提示退出的问题
+
+/**
+ * 还原并执行所有 拦截下来的生命周期 app.vue 及 index 下的生命周期
+ * @param {Boolean} callHome // 是否触发首页的生命周期
+ *
+ * this 为当前 page 对象
+ */
+var callwaitHooks = function callwaitHooks(callHome) {var _this = this;
+  return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(resolve) {var variation, appVue, indexVue, onLaunch, onShow, waitHooks, variationFuns, indexCallHooks, app, key, _loop, _key;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              variation = []; // 存储一下在uni-app上的变异生命钩子  奇葩的要死
+
+              appVue =
+              _config.uniAppHook.appVue, indexVue = _config.uniAppHook.indexVue, onLaunch = _config.uniAppHook.onLaunch, onShow = _config.uniAppHook.onShow, waitHooks = _config.uniAppHook.waitHooks, variationFuns = _config.uniAppHook.variationFuns, indexCallHooks = _config.uniAppHook.indexCallHooks;
+              app = appVue.$options;_context.next = 5;return (
+                onLaunch.fun[onLaunch.fun.length - 1].call(appVue, onLaunch.args));case 5: // 确保只执行最后一个 并且强化异步操作
+              onShow.fun[onShow.fun.length - 1].call(appVue, onShow.args); // onshow 不保证异步 直接确保执行最后一个
+              if (callHome) {// 触发首页生命周期
+                // eslint-disable-next-line
+                for (key in waitHooks) {
+                  if (indexCallHooks.includes(key)) {// 只有在被包含的情况下才执行
+                    _util.callAppHook.call(_this, waitHooks[key].fun);
+                  }
+                }
+              }
+              if (onLaunch.isHijack) {// 还原 onLaunch生命钩子
+                app.onLaunch.splice(app.onLaunch.length - 1, 1, onLaunch.fun[0]);
+              }
+              if (onShow.isHijack) {// 继续还原 onShow
+                app.onShow.splice(app.onShow.length - 1, 1, onShow.fun[0]);
+              }
+              // eslint-disable-next-line
+              _loop = function _loop(_key) {// 还原 首页下的生命钩子
+                var item = waitHooks[_key];
+                if (item.isHijack) {
+                  if (variationFuns.includes(_key)) {// 变异方法
+                    variation.push({ key: _key, fun: item.fun[0] });
+                  } else {
+                    var indeHooks = indexVue[_key];
+                    // 修复 https://github.com/SilurianYang/uni-simple-router/issues/76
+                    setTimeout(function () {// 异步延迟还原 不然 uni-app 给给触发了
+                      indeHooks.splice(indeHooks.length - 1, 1, item.fun[0]);
+                    }, 50);
+                  }
+                }};for (_key in waitHooks) {_loop(_key);
+              }
+              resolve(variation);case 12:case "end":return _context.stop();}}}, _callee);}));return function (_x) {return _ref.apply(this, arguments);};}());
+
+};
+/**
+    * 还原剩下的奇葩生命钩子
+    * @param {Object} variation 当前uni-app中的一些变异方法  奇葩生命钩子
+    */
+var callVariationHooks = function callVariationHooks(variation) {
+  for (var i = 0; i < variation.length; i += 1) {var _variation$i =
+    variation[i],key = _variation$i.key,fun = _variation$i.fun;
+    var indeHooks = _config.uniAppHook.indexVue[key];
+    indeHooks.splice(indeHooks.length - 1, 1, fun);
+  }
+};
+
+/**
+    * 主要是对app.vue下onLaunch和onShow生命周期进行劫持
+    *
+    * this 为当前 page 对象
+    */
+var proxyLaunchHook = function proxyLaunchHook() {var _this2 = this;var _this$$options =
+
+
+
+  this.$options,onLaunch = _this$$options.onLaunch,onShow = _this$$options.onShow;
+  _config.uniAppHook.appVue = this; // 缓存 当前app.vue组件对象
+  if (onLaunch.length > 1) {// 确保有写 onLaunch 可能有其他混入 那也办法
+    _config.uniAppHook.onLaunch.isHijack = true;
+    _config.uniAppHook.onLaunch.fun = onLaunch.splice(onLaunch.length - 1, 1, function (arg) {
+      _config.uniAppHook.onLaunch.args = arg;
+    }); // 替换uni-app自带的生命周期
+  }
+  if (onShow.length > 0) {
+    _config.uniAppHook.onShow.isHijack = true;
+    _config.uniAppHook.onShow.fun = onShow.splice(onShow.length - 1, 1, function (arg) {
+      _config.uniAppHook.onShow.args = arg;
+      if (_config.uniAppHook.pageReady) {// 因为还有app切前台后台的操作
+        _util.callAppHook.call(_this2, _config.uniAppHook.onShow.fun, arg);
+      }
+    }); // 替换替换 都替换
+  }
+};
+
+/**
+    * 把指定页面的生命钩子函数保存并替换
+    * this 为当前 page 对象
+    */exports.proxyLaunchHook = proxyLaunchHook;
+var proxyIndexHook = function proxyIndexHook(Router) {var
+  needHooks = _config.uniAppHook.needHooks,waitHooks = _config.uniAppHook.waitHooks;
+  var options = this.$options;
+  _config.uniAppHook.indexVue = options;
+  for (var i = 0; i < needHooks.length; i += 1) {
+    var key = needHooks[i];
+    if (options[key] != null) {// 只劫持开发者声明的生命周期
+      var length = options[key].length;
+      // eslint-disable-next-line
+      var whObject = waitHooks[key] = {};
+      whObject.fun = options[key].splice(length - 1, 1, _util2.noop); // 把实际的页面生命钩子函数缓存起来,替换原有的生命钩子
+      whObject.isHijack = true;
+    }
+  }
+  // eslint-disable-next-line
+  triggerLifeCycle.call(this, Router); // 接着 主动我们触发导航守卫
+};
+/**
+    * 触发全局beforeHooks 生命钩子
+    * @param {Object} _from // from  参数
+    * @param {Object} _to  // to 参数
+    *
+    * this 为当前 Router 对象
+    */exports.proxyIndexHook = proxyIndexHook;
+var beforeHooks = function beforeHooks(_from, _to) {var _this3 = this;
+  return new Promise( /*#__PURE__*/function () {var _ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(resolve) {var beforeHooksFun;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+              beforeHooksFun = _this3.lifeCycle.beforeHooks[0];if (!(
+              beforeHooksFun == null)) {_context2.next = 3;break;}return _context2.abrupt("return",
+              resolve());case 3:_context2.next = 5;return (
+
+                beforeHooksFun.call(_this3, _to, _from, resolve));case 5:case "end":return _context2.stop();}}}, _callee2);}));return function (_x2) {return _ref2.apply(this, arguments);};}());
+
+};
+/**
+    * 触发全局afterEachHooks 生命钩子
+    * @param {Object} _from // from  参数
+    * @param {Object} _to  // to 参数
+    *
+    * this 为当前 Router 对象
+    */
+var afterEachHooks = function afterEachHooks(_from, _to) {
+  var afterHooks = this.lifeCycle.afterHooks[0];
+  if (afterHooks != null && afterHooks.constructor === Function) {
+    afterHooks.call(this, _to, _from);
+  }
+};
+/**
+    * 触发全局 beforeEnter 生命钩子
+    * @param {Object} finalRoute 	// 当前格式化后的路由参数
+    * @param {Object} _from // from  参数
+    * @param {Object} _to  // to 参数
+    *
+    * this 为当前 Router 对象
+    */
+var beforeEnterHooks = function beforeEnterHooks(finalRoute, _from, _to) {var _this4 = this;
+  return new Promise( /*#__PURE__*/function () {var _ref3 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(resolve) {var beforeEnter;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+              beforeEnter = finalRoute.route.beforeEnter;if (!(
+              beforeEnter == null || beforeEnter.constructor !== Function)) {_context3.next = 3;break;}return _context3.abrupt("return",
+              resolve());case 3:_context3.next = 5;return (
+
+                beforeEnter.call(_this4, _to, _from, resolve));case 5:case "end":return _context3.stop();}}}, _callee3);}));return function (_x3) {return _ref3.apply(this, arguments);};}());
+
+};
+/**
+    * 触发返回事件公共方法
+    * @param {Object} page	用getPages获取到的页面栈对象
+    * @param {Object} options 	当前vue页面对象
+    * @param {Object} backLayerC	需要返回页面的层级
+      *
+    * this 为当前 Router 对象
+    */
+var backCallHook = function backCallHook(page, options) {var _this5 = this;var backLayerC = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  var route = (0, _util.APPGetPageRoute)([page]);
+  var NAVTYPE = 'RouterBack';
+  // eslint-disable-next-line
+  transitionTo.call(this, { path: route.path, query: route.query }, NAVTYPE, function (finalRoute, fnType) {
+    if (fnType != NAVTYPE) {// 返回时的api如果有next到其他页面 那么必须带上NAVTYPE  不相同则表示需要跳转到其他页面
+      return (0, _uniNav.default)(finalRoute, fnType);
+    }
+    if (startBack) {// 如果当前处于正在返回的状态
+      return (0, _warn.warn)('当前处于正在返回的状态，请稍后再试！');
+    }
+    startBack = true; // 标记开始返回
+    options.onBackPress = [_util2.noop]; // 改回uni-app可执行的状态
+    setTimeout(function () {
+      _this5.back(backLayerC, undefined, true); // 越过加锁验证
+      startBack = false; // 返回结束
+    });
+  });
+};
+/**
+    * 处理返回按钮的生命钩子
+    * @param {Object} options 当前 vue 组件对象下的$options对象
+    * @param {Array} args  当前页面是点击头部返回还是底部返回
+    *
+    * this 为当前 Router 对象
+    */
+var beforeBackHooks = /*#__PURE__*/function () {var _ref4 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(options, args) {var isNext, page;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+              (0, _util.getPageOnBeforeBack)(args));case 2:isNext = _context4.sent;if (!(
+            isNext === false)) {_context4.next = 6;break;} // onBeforeBack  返回了true 阻止了跳转
+            _config.Global.LockStatus = false; // 也需要解锁
+            return _context4.abrupt("return", false);case 6:
+
+            page = (0, _util.getPages)(-3); // 上一个页面对象
+            backCallHook.call(this, page, options);case 8:case "end":return _context4.stop();}}}, _callee4, this);}));return function beforeBackHooks(_x4, _x5) {return _ref4.apply(this, arguments);};}();
+
+/**
+                                                                                                                                                                                                             * 处理back api的生命钩子
+                                                                                                                                                                                                             * @param {Object} options 当前 vue 组件对象下的$options对象
+                                                                                                                                                                                                             * @param {Array} args  当前页面是点击头部返回还是底部返回
+                                                                                                                                                                                                             *
+                                                                                                                                                                                                             * this 为当前 Router 对象
+                                                                                                                                                                                                             */exports.beforeBackHooks = beforeBackHooks;
+var backApiCallHook = /*#__PURE__*/function () {var _ref5 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(options, args) {var backLayerC, pages, page;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
+              (0, _util.getPageOnBeforeBack)(args));case 2:
+            backLayerC = _config.Global.backLayerC;
+            pages = (0, _util.getPages)();
+            page = null;
+            if (backLayerC > pages.length - 1 || backLayerC == pages.length - 1) {// 返回的首页 我们需要显示tabbar拦截
+              // eslint-disable-next-line
+              page = pages[0];
+            } else {
+              page = pages[pages.length - 2];
+            }
+            backCallHook.call(this, page, options, backLayerC);case 7:case "end":return _context5.stop();}}}, _callee5, this);}));return function backApiCallHook(_x6, _x7) {return _ref5.apply(this, arguments);};}();
+
+/**
+                                                                                                                                                                                                                         *  v1.5.4+
+                                                                                                                                                                                                                         * beforeRouteLeave 生命周期
+                                                                                                                                                                                                                         * @param {Object} to       将要去的那个页面 to对象
+                                                                                                                                                                                                                         * @param {Object} from     从那个页面触发的 from对象
+                                                                                                                                                                                                                         *  @param {Boolean} leaveHook:? 是否为 beforeRouteLeave 触发的next 到别处 如果是则不再触发 beforeRouteLeave 生命钩子
+                                                                                                                                                                                                                         * this 为当前 Router 对象
+                                                                                                                                                                                                                         */exports.backApiCallHook = backApiCallHook;
+var beforeRouteLeaveHooks = function beforeRouteLeaveHooks(from, to, leaveHook) {
+  return new Promise(function (resolve) {
+    if (leaveHook) {// 我们知道这个是来自页面beforeRouteLeave next到其他地方，所有不必再执行啦
+      (0, _warn.warn)('beforeRouteLeave next到其他地方，无须再执行！');
+      return resolve();
+    }
+    if (from.path == to.path) {// 进入首页的时候不触发
+      return resolve();
+    }
+    var currentPage = (0, _util.getPages)(-2); // 获取到全部的页面对象
+    var callThis = (0, _util.getPageVmOrMp)(currentPage); // 获取到页面的 $vm 对象 及 page页面的this对象
+    var beforeRouteLeave = callThis.$options.beforeRouteLeave; // 查看当前是否有开发者声明
+    if (beforeRouteLeave == null) {
+      (0, _warn.warn)('当前页面下无 beforeRouteLeave 钩子声明，无须执行！');
+      return resolve();
+    }
+    if (beforeRouteLeave != null && beforeRouteLeave.constructor !== Function) {
+      (0, _warn.warn)('beforeRouteLeave 生命钩子声明错误，必须是一个函数！');
+      return resolve();
+    }
+    beforeRouteLeave.call(callThis, to, from, resolve); // 执行生命钩子
+  });
+};
+
+/**
+    * 验证当前 next() 管道函数是否支持下一步
+    *
+    * @param {Object} Intercept 拦截到的新路由规则
+    * @param {Object} fnType 跳转页面的类型方法 原始的
+    * @param {Object} navCB 回调函数 原始的
+    * @param {Boolean} leaveHookCall:? 是否为 beforeRouteLeave 触发的next 做拦截判断
+    * this 为当前 Router 对象
+    *
+    */
+var isNext = function isNext(Intercept, fnType, navCB) {var _this6 = this;var leaveHookCall = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  return new Promise(function (resolve, reject) {
+    if (Intercept == null) {// 什么也不做 直接执行下一个钩子
+      return resolve();
+    }
+    if (Intercept === false) {// 路由中断
+      _config.Global.LockStatus = false; // 解锁跳转状态
+      return reject('路由终止');
+    }
+    if (Intercept.constructor === String) {// 说明 开发者直接传的path 并且没有指定 NAVTYPE 那么采用原来的navType
+      reject('next到其他页面');
+      // eslint-disable-next-line
+      return transitionTo.call(_this6, Intercept, fnType, navCB, leaveHookCall);
+    }
+    if (Intercept.constructor === Object) {// 有一系列的配置 包括页面切换动画什么的
+      reject('next到其他页面');
+      // eslint-disable-next-line
+      return transitionTo.call(_this6, Intercept, Intercept.NAVTYPE || fnType, navCB, leaveHookCall);
+    }
+  });
+};
+/**
+    * 核心方法 处理一系列的跳转配置
+    * @param {Object} rule 当前跳转规则
+    * @param {Object} fnType 跳转页面的类型方法
+    * @param {Object} navCB:? 回调函数
+    * @param {Boolean} leaveHook:? 是否为 beforeRouteLeave 触发的next 到别处 如果是则不再触发 beforeRouteLeave 生命钩子
+    *
+    * this 为当前 Router 对象
+    */
+var transitionTo = /*#__PURE__*/function () {var _ref6 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(rule, fnType, navCB) {var leaveHook,finalRoute,_from,_to,leaveResult,beforeResult,enterResult,_args6 = arguments;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:leaveHook = _args6.length > 3 && _args6[3] !== undefined ? _args6[3] : false;_context6.next = 3;return (
+              this.lifeCycle.routerbeforeHooks[0].call(this));case 3: // 触发内部跳转前的生命周期
+            finalRoute = (0, _util.ruleToUniNavInfo)(rule, this.CONFIG.routes); // 获得到最终的 route 对象
+            _from = (0, _util.formatFrom)(this.CONFIG.routes); // 先根据跳转类型获取 from 数据
+            _to = (0, _util.formatTo)(finalRoute); // 再根据跳转类型获取 to 数据
+            _context6.prev = 6;_context6.next = 9;return (
+              beforeRouteLeaveHooks.call(this, _from, _to, leaveHook));case 9:leaveResult = _context6.sent;_context6.next = 12;return (
+              isNext.call(this, leaveResult, fnType, navCB, true));case 12:_context6.next = 14;return (
+
+              beforeHooks.call(this, _from, _to));case 14:beforeResult = _context6.sent;_context6.next = 17;return (
+              isNext.call(this, beforeResult, fnType, navCB));case 17:_context6.next = 19;return (
+
+              beforeEnterHooks.call(this, finalRoute, _from, _to));case 19:enterResult = _context6.sent;_context6.next = 22;return (
+              isNext.call(this, enterResult, fnType, navCB));case 22:_context6.next = 28;break;case 24:_context6.prev = 24;_context6.t0 = _context6["catch"](6);
+
+            (0, _warn.warn)(_context6.t0); // 打印开发者操作的日志
+            return _context6.abrupt("return", false);case 28:
+
+            if (navCB) {
+              navCB.call(this, finalRoute, fnType); // 执行当前回调生命周期
+            }
+            afterEachHooks.call(this, _from, _to);_context6.next = 32;return (
+              this.lifeCycle.routerAfterHooks[0].call(this));case 32:case "end":return _context6.stop();}}}, _callee6, this, [[6, 24]]);}));return function transitionTo(_x8, _x9, _x10) {return _ref6.apply(this, arguments);};}();
+
+/**
+                                                                                                                                                                                                                                      * 主动触发导航守卫
+                                                                                                                                                                                                                                      * @param {Object} Router 当前路由对象
+                                                                                                                                                                                                                                      *
+                                                                                                                                                                                                                                      * this  当前vue页面组件对象
+                                                                                                                                                                                                                                      */exports.transitionTo = transitionTo;
+var triggerLifeCycle = function triggerLifeCycle(Router) {var _this7 = this;
+  var topPage = getCurrentPages()[0];
+  if (topPage == null) {
+    return (0, _warn.warn)('打扰了,当前一个页面也没有 这不是官方的bug是什么??');
+  }var _getPageVmOrMp =
+  (0, _util.getPageVmOrMp)(topPage, false),query = _getPageVmOrMp.query,page = _getPageVmOrMp.page;
+  transitionTo.call(Router, { path: page.route, query: query }, 'push', /*#__PURE__*/function () {var _ref7 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7(finalRoute, fnType) {var variation;return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:
+              variation = [];if (!(
+              "/".concat(page.route) == finalRoute.route.path)) {_context7.next = 7;break;} // 在首页不动的情况下
+              _config.uniAppHook.pageReady = true; // 标致着路由已经就绪 可能准备起飞
+              _context7.next = 5;return callwaitHooks.call(_this7, true);case 5:_context7.next = 12;break;case 7:_context7.next = 9;return (
+
+                callwaitHooks.call(_this7, false));case 9:variation = _context7.sent;_context7.next = 12;return (
+                (0, _uniNav.default)(finalRoute, fnType));case 12:
+
+              plus.nativeObj.View.getViewById('router-loadding').close();
+              callVariationHooks(variation);
+              _config.uniAppHook.pageReady = true; // 标致着路由已经就绪 可能准备起飞
+            case 15:case "end":return _context7.stop();}}}, _callee7);}));return function (_x11, _x12) {return _ref7.apply(this, arguments);};}());
+};
+
+/**
+    * 处理tabbar点击拦截事件
+    * @param {Object} path 当前需要跳转的tab页面路径
+    *
+    * this 为当前 Router 对象
+    */exports.triggerLifeCycle = triggerLifeCycle;
+var beforeTabHooks = function beforeTabHooks(path) {
+  transitionTo.call(this, { path: "/".concat(path), query: {} }, 'pushTab', function (finalRoute, fnType) {
+    (0, _uniNav.default)(finalRoute, fnType);
+  });
+};exports.beforeTabHooks = beforeTabHooks;
+
+/***/ }),
+/* 20 */
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 17);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 21);
 
 /***/ }),
-/* 17 */
+/* 21 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8807,7 +9923,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 18);
+module.exports = __webpack_require__(/*! ./runtime */ 22);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8823,7 +9939,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 18 */
+/* 22 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9554,1129 +10670,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */
-/*!***********************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.RouterMount = exports.default = void 0;var _util = __webpack_require__(/*! ./helpers/util */ 23);
-var _navJump = _interopRequireDefault(__webpack_require__(/*! ./helpers/navJump */ 27));
-var _util2 = __webpack_require__(/*! ./vueRouter/util */ 36);
-var _util3 = __webpack_require__(/*! ./appRouter/util */ 29);
-var _util4 = __webpack_require__(/*! ./appletsRouter/util */ 32);
-var _config = __webpack_require__(/*! ./helpers/config */ 24);
-var _warn = __webpack_require__(/*! ./helpers/warn */ 26);
-var _hooks = __webpack_require__(/*! ./lifeCycle/hooks */ 40);
-var _base = __webpack_require__(/*! ./vueRouter/base */ 25);
-var _appletsPatch = _interopRequireDefault(__webpack_require__(/*! ./patch/applets-patch */ 41));
-var _appPatch = _interopRequireDefault(__webpack_require__(/*! ./patch/app-patch */ 42));
-var _mixins = _interopRequireDefault(__webpack_require__(/*! ./helpers/mixins */ 43));
-var _urlQuery = _interopRequireDefault(__webpack_require__(/*! ./helpers/urlQuery */ 47));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
-
-
-
-
-var H5PATCH = null;
-
-
-
-
-var parseQuery = new _urlQuery.default();
-
-_config.Global.H5RouterReady = new Promise(function (resolve) {return _config.Global.RouterReadyPromise = resolve;});var
-
-Router = /*#__PURE__*/function () {
-  function Router(arg) {_classCallCheck(this, Router);
-    Router.$root = this;
-    _config.Global.Router = this; // 全局缓存一个对象，不必使用时都传递
-    _config.Global.$parseQuery = parseQuery;
-    this.CONFIG = (0, _util.formatConfig)(arg);
-    this.lifeCycle = _config.lifeCycle;
-    _hooks.registerRouterHooks.call(this); // 注册全局Router生命钩子
-    if ((0, _util.appPlatform)() === 'H5') {
-      H5PATCH.setLoadingStatus(this.CONFIG.h5);
-    }
-  }_createClass(Router, [{ key: "push",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /** 动态的导航到一个新 URL 保留浏览历史
-                                        * navigateTo
-                                        * @param {Object} rule
-                                        */value: function push(
-    rule) {
-      _navJump.default.call(this, rule, 'push');
-    }
-
-    /** 动态的导航到一个新 URL 关闭当前页面，跳转到的某个页面。
-      * redirectTo
-      * @param {Object} rule
-      */ }, { key: "replace", value: function replace(
-    rule) {
-      _navJump.default.call(this, rule, 'replace');
-    }
-
-    /** 动态的导航到一个新 URL 关闭所有页面，打开到应用内的某个页面
-      * 	reLaunch
-      * @param {Object} rule
-      */ }, { key: "replaceAll", value: function replaceAll(
-    rule) {
-      _navJump.default.call(this, rule, 'replaceAll');
-    }
-
-    /** 动态的导航到一个新 url 关闭所有页面，打开到应用内的某个tab
-      * @param {Object} rule
-      */ }, { key: "pushTab", value: function pushTab(
-    rule) {
-      _navJump.default.call(this, rule, 'pushTab');
-    }
-
-    /**
-      * 返回到指定层级页面上
-       * @param {Number} backLayer 需要返回的页面层级 默认 1
-       * @param {Object} delta 暂时无用
-       * @param {enforce} 是否强制越过跳转加锁检查 默认 false
-      */ }, { key: "back", value: function back()
-    {var backLayer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;var delta = arguments.length > 1 ? arguments[1] : undefined;var enforce = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      if (backLayer.constructor != Number) {
-        return (0, _warn.err)("\u8FD4\u56DE\u5C42\u7EA7\u53C2\u6570\u5FC5\u987B\u662F\u4E00\u4E2ANumber\u7C7B\u578B\u4E14\u5FC5\u987B\u5927\u4E8E1\uFF1A".concat(
-        backLayer));
-
-      }
-      _navJump.default.call(this, {
-        backLayer: backLayer, delta: delta, H5PATCH: H5PATCH },
-      'back', true, enforce);
-    }
-
-    /**
-      * 获取当前页面下的 Route 信息
-      *
-      * @param {Object} Vim 当前开发者可以传递一个 vue 组件对象 来获取当前下的 Route 信息
-      */ }, { key: "getPageRoute", value: function getPageRoute(
-    Vim) {
-      var pages = getCurrentPages();
-      switch ((0, _util.appPlatform)(true)) {
-        case 'H5':
-          return _util2.H5GetPageRoute.call(this, pages, Vim);
-        case 'APP':
-          return (0, _util3.APPGetPageRoute)(pages, Vim);
-        case 'APPLETS':
-          return (0, _util4.AppletsPageRoute)(pages, Vim);
-        default:
-          break;}
-
-    } }, { key: "beforeEach", value: function beforeEach(
-
-    fn) {
-      return (0, _hooks.registerHook)(this.lifeCycle.beforeHooks, fn);
-    } }, { key: "afterEach", value: function afterEach(
-
-    fn) {
-      return (0, _hooks.registerHook)(this.lifeCycle.afterHooks, fn);
-    } }, { key: "$Route", get: function get() {return this.getPageRoute();} /**
-                                                                             * 获取 url 参数帮助类实例
-                                                                             */ }, { key: "$parseQuery", get: function get() {return _config.Global.$parseQuery;} /**
-                                                                                                                                                                   * 获取当前是否处于正在跳转的状态
-                                                                                                                                                                   * H5 状态下始终为false
-                                                                                                                                                                   */ }, { key: "$lockStatus", get: function get() {return _config.Global.LockStatus;} /**
-                                                                                                                                                                                                                                                        * 动态设置拦截状态
-                                                                                                                                                                                                                                                        */, set: function set(status) {(0, _warn.warn)('你确定要这么做？你知道后果？', true);_config.Global.LockStatus = status;} }]);return Router;}();Router.install = function (Vue) {(0, _mixins.default)(Vue, Router);Object.defineProperty(Vue.prototype, '$Router', { get: function get() {return Router.$root;
-    } });
-
-  Object.defineProperty(Vue.prototype, '$Route', {
-    get: function get() {
-      return Router.$root.getPageRoute(this);
-    } });
-
-};var _default =
-Router;
-/**
-         *
-         * @param {VueComponent } Vim vue实例对象
-         * @param {dom} el	dom节点选择器
-         */exports.default = _default;
-var RouterMount = function RouterMount(Vim, el) {
-  switch ((0, _util.appPlatform)(true)) {
-    case 'APP':
-      (0, _appPatch.default)(Vim, el);
-      break;
-    case 'APPLETS':
-      (0, _appletsPatch.default)(Vim, el);
-      break;
-    case 'H5':
-      _base.vueMount.push({ Vim: Vim, el: el });
-      break;
-    default:
-      (0, _warn.warn)('糟糕！！！还有其他的执行环境？？？没听说过啊。一脸懵逼？？？加QQ群问问：769241495');
-      break;}
-
-};exports.RouterMount = RouterMount;
-
-/***/ }),
 /* 23 */
-/*!******************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.copyObject = exports.formatURLQuery = exports.resolveRule = exports.exactRule = exports.parseQuery = exports.parseQueryD = exports.parseQueryN = exports.filter = exports.formatConfig = exports.noop = exports.appPlatform = exports.isObject = exports.isH5 = void 0;var _config = __webpack_require__(/*! ./config */ 24);
-var _base = __webpack_require__(/*! ../vueRouter/base */ 25);
-var _warn = __webpack_require__(/*! ./warn */ 26);function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-
-/**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 当前是不是H5运行环境
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
-var isH5 = function isH5() {
-  return typeof window !== 'undefined' && typeof document !== 'undefined';
-};
-/**
-    * 判断当前变量是否为Object
-    * @param {Object} strObj
-    */exports.isH5 = isH5;
-var isObject = function isObject(strObj) {
-  return strObj.toString() === '[object Object]' && strObj.constructor === Object;
-};
-/**
-    * 获取当前运行平台
-    * @param {Boolean} applets 默认false  true时所有小程序平台统一返回 APPLETS
-    */exports.isObject = isObject;
-var appPlatform = function appPlatform() {var applets = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-  var platform = '';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  platform = 'WEIXIN';
-
-
-
-
-
-
-  if (applets) {
-
-    platform = 'APPLETS';
-
-  }
-
-  return platform;
-};
-/**
-    * 定义一个空方法 如果最后一个参数为true则打印所有参数
-    * @param  {...any} args
-    */exports.appPlatform = appPlatform;
-var noop = function noop() {for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
-  if (args[args.length - 1] === true) {
-    (0, _warn.log)(args);
-  }
-};
-/**
-    * 格式化基础配置信息 通过new Router传递过来的参数
-    */exports.noop = noop;
-var formatConfig = function formatConfig(userConfig) {
-  if (!userConfig.routes || userConfig.routes.constructor !== Array) {
-    return (0, _warn.err)("\u8DEF\u7531\u53C2\u6570 'routes' \u5FC5\u987B\u4F20\u9012 \r\n\r\n".concat(JSON.stringify(userConfig)));
-  }
-  if (userConfig.h5 != null && userConfig.h5.constructor !== Object) {
-    return (0, _warn.err)("h5\u53C2\u6570\u4F20\u9012\u9519\u8BEF\uFF0C\u5E94\u8BE5\u662F\u4E00\u4E2A 'Object' \u7C7B\u578B \u793A\u4F8B\uFF1A\r\n\r\n".concat(JSON.stringify(_config.baseConfig.h5)));
-  }
-  var config = Object.create(null);
-  var baseConfigKeys = Object.keys(_config.baseConfig);
-  for (var i = 0; i < baseConfigKeys.length; i += 1) {
-    var key = baseConfigKeys[i];
-    if (userConfig[key] != null) {
-      if (userConfig[key].constructor === Object) {
-        config[key] = _objectSpread({},
-        _config.baseConfig[key], {},
-        userConfig[key]);
-
-      } else if (key == 'routes') {// 需要加入已知的白名单
-        config[key] = [].concat(_toConsumableArray(_config.baseConfig[key]), _toConsumableArray(userConfig[key]), _toConsumableArray(_base.builtIn));
-      } else {
-        config[key] = userConfig[key];
-      }
-    } else {
-      config[key] = _config.baseConfig[key];
-    }
-  }
-  return config;
-};exports.formatConfig = formatConfig;
-var filter = function filter(str) {
-  str += '';
-  str = str.replace(/%/g, '%25');
-  str = str.replace(/\+/g, '%2B');
-  str = str.replace(/ /g, '%20');
-  str = str.replace(/\//g, '%2F');
-  str = str.replace(/\?/g, '%3F');
-  str = str.replace(/&/g, '%26');
-  str = str.replace(/=/g, '%3D');
-  str = str.replace(/#/g, '%23');
-  return str;
-};
-/**
-    * 使用encodeURI:true的情况	需要进行编码后再传递，解码等等 可以传递深度对象并会在路径后面加入一个query=
-    *
-    * @param {String} routerName //路径名称
-    * @param {JSON} query 	//需要格式化参数
-    * @param {Boolean} Encode 	//是获取还是编码后传递
-    */exports.filter = filter;
-var parseQueryN = function parseQueryN(routerName, query, Encode) {
-  if (Encode) {
-    return {
-      url: routerName,
-      query: JSON.parse(decodeURIComponent(query.replace(/^query=/, ''))) };
-
-  }
-  return {
-    url: routerName,
-    query: "query=".concat(encodeURIComponent(JSON.stringify(query))) };
-
-};
-/**
-    * 使用encodeURI:false的情况 直接格式化为普通的queryURl参数形式传递即可 扁平深度对象
-    *
-    * @param {String} routerName //路径名称
-    * @param {JSON} query 	//需要格式化参数
-    * @param {Boolean} Encode 	//是获取还是编码后传递
-    */exports.parseQueryN = parseQueryN;
-var parseQueryD = function parseQueryD(routerName, query, Encode) {
-  if (Encode) {
-    var obj = {};
-    var reg = /([^=&\s]+)[=\s]*([^&\s]*)/g;
-    while (reg.exec(query)) {
-      obj[RegExp.$1] = RegExp.$2;
-    }
-    return {
-      url: routerName,
-      query: obj };
-
-  }
-  var encodeArr = [];
-  var queryKeys = Object.keys(query);
-  for (var i = 0; i < queryKeys.length; i += 1) {
-    var attr = queryKeys[i];
-    var encodeStr = '';
-    if (query[attr].constructor == Object) {
-      encodeStr = parseQueryD(routerName, query[attr], Encode).query;
-      encodeArr.push(encodeStr);
-    } else {
-      encodeStr = filter(query[attr]);
-      encodeArr.push("".concat(attr, "=").concat(encodeStr));
-    }
-  }
-  return {
-    url: routerName,
-    query: encodeArr.join('&') };
-
-};
-/**
-    * @param {String} routerName //路径名称
-    * @param {JSON} query 	//需要格式化参数
-    * @param {Boolean} Encode 	//是获取还是编码后传递
-    */exports.parseQueryD = parseQueryD;
-var parseQuery = function parseQuery(routerName, query) {var Encode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  if (_config.Global.Router.CONFIG.encodeURI) {
-    return parseQueryN(routerName, query, Encode);
-  }
-  return parseQueryD(routerName, query, Encode);
-};exports.parseQuery = parseQuery;
-
-var exactRule = function exactRule(cloneRule, routes, ruleKey) {var getRule = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  var params = {};
-  var i = 0;
-  // eslint-disable-next-line
-  while (true) {
-    var item = routes[i];
-    if (item == null) {
-      if (!getRule) {
-        (0, _warn.err)("\u8DEF\u7531\u8868\u4E2D\u672A\u67E5\u627E\u5230 '".concat(ruleKey, "' \u4E3A '").concat(cloneRule[ruleKey], "'"));
-      }
-      return {
-        path: '',
-        name: '' };
-
-    }
-    if (item[ruleKey] != null && item[ruleKey] === cloneRule[ruleKey]) {
-      if (!getRule) {
-        params.url = item.path;
-        params.rule = item;
-        if (isH5()) {// 如果是h5 则使用优先使用自定义路径名称
-          params.url = item.aliasPath || item.path;
-        }
-        return params;
-      }
-      return item;
-    }
-    i += 1;
-  }
-};exports.exactRule = exactRule;
-
-var resolveRule = function resolveRule(router, rule) {var query = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};var ruleKey = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'path';
-  var ruleInfo = (0, _config.route)(
-  exactRule(_objectSpread({},
-  rule),
-
-  router.CONFIG.routes,
-  ruleKey,
-  router));
-
-  return _objectSpread({},
-  ruleInfo, {
-    query: query });
-
-};
-/**
-    * 把一些不必要的参数进行格式化掉，完成url的美观
-    * @param {String} URLQuery URL中传递的参数
-    */exports.resolveRule = resolveRule;
-var formatURLQuery = function formatURLQuery(URLQuery) {
-  switch (URLQuery.trim()) {
-    case 'query=%7B%7D':
-    case '%7B%7D':
-    case '?query=%7B%7D':
-    case '?':
-    case '?[object Object]':
-    case '?query={}':
-      URLQuery = '';
-      break;
-    default:
-      (0, _warn.warn)('url已经很完美啦，不需要格式化！');
-      break;}
-
-  return URLQuery;
-};
-/**
-    * 拷贝对象
-    * @param {Object} object
-    */exports.formatURLQuery = formatURLQuery;
-var copyObject = function copyObject(object) {
-  return JSON.parse(JSON.stringify(object));
-};exports.copyObject = copyObject;
-
-/***/ }),
-/* 24 */
-/*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.route = exports.appletsConfig = exports.uniAppHook = exports.Global = exports.lifeCycle = exports.H5FnTypeToggle = exports.methods = exports.baseConfig = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-var baseConfig = {
-  h5: {
-    rewriteFun: true, // 是否对uni-app reLaunch/navigateBack 两个方法重写 处理uni刷新直接返回到首页和触发路由守卫
-    paramsToQuery: false, // h5端上通过params传参时规则是vue-router 刷新会丢失 开启此开关将变成?连接的方式
-    loading: true, // 是否显示加载动画
-    hinderTab: false, // 是否拦截uni-app自带底部菜单   TODO
-    vueRouterDev: false, // 完全使用采用vue-router的开发模式
-    useUniConfig: true, // 是否采用在pages.json下的所有页面配置信息,false时需开发者自行设置页面
-    keepUniIntercept: false, // 保留uni-app使用vue-router的拦截器
-    vueNext: false, // 在next管道函数中是否获取vueRouter next的原本参数
-    replaceStyle: false, // 是否对resetStyle函数中返回的style节点进行全部替换，否则为追加
-    resetStyle: function resetStyle() {return JSON.parse('{}');}, // 自定义加载样式函数 可返回一个包涵 html、style、script 的对象来重置Router内置的加载动画
-    mode: 'hash',
-    base: '/',
-    linkActiveClass: 'router-link-active',
-    linkExactActiveClass: 'router-link-exact-active',
-    scrollBehavior: function scrollBehavior(to, from, savedPostion) {return savedPostion;},
-    fallback: true },
-
-  APP: {
-    holdTabbar: true, // 是否开启底部菜单拦截
-    loddingPageStyle: function loddingPageStyle() {return JSON.parse('{"backgroundColor":"#FFF"}');}, // 当前等待页面的样式 必须返回一个json
-    loddingPageHook: function loddingPageHook(view) {plus.navigator.closeSplashscreen();view.show();}, // 刚刚打开页面处于等待状态,会触发此事件
-    animation: { animationType: 'pop-in', animationDuration: 300 }, // 页面切换动画
-    switchPageOutTime: 1000 // 最高能忍耐的页面切换时间 达到此时间 不管切换有没有完成都会显示页面出来 这对启动页帮助很大
-  },
-  debugger: false, // 是否处于开发阶段 设置为true则打印日志
-  encodeURI: true, // 是否对url传递的参数进行编码
-  routerBeforeEach: function routerBeforeEach() {}, // router 前置路由函数 每次触发跳转前先会触发此函数
-  routerAfterEach: function routerAfterEach() {}, // router 后置路由函数 每次触发跳转后会触发此函数
-  routes: [] };exports.baseConfig = baseConfig;
-
-
-var methods = {
-  push: 'navigateTo',
-  replace: 'redirectTo',
-  replaceAll: 'reLaunch',
-  pushTab: 'switchTab',
-  back: 'navigateBack' };exports.methods = methods;
-
-
-var H5FnTypeToggle = {
-  push: 'push',
-  replace: 'replace',
-  replaceAll: 'replace',
-  pushTab: 'replace' };exports.H5FnTypeToggle = H5FnTypeToggle;
-
-
-var lifeCycle = {
-  beforeHooks: [],
-  afterHooks: [],
-  routerHooks: [],
-  routerbeforeHooks: [], // 内部跳转前生命周期
-  routerAfterHooks: [] // 内部跳转后生命周期
-};exports.lifeCycle = lifeCycle;
-
-var Global = { // 缓存一些必要的对象，作为全局可以访问的参数
-  $parseQuery: null, // url query 帮助类实例
-  Router: {},
-  vueRouter: {},
-  addedRoutes: [], // 用于缓存用户动态添加的路由
-  RouterReadyPromise: function RouterReadyPromise() {},
-  H5RouterReady: null, // 当前router是否就绪
-  backLayerC: 1, // 返回api调用时开发者传递的 delta
-  LockStatus: false // 当前是否正在进行跳转 正在跳转调用api是不给跳转的
-};exports.Global = Global;
-
-var uniAppHook = {
-  indexVue: {}, // 首页 组件对象
-  toutiaoIndexThis: {}, // 头条小程序Index this对象
-  appVue: {}, // 同getApp()获取到的对象一毛一样的  其实就是app.vue组件
-  onLaunch: { fun: [], args: {}, isHijack: false }, // 这两个是app.vue
-  onShow: { fun: [], args: {}, isHijack: false },
-  variationFuns: ['onReady', 'onUnload'], // 一些uni-app的变异方法 需要处理下
-  waitHooks: {}, // 首页等待中的生命钩子 一些需要等待的Hooks,就是在页面没有进来之前一些提前触发的生命钩子 主要是用户已经声明好的
-  indexCallHooks: ['onLoad', 'onReady', 'created', 'onShow'], // 在首页首次启动时需要触发的生命周期
-  needHooks: ['onLoad', 'onReady', 'onShow', 'created', 'onHide', 'onUnload', 'onResize'], // 首页需要拦截的生命钩子
-  pageReady: false,
-  onLaunched: false // 否触发onLaunch事件
-};exports.uniAppHook = uniAppHook;
-
-var appletsConfig = { // 小程序端的一些路由所需配置
-  onLaunchEd: false // 当前小程序端是否触发onLaunch事件
-};exports.appletsConfig = appletsConfig;
-
-var route = function route() {var object = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return _objectSpread({},
-  object, {
-    params: {},
-    query: {} });
-
-};exports.route = route;
-
-/***/ }),
-/* 25 */
-/*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.vueMount = exports.vuelifeHooks = exports.builtIn = void 0;var builtIn = [{
-  path: '/preview-image',
-  name: 'previewImage',
-  component: {
-    render: function render() {} } },
-
-{
-  path: '/choose-location',
-  name: 'chooseLocation',
-  component: {
-    render: function render() {} } },
-
-{
-  path: '/open-location',
-  name: 'openLocation',
-  component: {
-    render: function render() {} } }];
-
-// uni-app内置路由
-exports.builtIn = builtIn;var vuelifeHooks = { // vueRouter的原始生命周期
-  beforeHooks: [],
-  afterHooks: [] };exports.vuelifeHooks = vuelifeHooks;
-
-var vueMount = []; // 使用内部对象保留实例化下的appVue,并使用Router进行挂载触发第一次路由钩子
-exports.vueMount = vueMount;
-
-/***/ }),
-/* 26 */
-/*!******************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.warnLock = exports.log = exports.warn = exports.err = void 0;var _config = __webpack_require__(/*! ./config */ 24);
-
-
-var isLog = function isLog(type, errText, enforce) {
-  if (!enforce) {
-    var dev = _config.Global.Router.CONFIG.debugger;
-    var isObject = dev.toString() === '[object Object]';
-    if (dev === false) {
-      return false;
-    }if (dev === false) {
-      return false;
-    }if (isObject) {
-      if (dev[type] === false) {
-        return false;
-      }
-    }
-  }
-  /* eslint no-console:"off" */
-  console[type](errText);
-};
-var err = function err(errInfo) {var enforce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  isLog('error', errInfo, enforce);
-};exports.err = err;
-
-var warn = function warn(errInfo) {var enforce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  isLog('warn', errInfo, enforce);
-};exports.warn = warn;
-
-var log = function log(errInfo) {var enforce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  isLog('log', errInfo, enforce);
-};exports.log = log;
-var warnLock = function warnLock(errInfo) {
-  console.warn(errInfo);
-};exports.warnLock = warnLock;
-
-/***/ }),
-/* 27 */
-/*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _util = __webpack_require__(/*! ./util */ 23);
-var _config = __webpack_require__(/*! ./config */ 24);
-var _hooks = __webpack_require__(/*! ../appRouter/hooks */ 28);
-var _hooks2 = __webpack_require__(/*! ../appletsRouter/hooks */ 31);
-var _uniNav = _interopRequireDefault(__webpack_require__(/*! ../appRouter/uniNav */ 30));
-var _appletsNav = _interopRequireDefault(__webpack_require__(/*! ../appletsRouter/appletsNav */ 34));
-var _warn = __webpack_require__(/*! ./warn */ 26);
-var _routerNav = _interopRequireDefault(__webpack_require__(/*! ../vueRouter/routerNav */ 35));
-var compile = _interopRequireWildcard(__webpack_require__(/*! ./compile */ 33));function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-
-/**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 返回api 触发的公共函数
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @param {Object/String} rule  当前跳转规则
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @param {String} fnType    跳转页面的类型方法
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * this 为当前 Router 实例
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
-var isBcakNav = function isBcakNav(_ref)
-
-
-
-{var _this = this;var backLayer = _ref.backLayer,delta = _ref.delta,H5PATCH = _ref.H5PATCH;
-  compile.H5(function () {
-    H5PATCH.on('historyBack', {
-      backLayer: backLayer,
-      delta: delta });
-
-  });
-  compile.APP(function () {
-    _config.Global.backLayerC = backLayer; // 告诉路由需要返回几层
-    uni.navigateBack({
-      delta: backLayer,
-      complete: function complete() {
-        _config.Global.LockStatus = false; // 跳转完成解锁状态
-      } });
-
-  });
-  compile.mp(function () {
-    _hooks2.backCallHook.call(_this, backLayer, function () {
-      uni.navigateBack({
-        delta: backLayer });
-
-    });
-  });
-};
-
-/**
-    * 非 返回api 触发的公共函数
-    * @param {Object/String} rule  当前跳转规则
-    * @param {String} fnType    跳转页面的类型方法
-    *
-    * this 为当前 Router 实例
-    */
-
-var notBackNav = function notBackNav(rule, fnType) {
-  if (rule == null) {
-    return (0, _warn.err)('跳转规则为空，不允许这样操作');
-  }
-  if (rule.constructor === String) {// 单独 path 的情况   允许？拼接参数
-    var ruleArray = rule.split('?');
-    if (ruleArray.length > 1) {
-      rule = {
-        path: ruleArray[0],
-        query: _config.Global.$parseQuery.parse(ruleArray[1]) };
-
-    }
-  }
-  switch ((0, _util.appPlatform)(true)) {
-    case 'H5':
-      return _routerNav.default.call(this, _config.H5FnTypeToggle[fnType], rule, _config.methods[fnType]);
-    case 'APP':
-      _config.Global.LockStatus = true; // 设置为锁住状态
-      return _hooks.transitionTo.call(this, rule, fnType, _uniNav.default);
-    case 'APPLETS':
-      _config.Global.LockStatus = true; // 设置为锁住状态
-      return _hooks2.appletsTransitionTo.call(this, rule, fnType, _appletsNav.default);
-    default:
-      (0, _warn.err)('糟糕！！！还有其他的执行环境？？？没听说过啊。一脸懵逼？？？加QQ群问问：769241495');
-      break;}
-
-};
-
-/**
-    * 处理正在跳转的公共api
-    * @param {Object/String} rule  当前跳转规则
-    * @param {String} fnType    跳转页面的类型方法
-    * @param {Boolean} isBack  是否通过 back() api 调用的 默认为false
-    * @param {Boolean} enforce 是否强制越过跳转加锁检查 默认false  目前只有back() api 传递了
-    *
-    * this 为当前 Router 实例
-    */
-var navjump = function navjump(rule, fnType) {var isBack = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;var enforce = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  if (_config.Global.LockStatus && !enforce) {// 正在跳转的状态下 给出提示正在跳转
-    return (0, _warn.warn)('当前页面正在处于跳转状态，请稍后再进行跳转....');
-  }
-  if (isBack) {// 是返回api触发的
-    return isBcakNav.call(this, rule, fnType);
-  }
-  return notBackNav.call(this, rule, fnType);
-};var _default =
-
-navjump;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 28 */
-/*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.beforeTabHooks = exports.triggerLifeCycle = exports.transitionTo = exports.backApiCallHook = exports.beforeBackHooks = exports.proxyIndexHook = exports.proxyLaunchHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 16));var _config = __webpack_require__(/*! ../helpers/config */ 24);
-var _util = __webpack_require__(/*! ./util */ 29);
-
-
-var _util2 = __webpack_require__(/*! ../helpers/util */ 23);
-var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _uniNav = _interopRequireDefault(__webpack_require__(/*! ./uniNav */ 30));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
-
-var startBack = false; // 主要是兼容低端手机返回卡 然后多次返回直接提示退出的问题
-
-/**
- * 还原并执行所有 拦截下来的生命周期 app.vue 及 index 下的生命周期
- * @param {Boolean} callHome // 是否触发首页的生命周期
- *
- * this 为当前 page 对象
- */
-var callwaitHooks = function callwaitHooks(callHome) {var _this = this;
-  return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(resolve) {var variation, appVue, indexVue, onLaunch, onShow, waitHooks, variationFuns, indexCallHooks, app, key, _loop, _key;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-              variation = []; // 存储一下在uni-app上的变异生命钩子  奇葩的要死
-
-              appVue =
-              _config.uniAppHook.appVue, indexVue = _config.uniAppHook.indexVue, onLaunch = _config.uniAppHook.onLaunch, onShow = _config.uniAppHook.onShow, waitHooks = _config.uniAppHook.waitHooks, variationFuns = _config.uniAppHook.variationFuns, indexCallHooks = _config.uniAppHook.indexCallHooks;
-              app = appVue.$options;_context.next = 5;return (
-                onLaunch.fun[onLaunch.fun.length - 1].call(appVue, onLaunch.args));case 5: // 确保只执行最后一个 并且强化异步操作
-              onShow.fun[onShow.fun.length - 1].call(appVue, onShow.args); // onshow 不保证异步 直接确保执行最后一个
-              if (callHome) {// 触发首页生命周期
-                // eslint-disable-next-line
-                for (key in waitHooks) {
-                  if (indexCallHooks.includes(key)) {// 只有在被包含的情况下才执行
-                    _util.callAppHook.call(_this, waitHooks[key].fun);
-                  }
-                }
-              }
-              if (onLaunch.isHijack) {// 还原 onLaunch生命钩子
-                app.onLaunch.splice(app.onLaunch.length - 1, 1, onLaunch.fun[0]);
-              }
-              if (onShow.isHijack) {// 继续还原 onShow
-                app.onShow.splice(app.onShow.length - 1, 1, onShow.fun[0]);
-              }
-              // eslint-disable-next-line
-              _loop = function _loop(_key) {// 还原 首页下的生命钩子
-                var item = waitHooks[_key];
-                if (item.isHijack) {
-                  if (variationFuns.includes(_key)) {// 变异方法
-                    variation.push({ key: _key, fun: item.fun[0] });
-                  } else {
-                    var indeHooks = indexVue[_key];
-                    // 修复 https://github.com/SilurianYang/uni-simple-router/issues/76
-                    setTimeout(function () {// 异步延迟还原 不然 uni-app 给给触发了
-                      indeHooks.splice(indeHooks.length - 1, 1, item.fun[0]);
-                    }, 50);
-                  }
-                }};for (_key in waitHooks) {_loop(_key);
-              }
-              resolve(variation);case 12:case "end":return _context.stop();}}}, _callee);}));return function (_x) {return _ref.apply(this, arguments);};}());
-
-};
-/**
-    * 还原剩下的奇葩生命钩子
-    * @param {Object} variation 当前uni-app中的一些变异方法  奇葩生命钩子
-    */
-var callVariationHooks = function callVariationHooks(variation) {
-  for (var i = 0; i < variation.length; i += 1) {var _variation$i =
-    variation[i],key = _variation$i.key,fun = _variation$i.fun;
-    var indeHooks = _config.uniAppHook.indexVue[key];
-    indeHooks.splice(indeHooks.length - 1, 1, fun);
-  }
-};
-
-/**
-    * 主要是对app.vue下onLaunch和onShow生命周期进行劫持
-    *
-    * this 为当前 page 对象
-    */
-var proxyLaunchHook = function proxyLaunchHook() {var _this2 = this;var _this$$options =
-
-
-
-  this.$options,onLaunch = _this$$options.onLaunch,onShow = _this$$options.onShow;
-  _config.uniAppHook.appVue = this; // 缓存 当前app.vue组件对象
-  if (onLaunch.length > 1) {// 确保有写 onLaunch 可能有其他混入 那也办法
-    _config.uniAppHook.onLaunch.isHijack = true;
-    _config.uniAppHook.onLaunch.fun = onLaunch.splice(onLaunch.length - 1, 1, function (arg) {
-      _config.uniAppHook.onLaunch.args = arg;
-    }); // 替换uni-app自带的生命周期
-  }
-  if (onShow.length > 0) {
-    _config.uniAppHook.onShow.isHijack = true;
-    _config.uniAppHook.onShow.fun = onShow.splice(onShow.length - 1, 1, function (arg) {
-      _config.uniAppHook.onShow.args = arg;
-      if (_config.uniAppHook.pageReady) {// 因为还有app切前台后台的操作
-        _util.callAppHook.call(_this2, _config.uniAppHook.onShow.fun, arg);
-      }
-    }); // 替换替换 都替换
-  }
-};
-
-/**
-    * 把指定页面的生命钩子函数保存并替换
-    * this 为当前 page 对象
-    */exports.proxyLaunchHook = proxyLaunchHook;
-var proxyIndexHook = function proxyIndexHook(Router) {var
-  needHooks = _config.uniAppHook.needHooks,waitHooks = _config.uniAppHook.waitHooks;
-  var options = this.$options;
-  _config.uniAppHook.indexVue = options;
-  for (var i = 0; i < needHooks.length; i += 1) {
-    var key = needHooks[i];
-    if (options[key] != null) {// 只劫持开发者声明的生命周期
-      var length = options[key].length;
-      // eslint-disable-next-line
-      var whObject = waitHooks[key] = {};
-      whObject.fun = options[key].splice(length - 1, 1, _util2.noop); // 把实际的页面生命钩子函数缓存起来,替换原有的生命钩子
-      whObject.isHijack = true;
-    }
-  }
-  // eslint-disable-next-line
-  triggerLifeCycle.call(this, Router); // 接着 主动我们触发导航守卫
-};
-/**
-    * 触发全局beforeHooks 生命钩子
-    * @param {Object} _from // from  参数
-    * @param {Object} _to  // to 参数
-    *
-    * this 为当前 Router 对象
-    */exports.proxyIndexHook = proxyIndexHook;
-var beforeHooks = function beforeHooks(_from, _to) {var _this3 = this;
-  return new Promise( /*#__PURE__*/function () {var _ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(resolve) {var beforeHooksFun;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-              beforeHooksFun = _this3.lifeCycle.beforeHooks[0];if (!(
-              beforeHooksFun == null)) {_context2.next = 3;break;}return _context2.abrupt("return",
-              resolve());case 3:_context2.next = 5;return (
-
-                beforeHooksFun.call(_this3, _to, _from, resolve));case 5:case "end":return _context2.stop();}}}, _callee2);}));return function (_x2) {return _ref2.apply(this, arguments);};}());
-
-};
-/**
-    * 触发全局afterEachHooks 生命钩子
-    * @param {Object} _from // from  参数
-    * @param {Object} _to  // to 参数
-    *
-    * this 为当前 Router 对象
-    */
-var afterEachHooks = function afterEachHooks(_from, _to) {
-  var afterHooks = this.lifeCycle.afterHooks[0];
-  if (afterHooks != null && afterHooks.constructor === Function) {
-    afterHooks.call(this, _to, _from);
-  }
-};
-/**
-    * 触发全局 beforeEnter 生命钩子
-    * @param {Object} finalRoute 	// 当前格式化后的路由参数
-    * @param {Object} _from // from  参数
-    * @param {Object} _to  // to 参数
-    *
-    * this 为当前 Router 对象
-    */
-var beforeEnterHooks = function beforeEnterHooks(finalRoute, _from, _to) {var _this4 = this;
-  return new Promise( /*#__PURE__*/function () {var _ref3 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(resolve) {var beforeEnter;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-              beforeEnter = finalRoute.route.beforeEnter;if (!(
-              beforeEnter == null || beforeEnter.constructor !== Function)) {_context3.next = 3;break;}return _context3.abrupt("return",
-              resolve());case 3:_context3.next = 5;return (
-
-                beforeEnter.call(_this4, _to, _from, resolve));case 5:case "end":return _context3.stop();}}}, _callee3);}));return function (_x3) {return _ref3.apply(this, arguments);};}());
-
-};
-/**
-    * 触发返回事件公共方法
-    * @param {Object} page	用getPages获取到的页面栈对象
-    * @param {Object} options 	当前vue页面对象
-    * @param {Object} backLayerC	需要返回页面的层级
-      *
-    * this 为当前 Router 对象
-    */
-var backCallHook = function backCallHook(page, options) {var _this5 = this;var backLayerC = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-  var route = (0, _util.APPGetPageRoute)([page]);
-  var NAVTYPE = 'RouterBack';
-  // eslint-disable-next-line
-  transitionTo.call(this, { path: route.path, query: route.query }, NAVTYPE, function (finalRoute, fnType) {
-    if (fnType != NAVTYPE) {// 返回时的api如果有next到其他页面 那么必须带上NAVTYPE  不相同则表示需要跳转到其他页面
-      return (0, _uniNav.default)(finalRoute, fnType);
-    }
-    if (startBack) {// 如果当前处于正在返回的状态
-      return (0, _warn.warn)('当前处于正在返回的状态，请稍后再试！');
-    }
-    startBack = true; // 标记开始返回
-    options.onBackPress = [_util2.noop]; // 改回uni-app可执行的状态
-    setTimeout(function () {
-      _this5.back(backLayerC, undefined, true); // 越过加锁验证
-      startBack = false; // 返回结束
-    });
-  });
-};
-/**
-    * 处理返回按钮的生命钩子
-    * @param {Object} options 当前 vue 组件对象下的$options对象
-    * @param {Array} args  当前页面是点击头部返回还是底部返回
-    *
-    * this 为当前 Router 对象
-    */
-var beforeBackHooks = /*#__PURE__*/function () {var _ref4 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(options, args) {var isNext, page;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
-              (0, _util.getPageOnBeforeBack)(args));case 2:isNext = _context4.sent;if (!(
-            isNext === false)) {_context4.next = 6;break;} // onBeforeBack  返回了true 阻止了跳转
-            _config.Global.LockStatus = false; // 也需要解锁
-            return _context4.abrupt("return", false);case 6:
-
-            page = (0, _util.getPages)(-3); // 上一个页面对象
-            backCallHook.call(this, page, options);case 8:case "end":return _context4.stop();}}}, _callee4, this);}));return function beforeBackHooks(_x4, _x5) {return _ref4.apply(this, arguments);};}();
-
-/**
-                                                                                                                                                                                                             * 处理back api的生命钩子
-                                                                                                                                                                                                             * @param {Object} options 当前 vue 组件对象下的$options对象
-                                                                                                                                                                                                             * @param {Array} args  当前页面是点击头部返回还是底部返回
-                                                                                                                                                                                                             *
-                                                                                                                                                                                                             * this 为当前 Router 对象
-                                                                                                                                                                                                             */exports.beforeBackHooks = beforeBackHooks;
-var backApiCallHook = /*#__PURE__*/function () {var _ref5 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(options, args) {var backLayerC, pages, page;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
-              (0, _util.getPageOnBeforeBack)(args));case 2:
-            backLayerC = _config.Global.backLayerC;
-            pages = (0, _util.getPages)();
-            page = null;
-            if (backLayerC > pages.length - 1 || backLayerC == pages.length - 1) {// 返回的首页 我们需要显示tabbar拦截
-              // eslint-disable-next-line
-              page = pages[0];
-            } else {
-              page = pages[pages.length - 2];
-            }
-            backCallHook.call(this, page, options, backLayerC);case 7:case "end":return _context5.stop();}}}, _callee5, this);}));return function backApiCallHook(_x6, _x7) {return _ref5.apply(this, arguments);};}();
-
-/**
-                                                                                                                                                                                                                         *  v1.5.4+
-                                                                                                                                                                                                                         * beforeRouteLeave 生命周期
-                                                                                                                                                                                                                         * @param {Object} to       将要去的那个页面 to对象
-                                                                                                                                                                                                                         * @param {Object} from     从那个页面触发的 from对象
-                                                                                                                                                                                                                         *  @param {Boolean} leaveHook:? 是否为 beforeRouteLeave 触发的next 到别处 如果是则不再触发 beforeRouteLeave 生命钩子
-                                                                                                                                                                                                                         * this 为当前 Router 对象
-                                                                                                                                                                                                                         */exports.backApiCallHook = backApiCallHook;
-var beforeRouteLeaveHooks = function beforeRouteLeaveHooks(from, to, leaveHook) {
-  return new Promise(function (resolve) {
-    if (leaveHook) {// 我们知道这个是来自页面beforeRouteLeave next到其他地方，所有不必再执行啦
-      (0, _warn.warn)('beforeRouteLeave next到其他地方，无须再执行！');
-      return resolve();
-    }
-    if (from.path == to.path) {// 进入首页的时候不触发
-      return resolve();
-    }
-    var currentPage = (0, _util.getPages)(-2); // 获取到全部的页面对象
-    var callThis = (0, _util.getPageVmOrMp)(currentPage); // 获取到页面的 $vm 对象 及 page页面的this对象
-    var beforeRouteLeave = callThis.$options.beforeRouteLeave; // 查看当前是否有开发者声明
-    if (beforeRouteLeave == null) {
-      (0, _warn.warn)('当前页面下无 beforeRouteLeave 钩子声明，无须执行！');
-      return resolve();
-    }
-    if (beforeRouteLeave != null && beforeRouteLeave.constructor !== Function) {
-      (0, _warn.warn)('beforeRouteLeave 生命钩子声明错误，必须是一个函数！');
-      return resolve();
-    }
-    beforeRouteLeave.call(callThis, to, from, resolve); // 执行生命钩子
-  });
-};
-
-/**
-    * 验证当前 next() 管道函数是否支持下一步
-    *
-    * @param {Object} Intercept 拦截到的新路由规则
-    * @param {Object} fnType 跳转页面的类型方法 原始的
-    * @param {Object} navCB 回调函数 原始的
-    * @param {Boolean} leaveHookCall:? 是否为 beforeRouteLeave 触发的next 做拦截判断
-    * this 为当前 Router 对象
-    *
-    */
-var isNext = function isNext(Intercept, fnType, navCB) {var _this6 = this;var leaveHookCall = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  return new Promise(function (resolve, reject) {
-    if (Intercept == null) {// 什么也不做 直接执行下一个钩子
-      return resolve();
-    }
-    if (Intercept === false) {// 路由中断
-      _config.Global.LockStatus = false; // 解锁跳转状态
-      return reject('路由终止');
-    }
-    if (Intercept.constructor === String) {// 说明 开发者直接传的path 并且没有指定 NAVTYPE 那么采用原来的navType
-      reject('next到其他页面');
-      // eslint-disable-next-line
-      return transitionTo.call(_this6, Intercept, fnType, navCB, leaveHookCall);
-    }
-    if (Intercept.constructor === Object) {// 有一系列的配置 包括页面切换动画什么的
-      reject('next到其他页面');
-      // eslint-disable-next-line
-      return transitionTo.call(_this6, Intercept, Intercept.NAVTYPE || fnType, navCB, leaveHookCall);
-    }
-  });
-};
-/**
-    * 核心方法 处理一系列的跳转配置
-    * @param {Object} rule 当前跳转规则
-    * @param {Object} fnType 跳转页面的类型方法
-    * @param {Object} navCB:? 回调函数
-    * @param {Boolean} leaveHook:? 是否为 beforeRouteLeave 触发的next 到别处 如果是则不再触发 beforeRouteLeave 生命钩子
-    *
-    * this 为当前 Router 对象
-    */
-var transitionTo = /*#__PURE__*/function () {var _ref6 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(rule, fnType, navCB) {var leaveHook,finalRoute,_from,_to,leaveResult,beforeResult,enterResult,_args6 = arguments;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:leaveHook = _args6.length > 3 && _args6[3] !== undefined ? _args6[3] : false;_context6.next = 3;return (
-              this.lifeCycle.routerbeforeHooks[0].call(this));case 3: // 触发内部跳转前的生命周期
-            finalRoute = (0, _util.ruleToUniNavInfo)(rule, this.CONFIG.routes); // 获得到最终的 route 对象
-            _from = (0, _util.formatFrom)(this.CONFIG.routes); // 先根据跳转类型获取 from 数据
-            _to = (0, _util.formatTo)(finalRoute); // 再根据跳转类型获取 to 数据
-            _context6.prev = 6;_context6.next = 9;return (
-              beforeRouteLeaveHooks.call(this, _from, _to, leaveHook));case 9:leaveResult = _context6.sent;_context6.next = 12;return (
-              isNext.call(this, leaveResult, fnType, navCB, true));case 12:_context6.next = 14;return (
-
-              beforeHooks.call(this, _from, _to));case 14:beforeResult = _context6.sent;_context6.next = 17;return (
-              isNext.call(this, beforeResult, fnType, navCB));case 17:_context6.next = 19;return (
-
-              beforeEnterHooks.call(this, finalRoute, _from, _to));case 19:enterResult = _context6.sent;_context6.next = 22;return (
-              isNext.call(this, enterResult, fnType, navCB));case 22:_context6.next = 28;break;case 24:_context6.prev = 24;_context6.t0 = _context6["catch"](6);
-
-            (0, _warn.warn)(_context6.t0); // 打印开发者操作的日志
-            return _context6.abrupt("return", false);case 28:
-
-            if (navCB) {
-              navCB.call(this, finalRoute, fnType); // 执行当前回调生命周期
-            }
-            afterEachHooks.call(this, _from, _to);_context6.next = 32;return (
-              this.lifeCycle.routerAfterHooks[0].call(this));case 32:case "end":return _context6.stop();}}}, _callee6, this, [[6, 24]]);}));return function transitionTo(_x8, _x9, _x10) {return _ref6.apply(this, arguments);};}();
-
-/**
-                                                                                                                                                                                                                                      * 主动触发导航守卫
-                                                                                                                                                                                                                                      * @param {Object} Router 当前路由对象
-                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                      * this  当前vue页面组件对象
-                                                                                                                                                                                                                                      */exports.transitionTo = transitionTo;
-var triggerLifeCycle = function triggerLifeCycle(Router) {var _this7 = this;
-  var topPage = getCurrentPages()[0];
-  if (topPage == null) {
-    return (0, _warn.warn)('打扰了,当前一个页面也没有 这不是官方的bug是什么??');
-  }var _getPageVmOrMp =
-  (0, _util.getPageVmOrMp)(topPage, false),query = _getPageVmOrMp.query,page = _getPageVmOrMp.page;
-  transitionTo.call(Router, { path: page.route, query: query }, 'push', /*#__PURE__*/function () {var _ref7 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7(finalRoute, fnType) {var variation;return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:
-              variation = [];if (!(
-              "/".concat(page.route) == finalRoute.route.path)) {_context7.next = 7;break;} // 在首页不动的情况下
-              _config.uniAppHook.pageReady = true; // 标致着路由已经就绪 可能准备起飞
-              _context7.next = 5;return callwaitHooks.call(_this7, true);case 5:_context7.next = 12;break;case 7:_context7.next = 9;return (
-
-                callwaitHooks.call(_this7, false));case 9:variation = _context7.sent;_context7.next = 12;return (
-                (0, _uniNav.default)(finalRoute, fnType));case 12:
-
-              plus.nativeObj.View.getViewById('router-loadding').close();
-              callVariationHooks(variation);
-              _config.uniAppHook.pageReady = true; // 标致着路由已经就绪 可能准备起飞
-            case 15:case "end":return _context7.stop();}}}, _callee7);}));return function (_x11, _x12) {return _ref7.apply(this, arguments);};}());
-};
-
-/**
-    * 处理tabbar点击拦截事件
-    * @param {Object} path 当前需要跳转的tab页面路径
-    *
-    * this 为当前 Router 对象
-    */exports.triggerLifeCycle = triggerLifeCycle;
-var beforeTabHooks = function beforeTabHooks(path) {
-  transitionTo.call(this, { path: "/".concat(path), query: {} }, 'pushTab', function (finalRoute, fnType) {
-    (0, _uniNav.default)(finalRoute, fnType);
-  });
-};exports.beforeTabHooks = beforeTabHooks;
-
-/***/ }),
-/* 29 */
 /*!********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/util.js ***!
   \********************************************************************************************/
@@ -10684,9 +10678,9 @@ var beforeTabHooks = function beforeTabHooks(path) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.assertCanBack = exports.getPageOnBeforeBack = exports.APPGetPageRoute = exports.ruleToUniNavInfo = exports.formatFrom = exports.getFormatQuery = exports.pathOrNameToRoute = exports.formatTo = exports.getPageVmOrMp = exports.isNvuePage = exports.getPages = exports.callAppHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 16));var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _util = __webpack_require__(/*! ../helpers/util */ 23);
-var _config = __webpack_require__(/*! ../helpers/config */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.assertCanBack = exports.getPageOnBeforeBack = exports.APPGetPageRoute = exports.ruleToUniNavInfo = exports.formatFrom = exports.getFormatQuery = exports.pathOrNameToRoute = exports.formatTo = exports.getPageVmOrMp = exports.isNvuePage = exports.getPages = exports.callAppHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _util = __webpack_require__(/*! ../helpers/util */ 14);
+var _config = __webpack_require__(/*! ../helpers/config */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        * 触发指定生命钩子
@@ -10895,7 +10889,7 @@ var assertCanBack = function assertCanBack(page) {
 };exports.assertCanBack = assertCanBack;
 
 /***/ }),
-/* 30 */
+/* 24 */
 /*!**********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/uniNav.js ***!
   \**********************************************************************************************/
@@ -10903,8 +10897,8 @@ var assertCanBack = function assertCanBack(page) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = __webpack_require__(/*! ../helpers/config */ 24);
-var _util = __webpack_require__(/*! ../helpers/util */ 23);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = __webpack_require__(/*! ../helpers/config */ 15);
+var _util = __webpack_require__(/*! ../helpers/util */ 14);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 var stop = null;
 
@@ -10940,7 +10934,7 @@ uniPushTo;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 31 */
+/* 25 */
 /*!*************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/hooks.js ***!
   \*************************************************************************************************/
@@ -10948,13 +10942,13 @@ uniPushTo;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.appletsProxyIndexHook = exports.triggerLifeCycle = exports.backCallHook = exports.appletsTransitionTo = exports.proxyLaunchHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 16));var _config = __webpack_require__(/*! ../helpers/config */ 24);
-var _util = __webpack_require__(/*! ./util */ 32);
+Object.defineProperty(exports, "__esModule", { value: true });exports.appletsProxyIndexHook = exports.triggerLifeCycle = exports.backCallHook = exports.appletsTransitionTo = exports.proxyLaunchHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));var _config = __webpack_require__(/*! ../helpers/config */ 15);
+var _util = __webpack_require__(/*! ./util */ 26);
 
 
-var _appletsNav = _interopRequireDefault(__webpack_require__(/*! ./appletsNav */ 34));
-var _util2 = __webpack_require__(/*! ../helpers/util */ 23);
-var _warn = __webpack_require__(/*! ../helpers/warn */ 26);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+var _appletsNav = _interopRequireDefault(__webpack_require__(/*! ./appletsNav */ 28));
+var _util2 = __webpack_require__(/*! ../helpers/util */ 14);
+var _warn = __webpack_require__(/*! ../helpers/warn */ 17);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 
 /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         *
@@ -11267,7 +11261,7 @@ var isNext = function isNext(Intercept, fnType, navCB) {var _this6 = this;var le
 };
 
 /***/ }),
-/* 32 */
+/* 26 */
 /*!************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/util.js ***!
   \************************************************************************************************/
@@ -11275,10 +11269,10 @@ var isNext = function isNext(Intercept, fnType, navCB) {var _this6 = this;var le
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.AppletsPageRoute = exports.ruleToUniNavInfo = exports.formatFrom = exports.formatTo = exports.pathOrNameToRoute = exports.getPages = exports.getFormatQuery = exports.getPageVmOrMp = exports.callAppHook = void 0;var _config = __webpack_require__(/*! ../helpers/config */ 24);
-var _util = __webpack_require__(/*! ../helpers/util */ 23);
-var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _compile = __webpack_require__(/*! ../helpers/compile */ 33);
+Object.defineProperty(exports, "__esModule", { value: true });exports.AppletsPageRoute = exports.ruleToUniNavInfo = exports.formatFrom = exports.formatTo = exports.pathOrNameToRoute = exports.getPages = exports.getFormatQuery = exports.getPageVmOrMp = exports.callAppHook = void 0;var _config = __webpack_require__(/*! ../helpers/config */ 15);
+var _util = __webpack_require__(/*! ../helpers/util */ 14);
+var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _compile = __webpack_require__(/*! ../helpers/compile */ 27);
 /**
                                                * 触发指定生命钩子
                                                * @param {Array} funList	//需要执行的方法列表
@@ -11446,7 +11440,7 @@ var AppletsPageRoute = function AppletsPageRoute(pages, Vim) {var
 };exports.AppletsPageRoute = AppletsPageRoute;
 
 /***/ }),
-/* 33 */
+/* 27 */
 /*!*********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/compile.js ***!
   \*********************************************************************************************/
@@ -11491,7 +11485,7 @@ var mp = function mp(fn) {
 };exports.mp = mp;
 
 /***/ }),
-/* 34 */
+/* 28 */
 /*!******************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/appletsNav.js ***!
   \******************************************************************************************************/
@@ -11500,8 +11494,8 @@ var mp = function mp(fn) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _config = __webpack_require__(/*! ../helpers/config */ 24);
-var _util = __webpack_require__(/*! ../helpers/util */ 23);
+var _config = __webpack_require__(/*! ../helpers/config */ 15);
+var _util = __webpack_require__(/*! ../helpers/util */ 14);
 
 
 /**
@@ -11525,7 +11519,7 @@ appletsUniPushTo;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 35 */
+/* 29 */
 /*!*************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/routerNav.js ***!
   \*************************************************************************************************/
@@ -11533,8 +11527,8 @@ appletsUniPushTo;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _util = __webpack_require__(/*! ./util */ 36);
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _util = __webpack_require__(/*! ./util */ 30);
 
 /**
                                 * @param {Object} replace vue-router的跳转方式
@@ -11556,7 +11550,7 @@ var H5PushTo = function H5PushTo(replace, rule, type) {
 H5PushTo;exports.default = _default;
 
 /***/ }),
-/* 36 */
+/* 30 */
 /*!********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/util.js ***!
   \********************************************************************************************/
@@ -11564,10 +11558,10 @@ H5PushTo;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.diffRouter = exports.H5GetPageRoute = exports.getPages = exports.strPathToObjPath = exports.encodeURLQuery = exports.vueDevRouteProxy = exports.getRouterNextInfo = exports.formatUserRule = exports.nameToRute = exports.pathToRute = exports.getFuntionConfig = exports.fromatRoutes = exports.resloveChildrenPath = exports.resolveRender = void 0;var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _util = __webpack_require__(/*! ../helpers/util */ 23);
-var _proxy = __webpack_require__(/*! ./proxy/proxy */ 37);
-var _config = __webpack_require__(/*! ../helpers/config */ 24);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.diffRouter = exports.H5GetPageRoute = exports.getPages = exports.strPathToObjPath = exports.encodeURLQuery = exports.vueDevRouteProxy = exports.getRouterNextInfo = exports.formatUserRule = exports.nameToRute = exports.pathToRute = exports.getFuntionConfig = exports.fromatRoutes = exports.resloveChildrenPath = exports.resolveRender = void 0;var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _util = __webpack_require__(/*! ../helpers/util */ 14);
+var _proxy = __webpack_require__(/*! ./proxy/proxy */ 31);
+var _config = __webpack_require__(/*! ../helpers/config */ 15);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 var pagesConfigReg = /props:\s*\(.*\)\s*(\([\s\S]*\))\s*},/;
 var pagesConfigRegCli = /props:\s*Object\.assign\s*(\([\s\S]*\))\s*},/; // 脚手架项目
@@ -12016,7 +12010,7 @@ var diffRouter = function diffRouter(Router, vueRouter, useUniConfig, routes) {
 };exports.diffRouter = diffRouter;
 
 /***/ }),
-/* 37 */
+/* 31 */
 /*!***************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/proxy/proxy.js ***!
   \***************************************************************************************************/
@@ -12024,9 +12018,9 @@ var diffRouter = function diffRouter(Router, vueRouter, useUniConfig, routes) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.proxyEachHooks = exports.proxyBeforeEnter = void 0;var _concat = __webpack_require__(/*! ../concat */ 38);
-var _base = __webpack_require__(/*! ../base */ 25);
-var _myArray = _interopRequireDefault(__webpack_require__(/*! ../extends/myArray */ 39));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.proxyEachHooks = exports.proxyBeforeEnter = void 0;var _concat = __webpack_require__(/*! ../concat */ 32);
+var _base = __webpack_require__(/*! ../base */ 16);
+var _myArray = _interopRequireDefault(__webpack_require__(/*! ../extends/myArray */ 33));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 /**
                                                                                                                                                                     * 通过 Object.defineProperty 代理一个对象主要是拦截beforeEnter 生命钩子
@@ -12070,7 +12064,7 @@ var proxyEachHooks = function proxyEachHooks(Router, key, hookFun) {
 };exports.proxyEachHooks = proxyEachHooks;
 
 /***/ }),
-/* 38 */
+/* 32 */
 /*!**********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/concat.js ***!
   \**********************************************************************************************/
@@ -12078,13 +12072,13 @@ var proxyEachHooks = function proxyEachHooks(Router, key, hookFun) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.registerRouter = exports.triggerLifeCycle = exports.beforeHooks = exports.afterHooks = exports.beforeEnterHooks = exports.forMatNext = exports.appMount = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 16));var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _util = __webpack_require__(/*! ./util */ 36);
+Object.defineProperty(exports, "__esModule", { value: true });exports.registerRouter = exports.triggerLifeCycle = exports.beforeHooks = exports.afterHooks = exports.beforeEnterHooks = exports.forMatNext = exports.appMount = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _util = __webpack_require__(/*! ./util */ 30);
 
 
-var _util2 = __webpack_require__(/*! ../helpers/util */ 23);
-var _base = __webpack_require__(/*! ./base */ 25);
-var _config = __webpack_require__(/*! ../helpers/config */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+var _util2 = __webpack_require__(/*! ../helpers/util */ 14);
+var _base = __webpack_require__(/*! ./base */ 16);
+var _config = __webpack_require__(/*! ../helpers/config */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 
 var beforeEachCount = 0;
 var afterEachCount = 0;
@@ -12388,7 +12382,7 @@ var registerRouter = function registerRouter(Router, vueRouter, vueRouterDev) {
 };exports.registerRouter = registerRouter;
 
 /***/ }),
-/* 39 */
+/* 33 */
 /*!*******************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/extends/myArray.js ***!
   \*******************************************************************************************************/
@@ -12418,7 +12412,7 @@ MyArray = /*#__PURE__*/function (_Array) {_inherits(MyArray, _Array);var _super 
 MyArray;exports.default = _default;
 
 /***/ }),
-/* 40 */
+/* 34 */
 /*!*********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/lifeCycle/hooks.js ***!
   \*********************************************************************************************/
@@ -12426,7 +12420,7 @@ MyArray;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.registerRouterHooks = exports.registerHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 16));var _util = __webpack_require__(/*! ../helpers/util */ 23);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+Object.defineProperty(exports, "__esModule", { value: true });exports.registerRouterHooks = exports.registerHook = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));var _util = __webpack_require__(/*! ../helpers/util */ 14);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 
 
 
@@ -12466,7 +12460,7 @@ var registerRouterHooks = function registerRouterHooks() {
 };exports.registerRouterHooks = registerRouterHooks;
 
 /***/ }),
-/* 41 */
+/* 35 */
 /*!*************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/applets-patch.js ***!
   \*************************************************************************************************/
@@ -12486,7 +12480,7 @@ var appletsMount = function appletsMount(Vim) {
 appletsMount;exports.default = _default;
 
 /***/ }),
-/* 42 */
+/* 36 */
 /*!*********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/app-patch.js ***!
   \*********************************************************************************************/
@@ -12504,7 +12498,7 @@ var appMount = function appMount(Vim) {
 appMount;exports.default = _default;
 
 /***/ }),
-/* 43 */
+/* 37 */
 /*!********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/mixins.js ***!
   \********************************************************************************************/
@@ -12512,13 +12506,13 @@ appMount;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = __webpack_require__(/*! ./config */ 24);
-var _init = _interopRequireDefault(__webpack_require__(/*! ../vueRouter/init */ 44));
-var _init2 = __webpack_require__(/*! ../appRouter/init */ 45);
-var _init3 = _interopRequireDefault(__webpack_require__(/*! ../appletsRouter/init */ 46));
-var _util = __webpack_require__(/*! ./util */ 23);
-var _hooks = __webpack_require__(/*! ../appRouter/hooks */ 28);
-var _hooks2 = __webpack_require__(/*! ../appletsRouter/hooks */ 31);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = __webpack_require__(/*! ./config */ 15);
+var _init = _interopRequireDefault(__webpack_require__(/*! ../vueRouter/init */ 38));
+var _init2 = __webpack_require__(/*! ../appRouter/init */ 39);
+var _init3 = _interopRequireDefault(__webpack_require__(/*! ../appletsRouter/init */ 40));
+var _util = __webpack_require__(/*! ./util */ 14);
+var _hooks = __webpack_require__(/*! ../appRouter/hooks */ 19);
+var _hooks2 = __webpack_require__(/*! ../appletsRouter/hooks */ 25);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           * 获取一些需要在各个平台混入的事件
@@ -12574,7 +12568,7 @@ var initMixins = function initMixins(Vue, Router) {
 initMixins;exports.default = _default;
 
 /***/ }),
-/* 44 */
+/* 38 */
 /*!********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/init.js ***!
   \********************************************************************************************/
@@ -12582,10 +12576,10 @@ initMixins;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _concat = __webpack_require__(/*! ./concat */ 38);
-var _util = __webpack_require__(/*! ./util */ 36);
-var _warn = __webpack_require__(/*! ../helpers/warn */ 26);
-var _proxy = __webpack_require__(/*! ./proxy/proxy */ 37);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _concat = __webpack_require__(/*! ./concat */ 32);
+var _util = __webpack_require__(/*! ./util */ 30);
+var _warn = __webpack_require__(/*! ../helpers/warn */ 17);
+var _proxy = __webpack_require__(/*! ./proxy/proxy */ 31);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    * 重写掉H5端 uni-app原始存在的bug
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    *
@@ -12653,7 +12647,7 @@ init;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 45 */
+/* 39 */
 /*!********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/init.js ***!
   \********************************************************************************************/
@@ -12661,12 +12655,12 @@ init;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.appInit = exports.pageIsHeadBack = exports.removeBackPressEvent = exports.registerLoddingPage = exports.rewriteUniFun = void 0;var _hooks = __webpack_require__(/*! ./hooks */ 28);
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.appInit = exports.pageIsHeadBack = exports.removeBackPressEvent = exports.registerLoddingPage = exports.rewriteUniFun = void 0;var _hooks = __webpack_require__(/*! ./hooks */ 19);
 
 
-var _config = __webpack_require__(/*! ../helpers/config */ 24);
-var _util = __webpack_require__(/*! ./util */ 29);
-var _warn = __webpack_require__(/*! ../helpers/warn */ 26);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _objectWithoutProperties(source, excluded) {if (source == null) return {};var target = _objectWithoutPropertiesLoose(source, excluded);var key, i;if (Object.getOwnPropertySymbols) {var sourceSymbolKeys = Object.getOwnPropertySymbols(source);for (i = 0; i < sourceSymbolKeys.length; i++) {key = sourceSymbolKeys[i];if (excluded.indexOf(key) >= 0) continue;if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;target[key] = source[key];}}return target;}function _objectWithoutPropertiesLoose(source, excluded) {if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];}return target;}
+var _config = __webpack_require__(/*! ../helpers/config */ 15);
+var _util = __webpack_require__(/*! ./util */ 23);
+var _warn = __webpack_require__(/*! ../helpers/warn */ 17);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _objectWithoutProperties(source, excluded) {if (source == null) return {};var target = _objectWithoutPropertiesLoose(source, excluded);var key, i;if (Object.getOwnPropertySymbols) {var sourceSymbolKeys = Object.getOwnPropertySymbols(source);for (i = 0; i < sourceSymbolKeys.length; i++) {key = sourceSymbolKeys[i];if (excluded.indexOf(key) >= 0) continue;if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;target[key] = source[key];}}return target;}function _objectWithoutPropertiesLoose(source, excluded) {if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];}return target;}
 
 /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           * 重写掉uni-app的 uni.getLocation 和 uni.chooseLocation APi
@@ -12772,7 +12766,7 @@ var appInit = function appInit(Router) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 46 */
+/* 40 */
 /*!************************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/init.js ***!
   \************************************************************************************************/
@@ -12780,7 +12774,7 @@ var appInit = function appInit(Router) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _hooks = __webpack_require__(/*! ./hooks */ 31);
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _hooks = __webpack_require__(/*! ./hooks */ 25);
 
 /**
                                                                                                                                       * 开始初始化app端路由配置
@@ -12795,7 +12789,7 @@ var appletsInit = function appletsInit() {
 appletsInit;exports.default = _default;
 
 /***/ }),
-/* 47 */
+/* 41 */
 /*!**********************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/urlQuery.js ***!
   \**********************************************************************************************/
@@ -12803,10 +12797,10 @@ appletsInit;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = __webpack_require__(/*! ./config */ 24);
-var _warn = __webpack_require__(/*! ./warn */ 26);function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = __webpack_require__(/*! ./config */ 15);
+var _warn = __webpack_require__(/*! ./warn */ 17);function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
 
-var nodeURL = __webpack_require__(/*! query-string */ 48);var
+var nodeURL = __webpack_require__(/*! query-string */ 42);var
 
 ParseQuery = /*#__PURE__*/function () {function ParseQuery() {_classCallCheck(this, ParseQuery);}_createClass(ParseQuery, [{ key: "isDepthObject",
 
@@ -12962,7 +12956,7 @@ ParseQuery = /*#__PURE__*/function () {function ParseQuery() {_classCallCheck(th
 ParseQuery;exports.default = _default;
 
 /***/ }),
-/* 48 */
+/* 42 */
 /*!********************************************!*\
   !*** ./node_modules/query-string/index.js ***!
   \********************************************/
@@ -12971,8 +12965,8 @@ ParseQuery;exports.default = _default;
 
 "use strict";
 
-var strictUriEncode = __webpack_require__(/*! strict-uri-encode */ 49);
-var objectAssign = __webpack_require__(/*! object-assign */ 50);
+var strictUriEncode = __webpack_require__(/*! strict-uri-encode */ 43);
+var objectAssign = __webpack_require__(/*! object-assign */ 44);
 
 function encoderForArrayFormat(opts) {
 	switch (opts.arrayFormat) {
@@ -13178,7 +13172,7 @@ exports.stringify = function (obj, opts) {
 
 
 /***/ }),
-/* 49 */
+/* 43 */
 /*!*************************************************!*\
   !*** ./node_modules/strict-uri-encode/index.js ***!
   \*************************************************/
@@ -13195,7 +13189,7 @@ module.exports = function (str) {
 
 
 /***/ }),
-/* 50 */
+/* 44 */
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
   \*********************************************/
@@ -13296,14 +13290,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */
+/* 45 */
 /*!***************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/Json.js ***!
   \***************************************************/

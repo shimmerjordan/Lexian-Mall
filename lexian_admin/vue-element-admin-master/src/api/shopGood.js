@@ -34,3 +34,11 @@ export function AddShopGood(data) {
     data
   })
 }
+
+// 商品类别管理getAllCategory
+export function getAllCategory() {
+  return myrequest({
+    url: '/api/shop/getAllCategory',
+    method: 'post'
+  })
+}

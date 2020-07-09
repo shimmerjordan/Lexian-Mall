@@ -1,40 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lexian.mapper.CustomerMapper">
-	<resultMap id="BaseResultMap" type="lexian.entity.Customer">
-		<id column="ID" property="id" jdbcType="INTEGER" />
-		<result column="name" property="name" jdbcType="VARCHAR" />
-		<result column="phone" property="phone" jdbcType="VARCHAR" />
-		<result column="age" property="age" jdbcType="INTEGER" />
-		<result column="sex" property="sex" jdbcType="INTEGER" />
-		<result column="pwd" property="pwd" jdbcType="VARCHAR" />
-		<result column="nick_name" property="nickName" jdbcType="VARCHAR" />
-		<result column="user_image" property="userImage" jdbcType="VARCHAR" />
-		<result column="birthday" property="birthday" jdbcType="DATE" />
-		<result column="login_name" property="loginName" jdbcType="VARCHAR" />
-		<result column="is_delete" property="isDelete" jdbcType="INTEGER" />
-	</resultMap>
+<mapper namespace="lexian.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="Customer" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="user_image" property="userImage" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
 
-	<!-- 注册使用，添加手机、登录名和密码，其他自增或默认 -->
-	<insert id="addNewCustomer" parameterType="java.util.HashMap">
-		insert into customer
-		(name, phone, login_name)
-		values (#{name}, #{phone}, #{login_name})
-	</insert>
+  <!-- 注册使用，添加手机、登录名和密码，其他自增或默认 -->
+  <insert id="addNewCustomer" parameterType="java.util.HashMap" >
+    insert into customer (phone, pwd, login_name, nick_name)
+    values (#{mobile}, #{password}, #{loginName}, #{nickName})
+  </insert>
 
-	<select id="getPwdByName" parameterType="java.lang.String"
-	resultType="java.util.HashMap">
-	SELECT
-	ID as id,name,phone,age,sex,nick_name as
-	nickName,user_image as userImage,login_name as loginName,
-	pwd
-	FROM
-	customer
-	WHERE
-	login_name =
-	#{loginName}
-	</select>
+  <select id="getPwdByName" parameterType="java.util.HashMap" resultType="java.lang.String">
+        SELECT
+        pwd
+        FROM
+        customer
+        WHERE
+        login_name = #{loginName}
+   </select>
 
+
+  <select id="loginByName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        login_name = #{loginName}
+    </select>
+
+    <select id="loginByPhone" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        phone = #{mobile}
+    </select>
+
+    <select id="checkPhoneExistance" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select IFNULL(
+        (select id
+        from customer
+        where phone = #{mobile}
+        ), 0)
+    </select>
+
+    <select id="checkNameExistance" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select IFNULL(
+        (select id
+        from customer
+        where login_name = #{loginName}
+        ), 0)
+    </select>
+
+<<<<<<< .merge_file_a03428
+  <update id="updateByPrimaryKey" parameterType="Customer" >
+
+=======
+    <update id="updateCustomerPwd" parameterType="java.util.HashMap" >
+>>>>>>> .merge_file_a17820
+    update customer
+    set
+      pwd = #{password}
+    where phone = #{mobile}
+  </update>
 
 	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
 		update customer

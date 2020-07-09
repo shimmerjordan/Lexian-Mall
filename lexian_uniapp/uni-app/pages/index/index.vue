@@ -19,7 +19,7 @@
 			<view class="titleNview-background" :style="{backgroundColor:titleNViewBackground}"></view>
 			<swiper class="carousel" circular @change="swiperChange">
 				<swiper-item v-for="(item , index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({title: '轮播广告'})">
-					<image :src="item.src" />
+					<image :src="item.img" mode:aspectFill />
 				</swiper-item>
 			</swiper>
 			<!-- 自定义swiper指示器 -->
@@ -31,29 +31,29 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" >
-				<image src="/static/temp/i3.png" @click="navToCategory()"></image>
+			<view class="cate-item" @click="navTo()">
+				<image src="/static/temp/i3.png" ></image>
 				<text >品牌美食</text>
 			</view>
-			<view class="cate-item" @click="navToCategory()">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i5.png"></image>
 				<text >个护美妆</text>
 			</view>
-			<view class="cate-item" @click="navTo('/pages/category/category')">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i6.png"></image>
 				<text >日用百货</text>
 			</view>
-			<view class="cate-item" @click="navTo('/pages/category/category')">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i7.png"></image>
 				<text >数码家电</text>
 		     </view>
-			<view class="cate-item" @click="navTo('/pages/category/category')">
+			<view class="cate-item" @click="navToe()">
 				<image src="/static/temp/i8.png"></image>
 				<text >水果生鲜</text>
 			</view>	
 		</view>
 		<!-- 店铺活动宣传 -->
-		<view class="ad-1" @click="navTo('')">
+		<view class="ad-1" @click="navToDetailPage({title: '轮播广告'})">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
 		<!-- 店铺活动宣传的页面跳转 -->	
 		</view>
@@ -77,7 +77,7 @@
 						@click="navToDetailPage(item)"
 					>
 						<image :src="item.image" mode="aspectFill"></image>
-						<text class="title clamp">{{item.title}}</text>
+						<text class="title clamp">{{item.name}}</text>
 						<text class="price">￥{{item.price}}</text>
 					</view>
 				</view>
@@ -89,7 +89,7 @@
 			<image src="/static/temp/i11.jpg"></image>
 			<view class="tit-box">
 				<text class="tit">精选折扣商品</text>
-				<text class="tit2">Selected Discounted Products </text>
+				<text class="tit2">Selected Discounted Products</text>
 			</view>
 			<text class="yticon icon-you"></text>
 		</view>
@@ -104,7 +104,7 @@
 					<view class="g-item left">
 						<image :src="item.image" mode="aspectFill"></image>
 						<view class="t-box">
-							<text class="title clamp">{{item.title}}</text>
+							<text class="title clamp">{{item.name}}</text>
 							<view class="price-box">
 								<text class="price">￥{{item.price}}</text> 
 								<text class="m-price">￥188</text> 
@@ -153,9 +153,7 @@
 		</view>
 		<view class="hot-floor">
 			<view class="floor-img-box">
-				<navigator url="/pages/category/category" open-type="navigate" class="floor-img">
 				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409398864&di=4a12763adccf229133fb85193b7cc08f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F19%2F20170319150032_MNwmn.jpeg" mode="scaleToFill"></image>
-			    </navigator>
 			</view>
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
@@ -165,7 +163,7 @@
 						@click="navToDetailPage(item)"
 					>
 						<image :src="item.image" mode="aspectFill"></image>
-						<text class="title clamp">{{item.title}}</text>
+						<text class="title clamp">{{item.name}}</text>
 						<text class="price">￥{{item.price}}</text>
 					</view>
 					<view class="more">
@@ -177,9 +175,7 @@
 		</view>
 		<view class="hot-floor">
 			<view class="floor-img-box">
-				<navigator url="/pages/category/category" open-type="navigate" class="floor-img">
 				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409984228&di=dee176242038c2d545b7690b303d65ea&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5ef4da9f17faaf4612f0d5046f4161e556e9bbcfdb5b-rHjf00_fw658" mode="scaleToFill"></image>
-			    </navigator>
 			</view>
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
@@ -188,8 +184,8 @@
 						class="floor-item"
 						@click="navToDetailPage(item)"
 					>
-						<image :src="item.image3" mode="aspectFill"></image>
-						<text class="title clamp">{{item.title}}</text>
+						<image :src="item.image" mode="aspectFill"></image>
+						<text class="title clamp">{{item.name}}</text>
 						<text class="price">￥{{item.price}}</text>
 					</view>
 					<view class="more">
@@ -201,9 +197,9 @@
 		</view>
 		<view class="hot-floor">
 			<view class="floor-img-box">
-				<navigator url="/pages/category/category" open-type="navigate" class="floor-img">
+				
 				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409984228&di=dee176242038c2d545b7690b303d65ea&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5ef4da9f17faaf4612f0d5046f4161e556e9bbcfdb5b-rHjf00_fw658" mode="scaleToFill"></image>
-			    </navigator>
+	
 			</view>
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
@@ -212,8 +208,8 @@
 						class="floor-item"
 						@click="navToDetailPage(item)"
 					>
-						<image :src="item.image2" mode="aspectFill"></image>
-						<text class="title clamp">{{item.title}}</text>
+						<image :src="item.image" mode="aspectFill"></image>
+						<text class="title clamp">{{item.name}}</text>
 						<text class="price">￥{{item.price}}</text>
 					</view>
 					<view class="more">
@@ -243,7 +239,7 @@
 				<view class="image-wrapper">
 					<image :src="item.image" mode="aspectFill"></image>
 				</view>
-				<text class="title clamp">{{item.title}}</text>
+				<text class="title clamp">{{item.name}}</text>
 				<text class="price">￥{{item.price}}</text>
 			</view>
 		</view>
@@ -255,7 +251,6 @@
 <script>
 import uniSearch from '../../components/lee-search/lee-search.vue'
 	export default {
- 
 		data() {
 			return {
 				titleNViewBackground: '',
@@ -264,7 +259,6 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				carouselList: [],
 				goodsList: [],
 				date: new Date(+new Date(new Date().toJSON())+8*3600*1000).toISOString(),
-				
 					iconSrc: {
 						logo: '../../static/lee-search/icon_search.png',
 						voice: '../../static/lee-search/icon_voice.png',
@@ -285,23 +279,30 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 		},
 		methods: {
 			
-			/**
-			 * 请求静态数据只是为了代码不那么乱
-			 * 分次请求未作整合
-			 */
-			navTo(url){
-				uni.navigateTo({  
-					url
-				})  
-			}, 
 			async loadData() {
-				let carouselList = await this.$api.json('carouselList');
-				this.titleNViewBackground = carouselList[0].background;
-				this.swiperLength = carouselList.length;
-				this.carouselList = carouselList;
+				uni.request({
+					url: this.apiServer + "/getAllActivity",
+					//url:'http://localhost:8080/getAllActivity"' ,
+					method: 'GET',
+					success: (res) => {
+					let carouselList = res.data;
+					console.log(carouselList);
+					this.carouselList = carouselList;
+					this.titleNViewBackground = "rgb(205, 215, 218)";
+					this.swiperLength = carouselList.length;
+					}
+				})
 				
-				let goodsList = await this.$api.json('goodsList');
-				this.goodsList = goodsList || [];
+				uni.request({
+					url: this.apiServer + "/uniIndex/init",
+					//url:'http://localhost:8080/uniIndex/init' ,
+					method: 'GET',
+					success: (res) => {
+					let goodsList =res.data;
+					console.log(goodsList);
+					this.goodsList =goodsList;
+					}
+				})
 			},
 			//轮播图切换修改背景色
 			swiperChange(e) {
@@ -312,14 +313,15 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			//详情页
 			navToDetailPage(item) {
 				//测试数据没有写id，用title代替
-				let id = item.title;
+				let id = item.name;
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
 				})
 			},
-			navToCategory() {
+			navTo() {
+				//测试数据没有写id，用title代替
 				uni.navigateTo({
-					url: `/pages/category/category`
+					url: `/pages/product/list`
 				})
 			},
 		},
