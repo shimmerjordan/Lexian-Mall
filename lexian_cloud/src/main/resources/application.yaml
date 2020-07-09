@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    username: root
+    password: password
+    url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#整合mybatis
+mybatis:
+  type-aliases-package: lexian.entity
+  mapper-locations: classpath:mybatis/mappers/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+#乱码
+server:
+  #port: 8088
+  servlet:
+    #context-path: /ocp
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+#pagehelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql

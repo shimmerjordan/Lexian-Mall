@@ -62,4 +62,10 @@ public class CommodityServiceImpl implements CommodityService {
 		int flag = commodityMapper.addGood(map);
 		return flag > 0;
 	}
+
+	@Override
+	public Commodity getCommodity(String commodityId) {
+		Commodity commodity = commodityMapper.selectCommodityById(commodityId);		
+		return commodity;
+	}
 }

@@ -223,9 +223,16 @@
 			//详情
 			navToDetailPage(item){
 				//测试数据没有写id，用title代替
-				let id = item.title;
+				let id = item.id;
+				let userId = "";
+				uni.getStorage({
+				    key:"userInfo",
+			     	success(e){
+			      	userId = e.data.id//这就是你想要取的token
+				}
+				});
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
+					url: `/pages/product/product?id=${id}&uid=${userId}`
 				})
 			},
 			stopPrevent(){}

@@ -3,6 +3,10 @@
  */
 package lexian.entity.model;
 
+import java.util.List;
+
+import lexian.entity.Comment;
+
 /**
  * @author yang990322
  *
@@ -18,6 +22,10 @@ public class GoodDetailsModel  extends BaseEntity{
      * 浏览量
      */
     private int browseCount;
+    
+    private List<Comment> commentList;
+    
+    
 
 	public int getSales() {
 		return sales;
@@ -33,6 +41,14 @@ public class GoodDetailsModel  extends BaseEntity{
 
 	public void setBrowseCount(int browseCount) {
 		this.browseCount = browseCount;
+	}
+
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
 	}
     
     
