@@ -10,7 +10,9 @@ import lexian.entity.Commodity;
 
 public interface CommodityService {
     List<Commodity> getAllShopCommodity();
-    boolean updateGood(Map<String,Object> map);
+
+	boolean updateGood(Map<String, Object> map);
+
 	List<Commodity> listCommodityByCommodityId(String commodityId);
 	boolean deleteGood(Integer id);
 	boolean deleteGood(Map<String, Object> map);

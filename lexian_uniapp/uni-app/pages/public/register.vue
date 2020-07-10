@@ -36,7 +36,6 @@
 						placeholder-class="input-empty"
 						maxlength="20"
 						data-key="verifyCode"
-						v-model="verifyCode"
 						@input="inputChange"
 					/>
 				</view>
@@ -49,10 +48,22 @@
 						placeholder-class="input-empty"
 						maxlength="20"
 						data-key="loginName"
-						v-model="loginName"
 						@input="inputChange"
 						@confirm="checkExistName"
 						@change="checkExistName"
+					/>
+				</view>
+				
+				<view class="input-item">
+					<text class="tit">用户登录名</text>
+					<input 
+						type="text" 
+						value="" 
+						placeholder="用户昵称"
+						placeholder-class="input-empty"
+						maxlength="20"
+						data-key="nickName"
+						@input="inputChange"
 					/>
 				</view>
 				
@@ -66,14 +77,12 @@
 						maxlength="20"
 						password 
 						data-key="password"
-						v-model="loginPassword"
 						@input="inputChange"
 					/>
 				</view>
 				
-				
 			</view>
-			<button class="confirm-btn" @click="toLogin" :disabled="logining">注册</button>
+			<button class="confirm-btn" @click="toRegister" :disabled="logining">注册</button>
 			
 		</view>
 		<view class="register-section">
@@ -100,12 +109,12 @@
 			return {
 				mobile: '',
 				password: '',
-				loginPassword: '',
-				loginPhone: '',
-				loginPassword: '',
 				verifyCode:'',
 				loginName: '',
-				logining: false
+				nickName: '',
+				logining: false,
+				phoneExistance: false,
+				nameExistance: false
 			}
 		},
 		onLoad(){
@@ -135,24 +144,6 @@
 					delta: 1
 				});
 			},
-			checkExistPhone(){
-				console.log(this.mobile);
-				/* 这里判断数据库中是否存在该用户手机号 */
-				if(1){
-					this.$api.msg('该手机号已注册，请登录或找回密码');
-				}else{
-					
-				}
-			},
-			checkExistName(){
-				console.log(this.loginName);
-				/* 这里判断数据库中是否存在该用户手机号 */
-				if(1){
-					this.$api.msg('抱歉，该用户名已被占用');
-				}else{
-					
-				}
-			},
 			inputChange(e){
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;
@@ -173,36 +164,65 @@
 					complete: () => {}
 				});
 			},
-			addCustomer(){
-				
-			},
-			async toLogin(){
-				this.addCustomer();
-				let loginPhone = this.loginPhone;
-				let loginPassword = this.loginPassword;
-				const {mobile, password} = this;
-				/* 数据验证模块
-				if(!this.$api.match({
-					mobile,
-					password
-				})){
-					this.logining = false;
-					return;
+			checkExistPhone(){
+				if(this.$refs.verifyElement.phoneExistance == true){
+					this.phoneExistance = true;
+					this.$api.msg("该手机号已被注册");
+				}else{
+					this.$api.msg("验证码已发送");
+					this.phoneExistance = false;
 				}
-				*/
-				const sendData = {
-					mobile,
-					password
-				};
-				const result = await this.$api.json('userInfo');
-				if(result.status === 1){
-					this.login(result.data);
+			},
+			checkExistName(){
+				console.log(this.loginName);
+				/* 这里判断数据库中是否存在该用户名 */
+				uni.request({
+					url: this.apiServer+'/customer/checkNameExistance',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+					   "loginName": this.loginName,
+					},
+					success: (res) => {
+						const result = res.data
+						console.log(result)
+						if(result != 0){
+							this.nameExistance = true;
+							this.$api.msg("该用户名已被占用")
+						}else{
+							this.nameExistance = false;
+						}
+				    }
+				});
+			},
+			addCustomer(){
+				if(this.nameExistance == false && this.phoneExistance == false){
+					uni.request({
+					   // url:'http://localhost:8888/api/getAll',
+					   url: this.apiServer+'/customer/addNewCustomer',
+					   method: 'POST',
+					   dataType: "json",
+					   data: { 
+						 mobile: this.mobile,
+						 password: this.password,
+						 loginName: this.loginName,
+						 nickName: this.nickName
+					   },
+					   success: (res) => {
+							const result = res.data
+							console.log(result)
+					    }
+					});
+				}
+			},
+			async toRegister(){
+				this.addCustomer();
+				this.$api.msg("注册成功，即将跳转登录")
+				setTimeout(() => {
 					uni.navigateTo({
 						url: '/pages/public/loginByPhone',
-                   });
-				}else{
-					this.$api.msg(result.msg);
-				}
+					});
+				}, 3000)
 				
 			}
 		},
@@ -298,7 +318,7 @@
 		background:$page-color-light;
 		height: 120upx;
 		border-radius: 4px;
-		margin-bottom: 50upx;
+		margin-bottom: 35upx;
 		&:last-child{
 			margin-bottom: 0;
 		}

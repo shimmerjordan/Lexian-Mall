@@ -78,4 +78,28 @@
         order_item.order_id=#{ id }
     </update>
 
+
+    <select id="getUserOrder" parameterType="java.lang.String" resultMap="order_map">
+        SELECT
+	     orders.date,
+	     orders.description,
+	     orders.`comment`,
+	     orders.`status`,
+	     commodity.image,
+	     order_item.commodity_quantity,
+	     commodity.`name`,
+	     commodity.price
+        FROM
+	     customer_order
+	    INNER JOIN
+	     orders ON customer_order.order_id = orders.ID
+	    INNER JOIN
+	     order_item ON orders.ID = order_item.order_id
+	    INNER JOIN
+	     commodity ON order_item.commodity_id = commodity.ID
+        WHERE
+	     customer_order.is_delete = 0 AND
+	     orders.isDelete = 0 AND
+	     customer_order.customer_id = #{ userID }
+    </select>
 </mapper>

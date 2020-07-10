@@ -39,4 +39,6 @@ public class OrderController {
         return orderService.updateOrder(map);
     }
 
+    @PostMapping("/userOrder")
+    public List<Order> getUserOrder(String userID) { return orderService.getUserOrder(userID); }
 }
