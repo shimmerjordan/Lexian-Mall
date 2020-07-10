@@ -159,7 +159,8 @@ var _default =
       count: 0,
       isMove: false,
       countdown: '',
-      timestatus: true };
+      timestatus: true,
+      phoneExistance: true };
 
   },
   mounted: function mounted() {var _this = this;
@@ -200,6 +201,7 @@ var _default =
         this.isOk = true;
         this.$emit("result", { flag: true, count: this.count });
 
+        this.checkPhoneExistance();
         this.countDown();
 
       } else {
@@ -237,6 +239,25 @@ var _default =
         _this3.oldx = 0;
         _this3.isOk = false;
       }, 60000);
+    },
+    checkPhoneExistance: function checkPhoneExistance() {var _this4 = this;
+      uni.request({
+        url: this.apiServer + '/customer/checkPhoneExistance',
+        method: 'POST',
+        dataType: "json",
+        data: {
+          "mobile": this.mobile },
+
+        success: function success(res) {
+          var result = res.data;
+          console.log(result);
+          if (result != 0) {
+            _this4.phoneExistance = true;
+          } else {
+            _this4.phoneExistance = false;
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

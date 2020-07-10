@@ -61,4 +61,9 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public List<Order> getUserOrder(String userID) {
+        return orderMapper.getUserOrder(userID);
+    }
+
 }

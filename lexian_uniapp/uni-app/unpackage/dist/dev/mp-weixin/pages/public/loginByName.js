@@ -190,6 +190,7 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
 
 
 
+
 {
 
   data: function data() {
@@ -198,12 +199,16 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
       password: '',
       loginPassword: '',
       resultData: {},
+      result: '',
       logining: false };
 
   },
   onLoad: function onLoad() {
     console.log('login页面onLoad');
   },
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['hasLogin', 'uerInfo'])),
+
   methods: _objectSpread({},
   (0, _vuex.mapMutations)(['login']), {
     inputChange: function inputChange(e) {
@@ -240,45 +245,39 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
         complete: function complete() {} });
 
     },
-    toLogin: function toLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var loginPhone, loginPassword, loginName, password, sendData;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    toLogin: function toLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var loginPhone, loginPassword, loginName, password;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 _this.logining = true;
                 loginPhone = _this.loginPhone;
                 loginPassword = _this.loginPassword;
                 loginName = _this.loginName, password = _this.password;
-                /* 数据验证模块*/
-                // if(!this.$api.match({
-                // 	loginName,
-                // 	password
-                // })){
-                // 	this.logining = false;
-                // 	return;
-                // }
 
                 uni.request({
                   // url:'http://localhost:8888/api/getAll',
-                  url: _this.apiServer + '/customer/verifyPwdByName',
+                  url: _this.apiServer + '/customer/loginByName',
                   method: 'POST',
                   dataType: "json",
                   data: {
                     "loginName": _this.loginName },
 
                   success: function success(res) {
-                    var result = res.data;
-                    console.log(result);
+                    _this.result = res.data;
+                    console.log(_this.result);
+
                   } });
 
-                sendData = {
-                  loginName: loginName,
-                  password: password };
-
-                //const result = await this.$api.json('userInfo');
-                if (result.status === 1) {
-                  _this.login(result.data);
-                  uni.navigateBack();
-                } else {
-                  _this.$api.msg(result.msg);
+                if (_this.result.length == 0) {
+                  _this.$api.msg("用户名或密码错误");
                   _this.logining = false;
-                }case 7:case "end":return _context.stop();}}}, _callee);}))();
+                } else {
+                  if (_this.result[0].pwd == _this.password) {
+                    _this.login(_this.result[0]);
+                    uni.reLaunch({
+                      url: "/pages/user/user",
+                      success: function success(res) {} });
+
+                  }
+                }case 6:case "end":return _context.stop();}}}, _callee);}))();
+
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

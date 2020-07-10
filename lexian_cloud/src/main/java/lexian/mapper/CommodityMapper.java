@@ -20,12 +20,9 @@ public interface CommodityMapper {
     int deleteGood(Integer id);
 	List<Commodity> selectCommodityByCategoryId(Commodity commodity);
 	int addGood(Map<String, Object> map);
-<<<<<<< .merge_file_a05444
-=======
-	
+
 	Commodity selectCommodityById(String commodityId);
 
 	List<Category> getAllCategory();
 
->>>>>>> .merge_file_a18416
 }

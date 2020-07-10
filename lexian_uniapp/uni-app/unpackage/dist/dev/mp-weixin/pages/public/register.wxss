@@ -753,7 +753,7 @@
 .pathway.data-v-3a220225 {
   height: 80rpx;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   background-color: #7ac23c;
   position: relative;
   overflow: hidden;
@@ -1732,7 +1732,7 @@ page {
   background: #f8f6fc;
   height: 120rpx;
   border-radius: 4px;
-  margin-bottom: 50rpx;
+  margin-bottom: 35rpx;
 }
 .input-item:last-child {
   margin-bottom: 0;

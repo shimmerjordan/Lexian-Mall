@@ -87,10 +87,6 @@
 		</if>
 	</select>
 
-<<<<<<< .merge_file_a19280
-
-=======
->>>>>>> .merge_file_a13124
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
@@ -112,13 +108,9 @@
 		FROM
 		commodity
 		WHERE
-		commodity.is_delete=0 AND
-		commodity.ID=0
+		commodity.is_delete=0
 	</select>
-<<<<<<< .merge_file_a19280
 
-=======
->>>>>>> .merge_file_a13124
 
 
 	<insert id="addGood" parameterType="java.util.HashMap">
@@ -128,24 +120,23 @@
 		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
 	</insert>
 
-<<<<<<< .merge_file_a19280
-=======
+
 
 	<select id="selectCommodityById" parameterType="java.lang.String"
 		resultType="lexian.entity.Commodity">
 		SELECT
-		g.ID,
-		g.modify_time,
-		g.introduction,
-		g.NAME,
-		g.image,
-		g.price,
-		g.STORAGE,
-		g.specification,
-		g.STATUS,
-		g.is_delete,
-		oi.sales,
-		bi.browseCount
+		commodity.ID,
+		commodity.modify_time,
+		commodity.introduction,
+		commodity.NAME,
+		commodity.image,
+		commodity.price,
+		commodity.STORAGE,
+		commodity.specification,
+		commodity.STATUS,
+		commodity.is_delete,
+		commodity.sales,
+		commodity.browseCount
 		FROM
 		`commodity` g
 		LEFT JOIN ( SELECT sum( commodity_quantity ) AS sales, commodity_id FROM
@@ -170,5 +161,5 @@
 		WHERE
 		is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1)
 	</select>
->>>>>>> .merge_file_a13124
+
 </mapper>

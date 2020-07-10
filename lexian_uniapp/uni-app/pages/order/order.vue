@@ -89,6 +89,7 @@
 		data() {
 			return {
 				tabCurrentIndex: 0,
+				orderList: [],
 				navList: [{
 						state: 0,
 						text: '全部',
@@ -142,6 +143,18 @@
 		 
 		methods: {
 			//获取订单列表
+			initOrder(){
+				uni.request({
+					url: this.apiServer + "/oreder/userorder",
+					//url:'http://localhost:8080/..."' ,
+					data:'userinfo.ID'
+					method: 'POST',
+					success: (res) => {
+					let orderList = res.data;
+					this.orderList = orderList;
+					}
+				});
+				}
 			loadData(source){
 				//这里是将订单挂载到tab列表下
 				let index = this.tabCurrentIndex;

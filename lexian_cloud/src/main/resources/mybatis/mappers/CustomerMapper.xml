@@ -66,12 +66,9 @@
         ), 0)
     </select>
 
-<<<<<<< .merge_file_a03428
-  <update id="updateByPrimaryKey" parameterType="Customer" >
 
-=======
+
     <update id="updateCustomerPwd" parameterType="java.util.HashMap" >
->>>>>>> .merge_file_a17820
     update customer
     set
       pwd = #{password}

@@ -50,4 +50,11 @@
     set activity.status = 0
     where activity.id = #{id}
   </update>
+  <select id="getIndexActivity" resultType="Activity">
+    select
+    activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
+    from activity
+    where activity.is_delete = 0
+    AND activity.id > 10
+  </select>
 </mapper>

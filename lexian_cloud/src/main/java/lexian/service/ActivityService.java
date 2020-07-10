@@ -15,4 +15,5 @@ public interface ActivityService {
     boolean updateActivityStatus0(Map<String,Object> map);
 
     boolean updateActivityStatus1(Map<String,Object> map);
+
 }

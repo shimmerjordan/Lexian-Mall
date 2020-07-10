@@ -48,4 +48,5 @@ public class ActivityController {
         System.out.println(map);
         return activityService.updateActivityStatus1(map);
     }
+
 }

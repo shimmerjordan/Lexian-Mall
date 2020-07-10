@@ -24,5 +24,20 @@
 		(#{commodityId}, #{customerId}, #{browsingTime}, #{isDelete}, #{date})
 	</insert>
 
+	<select id="getHistory" parameterType="java.lang.String">
+		SELECT
+		browsing_record.browsing_time,
+		browsing_record.customer_id,
+		commodity.`name`,
+	    commodity.price,
+	    commodity.image
+		FROM
+		browsing_record
+		INNER JOIN  commodity on browsing_record.commodity_id = commodity.ID
+		WHERE
+		browsing_record.customer_id = #{UserID}
+		AND browsing_record.is_delete= 0
+	</select>
+
 
 </mapper>

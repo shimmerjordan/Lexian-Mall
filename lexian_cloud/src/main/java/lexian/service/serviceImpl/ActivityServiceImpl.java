@@ -64,4 +64,6 @@ public class ActivityServiceImpl implements ActivityService {
         int flag = activityMapper.updateActivityStatus1(map);
         return flag>0;
     }
+
+
 }
