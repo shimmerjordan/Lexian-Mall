@@ -30,7 +30,7 @@
 		</view>
 		
 		<!--  分享 -->
-		<view class="share-section" @click="share">
+<!-- 		<view class="share-section" @click="share">
 			<view class="share-icon">
 				<text class="yticon icon-xingxing"></text>
 				 返
@@ -42,30 +42,28 @@
 				<text class="yticon icon-you"></text>
 			</view>
 			
-		</view>
+		</view> -->
 		
 		<view class="c-list">
-			<view class="c-row b-b" @click="toggleSpec">
-				<text class="tit">购买类型</text>
+			<view v-if="specsCount > 0" class="c-row b-b" @click="toggleSpec">
+				<text class="tit">商品规格</text>
+				<!-- <text class="con t-r red">选择规格</text> -->
 				<view class="con">
 					<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
-						{{sItem.name}}
+						已选：{{sItem.specsName}}
 					</text>
 				</view>
 				<text class="yticon icon-you"></text>
 			</view>
-			<view class="c-row b-b">
+			<view class="c-row b-b" @click="toggleCoupon">
 				<text class="tit">优惠券</text>
-				<text class="con t-r red">领取优惠券</text>
+				<text class="con t-r red">选择优惠券</text>
 				<text class="yticon icon-you"></text>
 			</view>
 			<view class="c-row b-b">
-				<text class="tit">促销活动</text>
+				<text class="tit">商品介绍</text>
 				<view class="con-list">
-					<text>新人首单送20元无门槛代金券</text>
-					<text>订单满50减10</text>
-					<text>订单满100减30</text>
-					<text>单笔购买满两件免邮费</text>
+					<text>{{commodity.introduction}}</text>	
 				</view>
 			</view>
 			<view class="c-row b-b">
@@ -81,22 +79,22 @@
 		<view class="eva-section">
 			<view class="e-header">
 				<text class="tit">评价</text>
-				<text>({{commodity.commentList.length}})</text>
+				<text>({{commentCount}})</text>
 				<text class="tip">好评率 100%</text>
 				<text class="yticon icon-you"></text>
 			</view> 
-			<view class="eva-box" v-if="commodity.commentList.length > 0">
-				<image class="portrait" src="http://img3.imgtn.bdimg.com/it/u=1150341365,1327279810&fm=26&gp=0.jpg" mode="aspectFill"></image>
+			<view class="eva-box" v-if="commentCount > 0" v-for="(comment, cIndex) in commentList" :key="cIndex" >
+				<image class="portrait" :src="comment.userImage" mode="aspectFill"></image>
 				<view class="right">
-					<text class="name">Leo yo</text>
-					<text class="con">{{onecomment.commentContent}}</text>
+					<text class="name">{{comment.userName}}</text>
+					<text class="con">{{comment.commentContent}}</text>
 					<view class="bot">
-						<text class="attr">购买类型：XL 红色</text>
-						<text class="time">{{onecomment.commentTime | timeStamp}}</text>
+						<text class="attr"></text>
+						<text class="time">{{comment.commentTime | timeStamp}}</text>
 					</view>
 				</view>
 			</view>
-			<view class="eva-box" v-if="commodity.commentList.length == 0">
+			<view class="eva-box" v-if="commentCount == 0">
 				<view class="right">
 					<text class="con">该商品暂无评价</text>
 				</view>
@@ -145,18 +143,18 @@
 				<view class="a-t">
 					<image src="https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg"></image>
 					<view class="right">
-						<text class="price">¥328.00</text>
-						<text class="stock">库存：188件</text>
+						<text class="price">¥{{commodity.price}}</text>
+						<text class="stock">库存：{{commodity.storage}}件</text>
 						<view class="selected">
 							已选：
 							<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
-								{{sItem.name}}
+								{{sItem.specsName}}
 							</text>
 						</view>
 					</view>
 				</view>
 				<view v-for="(item,index) in specList" :key="index" class="attr-list">
-					<text>{{item.name}}</text>
+					<text>{{item.specsName}}</text>
 					<view class="item-list">
 						<text 
 							v-for="(childItem, childIndex) in specChildList" 
@@ -165,11 +163,29 @@
 							:class="{selected: childItem.selected}"
 							@click="selectSpec(childIndex, childItem.pid)"
 						>
-							{{childItem.name}}
+							{{childItem.specsName}}
 						</text>
 					</view>
 				</view>
 				<button class="btn" @click="toggleSpec">完成</button>
+			</view>
+		</view>
+		
+		<!-- 优惠卷-模态层弹窗 -->
+		<view 
+			class="popup spec" 
+			:class="speccClass"
+			@touchmove.stop.prevent="stopPrevent"
+			@click="toggleCoupon"
+		>
+			<!-- 遮罩层 -->
+			<view class="mask"></view>
+			<view class="layer attr-content" @click.stop="stopPrevent">
+                 <view class="item-list">
+					 <text>12312</text>
+					 <text>12312</text>
+				 </view>
+				<button class="btn" @click="toggleCoupon">完成</button>
 			</view>
 		</view>
 		<!-- 分享 -->
@@ -190,8 +206,8 @@
 		data() {
 			return {
 				specClass: 'none',
+				speccClass: 'none',
 				specSelected:[],
-				
 				favorite: true,
 				shareList: [],
 				imgList: [],
@@ -204,65 +220,13 @@
 						<img style="width:100%;display:block;" src="https://gd1.alicdn.com/imgextra/i1/479184430/O1CN01Tnm1rU1iaz4aVKcwP_!!479184430.jpg_400x400.jpg" />
 					</div>
 				`,
-				specList: [
-					{
-						id: 1,
-						name: '尺寸',
-					},
-					{	
-						id: 2,
-						name: '颜色',
-					},
-				],
-				specChildList: [
-					{
-						id: 1,
-						pid: 1,
-						name: 'XS',
-					},
-					{
-						id: 2,
-						pid: 1,
-						name: 'S',
-					},
-					{
-						id: 3,
-						pid: 1,
-						name: 'M',
-					},
-					{
-						id: 4,
-						pid: 1,
-						name: 'L',
-					},
-					{
-						id: 5,
-						pid: 1,
-						name: 'XL',
-					},
-					{
-						id: 6,
-						pid: 1,
-						name: 'XXL',
-					},
-					{
-						id: 7,
-						pid: 2,
-						name: '白色',
-					},
-					{
-						id: 8,
-						pid: 2,
-						name: '珊瑚粉',
-					},
-					{
-						id: 9,
-						pid: 2,
-						name: '草木绿',
-					},
-				],
+				specList: [],
+				specChildList: [],
 				commodity:{},
-				onecomment:{}
+				commentList:[],
+				commentCount:0,
+				specsCount:0,
+				uid:-1
 			};
 		},
 		async onLoad(options){
@@ -270,6 +234,7 @@
 			//接收传值,id里面放的是标题，因为测试数据并没写id 
 			let id = options.id;
 			let uid = options.uid ? options.uid : "";
+			this.uid = uid;
 			let _this = this;
 			if(id){
 				uni.request({
@@ -280,8 +245,21 @@
 					  _this.imgList = [];
 				      _this.imgList.push({"src":res.data.image})
 					  let commentList = res.data.commentList;
+					  _this.commentCount = commentList.length;
 					  if(commentList && commentList.length > 0){
-						 _this.onecomment = res.data.commentList[0]; 
+						 _this.commentList = res.data.commentList; 
+					  }
+					  var specsList = res.data.specsList;
+					  _this.specsCount = specsList.length;
+					  if( _this.specsCount > 0){
+						  specsList.forEach((val,index) => {
+							  if(val.pid == 0){
+								  _this.specList.push(val);
+							  }else{
+								  _this.specChildList.push(val);
+							  }
+							  
+						  });
 					  }
 					  
 				    }
@@ -313,6 +291,16 @@
 				}else if(this.specClass === 'none'){
 					this.specClass = 'show';
 				}
+			},
+			toggleCoupon() {
+				 if(this.speccClass === 'show'){
+				 	this.speccClass = 'hide';
+				 	setTimeout(() => {
+				 		this.speccClass = 'none';
+				 	}, 250);
+				 }else if(this.speccClass === 'none'){
+				 	this.speccClass = 'show';
+				 } 
 			},
 			//选择规格
 			selectSpec(index, pid){
@@ -350,6 +338,13 @@
 				uni.navigateTo({
 					url: `/pages/order/createOrder`
 				})
+			},
+			cart(){
+				if(this.uid){
+					
+				}else{
+					console.log("登陆")
+				}
 			},
 			stopPrevent(){}
 		},

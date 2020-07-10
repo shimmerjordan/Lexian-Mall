@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,7 @@ public class ActivityController {
 
     @PostMapping("/updateActivity")
     public boolean updateActivity(@RequestBody Map<String,Object> map){
+
         System.out.println(map);
         return activityService.updateActivity(map);
     }
@@ -49,4 +52,17 @@ public class ActivityController {
         return activityService.updateActivityStatus1(map);
     }
 
+<<<<<<< HEAD
+=======
+    @GetMapping("/getMaxActivityId")
+    public int getMaxActivityId() {
+        return activityService.getMaxActivityId();
+    }
+
+    @PostMapping("/insertActivity")
+    public boolean insertActivity(@RequestBody Map<String,Object> map) {
+        System.out.println(map);
+        return activityService.insertActivity(map);
+    }
+>>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 }
