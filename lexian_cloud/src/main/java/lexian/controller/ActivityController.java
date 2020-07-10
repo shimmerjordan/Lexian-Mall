@@ -56,4 +56,10 @@ public class ActivityController {
     public int getMaxActivityId() {
         return activityService.getMaxActivityId();
     }
+
+    @PostMapping("/insertActivity")
+    public boolean insertActivity(@RequestBody Map<String,Object> map) {
+        System.out.println(map);
+        return activityService.insertActivity(map);
+    }
 }

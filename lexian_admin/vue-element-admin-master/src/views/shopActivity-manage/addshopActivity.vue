@@ -22,7 +22,7 @@
           <el-col :span="12">
             <el-form-item label="对应店铺" prop="activityShop" label-width="100px">
               <el-select v-model="postForm.activityShop" clearable placeholder="请选择该活动对应店铺" size="small">
-                <el-option v-for="item in activityShopList" :key="item.value" :value="item.value" :label="item.id +'-' + item.name" />
+                <el-option v-for="item in activityShopList" :key="item.id" :value="item.id" :label="item.id +'-' + item.name" />
               </el-select>
             </el-form-item>
           </el-col>
@@ -42,17 +42,17 @@
 
         <el-row>
           <el-col :span="12">
-            <el-form-item label="创建时间" prop="unitId">
-              <el-input v-model="postForm.date" disabled />
+            <el-form-item label="创建时间" prop="createTime">
+              <el-input v-model="postForm.createTime" disabled />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="24">
-            <el-form-item label="活动时间" prop="unitId">
+            <el-form-item label="活动时间" prop="timeRange">
               <!-- <span class="demonstration">活动时间：</span> -->
               <el-date-picker
-                v-model="value2"
+                v-model="timeRange"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 type="datetimerange"
                 align="right"
@@ -72,7 +72,7 @@
           <el-col :span="12">
             <el-form-item label="活动类型" prop="type" label-width="100px">
               <el-select v-model="postForm.type" clearable placeholder="请选择" size="small">
-                <el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
+                <el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.label" />
               </el-select>
               <!-- <el-button icon="el-icon-plus" circle style="margin-left: 40px;" @click="addActivityType()" /> -->
             </el-form-item>
@@ -113,10 +113,9 @@
 </template>
 
 <script>
-import { createArticle } from '@/api/article'
 import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
-import { getMaxActivityId } from '@/api/activity'
+import { getMaxActivityId, insertActivity } from '@/api/activity'
 import { getAllShop } from '@/api/shop'
 
 export default {
@@ -126,13 +125,19 @@ export default {
   data() {
     return {
       activityShopList: [],
+      timeRange: '',
       textarea: '',
+      maxDate: null,
+      minDate: null,
       postForm: {
+        activityShop: '',
         shopActivityId: '',
-        date: '',
-        name: '',
-        categoryId: undefined,
-        unitId: undefined
+        createTime: '',
+        shopActivityName: '',
+        beginTime: '',
+        endTime: '',
+        type: '',
+        description: ''
       },
       loading: false,
       typeList: [{ label: '秒杀', value: 0 }, { label: '团购', value: 1 }, { label: '节日限定', value: 2 }],
@@ -140,6 +145,15 @@ export default {
       checkAllTag: true,
       isIndeterminateTag: true,
       pickerOptions: {
+        onPick: ({ maxDate, minDate }) => {
+          if (maxDate != null && minDate != null) {
+            this.maxDate = maxDate
+            this.minDate = minDate
+            this.postForm.beginTime = minDate
+            this.postForm.endTime = maxDate
+            console.log(this.postForm.beginTime)
+          }
+        },
         shortcuts: [{
           text: '最近一周',
           onClick(picker) {
@@ -166,8 +180,6 @@ export default {
           }
         }]
       },
-      value1: '',
-      value2: '',
       temp: {
         type: ''
       },
@@ -190,7 +202,7 @@ export default {
     const hh = new Date().getHours()
     const mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
     // const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
-    this.postForm.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf
+    this.postForm.createTime = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf
   },
   methods: {
     getActivityShopList() {
@@ -220,43 +232,29 @@ export default {
       this.$message({ message: 'Delete success', type: 'success' })
     },
     submitForm() {
-      this.$router.go(-1)
-    },
-    cancel() {
-      this.$router.go(-1)
-    },
-    createData() {
-      this.$refs['dataForm'].validate((valid) => {
+      // this.$router.go(-1)
+      this.$refs['postForm'].validate((valid) => {
         if (valid) {
-          this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
-          this.temp.author = 'vue-element-admin'
-          createArticle(this.temp).then(() => {
-            this.list.unshift(this.temp)
-            this.dialogFormVisible = false
+          //  console.log(this.postForm)
+          insertActivity(this.postForm).then(response => {
+            alert('添加成功')
             this.$notify({
               title: 'Success',
-              message: 'Created Successfully',
+              message: '添加成功',
               type: 'success',
               duration: 2000
             })
+            setTimeout(() => {
+              // this.listLoading = false
+            }, 1.5 * 1000)
           })
         }
       })
+      this.$router.push({ path: '/shopActivity/shopActivity-manage' })
     },
-    resetTemp() {
-      this.temp = {
-        id: undefined,
-        type: ''
-      }
-    },
-    addActivityType() {
-      this.resetTemp()
-      this.dialogFormVisible = true
-      this.$nextTick(() => {
-        this.$refs['dataForm'].clearValidate()
-      })
+    cancel() {
+      this.$router.push({ path: '/shopActivity/shopActivity-manage' })
     }
-
   }
 }
 

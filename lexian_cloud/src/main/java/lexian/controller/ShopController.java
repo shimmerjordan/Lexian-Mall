@@ -48,4 +48,11 @@ public class ShopController {
     public List<Shop> searchShop(@RequestBody Map<String,Object> map) {
         return shopService.searchShop(map);
     }
+
+    @PostMapping("/insertShop")
+    public boolean insertShop(@RequestBody Map<String,Object> map) {
+        System.out.println(map);
+        return shopService.insertShop(map);
+    }
+
 }

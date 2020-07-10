@@ -1,26 +1,42 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="listQuery.id" placeholder="ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-input v-model="listQuery.name" placeholder="活动名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-select v-model="listQuery.status" placeholder="活动状态" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
-      </el-select>
-      <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
-        <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
-      </el-select>
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        搜索
-      </el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
-        新增
-      </el-button>
-      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-        导出
-      </el-button>
-      <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-        审核人
-      </el-checkbox>
+      <el-row>
+        <el-input v-model="listQuery.id" placeholder="ID" style="width: 200px;margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.name" placeholder="活动名称" style="width: 200px;margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-select v-model="listQuery.status" placeholder="活动状态" clearable class="filter-item" style="width: 130px;margin-right:20px">
+          <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+        </el-select>
+        <!-- <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
+          <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
+        </el-select> -->
+        <el-date-picker
+          v-model="timeRange"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          type="datetimerange"
+          align="right"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="pickerOptions"
+          class="filter-item"
+        />
+      </el-row>
+      <el-row>
+        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
+          搜索
+        </el-button>
+        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
+          新增
+        </el-button>
+        <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
+          导出
+        </el-button>
+        <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
+          审核人
+        </el-checkbox>
+      </el-row>
     </div>
 
     <el-table
@@ -33,7 +49,7 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+      <el-table-column label="ID" prop="id" sortable align="center" width="80" :class-name="getSortClass('id')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
@@ -184,6 +200,7 @@ export default {
   },
   data() {
     return {
+      timeRange: '',
       tableKey: 0,
       list: null,
       total: 0,
@@ -198,7 +215,7 @@ export default {
       },
       importanceOptions: [1, 2, 3],
       statusOptions,
-      sortOptions: [{ label: 'ID正序排列', key: '+id' }, { label: 'ID倒序排列', key: '-id' }],
+      // sortOptions: [{ label: 'ID正序排列', key: '+id' }, { label: 'ID倒序排列', key: '-id' }],
       showReviewer: false,
       temp: {
         id: undefined,
@@ -218,11 +235,47 @@ export default {
       dialogPvVisible: false,
       pvData: [],
       rules: {
-        type: [{ required: true, message: 'type is required', trigger: 'change' }],
-        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-        title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+        // type: [{ required: true, message: 'type is required', trigger: 'change' }],
+        // timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
+        // title: [{ required: true, message: 'title is required', trigger: 'blur' }]
       },
-      downloadLoading: false
+      downloadLoading: false,
+      pickerOptions: {
+        onPick: ({ maxDate, minDate }) => {
+          if (maxDate != null && minDate != null) {
+            this.maxDate = maxDate
+            this.minDate = minDate
+            this.listQuery.beginTime = minDate
+            this.listQuery.endTime = maxDate
+            console.log(this.listQuery.beginTime)
+          }
+        },
+        shortcuts: [{
+          text: '最近一周',
+          onClick(picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+            picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '最近一个月',
+          onClick(picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+            picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '最近三个月',
+          onClick(picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+            picker.$emit('pick', [start, end])
+          }
+        }]
+      }
     }
   },
   created() {

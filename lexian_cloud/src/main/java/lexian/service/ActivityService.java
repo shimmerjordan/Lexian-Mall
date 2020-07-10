@@ -17,4 +17,6 @@ public interface ActivityService {
     boolean updateActivityStatus1(Map<String,Object> map);
 
     int getMaxActivityId();
+
+    boolean insertActivity(Map<String, Object> map);
 }

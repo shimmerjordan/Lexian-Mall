@@ -73,4 +73,16 @@ public class ActivityServiceImpl implements ActivityService {
     public int getMaxActivityId() {
         return activityMapper.getMaxActivityId();
     }
+
+    @Override
+    public boolean insertActivity(Map<String,Object> map) {
+        try {
+            map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
+            map.put("endTime",UTCToLocal((String)map.get("endTime")));
+            int flag = activityMapper.insertActivity(map);
+            return flag > 0;
+        }catch (ParseException e){
+            return false;
+        }
+    }
 }

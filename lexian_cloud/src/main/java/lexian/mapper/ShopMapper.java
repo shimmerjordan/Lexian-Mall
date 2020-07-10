@@ -22,4 +22,6 @@ public interface ShopMapper {
     int updateShopStstus0(Object select[]);
 
     List<Shop> searchShop(Map<String,Object> map);
+
+    int insertShop(Map<String,Object> map);
 }

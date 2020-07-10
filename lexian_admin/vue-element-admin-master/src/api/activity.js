@@ -45,3 +45,11 @@ export function getMaxActivityId() {
     method: 'get'
   })
 }
+
+export function insertActivity(data) {
+  return myrequest({
+    url: '/insertActivity',
+    method: 'post',
+    data
+  })
+}

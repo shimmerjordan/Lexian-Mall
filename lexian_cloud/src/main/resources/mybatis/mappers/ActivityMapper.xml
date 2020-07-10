@@ -58,6 +58,8 @@
 
   <insert id="insertActivity" parameterType="java.util.HashMap">
   insert into
-
+  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete)
+  values
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
   </insert>
 </mapper>

@@ -1,5 +1,4 @@
 import myrequest from '@/utils/myrequest'
-import { get } from 'sortablejs'
 
 export function getAllShop() {
   return myrequest({
@@ -34,7 +33,15 @@ export function deleteShop(data) {
 export function searchShop(data) {
   return myrequest({
     url: '/searchShop',
-    method: get,
+    method: 'get',
+    data
+  })
+}
+
+export function insertShop(data) {
+  return myrequest({
+    url: '/insertShop',
+    method: 'post',
     data
   })
 }

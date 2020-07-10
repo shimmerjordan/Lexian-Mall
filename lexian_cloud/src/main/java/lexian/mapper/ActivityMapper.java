@@ -21,4 +21,6 @@ public interface ActivityMapper {
     int updateActivityStatus1(Map<String,Object> map);
 
     int getMaxActivityId();
+
+    int insertActivity(Map<String, Object> map);
 }
