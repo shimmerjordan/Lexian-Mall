@@ -32,10 +32,29 @@ export function updateOrder(data) {
 }
 
 // 获取纠纷订单
-export function jiufenOrder() {
+export function jiufenOrder(data) {
   return myrequest({
     url: '/order/jiufenOrder',
-    method: 'get'
+    method: 'post',
+    data
+  })
+}
+
+// 纠纷订单删除
+export function DeleteJiuFenOrder(data) {
+  return myrequest({
+    url: '/order/DeleteJiuFenOrder',
+    method: 'post',
+    data
+  })
+}
+
+// 纠纷订单就行处理，更新订单状态
+export function UpdateJiuFenOrder(data) {
+  return myrequest({
+    url: '/order/UpdateJiuFenOrder',
+    method: 'post',
+    data
   })
 }
 

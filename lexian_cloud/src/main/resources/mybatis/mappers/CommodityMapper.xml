@@ -164,6 +164,7 @@
 		category.level=2 OR category.level=1)
 	</select>
 
+	
 	<resultMap id="commodity_map2" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -176,6 +177,7 @@
 		<result property="status" column="Commodity.`status`" />
 		<result property="is_delete" column="Commodity.`is_delete`" />
 	</resultMap>
+
 	<select id="getAllShopCommodityByName" resultType="Commodity" parameterType="java.lang.String">
 		SELECT
 		Commodity.ID,
