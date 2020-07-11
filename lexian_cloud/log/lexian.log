@@ -1189,3 +1189,6 @@
 [DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
 [DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 3
 [DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c23294]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@edafe80] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@edafe80]
