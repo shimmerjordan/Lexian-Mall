@@ -22,6 +22,9 @@
 
 <script>
 const defaultFormThead = ['admin', 'editor']
+
+import { getAllManager } from '@/api/manager'
+
 export default {
   data() {
     return {
@@ -30,10 +33,10 @@ export default {
       formTheadOptions: ['admin', 'editor', 'visitor'],
       checkboxVal: defaultFormThead, // checkboxVal
       formThead: defaultFormThead, // 默认表头 Default header]
-      admins: ['小红', '小白'],
-      editors: ['小红', '小蓝', '小绿'],
-      visitors: ['小白', '小白', '小白'],
-      length: [3, 3, 3]
+      admins: [],
+      editors: [],
+      visitors: [],
+      length: []
     }
   },
   watch: {
@@ -43,7 +46,16 @@ export default {
     }
   },
   mounted() {
-    this.setTable()
+    getAllManager().then(response => {
+      this.length = []
+      this.admins = response.data[0]
+      this.length.push(this.admins.length)
+      this.editors = response.data[1]
+      this.length.push(this.editors.length)
+      this.visitors = response.data[2]
+      this.length.push(this.visitors.length)
+      this.setTable()
+    })
   },
   methods: {
     setTable() {
@@ -58,13 +70,13 @@ export default {
       }
       this.tableData[0].name = '人员姓名'
       for (let i = 0; i < this.admins.length; i++) {
-        this.tableData[i].admin = this.admins[i]
+        this.tableData[i].admin = this.admins[i].name
       }
       for (let i = 0; i < this.editors.length; i++) {
-        this.tableData[i].editor = this.editors[i]
+        this.tableData[i].editor = this.editors[i].name
       }
       for (let i = 0; i < this.visitors.length; i++) {
-        this.tableData[i].visitor = this.visitors[i]
+        this.tableData[i].visitor = this.visitors[i].name
       }
     }
   }

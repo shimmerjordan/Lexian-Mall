@@ -5047,3 +5047,320 @@
 [DEBUG][20-07-10][lexian.mapper.ShopMapper.getAllShop]<==      Total: 15
 [DEBUG][20-07-10][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c6b30d4]
 >>>>>>> 9e255577e8a5d8bce8c02c4dde093417b01e944b
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f2722f8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f2722f8]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5e48cd57] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@484528405 wrapping com.mysql.cj.jdbc.ConnectionImpl@41ca67b5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5e48cd57]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b147189] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@459289676 wrapping com.mysql.cj.jdbc.ConnectionImpl@4dceaa16] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b147189]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b1247da] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1870494636 wrapping com.mysql.cj.jdbc.ConnectionImpl@38cecba5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b1247da]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e121029] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1825401484 wrapping com.mysql.cj.jdbc.ConnectionImpl@25b6191] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e121029]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b872fa5] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1824816202 wrapping com.mysql.cj.jdbc.ConnectionImpl@14cb8ac6] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b872fa5]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ebd3f8a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@682426615 wrapping com.mysql.cj.jdbc.ConnectionImpl@14cb8ac6] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ebd3f8a]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1fc4502e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@950172979 wrapping com.mysql.cj.jdbc.ConnectionImpl@14cb8ac6] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1fc4502e]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e8514e6] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1883436358 wrapping com.mysql.cj.jdbc.ConnectionImpl@14cb8ac6] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e8514e6]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@317fff7d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1737228176 wrapping com.mysql.cj.jdbc.ConnectionImpl@14cb8ac6] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@317fff7d]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f1a90bb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1364197426 wrapping com.mysql.cj.jdbc.ConnectionImpl@14cb8ac6] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f1a90bb]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@306c6a3b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1176862683 wrapping com.mysql.cj.jdbc.ConnectionImpl@66e21be] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@306c6a3b]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7908ca01] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1721837286 wrapping com.mysql.cj.jdbc.ConnectionImpl@66e21be] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7908ca01]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c057ed2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1935863185 wrapping com.mysql.cj.jdbc.ConnectionImpl@66e21be] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c057ed2]
+[DEBUG][20-07-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46119e43] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1556102718 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46119e43]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47730324] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@653992363 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47730324]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c0a58bd] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@319019758 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c0a58bd]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@291fa5e4] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1454375002 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@291fa5e4]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c412ca1] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1210423880 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c412ca1]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33289ea7] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@639207495 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33289ea7]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4d5f2ddd] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1134086662 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4d5f2ddd]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2a5c03d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@916468849 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2a5c03d]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e02aaa7] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1653227378 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e02aaa7]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2997816f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@659581485 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2997816f]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@666d6016] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1944324429 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@666d6016]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b2233fb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@105029465 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b2233fb]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3c3b59bf] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@855416904 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3c3b59bf]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73c1aa73] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@366076693 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73c1aa73]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d82e8cd] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@334386492 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d82e8cd]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@553c14e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1910225287 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@553c14e]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4f78b26a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@165642190 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4f78b26a]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6aa34b58] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1623347076 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6aa34b58]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@699bb68a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1734100425 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@699bb68a]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26614ff2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@318411346 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26614ff2]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6afc6ccf] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1179562173 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6afc6ccf]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@235c5db4] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@765179823 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@235c5db4]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ca6bd94] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@760675401 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ca6bd94]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@559a0fe1] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@210322139 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@559a0fe1]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@53d4a740] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@620680763 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@53d4a740]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@595a339d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@792883537 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@595a339d]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a6d0ec5] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1109596878 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a6d0ec5]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e8aa1c8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1426482476 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e8aa1c8]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47bc188b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@476280149 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 5
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47bc188b]
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3927a4dd] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-11][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@519605042 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c8c50e5] will not be managed by Spring
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? 
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-11][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 7
+[DEBUG][20-07-11][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3927a4dd]
