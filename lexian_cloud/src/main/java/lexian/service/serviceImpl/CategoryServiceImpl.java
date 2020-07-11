@@ -19,8 +19,12 @@ import lexian.service.CategoryService;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
+	private CategoryMapper categoryMapper;
+
 	@Autowired
-	CategoryMapper categoryMapper;
+	public void setCategoryMapper(CategoryMapper categoryMapper) {
+		this.categoryMapper = categoryMapper;
+	}
 
 	public List<Category> list() {
 

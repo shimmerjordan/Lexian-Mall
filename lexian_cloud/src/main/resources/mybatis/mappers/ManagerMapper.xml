@@ -13,7 +13,7 @@
         <result property="birthday" column="system_manager.birthday"/>
         <result property="phone" column="system_manager.phone"/>
     </resultMap>
-    <select id="getAllManagers" parameterType="java.lang.Integer">
+    <select id="getRoleManagers" parameterType="java.lang.Integer">
         SELECT
         system_manager.ID,
         system_manager.`name`,
