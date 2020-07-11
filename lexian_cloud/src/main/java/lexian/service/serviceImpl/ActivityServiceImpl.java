@@ -69,9 +69,6 @@ public class ActivityServiceImpl implements ActivityService {
         return flag>0;
     }
 
-<<<<<<< HEAD
-
-=======
     @Override
     public int getMaxActivityId() {
         return activityMapper.getMaxActivityId();
@@ -88,5 +85,4 @@ public class ActivityServiceImpl implements ActivityService {
             return false;
         }
     }
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 }
