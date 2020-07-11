@@ -47,7 +47,6 @@ public class CommodityServiceImpl implements CommodityService {
 		int flag = commodityMapper.deleteGood(map);
 		return flag > 0;
 	}
-
 	@Override
 	public List<Commodity> listCommodityByCommodityId(String commodityId) {
 		return null;
@@ -58,12 +57,20 @@ public class CommodityServiceImpl implements CommodityService {
 		return false;
 	}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 	@Override
 	public boolean addGood(Map<String, Object> map) {
 		int flag = commodityMapper.addGood(map);
 		return flag > 0;
 	}
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 	@Override
 	public Commodity getCommodity(String commodityId) {
 		Commodity commodity = commodityMapper.selectCommodityById(commodityId);		

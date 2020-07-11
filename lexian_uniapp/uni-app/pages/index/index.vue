@@ -72,7 +72,7 @@
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
 					<view 
-						v-for="(item, index) in goodsList" :key="index"
+						v-for="(item, index) in mGoodsList" :key="index"
 						class="floor-item"
 						@click="navToDetailPage(item)"
 					>
@@ -97,7 +97,7 @@
 			<swiper class="g-swiper" :duration="500">
 				<swiper-item
 					class="g-swiper-item"
-					v-for="(item, index) in goodsList" :key="index"
+					v-for="(item, index) in tGoodsList" :key="index"
 					v-if="index%2 === 0"
 					@click="navToDetailPage(item)"
 				>
@@ -107,7 +107,7 @@
 							<text class="title clamp">{{item.name}}</text>
 							<view class="price-box">
 								<text class="price">￥{{item.price}}</text> 
-								<text class="m-price">￥188</text> 
+								<text class="m-price">￥28</text> 
 							</view>
 							
 							<view class="pro-box">
@@ -120,12 +120,12 @@
 						            
 					</view>
 					<view class="g-item right">
-						<image :src="goodsList[index+1].image" mode="aspectFill"></image>
+						<image :src="tGoodsList[index+1].image" mode="aspectFill"></image>
 						<view class="t-box">
-							<text class="title clamp">{{goodsList[index+1].title}}</text>
+							<text class="title clamp">{{tGoodsList[index+1].name}}</text>
 							<view class="price-box">
-								<text class="price">￥{{goodsList[index+1].price}}</text> 
-								<text class="m-price">￥188</text> 
+								<text class="price">￥{{tGoodsList[index+1].price}}</text> 
+								<text class="m-price">￥39</text> 
 							</view>
 							<view class="pro-box">
 							  	<view class="progress-box">
@@ -158,7 +158,7 @@
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
 					<view 
-						v-for="(item, index) in goodsList" :key="index"
+						v-for="(item, index) in hGoodsList" :key="index"
 						class="floor-item"
 						@click="navToDetailPage(item)"
 					>
@@ -180,7 +180,7 @@
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
 					<view 
-						v-for="(item, index) in goodsList" :key="index"
+						v-for="(item, index) in dGoodsList" :key="index"
 						class="floor-item"
 						@click="navToDetailPage(item)"
 					>
@@ -198,13 +198,13 @@
 		<view class="hot-floor">
 			<view class="floor-img-box">
 				
-				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409984228&di=dee176242038c2d545b7690b303d65ea&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5ef4da9f17faaf4612f0d5046f4161e556e9bbcfdb5b-rHjf00_fw658" mode="scaleToFill"></image>
+				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594290990162&di=b19ff603fc393b8c714f181badfe2ec0&imgtype=0&src=http%3A%2F%2Fwww.aiimg.com%2Fuploads%2Fuserup%2F1307%2F231539221627.jpg" mode="scaleToFill"></image>
 	
 			</view>
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
 					<view 
-						v-for="(item, index) in goodsList" :key="index"
+						v-for="(item, index) in sGoodsList" :key="index"
 						class="floor-item"
 						@click="navToDetailPage(item)"
 					>
@@ -232,7 +232,7 @@
 		
 		<view class="guess-section">
 			<view 
-				v-for="(item, index) in goodsList" :key="index"
+				v-for="(item, index) in gGoodsList" :key="index"
 				class="guess-item"
 				@click="navToDetailPage(item)"
 			>
@@ -258,6 +258,12 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				swiperLength: 0,
 				carouselList: [],
 				goodsList: [],
+				mGoodsList: [],
+				tGoodsList: [],
+				hGoodsList: [],
+				dGoodsList: [],
+				sGoodsList: [],
+				gGoodsList: [],
 				date: new Date(+new Date(new Date().toJSON())+8*3600*1000).toISOString(),
 					iconSrc: {
 						logo: '../../static/lee-search/icon_search.png',
@@ -280,29 +286,44 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 		methods: {
 			
 			async loadData() {
+				//获取活动数据
 				uni.request({
-					url: this.apiServer + "/getAllActivity",
+					url: this.apiServer + "/uniIndex/getActivity",
 					//url:'http://localhost:8080/getAllActivity"' ,
 					method: 'GET',
 					success: (res) => {
 					let carouselList = res.data;
-					console.log(carouselList);
 					this.carouselList = carouselList;
 					this.titleNViewBackground = "rgb(205, 215, 218)";
 					this.swiperLength = carouselList.length;
 					}
-				})
-				
+				});
+				//获取商品数据
 				uni.request({
 					url: this.apiServer + "/uniIndex/init",
 					//url:'http://localhost:8080/uniIndex/init' ,
-					method: 'GET',
-					success: (res) => {
-					let goodsList =res.data;
-					console.log(goodsList);
-					this.goodsList =goodsList;
+				    method: 'GET',
+					success: (res) =>{
+					let goodslist =res.data;
+				    this.goodslist = goodslist;
+					goodslist.forEach(item=>{
+						if(!item.status){
+							this.mGoodsList.push(item);  //获取秒杀商品
+						}else if(item.status==2){
+							this.tGoodsList.push(item);  //获取团购商品
+						}else if(item.status==3){
+							this.hGoodsList.push(item);  //获取活动1商品
+						}else if(item.status==4){
+							this.dGoodsList.push(item);  //获取活动2商品
+						}else if(item.status==5){
+							this.sGoodsList.push(item);  //获取活动3商品
+						}else if(item.status==6){
+							this.gGoodsList.push(item); //猜你喜欢
+						}else {
+						}
+					})
 					}
-				})
+				});
 			},
 			//轮播图切换修改背景色
 			swiperChange(e) {
@@ -319,7 +340,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				})
 			},
 			navTo() {
-				//测试数据没有写id，用title代替
+				//跳转到商品列表，后续设置为带参数跳转
 				uni.navigateTo({
 					url: `/pages/product/list`
 				})
@@ -359,7 +380,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 	.mp-search-box{
 		position:absolute;
 		left: 0;
-		top: 10upx;
+		top: 20upx;
 		z-index: 9999;
 		width: 100%;
 		padding: 0 80upx;

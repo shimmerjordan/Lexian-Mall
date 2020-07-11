@@ -16,4 +16,5 @@ public interface OrderMapper {
     int addOrder_Item(Map<String,Object> m);
     void updateOrder(Map<String,Object> m);
     int updateOrder_Item(Map<String,Object> m);
+    List<Order> getUserOrder(String userID);
 }

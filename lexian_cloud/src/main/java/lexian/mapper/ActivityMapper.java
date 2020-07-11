@@ -20,7 +20,11 @@ public interface ActivityMapper {
 
     int updateActivityStatus1(Map<String,Object> map);
 
+<<<<<<< HEAD
+    List<Activity> getIndexActivity();
+=======
     int getMaxActivityId();
 
     int insertActivity(Map<String, Object> map);
+>>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 }
