@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: root
-    password: Xy990919
+    password: root123
     url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
@@ -12,7 +12,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
-  port: 8080
+  port: 8088
   servlet:
     #context-path: /ocp
     encoding:

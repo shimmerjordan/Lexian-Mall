@@ -1,6 +1,9 @@
 package lexian.entity;
 
 public class Cart {
+	
+	private Integer id;
+	
     private Integer customerId;
 
     private Integer commodityId;
@@ -8,6 +11,8 @@ public class Cart {
     private Integer commodityQuantity;
 
     private Integer isDelete;
+    
+    private Integer specs;
 
     public Integer getCustomerId() {
         return customerId;
@@ -49,5 +54,21 @@ public class Cart {
     }
 
     public Cart(){}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getSpecs() {
+		return specs;
+	}
+
+	public void setSpecs(Integer specs) {
+		this.specs = specs;
+	}
 
 }

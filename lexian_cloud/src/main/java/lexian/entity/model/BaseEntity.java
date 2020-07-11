@@ -22,6 +22,12 @@ public class BaseEntity {
 	 * 3 价格降序
 	 */
 	private String sortType;
+	
+	private String userName;
+	
+	private String userImage;
+	
+	private Integer addressStatus;
 
 	public int getPageSize() {
 		return pageSize;
@@ -55,4 +61,31 @@ public class BaseEntity {
 		this.sortType = sortType;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserImage() {
+		return userImage;
+	}
+
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
+
+	public Integer getAddressStatus() {
+		return addressStatus;
+	}
+
+	public void setAddressStatus(Integer addressStatus) {
+		this.addressStatus = addressStatus;
+	}
+
+	
+
+	
 }
