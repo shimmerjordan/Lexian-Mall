@@ -1,18 +1,26 @@
+/**
+ * 
+ */
 package lexian.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
 import lexian.entity.Specs;
+import org.springframework.stereotype.Repository;
 
+/**
+ * @author yang990322
+ *
+ */
+@Mapper
+@Repository
 public interface SpecsMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Specs record);
+	List<String> selectSpecsByCommodityId(String commodityId);
 
-    int insertSelective(Specs record);
+	List<Specs> selectSpecsInList(@Param("ids") List<String> ids);
 
-    Specs selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Specs record);
-
-    int updateByPrimaryKey(Specs record);
 }
-

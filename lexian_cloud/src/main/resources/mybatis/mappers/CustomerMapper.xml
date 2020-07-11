@@ -34,7 +34,6 @@
 	</select>
 
 
-<<<<<<< HEAD
   <select id="loginByName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         SELECT
         *
@@ -43,17 +42,7 @@
         WHERE
         login_name = #{loginName}
   </select>
-=======
-	<select id="loginByName" parameterType="java.util.HashMap"
-		resultType="java.util.HashMap">
-		SELECT
-		*
-		FROM
-		customer
-		WHERE
-		login_name = #{loginName}
-	</select>
->>>>>>> 7a0bbdda8ed8cc7f51691413a9f5774168cd7be6
+
 
 	<select id="loginByPhone" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
@@ -84,22 +73,13 @@
 	</select>
 
 
-<<<<<<< HEAD
-
     <update id="updateCustomerPwd" parameterType="java.util.HashMap" >
     update customer
     set
       pwd = #{password}
     where phone = #{mobile}
   </update>
-=======
-	<update id="updateCustomerPwd" parameterType="java.util.HashMap">
-		update customer
-		set
-		pwd = #{password}
-		where phone = #{mobile}
-	</update>
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
+
 
 	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
 		update customer

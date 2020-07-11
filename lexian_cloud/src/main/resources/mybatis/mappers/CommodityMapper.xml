@@ -87,19 +87,11 @@
 		</if>
 	</select>
 
-<<<<<<< HEAD
-    <update id="deleteGood">
-        UPDATE shop_commodity
-        SET shop_commodity.isDelete=1
-        WHERE shop_commodity.commodity_id=#{id}
-    </update>
-=======
 	<update id="deleteGood">
 		UPDATE shop_commodity
 		SET shop_commodity.isDelete=1
 		WHERE shop_commodity.commodity_id=#{id}
 	</update>
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT
@@ -118,10 +110,6 @@
 		WHERE
 		commodity.is_delete=0
 	</select>
-<<<<<<< HEAD
-
-=======
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 
 
 	<insert id="addGood" parameterType="java.util.HashMap">
@@ -130,12 +118,7 @@
 		VALUES
 		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
 	</insert>
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 	<select id="selectCommodityById" parameterType="java.lang.String"
 		resultType="lexian.entity.Commodity">
 		SELECT
@@ -180,8 +163,5 @@
 		is_delete=0 AND (category.level=0 OR category.level=3 OR
 		category.level=2 OR category.level=1)
 	</select>
-<<<<<<< HEAD
 
-=======
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 </mapper>

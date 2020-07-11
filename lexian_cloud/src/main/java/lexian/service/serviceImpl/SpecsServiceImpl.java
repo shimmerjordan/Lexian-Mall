@@ -17,7 +17,7 @@ import lexian.service.SpecsService;
  *
  */
 @Service
-public class 	SpecsServiceImpl implements SpecsService {
+public class SpecsServiceImpl implements SpecsService {
 
 	@Autowired
 	SpecsMapper specsMapper;
