@@ -1,7 +1,7 @@
 <template>
   <div class="components-container">
     <div :span="12">
-      <pan-thumb :image="user.avatar" />
+      <pan-thumb :image="user.user_image" />
       <!-- <pan-thumb >
         <image src="@/assets/test-images/test.jpg" width="100px">
       </pan-thumb> -->
@@ -25,13 +25,40 @@
       />
     </div>
     <div>
-      <el-form>
-        <el-form-item label="Name">
-          <el-input v-model.trim="user.name" />
+      <el-form :date="user">
+        <el-form-item label="姓名">
+          <el-input v-model="user.name" />
         </el-form-item>
-        <el-form-item label="Email">
-          <el-input v-model.trim="user.email" />
+        <el-form-item label="登录名称">
+          <el-input v-model="user.login_name" />
         </el-form-item>
+        <el-form-item label="登录密码">
+          <el-input v-model="user.pwd" type="password" />
+        </el-form-item>
+        <el-form-item label="性别">
+          <el-radio-group v-model="user.sex">
+            <el-radio
+              v-for="item in sexList"
+              :key="item.value"
+              :label="item.label"
+              :value="item.label"
+            >
+              {{ item.label }}
+            </el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="出生日期">
+          <el-date-picker
+            v-model="user.birthday"
+            type="date"
+            unlink-panels
+            :picker-options="pickerOptions"
+          />
+        </el-form-item>
+        <el-form-item label="联系电话">
+          <el-input v-model="user.phone" />
+        </el-form-item>
+
       </el-form>
     </div>
 
@@ -47,16 +74,32 @@
 import { mapGetters } from 'vuex'
 import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
+import { searchShopManager } from '@/api/shopManager'
 
 export default {
   name: 'Info',
   components: { ImageCropper, PanThumb },
   data() {
     return {
+      temp: { identity: '系统管理员', id: '4' },
+      sexList: [{ label: '男', value: 0 }, { label: '女', value: 1 }],
       imagecropperShow: false,
       imagecropperKey: 0,
       // image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191',
-      user: {}
+      user: {
+        name: '',
+        login_name: '',
+        pwd: '',
+        sex: '',
+        birthday: '',
+        phone: '',
+        user_image: ''
+      },
+      pickerOptions: {
+        disabledDate(time) {
+          return time.getTime() > Date.now() - 8.64e6
+        }
+      }
     }
   },
   computed: {
@@ -79,12 +122,15 @@ export default {
       this.imagecropperShow = false
     },
     getUser() {
-      this.user = {
-        name: this.name,
-        role: this.roles.join(' | '),
-        email: 'admin@test.com',
-        avatar: this.avatar
-      }
+      searchShopManager(this.temp).then(response => {
+        this.user = response.data
+      })
+      // this.user = {
+      //   name: this.name,
+      //   role: this.roles.join(' | '),
+      //   email: 'admin@test.com',
+      //   avatar: this.avatar
+      // }
     },
     goBack() {
       this.$router.push('dashboard')

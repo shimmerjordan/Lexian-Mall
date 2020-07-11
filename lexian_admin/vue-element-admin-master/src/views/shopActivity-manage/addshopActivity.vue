@@ -117,6 +117,7 @@ import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
 import { getMaxActivityId, insertActivity } from '@/api/activity'
 import { getAllShop } from '@/api/shop'
+import { insertActivityShop } from '@/api/activityShop'
 
 export default {
   name: 'AddShopActivity',
@@ -235,7 +236,7 @@ export default {
       // this.$router.go(-1)
       this.$refs['postForm'].validate((valid) => {
         if (valid) {
-          //  console.log(this.postForm)
+          console.log(this.postForm)
           insertActivity(this.postForm).then(response => {
             alert('添加成功')
             this.$notify({
@@ -251,6 +252,24 @@ export default {
         }
       })
       this.$router.push({ path: '/shopActivity/shopActivity-manage' })
+      this.submitActivityShop()
+    },
+    submitActivityShop() {
+      this.$refs['postForm'].validate((valid) => {
+        if (valid) {
+          insertActivityShop(this.postForm).then(response => {
+            this.$notify({
+              title: 'Success',
+              message: '关系表添加成功',
+              type: 'success',
+              duration: 2000
+            })
+            setTimeout(() => {
+              // this.listLoading = false
+            }, 1.5 * 1000)
+          })
+        }
+      })
     },
     cancel() {
       this.$router.push({ path: '/shopActivity/shopActivity-manage' })

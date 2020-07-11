@@ -33,7 +33,7 @@ export function deleteShop(data) {
 export function searchShop(data) {
   return myrequest({
     url: '/searchShop',
-    method: 'get',
+    method: 'post',
     data
   })
 }

@@ -58,13 +58,14 @@ public class ShopServiceImpl implements ShopService{
 
     @Override
     public List<Shop> searchShop(Map<String,Object> map) {
-        try {
-            map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
-            map.put("endTime",UTCToLocal((String)map.get("endTime")));
-            return shopMapper.searchShop(map);
-        }catch (ParseException e) {
-            return null;
-        }
+        return shopMapper.searchShop(map);
+//        try {
+//            map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
+//            map.put("endTime",UTCToLocal((String)map.get("endTime")));
+//            return shopMapper.searchShop(map);
+//        }catch (ParseException e) {
+//            return null;
+//        }
     }
 
     @Override
