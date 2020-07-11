@@ -87,11 +87,14 @@
 		</if>
 	</select>
 
+
     <update id="deleteGood">
         UPDATE shop_commodity
         SET shop_commodity.isDelete=1
         WHERE shop_commodity.commodity_id=#{id}
     </update>
+
+
 
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT
@@ -164,6 +167,7 @@
 		category.level=2 OR category.level=1)
 	</select>
 
+<<<<<<< HEAD
 	
 	<resultMap id="commodity_map2" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
@@ -202,4 +206,6 @@
 		commodity.name LIKE #{name}
 	</select>
 
+=======
+>>>>>>> 843980dcc9680090851c6c0a4f69e893bab7a96f
 </mapper>

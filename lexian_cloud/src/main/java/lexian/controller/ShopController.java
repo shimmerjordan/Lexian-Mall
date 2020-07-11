@@ -44,8 +44,9 @@ public class ShopController {
         return shopService.deleteShop(map);
     }
 
-    @GetMapping("/searchShop")
+    @PostMapping("/searchShop")
     public List<Shop> searchShop(@RequestBody Map<String,Object> map) {
+        System.out.print(map);
         return shopService.searchShop(map);
     }
 
