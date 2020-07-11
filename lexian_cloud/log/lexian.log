@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [DEBUG][20-07-07][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
 [DEBUG][20-07-07][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16487462] was not registered for synchronization because synchronization is not active
@@ -5058,3 +5059,5 @@
 [DEBUG][20-07-10][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
 [DEBUG][20-07-10][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35377e0] was not registered for synchronization because synchronization is not active
 [DEBUG][20-07-10][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35377e0]
+=======
+>>>>>>> 3108512ef9c89a178ad6d59321cad3758b7e744c

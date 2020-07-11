@@ -19,6 +19,12 @@ const tableRouter = {
       meta: { title: '订单列表' }
     },
     {
+      path: 'jiufenOrder',
+      component: () => import('@/views/order/jiufenOrder'),
+      name: 'jiufenOrder',
+      meta: { title: '纠纷订单' }
+    },
+    {
       path: 'line',
       component: () => import('@/views/order/line'),
       name: 'LineChart',

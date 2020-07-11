@@ -1,5 +1,6 @@
 package lexian.controller;
 
+import lexian.entity.Activity;
 import lexian.entity.Commodity;
 import lexian.service.UniIndexService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,9 @@ public class UniIndexController {
         return uniIndexService.getIndexCommodity();
     }
 
+
+    @GetMapping("/getActivity")
+    public List<Activity> IndexActivity() {
+        return uniIndexService.getIndexActivity();
+    }
 }

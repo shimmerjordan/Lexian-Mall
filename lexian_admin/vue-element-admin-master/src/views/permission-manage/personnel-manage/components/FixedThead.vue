@@ -10,7 +10,7 @@
       <el-table-column prop="name" label="角色名称" width="180" />
       <el-table-column v-for="role in formThead" :key="role" :label="role">
         <template slot-scope="scope">
-          <el-row>
+          <el-row v-if=" scope.row[role] !== '' ">
             <el-col :span="22">{{ scope.row[role] }}</el-col>
             <el-col :span="2"><el-button type="danger" icon="el-icon-delete" circle size="mini" /></el-col>
           </el-row>
@@ -21,34 +21,63 @@
 </template>
 
 <script>
-const defaultFormThead = ['管理者', '编辑者']
+const defaultFormThead = ['admin', 'editor']
+
+import { getAllManager } from '@/api/manager'
+
 export default {
   data() {
     return {
-      tableData: [
-        {
-          name: '人员姓名',
-          '管理者': '小红',
-          '编辑者': '小蓝',
-          '访问者': '小绿'
-        },
-        {
-          name: '',
-          '管理者': '小白',
-          '编辑者': '小青',
-          '访问者': '小紫'
-        }
-      ],
+      tableData: [],
       key: 1, // table key
-      formTheadOptions: ['管理者', '编辑者', '访问者'],
+      formTheadOptions: ['admin', 'editor', 'visitor'],
       checkboxVal: defaultFormThead, // checkboxVal
-      formThead: defaultFormThead // 默认表头 Default header
+      formThead: defaultFormThead, // 默认表头 Default header]
+      admins: [],
+      editors: [],
+      visitors: [],
+      length: []
     }
   },
   watch: {
     checkboxVal(valArr) {
       this.formThead = this.formTheadOptions.filter(i => valArr.indexOf(i) >= 0)
       this.key = this.key + 1// 为了保证table 每次都会重渲 In order to ensure the table will be re-rendered each time
+    }
+  },
+  mounted() {
+    getAllManager().then(response => {
+      this.length = []
+      this.admins = response.data[0]
+      this.length.push(this.admins.length)
+      this.editors = response.data[1]
+      this.length.push(this.editors.length)
+      this.visitors = response.data[2]
+      this.length.push(this.visitors.length)
+      this.setTable()
+    })
+  },
+  methods: {
+    setTable() {
+      var l = Math.max.apply(null, this.length)
+      for (let i = 0; i < l; i++) {
+        var ob = {}
+        ob.name = ''
+        ob.admin = ''
+        ob.editor = ''
+        ob.visitor = ''
+        this.tableData.push(ob)
+      }
+      this.tableData[0].name = '人员姓名'
+      for (let i = 0; i < this.admins.length; i++) {
+        this.tableData[i].admin = this.admins[i].name
+      }
+      for (let i = 0; i < this.editors.length; i++) {
+        this.tableData[i].editor = this.editors[i].name
+      }
+      for (let i = 0; i < this.visitors.length; i++) {
+        this.tableData[i].visitor = this.visitors[i].name
+      }
     }
   }
 }

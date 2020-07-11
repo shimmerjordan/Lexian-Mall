@@ -78,4 +78,48 @@
         order_item.order_id=#{ id }
     </update>
 
+
+    <select id="getUserOrder" parameterType="java.lang.String" resultMap="order_map">
+        SELECT
+	     orders.date,
+	     orders.description,
+	     orders.`comment`,
+	     orders.`status`,
+	     commodity.image,
+	     order_item.commodity_quantity,
+	     commodity.`name`,
+	     commodity.price
+        FROM
+	     customer_order
+	    INNER JOIN
+	     orders ON customer_order.order_id = orders.ID
+	    INNER JOIN
+	     order_item ON orders.ID = order_item.order_id
+	    INNER JOIN
+	     commodity ON order_item.commodity_id = commodity.ID
+        WHERE
+	     customer_order.is_delete = 0 AND
+	     orders.isDelete = 0 AND
+	     customer_order.customer_id = #{ userID }
+    </select>
+
+    <resultMap id="jiufenorder_map" type="JiuFenOrder">
+        <id property="id" column="ID"/>
+        <result property="customer_id" column="customer_id"/>
+        <result property="order_id" column="order_id"/>
+        <result property="shop_id" column="shop_id"/>
+        <result property="reason" column="reason"/>
+        <result property="result" column="result"/>
+        <result property="status" column="status"/>
+        <result property="handTime" column="handTime"/>
+        <result property="applyTime" column="applyTime"/>
+    </resultMap>
+    <select id="getJiuFenOrder" resultMap="jiufenorder_map">
+        SELECT
+        ID,customer_id,order_id,shop_id,reason,result,status,handTime,applyTime
+        FROM
+        jiufen
+        WHERE
+        is_delete = 0
+    </select>
 </mapper>

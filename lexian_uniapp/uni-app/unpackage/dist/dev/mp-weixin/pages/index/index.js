@@ -145,7 +145,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearch = function uniSearch() {__webpack_require__.e(/*! require.ensure | components/lee-search/lee-search */ "components/lee-search/lee-search").then((function () {return resolve(__webpack_require__(/*! ../../components/lee-search/lee-search.vue */ 257));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearch = function uniSearch() {__webpack_require__.e(/*! require.ensure | components/lee-search/lee-search */ "components/lee-search/lee-search").then((function () {return resolve(__webpack_require__(/*! ../../components/lee-search/lee-search.vue */ 251));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -405,6 +405,12 @@ __webpack_require__.r(__webpack_exports__);
       swiperLength: 0,
       carouselList: [],
       goodsList: [],
+      mGoodsList: [],
+      tGoodsList: [],
+      hGoodsList: [],
+      dGoodsList: [],
+      sGoodsList: [],
+      gGoodsList: [],
       date: new Date(+new Date(new Date().toJSON()) + 8 * 3600 * 1000).toISOString(),
       iconSrc: {
         logo: '../../static/lee-search/icon_search.png',
@@ -427,27 +433,42 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
 
     loadData: function loadData() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                //获取活动数据
                 uni.request({
-                  url: _this.apiServer + "/getAllActivity",
+                  url: _this.apiServer + "/uniIndex/getActivity",
                   //url:'http://localhost:8080/getAllActivity"' ,
                   method: 'GET',
                   success: function success(res) {
                     var carouselList = res.data;
-                    console.log(carouselList);
                     _this.carouselList = carouselList;
                     _this.titleNViewBackground = "rgb(205, 215, 218)";
                     _this.swiperLength = carouselList.length;
                   } });
 
-
+                //获取商品数据
                 uni.request({
                   url: _this.apiServer + "/uniIndex/init",
                   //url:'http://localhost:8080/uniIndex/init' ,
                   method: 'GET',
                   success: function success(res) {
-                    var goodsList = res.data;
-                    console.log(goodsList);
-                    _this.goodsList = goodsList;
+                    var goodslist = res.data;
+                    _this.goodslist = goodslist;
+                    goodslist.forEach(function (item) {
+                      if (!item.status) {
+                        _this.mGoodsList.push(item); //获取秒杀商品
+                      } else if (item.status == 2) {
+                        _this.tGoodsList.push(item); //获取团购商品
+                      } else if (item.status == 3) {
+                        _this.hGoodsList.push(item); //获取活动1商品
+                      } else if (item.status == 4) {
+                        _this.dGoodsList.push(item); //获取活动2商品
+                      } else if (item.status == 5) {
+                        _this.sGoodsList.push(item); //获取活动3商品
+                      } else if (item.status == 6) {
+                        _this.gGoodsList.push(item); //猜你喜欢
+                      } else {
+                      }
+                    });
                   } });case 2:case "end":return _context.stop();}}}, _callee);}))();
 
     },
@@ -466,7 +487,7 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     navTo: function navTo() {
-      //测试数据没有写id，用title代替
+      //跳转到商品列表，后续设置为带参数跳转
       uni.navigateTo({
         url: "/pages/product/list" });
 

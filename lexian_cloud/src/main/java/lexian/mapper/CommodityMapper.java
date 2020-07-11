@@ -30,4 +30,7 @@ public interface CommodityMapper {
 	Commodity selectCommodityById(String commodityId);
 
 	List<Category> getAllCategory();
+
+	List<Commodity> getAllShopCommodityByName(String name);
+
 }

@@ -22,5 +22,7 @@ public interface CommodityService {
 	Commodity getCommodity(String commodityId);
 
 	List<Category> getAllCategory();
+
+	List<Commodity> getAllShopCommodityByName(String name);
 	
 }

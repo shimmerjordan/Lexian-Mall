@@ -5,7 +5,7 @@
 			"path": "pages/index/index",
 			"style": {
 				// #ifdef MP 
-				"navigationBarTitleText": "Dloud商城",
+				"navigationBarTitleText": "商城首页",
 				//"navigationStyle": "custom",
 				// #endif 
 				"app-plus": {
@@ -228,11 +228,7 @@
         ,{
             "path" : "components/popup",
             "style" : {}
-        }
-        ,{
-            "path" : "pages/money/vip",
-            "style" : {}
-        }     
+        }  
         ,{
             "path" : "pages/user/favorites",
             "style" : {}

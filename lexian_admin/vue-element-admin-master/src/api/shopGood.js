@@ -1,10 +1,11 @@
 import myrequest from '@/utils/myrequest'
 
 // 获取商品列表
-export function getAllShopGoods() {
+export function getAllShopGoods(data) {
   return myrequest({
     url: '/api/shop/goodsInfo',
-    method: 'get'
+    method: 'post',
+    data
   })
 }
 

@@ -62,4 +62,5 @@ public class ActivityController {
         System.out.println(map);
         return activityService.insertActivity(map);
     }
+
 }

@@ -13,16 +13,16 @@
         <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        Search
+        搜索
       </el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
+      <!-- <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
         Add
-      </el-button>
+      </el-button> -->
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-        Export
+        导出
       </el-button>
       <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-        reviewer
+        商品描述
       </el-checkbox>
     </div>
 
@@ -203,6 +203,7 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
+        name: '',
         importance: undefined,
         title: undefined,
         type: undefined,
@@ -253,9 +254,9 @@ export default {
       //     this.listLoading = false
       //   }, 1.5 * 1000)
       // })
-      getAllShopGoods(this.listQuery.page).then(response => {
-        this.list = response.data
-        this.total = 100
+      getAllShopGoods(this.listQuery).then(response => {
+        this.list = response.data.list
+        this.total = response.data.total
         console.log(this.list)
         setTimeout(() => {
           this.listLoading = false

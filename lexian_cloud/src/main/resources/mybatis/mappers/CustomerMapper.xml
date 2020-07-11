@@ -72,7 +72,6 @@
 		), 0)
 	</select>
 
-
 	<update id="updateCustomerPwd" parameterType="java.util.HashMap">
 		update customer
 		set
