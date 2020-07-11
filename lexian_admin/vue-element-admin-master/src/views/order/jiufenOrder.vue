@@ -2,28 +2,16 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="商品名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <!-- <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
-        <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
-      </el-select> -->
-      <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
-      </el-select>
+      <el-input v-model="listQuery.name" placeholder="订单ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
       <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
         <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        搜索
+        Search
       </el-button>
-      <!-- <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
-        Add
-      </el-button> -->
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-        导出
+        Export
       </el-button>
-      <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-        商品描述
-      </el-checkbox>
     </div>
 
     <el-table
@@ -36,74 +24,51 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="ID" prop="ID" sortable="custom" align="center" width="80" :class-name="getSortClass('ID')">
+      <el-table-column label="ID" prop="ID" sortable="custom" align="center" width="70px" :class-name="getSortClass('ID')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="商品修改日期" width="165px" align="center">
+      <el-table-column label="申请时间" width="160px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.modify_time | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="商品图片" width="170px" align="center">
-        <template slot-scope="{row}">
-          <img :src="row.image" width="80px" height="80px" align="center">
-          <!-- <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag> -->
-        </template>
-
-      </el-table-column>
-      <el-table-column label="商品名称" width="180px" align="center">
-        <template slot-scope="{row}">
-          <span>{{ row.name }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column v-if="showReviewer" label="商品描述" width="180px" align="center">
-        <template slot-scope="{row}">
-          <span style="color:red;">{{ row.introduction }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="商品单价" align="center" width="100px">
-        <template slot-scope="{row}">
-          <span>{{ row.price }}</span>
+          <span>{{ row.applyTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="库存" align="center" width="100px">
+      <el-table-column label="申请原因" width="285px" align="center">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.storage }}</span>
+          <span>{{ row.reason }}</span>
         </template>
       </el-table-column>
-
-      <el-table-column label="规格" align="center" width="100px">
+      <el-table-column label="处理状态" class-name="status-col" width="100">
         <template slot-scope="{row}">
-          <span>{{ row.specification }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="当前状态" class-name="status-col" width="100">
-        <template slot-scope="{row}">
-          <!-- <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
-          </el-tag> -->
           <el-tag v-if="row.status==1" type="success">
-            已上架
+            已处理
           </el-tag>
           <el-tag v-if="row.status==0" type="danger">
-            已下架
+            待处理
           </el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="处理时间" width="160px" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.handTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="处理结果" width="285px" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.result }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
-          <el-button type="primary" size="mini" @click="handleUpdate(row)">
-            编辑
+          <el-button v-if="row.status==0" type="primary" size="mini" @click="handleUpdate(row)">
+            处理订单
           </el-button>
-          <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
-            删除
+          <el-button v-if="row.status==1" size="mini" type="danger" @click="handleDelete(row,$index)">
+            删除订单
           </el-button>
         </template>
       </el-table-column>
@@ -157,28 +122,20 @@
 </template>
 
 <script>
-// import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
 import { fetchPv, createArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
-import { getAllShopGoods, UpdateShopGood, DeleteShopGood } from '@/api/shopGood'
-import Pagination from '@/components/Pagination' // secondary package based on el-pagination
+import { UpdateShopGood, DeleteShopGood } from '@/api/shopGood'
+import { jiufenOrder } from '@/api/order'
+import Pagination from '@/components/Pagination'
 
-const calendarTypeOptions = [
-  { key: '已上架', display_name: '已上架' },
-  { key: '已下架', display_name: '已下架' },
-  { key: '无库存', display_name: '无库存' }
-  // { key: 'EU', display_name: 'Eurozone' }
-]
-
-// arr to obj, such as { CN : "China", US : "USA" }
-const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
-  acc[cur.key] = cur.display_name
-  return acc
-}, {})
+// const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
+//   acc[cur.key] = cur.display_name
+//   return acc
+// }, {})
 
 export default {
-  name: 'GoodList',
+  name: 'Jiufen',
   components: { Pagination },
   directives: { waves },
   filters: {
@@ -189,10 +146,10 @@ export default {
         deleted: 'danger'
       }
       return statusMap[status]
-    },
-    typeFilter(type) {
-      return calendarTypeKeyValue[type]
     }
+    // typeFilter(type) {
+    //   return calendarTypeKeyValue[type]
+    // }
   },
   data() {
     return {
@@ -203,14 +160,13 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        name: '',
         importance: undefined,
         title: undefined,
         type: undefined,
         sort: '+id'
       },
       importanceOptions: [1, 2, 3],
-      calendarTypeOptions,
+      // calendarTypeOptions,
       sortOptions: [{ label: 'ID 递增排序', key: '+id' }, { label: 'ID 递减排序', key: '-id' }],
       statusOptions: ['published', 'draft', 'deleted'],
       showReviewer: false,
@@ -254,9 +210,9 @@ export default {
       //     this.listLoading = false
       //   }, 1.5 * 1000)
       // })
-      getAllShopGoods(this.listQuery).then(response => {
-        this.list = response.data.list
-        this.total = response.data.total
+      jiufenOrder().then(response => {
+        this.list = response.data
+        this.total = 100
         console.log(this.list)
         setTimeout(() => {
           this.listLoading = false

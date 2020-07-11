@@ -1,5 +1,6 @@
 package lexian.service;
 
+import lexian.entity.JiuFenOrder;
 import lexian.entity.Order;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface OrderService {
     boolean addOrder(Map<String,Object> map);
     boolean updateOrder(Map<String,Object> map);
     List<Order> getUserOrder(String userID);
+    List<JiuFenOrder> getJiuFenOrder();
 }

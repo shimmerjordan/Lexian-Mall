@@ -76,6 +76,8 @@
   					</text>
   				</view>
   				<button type="primary" class="no-border confirm-btn" @click="createOrder">去结算</button>
+				<button type="primary" open-type="getUserInfo" @click="loadData">载入数据</button>
+
   			</view>
   		</view>
   	</view>
@@ -86,6 +88,8 @@
   		mapState
   	} from 'vuex';
   	import uniNumberBox from '@/components/uni-number-box.vue'
+	import common from '@/store/common.js'
+	
   	export default {
   		components: {
   			uniNumberBox
@@ -96,7 +100,8 @@
   				allChecked: false, //全选状态  true|false
   				empty: false, //空白页现实  true|false
   				cartList: [],
-				discounted: "0.00"
+				discounted: "0.00",
+				userInfo: {}
   			};
   		},
   		onLoad(){
@@ -115,15 +120,35 @@
   			...mapState(['hasLogin'])
   		},
   		methods: {
+			getUser(){
+				let that = this;
+				that.userInfo = common.getGlobalUserInfo();
+				console.log("本地UserInfo",this.userInfo)
+			},
   			//请求数据
   			async loadData(){
-  				let list = await this.$api.json('cartList'); 
-  				let cartList = list.map(item=>{
-  					item.checked = true;
-  					return item;
-  				});
-  				this.cartList = cartList;
-  				this.calcTotal();  //计算总价
+				this.getUser();
+  				// let list = await this.$api.json('cartList'); 
+				uni.request({
+					url: this.apiServer+'/cart/loadCart',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+					   "customerID": this.userInfo.ID,
+					},
+					success: (res) => {
+						const result = res.data
+						console.log("后台返回数据",result[0])
+						let list = result[0]; 
+						let cartList = list.map(item=>{
+							item.checked = true;
+							return item;
+						});
+						this.cartList = cartList;
+						this.calcTotal();  //计算总价
+				    }
+				});
+  				
   			},
   			//监听image加载完成
   			onImageLoad(key, index) {

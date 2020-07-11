@@ -1,5 +1,6 @@
 package lexian.service.serviceImpl;
 
+import lexian.entity.JiuFenOrder;
 import lexian.entity.Order;
 import lexian.mapper.OrderMapper;
 import lexian.service.OrderService;
@@ -66,4 +67,8 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.getUserOrder(userID);
     }
 
+    @Override
+    public List<JiuFenOrder> getJiuFenOrder() {
+        return orderMapper.getJiuFenOrder();
+    }
 }
