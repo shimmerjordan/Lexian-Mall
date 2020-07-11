@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
- @Repository
+@Repository
 public interface ShopMapper {
     List<Shop> getAllShop();
 

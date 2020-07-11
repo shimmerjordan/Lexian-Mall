@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-	
-	@Autowired
+
     private CustomerService customerService;
 
     @Autowired
