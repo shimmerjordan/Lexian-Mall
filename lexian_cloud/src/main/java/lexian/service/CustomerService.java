@@ -1,12 +1,10 @@
 package lexian.service;
 
-
 import lexian.entity.Customer;
 
 import java.util.List;
 import java.util.Map;
 
-import lexian.entity.Customer;
 
 public interface CustomerService {
     boolean addNewCustomer(Map<String,Object> map);

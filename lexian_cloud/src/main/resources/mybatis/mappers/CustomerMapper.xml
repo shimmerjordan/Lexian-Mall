@@ -39,7 +39,7 @@
         customer
         WHERE
         login_name = #{loginName}
-    </select>
+  </select>
 
     <select id="loginByPhone" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         SELECT

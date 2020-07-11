@@ -3,6 +3,10 @@ package lexian.entity;
 import java.util.Date;
 
 import lexian.entity.model.GoodDetailsModel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 public class Commodity extends GoodDetailsModel {
     private int ID;
@@ -30,6 +34,7 @@ public class Commodity extends GoodDetailsModel {
         this.status = status;
         this.is_delete = is_delete;
     }
+
 
     public int getID() {
         return ID;
