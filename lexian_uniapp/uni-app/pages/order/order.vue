@@ -147,7 +147,7 @@
 				uni.request({
 					url: this.apiServer + "/oreder/userorder",
 					//url:'http://localhost:8080/..."' ,
-					data:'userinfo.ID'
+					data:'userinfo.ID',
 					method: 'POST',
 					success: (res) => {
 					let orderList = res.data;

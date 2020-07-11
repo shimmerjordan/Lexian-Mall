@@ -154,14 +154,14 @@
 					uni.request({
 						url: this.apiServer + "/oreder/userorder",
 						//url:'http://localhost:8080/..."' ,
-						data:'userinfo.ID'
+						data:'userinfo.ID',
 						method: 'POST',
 						success: (res) => {
 						let itemHistory = res.data;
 						this.itemHistory = itemHistory;
 						}
 					});
-			}
+			},
 
 			/**
 			 * 统一跳转接口,拦截未登录路由
