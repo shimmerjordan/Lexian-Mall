@@ -47,7 +47,6 @@ public class CommodityServiceImpl implements CommodityService {
 		int flag = commodityMapper.deleteGood(map);
 		return flag > 0;
 	}
-
 	@Override
 	public List<Commodity> listCommodityByCommodityId(String commodityId) {
 		return null;

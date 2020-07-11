@@ -25,7 +25,6 @@
     "components/moveVerify",
     "pages/public/forgetPwd",
     "components/popup",
-    "pages/money/vip",
     "pages/user/favorites"
   ],
   "subPackages": [],
@@ -70,5 +69,5 @@
   "usingComponents": {
     "cu-custom": "/static/colorui/components/cu-custom"
   },
-  "sitemapLocation": "sitemap50.json"
+  "sitemapLocation": "sitemap38.json"
 }

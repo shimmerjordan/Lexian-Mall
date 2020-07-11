@@ -212,10 +212,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
 var _moveVerify = _interopRequireDefault(__webpack_require__(/*! @/components/moveVerify.vue */ 92));
 var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 
@@ -229,11 +225,11 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
     return {
       mobile: '',
       password: '',
-      loginPhone: '',
-      loginPassword: '',
       verifyCode: '',
       loginName: '',
-      logining: false };
+      logining: false,
+      phoneExistance: true,
+      nameExistance: true };
 
   },
   onLoad: function onLoad() {
@@ -253,26 +249,42 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
       /* 删除当前页面的数据 */
       this.resultData = {};
     },
+    inputChange: function inputChange(e) {
+      var key = e.currentTarget.dataset.key;
+      this[key] = e.detail.value;
+    },
     navBack: function navBack() {
       uni.navigateBack();
     },
     checkExistPhone: function checkExistPhone() {
-      console.log(this.mobile);
-      /* 这里判断数据库中是否存在该用户手机号 */
-      if (1) {
-        this.$api.msg('该手机号已注册，请登录或找回密码');
-      } else {}
+      if (this.$refs.verifyElement.phoneExistance == true) {
+        this.phoneExistance = true;
+      } else {
+        this.$api.msg("手机号有误或未注册");
+        this.phoneExistance = false;
+      }
     },
-    checkExistName: function checkExistName() {
+    checkExistName: function checkExistName() {var _this = this;
       console.log(this.loginName);
-      /* 这里判断数据库中是否存在该用户手机号 */
-      if (1) {
-        this.$api.msg('抱歉，该用户名已被占用');
-      } else {}
-    },
-    inputChange: function inputChange(e) {
-      var key = e.currentTarget.dataset.key;
-      this[key] = e.detail.value;
+      /* 这里判断数据库中是否存在该用户名 */
+      uni.request({
+        url: this.apiServer + '/customer/checkNameExistance',
+        method: 'POST',
+        dataType: "json",
+        data: {
+          "loginName": this.loginName },
+
+        success: function success(res) {
+          var result = res.data;
+          console.log(result);
+          if (result != 0) {
+            _this.nameExistance = true;
+          } else {
+            _this.$api.msg("用户名有误或未注册");
+            _this.nameExistance = false;
+          }
+        } });
+
     },
     toGuidance: function toGuidance() {
       uni.navigateTo({
@@ -290,45 +302,30 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function _interopRequireDefault(o
         complete: function complete() {} });
 
     },
+    updateCustomerPwd: function updateCustomerPwd() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                if (_this2.nameExistance == true && _this2.phoneExistance == true) {
+                  //if(verifyCode验证正确)
+                  uni.request({
+                    url: _this2.apiServer + '/customer/updateCustomerPwd',
+                    method: 'POST',
+                    dataType: "json",
+                    data: {
+                      "password": _this2.password,
+                      "mobile": _this2.mobile },
 
-    updateCustomer: function updateCustomer() {
+                    success: function success(res) {
+                      console.log(result);
+                      var result = res.data;
 
-      if (1) {
-        var that = this;
-        this.$api.msg('修改密码成功，请使用新密码登录');
-        setTimeout(function () {
-          that.toLogin();
-        }, 2000);
+                      _this2.$api.msg("找回成功，请登录");
+                      setTimeout(function () {
+                        uni.navigateTo({
+                          url: '/pages/public/loginByName' });
 
-      } else {}
-    },
-    toLogin: function toLogin() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var loginPhone, loginPassword, mobile, password, sendData, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                loginPhone = _this.loginPhone;
-                loginPassword = _this.loginPassword;
-                mobile = _this.mobile, password = _this.password;
-                /* 数据验证模块
-                                                                  if(!this.$api.match({
-                                                                  	mobile,
-                                                                  	password
-                                                                  })){
-                                                                  	this.logining = false;
-                                                                  	return;
-                                                                  }
-                                                                  */
-                sendData = {
-                  mobile: mobile,
-                  password: password };_context.next = 6;return (
+                      }, 3000);
+                    } });
 
-                  _this.$api.json('userInfo'));case 6:result = _context.sent;
-                if (result.status === 1) {
-                  _this.login(result.data);
-                  uni.navigateTo({
-                    url: '/pages/public/loginByName' });
-
-                } else {
-                  _this.$api.msg(result.msg);
-                  _this.logining = false;
-                }case 8:case "end":return _context.stop();}}}, _callee);}))();
+                }case 1:case "end":return _context.stop();}}}, _callee);}))();
 
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
@@ -507,7 +504,8 @@ var _default =
       count: 0,
       isMove: false,
       countdown: '',
-      timestatus: true };
+      timestatus: true,
+      phoneExistance: true };
 
   },
   mounted: function mounted() {var _this = this;
@@ -548,6 +546,7 @@ var _default =
         this.isOk = true;
         this.$emit("result", { flag: true, count: this.count });
 
+        this.checkPhoneExistance();
         this.countDown();
 
       } else {
@@ -585,6 +584,25 @@ var _default =
         _this3.oldx = 0;
         _this3.isOk = false;
       }, 60000);
+    },
+    checkPhoneExistance: function checkPhoneExistance() {var _this4 = this;
+      uni.request({
+        url: this.apiServer + '/customer/checkPhoneExistance',
+        method: 'POST',
+        dataType: "json",
+        data: {
+          "mobile": this.mobile },
+
+        success: function success(res) {
+          var result = res.data;
+          console.log(result);
+          if (result != 0) {
+            _this4.phoneExistance = true;
+          } else {
+            _this4.phoneExistance = false;
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

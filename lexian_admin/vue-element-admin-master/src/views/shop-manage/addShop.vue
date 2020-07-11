@@ -21,7 +21,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="店铺号" prop="shopId">
-              <el-input v-model="shopId" disabled size="small" />
+              <el-input v-model="postForm.shopId" disabled size="small" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -33,8 +33,8 @@
 
         <el-row>
           <el-col :span="12">
-            <el-form-item label="开店时间" prop="unitId">
-              <el-input v-model="date" disabled />
+            <el-form-item label="开店时间" prop="establishTime">
+              <el-input v-model="postForm.date" disabled />
             </el-form-item>
           </el-col>
         </el-row>
@@ -43,7 +43,7 @@
           <el-col :span="12">
             <el-form-item label="店铺规格" prop="unitId">
               <el-select v-model="postForm.unitId" clearable placeholder="请选择" size="small">
-                <el-option v-for="item in unitList" :key="item.value" :label="item.label" :value="item.value" />
+                <el-option v-for="item in unitList" :key="item.label" :label="item.label" :value="item.label" />
               </el-select>
             </el-form-item>
           </el-col>
@@ -51,10 +51,16 @@
 
         <el-row>
           <el-col :span="12">
-            <el-form-item label="店铺标签" prop="tags">
-              <el-checkbox-group v-model="postForm.tags" style="display: inline-block;margin-left: 15px;" :max="max" @change="handleCheckedTagsChange">
-                <el-checkbox v-for="tag in tags" :key="tag.id" size="small" :label="tag.id">{{ tag.name }}</el-checkbox>
-              </el-checkbox-group>
+            <el-form-item label="店铺标签" prop="tag">
+              <el-radio-group v-model="postForm.tag">
+                <el-radio
+                  v-for="item in tagList"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.label"
+                >{{ item.label }}
+                </el-radio>
+              </el-radio-group>
             </el-form-item>
           </el-col>
         </el-row>
@@ -67,7 +73,7 @@
             <dropzone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS" />
             <div style="margin: 20px 0;">
               <aside>门店详情</aside>
-              <el-input v-model="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
+              <el-input v-model="postForm.description" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
             </div>
           </div>
         </div>
@@ -79,7 +85,7 @@
 <script>
 import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
-import { getMaxShopId } from '@/api/shop'
+import { getMaxShopId, insertShop } from '@/api/shop'
 
 export default {
   name: 'AddShop',
@@ -88,24 +94,23 @@ export default {
   data() {
     return {
       max: 1, // checkbox可选最大值
-      textarea: '',
-      date: '',
-      shopId: null,
       postForm: {
-        name: '',
-        categoryId: undefined,
+        date: '',
+        description: '',
+        shopName: '',
+        shopId: '',
         unitId: undefined,
-        tags: []
+        tag: ''
       },
       loading: false,
       unitList: [{ label: '普通店', value: 3 }, { label: '进口店', value: 2 }, { label: '旗舰店', value: 1 }, { label: '自营店', value: 0 }],
-      tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }, { id: 4, name: '电子产品' }],
-      checkAllTag: true,
-      isIndeterminateTag: true
+      tagList: [{ value: 1, label: '服饰' }, { value: 2, label: '食品' }, { value: 3, label: '日常用品' }, { value: 4, label: '电子产品' }]
     }
   },
   computed: {},
-  created() {},
+  created() {
+    this.getMaxId()
+  },
   mounted() {
     const yy = new Date().getFullYear()
     const mm = new Date().getMonth() + 1
@@ -113,13 +118,13 @@ export default {
     const hh = new Date().getHours()
     const mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
     const ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
-    this.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
+    this.postForm.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
   },
   methods: {
     getMaxId() {
       getMaxShopId().then(response => {
-        this.shopId = response.data
-        console.log(this.shopId)
+        this.postForm.shopId = response.data + 1
+        console.log(this.postForm.shopId)
         setTimeout(() => {
         }, 1.5 * 1000)
       })
@@ -133,25 +138,28 @@ export default {
       this.$message({ message: 'Delete success', type: 'success' })
     },
     submitForm() {
-      this.$router.go(-1)
+      this.$refs['postForm'].validate((valid) => {
+        console.log(this.postForm)
+        if (valid) {
+          insertShop(this.postForm).then(response => {
+            alert('添加成功')
+            this.$notify({
+              title: 'Success',
+              message: '添加成功',
+              type: 'success',
+              duration: 2000
+            })
+            setTimeout(() => {
+              this.listLoading = false
+            }, 1.5 * 1000)
+          })
+        }
+      })
+      this.$router.push({ path: '/shop/shop-manager' })
     },
     cancel() {
-      this.$router.go(-1)
-    },
-    handleCheckAllTagChange(event) {
-      const tags = []
-      for (const tag of this.tags) {
-        tags.push(tag.id)
-      }
-      this.postForm.tags = event.target.checked ? tags : []
-      this.isIndeterminateTag = false
-    },
-    handleCheckedTagsChange(value) {
-      const checkedCount = value.length
-      this.checkAllTag = checkedCount === this.tags.length
-      this.isIndeterminateTag = checkedCount > 0 && checkedCount < this.tags.length
+      this.$router.push({ path: '/shop/shop-manager' })
     }
-
   }
 }
 

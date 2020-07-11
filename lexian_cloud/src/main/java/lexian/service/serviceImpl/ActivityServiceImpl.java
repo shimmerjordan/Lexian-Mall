@@ -46,6 +46,10 @@ public class ActivityServiceImpl implements ActivityService {
             return false;
         }
     }
+//    public boolean updateActivity(Map<String,Object> map) {
+//        int flag = activityMapper.updateActivity(map);
+//        return flag > 0;
+//    }
 
     @Override
     public boolean deleteActivity(Map<String,Object> map) {
@@ -64,4 +68,22 @@ public class ActivityServiceImpl implements ActivityService {
         int flag = activityMapper.updateActivityStatus1(map);
         return flag>0;
     }
+
+    @Override
+    public int getMaxActivityId() {
+        return activityMapper.getMaxActivityId();
+    }
+
+    @Override
+    public boolean insertActivity(Map<String,Object> map) {
+        try {
+            map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
+            map.put("endTime",UTCToLocal((String)map.get("endTime")));
+            int flag = activityMapper.insertActivity(map);
+            return flag > 0;
+        }catch (ParseException e){
+            return false;
+        }
+    }
+
 }

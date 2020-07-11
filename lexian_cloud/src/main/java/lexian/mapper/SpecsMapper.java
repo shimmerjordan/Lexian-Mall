@@ -15,3 +15,4 @@ public interface SpecsMapper {
 
     int updateByPrimaryKey(Specs record);
 }
+

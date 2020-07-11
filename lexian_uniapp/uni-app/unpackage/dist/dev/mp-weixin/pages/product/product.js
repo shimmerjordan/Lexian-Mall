@@ -97,6 +97,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var f0 = _vm._f("timeStamp")(_vm.onecomment.commentTime)
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        f0: f0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -130,7 +140,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o) {if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var it,normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var share = function share() {__webpack_require__.e(/*! require.ensure | components/share */ "components/share").then((function () {return resolve(__webpack_require__(/*! @/components/share */ 264));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o) {if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var it,normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var share = function share() {__webpack_require__.e(/*! require.ensure | components/share */ "components/share").then((function () {return resolve(__webpack_require__(/*! @/components/share */ 258));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
 
 
 
@@ -321,17 +336,7 @@ __webpack_require__.r(__webpack_exports__);
 
       favorite: true,
       shareList: [],
-      imgList: [
-      {
-        src: 'https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg' },
-
-      {
-        src: 'https://gd3.alicdn.com/imgextra/i3/TB1RPFPPFXXXXcNXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg' },
-
-      {
-        src: 'https://gd2.alicdn.com/imgextra/i2/38832490/O1CN01IYq7gu1UGShvbEFnd_!!38832490.jpg_400x400.jpg' }],
-
-
+      imgList: [],
       desc: "\n\t\t\t\t<div style=\"width:100%\">\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd3.alicdn.com/imgextra/i4/479184430/O1CN01nCpuLc1iaz4bcSN17_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd2.alicdn.com/imgextra/i2/479184430/O1CN01gwbN931iaz4TzqzmG_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd3.alicdn.com/imgextra/i3/479184430/O1CN018wVjQh1iaz4aupv1A_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd4.alicdn.com/imgextra/i4/479184430/O1CN01tWg4Us1iaz4auqelt_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd1.alicdn.com/imgextra/i1/479184430/O1CN01Tnm1rU1iaz4aVKcwP_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t</div>\n\t\t\t",
 
 
@@ -395,50 +400,68 @@ __webpack_require__.r(__webpack_exports__);
       {
         id: 9,
         pid: 2,
-        name: '草木绿' }] };
+        name: '草木绿' }],
 
 
+      commodity: {},
+      onecomment: {} };
 
   },
-  onLoad: function onLoad(options) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var id;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+  onLoad: function onLoad(options) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var id, uid, _this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
 
               //接收传值,id里面放的是标题，因为测试数据并没写id 
               id = options.id;
+              uid = options.uid ? options.uid : "";
+              _this = _this2;
               if (id) {
-                _this.$api.msg("\u70B9\u51FB\u4E86".concat(id));
+                uni.request({
+                  url: _this2.apiServer + "/api/category/getCommodity?commodityId=" + id + "&uid=" + uid,
+                  dataType: "JSON",
+                  success: function success(res) {
+                    _this.commodity = res.data;
+                    _this.imgList = [];
+                    _this.imgList.push({ "src": res.data.image });
+                    var commentList = res.data.commentList;
+                    if (commentList && commentList.length > 0) {
+                      _this.onecomment = res.data.commentList[0];
+                    }
+
+                  } });
+
+
               }
 
 
               //规格 默认选中第一条
-              _this.specList.forEach(function (item) {var _iterator = _createForOfIteratorHelper(
-                _this.specChildList),_step;try {for (_iterator.s(); !(_step = _iterator.n()).done;) {var cItem = _step.value;
+              _this2.specList.forEach(function (item) {var _iterator = _createForOfIteratorHelper(
+                _this2.specChildList),_step;try {for (_iterator.s(); !(_step = _iterator.n()).done;) {var cItem = _step.value;
                     if (cItem.pid === item.id) {
-                      _this.$set(cItem, 'selected', true);
-                      _this.specSelected.push(cItem);
+                      _this2.$set(cItem, 'selected', true);
+                      _this2.specSelected.push(cItem);
                       break; //forEach不能使用break
                     }
                   }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
-              });_context.next = 5;return (
-                _this.$api.json('shareList'));case 5:_this.shareList = _context.sent;case 6:case "end":return _context.stop();}}}, _callee);}))();
+              });_context.next = 7;return (
+                _this2.$api.json('shareList'));case 7:_this2.shareList = _context.sent;case 8:case "end":return _context.stop();}}}, _callee);}))();
   },
   methods: {
     //规格弹窗开关
-    toggleSpec: function toggleSpec() {var _this2 = this;
+    toggleSpec: function toggleSpec() {var _this3 = this;
       if (this.specClass === 'show') {
         this.specClass = 'hide';
         setTimeout(function () {
-          _this2.specClass = 'none';
+          _this3.specClass = 'none';
         }, 250);
       } else if (this.specClass === 'none') {
         this.specClass = 'show';
       }
     },
     //选择规格
-    selectSpec: function selectSpec(index, pid) {var _this3 = this;
+    selectSpec: function selectSpec(index, pid) {var _this4 = this;
       var list = this.specChildList;
       list.forEach(function (item) {
         if (item.pid === pid) {
-          _this3.$set(item, 'selected', false);
+          _this4.$set(item, 'selected', false);
         }
       });
 
@@ -452,7 +475,7 @@ __webpack_require__.r(__webpack_exports__);
       this.specSelected = [];
       list.forEach(function (item) {
         if (item.selected === true) {
-          _this3.specSelected.push(item);
+          _this4.specSelected.push(item);
         }
       });
 
@@ -470,7 +493,37 @@ __webpack_require__.r(__webpack_exports__);
         url: "/pages/order/createOrder" });
 
     },
-    stopPrevent: function stopPrevent() {} } };exports.default = _default;
+    stopPrevent: function stopPrevent() {} },
+
+  filters: {
+    dateStamp: function dateStamp(value) {
+      if (!value) return '';
+      var now = new Date(value);
+      console.log("time:" + JSON.stringify(now));
+      var year = now.getFullYear();
+      var month = now.getMonth() + 1;
+      if (month < 10) {
+        month = '0' + month;
+      }
+      var date = now.getDate();
+      if (date < 10) {
+        date = '0' + date;
+      }
+      return year + "-" + month + "-" + date;
+    },
+    timeStamp: function timeStamp(value) {//具体到时分秒
+      var date = new Date(value); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      var year = date.getFullYear();
+      var month = ("0" + (date.getMonth() + 1)).slice(-2);
+      var sdate = ("0" + date.getDate()).slice(-2);
+      var hour = ("0" + date.getHours()).slice(-2);
+      var minute = ("0" + date.getMinutes()).slice(-2);
+      var second = ("0" + date.getSeconds()).slice(-2);
+      // 拼接
+      var result = year + "-" + month + "-" + sdate + " " + hour + ":" + minute + ":" + second;
+      // 返回
+      return result;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

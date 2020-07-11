@@ -21,6 +21,8 @@ import lexian.service.BrowsingRecordService;
 import lexian.service.CategoryService;
 import lexian.service.CommentService;
 import lexian.service.CommodityService;
+import lexian.service.CouponService;
+import lexian.service.SpecsService;
 
 /**
  * @author yang990322
@@ -41,6 +43,13 @@ public class CategoryController {
 	
 	@Autowired
 	CommentService commentService;
+	
+
+	@Autowired
+	SpecsService specsService;
+	
+	@Autowired
+	CouponService couponService;
 
 	@RequestMapping("/list")
 	public List<Category> list() {
@@ -56,6 +65,8 @@ public class CategoryController {
 	public Commodity getCommodity(String commodityId, String uid) {
 		Commodity commodity = commodityService.getCommodity(commodityId);
 		commodity.setCommentList(commentService.listByCommodityId(commodityId));
+		commodity.setSpecsList(specsService.listSpecs(commodityId));
+		commodity.setCouponList(couponService.listConpon(uid));
 		if (StringUtils.isNotBlank(uid)) {
 			BrowsingRecord browsingRecord = new BrowsingRecord();
 			browsingRecord.setBrowsingTime(new Date());

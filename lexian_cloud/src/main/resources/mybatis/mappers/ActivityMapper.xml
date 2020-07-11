@@ -27,7 +27,7 @@
     update activity
     set
     activity.`name` = #{name},
-    activity.beginTime = #{beginTime},
+    activity.beginTime = #{beginTime} ,
     activity.endTime = #{endTime},
     activity.status = #{status},
     activity.description = #{description}
@@ -50,4 +50,26 @@
     set activity.status = 0
     where activity.id = #{id}
   </update>
+<<<<<<< HEAD
+  <select id="getIndexActivity" resultType="Activity">
+    select
+    activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
+    from activity
+    where activity.is_delete = 0
+    AND activity.id > 10
+  </select>
+=======
+
+  <select id="getMaxActivityId" resultType="java.lang.Integer">
+    select max(activity.id)
+    from activity
+  </select>
+
+  <insert id="insertActivity" parameterType="java.util.HashMap">
+  insert into
+  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete)
+  values
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
+  </insert>
+>>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
 </mapper>
