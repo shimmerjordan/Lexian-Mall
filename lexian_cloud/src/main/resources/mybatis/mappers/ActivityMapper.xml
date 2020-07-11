@@ -50,6 +50,7 @@
     set activity.status = 0
     where activity.id = #{id}
   </update>
+
   <select id="getIndexActivity" resultType="Activity">
     select
     activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
@@ -57,6 +58,7 @@
     where activity.is_delete = 0
     AND activity.id > 10
   </select>
+
 
   <select id="getMaxActivityId" resultType="java.lang.Integer">
     select max(activity.id)
@@ -69,4 +71,5 @@
   values
 (#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
   </insert>
+
 </mapper>

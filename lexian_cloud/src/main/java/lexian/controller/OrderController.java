@@ -1,5 +1,6 @@
 package lexian.controller;
 
+import lexian.entity.JiuFenOrder;
 import lexian.entity.Order;
 import lexian.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,9 @@ public class OrderController {
 
     @PostMapping("/userOrder")
     public List<Order> getUserOrder(String userID) { return orderService.getUserOrder(userID); }
+
+    @GetMapping("/jiufenOrder")
+    public List<JiuFenOrder> getJiuFenOrder(){
+        return orderService.getJiuFenOrder();
+    }
 }

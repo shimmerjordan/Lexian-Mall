@@ -4,7 +4,6 @@ spring:
     password: password
     url: "jdbc:mysql://server.natappfree.cc:34990/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
     # url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #整合mybatis
@@ -14,12 +13,13 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
-  port: 8088
-  #context-path: /ocp
-  encoding:
-    charset: UTF-8
-    force: true
-    enabled: true
+  port: 8080
+  servlet:
+    #context-path: /ocp
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
 
 #pagehelper分页插件
 pagehelper:

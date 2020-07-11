@@ -30,3 +30,12 @@ export function updateOrder(data) {
     data
   })
 }
+
+// 获取纠纷订单
+export function jiufenOrder() {
+  return myrequest({
+    url: '/order/jiufenOrder',
+    method: 'get'
+  })
+}
+

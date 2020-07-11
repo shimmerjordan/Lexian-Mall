@@ -87,11 +87,11 @@
 		</if>
 	</select>
 
-	<update id="deleteGood">
-		UPDATE shop_commodity
-		SET shop_commodity.isDelete=1
-		WHERE shop_commodity.commodity_id=#{id}
-	</update>
+    <update id="deleteGood">
+        UPDATE shop_commodity
+        SET shop_commodity.isDelete=1
+        WHERE shop_commodity.commodity_id=#{id}
+    </update>
 
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT

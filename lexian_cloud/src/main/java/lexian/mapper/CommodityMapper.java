@@ -30,5 +30,4 @@ public interface CommodityMapper {
 	Commodity selectCommodityById(String commodityId);
 
 	List<Category> getAllCategory();
-
 }
