@@ -85,8 +85,5 @@ public class ActivityServiceImpl implements ActivityService {
             return false;
         }
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 96ef772c7243e5dd89286e37727bfff73a334b54
 }

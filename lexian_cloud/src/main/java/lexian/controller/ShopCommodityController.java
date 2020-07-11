@@ -1,5 +1,7 @@
 package lexian.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lexian.entity.Category;
 import lexian.entity.Commodity;
 import lexian.service.CommodityService;
@@ -21,9 +23,17 @@ public class ShopCommodityController {
         this.commodityService = commodityService;
     }
 
-    @GetMapping("/api/shop/goodsInfo")
-    public List<Commodity> getAllShopCommodity() {
-        return commodityService.getAllShopCommodity();
+    @PostMapping("/api/shop/goodsInfo")
+    public PageInfo<Commodity> getAllShopCommodity(@RequestBody Map<String,Object> map) {
+        int pageNo = (int)map.get("page");
+        int limit = (int)map.get("limit");
+        System.out.println(pageNo);
+        System.out.println(limit);
+        PageHelper.startPage(pageNo,limit);
+        List<Commodity> resultList = commodityService.getAllShopCommodity();
+        PageInfo<Commodity> result = new PageInfo<>(resultList);
+        System.out.print(result);
+        return result;
     }
 
     @PostMapping("/api/shop/updateGood")

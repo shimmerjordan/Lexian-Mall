@@ -253,9 +253,9 @@ export default {
       //     this.listLoading = false
       //   }, 1.5 * 1000)
       // })
-      getAllShopGoods(this.listQuery.page).then(response => {
-        this.list = response.data
-        this.total = 100
+      getAllShopGoods(this.listQuery).then(response => {
+        this.list = response.data.list
+        this.total = response.data.total
         console.log(this.list)
         setTimeout(() => {
           this.listLoading = false
