@@ -25,12 +25,25 @@ public class ShopCommodityController {
 
     @PostMapping("/api/shop/goodsInfo")
     public PageInfo<Commodity> getAllShopCommodity(@RequestBody Map<String,Object> map) {
+        //这里是分页的内容 前端传的是listQuery 其中包含了page和 limit属性
+        //page选中的页数  limit是一页多少个元素
         int pageNo = (int)map.get("page");
         int limit = (int)map.get("limit");
-        System.out.println(pageNo);
-        System.out.println(limit);
         PageHelper.startPage(pageNo,limit);
-        List<Commodity> resultList = commodityService.getAllShopCommodity();
+        List<Commodity> resultList;
+        //这里是用于模糊查询 前端名字的输入框内容也包含在listQuery中的name属性
+        //判断是否输入了搜索的名字，名字不为空就调用名字去查询
+        //为空就直接查所有商品
+        String name=(String)map.get("name");
+        if(name!=null){
+            //这里包装成sql语句 例如 '%香香鸡%' 直接包装好 sql语句直接#{name}即可
+            name="%"+name+"%";
+            System.out.println(name);
+            resultList = commodityService.getAllShopCommodityByName(name);
+        }
+        else {
+            resultList = commodityService.getAllShopCommodity();
+        }
         PageInfo<Commodity> result = new PageInfo<>(resultList);
         System.out.print(result);
         return result;
