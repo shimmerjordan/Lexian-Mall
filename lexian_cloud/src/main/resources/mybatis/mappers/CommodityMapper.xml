@@ -111,6 +111,7 @@
 		commodity.is_delete=0
 	</select>
 
+
 	<insert id="addGood" parameterType="java.util.HashMap">
 		INSERT INTO
 		commodity(name,modify_time,price,storage,specification,status,image,introduction,is_delete)

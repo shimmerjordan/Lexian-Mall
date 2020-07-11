@@ -34,15 +34,15 @@
 	</select>
 
 
-	<select id="loginByName" parameterType="java.util.HashMap"
-		resultType="java.util.HashMap">
-		SELECT
-		*
-		FROM
-		customer
-		WHERE
-		login_name = #{loginName}
-	</select>
+  <select id="loginByName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        customer
+        WHERE
+        login_name = #{loginName}
+  </select>
+
 
 	<select id="loginByPhone" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
@@ -71,6 +71,7 @@
 		where login_name = #{loginName}
 		), 0)
 	</select>
+
 
     <update id="updateCustomerPwd" parameterType="java.util.HashMap" >
     update customer
