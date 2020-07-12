@@ -51,4 +51,9 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> loginByName(Map<String, Object> map) {
         return customerMapper.loginByName(map);
     }
+
+	@Override
+	public Customer getById(String id) {
+		return customerMapper.selectById(id);
+	}
 }

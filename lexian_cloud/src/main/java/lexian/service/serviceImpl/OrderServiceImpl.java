@@ -71,4 +71,21 @@ public class OrderServiceImpl implements OrderService {
     public List<JiuFenOrder> getJiuFenOrder() {
         return orderMapper.getJiuFenOrder();
     }
+
+    @Override
+    public List<JiuFenOrder> getJiuFenOrderByID(Integer id) {
+        return orderMapper.getJiuFenOrderByID(id);
+    }
+
+    @Override
+    public boolean DeleteJiuFenOrder(Map<String, Object> map) {
+        int flag=orderMapper.DeleteJiuFenOrder(map);
+        return flag>1;
+    }
+
+    @Override
+    public boolean UpdateJiuFenOrder(Map<String, Object> map) {
+        int flag=orderMapper.UpdateJiuFenOrder(map);
+        return flag>1;
+    }
 }
