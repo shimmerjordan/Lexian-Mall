@@ -1,17 +1,19 @@
 package lexian.entity;
 
 public class CartList {
-    private Integer id;
+    private int id;
     private String name;
     private Double price;
     private String image;
-    private Integer storage;
-    private Integer commodityId;
-    private Integer commodityQuantity;
-    private Integer customerId;
+    private int storage;
+    private int commodityId;
+    private int commodityQuantity;
+    private int customerId;
     private String specsName;
 
-    public CartList(Integer id, String name, Double price, String image, Integer storage, Integer commodityId, Integer commodityQuantity, Integer customerId, String specsName) {
+    public CartList(){}
+
+    public CartList(int id, String name, Double price, String image, int storage, int commodityId, int commodityQuantity, int customerId, String specsName) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -23,13 +25,11 @@ public class CartList {
         this.specsName = specsName;
     }
 
-    public CartList(){}
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,35 +57,35 @@ public class CartList {
         this.image = image;
     }
 
-    public Integer getStorage() {
+    public int getStorage() {
         return storage;
     }
 
-    public void setStorage(Integer storage) {
+    public void setStorage(int storage) {
         this.storage = storage;
     }
 
-    public Integer getCommodityId() {
+    public int getCommodityId() {
         return commodityId;
     }
 
-    public void setCommodityId(Integer commodityId) {
+    public void setCommodityId(int commodityId) {
         this.commodityId = commodityId;
     }
 
-    public Integer getCommodityQuantity() {
+    public int getCommodityQuantity() {
         return commodityQuantity;
     }
 
-    public void setCommodityQuantity(Integer commodityQuantity) {
+    public void setCommodityQuantity(int commodityQuantity) {
         this.commodityQuantity = commodityQuantity;
     }
 
-    public Integer getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

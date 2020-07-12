@@ -1,37 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="lexian.mapper.CartMapper" >
-  <resultMap id="BaseResultMap" type="lexian.entity.Cart" >
-    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
-    <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
-    <result column="commodity_quantity" property="commodityQuantity" jdbcType="INTEGER" />
-    <result column="isDelete" property="isDelete" jdbcType="INTEGER" />
-  </resultMap>
 
-  <resultMap type="CartList" id="cart_map">
+  <resultMap id="cart_map" type="CartList" >
     <id column="id" property="id"/>
-    <result column="name" property="name" />
-    <result column="price" property="price" />
-    <result column="image" property="image" />
-    <result column="storage" property="storage" />
-    <result column="commodityId" property="commodityId" />
-    <result column="commodityQuantity" property="commodityQuantity" />
-    <result column="customerId" property="customerId" />
-    <result column="specsName" property="specsName" />
+    <result property="name" column="commodity.`name`" />
+    <result property="price" column="commodity.price" />
+    <result property="image" column="commodity.image" />
+    <result property="storage" column="commodity.`storage`" />
+
+    <result property="commodityId" column="cart.commodity_id" />
+    <result property="commodityQuantity" column="cart.`commodity_quantity`" />
+    <result property="customerId" column="cart.`customer_id`" />
+    <result property="specsName" column="specs.`specs_name`" />
   </resultMap>
-
-
-  <select id="loadCart" parameterType="java.util.HashMap" resultMap="cart_map">
+  <select id="loadCart" parameterType="java.util.HashMap" resultType="java.util.HashMap">
     SELECT
       (@i :=@i + 1) AS id,
       commodity.`name`,
       commodity.price,
       commodity.image,
       commodity.`storage`,
-      cart.commodity_id,
-      cart.commodity_quantity,
-      cart.customer_id,
-      specs.specs_name
+      cart.`commodity_id`,
+      cart.`commodity_quantity`,
+      cart.`customer_id`,
+      specs.`specs_name`
     FROM
         commodity
     INNER JOIN cart ON cart.commodity_id = commodity.ID
@@ -42,5 +35,26 @@
       cart.customer_id = #{customerID}
       AND cart.isDelete = 0
   </select>
+
+  <update id="updateQuantity" parameterType="java.util.HashMap">
+    UPDATE
+      cart
+    SET
+      commodity_quantity = #{commodityQuantity}
+    WHERE
+      commodity_id = #{commodityID} AND
+      customer_id = #{customerID}
+  </update>
+
+  <update id="deleteCartItem" parameterType="java.util.HashMap">
+    UPDATE
+      cart
+    SET
+      isDelete = 1
+    WHERE
+      commodity_id = #{commodityID} AND
+      commodity_quantity = #{commodityQuantity} AND
+      customer_id = #{customerID}
+  </update>
 
 </mapper>

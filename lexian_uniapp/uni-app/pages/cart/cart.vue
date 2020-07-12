@@ -21,15 +21,15 @@
   					<view
   						class="cart-item" 
   						:class="{'b-b': index!==cartList.length-1}"
-  					>
+					>
   						<view class="image-wrapper">
   							<image :src="item.image" 
   								:class="[item.loaded]"
   								mode="aspectFill" 
   								lazy-load 
   								@load="onImageLoad('cartList', index)" 
-  								@error="onImageError('cartList', index)"
-  							></image>
+  								@error="onImageError('cartList', index)">
+							</image>
   							<view 
   								class="yticon icon-xuanzhong2 checkbox"
   								:class="{checked: item.checked}"
@@ -37,19 +37,19 @@
   							></view>
   						</view>
   						<view class="item-right">
-  							<text class="clamp title">{{item.title}}</text>
-  							<text class="attr">{{item.attr_val}}</text>
+  							<text class="clamp title">{{item.name}}</text>
+  							<text class="attr">{{item.specs_name}}</text>
   							<text class="price">¥{{item.price}}</text>
   							<uni-number-box 
   								class="step"
   								:min="1" 
-  								:max="item.stock"
-  								:value="item.number>item.stock?item.stock:item.number"
-  								:isMax="item.number>=item.stock?true:false"
-  								:isMin="item.number===1"
+  								:max="item.storage"
+  								:value="item.commodity_quantity>item.storage?item.storage:item.commodity_quantity"
+  								:isMax="item.commodity_quantity>=item.storage?true:false"
+  								:isMin="item.commodity_quantity===1"
   								:index="index"
-  								@eventChange="numberChange"
-  							></uni-number-box>
+  								@eventChange="numberChange">
+							</uni-number-box>
   						</view>
   						<text class="del-btn yticon icon-fork" @click="deleteCartItem(index)"></text>
   					</view>
@@ -123,12 +123,13 @@
 			getUser(){
 				let that = this;
 				that.userInfo = common.getGlobalUserInfo();
-				console.log("本地UserInfo",this.userInfo)
+				// console.log("本地UserInfo",this.userInfo)
 			},
   			//请求数据
   			async loadData(){
 				this.getUser();
   				// let list = await this.$api.json('cartList'); 
+				
 				uni.request({
 					url: this.apiServer+'/cart/loadCart',
 					method: 'POST',
@@ -138,13 +139,14 @@
 					},
 					success: (res) => {
 						const result = res.data
-						console.log("后台返回数据",result[0])
-						let list = result[0]; 
+						// console.log("后台返回数据",result)
+						let list = result; 
 						let cartList = list.map(item=>{
 							item.checked = true;
 							return item;
 						});
 						this.cartList = cartList;
+						console.log("this.cartList",this.cartList);
 						this.calcTotal();  //计算总价
 				    }
 				});
@@ -179,7 +181,24 @@
   			},
   			//数量
   			numberChange(data){
-  				this.cartList[data.index].number = data.number;
+  				this.cartList[data.index].commodity_quantity = data.number;
+				//修改数据库Cart表中commodity_quantity属性
+				uni.request({
+					url: this.apiServer+'/cart/updateQuantity',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+						"commodityQuantity": data.number,
+						"commodityID": this.cartList[data.index].commodity_id,
+						"customerID": this.userInfo.ID
+					},
+					success: (res) => {
+						const result = res.data
+						console.log("后台返回数据",result)
+						
+						this.calcTotal();  //计算总价
+				    }
+				});
   				this.calcTotal();
   			},
   			//删除
@@ -187,8 +206,27 @@
   				let list = this.cartList;
   				let row = list[index];
   				let id = row.id;
-  
+				console.log(index);
+				console.log(this.cartList[index]);
+				// console.log("this.cartList[index - 1].commodity_id : ",this.cartList[index].commodity_id)
   				this.cartList.splice(index, 1);
+				//删除数据库Cart表相应记录，采用的方法是设置isDelete字段为1
+				uni.request({
+					url: this.apiServer+'/cart/deleteCartItem',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+						"commodityID": this.cartList[index].commodity_id,
+						"commodityQuantity": this.cartList[index].commodity_quantity,
+						"customerID": this.userInfo.ID
+					},
+					success: (res) => {
+						const result = res.data
+						console.log("后台返回数据",result)
+						this.calcTotal();  //计算总价
+				    }
+				});
+				
   				this.calcTotal();
   				uni.hideLoading();
   			},
@@ -198,7 +236,20 @@
   					content: '清空购物车？',
   					success: (e)=>{
   						if(e.confirm){
-  							this.cartList = [];
+  							// this.cartList = [];
+							
+							
+							uni.request({
+								url: this.apiServer+'/cart/clearCart',
+								method: 'POST',
+								dataType: "json",
+								data: this.cartList,
+								success: (res) => {
+									const result = res.data
+									console.log("后台返回数据",result)
+									this.calcTotal();  //计算总价
+							    }
+							});
   						}
   					}
   				})
@@ -214,7 +265,7 @@
   				let checked = true;
   				list.forEach(item=>{
   					if(item.checked === true){
-  						total += item.price * item.number;
+  						total += item.price * item.commodity_quantity;
   					}else if(checked === true){
   						checked = false;
   					}
@@ -229,8 +280,8 @@
   				list.forEach(item=>{
   					if(item.checked){
   						goodsData.push({
-  							attr_val: item.attr_val,
-  							number: item.number
+  							specs_name: item.specs_name,
+  							commodity_quantity: item.commodity_quantity
   						})
   					}
   				})

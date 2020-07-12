@@ -12,8 +12,6 @@ import java.util.Map;
 
 @Service
 public class CartServiceImpl implements CartService {
-
-    @Autowired
     private CartMapper cartMapper;
 
     @Autowired
@@ -25,5 +23,15 @@ public class CartServiceImpl implements CartService {
     public List<CartList> loadCart(Map<String, Object> map) {
         System.out.println(map);
         return cartMapper.loadCart(map);
+    }
+
+    @Override
+    public int updateQuantity(Map<String, Object> map) {
+        return cartMapper.updateQuantity(map);
+    }
+
+    @Override
+    public boolean deleteCartItem(Map<String, Object> map) {
+        return cartMapper.deleteCartItem(map);
     }
 }
