@@ -29,11 +29,57 @@
 		a.postcode, a.name, a.phone,
 		a.is_delete,ca.status
 		FROM
-		customer_address ca
+		customer_address
+		ca
 		LEFT
 		JOIN address a ON ca.address_id = a.id where ca.customer_id =
 		#{customerId}
 
 	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="lexian.entity.Address">
+		insert into address(province,
+		city, area, location,
+		postcode, name, phone,
+		is_delete)
+		values(#{province},#{city},#{area},#{location},#{postcode},#{name},#{phone},0)
+
+	</insert>
+
+	<insert id="insertCustomerAddress" parameterType="java.util.Map">
+		insert into
+		customer_address(address_id,customer_id,status,is_delete)
+		values(#{addressId},#{customerId},#{status},0)
+	</insert>
+
+	<update id="updateStatus" parameterType="java.lang.String">
+		update customer_address
+		set status = 1 where customer_id = #{uid}
+	</update>
+
+	<update id="update" parameterType="lexian.entity.Address">
+		update address set province =
+		#{province},city = #{city},area =
+		#{area},location =
+		#{location},postcode = #{postcode},name = #{name}
+		,phone = #{phone}
+		where ID = #{id}
+	</update>
+	
+	<update id="updateStatusByAddressId" parameterType="java.lang.String">
+	update customer_address
+		set status = 0 where address_id = #{addressId} and customer_id = #{uid}
+	</update>
+
+
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List"></include>
+		from address where ID = #{id}
+
+	</select>
+
+
 
 </mapper>

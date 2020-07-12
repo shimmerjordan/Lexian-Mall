@@ -23,11 +23,17 @@ public class BaseEntity {
 	 */
 	private String sortType;
 	
+	private String uid;
+	
 	private String userName;
 	
 	private String userImage;
 	
 	private Integer addressStatus;
+	
+	private Double moneyAmount;
+	
+	private String walletPwd;
 
 	public int getPageSize() {
 		return pageSize;
@@ -83,6 +89,30 @@ public class BaseEntity {
 
 	public void setAddressStatus(Integer addressStatus) {
 		this.addressStatus = addressStatus;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
+	public Double getMoneyAmount() {
+		return moneyAmount;
+	}
+
+	public void setMoneyAmount(Double moneyAmount) {
+		this.moneyAmount = moneyAmount;
+	}
+
+	public String getWalletPwd() {
+		return walletPwd;
+	}
+
+	public void setWalletPwd(String walletPwd) {
+		this.walletPwd = walletPwd;
 	}
 
 	

@@ -1,11 +1,14 @@
 package lexian.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lexian.entity.model.BaseEntity;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class Customer {
+public class Customer extends BaseEntity {
     private Integer id;
     private String name;
     private String phone;

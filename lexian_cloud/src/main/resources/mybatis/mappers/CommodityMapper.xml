@@ -139,10 +139,13 @@
 		gc.image3,
 		gc.image4,
 		gc.image5,
-		gc.image6
+		gc.image6,
+		si.`name` as shopName,
+		si.img as shopImg
 		FROM
 		`commodity` g
-		LEFT JOIN graphic_commodity gc
+		LEFT JOIN
+		graphic_commodity gc
 		on g.id =
 		gc.commodity_id
 		LEFT JOIN ( SELECT sum(
@@ -160,6 +163,8 @@
 		`browsing_record` GROUP BY
 		commodity_id ) bi on g.id =
 		bi.commodity_id
+		LEFT JOIN (SELECT s.img,s.name,sc.commodity_id FROM shop s LEFT JOIN
+		shop_commodity sc on s.ID = sc.shop_id) si on g.ID = si.commodity_id
 		WHERE
 		g.id = #{commodityId}
 	</select>
@@ -220,5 +225,8 @@
 		shop_commodity.isDelete=0 AND
 		commodity.name LIKE #{name}
 	</select>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 032971446e8c1bb437acb79e00a7e44d791bd5b2
 </mapper>

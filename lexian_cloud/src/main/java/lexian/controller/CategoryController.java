@@ -3,6 +3,7 @@
  */
 package lexian.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +54,7 @@ public class CategoryController {
 
 	@Autowired
 	CouponService couponService;
-	
+
 	@Autowired
 	AddressService addressService;
 
@@ -84,20 +85,26 @@ public class CategoryController {
 		}
 		return commodity;
 	}
-	
-	
+
 	@RequestMapping("/payment")
 	public Map<String, Object> payment(@RequestBody GoodDetailsModel goodDetailsModel) {
 		Map<String, Object> result = new HashMap<>();
-		Commodity commodity = null;
+		List<Map<String, Object>> commoditys = new ArrayList<>();
 		if (StringUtils.isNotBlank(goodDetailsModel.getCommodityId())) {
-			commodity = commodityService.getCommodity(goodDetailsModel.getCommodityId());
+			Commodity commodity = commodityService.getCommodity(goodDetailsModel.getCommodityId());
+			Map<String, Object> map = new HashMap<>();
+			List<Commodity> list = new ArrayList<>();
+			list.add(commodity);
+			map.put("shopName", commodity.getShopName());
+			map.put("shopImg", commodity.getShopImg());
+			map.put("list", list);
+			commoditys.add(map);
 		} else {
 
 		}
-		commodity.setCouponList(couponService.listConpon(goodDetailsModel.getUid()));
-		commodity.setAddressList(addressService.listByCustomerId(goodDetailsModel.getUid()));
-		result.put("commodity", commodity);
+		result.put("couponList", couponService.listConpon(goodDetailsModel.getUid()));
+		result.put("addressList", addressService.listByCustomerId(goodDetailsModel.getUid()));
+		result.put("commoditys", commoditys);
 		return result;
 	}
 }
