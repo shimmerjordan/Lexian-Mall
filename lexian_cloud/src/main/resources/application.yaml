@@ -2,11 +2,7 @@ spring:
   datasource:
     username: root
     password: password
-<<<<<<< HEAD
     url: "jdbc:mysql://server.natappfree.cc:43592/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-=======
-    url: "jdbc:mysql://server.natappfree.cc:33515/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
->>>>>>> 843980dcc9680090851c6c0a4f69e893bab7a96f
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       # 连接只读数据库时配置为true， 保证安全

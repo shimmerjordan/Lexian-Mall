@@ -167,8 +167,6 @@
 		category.level=2 OR category.level=1)
 	</select>
 
-<<<<<<< HEAD
-	
 	<resultMap id="commodity_map2" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -206,6 +204,4 @@
 		commodity.name LIKE #{name}
 	</select>
 
-=======
->>>>>>> 843980dcc9680090851c6c0a4f69e893bab7a96f
 </mapper>
