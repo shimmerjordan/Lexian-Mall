@@ -19,4 +19,7 @@ public interface OrderMapper {
     int updateOrder_Item(Map<String,Object> m);
     List<Order> getUserOrder(String userID);
     List<JiuFenOrder> getJiuFenOrder();
+    List<JiuFenOrder> getJiuFenOrderByID(Integer id);
+    int DeleteJiuFenOrder(Map<String,Object> map);
+    int UpdateJiuFenOrder(Map<String,Object> map);
 }

@@ -122,4 +122,36 @@
         WHERE
         is_delete = 0
     </select>
+
+    <resultMap id="jiufenorder_map2" type="JiuFenOrder">
+        <id property="id" column="ID"/>
+        <result property="customer_id" column="customer_id"/>
+        <result property="order_id" column="order_id"/>
+        <result property="shop_id" column="shop_id"/>
+        <result property="reason" column="reason"/>
+        <result property="result" column="result"/>
+        <result property="status" column="status"/>
+        <result property="handTime" column="handTime"/>
+        <result property="applyTime" column="applyTime"/>
+    </resultMap>
+    <select id="getJiuFenOrderByID" resultMap="jiufenorder_map2" parameterType="java.lang.Integer">
+        SELECT
+        ID,customer_id,order_id,shop_id,reason,result,status,handTime,applyTime
+        FROM
+        jiufen
+        WHERE
+        is_delete = 0 AND ID = #{id}
+    </select>
+
+    <update id="UpdateJiuFenOrder" parameterType="java.util.HashMap">
+        UPDATE
+        jiufen
+        SET
+        handTime=#{handTime},
+        status=1,
+        result=#{result}
+        WHERE
+        ID = #{id}
+    </update>
+
 </mapper>
