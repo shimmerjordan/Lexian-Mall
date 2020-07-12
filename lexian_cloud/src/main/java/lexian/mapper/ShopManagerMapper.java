@@ -11,4 +11,8 @@ import java.util.Map;
 @Repository
 public interface ShopManagerMapper {
     List<ShopManager> searchShopManager(Map<String,Object> map);
+
+    int updateShopManager(Map<String,Object> map);
+
+    int deleteShopManager(Map<String,Object> map);
 }

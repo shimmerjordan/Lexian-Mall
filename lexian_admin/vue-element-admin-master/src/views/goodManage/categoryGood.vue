@@ -84,6 +84,9 @@
 
       <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
+          <el-button type="primary" size="mini" @click="handleUpdate(row)">
+            编辑
+          </el-button>
           <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
             删除
           </el-button>
@@ -160,7 +163,7 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
 }, {})
 
 export default {
-  name: 'CategoryGood',
+  name: 'GoodList',
   components: { Pagination },
   directives: { waves },
   filters: {
@@ -184,7 +187,8 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
+        name: '',
         importance: undefined,
         title: undefined,
         type: undefined,
@@ -235,9 +239,9 @@ export default {
       //     this.listLoading = false
       //   }, 1.5 * 1000)
       // })
-      getAllShopGoods(this.listQuery.page).then(response => {
-        this.list = response.data
-        this.total = 35
+      getAllShopGoods(this.listQuery).then(response => {
+        this.list = response.data.list
+        this.total = response.data.total
         console.log(this.list)
         setTimeout(() => {
           this.listLoading = false

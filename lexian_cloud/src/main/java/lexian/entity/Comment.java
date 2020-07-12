@@ -2,6 +2,9 @@ package lexian.entity;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+
+import lexian.entity.model.BaseEntity;
+
 import java.io.Serializable;
 
 /**
@@ -12,7 +15,7 @@ import java.io.Serializable;
  * @author zly
  * @since 2020-07-08
  */
-public class Comment implements Serializable {
+public class Comment extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

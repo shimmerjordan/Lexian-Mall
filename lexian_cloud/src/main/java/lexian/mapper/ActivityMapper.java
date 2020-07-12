@@ -26,4 +26,6 @@ public interface ActivityMapper {
 
     int insertActivity(Map<String, Object> map);
 
+    List<Activity> searchActivityByInformation(Map<String,Object>map);
+
 }

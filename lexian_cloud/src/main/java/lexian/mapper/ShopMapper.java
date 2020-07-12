@@ -21,7 +21,13 @@ public interface ShopMapper {
 
     int updateShopStstus0(Object select[]);
 
-    List<Shop> searchShop(Map<String,Object> map);
+    List<Shop> searchShopByInformation(Map<String,Object> map);
 
     int insertShop(Map<String,Object> map);
+
+    int updateShopStatus0(List<Object> list);
+
+    int updateShopStatus1(List<Object> list);
+
+    int updateShopStatus2(List<Object> list);
 }

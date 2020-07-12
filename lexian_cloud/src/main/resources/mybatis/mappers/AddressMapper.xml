@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lexian.mapper.AddressMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="lexian.entity.Address">
+		<id column="ID" property="id" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="area" property="area" />
+		<result column="location" property="location" />
+		<result column="postcode" property="postcode" />
+		<result column="name" property="name" />
+		<result column="phone" property="phone" />
+		<result column="is_delete" property="isDelete" />
+		<result column="status" property="addressStatus" />
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		ID, province, city, area, location, postcode, name, phone,
+		is_delete
+	</sql>
+
+	<select id="selectAddressByCustomerId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		SELECT
+		a.ID, a.province, a.city, a.area, a.location,
+		a.postcode, a.name, a.phone,
+		a.is_delete,ca.status
+		FROM
+		customer_address
+		ca
+		LEFT
+		JOIN address a ON ca.address_id = a.id where ca.customer_id =
+		#{customerId}
+
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="lexian.entity.Address">
+		insert into address(province,
+		city, area, location,
+		postcode, name, phone,
+		is_delete)
+		values(#{province},#{city},#{area},#{location},#{postcode},#{name},#{phone},0)
+
+	</insert>
+
+	<insert id="insertCustomerAddress" parameterType="java.util.Map">
+		insert into
+		customer_address(address_id,customer_id,status,is_delete)
+		values(#{addressId},#{customerId},#{status},0)
+	</insert>
+
+	<update id="updateStatus" parameterType="java.lang.String">
+		update customer_address
+		set status = 1 where customer_id = #{uid}
+	</update>
+
+	<update id="update" parameterType="lexian.entity.Address">
+		update address set province =
+		#{province},city = #{city},area =
+		#{area},location =
+		#{location},postcode = #{postcode},name = #{name}
+		,phone = #{phone}
+		where ID = #{id}
+	</update>
+	
+	<update id="updateStatusByAddressId" parameterType="java.lang.String">
+	update customer_address
+		set status = 0 where address_id = #{addressId} and customer_id = #{uid}
+	</update>
+
+
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List"></include>
+		from address where ID = #{id}
+
+	</select>
+
+
+
+</mapper>

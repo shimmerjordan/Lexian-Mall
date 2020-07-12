@@ -36,6 +36,34 @@
       AND cart.isDelete = 0
   </select>
 
+	<insert id="insert" parameterType="lexian.entity.Cart">
+		insert
+		into
+		cart(customer_id,commodity_id,commodity_quantity,specs,isDelete)
+		values(#{customerId},#{commodityId},#{specs},#{commodityQuantity},0)
+
+	</insert>
+
+	<select id="selectCart" resultMap="BaseResultMap" parameterType="lexian.entity.Cart">
+		select * from cart
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				and customer_id = #{customerId}
+			</if>
+			<if test="commodityId!=null and commodityId!=''">
+				and commodity_id = #{commodityId}
+			</if>
+
+		</where>
+	</select>
+
+	<update id="update" parameterType="lexian.entity.Cart">
+		update cart set customer_id = #{customerId},commodity_id =
+		#{commodityId},commodity_quantity = #{commodityQuantity}
+		where id = #{id}
+
+	</update>
+
   <update id="updateQuantity" parameterType="java.util.HashMap">
     UPDATE
       cart

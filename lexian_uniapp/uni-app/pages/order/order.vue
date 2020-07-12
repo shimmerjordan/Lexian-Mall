@@ -154,7 +154,11 @@
 					this.orderList = orderList;
 					}
 				});
+<<<<<<< HEAD
 			},
+=======
+				},
+>>>>>>> d6f8c82004afa9c88b278d9321f052d963c304ed
 			loadData(source){
 				//这里是将订单挂载到tab列表下
 				let index = this.tabCurrentIndex;
