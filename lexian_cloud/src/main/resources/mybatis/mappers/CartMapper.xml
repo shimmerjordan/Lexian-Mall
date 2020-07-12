@@ -24,6 +24,7 @@
       cart.`commodity_id`,
       cart.`commodity_quantity`,
       cart.`customer_id`,
+      cart.`id` as cartID,
       specs.`specs_name`
     FROM
         commodity
@@ -44,7 +45,7 @@
 
 	</insert>
 
-	<select id="selectCart" resultMap="BaseResultMap" parameterType="lexian.entity.Cart">
+	<select id="selectCart" resultType="Cart" parameterType="lexian.entity.Cart">
 		select * from cart
 		<where>
 			<if test="customerId!=null and customerId!=''">
@@ -53,7 +54,6 @@
 			<if test="commodityId!=null and commodityId!=''">
 				and commodity_id = #{commodityId}
 			</if>
-
 		</where>
 	</select>
 
@@ -84,5 +84,14 @@
       commodity_quantity = #{commodityQuantity} AND
       customer_id = #{customerID}
   </update>
+
+    <update id="clearCart" parameterType="java.util.List">
+        update cart
+        set cart.isDelete = 1
+        where cart.`id` in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 
 </mapper>

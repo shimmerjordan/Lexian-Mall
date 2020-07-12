@@ -44,18 +44,9 @@ public class CartController {
     }
 
     @PostMapping("/clearCart")
-    public int clearCart(@RequestBody List<HashMap> cartList){
-        for(int i = 0; i < cartList.size(); i++){
-
-            Collection<Integer> values = cartList.get(i).values();			//获取HashMap值
-            System.out.print("Map值：");
-            for(Integer value:values){					//遍历输出HashMap值
-                System.out.print(value+" ");
-            }
-
-        }
-        System.out.println(cartList);
-        return 1;
+    public int clearCart(@RequestBody List<Object> cartIdList){
+        System.out.println(cartIdList);
+        return cartService.clearCart(cartIdList);
     }
     
     
@@ -64,7 +55,7 @@ public class CartController {
      * @param cart
      */
     @RequestMapping("save")
-    public Boolean save(@RequestBody Cart cart){
+    public boolean save(@RequestBody Cart cart){
     	return cartService.save(cart);
     }
 

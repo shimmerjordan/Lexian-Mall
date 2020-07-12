@@ -130,22 +130,21 @@
 				   success: (res) => {
 						this.result = res.data
 						console.log(this.result)
-						
+						if(this.result.length == 0){
+							this.logining = false;
+							this.$api.msg("用户名或密码错误");
+						}else{
+							 if(this.result[0].pwd == this.password){
+								 this.login(this.result[0]);
+								 uni.reLaunch({
+								 	url: "/pages/user/user",
+								 	success: res => {}
+								 });
+							 }
+						}
 				    }
 				});
-				if(this.result.length == 0){
-					this.$api.msg("用户名或密码错误");
-					this.logining = false;
-				}else{
-					 if(this.result[0].pwd == this.password){
-						 this.login(this.result[0]);
-						 uni.reLaunch({
-						 	url: "/pages/user/user",
-						 	success: res => {}
-						 });
-					 }
-				}
-
+				
 			}
 		},
 	}

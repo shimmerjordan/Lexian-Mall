@@ -44,4 +44,9 @@ public class CartServiceImpl implements CartService {
 		}
 		return cartMapper.insert(cart) > 0;
 	}
+
+	@Override
+	public int clearCart(List<Object> cartIdList) {
+		return cartMapper.clearCart(cartIdList);
+	}
 }

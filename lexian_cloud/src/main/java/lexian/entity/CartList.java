@@ -2,6 +2,7 @@ package lexian.entity;
 
 public class CartList {
     private int id;
+    private int cartId;
     private String name;
     private Double price;
     private String image;
@@ -13,8 +14,9 @@ public class CartList {
 
     public CartList(){}
 
-    public CartList(int id, String name, Double price, String image, int storage, int commodityId, int commodityQuantity, int customerId, String specsName) {
+    public CartList(int id, int cartId, String name, Double price, String image, int storage, int commodityId, int commodityQuantity, int customerId, String specsName) {
         this.id = id;
+        this.cartId = cartId;
         this.name = name;
         this.price = price;
         this.image = image;
@@ -23,6 +25,14 @@ public class CartList {
         this.commodityQuantity = commodityQuantity;
         this.customerId = customerId;
         this.specsName = specsName;
+    }
+
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
     public int getId() {

@@ -13,4 +13,5 @@ public interface CartService {
     int updateQuantity(Map<String, Object> map);
     boolean deleteCartItem(Map<String, Object> map);
     boolean save(Cart cart);
+    int clearCart(List<Object> cartIdList);
 }

@@ -14,6 +14,7 @@ public class Cart {
     
     private Integer specs;
 
+
     public Integer getCustomerId() {
         return customerId;
     }

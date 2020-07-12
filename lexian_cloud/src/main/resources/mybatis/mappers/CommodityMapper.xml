@@ -225,8 +225,4 @@
 		shop_commodity.isDelete=0 AND
 		commodity.name LIKE #{name}
 	</select>
-<<<<<<< HEAD
-
-=======
->>>>>>> 032971446e8c1bb437acb79e00a7e44d791bd5b2
 </mapper>
