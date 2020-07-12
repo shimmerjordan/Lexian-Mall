@@ -6,3 +6,19 @@ export function getAllManager() {
     method: 'get'
   })
 }
+
+export function updateManager(data) {
+  return myrequest({
+    url: '/manager/update',
+    method: 'post',
+    data
+  })
+}
+
+export function addManager(data) {
+  return myrequest({
+    url: '/manager/add',
+    method: 'post',
+    data
+  })
+}
