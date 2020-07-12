@@ -1,5 +1,6 @@
 package lexian.controller;
 
+import lexian.entity.Cart;
 import lexian.entity.CartList;
 import lexian.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,16 @@ public class CartController {
     public List<CartList> loadCart(@RequestBody Map<String,Object> map){
         System.out.println(map);
         return cartService.loadCart(map);
+    }
+    
+    
+    /**
+     * 商品加入购物车
+     * @param cart
+     */
+    @RequestMapping("save")
+    public Boolean save(@RequestBody Cart cart){
+    	return cartService.save(cart);
     }
 
 }

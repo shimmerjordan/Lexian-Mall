@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -26,5 +27,17 @@ public class ManagerServiceImpl implements ManagerService {
         res.add(managerMapper.getRoleManagers(2));
         res.add(managerMapper.getRoleManagers(3));
         return res;
+    }
+
+    @Override
+    public boolean addManager(Map<String,Object> m) {
+        int res=managerMapper.addManager(m);
+        return res>0;
+    }
+
+    @Override
+    public boolean updateManager(Map<String, Object> m) {
+        int res=managerMapper.updateManager(m);
+        return  res>0;
     }
 }

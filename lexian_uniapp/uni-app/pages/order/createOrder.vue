@@ -7,9 +7,9 @@
 				<view class="cen">
 					<view class="top">
 						<text class="name">{{addressData.name}}</text>
-						<text class="mobile">{{addressData.mobile}}</text>
+						<text class="mobile">{{addressData.phone}}</text>
 					</view>
-					<text class="address">{{addressData.address}} {{addressData.area}}</text>
+					<text class="address">{{addressData.province}} {{addressData.city}} {{addressData.area}} {{addressData.location}}</text>
 				</view>
 				<text class="yticon icon-you"></text>
 			</view>
@@ -23,25 +23,14 @@
 				<text class="name">西城小店铺</text>
 			</view>
 			<!-- 商品列表 -->
-			<view class="g-item">
-				<image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=756705744,3505936868&fm=11&gp=0.jpg"></image>
+			<view class="g-item" v-for="(item,index) in commodityList" :key="index">
+				<image :src="item.image"></image>
 				<view class="right">
-					<text class="title clamp">古黛妃 短袖t恤女夏装2019新款</text>
-					<text class="spec">春装款 L</text>
+					<text class="title clamp">{{item.name}}</text>
+					<text class="spec">{{item.specsText ? item.specsText : "--"}}</text>
 					<view class="price-box">
-						<text class="price">￥17.8</text>
-						<text class="number">x 1</text>
-					</view>
-				</view>
-			</view>
-			<view class="g-item">
-				<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg"></image>
-				<view class="right">
-					<text class="title clamp">韩版于是洞洞拖鞋 夏季浴室防滑简约居家【新人专享，限选意见】</text>
-					<text class="spec">春装款 L</text>
-					<view class="price-box">
-						<text class="price">￥17.8</text>
-						<text class="number">x 1</text>
+						<text class="price">￥{{item.price}}</text>
+						<text class="number">x {{item.gootCount ? item.gootCount : 1}}</text>
 					</view>
 				</view>
 			</view>
@@ -71,11 +60,11 @@
 		<view class="yt-list">
 			<view class="yt-list-cell b-b">
 				<text class="cell-tit clamp">商品金额</text>
-				<text class="cell-tip">￥179.88</text>
+				<text class="cell-tip">￥{{totalMoney}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
 				<text class="cell-tit clamp">优惠金额</text>
-				<text class="cell-tip red">-￥35</text>
+				<text class="cell-tip red">-￥{{discountMoney}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
 				<text class="cell-tit clamp">运费</text>
@@ -92,7 +81,7 @@
 			<view class="price-content">
 				<text>实付款</text>
 				<text class="price-tip">￥</text>
-				<text class="price">475</text>
+				<text class="price">{{totalMoney - discountMoney}}</text>
 			</view>
 			<text class="submit" @click="submit">提交订单</text>
 		</view>
@@ -102,20 +91,20 @@
 			<view class="mask-content" @click.stop.prevent="stopPrevent">
 				<!-- 优惠券页面，仿mt -->
 				<view class="coupon-item" v-for="(item,index) in couponList" :key="index">
-					<view class="con">
+					<view class="con" @click="toggleCoupon(index,item.id)">
 						<view class="left">
-							<text class="title">{{item.title}}</text>
-							<text class="time">有效期至2019-06-30</text>
+							<text class="title">{{item.name}}</text>
+							<!-- <text class="time">有效期至2019-06-30</text> -->
 						</view>
 						<view class="right">
-							<text class="price">{{item.price}}</text>
-							<text>满30可用</text>
+							<text class="price">{{item.discountedPrice}}</text>
+							<text>{{item.cousume_min}}</text>
 						</view>
 						
 						<view class="circle l"></view>
 						<view class="circle r"></view>
 					</view>
-					<text class="tips">限新用户使用</text>
+					<text class="tips">{{item.type}}</text>
 				</view>
 			</view>
 		</view>
@@ -145,19 +134,59 @@
 					}
 				],
 				addressData: {
-					name: '许小星',
+/* 					name: '许小星',
 					mobile: '13853989563',
 					addressName: '金九大道',
 					address: '山东省济南市历城区',
 					area: '149号',
-					default: false,
-				}
+					default: false, */
+				},
+				uid:0,
+				commodityId:0,
+				commodityList:[],
+				totalMoney:0,
+				discountMoney:0
+				
 			}
 		},
-		onLoad(option){
-			//商品数据
-			//let data = JSON.parse(option.data);
-			//console.log(data);
+		onLoad(options){
+			this.uid = options.uid;
+			this.commodityId = options.commodityId;
+			let _this = this;
+			uni.request({
+			    url: this.apiServer + "/api/category/payment",
+				method: 'POST',
+				data:{
+				   "uid":this.uid,
+		           "commodityId":this.commodityId
+				},
+			    dataType: "JSON",
+			    success: function(res) {
+				   const result = res.data.commodity;
+				   let addressList = result.addressList;
+				   if(addressList.length > 0){
+					   addressList.forEach(item=>{
+						    if(item.addressStatus == 0){
+								_this.addressData = item; 
+								return;
+							} 
+						});	 
+				   }
+				   _this.couponList = result.couponList;
+				   let commoditys = res.data.commoditys;
+				   if(commoditys){
+					   _this.commodityList = commoditys;
+				   }else{
+					   _this.commodityList.push(result);
+				   }
+				   _this.commodityList.forEach(item=>{
+                       _this.totalMoney += item.price;
+				   });
+				   
+				},
+			});
+		
+		
 		},
 		methods: {
 			//显示优惠券面板

@@ -31,7 +31,7 @@
       </el-table-column>
     </el-table>
 
-    <el-dialog title="成员详情" :visible.sync="dialogFormVisible">
+    <el-dialog title="成员详情" :rules="rules" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :model="temp" label-position="left" label-width="80px" style="width: 400px; margin-left:50px;">
         <el-form-item label="姓名" prop="name">
           <el-input v-model="temp.name" />
@@ -39,16 +39,20 @@
         <el-form-item label="昵称" prop="nickname">
           <el-input v-model="temp.nickname" />
         </el-form-item>
-        <el-form-item label="生日" prop="birthday">
-          <el-date-picker v-model="temp.birthday" type="datetime" placeholder="Please pick a date" />
-        </el-form-item>
         <el-form-item label="电话" prop="phone">
           <el-input v-model="temp.phone" />
         </el-form-item>
         <el-form-item label="角色" prop="role">
           <el-select v-model="temp.role" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in formTheadOptions" :key="item" :label="item" :value="item" />
+            <el-option v-for="item in roleOptions" :key="item.key" :label="item.name" :value="item.key" />
           </el-select>
+        </el-form-item>
+        <el-form-item label="生日" prop="birthday">
+          <el-date-picker
+            v-model="temp.birthday"
+            type="date"
+            placeholder="选择日期"
+          />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -67,7 +71,13 @@
 <script>
 const defaultFormThead = ['admin', 'editor']
 
-import { getAllManager } from '@/api/manager'
+const roleOptions = [
+  { key: 1, name: 'admin' },
+  { key: 2, name: 'editor' },
+  { key: 3, name: 'visitor' }
+]
+
+import { getAllManager, updateManager, addManager } from '@/api/manager'
 
 export default {
   data() {
@@ -83,7 +93,14 @@ export default {
       length: [],
       dialogFormVisible: false,
       temp: {},
-      dialogStatus: ''
+      roleOptions,
+      dialogStatus: '',
+      rules: {
+        name: [{ required: true, message: '请输入真实姓名', trigger: 'change' }],
+        nickname: [{ required: true, message: '请输入昵称', trigger: 'change' }],
+        phone: [{ required: true, message: '请输入电话', trigger: 'change' }],
+        role: [{ required: true, message: '请输入对应角色', trigger: 'change' }]
+      }
     }
   },
   watch: {
@@ -93,20 +110,24 @@ export default {
     }
   },
   mounted() {
-    getAllManager().then(response => {
-      this.length = []
-      this.admins = response.data[0]
-      this.length.push(this.admins.length)
-      this.editors = response.data[1]
-      this.length.push(this.editors.length)
-      this.visitors = response.data[2]
-      this.length.push(this.visitors.length)
-      this.setTable()
-    })
+    this.initTable()
   },
   methods: {
+    initTable() {
+      getAllManager().then(response => {
+        this.length = []
+        this.admins = response.data[0]
+        this.length.push(this.admins.length)
+        this.editors = response.data[1]
+        this.length.push(this.editors.length)
+        this.visitors = response.data[2]
+        this.length.push(this.visitors.length)
+        this.setTable()
+      })
+    },
     setTable() {
       var l = Math.max.apply(null, this.length)
+      this.tableData = []
       for (let i = 0; i < l; i++) {
         var ob = {}
         ob.name = ''
@@ -140,14 +161,70 @@ export default {
         this.temp = this.visitors[row.index]
       }
       this.dialogStatus = 'update'
+      this.temp.birthday = new Date(this.temp.birthday)
+      console.log(this.temp)
     },
     handleCreate() {
       this.temp = {}
       this.dialogFormVisible = true
-      this.dialogStatus = 'update'
+      this.dialogStatus = 'create'
     },
     updateData() {
-      this.dialogFormVisible = false
+      var d = this.temp.birthday
+      var datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+      this.temp.birthday = datetime
+      console.log(this.temp)
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          updateManager(this.temp).then(response => {
+            if (response.data) {
+              this.$notify({
+                title: 'Success',
+                message: '成功修改订单',
+                type: 'success',
+                duration: 2000
+              })
+            } else {
+              this.$notify({
+                title: 'Fail',
+                message: '订单修改失败',
+                type: 'fail',
+                duration: 2000
+              })
+            }
+            this.dialogFormVisible = false
+          })
+        }
+        this.initTable()
+      })
+    },
+    createData() {
+      var d = this.temp.birthday
+      var datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+      this.temp.birthday = datetime
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          addManager(this.temp).then(response => {
+            if (response.data) {
+              this.$notify({
+                title: 'Success',
+                message: '成功修改订单',
+                type: 'success',
+                duration: 2000
+              })
+            } else {
+              this.$notify({
+                title: 'Fail',
+                message: '订单修改失败',
+                type: 'fail',
+                duration: 2000
+              })
+            }
+            this.dialogFormVisible = false
+          })
+        }
+        this.initTable()
+      })
     }
   }
 }

@@ -1,46 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lexian.mapper.CartMapper" >
-  <resultMap id="BaseResultMap" type="lexian.entity.Cart" >
-    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
-    <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
-    <result column="commodity_quantity" property="commodityQuantity" jdbcType="INTEGER" />
-    <result column="isDelete" property="isDelete" jdbcType="INTEGER" />
-  </resultMap>
+<mapper namespace="lexian.mapper.CartMapper">
+	<resultMap id="BaseResultMap" type="lexian.entity.Cart">
+	    <result column="id" property="id" jdbcType="INTEGER" />
+		<result column="customer_id" property="customerId" jdbcType="INTEGER" />
+		<result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+		<result column="commodity_quantity" property="commodityQuantity"
+			jdbcType="INTEGER" />
+		<result column="isDelete" property="isDelete" jdbcType="INTEGER" />
+	</resultMap>
 
-  <resultMap type="CartList" id="cart_map">
-    <id column="id" property="id"/>
-    <result column="name" property="name" />
-    <result column="price" property="price" />
-    <result column="image" property="image" />
-    <result column="storage" property="storage" />
-    <result column="commodityId" property="commodityId" />
-    <result column="commodityQuantity" property="commodityQuantity" />
-    <result column="customerId" property="customerId" />
-    <result column="specsName" property="specsName" />
-  </resultMap>
+	<resultMap type="CartList" id="cart_map">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="price" property="price" />
+		<result column="image" property="image" />
+		<result column="storage" property="storage" />
+		<result column="commodityId" property="commodityId" />
+		<result column="commodityQuantity" property="commodityQuantity" />
+		<result column="customerId" property="customerId" />
+		<result column="specsName" property="specsName" />
+	</resultMap>
 
 
-  <select id="loadCart" parameterType="java.util.HashMap" resultMap="cart_map">
-    SELECT
-      (@i :=@i + 1) AS id,
-      commodity.`name`,
-      commodity.price,
-      commodity.image,
-      commodity.`storage`,
-      cart.commodity_id,
-      cart.commodity_quantity,
-      cart.customer_id,
-      specs.specs_name
-    FROM
-        commodity
-    INNER JOIN cart ON cart.commodity_id = commodity.ID
-    INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID
-    INNER JOIN specs ON specs.id = specs_commodity.specs_id,
-    (SELECT @i := 0) AS it
-    WHERE
-      cart.customer_id = #{customerID}
-      AND cart.isDelete = 0
-  </select>
+	<select id="loadCart" parameterType="java.util.HashMap"
+		resultMap="cart_map">
+		SELECT
+		(@i :=@i + 1) AS id,
+		commodity.`name`,
+		commodity.price,
+		commodity.image,
+		commodity.`storage`,
+		cart.commodity_id,
+		cart.commodity_quantity,
+		cart.customer_id,
+		specs.specs_name
+		FROM
+		commodity
+		INNER JOIN cart ON cart.commodity_id = commodity.ID
+		INNER JOIN
+		specs_commodity ON specs_commodity.commodity_id = commodity.ID
+		INNER
+		JOIN specs ON specs.id = specs_commodity.specs_id,
+		(SELECT @i := 0) AS
+		it
+		WHERE
+		cart.customer_id = #{customerID}
+		AND cart.isDelete = 0
+	</select>
+
+
+	<insert id="insert" parameterType="lexian.entity.Cart">
+		insert
+		into
+		cart(customer_id,commodity_id,commodity_quantity,specs,isDelete)
+		values(#{customerId},#{commodityId},#{specs},#{commodityQuantity},0)
+
+	</insert>
+
+	<select id="selectCart" resultMap="BaseResultMap" parameterType="lexian.entity.Cart">
+		select * from cart
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				and customer_id = #{customerId}
+			</if>
+			<if test="commodityId!=null and commodityId!=''">
+				and commodity_id = #{commodityId}
+			</if>
+
+		</where>
+	</select>
+
+	<update id="update" parameterType="lexian.entity.Cart">
+		update cart set customer_id = #{customerId},commodity_id =
+		#{commodityId},commodity_quantity = #{commodityQuantity}
+		where id = #{id}
+
+	</update>
 
 </mapper>

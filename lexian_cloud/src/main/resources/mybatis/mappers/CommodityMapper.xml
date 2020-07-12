@@ -87,14 +87,11 @@
 		</if>
 	</select>
 
-
-    <update id="deleteGood">
-        UPDATE shop_commodity
-        SET shop_commodity.isDelete=1
-        WHERE shop_commodity.commodity_id=#{id}
-    </update>
-
-
+	<update id="deleteGood">
+		UPDATE shop_commodity
+		SET shop_commodity.isDelete=1
+		WHERE shop_commodity.commodity_id=#{id}
+	</update>
 
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT
@@ -125,28 +122,44 @@
 	<select id="selectCommodityById" parameterType="java.lang.String"
 		resultType="lexian.entity.Commodity">
 		SELECT
-		commodity.ID,
-		commodity.modify_time,
-		commodity.introduction,
-		commodity.NAME,
-		commodity.image,
-		commodity.price,
-		commodity.STORAGE,
-		commodity.specification,
-		commodity.STATUS,
-		commodity.is_delete,
-		commodity.sales,
-		commodity.browseCount
+		g.id,
+		g.modify_time,
+		g.introduction,
+		g.NAME,
+		g.image,
+		g.price,
+		g.STORAGE,
+		g.specification,
+		g.STATUS,
+		g.is_delete,
+		oi.sales,
+		bi.browseCount,
+		gc.image1,
+		gc.image2,
+		gc.image3,
+		gc.image4,
+		gc.image5,
+		gc.image6
 		FROM
 		`commodity` g
+		LEFT JOIN graphic_commodity gc
+		on g.id =
+		gc.commodity_id
 		LEFT JOIN ( SELECT sum(
-		commodity_quantity ) AS sales, commodity_id FROM
+		commodity_quantity )
+		AS sales,
+		commodity_id FROM
 		order_item GROUP BY
-		commodity_id ) oi ON g.id = oi.commodity_id
+		commodity_id ) oi ON
+		g.id =
+		oi.commodity_id
 		LEFT JOIN (SELECT
-		commodity_id,COUNT(*) as browseCount FROM
+		commodity_id,COUNT(*) as
+		browseCount
+		FROM
 		`browsing_record` GROUP BY
-		commodity_id ) bi on g.id = bi.commodity_id
+		commodity_id ) bi on g.id =
+		bi.commodity_id
 		WHERE
 		g.id = #{commodityId}
 	</select>
@@ -158,6 +171,7 @@
 		<result property="level" column="Category.`level`" />
 		<result property="is_delete" column="Category.`is_delete`" />
 	</resultMap>
+
 	<select id="getAllCategory" resultType="Category">
 		SELECT *
 		FROM
@@ -180,7 +194,8 @@
 		<result property="is_delete" column="Commodity.`is_delete`" />
 	</resultMap>
 
-	<select id="getAllShopCommodityByName" resultType="Commodity" parameterType="java.lang.String">
+	<select id="getAllShopCommodityByName" resultType="Commodity"
+		parameterType="java.lang.String">
 		SELECT
 		Commodity.ID,
 		Commodity.modify_time,
@@ -194,14 +209,19 @@
 		Commodity.`is_delete`
 		FROM
 		commodity
-		INNER JOIN shop_commodity ON commodity.ID =
+		INNER JOIN
+		shop_commodity ON commodity.ID =
 		shop_commodity.commodity_id
-		INNER JOIN shop ON shop.ID =
+		INNER JOIN
+		shop ON shop.ID =
 		shop_commodity.shop_id
 		WHERE
 		commodity.is_delete=0 AND
 		shop_commodity.isDelete=0 AND
 		commodity.name LIKE #{name}
 	</select>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2eb18bfed423a82c02cb587c0989f11c71e7bbb9
 </mapper>
