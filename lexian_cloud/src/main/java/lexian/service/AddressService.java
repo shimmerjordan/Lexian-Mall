@@ -14,4 +14,10 @@ import lexian.entity.Address;
 public interface AddressService {
 
 	List<Address> listByCustomerId(String customerId);
+
+	Boolean save(Address address);
+
+	Boolean update(Address address);
+
+	Address getById(String id);
 }

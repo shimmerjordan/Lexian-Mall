@@ -50,12 +50,14 @@ public class GoodDetailsModel extends BaseEntity {
 	private String commodityId;
 
 	private List<String> cartIds;
-
-	private String uid;
 	
 	private String specsText;
 	
 	private int gootCount;
+	
+	private String shopName;
+	
+	private String shopImg;
 
 	public int getSales() {
 		return sales;
@@ -161,14 +163,6 @@ public class GoodDetailsModel extends BaseEntity {
 		this.cartIds = Arrays.asList(cartIds.split(","));
 	}
 
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
 	public String getSpecsText() {
 		return specsText;
 	}
@@ -191,6 +185,22 @@ public class GoodDetailsModel extends BaseEntity {
 
 	public void setGootCount(int gootCount) {
 		this.gootCount = gootCount;
+	}
+
+	public String getShopName() {
+		return shopName;
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
+
+	public String getShopImg() {
+		return shopImg;
+	}
+
+	public void setShopImg(String shopImg) {
+		this.shopImg = shopImg;
 	}
 
 

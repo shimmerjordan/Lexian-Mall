@@ -248,6 +248,7 @@
 				specsCount:0,
 				couponCount:0,
 				couponText:"选择优惠券",
+				specsName:'',
 				uid:-1
 			};
 		},
@@ -353,6 +354,7 @@
 				});
 				
                 this.specsId = id;
+				this.specsName = list[index].specsName;
 				this.$set(list[index], 'selected', true);
 				//存储已选择
 				/**
@@ -383,7 +385,7 @@
 			buy(){
 				if(this.uid){
 				uni.navigateTo({
-					url: `/pages/order/createOrder?commodityId=${this.commodity.id}&uid=${this.uid}`
+					url: `/pages/order/createOrder?commodityId=${this.commodity.id}&uid=${this.uid}&specsName=${this.specsName}&goodCout=${this.goodCout}`
 				})
 				}else{
 					this.$api.msg('下单前请先登陆');

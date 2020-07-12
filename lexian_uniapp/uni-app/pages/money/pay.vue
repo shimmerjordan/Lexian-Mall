@@ -2,7 +2,7 @@
 	<view class="app">
 		<view class="price-box">
 			<text>支付金额</text>
-			<text class="price">38.88</text>
+			<text class="price">{{totalMoney}}</text>
 		</view>
 
 		<view class="pay-type-list">
@@ -32,7 +32,7 @@
 				<text class="icon yticon icon-erjiye-yucunkuan"></text>
 				<view class="con">
 					<text class="tit">预存款支付</text>
-					<text>可用余额 ¥198.5</text>
+					<text>可用余额 ¥{{moneyAmount}}</text>
 				</view>
 				<label class="radio">
 					<radio value="" color="#fa436a" :checked='payType == 3' />
@@ -51,6 +51,9 @@
 		data() {
 			return {
 				payType: 1,
+				uid:0,
+				moneyAmount:0,
+				totalMoney:0,
 				orderInfo: {}
 			};
 		},
@@ -58,7 +61,21 @@
 		
 		},
 		onLoad(options) {
-			
+			this.totalMoney = options.totalMoney;
+			this.uid = options.uid;
+			var _this = this;
+			uni.request({
+				url: this.apiServer+'/customer/getById',
+				dataType: "json",
+				data: {
+					"uid": _this.uid
+				},
+				success: (res) => {
+					const result = res.data;
+                     _this.moneyAmount = result.moneyAmount;
+					
+			    }
+			});
 		},
 
 		methods: {
@@ -68,6 +85,12 @@
 			},
 			//确认支付
 			confirm: async function() {
+				if(this.payType == 3){
+					if(this.totalMoney > this.moneyAmount){
+						this.$api.msg('余额不足');
+						return;
+					}
+				}
 				uni.redirectTo({
 					url: '/pages/money/paySuccess'
 				})
