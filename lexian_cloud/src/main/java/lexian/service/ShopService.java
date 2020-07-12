@@ -14,7 +14,13 @@ public interface ShopService {
 
     boolean deleteShop(Map<String,Object> map);
 
-    List<Shop> searchShop(Map<String,Object> map);
+    List<Shop> searchShopByInformation(Map<String,Object> map);
 
     boolean insertShop(Map<String, Object> map);
+
+    boolean updateShopStatus0(List<Object> list);
+
+    boolean updateShopStatus1(List<Object> list);
+
+    boolean updateShopStatus2(List<Object> list);
 }

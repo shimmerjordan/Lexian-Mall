@@ -57,20 +57,43 @@ public class ShopServiceImpl implements ShopService{
 //    }
 
     @Override
-    public List<Shop> searchShop(Map<String,Object> map) {
-        return shopMapper.searchShop(map);
-//        try {
-//            map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
-//            map.put("endTime",UTCToLocal((String)map.get("endTime")));
-//            return shopMapper.searchShop(map);
-//        }catch (ParseException e) {
-//            return null;
-//        }
+    public List<Shop> searchShopByInformation(Map<String,Object> map) {
+//        return shopMapper.searchShopByInformation(map);
+        try {
+            String beginTime = (String) map.get("beginTime");
+            String endTime = (String) map.get("endTime");
+            if(beginTime != null && endTime != null) {
+                map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
+                map.put("endTime",UTCToLocal((String)map.get("endTime")));
+            }
+            System.out.println(map);
+            return shopMapper.searchShopByInformation(map);
+        }catch (ParseException e) {
+            return null;
+        }
     }
 
     @Override
     public boolean insertShop(Map<String, Object> map) {
         int flag = shopMapper.insertShop(map);
         return flag > 0;
+    }
+
+    @Override
+    public boolean updateShopStatus0(List<Object> list) {
+        int flag = shopMapper.updateShopStatus0(list);
+        return flag >0;
+    }
+
+    @Override
+    public boolean updateShopStatus1(List<Object> list) {
+        int flag = shopMapper.updateShopStatus1(list);
+        return flag >0;
+    }
+
+    @Override
+    public boolean updateShopStatus2(List<Object> list) {
+        int flag = shopMapper.updateShopStatus2(list);
+        return flag >0;
     }
 }

@@ -3,10 +3,10 @@
     <!-- <transition name="component-fade" mode="out-in"> -->
     <div v-if="!selectShops.length" class="filter-container">
       <el-row>
-        <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px; margin-right:20px" class="filter-item" @keyup.enter.native="searchShop" />
-        <el-input v-model="listQuery.name" placeholder="店铺名称" style="width: 200px; margin-right:20px" class="filter-item" @keyup.enter.native="searchShop" />
+        <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px; margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.name" placeholder="店铺名称" style="width: 200px; margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
         <!-- <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" /> -->
-        <el-select v-model="listQuery.shopStatus" placeholder="店铺状态" clearable class="filter-item" style="width: 130px; margin-right:20px">
+        <el-select v-model="listQuery.status" placeholder="店铺状态" clearable class="filter-item" style="width: 130px; margin-right:20px">
           <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
         <el-date-picker
@@ -26,7 +26,7 @@
           <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key"/>
         </el-select> -->
       <el-row>
-        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="searchShopMessage">
+        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
           查找
         </el-button>
         <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
@@ -51,13 +51,13 @@
         <!-- <el-col :span="2">
             <i class="fa fa-truck fa-lg"></i> 确认开店
           </el-col> -->
-        <el-button :span="2" type="success">
+        <el-button :span="2" type="success" @click="updateStatus0">
           <i class="fa fa-trash fa-lg" /> 确认开店
         </el-button>
-        <el-button :span="2" type="info">
+        <el-button :span="2" type="info" @click="updateStatus1">
           <i class="fa fa-trash fa-lg" /> 店铺休息
         </el-button>
-        <el-button :span="2" type="danger">
+        <el-button :span="2" type="danger" @click="updateStatus2">
           <i class="fa fa-trash fa-lg" /> 关闭店铺
         </el-button>
         <!-- <el-col :span="2">
@@ -211,7 +211,7 @@ import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
-import { getAllShop, updateShop, deleteShop, searchShop } from '@/api/shop'
+import { getAllShop, updateShop, deleteShop, updateShopStatus0, updateShopStatus1, updateShopStatus2 } from '@/api/shop'
 
 const statusOptions = [
   { key: '0', display_name: '正在营业' },
@@ -253,9 +253,10 @@ export default {
         limit: 20,
         id: null,
         name: null,
-        shopStatus: null,
+        status: null,
         beginTime: null,
         endTime: null,
+        // img: null,
         sort: '+id'
       },
       status: [{ label: '正在营业', key: '0' }, { label: '暂停营业', key: '1' }, { label: '店铺关闭', key: '2' }],
@@ -289,6 +290,7 @@ export default {
       // },
       downloadLoading: false,
       selectShops: [],
+      selectShopid: [],
       pickerOptions: {
         onPick: ({ maxDate, minDate }) => {
           if (maxDate != null && minDate != null) {
@@ -333,10 +335,10 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      getAllShop().then(response => {
-        this.list = response.data
-        this.total = 50
-        // console.log(this.list)
+      getAllShop(this.listQuery).then(response => {
+        this.list = response.data.list
+        this.total = response.data.total
+        console.log(this.list)
         // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
@@ -433,16 +435,6 @@ export default {
       })
       this.list.splice(index, 1)
     },
-    searchShopMessage() {
-      console.log(this.listQuery)
-      this.listLoading = true
-      searchShop(this.listQuery).then(response => {
-        this.list = response.data
-        setTimeout(() => {
-          this.listLoading = false
-        }, 1.5 * 1000)
-      })
-    },
 
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {
@@ -480,11 +472,70 @@ export default {
     },
     handleSelection(selection, row) {
       this.selectShops = selection
-      // this.selectShops = row.id
+      // this.selectShopid.push(this.row.id)
       console.log(this.selectShops)
+      // this.selectShopid.push(this.row.id)
+      // console.log('----'+this.selectShopid)
+      // console.log( this.selectShops[0].id)
+      // this.setShopIds()
     },
     handleSelectionAll(selection) {
       this.selectShops = selection
+      // this.setShopIds()
+      // this.selectShops = selection.id
+      // console.log(this.selectShops)
+    },
+    // setShopIds() {
+    //   for(let i = 0; i<=this.selectShops.length;i++){
+    //     var object = this.selectShops[i];
+    //     this.selectShopid[i] = object.id
+    //   }
+    //   console.log('----'+this.selectShopid)
+    // },
+    updateStatus0() {
+      updateShopStatus0(this.selectShops).then(response => {
+        alert('开店-修改成功')
+        this.$notify({
+          title: 'Success',
+          message: 'Update Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
+      this.getList()
+    },
+    updateStatus1() {
+      updateShopStatus1(this.selectShops).then(response => {
+        alert('暂停营业-修改成功')
+        this.$notify({
+          title: 'Success',
+          message: 'Update Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
+      this.getList()
+    },
+    updateStatus2() {
+      updateShopStatus2(this.selectShops).then(response => {
+        alert('关闭店铺-修改成功')
+        this.$notify({
+          title: 'Success',
+          message: 'Update Successfully',
+          type: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
+      this.getList()
     }
   }
 }
