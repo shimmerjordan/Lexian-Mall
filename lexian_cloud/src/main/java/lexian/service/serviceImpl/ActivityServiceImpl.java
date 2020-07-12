@@ -86,4 +86,21 @@ public class ActivityServiceImpl implements ActivityService {
         }
     }
 
+    @Override
+    public List<Activity> searchActivityByInformation(Map<String,Object> map) {
+        try {
+            String beginTime = (String) map.get("beginTime");
+            String endTime = (String) map.get("endTime");
+            if(beginTime != null && endTime != null) {
+                map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
+                map.put("endTime",UTCToLocal((String)map.get("endTime")));
+            }
+            System.out.println(map);
+            return activityMapper.searchActivityByInformation(map);
+        }catch (ParseException e) {
+            return null;
+        }
+    }
+
+
 }

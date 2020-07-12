@@ -20,4 +20,6 @@ public interface ActivityService {
 
     boolean insertActivity(Map<String, Object> map);
 
+    List<Activity> searchActivityByInformation(Map<String,Object>map);
+
 }
