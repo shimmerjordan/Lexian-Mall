@@ -26,6 +26,26 @@
         FROM
         system_manager
         WHERE
-        role = #{ i }
+        role = #{ i } AND is_delete=0
     </select>
+
+    <insert id="addManager" parameterType="java.util.Map">
+        INSERT INTO
+        system_manager(system_manager.`name`,system_manager.phone,system_manager.nick_name,system_manager.role,system_manager.birthday)
+        VALUES
+        (#{name},#{phone},#{nickname},#{role},#{birthday})
+    </insert>
+
+    <update id="updateManager" parameterType="java.util.Map">
+        UPDATE
+        system_manager
+        SET
+        system_manager.`name`=#{name},
+        system_manager.phone=#{phone},
+        system_manager.nick_name=#{nickname},
+        system_manager.role=#{role},
+        system_manager.birthday=#{birthday}
+        WHERE
+        system_manager.ID=#{id}
+    </update>
 </mapper>
