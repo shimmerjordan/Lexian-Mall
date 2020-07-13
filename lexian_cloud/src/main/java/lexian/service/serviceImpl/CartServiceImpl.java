@@ -2,6 +2,7 @@ package lexian.service.serviceImpl;
 
 import lexian.entity.Cart;
 import lexian.entity.CartList;
+import lexian.entity.Commodity;
 import lexian.mapper.CartMapper;
 import lexian.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,11 @@ public class CartServiceImpl implements CartService {
 			return cartMapper.update(scart) > 0;
 		}
 		return cartMapper.insert(cart) > 0;
+	}
+
+	@Override
+	public List<Commodity> listByCartIds(List<String> cartIds) {
+		
+		return cartMapper.selectCommodityByCartIds(cartIds);
 	}
 }

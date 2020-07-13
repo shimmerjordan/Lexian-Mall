@@ -142,12 +142,13 @@
 					default: false, */
 				},
 				uid:0,
-				commodityId:0,
 				commodityList:[],
 				totalMoney:0,
 				discountMoney:0,
 				goodCout:1,
+				goodNames:"",
 				addressUrl:"/pages/address/address?uid=",
+				addressId:0,
 				specsName:"--"
 				
 			}
@@ -160,15 +161,23 @@
 			if(options.specsName){
 				this.specsName = options.specsName;
 			}
-			this.commodityId = options.commodityId;
+			let commodityId = options.commodityId;
+			let cartIds = options.cartIds;
+			let params = {
+				 "uid":this.uid
+			}
+			if(commodityId){
+				params.commodityId = commodityId;
+			}	
+			if(cartIds){
+				params.cartIds = options.cartIds;
+			}
+			
 			let _this = this;
 			uni.request({
 			    url: this.apiServer + "/api/category/payment",
 				method: 'POST',
-				data:{
-				   "uid":this.uid,
-		           "commodityId":this.commodityId
-				},
+				data:params,
 			    dataType: "JSON",
 			    success: function(res) {
 				   const result = res.data;
@@ -177,18 +186,22 @@
 					   addressList.forEach(item=>{
 						    if(item.addressStatus == 0){
 								_this.addressData = item; 
+								_this.addressId = item.id;
 								return;
 							} 
 						});	 
 				   }
 				   _this.couponList = result.couponList;
 				   _this.commodityList = result.commoditys;
+				   let goodNameArr = [];
 				    _this.commodityList.forEach(shop=>{
 						shop.list.forEach(item =>{
 							 let goodCout = item.goodCout ? item.goodCout :_this.goodCout;
 							_this.totalMoney += item.price * goodCout;
+							goodNameArr.push(item.name);
 						})  
 				   }); 
+				   _this.goodNames = goodNameArr.join(",");
 				   
 				},
 			});
@@ -214,9 +227,40 @@
 			submit(){
 				let totalMoney = this.totalMoney;
 				let uid = this.uid;
-				uni.redirectTo({
-					url: '/pages/money/pay?totalMoney='+totalMoney+"&uid="+uid
-				})
+				let addressId = this.addressId;
+				let goodNames = this.goodNames;
+				let params = [];
+				this.commodityList.forEach(shop=>{
+					let param = {};
+					param.shopId = shop.shopId;
+					let cids = [];
+					shop.list.forEach(item =>{
+						cids.push({
+						   "commodityId":item.id,
+						   "goodCount":item.goodCount ? item.goodCount : this.goodCout
+						});
+					});
+					param.cids = cids;
+					params.push(param);		 
+				 });
+				 let jsonStr = JSON.stringify(params);
+
+				 uni.request({
+				     url: this.apiServer + "/api/pay/placeOrder",
+					 method:"POST",
+					 data:{
+						 "jsonStr":jsonStr,
+						 "addressId":addressId,
+						 "uid":uid
+					 },
+				     dataType: "text",
+				     success: function(res) {
+					   let orderId = res.data; 
+					   uni.redirectTo({
+					   	url: '/pages/money/pay?totalMoney='+totalMoney+"&uid="+uid+"&orderId="+orderId+"&goodNames="+goodNames
+					   })
+					 }
+				   })
 			},
 			stopPrevent(){}
 		}

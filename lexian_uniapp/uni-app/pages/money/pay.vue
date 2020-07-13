@@ -54,7 +54,10 @@
 				uid:0,
 				moneyAmount:0,
 				totalMoney:0,
-				orderInfo: {}
+				orderInfo: {},
+				goodNames:"",
+				walletId:0,
+				orderId:0
 			};
 		},
 		computed: {
@@ -63,6 +66,8 @@
 		onLoad(options) {
 			this.totalMoney = options.totalMoney;
 			this.uid = options.uid;
+			this.goodNames = options.goodNames;
+			this.orderId = options.orderId;
 			var _this = this;
 			uni.request({
 				url: this.apiServer+'/customer/getById',
@@ -73,6 +78,7 @@
 				success: (res) => {
 					const result = res.data;
                      _this.moneyAmount = result.moneyAmount;
+					 _this.walletId = result.walletId;
 					
 			    }
 			});
@@ -90,10 +96,31 @@
 						this.$api.msg('余额不足');
 						return;
 					}
+					var params = {
+						"name":this.goodNames,
+						"consumePrice":this.totalMoney,
+						"customerId":this.uid,
+						"walletId":this.walletId,
+						"orderId":this.orderId
+					};
+					uni.request({
+					    url: this.apiServer + "/api/pay/payBill",
+							 method:"POST",
+							 data:params,
+							 dataType: "json",
+							 success: function(res) {
+							   const result = res.data;
+							   if(result){
+								  uni.redirectTo({
+								  	url: '/pages/money/paySuccess'
+								  }) 
+							   }else{
+								   	_this.$api.msg("支付失败");
+							   }
+							 },
+						});
 				}
-				uni.redirectTo({
-					url: '/pages/money/paySuccess'
-				})
+
 			},
 		}
 	}

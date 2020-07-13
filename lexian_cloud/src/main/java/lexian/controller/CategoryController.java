@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,12 @@ import lexian.entity.Commodity;
 import lexian.entity.model.GoodDetailsModel;
 import lexian.service.AddressService;
 import lexian.service.BrowsingRecordService;
+import lexian.service.CartService;
 import lexian.service.CategoryService;
 import lexian.service.CommentService;
 import lexian.service.CommodityService;
 import lexian.service.CouponService;
+import lexian.service.FavoritesService;
 import lexian.service.SpecsService;
 
 /**
@@ -58,6 +61,12 @@ public class CategoryController {
 	@Autowired
 	AddressService addressService;
 
+	@Autowired
+	FavoritesService favoritesService;
+
+	@Autowired
+	CartService cartService;
+
 	@RequestMapping("/list")
 	public List<Category> list() {
 		return categoryService.list();
@@ -74,6 +83,7 @@ public class CategoryController {
 		commodity.setCommentList(commentService.listByCommodityId(commodityId));
 		commodity.setSpecsList(specsService.listSpecs(commodityId));
 		commodity.setCouponList(couponService.listConpon(uid));
+		commodity.setAddtime(favoritesService.getAddTime(commodityId, uid));
 		if (StringUtils.isNotBlank(uid)) {
 			BrowsingRecord browsingRecord = new BrowsingRecord();
 			browsingRecord.setBrowsingTime(new Date());
@@ -95,11 +105,24 @@ public class CategoryController {
 			Map<String, Object> map = new HashMap<>();
 			List<Commodity> list = new ArrayList<>();
 			list.add(commodity);
+			map.put("shopId", commodity.getShopId());
 			map.put("shopName", commodity.getShopName());
 			map.put("shopImg", commodity.getShopImg());
 			map.put("list", list);
 			commoditys.add(map);
 		} else {
+			List<Commodity> commodityList = cartService.listByCartIds(goodDetailsModel.getCartIds());
+			Map<String, List<Commodity>> mapl = commodityList.stream()
+					.collect(Collectors.groupingBy(Commodity::getShopId));
+			for (String key : mapl.keySet()) {
+				Map<String, Object> map = new HashMap<>();
+				Commodity commodity = mapl.get(key).get(0);
+				map.put("shopId", commodity.getShopId());
+				map.put("shopName", commodity.getShopName());
+				map.put("shopImg", commodity.getShopImg());
+				map.put("list", mapl.get(key));
+				commoditys.add(map);
+			}
 
 		}
 		result.put("couponList", couponService.listConpon(goodDetailsModel.getUid()));

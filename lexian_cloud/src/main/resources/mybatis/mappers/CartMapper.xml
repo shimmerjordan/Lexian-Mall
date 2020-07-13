@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="lexian.mapper.CartMapper">
 	<resultMap id="BaseResultMap" type="lexian.entity.Cart">
-	    <result column="id" property="id" jdbcType="INTEGER" />
+		<result column="id" property="id" jdbcType="INTEGER" />
 		<result column="customer_id" property="customerId" jdbcType="INTEGER" />
 		<result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
 		<result column="commodity_quantity" property="commodityQuantity"
@@ -72,10 +72,54 @@
 	</select>
 
 	<update id="update" parameterType="lexian.entity.Cart">
-		update cart set customer_id = #{customerId},commodity_id =
-		#{commodityId},commodity_quantity = #{commodityQuantity}
+		update cart set customer_id =
+		#{customerId},commodity_id =
+		#{commodityId},commodity_quantity =
+		#{commodityQuantity}
 		where id = #{id}
 
 	</update>
+
+
+	<select id="selectCommodityByCartIds" resultType="lexian.entity.Commodity"
+		parameterType="java.util.List">
+		select g.*,s.specs_name as specsText,
+		c.commodity_quantity as goodCount
+		FROM
+		`cart` c
+		JOIN (
+		SELECT
+		g.*,
+		si.img
+		AS shopImg,
+		si.NAME AS
+		shopName,
+		si.iD AS shopId
+		FROM
+		commodity g
+		LEFT JOIN (
+		SELECT
+		s.img,
+		s.NAME,
+		s.ID,
+		sc.commodity_id
+		FROM
+		shop s
+		LEFT JOIN
+		shop_commodity sc ON s.ID =
+		sc.shop_id
+		) si ON g.ID
+		= si.commodity_id
+		) g
+		ON c.commodity_id = g.ID
+		LEFT JOIN specs s on c.specs = s.id
+		where c.id
+		in
+		<foreach item="id" collection="cartIds" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+
+	</select>
 
 </mapper>
