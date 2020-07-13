@@ -1,5 +1,7 @@
 package lexian.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lexian.entity.Activity;
 import lexian.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,37 @@ public class ActivityController {
         this.activityService = activityService;
     }
 
-    @GetMapping("/getAllActivity")
-    public List<Activity> getAllActivity() {
-        return activityService.getAllActivity();
+//    @GetMapping("/getAllActivity")
+//    public List<Activity> getAllActivity() {
+//
+//        return activityService.getAllActivity();
+//    }
+
+    @PostMapping("/getAllActivity")
+    public PageInfo<Activity> getAllActivity(@RequestBody Map<String,Object> map) {
+        int pageNo = (int)map.get("page");
+        int limit = (int)map.get("limit");
+        PageHelper.startPage(pageNo,limit);
+        List<Activity> resultList;
+        String name=(String)map.get("name");
+        String id = (String)map.get("id");
+        String beginTime = (String) map.get("beginTime");
+        String endTime = (String) map.get("endTime");
+        String status = (String)map.get("status");
+        if(name!=null || id != null || status != null
+                || (beginTime != null && endTime !=null)){
+            String changeName="%"+name+"%";
+            map.put("name",changeName);
+//            map.put("status",changeStatus);
+            System.out.println(map);
+            resultList = activityService.searchActivityByInformation(map);
+        }
+        else {
+            resultList = activityService.getAllActivity();
+        }
+        PageInfo<Activity> result = new PageInfo<>(resultList);
+        System.out.print(result);
+        return result;
     }
 
     @PostMapping("/updateActivity")
@@ -62,5 +92,4 @@ public class ActivityController {
         System.out.println(map);
         return activityService.insertActivity(map);
     }
-
 }

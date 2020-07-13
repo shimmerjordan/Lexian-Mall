@@ -30,6 +30,15 @@
         INNER JOIN commodity ON order_item.commodity_id = commodity.ID
         WHERE
         isDelete = 0
+        <if test="name != null and name != '' ">
+            AND commodity.`name` like CONCAT('%',CONCAT(#{name},'%'))
+        </if>
+        <if test="comment != null and comment != '' ">
+            AND orders.`comment`=#{comment}
+        </if>
+        <if test="status != null and status != '' ">
+            AND orders.`status`=#{status}
+        </if>
     </select>
 
     <select id="getDateRange" resultType="java.lang.Integer">

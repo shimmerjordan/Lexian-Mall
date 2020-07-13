@@ -23,4 +23,9 @@ public interface CartMapper {
 
 	List<Commodity> selectCommodityByCartIds(@Param("cartIds")List<String> cartIds);
 
+    int updateQuantity(Map<String, Object> map);
+
+    boolean deleteCartItem(Map<String, Object> map);
+
+    int clearCart(List<Object> cartIdList);
 }

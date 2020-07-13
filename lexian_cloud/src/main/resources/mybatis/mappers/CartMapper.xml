@@ -9,46 +9,44 @@
 			jdbcType="INTEGER" />
 		<result column="isDelete" property="isDelete" jdbcType="INTEGER" />
 	</resultMap>
-
-	<resultMap type="CartList" id="cart_map">
+	<resultMap id="cart_map" type="CartList">
 		<id column="id" property="id" />
-		<result column="name" property="name" />
-		<result column="price" property="price" />
-		<result column="image" property="image" />
-		<result column="storage" property="storage" />
-		<result column="commodityId" property="commodityId" />
-		<result column="commodityQuantity" property="commodityQuantity" />
-		<result column="customerId" property="customerId" />
-		<result column="specsName" property="specsName" />
+		<result property="name" column="commodity.`name`" />
+		<result property="price" column="commodity.price" />
+		<result property="image" column="commodity.image" />
+		<result property="storage" column="commodity.`storage`" />
+
+		<result property="commodityId" column="cart.commodity_id" />
+		<result property="commodityQuantity" column="cart.`commodity_quantity`" />
+		<result property="customerId" column="cart.`customer_id`" />
+		<result property="specsName" column="specs.`specs_name`" />
 	</resultMap>
-
-
 	<select id="loadCart" parameterType="java.util.HashMap"
-		resultMap="cart_map">
+		resultType="java.util.HashMap">
 		SELECT
 		(@i :=@i + 1) AS id,
 		commodity.`name`,
 		commodity.price,
 		commodity.image,
 		commodity.`storage`,
-		cart.commodity_id,
-		cart.commodity_quantity,
-		cart.customer_id,
-		specs.specs_name
+		cart.`commodity_id`,
+		cart.`commodity_quantity`,
+		cart.`customer_id`,
+		cart.`id` as cartID,
+		specs.`specs_name`
 		FROM
 		commodity
-		INNER JOIN cart ON cart.commodity_id = commodity.ID
-		INNER JOIN
-		specs_commodity ON specs_commodity.commodity_id = commodity.ID
-		INNER
-		JOIN specs ON specs.id = specs_commodity.specs_id,
-		(SELECT @i := 0) AS
-		it
+		INNER JOIN cart ON
+		cart.commodity_id = commodity.ID
+		INNER JOIN specs_commodity ON
+		specs_commodity.commodity_id = commodity.ID
+		INNER JOIN specs ON
+		specs.id = specs_commodity.specs_id,
+		(SELECT @i := 0) AS it
 		WHERE
 		cart.customer_id = #{customerID}
 		AND cart.isDelete = 0
 	</select>
-
 
 	<insert id="insert" parameterType="lexian.entity.Cart">
 		insert
@@ -58,7 +56,7 @@
 
 	</insert>
 
-	<select id="selectCart" resultMap="BaseResultMap" parameterType="lexian.entity.Cart">
+	<select id="selectCart" resultType="Cart" parameterType="lexian.entity.Cart">
 		select * from cart
 		<where>
 			<if test="customerId!=null and customerId!=''">
@@ -67,7 +65,6 @@
 			<if test="commodityId!=null and commodityId!=''">
 				and commodity_id = #{commodityId}
 			</if>
-
 		</where>
 	</select>
 
@@ -84,7 +81,8 @@
 	<select id="selectCommodityByCartIds" resultType="lexian.entity.Commodity"
 		parameterType="java.util.List">
 		select g.*,s.specs_name as specsText,
-		c.commodity_quantity as goodCount
+		c.commodity_quantity as
+		goodCount
 		FROM
 		`cart` c
 		JOIN (
@@ -106,12 +104,14 @@
 		FROM
 		shop s
 		LEFT JOIN
-		shop_commodity sc ON s.ID =
+		shop_commodity sc ON
+		s.ID =
 		sc.shop_id
 		) si ON g.ID
 		= si.commodity_id
 		) g
-		ON c.commodity_id = g.ID
+		ON c.commodity_id =
+		g.ID
 		LEFT JOIN specs s on c.specs = s.id
 		where c.id
 		in
@@ -121,5 +121,37 @@
 		</foreach>
 
 	</select>
+	<update id="updateQuantity" parameterType="java.util.HashMap">
+		UPDATE
+		cart
+		SET
+		commodity_quantity = #{commodityQuantity}
+		WHERE
+		commodity_id =
+		#{commodityID} AND
+		customer_id = #{customerID}
+	</update>
+
+	<update id="deleteCartItem" parameterType="java.util.HashMap">
+		UPDATE
+		cart
+		SET
+		isDelete = 1
+		WHERE
+		commodity_id = #{commodityID} AND
+		commodity_quantity
+		= #{commodityQuantity} AND
+		customer_id = #{customerID}
+	</update>
+
+	<update id="clearCart" parameterType="java.util.List">
+		update cart
+		set cart.isDelete = 1
+		where cart.`id` in
+		<foreach collection="list" item="item" index="index" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
 
 </mapper>

@@ -208,9 +208,11 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        importance: undefined,
-        title: undefined,
-        type: undefined,
+        beginTime: null,
+        endTime: null,
+        id: null,
+        name: null,
+        status: null,
         sort: '+id'
       },
       importanceOptions: [1, 2, 3],
@@ -285,8 +287,9 @@ export default {
     getList() {
       this.listLoading = true
       getAllActivity(this.listQuery).then(response => {
-        this.list = response.data
-        this.total = 100
+        this.list = response.data.list
+        this.total = response.data.total
+        console.log(this.list)
         // this.list = response.data.items
         // this.total = response.data.total
 
@@ -295,6 +298,7 @@ export default {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+      this.listLoading = false
     },
     handleFilter() {
       this.listQuery.page = 1

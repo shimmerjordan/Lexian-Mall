@@ -154,7 +154,7 @@
 					this.orderList = orderList;
 					}
 				});
-				},
+			},
 			loadData(source){
 				//这里是将订单挂载到tab列表下
 				let index = this.tabCurrentIndex;
@@ -214,7 +214,7 @@
 				}, 600)
 			},
 			//取消订单
-			cancelOrder(item){
+			cancelOrder(item){ 
 				uni.showLoading({
 					title: '请稍后'
 				})

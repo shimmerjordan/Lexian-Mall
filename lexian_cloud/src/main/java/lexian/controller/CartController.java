@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-
-    @Autowired
     private CartService cartService;
 
     @Autowired
@@ -26,8 +26,27 @@ public class CartController {
 
     @PostMapping("/loadCart")
     public List<CartList> loadCart(@RequestBody Map<String,Object> map){
+        List<CartList> result = cartService.loadCart(map);
+        return result;
+    }
+
+    @PostMapping("/updateQuantity")
+    public int updateQuantity(@RequestBody Map<String, Object> map){
+        int result = cartService.updateQuantity(map);
+        return result;
+    }
+
+    @PostMapping("/deleteCartItem")
+    public boolean deleteCartItem(@RequestBody Map<String, Object> map){
+        boolean result = cartService.deleteCartItem(map);
         System.out.println(map);
-        return cartService.loadCart(map);
+        return result;
+    }
+
+    @PostMapping("/clearCart")
+    public int clearCart(@RequestBody List<Object> cartIdList){
+        System.out.println(cartIdList);
+        return cartService.clearCart(cartIdList);
     }
     
     
@@ -36,7 +55,7 @@ public class CartController {
      * @param cart
      */
     @RequestMapping("save")
-    public Boolean save(@RequestBody Cart cart){
+    public boolean save(@RequestBody Cart cart){
     	return cartService.save(cart);
     }
 

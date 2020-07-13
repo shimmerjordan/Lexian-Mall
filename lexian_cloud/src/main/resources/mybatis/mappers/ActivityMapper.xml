@@ -72,4 +72,26 @@
 (#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
   </insert>
 
+  <select id="searchActivityByInformation" resultType="Activity" parameterType="java.lang.String">
+    select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
+    from activity
+    inner join activity_shop on activity.id = activity_shop.activity_id
+    inner join shop on shop.id = activity_shop.shop_id
+    <where>
+      activity.is_delete = 0 and activity_shop.is_delete = 0
+      <if test="id != null">
+        and activity.id = #{id}
+      </if>
+      <if test="name != '%null%'">
+        and activity.`name` like #{name}
+      </if>
+      <if test="beginTime != null and endTime != null">
+        and activity.beginTime <![CDATA[>=]]>#{beginTime} and activity.endTime <![CDATA[<=]]>#{endTime}
+      </if>
+      <if test="status != null ">
+        and activity.status = #{status}
+      </if>
+    </where>
+  </select>
+
 </mapper>

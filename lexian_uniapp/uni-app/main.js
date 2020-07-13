@@ -54,8 +54,6 @@ Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, json, prePage};
 Vue.component('cu-custom', cuCustom);
-//Vue.prototype.apiServer = 'http://localhost:8088'
-//Vue.prototype.apiServer = 'http://127.0.0.1:8088/ocp';
 Vue.prototype.apiServer = 'http://localhost:8088'
 
 App.mpType = 'app'

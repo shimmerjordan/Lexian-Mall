@@ -1,9 +1,10 @@
 import myrequest from '@/utils/myrequest'
 
-export function getAllActivity() {
+export function getAllActivity(data) {
   return myrequest({
     url: '/getAllActivity',
-    method: 'get'
+    method: 'post',
+    data
   })
 }
 
