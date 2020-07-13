@@ -1,9 +1,10 @@
 import myrequest from '@/utils/myrequest'
 
-export function getAllOrder() {
+export function getAllOrder(data) {
   return myrequest({
     url: '/order/getAllOrder',
-    method: 'get'
+    method: 'post',
+    data
   })
 }
 
