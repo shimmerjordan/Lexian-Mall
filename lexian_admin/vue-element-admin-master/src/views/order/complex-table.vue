@@ -1,14 +1,13 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="listQuery.title" placeholder="商品" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
+      <el-input v-model="listQuery.name" placeholder="商品" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-select v-model="listQuery.comment" placeholder="评价" clearable style="width: 90px" class="filter-item">
         <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
       </el-select>
-      <el-select v-model="listQuery.type" placeholder="状态" clearable class="filter-item" style="width: 130px">
+      <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
       </el-select>
-
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         Search
       </el-button>
@@ -174,9 +173,9 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        importance: undefined,
-        title: undefined,
-        type: undefined
+        comment: undefined,
+        name: undefined,
+        status: undefined
       },
       importanceOptions: [1, 2, 3],
       calendarTypeOptions,
@@ -214,9 +213,10 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      getAllOrder().then(response => {
-        this.list = response.data
-        console.log(response.data)
+      console.log(this.listQuery)
+      getAllOrder(this.listQuery).then(response => {
+        this.list = response.data.list
+        this.total = response.data.total
         this.total = this.list.length
         setTimeout(() => {
           this.listLoading = false
