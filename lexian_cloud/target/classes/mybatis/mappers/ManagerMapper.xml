@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.ManagerMapper">
     <resultMap id="ManagerMap" type="Manager">
+<<<<<<< HEAD
         <id property="ID" column="ID"/>
         <result property="role" column="role"/>
         <result property="name" column="name"/>
@@ -14,6 +15,18 @@
         <result property="phone" column="phone"/>
     </resultMap>
     <select id="getRoleManagers" parameterType="java.lang.Integer" resultMap="ManagerMap">
+=======
+        <id property="ID" column="system_manager.ID"/>
+        <result property="role" column="system_manager.role"/>
+        <result property="name" column="system_manager.`name`"/>
+        <result property="age" column="system_manager.age"/>
+        <result property="sex" column="system_manager.sex"/>
+        <result property="nickname" column="system_manager.nick_name"/>
+        <result property="birthday" column="system_manager.birthday"/>
+        <result property="phone" column="system_manager.phone"/>
+    </resultMap>
+    <select id="getAllManagers" parameterType="java.lang.Integer">
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
         SELECT
         system_manager.ID,
         system_manager.`name`,
@@ -26,6 +39,7 @@
         FROM
         system_manager
         WHERE
+<<<<<<< HEAD
         role = #{ i } AND is_delete=0
     </select>
 
@@ -48,4 +62,8 @@
         WHERE
         system_manager.ID=#{id}
     </update>
+=======
+        role = #{ i }
+    </select>
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 </mapper>

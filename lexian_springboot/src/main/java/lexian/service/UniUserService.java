@@ -1,9 +1,11 @@
 package lexian.service;
 
-import lexian.entity.BrowsingRecord;
+import lexian.entity.UniBrowsingRecord;
 
 import java.util.List;
 
 public interface UniUserService {
-    List<BrowsingRecord> getHistory(String userID);
+
+    List<UniBrowsingRecord> getHistory(String userID);
+
 }

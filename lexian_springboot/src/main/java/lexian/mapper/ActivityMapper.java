@@ -28,4 +28,5 @@ public interface ActivityMapper {
 
     List<Activity> searchActivityByInformation(Map<String,Object>map);
 
+
 }

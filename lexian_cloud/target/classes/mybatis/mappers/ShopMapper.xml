@@ -12,15 +12,22 @@
     <result column="tag" property="tag" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
   <select id="getAllShop" resultType="Shop">
     select
     shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description
     from
     shop
+<<<<<<< HEAD
     inner join shop_manager_shop on shop.id = shop_manager_shop.shop_id
     inner join shop_manager on shop_manager.id = shop_manager_shop.shop_manager_id
     where shop.isDelete = 0 and shop_manager_shop.is_delete = 0
+=======
+    where shop.isDelete = 0
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
   </select>
   <select id="getMaxShopId" resultType="java.lang.Integer">
     select max(shop.id)
@@ -41,6 +48,7 @@
     set shop.isDelete = 1
     where shop.id = #{id}
   </update>
+<<<<<<< HEAD
   <select id="searchShopByInformation" resultType="Shop" parameterType="java.lang.String">
     select
     shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description
@@ -60,6 +68,32 @@
       <if test="status != null">
         and shop.status = #{status}
       </if>
+=======
+  <update id="updateShopStstus0">
+    update shop
+    set shop.status = 0
+    where shop.id = #{id}
+  </update>
+
+  <select id="searchShop" resultType="Shop">
+    select
+    shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.img, shop.tag ,shop.description
+    from shop
+    <where>
+      <if test="id != null and id != ''">
+        shop.id like concat('%',#{id},'%')
+      </if>
+      <if test="name != null and name != '' ">
+       and shop.`name` like ('%',#{name},'%')
+      </if>
+      <if test="status != null status != ''">
+       and shop.status = #{status}
+      </if>
+      <if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+        and shop.establishTime between #{beginTime} and #{endTime}
+      </if>
+      and shop.isDelete = 0
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
     </where>
   </select>
   <insert id="insertShop" parameterType="java.util.HashMap">
@@ -68,6 +102,7 @@
     values
     (#{shopId}, #{shopName}, #{date},#{unitId}, 0,#{tag}, #{description}, 0)
   </insert>
+<<<<<<< HEAD
   <update id="updateShopStatus0" parameterType="java.util.List">
     update shop
     set shop.status = 0
@@ -92,4 +127,6 @@
       #{item.id}
     </foreach>
   </update>
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 </mapper>

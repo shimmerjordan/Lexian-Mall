@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="lexian.mapper.CustomerMapper">
+<<<<<<< HEAD
 	<resultMap id="BaseResultMap" type="lexian.entity.Customer">
+=======
+	<resultMap id="BaseResultMap" type="Customer">
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 		<id column="ID" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -19,10 +23,15 @@
 
 	<!-- 注册使用，添加手机、登录名和密码，其他自增或默认 -->
 	<insert id="addNewCustomer" parameterType="java.util.HashMap">
+<<<<<<< HEAD
 		insert into customer
 		(phone, pwd, login_name, nick_name)
 		values (#{mobile}, #{password},
 		#{loginName}, #{nickName})
+=======
+		insert into customer (phone, pwd, login_name, nick_name)
+		values (#{mobile}, #{password}, #{loginName}, #{nickName})
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 	</insert>
 
 	<select id="getPwdByName" parameterType="java.util.HashMap"
@@ -61,8 +70,12 @@
 		select IFNULL(
 		(select id
 		from customer
+<<<<<<< HEAD
 		where phone =
 		#{mobile}
+=======
+		where phone = #{mobile}
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 		), 0)
 	</select>
 
@@ -71,11 +84,23 @@
 		select IFNULL(
 		(select id
 		from customer
+<<<<<<< HEAD
 		where login_name =
 		#{loginName}
 		), 0)
 	</select>
 
+=======
+		where login_name = #{loginName}
+		), 0)
+	</select>
+
+
+
+
+
+
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 	<update id="updateCustomerPwd" parameterType="java.util.HashMap">
 		update customer
 		set
@@ -83,6 +108,10 @@
 		where phone = #{mobile}
 	</update>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
 		update customer
 		set name = #{name,jdbcType=VARCHAR},
@@ -100,6 +129,7 @@
 		where ID =
 		#{id,jdbcType=INTEGER}
 	</update>
+<<<<<<< HEAD
 
 	<select id="selectById" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
@@ -107,4 +137,6 @@
 		walletPwd FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
 		where c.ID = #{id}
 	</select>
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 </mapper>

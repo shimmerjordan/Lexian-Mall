@@ -30,6 +30,7 @@
         INNER JOIN commodity ON order_item.commodity_id = commodity.ID
         WHERE
         isDelete = 0
+<<<<<<< HEAD
         <if test="name != null and name != '' ">
             AND commodity.`name` like CONCAT('%',CONCAT(#{name},'%'))
         </if>
@@ -39,6 +40,8 @@
         <if test="status != null and status != '' ">
             AND orders.`status`=#{status}
         </if>
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
     </select>
 
     <select id="getDateRange" resultType="java.lang.Integer">
@@ -111,6 +114,7 @@
 	     orders.isDelete = 0 AND
 	     customer_order.customer_id = #{ userID }
     </select>
+<<<<<<< HEAD
 
     <resultMap id="jiufenorder_map" type="JiuFenOrder">
         <id property="id" column="ID"/>
@@ -163,4 +167,6 @@
         ID = #{id}
     </update>
 
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 </mapper>

@@ -15,6 +15,7 @@
 		<result property="status" column="Commodity.`status`" />
 		<result property="is_delete" column="Commodity.`is_delete`" />
 	</resultMap>
+
 	<select id="getAllShopCommodity" resultType="Commodity">
 		SELECT
 		Commodity.ID,
@@ -111,7 +112,6 @@
 		commodity.is_delete=0
 	</select>
 
-
 	<insert id="addGood" parameterType="java.util.HashMap">
 		INSERT INTO
 		commodity(name,modify_time,price,storage,specification,status,image,introduction,is_delete)
@@ -186,6 +186,25 @@
 		category.level=2 OR category.level=1)
 	</select>
 
+	<select id="getIndexSearchCommodity" resultType="Commodity" parameterType="java.lang.String">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		WHERE
+		commodity.is_delete=0 AND
+        commodity.name LIKE #{name}
+	</select>
+
 	<resultMap id="commodity_map2" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -223,6 +242,7 @@
 		WHERE
 		commodity.is_delete=0 AND
 		shop_commodity.isDelete=0 AND
-		commodity.name LIKE #{name}
+        commodity.name LIKE #{name}
 	</select>
+
 </mapper>

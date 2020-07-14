@@ -19,22 +19,33 @@
 
 	<!-- 通用查询结果列 -->
 	<sql id="Base_Column_List">
+<<<<<<< HEAD
 		comment_id, customer_id, commodity_id, comment_level,
 		comment_time,
 		comment_content, comment_image,
 		additional_comment_content,
 		additional_comment_time,
 		additional_comment_image, is_delete
+=======
+		comment_id, customer_id, commodity_id, comment_level, comment_time,
+		comment_content, comment_image, additional_comment_content,
+		additional_comment_time, additional_comment_image, is_delete
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 	</sql>
 
 	<select id="selectByCommodityId" resultMap="BaseResultMap">
 		select
+<<<<<<< HEAD
 		c.comment_id, c.customer_id, c.commodity_id, c.comment_level, c.comment_time,
 		c.comment_content, c.comment_image, c.additional_comment_content,
 		c.additional_comment_time, c.additional_comment_image,
 		c.is_delete,u.name as userName,u.user_image AS userImage
 		from comment c LEFT JOIN
 		customer u on c.customer_id = u.id
+=======
+		<include refid="Base_Column_List"></include>
+		from comment
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 		where commodity_id = #{commodityId}
 	</select>
 
