@@ -127,7 +127,7 @@
 				   data: { 
 					   "loginName": this.loginName,
 				   },
-				   success: (res) => {
+				    success: (res) => {
 						this.result = res.data
 						console.log(this.result)
 						if(this.result.length == 0){
@@ -142,7 +142,11 @@
 								 });
 							 }
 						}
-				    }
+				    },
+					fail: () => {
+						this.logining = false;
+						this.$api.msg("网络错误");
+					}
 				});
 				
 			}

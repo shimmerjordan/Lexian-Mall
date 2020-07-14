@@ -34,6 +34,8 @@ public class BaseEntity {
 	private Double moneyAmount;
 	
 	private String walletPwd;
+	
+	private String walletId;
 
 	public int getPageSize() {
 		return pageSize;
@@ -113,6 +115,14 @@ public class BaseEntity {
 
 	public void setWalletPwd(String walletPwd) {
 		this.walletPwd = walletPwd;
+	}
+
+	public String getWalletId() {
+		return walletId;
+	}
+
+	public void setWalletId(String walletId) {
+		this.walletId = walletId;
 	}
 
 	

@@ -14,7 +14,7 @@
 			<view class="input-content">
 				<view class="input-item">
 					<text class="tit">手机号码</text>
-					<input type="number" :value="mobile" placeholder="请输入手机号码" maxlength="11" data-key="mobile" @change="checkExistance"
+					<input type="number" :value="mobile" placeholder="请输入手机号码" maxlength="11" data-key="mobile"
 					 @input="inputChange" />
 				</view>
 				<move-verify @result='verifyResult' ref="verifyElement" :mobile="mobile"></move-verify>
@@ -66,6 +66,7 @@
 			...mapMutations(['login']),
 			/* 校验结果回调函数 */
 			verifyResult(res) {
+				this.checkExistance();
 				console.log(res);
 				this.resultData = res;
 			},
@@ -123,15 +124,14 @@
 				}
 			},
 			async toLogin() {
-				this.checkExistance();
-				this.logining = true;
+				
+				
 				const {
 					mobile,
 					verifyCode
 				} = this;
 				/* 数据验证模块 */
 				uni.request({
-					// url:'http://localhost:8888/api/getAll',
 					url: this.apiServer + '/customer/loginByPhone',
 					method: 'POST',
 					dataType: "json",
@@ -142,8 +142,12 @@
 						const result = res.data
 						console.log(result[0])
 						//const result = await this.$api.json('userInfo');
+						if(result.status == 500){
+							this.$api.msg('网络错误');
+						}
 						if (result[0].phone == this.mobile) {
 							this.login(result[0]);
+							this.logining = true;
 							uni.reLaunch({
 								url: "/pages/user/user",
 								success: res => {}
@@ -154,7 +158,7 @@
 						}
 					},
 					fail: () => {
-						this.$api.msg("该手机号未注册");
+						this.$api.msg('网络错误');
 					},
 				});
 
