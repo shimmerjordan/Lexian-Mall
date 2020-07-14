@@ -77,6 +77,19 @@
             </div>
           </div>
         </div>
+        <div>
+          <el-upload
+            action="http:localhost:8080/uploadImg"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove"
+          >
+            <i class="el-icon-plus" />
+          </el-upload>
+          <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt="">
+          </el-dialog>
+        </div>
       </div>
     </el-form>
   </div>
@@ -93,6 +106,8 @@ export default {
   filters: {},
   data() {
     return {
+      dialogImageUrl: '',
+      dialogVisible: false,
       max: 1, // checkbox可选最大值
       postForm: {
         date: '',
@@ -121,6 +136,13 @@ export default {
     this.postForm.date = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
   },
   methods: {
+    handleRemove(file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
+    },
     getMaxId() {
       getMaxShopId().then(response => {
         this.postForm.shopId = response.data + 1
@@ -130,11 +152,11 @@ export default {
       })
     },
     dropzoneS(file) {
-      console.log(file)
+      // console.log(file)
       this.$message({ message: 'Upload success', type: 'success' })
     },
     dropzoneR(file) {
-      console.log(file)
+      // console.log(file)
       this.$message({ message: 'Delete success', type: 'success' })
     },
     submitForm() {

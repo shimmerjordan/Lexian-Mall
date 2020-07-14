@@ -10,6 +10,19 @@ module.exports = {
 			})
 		],
 	},
+	
+	// devServer: {
+	//     proxy: {
+	// 		'/prefix/api/user/certification': {
+	// 			target: 'https://aip.baidubce.com/oauth/2.0/token',
+	// 			pathRewrite: {
+	// 				'^/prefix': ''
+	// 			}
+	// 		}
+	// 	},
+	// }
+	
+
 	// css: { // 暂时没用，uni-app,scss的变量入口文件，强制集成到uni.scss。
 	// 	sourceMap: true,
 	// 	loaderOptions: {

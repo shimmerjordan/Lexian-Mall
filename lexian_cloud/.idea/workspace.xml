@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb250ea3-e272-4298-bfff-fcdf0ef336b6" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/log/lexian.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/lexian.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/controller/ActivityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/controller/ActivityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/controller/UniIndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/controller/UniIndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/controller/UniUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/controller/UniUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/mapper/ActivityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/mapper/ActivityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/mapper/BrowsingRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/mapper/BrowsingRecordMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/mapper/CommodityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/mapper/CommodityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/ActivityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/ActivityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/CommodityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/CommodityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/UniIndexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/UniIndexService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/UniUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/UniUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/ActivityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/ActivityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/CommodityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/CommodityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/UniIndexServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/UniIndexServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/UniUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/UniUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/ActivityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/ActivityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/BrowsingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/BrowsingRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/CommodityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/CommodityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/CustomerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mappers/CustomerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/pages/index/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/pages/index/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/pages/order/order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/pages/order/order.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/pages/user/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/pages/user/user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/common/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/common/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/common/runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/common/runtime.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/common/vendor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/common/vendor.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/empty.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/empty.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/lee-search/lee-search.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/lee-search/lee-search.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/mix-list-cell.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/mix-list-cell.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/moveVerify.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/moveVerify.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/popup.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/popup.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/share.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/share.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/uni-load-more/uni-load-more.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/uni-load-more/uni-load-more.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/uni-number-box.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/components/uni-number-box.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/address/address.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/address/address.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/address/addressManage.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/address/addressManage.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/cart/cart.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/cart/cart.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/category/category.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/category/category.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/detail/detail.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/detail/detail.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/index/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/index/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/money/pay.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/money/pay.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/money/paySuccess.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/money/paySuccess.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/notice/notice.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/notice/notice.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/order/createOrder.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/order/createOrder.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/order/order.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/order/order.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/product/list.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/product/list.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/product/product.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/product/product.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/forgetPwd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/forgetPwd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/loginByName.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/loginByName.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/loginByPhone.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/loginByPhone.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/register.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/public/register.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/set/set.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/set/set.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/user/user.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/user/user.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/userinfo/userinfo.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/.sourcemap/mp-weixin/pages/userinfo/userinfo.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/common/runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/common/runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/common/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/common/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/components/empty.bak.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/components/mix-list-cell.bak.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/order/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/order/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/product/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/product/product.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/product/product.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/user/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/user/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/user/user.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../lexian_uniapp/uni-app/unpackage/dist/dev/mp-weixin/pages/user/user.wxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1eOSQdog0hrsBgwTasmuPmqkCJT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mybatis/mappers" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\中软实训\Group\lexian_cloud\src\main\resources\mybatis\mappers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="lexian.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb250ea3-e272-4298-bfff-fcdf0ef336b6" name="默认更改列表" comment="" />
+      <created>1594191130916</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594191130916</updated>
+      <workItem from="1594191139012" duration="11250000" />
+      <workItem from="1594224682868" duration="5200000" />
+      <workItem from="1594280129812" duration="15204000" />
+      <workItem from="1594384185532" duration="1403000" />
+      <workItem from="1594518523007" duration="9392000" />
+      <workItem from="1594710915664" duration="7712000" />
+      <workItem from="1594725659512" duration="1919000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="718" y="174" key="#com.intellij.ide.util.MemberChooser" timestamp="1594724318362">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="718" y="174" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1594724318362" />
+    <state width="1867" height="23" key="GridCell.Tab.0.bottom" timestamp="1594727579742">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579742" />
+    <state width="1867" height="23" key="GridCell.Tab.0.center" timestamp="1594727579741">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579741" />
+    <state width="1867" height="23" key="GridCell.Tab.0.left" timestamp="1594727579741">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579741" />
+    <state width="1867" height="23" key="GridCell.Tab.0.right" timestamp="1594727579742">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579742" />
+    <state width="1867" height="23" key="GridCell.Tab.1.bottom" timestamp="1594727579743">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579743" />
+    <state width="1867" height="23" key="GridCell.Tab.1.center" timestamp="1594727579742">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579742" />
+    <state width="1867" height="23" key="GridCell.Tab.1.left" timestamp="1594727579742">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579742" />
+    <state width="1867" height="23" key="GridCell.Tab.1.right" timestamp="1594727579743">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1867" height="23" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1594727579743" />
+    <state x="808" y="228" width="751" height="668" key="find.popup" timestamp="1594384556065">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="808" y="228" width="751" height="668" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1594384556065" />
+  </component>
+</project>

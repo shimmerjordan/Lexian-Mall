@@ -44,10 +44,17 @@
 			
 		</view> -->
 		
+		
 		<view class="c-list">
-			<view v-if="specsCount > 0" class="c-row b-b" @click="toggleSpec">
+			<view  class="c-row b-b">
+				<text class="tit">购买数量</text>
+				<view class="item-right">
+				     <uni-number-box   :min="1" :value="goodCout"  @eventChange="numberChange"class="step"></uni-number-box>	
+				</view>
+	
+			</view>
+			<view  class="c-row b-b" @click="toggleSpec">
 				<text class="tit">商品规格</text>
-				<!-- <text class="con t-r red">选择规格</text> -->
 				<view class="con">
 					<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
 						已选：{{sItem.specsName}}
@@ -55,9 +62,9 @@
 				</view>
 				<text class="yticon icon-you"></text>
 			</view>
-			<view class="c-row b-b" @click="toggleCoupon">
+			<view class="c-row b-b" @click="toggleCoupon('show')">
 				<text class="tit">优惠券</text>
-				<text class="con t-r red">选择优惠券</text>
+				<text class="con t-r red">{{couponText}}</text>
 				<text class="yticon icon-you"></text>
 			</view>
 			<view class="c-row b-b">
@@ -80,7 +87,7 @@
 			<view class="e-header">
 				<text class="tit">评价</text>
 				<text>({{commentCount}})</text>
-				<text class="tip">好评率 100%</text>
+				<!-- <text class="tip">好评率 100%</text> -->
 				<text class="yticon icon-you"></text>
 			</view> 
 			<view class="eva-box" v-if="commentCount > 0" v-for="(comment, cIndex) in commentList" :key="cIndex" >
@@ -125,7 +132,7 @@
 			
 			<view class="action-btn-group">
 				<button type="primary" class=" action-btn no-border buy-now-btn" @click="buy">立即购买</button>
-				<button type="primary" class=" action-btn no-border add-cart-btn">加入购物车</button>
+				<button type="primary" class=" action-btn no-border add-cart-btn" @click="cart">加入购物车</button>
 			</view>
 		</view>
 		
@@ -161,7 +168,7 @@
 							v-if="childItem.pid === item.id"
 							:key="childIndex" class="tit"
 							:class="{selected: childItem.selected}"
-							@click="selectSpec(childIndex, childItem.pid)"
+							@click="selectSpec(childIndex, childItem.pid,childItem.id)"
 						>
 							{{childItem.specsName}}
 						</text>
@@ -173,19 +180,28 @@
 		
 		<!-- 优惠卷-模态层弹窗 -->
 		<view 
-			class="popup spec" 
-			:class="speccClass"
-			@touchmove.stop.prevent="stopPrevent"
+			class="mask" 
+			:class="speccClass===0 ? 'none' : speccClass===1 ? 'show' : ''"
 			@click="toggleCoupon"
 		>
-			<!-- 遮罩层 -->
-			<view class="mask"></view>
-			<view class="layer attr-content" @click.stop="stopPrevent">
-                 <view class="item-list">
-					 <text>12312</text>
-					 <text>12312</text>
-				 </view>
-				<button class="btn" @click="toggleCoupon">完成</button>
+			<view class="mask-content" @click.stop.prevent="stopPrevent">
+				<!-- 优惠券页面，仿mt -->
+				<view class="coupon-item" v-for="(item,index) in couponList" :key="index">
+					<view class="con" @click="toggleCoupon(index,item.id)">
+						<view class="left">
+							<text class="title">{{item.name}}</text>
+							<!-- <text class="time">有效期至2019-06-30</text> -->
+						</view>
+						<view class="right">
+							<text class="price">{{item.discountedPrice}}</text>
+							<text>{{item.cousume_min}}</text>
+						</view>
+						
+						<view class="circle l"></view>
+						<view class="circle r"></view>
+					</view>
+					<text class="tips">{{item.type}}</text>
+				</view>
 			</view>
 		</view>
 		<!-- 分享 -->
@@ -199,16 +215,18 @@
 
 <script>
 	import share from '@/components/share';
+	import uniNumberBox from '@/components/uni-number-box.vue';
 	export default{
 		components: {
-			share
+			share,uniNumberBox
 		},
 		data() {
 			return {
 				specClass: 'none',
-				speccClass: 'none',
+				speccClass: 0,
+				specsId:0,
 				specSelected:[],
-				favorite: true,
+				favorite: false,
 				shareList: [],
 				imgList: [],
 				desc: `
@@ -224,13 +242,17 @@
 				specChildList: [],
 				commodity:{},
 				commentList:[],
+				couponList:[],
+				goodCout:1,
 				commentCount:0,
 				specsCount:0,
+				couponCount:0,
+				couponText:"选择优惠券",
+				specsName:'',
 				uid:-1
 			};
 		},
-		async onLoad(options){
-			
+		async onLoad(options){		
 			//接收传值,id里面放的是标题，因为测试数据并没写id 
 			let id = options.id;
 			let uid = options.uid ? options.uid : "";
@@ -249,6 +271,12 @@
 					  if(commentList && commentList.length > 0){
 						 _this.commentList = res.data.commentList; 
 					  }
+					  let addtime = res.data.addtime;
+					  if(!addtime){
+						  _this.favorite = false;
+					  }else{
+						  _this.favorite = true;
+					  }
 					  var specsList = res.data.specsList;
 					  _this.specsCount = specsList.length;
 					  if( _this.specsCount > 0){
@@ -257,10 +285,20 @@
 								  _this.specList.push(val);
 							  }else{
 								  _this.specChildList.push(val);
-							  }
-							  
+							  }							  
 						  });
 					  }
+					  _this.couponList = res.data.couponList;
+					  _this.couponCount = _this.couponList.length;
+					   let divStr = '<div style="width:100%">';
+					  for(let i = 1;i<=6;i++){
+						  var imgSrc = res.data["image"+i];
+						  if(imgSrc){
+							 divStr += '<img style="width:100%;display:block;" src="'+imgSrc+'" />';
+						  }
+					  }
+					  divStr += "</div>";
+					  _this.desc = divStr;
 					  
 				    }
 				});
@@ -283,6 +321,10 @@
 		methods:{
 			//规格弹窗开关
 			toggleSpec() {
+				if(this.specsCount == 0){
+					this.$api.msg('该商品没有其他规格了');
+					return;
+				}
 				if(this.specClass === 'show'){
 					this.specClass = 'hide';
 					setTimeout(() => {
@@ -292,25 +334,33 @@
 					this.specClass = 'show';
 				}
 			},
-			toggleCoupon() {
-				 if(this.speccClass === 'show'){
-				 	this.speccClass = 'hide';
-				 	setTimeout(() => {
-				 		this.speccClass = 'none';
-				 	}, 250);
-				 }else if(this.speccClass === 'none'){
-				 	this.speccClass = 'show';
-				 } 
+			toggleCoupon(type,id){
+				if(this.couponCount == 0){
+					this.$api.msg('无优惠卷可用');
+					return;
+				}
+				if(id){
+					let list = this.couponList;
+					this.couponText = "已选: " + list[type].name;
+				}
+				let timer = type === 'show' ? 10 : 300;
+				let	state = type === 'show' ? 1 : 0;
+				this.speccClass = 2;
+				setTimeout(()=>{
+					this.speccClass = state;
+				}, timer)
 			},
 			//选择规格
-			selectSpec(index, pid){
+			selectSpec(index, pid,id){
 				let list = this.specChildList;
 				list.forEach(item=>{
 					if(item.pid === pid){
 						this.$set(item, 'selected', false);
 					}
-				})
-
+				});
+				
+                this.specsId = id;
+				this.specsName = list[index].specsName;
 				this.$set(list[index], 'selected', true);
 				//存储已选择
 				/**
@@ -330,20 +380,74 @@
 			share(){
 				this.$refs.share.toggleMask();	
 			},
+			//数量
+			numberChange(data){
+				this.goodCout = data.number;
+			},
 			//收藏
 			toFavorite(){
-				this.favorite = !this.favorite;
+				let url = this.apiServer + "/api/favorites/save";
+				let params = {
+					commodityId:this.commodity.id
+				};
+				let msg = "已添加到收藏夹";
+				let _this = this;
+				let method = "POST";
+				if(this.favorite){
+					params.uid = this.uid;
+					url = this.apiServer + "/api/favorites/delete";
+					msg = "已移出收藏夹";
+					method = "GET";
+				}else{
+					params.customerId = this.uid;
+				}
+				uni.request({
+				    url: url,
+					method: method,
+				    dataType: "JSON",
+					data:params,
+				    success: function(res) {
+				      const result = res.data;
+				      if(result){
+				      	_this.$api.msg(msg);
+						_this.favorite = !_this.favorite;
+				      }
+					},
+				});
+				
 			},
 			buy(){
+				if(this.uid){
 				uni.navigateTo({
-					url: `/pages/order/createOrder`
+					url: `/pages/order/createOrder?commodityId=${this.commodity.id}&uid=${this.uid}&specsName=${this.specsName}&goodCout=${this.goodCout}`
 				})
+				}else{
+					this.$api.msg('下单前请先登陆');
+				}
 			},
 			cart(){
 				if(this.uid){
-					
+					var params = {
+						"customerId":this.uid,
+						"commodityId":this.commodity.id,
+						"specs":this.specsId,
+						"commodityQuantity":this.goodCout
+					}
+					uni.request({
+						url: this.apiServer+'/cart/save',
+						method: 'POST',
+						dataType: "json",
+						data: params,
+						success: (res) => {
+							const result = res.data;
+							if(result){
+								this.$api.msg('已添加到购物车');
+							}
+							
+					    }
+					});
 				}else{
-					console.log("登陆")
+					this.$api.msg('加入购物车前请先登陆');
 				}
 			},
 			stopPrevent(){}
@@ -876,6 +980,131 @@
 				background: transparent;
 			}
 		}
+	}
+	
+	/* 优惠券面板 */
+	.mask{
+		display: flex;
+		align-items: flex-end;
+		position: fixed;
+		left: 0;
+		top: var(--window-top);
+		bottom: 0;
+		width: 100%;
+		background: rgba(0,0,0,0);
+		z-index: 9995;
+		transition: .3s;
+		
+		.mask-content{
+			width: 100%;
+			min-height: 30vh;
+			max-height: 70vh;
+			background: #f3f3f3;
+			transform: translateY(100%);
+			transition: .3s;
+			overflow-y:scroll;
+		}
+		&.none{
+			display: none;
+		}
+		&.show{
+			background: rgba(0,0,0,.4);
+			
+			.mask-content{
+				transform: translateY(0);
+			}
+		}
+	}
+	
+	/* 优惠券列表 */
+	.coupon-item{
+		display: flex;
+		flex-direction: column;
+		margin: 20upx 24upx;
+		background: #fff;
+		.con{
+			display: flex;
+			align-items: center;
+			position: relative;
+			height: 120upx;
+			padding: 0 30upx;
+			&:after{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				content: '';
+				width: 100%;
+				height: 0;
+				border-bottom: 1px dashed #f3f3f3;
+				transform: scaleY(50%);
+			}
+		}
+		.left{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			flex: 1;
+			overflow: hidden;
+			height: 100upx;
+		}
+		.title{
+			font-size: 32upx;
+			color: $font-color-dark;
+			margin-bottom: 10upx;
+		}
+		.time{
+			font-size: 24upx;
+			color: $font-color-light;
+		}
+		.right{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 26upx;
+			color: $font-color-base;
+			height: 100upx;
+		}
+		.price{
+			font-size: 44upx;
+			color: $base-color;
+			&:before{
+				content: '￥';
+				font-size: 34upx;
+			}
+		}
+		.tips{
+			font-size: 24upx;
+			color: $font-color-light;
+			line-height: 60upx;
+			padding-left: 30upx;
+		}
+		.circle{
+			position: absolute;
+			left: -6upx;
+			bottom: -10upx;
+			z-index: 10;
+			width: 20upx;
+			height: 20upx;
+			background: #f3f3f3;
+			border-radius: 100px;
+			&.r{
+				left: auto;
+				right: -6upx;
+			}
+		}
+	}
+	
+	.item-right{
+		display:flex;
+		flex-direction: column;
+		flex: 1;
+		overflow: hidden;
+		padding-left: 30upx;
+		.step{
+			left: 90px;
+		}
+
 	}
 	
 </style>

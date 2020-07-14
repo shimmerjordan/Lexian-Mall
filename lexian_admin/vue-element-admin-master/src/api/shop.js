@@ -1,9 +1,10 @@
 import myrequest from '@/utils/myrequest'
 
-export function getAllShop() {
+export function getAllShop(data) {
   return myrequest({
     url: '/getAllShop',
-    method: 'get'
+    method: 'post',
+    data
   })
 }
 
@@ -33,7 +34,7 @@ export function deleteShop(data) {
 export function searchShop(data) {
   return myrequest({
     url: '/searchShop',
-    method: 'get',
+    method: 'post',
     data
   })
 }
@@ -41,6 +42,30 @@ export function searchShop(data) {
 export function insertShop(data) {
   return myrequest({
     url: '/insertShop',
+    method: 'post',
+    data
+  })
+}
+
+export function updateShopStatus0(data) {
+  return myrequest({
+    url: '/updateShopStatus0',
+    method: 'post',
+    data
+  })
+}
+
+export function updateShopStatus1(data) {
+  return myrequest({
+    url: '/updateShopStatus1',
+    method: 'post',
+    data
+  })
+}
+
+export function updateShopStatus2(data) {
+  return myrequest({
+    url: '/updateShopStatus2',
     method: 'post',
     data
   })

@@ -215,7 +215,7 @@
 				}, 600)
 			},
 			//取消订单
-			cancelOrder(item){
+			cancelOrder(item){ 
 				uni.showLoading({
 					title: '请稍后'
 				})

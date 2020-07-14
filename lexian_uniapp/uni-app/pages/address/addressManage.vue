@@ -6,7 +6,7 @@
 		</view>
 		<view class="row b-b">
 			<text class="tit">手机号</text>
-			<input class="input" type="number" v-model="addressData.mobile" placeholder="收货人手机号码" placeholder-class="placeholder" />
+			<input class="input" type="number" v-model="addressData.phone" placeholder="收货人手机号码" placeholder-class="placeholder" />
 		</view>
 		<view class="row b-b">
 			<text class="tit">地址</text>
@@ -17,12 +17,12 @@
 		</view>
 		<view class="row b-b"> 
 			<text class="tit">门牌号</text>
-			<input class="input" type="text" v-model="addressData.area" placeholder="楼号、门牌" placeholder-class="placeholder" />
+			<input class="input" type="text" v-model="addressData.location" placeholder="楼号、门牌" placeholder-class="placeholder" />
 		</view>
 		
 		<view class="row default-row">
 			<text class="tit">设为默认</text>
-			<switch :checked="addressData.defaule" color="#fa436a" @change="switchChange" />
+			<switch :checked="addressData.addressStatus == 0" color="#fa436a" @change="switchChange" />
 		</view>
 		<button class="add-btn" @click="confirm">提交</button>
 	</view>
@@ -34,20 +34,37 @@
 			return {
 				addressData: {
 					name: '',
-					mobile: '',
+					phone: '',
 					addressName: '在地图选择',
-					address: '',
+					location: '',
 					area: '',
-					default: false
-				}
+					city:'',
+					province:'',
+					addressStatus: 1,
+					id:''
+				},
+				uid:0,
+				manageType:''
 			}
 		},
 		onLoad(option){
 			let title = '新增收货地址';
+			this.uid = option.uid;
 			if(option.type==='edit'){
+				let id = option.id;
+				let status = option.status;
+				let _this = this;
 				title = '编辑收货地址'
-				
-				this.addressData = JSON.parse(option.data)
+				uni.request({
+				    url: this.apiServer + "/api/address/getById?id="+id,
+				    dataType: "JSON",
+				    success: function(res) {
+						const result = res.data;
+						_this.addressData = result;
+						_this.addressData.addressName = result.province + result.city + result.area;
+						_this.addressData.addressStatus = status;
+					},
+				});
 			}
 			this.manageType = option.type;
 			uni.setNavigationBarTitle({
@@ -56,15 +73,42 @@
 		},
 		methods: {
 			switchChange(e){
-				this.addressData.default = e.detail;
+				this.addressData.addressStatus = e.detail.value ? 0:1;
 			},
 			
 			//地图选择地址
 			chooseLocation(){
+				var _this = this;
 				uni.chooseLocation({
-					success: (data)=> {
-						this.addressData.addressName = data.name;
-						this.addressData.address = data.name;
+					success: (res)=> {
+					    var regex = /^(北京市|天津市|重庆市|上海市|香港特别行政区|澳门特别行政区)/;  
+						var REGION_PROVINCE=[];  
+						var addressBean = {  
+							  REGION_PROVINCE:null,  
+							  REGION_COUNTRY:null,  
+							  REGION_CITY:null,  
+							  ADDRESS:null};  
+							function regexAddressBean(address, addressBean){  
+								regex = /^(.*?[市州]|.*?地区|.*?特别行政区)(.*?[市区县])(.*?)$/g;  
+								var addxress = regex.exec(address);  
+								addressBean.REGION_CITY=addxress[1];  
+								addressBean.REGION_COUNTRY=addxress[2];  
+								addressBean.ADDRESS=addxress[3]+"("+res.name+")";  
+							}  
+							if(!(REGION_PROVINCE = regex.exec(res.address))){  
+							  regex = /^(.*?(省|自治区))(.*?)$/;  
+							  REGION_PROVINCE = regex.exec(res.address);  
+							  addressBean.REGION_PROVINCE= REGION_PROVINCE[1];  
+							  regexAddressBean(REGION_PROVINCE[3],addressBean);  
+							} else {  
+							  addressBean.REGION_PROVINCE= REGION_PROVINCE[1];  
+							  regexAddressBean(res.address, addressBean);  
+							}  							
+						  _this.addressData.province = addressBean.REGION_PROVINCE;
+						  _this.addressData.city = addressBean.REGION_CITY;
+						  _this.addressData.area = addressBean.REGION_COUNTRY;
+						  _this.addressData.location = addressBean.ADDRESS;
+						  _this.addressData.addressName =addressBean.REGION_PROVINCE + addressBean.REGION_CITY + addressBean.REGION_COUNTRY;
 					}
 				})
 			},
@@ -76,25 +120,48 @@
 					this.$api.msg('请填写收货人姓名');
 					return;
 				}
-				if(!/(^1[3|4|5|7|8][0-9]{9}$)/.test(data.mobile)){
+				 if(!/(^1[3|4|5|7|8][0-9]{9}$)/.test(data.phone)){
 					this.$api.msg('请输入正确的手机号码');
 					return;
-				}
-				if(!data.address){
+				} 
+				if(data.addressName == "在地图选择"){
 					this.$api.msg('请在地图选择所在位置');
 					return;
 				}
-				if(!data.area){
+				if(!data.location){
 					this.$api.msg('请填写门牌号信息');
 					return;
 				}
-				
-				//this.$api.prePage()获取上一页实例，可直接调用上页所有数据和方法，在App.vue定义
-				this.$api.prePage().refreshList(data, this.manageType);
-				this.$api.msg(`地址${this.manageType=='edit' ? '修改': '添加'}成功`);
-				setTimeout(()=>{
-					uni.navigateBack()
-				}, 800)
+				data.uid = this.uid;
+				let _this = this;
+				var url = this.apiServer+'/api/address/save';
+				if(_this.manageType=='edit'){
+					url = this.apiServer+'/api/address/update';
+				}
+				uni.request({
+					url: url,
+					method: 'POST',
+					dataType: "json",
+					data: data,
+					success: (res) => {
+						const result = res.data;
+						if(result){
+							let msg = _this.manageType=='edit' ? '修改': '添加';
+							_this.$api.msg("地址"+msg+"成功");
+						 	setTimeout(()=>{
+/* 								uni.navigateTo({
+									url: `/pages/address/address?uid=${_this.uid}`
+								}) */
+								setTimeout(()=>{
+									uni.navigateBack()
+								}, 800)
+							}, 800);
+						}
+				    },
+					fail: (res) => {
+						this.$api.msg("网络错误");
+					}
+				});
 			},
 		}
 	}
