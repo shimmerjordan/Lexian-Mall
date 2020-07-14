@@ -57,10 +57,6 @@ public class CommodityServiceImpl implements CommodityService {
 		return false;
 	}
 
-<<<<<<< HEAD:lexian_cloud/src/main/java/lexian/service/serviceImpl/CommodityServiceImpl.java
-
-=======
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/java/lexian/service/serviceImpl/CommodityServiceImpl.java
 	@Override
 	public boolean addGood(Map<String, Object> map) {
 		int flag = commodityMapper.addGood(map);

@@ -76,24 +76,12 @@
 		), 0)
 	</select>
 
-<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CustomerMapper.xml
-
-
-
-
-
-=======
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/resources/mybatis/mappers/CustomerMapper.xml
 	<update id="updateCustomerPwd" parameterType="java.util.HashMap">
 		update customer
 		set
 		pwd = #{password}
 		where phone = #{mobile}
 	</update>
-<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CustomerMapper.xml
-
-=======
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/resources/mybatis/mappers/CustomerMapper.xml
 
 	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
 		update customer

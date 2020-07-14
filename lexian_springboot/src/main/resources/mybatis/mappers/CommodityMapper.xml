@@ -15,6 +15,7 @@
 		<result property="status" column="Commodity.`status`" />
 		<result property="is_delete" column="Commodity.`is_delete`" />
 	</resultMap>
+
 	<select id="getAllShopCommodity" resultType="Commodity">
 		SELECT
 		Commodity.ID,
@@ -87,19 +88,11 @@
 		</if>
 	</select>
 
-<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CommodityMapper.xml
-    <update id="deleteGood">
-        UPDATE shop_commodity
-        SET shop_commodity.isDelete=1
-        WHERE shop_commodity.commodity_id=#{id}
-    </update>
-=======
 	<update id="deleteGood">
 		UPDATE shop_commodity
 		SET shop_commodity.isDelete=1
 		WHERE shop_commodity.commodity_id=#{id}
 	</update>
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/resources/mybatis/mappers/CommodityMapper.xml
 
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT
@@ -118,11 +111,6 @@
 		WHERE
 		commodity.is_delete=0
 	</select>
-<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CommodityMapper.xml
-
-=======
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/resources/mybatis/mappers/CommodityMapper.xml
-
 
 	<insert id="addGood" parameterType="java.util.HashMap">
 		INSERT INTO
@@ -198,9 +186,25 @@
 		category.level=2 OR category.level=1)
 	</select>
 
-<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CommodityMapper.xml
 	<select id="getIndexSearchCommodity" resultType="Commodity" parameterType="java.lang.String">
-=======
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		WHERE
+		commodity.is_delete=0 AND
+        commodity.name LIKE #{name}
+	</select>
+
 	<resultMap id="commodity_map2" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -216,7 +220,6 @@
 
 	<select id="getAllShopCommodityByName" resultType="Commodity"
 		parameterType="java.lang.String">
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/resources/mybatis/mappers/CommodityMapper.xml
 		SELECT
 		Commodity.ID,
 		Commodity.modify_time,
@@ -230,10 +233,6 @@
 		Commodity.`is_delete`
 		FROM
 		commodity
-<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CommodityMapper.xml
-		WHERE
-		commodity.is_delete=0 AND
-=======
 		INNER JOIN
 		shop_commodity ON commodity.ID =
 		shop_commodity.commodity_id
@@ -243,7 +242,7 @@
 		WHERE
 		commodity.is_delete=0 AND
 		shop_commodity.isDelete=0 AND
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/resources/mybatis/mappers/CommodityMapper.xml
-		commodity.name LIKE #{name}
+        commodity.name LIKE #{name}
 	</select>
+
 </mapper>

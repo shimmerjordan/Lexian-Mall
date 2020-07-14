@@ -1,9 +1,0 @@
-diff a/lexian_springboot/src/main/java/lexian/mapper/CommodityMapper.java b/lexian_springboot/src/main/java/lexian/mapper/CommodityMapper.java	(rejected hunks)
-@@ -0,6 +0,7 @@
- 
- 	List<Category> getAllCategory();
- 
-+<<<<<<< HEAD:lexian_cloud/src/main/java/lexian/mapper/CommodityMapper.java
- 	List<Commodity> getIndexSearchCommodity(String name);
- =======
- 	List<Commodity> getAllShopCommodityByName(String name);

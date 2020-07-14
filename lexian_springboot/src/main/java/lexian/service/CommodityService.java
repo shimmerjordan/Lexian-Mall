@@ -22,10 +22,7 @@ public interface CommodityService {
 	Commodity getCommodity(String commodityId);
 
 	List<Category> getAllCategory();
-<<<<<<< HEAD:lexian_cloud/src/main/java/lexian/service/CommodityService.java
-=======
 
 	List<Commodity> getAllShopCommodityByName(String name);
-	
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/java/lexian/service/CommodityService.java
+
 }

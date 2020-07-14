@@ -13,6 +13,7 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="is_delete" property="is_delete" jdbcType="INTEGER" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, name, description, img, beginTime, endTime, type, status, is_delete
   </sql>
@@ -58,10 +59,6 @@
     where activity.is_delete = 0
     AND activity.id > 10
   </select>
-<<<<<<< .merge_file_a11800
-=======
-
->>>>>>> .merge_file_a17700
 
   <select id="getMaxActivityId" resultType="java.lang.Integer">
     select max(activity.id)
@@ -75,8 +72,7 @@
 (#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
   </insert>
 
-<<<<<<< .merge_file_a11800
-=======
+
   <select id="searchActivityByInformation" resultType="Activity" parameterType="java.lang.String">
     select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
@@ -99,5 +95,4 @@
     </where>
   </select>
 
->>>>>>> .merge_file_a17700
 </mapper>

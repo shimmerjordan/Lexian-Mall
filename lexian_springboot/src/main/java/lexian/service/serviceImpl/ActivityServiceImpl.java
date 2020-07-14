@@ -86,8 +86,6 @@ public class ActivityServiceImpl implements ActivityService {
         }
     }
 
-<<<<<<< HEAD:lexian_cloud/src/main/java/lexian/service/serviceImpl/ActivityServiceImpl.java
-=======
     @Override
     public List<Activity> searchActivityByInformation(Map<String,Object> map) {
         try {
@@ -103,7 +101,4 @@ public class ActivityServiceImpl implements ActivityService {
             return null;
         }
     }
-
-
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/java/lexian/service/serviceImpl/ActivityServiceImpl.java
 }

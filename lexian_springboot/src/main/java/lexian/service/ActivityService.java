@@ -19,10 +19,7 @@ public interface ActivityService {
     int getMaxActivityId();
 
     boolean insertActivity(Map<String, Object> map);
-<<<<<<< HEAD:lexian_cloud/src/main/java/lexian/service/ActivityService.java
-=======
 
     List<Activity> searchActivityByInformation(Map<String,Object>map);
 
->>>>>>> 1e1173b9e37dd5810d32c08753b04cdbb32acd72:lexian_springboot/src/main/java/lexian/service/ActivityService.java
 }
