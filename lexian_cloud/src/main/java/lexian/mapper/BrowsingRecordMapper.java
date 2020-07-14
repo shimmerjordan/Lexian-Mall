@@ -15,6 +15,6 @@ import java.util.List;
 public interface BrowsingRecordMapper {
 
 	void insert(BrowsingRecord browsingRecord);
-	List<BrowsingRecord> getHistory(String userID);
+
 
 }

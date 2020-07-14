@@ -30,8 +30,6 @@ public interface CommodityMapper {
 	Commodity selectCommodityById(String commodityId);
 
 	List<Category> getAllCategory();
-<<<<<<< HEAD
 
-=======
->>>>>>> 0357ca5fd2db2438f261b5ceb2e151c5d3a74deb
+	List<Commodity> getIndexSearchCommodity(String name);
 }

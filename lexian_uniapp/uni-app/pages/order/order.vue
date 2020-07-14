@@ -80,7 +80,6 @@
 <script>
 	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
 	import empty from "@/components/empty";
-	import Json from '@/Json';
 	export default {
 		components: {
 			uniLoadMore,
@@ -147,14 +146,15 @@
 				uni.request({
 					url: this.apiServer + "/oreder/userorder",
 					//url:'http://localhost:8080/..."' ,
-					data:'userinfo.ID'
+					data:'userinfo.ID',
 					method: 'POST',
 					success: (res) => {
 					let orderList = res.data;
 					this.orderList = orderList;
 					}
 				});
-				}
+				},
+
 			loadData(source){
 				//这里是将订单挂载到tab列表下
 				let index = this.tabCurrentIndex;
@@ -169,6 +169,7 @@
 					//防止重复加载
 					return;
 				}
+				
 				
 				navItem.loadingType = 'loading';
 				
