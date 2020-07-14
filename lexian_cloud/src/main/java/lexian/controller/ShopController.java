@@ -8,7 +8,10 @@ import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.nio.file.FileVisitResult;
 import java.util.List;
 import java.util.Map;
 
@@ -100,4 +103,9 @@ public class ShopController {
         return shopService.updateShopStatus2(list);
 
     }
+
+//    @PostMapping("/uploadImg")
+//    public FileVisitResult upload(@RequestParam("pciture")MultipartFile picture, HttpServletRequest request) {
+//        logger.info("您已进入图片上传服务")
+//    }
 }
