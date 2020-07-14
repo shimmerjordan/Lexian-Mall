@@ -231,7 +231,25 @@
         }  
         ,{
             "path" : "pages/user/favorites",
-            "style" : {}
+            "style" : {
+            	"navigationBarTitleText": "",
+            	"navigationStyle": "custom",
+            	"app-plus": {
+            		"titleNView": false,
+            		"animationType": "slide-in-bottom"
+            	}
+            }
+        }
+        ,{
+            "path" : "pages/user/certification",
+            "style" : {
+            	"navigationBarTitleText": "",
+            	"navigationStyle": "custom",
+            	"app-plus": {
+            		"titleNView": false,
+            		"animationType": "slide-in-bottom"
+            	}
+            }
         }
     ],
 	"globalStyle": {

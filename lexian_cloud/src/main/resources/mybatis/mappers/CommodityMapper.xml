@@ -141,11 +141,11 @@
 		gc.image5,
 		gc.image6,
 		si.`name` as shopName,
-		si.img as shopImg
+		si.img as shopImg,
+		si.ID as shopId
 		FROM
 		`commodity` g
-		LEFT JOIN
-		graphic_commodity gc
+		LEFT JOIN graphic_commodity gc
 		on g.id =
 		gc.commodity_id
 		LEFT JOIN ( SELECT sum(
@@ -163,7 +163,7 @@
 		`browsing_record` GROUP BY
 		commodity_id ) bi on g.id =
 		bi.commodity_id
-		LEFT JOIN (SELECT s.img,s.name,sc.commodity_id FROM shop s LEFT JOIN
+		LEFT JOIN (SELECT s.ID,s.img,s.name,sc.commodity_id FROM shop s LEFT JOIN
 		shop_commodity sc on s.ID = sc.shop_id) si on g.ID = si.commodity_id
 		WHERE
 		g.id = #{commodityId}

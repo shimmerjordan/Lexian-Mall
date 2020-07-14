@@ -226,7 +226,7 @@
 				speccClass: 0,
 				specsId:0,
 				specSelected:[],
-				favorite: true,
+				favorite: false,
 				shareList: [],
 				imgList: [],
 				desc: `
@@ -270,6 +270,12 @@
 					  _this.commentCount = commentList.length;
 					  if(commentList && commentList.length > 0){
 						 _this.commentList = res.data.commentList; 
+					  }
+					  let addtime = res.data.addtime;
+					  if(!addtime){
+						  _this.favorite = false;
+					  }else{
+						  _this.favorite = true;
 					  }
 					  var specsList = res.data.specsList;
 					  _this.specsCount = specsList.length;
@@ -380,7 +386,35 @@
 			},
 			//收藏
 			toFavorite(){
-				this.favorite = !this.favorite;
+				let url = this.apiServer + "/api/favorites/save";
+				let params = {
+					commodityId:this.commodity.id
+				};
+				let msg = "已添加到收藏夹";
+				let _this = this;
+				let method = "POST";
+				if(this.favorite){
+					params.uid = this.uid;
+					url = this.apiServer + "/api/favorites/delete";
+					msg = "已移出收藏夹";
+					method = "GET";
+				}else{
+					params.customerId = this.uid;
+				}
+				uni.request({
+				    url: url,
+					method: method,
+				    dataType: "JSON",
+					data:params,
+				    success: function(res) {
+				      const result = res.data;
+				      if(result){
+				      	_this.$api.msg(msg);
+						_this.favorite = !_this.favorite;
+				      }
+					},
+				});
+				
 			},
 			buy(){
 				if(this.uid){

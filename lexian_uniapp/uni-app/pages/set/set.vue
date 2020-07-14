@@ -4,11 +4,11 @@
 			<text class="cell-tit">个人资料</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
-		<view class="list-cell b-b" @click="navTo('收货地址')" hover-class="cell-hover" :hover-stay-time="50">
+		<view class="list-cell b-b" @click="navTo('/pages/address/address')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">收货地址</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
-		<view class="list-cell" @click="navTo('实名认证')" hover-class="cell-hover" :hover-stay-time="50">
+		<view class="list-cell" @click="navTo('/pages/user/certification')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">实名认证</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
@@ -49,8 +49,16 @@
 		methods:{
 			...mapMutations(['logout']),
 
-			navTo(url){
-				this.$api.msg(`跳转到${url}`);
+			navTo(page){
+				
+				uni.navigateTo({
+					url: page,
+					success: res => {
+						
+					},
+					fail: () => {},
+					complete: () => {}
+				});
 			},
 			//退出登录
 			toLogout(){

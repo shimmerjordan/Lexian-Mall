@@ -48,6 +48,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public boolean setCertificationId(Map<String, Object> map) {
+        return customerMapper.setCertificationId(map);
+    }
+
+    @Override
     public List<Customer> loginByName(Map<String, Object> map) {
         return customerMapper.loginByName(map);
     }

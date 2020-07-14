@@ -4,6 +4,7 @@
 package lexian.entity.model;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import lexian.entity.Address;
@@ -48,17 +49,26 @@ public class GoodDetailsModel extends BaseEntity {
 	private String image6;
 
 	private String commodityId;
+	
+	private String customerId;
 
 	private List<String> cartIds;
 	
 	private String specsText;
 	
-	private int gootCount;
+	private int goodCount;
 	
 	private String shopName;
 	
 	private String shopImg;
+	
+	private String shopId;
 
+	private Date addtime;
+	
+	private List<GoodDetailsModel> cids;
+	
+	
 	public int getSales() {
 		return sales;
 	}
@@ -179,12 +189,12 @@ public class GoodDetailsModel extends BaseEntity {
 		this.addressList = addressList;
 	}
 
-	public int getGootCount() {
-		return gootCount;
+	public int getGoodCount() {
+		return goodCount;
 	}
 
-	public void setGootCount(int gootCount) {
-		this.gootCount = gootCount;
+	public void setGoodCount(int goodCount) {
+		this.goodCount = goodCount;
 	}
 
 	public String getShopName() {
@@ -201,6 +211,38 @@ public class GoodDetailsModel extends BaseEntity {
 
 	public void setShopImg(String shopImg) {
 		this.shopImg = shopImg;
+	}
+
+	public Date getAddtime() {
+		return addtime;
+	}
+
+	public void setAddtime(Date addtime) {
+		this.addtime = addtime;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(String shopId) {
+		this.shopId = shopId;
+	}
+
+	public List<GoodDetailsModel> getCids() {
+		return cids;
+	}
+
+	public void setCids(List<GoodDetailsModel> cids) {
+		this.cids = cids;
 	}
 
 
