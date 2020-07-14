@@ -21,7 +21,9 @@ def get_product():
         price = div.find_element_by_xpath('.//strong').text
         peopleNum = div.find_element_by_xpath('.//div[@class="deal-cnt"]').text
         print(name, price, peopleNum, sep="|")
-        cursor.execute("insert into taobao(name,price,peopleNum) VALUES(%s,%f,%s)"%(name, price, peopleNum))
+        sql = "INSERT INTO taobao(name , price, peopleNum) VALUES ('%s', '%s', '%s')" % (name, price, peopleNum)
+        cursor.execute(sql)
+        db.commit()
     db.close()
 
 def main():

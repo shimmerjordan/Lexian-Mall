@@ -3195,3 +3195,236 @@
 [DEBUG][20-07-13][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@348dc178]
 [DEBUG][20-07-13][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@348dc178]
 [DEBUG][20-07-13][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@348dc178]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7aea75a4] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1683097446 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7aea75a4]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@524d87c9] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1552577520 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ?, ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@524d87c9]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b6ab8c2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1168990175 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ?, ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 20(Integer), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b6ab8c2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@63effd09] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1831345924 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ?, ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 30(Integer), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@63effd09]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44a321b0] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1248122708 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ?, ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 40(Integer), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 7
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44a321b0]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b08d820] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1708075825 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b08d820]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f412a1a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@562479490 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f412a1a]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116e6223] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@531209854 wrapping com.mysql.cj.jdbc.ConnectionImpl@9a12ad8] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116e6223]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@413b5f2a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1001715155 wrapping com.mysql.cj.jdbc.ConnectionImpl@192d23ea] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE "%s" + ? + "%s" 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: (String)
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@413b5f2a]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79cce2ef] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2142485390 wrapping com.mysql.cj.jdbc.ConnectionImpl@796168a9] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %s%s(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79cce2ef]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ae10349] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1991904030 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c9b315] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: (String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ae10349]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75b45b45] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@442064137 wrapping com.mysql.cj.jdbc.ConnectionImpl@5b4b8153] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: (String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75b45b45]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76caa832] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1383474353 wrapping com.mysql.cj.jdbc.ConnectionImpl@2885dc47] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76caa832]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3821ed9c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@401924508 wrapping com.mysql.cj.jdbc.ConnectionImpl@2885dc47] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %s苹果%s(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3821ed9c]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3aa1b3dc] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@879119096 wrapping com.mysql.cj.jdbc.ConnectionImpl@2885dc47] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %s手机%s(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3aa1b3dc]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@575eba08] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1503219347 wrapping com.mysql.cj.jdbc.ConnectionImpl@2885dc47] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@575eba08]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffb9b95] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1631352858 wrapping com.mysql.cj.jdbc.ConnectionImpl@2885dc47] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE taobao.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %s苹果%s(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffb9b95]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57579759] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2050341934 wrapping com.mysql.cj.jdbc.ConnectionImpl@2067d3d0] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57579759]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f9c4da6] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@810108241 wrapping com.mysql.cj.jdbc.ConnectionImpl@2067d3d0] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %s全新%s(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f9c4da6]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@393e1e29] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@984495110 wrapping com.mysql.cj.jdbc.ConnectionImpl@7c6ab82d] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %s全新%s(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@393e1e29]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b35f03e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2121734283 wrapping com.mysql.cj.jdbc.ConnectionImpl@5913f4cb] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %全新%(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao WHERE name LIKE ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: %全新%(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b35f03e]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@575eba08] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1503219347 wrapping com.mysql.cj.jdbc.ConnectionImpl@5913f4cb] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao WHERE name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: %苹果%(String)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao WHERE name LIKE ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: %苹果%(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@575eba08]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3aa1b3dc] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@879119096 wrapping com.mysql.cj.jdbc.ConnectionImpl@5913f4cb] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3aa1b3dc]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffb9b95] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1631352858 wrapping com.mysql.cj.jdbc.ConnectionImpl@5913f4cb] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ffb9b95]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b94f8b5] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1163075511 wrapping com.mysql.cj.jdbc.ConnectionImpl@5913f4cb] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b94f8b5]
