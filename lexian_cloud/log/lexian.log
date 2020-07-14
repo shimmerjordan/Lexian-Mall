@@ -4321,3 +4321,17 @@
 [DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByPhone]==> Parameters: 18540171008(String)
 [DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByPhone]<==      Total: 1
 [DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@24130c3]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@10419bc6] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1974204087 wrapping com.mysql.cj.jdbc.ConnectionImpl@3cd8d224] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.setCertificationId]==>  Preparing: UPDATE customer SET certification_id = ?, name = ? WHERE ID = ? 
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@10419bc6]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25741ce0] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1710364120 wrapping com.mysql.cj.jdbc.ConnectionImpl@60e4969a] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.setCertificationId]==>  Preparing: UPDATE customer SET certification_id = ?, name = ? WHERE ID = ? 
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.setCertificationId]==> Parameters: 321102199902264916(String), 鞠桥丹(String), 22(Integer)
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.setCertificationId]<==    Updates: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25741ce0]
