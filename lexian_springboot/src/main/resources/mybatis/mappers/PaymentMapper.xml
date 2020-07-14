@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lexian.mapper.PaymentMapper">
+
+	<insert id="insertOrder" useGeneratedKeys="true" keyProperty="ID"
+		parameterType="lexian.entity.Order">
+		INSERT INTO
+		orders(date,description,comment,status)
+		VALUES
+		(#{date},#{description},#{comment},#{status})
+	</insert>
+
+	<insert id="insertShopOrder" parameterType="java.util.List">
+		INSERT INTO shop_order(shop_id,order_id) values
+		<foreach collection="shopIds" item="shopId" index="index"
+			separator=",">
+			(
+			#{shopId},#{orderId}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="insertOrderItem" parameterType="java.util.List">
+		insert into order_item(order_id,commodity_id,commodity_quantity)
+		values
+		<foreach collection="gdms" item="gdm" index="index" separator=",">
+			(
+			#{orderId},#{gdm.commodityId},#{gdm.goodCount}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="insertOrderAddress" parameterType="java.util.Map">
+		insert into
+		order_address(order_id,address_id)
+		values(#{orderId},#{addressId})
+	</insert>
+
+	<insert id="insertCustomeOrder" parameterType="java.util.Map">
+		insert into
+		customer_order(order_id,customer_id)
+		values(#{orderId},#{uid})
+	</insert>
+
+	<insert id="insertBill" useGeneratedKeys="true" keyProperty="id"
+		parameterType="java.util.Map">
+		insert into
+		bill(order_number,name,consume_price,consume_time,order_status)
+		values(#{orderNumber},#{name},#{consumePrice},#{consumeTime},#{orderStatus})
+
+	</insert>
+	<insert id="insertWalletBill" parameterType="java.util.Map">
+		insert into
+		wallet_bill(bill_id,wallet_id)
+		values(#{billId},#{walletId})
+	</insert>
+	<update id="updateBalance" parameterType="java.util.Map">
+		UPDATE wallet SET
+		money_amount = money_amount - #{consumePrice,jdbcType=DOUBLE} WHERE
+		customer_id =
+		#{customerId}
+	</update>
+
+	<update id="updateOrderStatus" parameterType="java.lang.String">
+		UPDATE orders SET
+		status = 1 WHERE
+		ID =
+		#{orderId}
+
+	</update>
+
+</mapper>

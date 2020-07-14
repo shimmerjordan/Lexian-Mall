@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neu.quickapp.mapper.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.neu.quickapp.pojo.Comment" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+    <result column="comment_level" property="commentLevel" jdbcType="INTEGER" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+    <result column="comment_image" property="commentImage" jdbcType="VARCHAR" />
+    <result column="additional_comment_content" property="additionalCommentContent" jdbcType="VARCHAR" />
+    <result column="additional_comment_time" property="additionalCommentTime" jdbcType="TIMESTAMP" />
+    <result column="additional_comment_image" property="additionalCommentImage" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    comment_id, customer_id, commodity_id, comment_level, comment_time, comment_content, 
+    comment_image, additional_comment_content, additional_comment_time, additional_comment_image, 
+    is_delete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neu.quickapp.pojo.CommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neu.quickapp.pojo.CommentExample" >
+    delete from comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neu.quickapp.pojo.Comment" >
+    insert into comment (comment_id, customer_id, commodity_id, 
+      comment_level, comment_time, comment_content, 
+      comment_image, additional_comment_content, 
+      additional_comment_time, additional_comment_image, 
+      is_delete)
+    values (#{commentId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, 
+      #{commentLevel,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=VARCHAR}, 
+      #{commentImage,jdbcType=VARCHAR}, #{additionalCommentContent,jdbcType=VARCHAR}, 
+      #{additionalCommentTime,jdbcType=TIMESTAMP}, #{additionalCommentImage,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neu.quickapp.pojo.Comment" >
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="commentLevel != null" >
+        comment_level,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+      <if test="commentImage != null" >
+        comment_image,
+      </if>
+      <if test="additionalCommentContent != null" >
+        additional_comment_content,
+      </if>
+      <if test="additionalCommentTime != null" >
+        additional_comment_time,
+      </if>
+      <if test="additionalCommentImage != null" >
+        additional_comment_image,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commentLevel != null" >
+        #{commentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentImage != null" >
+        #{commentImage,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalCommentContent != null" >
+        #{additionalCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalCommentTime != null" >
+        #{additionalCommentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="additionalCommentImage != null" >
+        #{additionalCommentImage,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neu.quickapp.pojo.CommentExample" resultType="java.lang.Integer" >
+    select count(*) from comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update comment
+    <set >
+      <if test="record.commentId != null" >
+        comment_id = #{record.commentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityId != null" >
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentLevel != null" >
+        comment_level = #{record.commentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentTime != null" >
+        comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commentContent != null" >
+        comment_content = #{record.commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentImage != null" >
+        comment_image = #{record.commentImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.additionalCommentContent != null" >
+        additional_comment_content = #{record.additionalCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.additionalCommentTime != null" >
+        additional_comment_time = #{record.additionalCommentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.additionalCommentImage != null" >
+        additional_comment_image = #{record.additionalCommentImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update comment
+    set comment_id = #{record.commentId,jdbcType=INTEGER},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
+      commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      comment_level = #{record.commentLevel,jdbcType=INTEGER},
+      comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      comment_content = #{record.commentContent,jdbcType=VARCHAR},
+      comment_image = #{record.commentImage,jdbcType=VARCHAR},
+      additional_comment_content = #{record.additionalCommentContent,jdbcType=VARCHAR},
+      additional_comment_time = #{record.additionalCommentTime,jdbcType=TIMESTAMP},
+      additional_comment_image = #{record.additionalCommentImage,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neu.quickapp.pojo.Comment" >
+    update comment
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null" >
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commentLevel != null" >
+        comment_level = #{commentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentImage != null" >
+        comment_image = #{commentImage,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalCommentContent != null" >
+        additional_comment_content = #{additionalCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalCommentTime != null" >
+        additional_comment_time = #{additionalCommentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="additionalCommentImage != null" >
+        additional_comment_image = #{additionalCommentImage,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neu.quickapp.pojo.Comment" >
+    update comment
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      comment_level = #{commentLevel,jdbcType=INTEGER},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      comment_image = #{commentImage,jdbcType=VARCHAR},
+      additional_comment_content = #{additionalCommentContent,jdbcType=VARCHAR},
+      additional_comment_time = #{additionalCommentTime,jdbcType=TIMESTAMP},
+      additional_comment_image = #{additionalCommentImage,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

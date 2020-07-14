@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neu.quickapp.mapper.SystemManagerAuthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.neu.quickapp.pojo.SystemManagerAuthority" >
+    <id column="systm_manager" property="systmManager" jdbcType="INTEGER" />
+    <id column="authority" property="authority" jdbcType="INTEGER" />
+    <id column="shop_manager" property="shopManager" jdbcType="INTEGER" />
+    <id column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    systm_manager, authority, shop_manager, time, is_delete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neu.quickapp.pojo.SystemManagerAuthorityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from system_manager_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.neu.quickapp.pojo.SystemManagerAuthorityKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_manager_authority
+    where systm_manager = #{systmManager,jdbcType=INTEGER}
+      and authority = #{authority,jdbcType=INTEGER}
+      and shop_manager = #{shopManager,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.neu.quickapp.pojo.SystemManagerAuthorityKey" >
+    delete from system_manager_authority
+    where systm_manager = #{systmManager,jdbcType=INTEGER}
+      and authority = #{authority,jdbcType=INTEGER}
+      and shop_manager = #{shopManager,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neu.quickapp.pojo.SystemManagerAuthorityExample" >
+    delete from system_manager_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neu.quickapp.pojo.SystemManagerAuthority" >
+    insert into system_manager_authority (systm_manager, authority, shop_manager, 
+      time, is_delete)
+    values (#{systmManager,jdbcType=INTEGER}, #{authority,jdbcType=INTEGER}, #{shopManager,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neu.quickapp.pojo.SystemManagerAuthority" >
+    insert into system_manager_authority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="systmManager != null" >
+        systm_manager,
+      </if>
+      <if test="authority != null" >
+        authority,
+      </if>
+      <if test="shopManager != null" >
+        shop_manager,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="systmManager != null" >
+        #{systmManager,jdbcType=INTEGER},
+      </if>
+      <if test="authority != null" >
+        #{authority,jdbcType=INTEGER},
+      </if>
+      <if test="shopManager != null" >
+        #{shopManager,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neu.quickapp.pojo.SystemManagerAuthorityExample" resultType="java.lang.Integer" >
+    select count(*) from system_manager_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update system_manager_authority
+    <set >
+      <if test="record.systmManager != null" >
+        systm_manager = #{record.systmManager,jdbcType=INTEGER},
+      </if>
+      <if test="record.authority != null" >
+        authority = #{record.authority,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopManager != null" >
+        shop_manager = #{record.shopManager,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update system_manager_authority
+    set systm_manager = #{record.systmManager,jdbcType=INTEGER},
+      authority = #{record.authority,jdbcType=INTEGER},
+      shop_manager = #{record.shopManager,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      is_delete = #{record.isDelete,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neu.quickapp.pojo.SystemManagerAuthority" >
+    update system_manager_authority
+    <set >
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where systm_manager = #{systmManager,jdbcType=INTEGER}
+      and authority = #{authority,jdbcType=INTEGER}
+      and shop_manager = #{shopManager,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neu.quickapp.pojo.SystemManagerAuthority" >
+    update system_manager_authority
+    set is_delete = #{isDelete,jdbcType=INTEGER}
+    where systm_manager = #{systmManager,jdbcType=INTEGER}
+      and authority = #{authority,jdbcType=INTEGER}
+      and shop_manager = #{shopManager,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </update>
+</mapper>
