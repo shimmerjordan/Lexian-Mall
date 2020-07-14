@@ -163,4 +163,13 @@
         ID = #{id}
     </update>
 
+    <update id="DeleteJiuFenOrder" parameterType="java.util.HashMap">
+        UPDATE
+        jiufen
+        SET
+        is_delete=1
+        WHERE
+        ID=#{id}
+    </update>
+
 </mapper>

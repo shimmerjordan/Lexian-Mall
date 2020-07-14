@@ -50,7 +50,7 @@ export function DeleteJiuFenOrder(data) {
   })
 }
 
-// 纠纷订单就行处理，更新订单状态
+// 纠纷订单处理，更新订单状态
 export function UpdateJiuFenOrder(data) {
   return myrequest({
     url: '/order/UpdateJiuFenOrder',

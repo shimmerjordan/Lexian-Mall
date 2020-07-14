@@ -9,9 +9,9 @@
       <!-- <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
       </el-select> -->
-      <el-select v-model="listQuery.sort" style="left:10px;width: 140px" class="filter-item" @change="handleFilter">
+      <!-- <el-select v-model="listQuery.sort" style="left:10px;width: 140px" class="filter-item" @change="handleFilter">
         <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
-      </el-select>
+      </el-select> -->
       <el-button v-waves class="filter-item" type="primary" style="margin-left: 20px;" icon="el-icon-search" @click="handleFilter">
         搜索
       </el-button>
@@ -21,9 +21,6 @@
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
         导出
       </el-button>
-      <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-        商品描述
-      </el-checkbox>
     </div>
 
     <el-table
