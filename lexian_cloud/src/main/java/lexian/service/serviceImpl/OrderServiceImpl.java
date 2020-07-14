@@ -29,8 +29,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAllOrder(){
-        return orderMapper.getAllOrder();
+    public List<Order> getAllOrder(Map<String,Object> map){
+        return orderMapper.getAllOrder(map);
     }
 
     @Override

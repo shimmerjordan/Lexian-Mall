@@ -2,7 +2,6 @@ package lexian.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import lexian.entity.Commodity;
 import lexian.entity.JiuFenOrder;
 import lexian.entity.Order;
 import lexian.service.OrderService;
@@ -14,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.SimpleTimeZone;
 
 @RestController
 @RequestMapping("/order")
@@ -26,9 +24,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/getAllOrder")
-    public List<Order> getAllOrder(){
-        return orderService.getAllOrder();
+    @PostMapping("/getAllOrder")
+    public PageInfo<Order> getAllOrder(@RequestBody Map<String,Object> map){
+        int pageNo = (int)map.get("page");
+        int limit = (int)map.get("limit");
+        PageHelper.startPage(pageNo,limit);
+        return new PageInfo<>(orderService.getAllOrder(map));
     }
 
     @PostMapping("/getDataRange")

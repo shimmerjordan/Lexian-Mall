@@ -104,7 +104,7 @@
 	<select id="selectById" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
 		SELECT c.*,w.money_amount as moneyAmount,w.wallet_pwd as
-		walletPwd FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
+		walletPwd,w.id as walletId FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
 		where c.ID = #{id}
 	</select>
 
