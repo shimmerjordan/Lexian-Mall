@@ -23,15 +23,10 @@ mybatis:
   type-aliases-package: lexian.entity
   mapper-locations: classpath:mybatis/mappers/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
+
 #乱码
 server:
-  port: 8088
-  servlet:
-    #context-path: /ocp
-    encoding:
-      charset: UTF-8
-      force: true
-      enabled: true
+  port: 8081
 
 #pagehelper分页插件
 pagehelper:
