@@ -2,6 +2,7 @@ package lexian.mapper;
 
 import lexian.entity.Customer;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.One;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public interface CustomerMapper {
     int checkNameExistance(Map<String,Object> map);
     int checkPhoneExistance(Map<String,Object> map);
     List<Customer> loginByName(Map<String,Object> map);
-    
+    boolean setCertificationId(Map<String, Object>map);
     Customer selectById(String id);
 }

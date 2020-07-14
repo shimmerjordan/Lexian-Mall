@@ -107,4 +107,14 @@
 		walletPwd FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
 		where c.ID = #{id}
 	</select>
+
+	<update id="setCertificationId" parameterType="java.util.HashMap">
+		UPDATE
+		  customer
+		SET
+		  certification_id = #{certificationId},
+		  name = #{name}
+		WHERE
+		  ID = #{customerId}
+	</update>
 </mapper>

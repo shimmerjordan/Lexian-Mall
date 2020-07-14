@@ -57,4 +57,9 @@ public class CustomerController {
 		return customerService.getById(uid);
 	}
 
+	@RequestMapping("/setCertificationId")
+	public boolean setCertificationId(@RequestBody Map<String, Object> map){
+		System.out.println(map);
+		return customerService.setCertificationId(map);
+	}
 }

@@ -31,7 +31,7 @@ public class AddressController {
 
 	@RequestMapping("/save")
 	public Boolean save(@RequestBody Address address) {
-
+		System.out.println(address);
 		return addressService.save(address);
 	}
 

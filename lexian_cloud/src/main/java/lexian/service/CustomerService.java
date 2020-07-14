@@ -13,7 +13,7 @@ public interface CustomerService {
     List<Customer> loginByName(Map<String,Object> map);
     int checkPhoneExistance(Map<String,Object> map);
     int checkNameExistance(Map<String,Object> map);
-    
+    boolean setCertificationId(Map<String, Object> map);
     Customer getById(String id);
 
 }
