@@ -77,7 +77,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <!-- <div>
           <el-upload
             action="http:localhost:8080/uploadImg"
             list-type="picture-card"
@@ -89,7 +89,7 @@
           <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
-        </div>
+        </div> -->
       </div>
     </el-form>
   </div>
