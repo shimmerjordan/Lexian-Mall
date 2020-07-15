@@ -19,10 +19,12 @@ public class Commodity extends GoodDetailsModel {
     private Date modify_time;
     private int status;
     private int is_delete;
+    private int index;
+
 
     public Commodity(){}
 
-    public Commodity(int ID, String name, double price, String image, String introduction, int storage, String specification, Date modify_time, int status, int is_delete) {
+    public Commodity(int ID, String name, double price, String image, String introduction, int storage, String specification, Date modify_time, int status, int is_delete, int index) {
         this.ID = ID;
         this.name = name;
         this.price = price;
@@ -33,6 +35,7 @@ public class Commodity extends GoodDetailsModel {
         this.modify_time = modify_time;
         this.status = status;
         this.is_delete = is_delete;
+        this.index = index;
     }
 
 
@@ -115,5 +118,9 @@ public class Commodity extends GoodDetailsModel {
     public void setIs_delete(int is_delete) {
         this.is_delete = is_delete;
     }
+
+    public int getIndex() { return index; }
+
+    public void setIndex(int index) { this.index = index; }
     
 }
