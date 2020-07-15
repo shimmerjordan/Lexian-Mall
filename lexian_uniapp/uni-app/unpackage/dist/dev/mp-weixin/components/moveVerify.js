@@ -1,6 +1,6 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["components/moveVerify"],{
 
-/***/ 230:
+/***/ 231:
 /*!**************************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/main.js?{"page":"components%2FmoveVerify"} ***!
   \**************************************************************************************/
@@ -292,5 +292,5 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[[230,"common/runtime","common/vendor"]]]);
+},[[231,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../.sourcemap/mp-weixin/components/moveVerify.js.map

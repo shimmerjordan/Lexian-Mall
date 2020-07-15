@@ -145,8 +145,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearch = function uniSearch() {__webpack_require__.e(/*! require.ensure | components/lee-search/lee-search */ "components/lee-search/lee-search").then((function () {return resolve(__webpack_require__(/*! ../../components/lee-search/lee-search.vue */ 251));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearch = function uniSearch() {__webpack_require__.e(/*! require.ensure | components/lee-search/lee-search */ "components/lee-search/lee-search").then((function () {return resolve(__webpack_require__(/*! ../../components/lee-search/lee-search.vue */ 252));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -400,6 +399,10 @@ __webpack_require__.r(__webpack_exports__);
 {
   data: function data() {
     return {
+      searchInfo: {
+        Name: '香香' },
+
+      searchList: [],
       titleNViewBackground: '',
       swiperCurrent: 0,
       swiperLength: 0,
@@ -472,6 +475,21 @@ __webpack_require__.r(__webpack_exports__);
                   } });case 2:case "end":return _context.stop();}}}, _callee);}))();
 
     },
+    searchCommodity: function searchCommodity() {var _this2 = this;
+      var searchName = this.searchInfo.Name;
+      uni.request({
+        url: this.apiServer + "/uniIndex/indexSearch",
+        data: { searchName: searchName },
+
+        method: 'POST',
+        success: function success(res) {
+          var searchList = res.data;
+          console.log(res.data);
+          _this2.searchList = searchList;
+        } });
+
+      console.log(this.searchList);
+    },
     //轮播图切换修改背景色
     swiperChange: function swiperChange(e) {
       var index = e.detail.current;
@@ -481,15 +499,15 @@ __webpack_require__.r(__webpack_exports__);
     //详情页
     navToDetailPage: function navToDetailPage(item) {
       //测试数据没有写id，用title代替
-      var id = item.name;
+      var id = item.ID;
       uni.navigateTo({
         url: "/pages/product/product?id=".concat(id) });
 
     },
-    navTo: function navTo() {
-      //跳转到商品列表，后续设置为带参数跳转
+    navTo: function navTo(num) {
+      var id = num;
       uni.navigateTo({
-        url: "/pages/product/list" });
+        url: "/pages/category/category" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

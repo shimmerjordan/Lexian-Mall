@@ -3,11 +3,10 @@
 		<!-- 小程序头部兼容 -->
 		<!-- #ifdef MP -->
 		<!-- 搜索框数据传递与页面跳转待实现-->
-		<view class="welcome">
-		</view>
 		<view class="mp-search-box">
-		  <uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" class="ser-input" type="text" btnLinkInput=true>
-		  </uni-search>
+		  <uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" class="ser-input" type="text"  btnLinkInput=true  v-model="searchInfo.Name"  @confirm="searchCommodity()" >
+		  </uni-search >
+		  <input   class="ser-input" type="text" v-model="searchInfo.Name"  @confirm="searchCommodity()" />
 		 </view>
 		<!-- #endif -->
 		
@@ -31,23 +30,23 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" @click="navTo()">
+			<view class="cate-item" @click="navTo(1)">
 				<image src="/static/temp/i3.png" ></image>
 				<text >品牌美食</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+			<view class="cate-item" @click="navTo(2)">
 				<image src="/static/temp/i5.png"></image>
 				<text >个护美妆</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+			<view class="cate-item" @click="navTo(3)">
 				<image src="/static/temp/i6.png"></image>
 				<text >日用百货</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+			<view class="cate-item" @click="navTo(4)">
 				<image src="/static/temp/i7.png"></image>
 				<text >数码家电</text>
 		     </view>
-			<view class="cate-item" @click="navToe()">
+			<view class="cate-item" @click="navToe(5)">
 				<image src="/static/temp/i8.png"></image>
 				<text >水果生鲜</text>
 			</view>	
@@ -253,6 +252,10 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 	export default {
 		data() {
 			return {
+				searchInfo:{
+					Name: '香香',
+				},
+				searchList: [],
 				titleNViewBackground: '',
 				swiperCurrent: 0,
 				swiperLength: 0,
@@ -325,6 +328,21 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					}
 				});
 			},
+			searchCommodity() {
+				let searchName= this.searchInfo.Name;
+				uni.request({
+					url: this.apiServer + "/uniIndex/indexSearch",
+					data: {searchName: searchName,
+					},
+					method: 'POST',
+					success: (res) => {
+					let searchList = res.data;
+					console.log(res.data);
+					this.searchList = searchList;
+					},
+				});
+					console.log(this.searchList);
+				},
 			//轮播图切换修改背景色
 			swiperChange(e) {
 				const index = e.detail.current;
@@ -334,24 +352,22 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			//详情页
 			navToDetailPage(item) {
 				//测试数据没有写id，用title代替
-				let id = item.name;
+				let id = item.ID;
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
 				})
 			},
-			navTo() {
-				//跳转到商品列表，后续设置为带参数跳转
+			navTo(num) {
+				let id = num;
 				uni.navigateTo({
-					url: `/pages/product/list`
+					url: `/pages/category/category`
 				})
 			},
 		},
 
 		// #ifndef MP
-		// 标题栏input搜索框点击
-		onNavigationBarSearchInputClicked: async function(e) {
-			this.$api.msg('点击了搜索框');
-		},
+		
+		
 		//点击导航栏 buttons 时触发
 		onNavigationBarButtonTap(e) {
 			const index = e.index;

@@ -18,6 +18,7 @@ import shopManage from './modules/shopManage'
 import infoManage from './modules/infoManage'
 import permissionManage from './modules/permissionManage'
 import shopActivityManage from './modules/shopActivityManage'
+import taobaoRouter from './modules/taobaoManage'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -97,6 +98,7 @@ export const constantRoutes = [
   shopManage,
   shopActivityManage,
   infoManage,
+  taobaoRouter,
 
   { path: '*', redirect: '/404', hidden: true }
 ]

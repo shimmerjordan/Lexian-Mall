@@ -163,7 +163,8 @@
 					this.orderList = orderList;
 					}
 				});
-			},
+				},
+
 			loadData(source){
 				this.initOrder();
 				//这里是将订单挂载到tab列表下
@@ -179,6 +180,7 @@
 					//防止重复加载
 					return;
 				}
+				
 				
 				navItem.loadingType = 'loading';
 				

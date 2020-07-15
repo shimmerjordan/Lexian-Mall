@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lexian.mapper.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="lexian.entity.Activity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="beginTime" property="beginTime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="is_delete" property="is_delete" jdbcType="INTEGER" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, name, description, img, beginTime, endTime, type, status, is_delete
+  </sql>
+
+  <select id="getAllActivity" resultType="Activity">
+    select
+    activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
+    from activity
+    where activity.is_delete = 0
+  </select>
+  <update id="updateActivity" parameterType="java.util.HashMap">
+    update activity
+    set
+    activity.`name` = #{name},
+    activity.beginTime = #{beginTime} ,
+    activity.endTime = #{endTime},
+    activity.status = #{status},
+    activity.description = #{description}
+    where
+    activity.id = #{id}
+  </update>
+  <update id="deleteActivity">
+    update activity
+    set activity.is_delete = 1
+    where activity.id = #{id}
+  </update>
+
+  <update id="updateActivityStatus0">
+    update activity
+    set activity.status = 1
+    where activity.id = #{id}
+  </update>
+  <update id="updateActivityStatus1">
+    update activity
+    set activity.status = 0
+    where activity.id = #{id}
+  </update>
+
+  <select id="getIndexActivity" resultType="Activity">
+    select
+    activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
+    from activity
+    where activity.is_delete = 0
+    AND activity.id > 10
+  </select>
+
+  <select id="getMaxActivityId" resultType="java.lang.Integer">
+    select max(activity.id)
+    from activity
+  </select>
+
+  <insert id="insertActivity" parameterType="java.util.HashMap">
+  insert into
+  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete)
+  values
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
+  </insert>
+
+
+  <select id="searchActivityByInformation" resultType="Activity" parameterType="java.lang.String">
+    select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
+    from activity
+    inner join activity_shop on activity.id = activity_shop.activity_id
+    inner join shop on shop.id = activity_shop.shop_id
+    <where>
+      activity.is_delete = 0 and activity_shop.is_delete = 0
+      <if test="id != null">
+        and activity.id = #{id}
+      </if>
+      <if test="name != '%null%'">
+        and activity.`name` like #{name}
+      </if>
+      <if test="beginTime != null and endTime != null">
+        and activity.beginTime <![CDATA[>=]]>#{beginTime} and activity.endTime <![CDATA[<=]]>#{endTime}
+      </if>
+      <if test="status != null ">
+        and activity.status = #{status}
+      </if>
+    </where>
+  </select>
+
+</mapper>
