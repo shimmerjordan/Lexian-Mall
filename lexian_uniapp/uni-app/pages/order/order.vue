@@ -80,7 +80,8 @@
 <script>
 	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
 	import empty from "@/components/empty";
-	import Json from '@/Json';
+	import common from '@/store/common.js'
+	// import Json from '@/Json';
 	export default {
 		components: {
 			uniLoadMore,
@@ -88,6 +89,7 @@
 		},
 		data() {
 			return {
+				userInfo: {},
 				tabCurrentIndex: 0,
 				orderList: [],
 				navList: [{
@@ -129,6 +131,9 @@
 			 * 修复app端点击除全部订单外的按钮进入时不加载数据的问题
 			 * 替换onLoad下代码即可
 			 */
+			this.userInfo = common.getGlobalUserInfo();
+			// console.log("本地UserInfo",this.userInfo)
+			
 			this.tabCurrentIndex = +options.state;
 			// #ifndef MP
 			this.loadData()
@@ -142,20 +147,25 @@
 		},
 		 
 		methods: {
+			
 			//获取订单列表
 			initOrder(){
 				uni.request({
-					url: this.apiServer + "/oreder/userorder",
+					url: this.apiServer + "/order/customerOrder",
 					//url:'http://localhost:8080/..."' ,
-					data:'userinfo.ID',
+					data:{
+						"customerId": this.userInfo.ID
+					},
 					method: 'POST',
 					success: (res) => {
 					let orderList = res.data;
+					console.log("orderList", orderList);
 					this.orderList = orderList;
 					}
 				});
 			},
 			loadData(source){
+				this.initOrder();
 				//这里是将订单挂载到tab列表下
 				let index = this.tabCurrentIndex;
 				let navItem = this.navList[index];
@@ -173,7 +183,7 @@
 				navItem.loadingType = 'loading';
 				
 				setTimeout(()=>{
-					let orderList = Json.orderList.filter(item=>{
+					let orderList = this.orderList.filter(item=>{
 						//添加不同状态下订单的表现形式
 						item = Object.assign(item, this.orderStateExp(item.state));
 						//演示数据所以自己进行状态筛选

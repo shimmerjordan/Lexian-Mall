@@ -51,6 +51,12 @@ public class OrderController {
     @PostMapping("/userOrder")
     public List<Order> getUserOrder(String userID) { return orderService.getUserOrder(userID); }
 
+    @PostMapping("/customerOrder")
+    public List<Order> getCustomerOrder(@RequestBody Map<String, Object> map) {
+        List<Order> result = orderService.getCustomerOrder(map);
+        return result;
+    }
+
     @PostMapping("/jiufenOrder")
     public PageInfo<JiuFenOrder> getJiuFenOrder(@RequestBody Map<String,Object> map){
         System.out.println(map);

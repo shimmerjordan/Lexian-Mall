@@ -7,6 +7,7 @@ import lexian.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -65,6 +66,23 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getUserOrder(String userID) {
         return orderMapper.getUserOrder(userID);
+    }
+
+    @Override
+    public List<Order> getCustomerOrder(Map<String, Object> map) {
+        List<Order> result = null;
+        Timestamp time;
+        int state;
+        List<HashMap> goodList;
+
+
+        List<Order> temp = orderMapper.getCustomerOrder(map);
+        for(int i = 0; i < temp.size(); i++){
+
+        }
+
+
+        return temp;
     }
 
     @Override
