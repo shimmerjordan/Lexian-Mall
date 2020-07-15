@@ -209,7 +209,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 239:
+/***/ 240:
 /*!*********************************************************************************!*\
   !*** D:/中软实训/Group/lexian_uniapp/uni-app/main.js?{"page":"components%2Fpopup"} ***!
   \*********************************************************************************/
@@ -225,5 +225,5 @@ createPage(_popup.default);
 
 /***/ })
 
-},[[239,"common/runtime","common/vendor"]]]);
+},[[240,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../.sourcemap/mp-weixin/components/popup.js.map

@@ -24,6 +24,10 @@
 		(#{commodityId}, #{customerId}, #{browsingTime}, #{isDelete}, #{date})
 	</insert>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 	<select id="getHistory" parameterType="java.lang.String">
 		SELECT
 		browsing_record.browsing_time,
@@ -38,6 +42,11 @@
 		browsing_record.customer_id = #{UserID}
 		AND browsing_record.is_delete= 0
 	</select>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 
 
 </mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lexian.mapper.ShopManagerMapper" >
+  <resultMap id="BaseResultMap" type="java.util.List" >
+    <id column="shop_manager.id" property="id"/>
+    <result column="shop_manager.name" property="name"  />
+    <result column="shop_manager.age" property="age"/>
+    <result column="shop_manager.sex" property="sex"/>
+    <result column="shop_manager.pwd" property="pwd" />
+    <result column="shop_manager.nick_name" property="nick_name"/>
+    <result column="shop_manager.user_image" property="user_image"/>
+    <result column="shop_manager.birthday" property="birthday"/>
+    <result column="shop_manager.login_name" property="login_name" />
+    <result column="shop_manager.phone" property="phone"/>
+    <result column="shop_manager.is_delete" property="is_delete"/>
+  </resultMap>
+  <select id="searchShopManager"  resultType="java.util.Map" parameterType="java.util.HashMap">
+    select
+    shop_manager.ID,shop_manager.name,shop_manager.age, shop_manager.sex, shop_manager.pwd,shop_manager.nick_name, shop_manager.user_image, shop_manager.birthday,
+    shop_manager.phone, shop_manager.login_name,shop_manager.is_delete
+    from shop_manager
+    where shop_manager.ID = #{id} and shop_manager.is_delete = 0
+  </select>
+  <update id="updateShopManager" parameterType="java.util.HashMap">
+    update shop_manager
+    set
+    shop_manager.name = #{name},
+    shop_manager.sex = #{sex},
+    shop_manager.pwd = #{pwd},
+    shop_manager.birthday = #{birthday},
+    shop_manager.phone = #{phone},
+    shop_manager.login_name = #{login_name}
+    where  shop_manager.ID = #{id}
+  </update>
+  <update id="deleteShopManager" parameterType="java.util.HashMap">
+    update shop_manager
+    set shop_manager.is_delete = 1
+    where shop_manager.ID = #{id}
+  </update>
+</mapper>

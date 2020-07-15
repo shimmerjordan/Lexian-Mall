@@ -101,6 +101,4 @@ public class ActivityServiceImpl implements ActivityService {
             return null;
         }
     }
-
-
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<<<<<<< HEAD
 <mapper namespace="lexian.mapper.CartMapper">
 	<resultMap id="BaseResultMap" type="lexian.entity.Cart">
 		<result column="id" property="id" jdbcType="INTEGER" />
@@ -47,6 +48,44 @@
 		cart.customer_id = #{customerID}
 		AND cart.isDelete = 0
 	</select>
+=======
+<mapper namespace="lexian.mapper.CartMapper" >
+
+  <resultMap id="cart_map" type="CartList" >
+    <id column="id" property="id"/>
+    <result property="name" column="commodity.`name`" />
+    <result property="price" column="commodity.price" />
+    <result property="image" column="commodity.image" />
+    <result property="storage" column="commodity.`storage`" />
+
+    <result property="commodityId" column="cart.commodity_id" />
+    <result property="commodityQuantity" column="cart.`commodity_quantity`" />
+    <result property="customerId" column="cart.`customer_id`" />
+    <result property="specsName" column="specs.`specs_name`" />
+  </resultMap>
+  <select id="loadCart" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT
+      (@i :=@i + 1) AS id,
+      commodity.`name`,
+      commodity.price,
+      commodity.image,
+      commodity.`storage`,
+      cart.`commodity_id`,
+      cart.`commodity_quantity`,
+      cart.`customer_id`,
+      cart.`id` as cartID,
+      specs.`specs_name`
+    FROM
+        commodity
+    INNER JOIN cart ON cart.commodity_id = commodity.ID
+    INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID
+    INNER JOIN specs ON specs.id = specs_commodity.specs_id,
+    (SELECT @i := 0) AS it
+    WHERE
+      cart.customer_id = #{customerID}
+      AND cart.isDelete = 0
+  </select>
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 
 	<insert id="insert" parameterType="lexian.entity.Cart">
 		insert
@@ -69,14 +108,20 @@
 	</select>
 
 	<update id="update" parameterType="lexian.entity.Cart">
+<<<<<<< HEAD
 		update cart set customer_id =
 		#{customerId},commodity_id =
 		#{commodityId},commodity_quantity =
 		#{commodityQuantity}
+=======
+		update cart set customer_id = #{customerId},commodity_id =
+		#{commodityId},commodity_quantity = #{commodityQuantity}
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 		where id = #{id}
 
 	</update>
 
+<<<<<<< HEAD
 
 	<select id="selectCommodityByCartIds" resultType="lexian.entity.Commodity"
 		parameterType="java.util.List">
@@ -153,5 +198,36 @@
 			#{item}
 		</foreach>
 	</update>
+=======
+  <update id="updateQuantity" parameterType="java.util.HashMap">
+    UPDATE
+      cart
+    SET
+      commodity_quantity = #{commodityQuantity}
+    WHERE
+      commodity_id = #{commodityID} AND
+      customer_id = #{customerID}
+  </update>
+
+  <update id="deleteCartItem" parameterType="java.util.HashMap">
+    UPDATE
+      cart
+    SET
+      isDelete = 1
+    WHERE
+      commodity_id = #{commodityID} AND
+      commodity_quantity = #{commodityQuantity} AND
+      customer_id = #{customerID}
+  </update>
+
+    <update id="clearCart" parameterType="java.util.List">
+        update cart
+        set cart.isDelete = 1
+        where cart.`id` in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 
 </mapper>

@@ -24,5 +24,5 @@ public interface CommodityService {
 	List<Category> getAllCategory();
 
 	List<Commodity> getAllShopCommodityByName(String name);
-	
+
 }

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="lexian.mapper.CustomerMapper">
+<<<<<<< HEAD
 	<resultMap id="BaseResultMap" type="lexian.entity.Customer">
+=======
+<<<<<<< HEAD
+	<resultMap id="BaseResultMap" type="lexian.entity.Customer">
+=======
+	<resultMap id="BaseResultMap" type="Customer">
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 		<id column="ID" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -19,10 +27,21 @@
 
 	<!-- 注册使用，添加手机、登录名和密码，其他自增或默认 -->
 	<insert id="addNewCustomer" parameterType="java.util.HashMap">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 		insert into customer
 		(phone, pwd, login_name, nick_name)
 		values (#{mobile}, #{password},
 		#{loginName}, #{nickName})
+<<<<<<< HEAD
+=======
+=======
+		insert into customer (phone, pwd, login_name, nick_name)
+		values (#{mobile}, #{password}, #{loginName}, #{nickName})
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 	</insert>
 
 	<select id="getPwdByName" parameterType="java.util.HashMap"
@@ -61,8 +80,17 @@
 		select IFNULL(
 		(select id
 		from customer
+<<<<<<< HEAD
 		where phone =
 		#{mobile}
+=======
+<<<<<<< HEAD
+		where phone =
+		#{mobile}
+=======
+		where phone = #{mobile}
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 		), 0)
 	</select>
 
@@ -71,11 +99,29 @@
 		select IFNULL(
 		(select id
 		from customer
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 		where login_name =
 		#{loginName}
 		), 0)
 	</select>
 
+<<<<<<< HEAD
+=======
+=======
+		where login_name = #{loginName}
+		), 0)
+	</select>
+
+
+
+
+
+
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 	<update id="updateCustomerPwd" parameterType="java.util.HashMap">
 		update customer
 		set
@@ -83,6 +129,13 @@
 		where phone = #{mobile}
 	</update>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
 		update customer
 		set name = #{name,jdbcType=VARCHAR},
@@ -100,10 +153,15 @@
 		where ID =
 		#{id,jdbcType=INTEGER}
 	</update>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 
 	<select id="selectById" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
 		SELECT c.*,w.money_amount as moneyAmount,w.wallet_pwd as
+<<<<<<< HEAD
 		walletPwd,w.id as walletId FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
 		where c.ID = #{id}
 	</select>
@@ -117,4 +175,11 @@
 		WHERE
 		  ID = #{customerId}
 	</update>
+=======
+		walletPwd FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
+		where c.ID = #{id}
+	</select>
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
 </mapper>

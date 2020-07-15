@@ -2,20 +2,49 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <profile default="true" name="Default" enabled="true" />
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <module name="lexian-backend" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lexian-backend" target="1.8" />
+=======
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
         <module name="backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend" target="1.8" />
+<<<<<<< HEAD
+=======
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+<<<<<<< HEAD
       <module name="backend" options="-parameters" />
+=======
+<<<<<<< HEAD
+      <module name="lexian-backend" options="-parameters" />
+=======
+      <module name="backend" options="-parameters" />
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+>>>>>>> c8a72d19cc8ce11718aa483687c4c56ab041c40b
     </option>
   </component>
 </project>

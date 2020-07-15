@@ -1,20 +1,22 @@
 package lexian.service.serviceImpl;
 
-import lexian.entity.BrowsingRecord;
-import lexian.mapper.BrowsingRecordMapper;
+import lexian.entity.UniBrowsingRecord;
+import lexian.mapper.UniBrowsingRecordMapper;
 import lexian.service.UniUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class UniUserServiceImpl implements UniUserService {
-    private BrowsingRecordMapper browsingRecordMapper;
+
+    private UniBrowsingRecordMapper uniBrowsingRecordMapper;
     @Autowired
-    public void setCommodityMapper(BrowsingRecordMapper browsingRecordMapper) {
-        this.browsingRecordMapper = browsingRecordMapper;
+    public void setUniBrowsingRecordMapper(UniBrowsingRecordMapper uniBrowsingRecordMapper) {
+        this.uniBrowsingRecordMapper = uniBrowsingRecordMapper;
     }
     @Override
-    public List<BrowsingRecord> getHistory(String userID) {
-        return browsingRecordMapper.getHistory(userID);
+    public List<UniBrowsingRecord> getHistory(String userID) {
+        return uniBrowsingRecordMapper.getHistory(userID);
     }
 }
