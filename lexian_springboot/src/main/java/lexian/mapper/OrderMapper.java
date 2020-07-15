@@ -18,6 +18,7 @@ public interface OrderMapper {
     void updateOrder(Map<String,Object> m);
     int updateOrder_Item(Map<String,Object> m);
     List<Order> getUserOrder(String userID);
+    List<Order> getCustomerOrder(Map<String, Object> map);
     List<JiuFenOrder> getJiuFenOrder();
     List<JiuFenOrder> getJiuFenOrderByID(Integer id);
     int DeleteJiuFenOrder(Map<String,Object> map);
