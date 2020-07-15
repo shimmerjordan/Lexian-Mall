@@ -1,0 +1,8 @@
+diff a/lexian_springboot/src/main/java/lexian/controller/ActivityController.java b/lexian_springboot/src/main/java/lexian/controller/ActivityController.java	(rejected hunks)
+@@ -0,6 +0,10 @@
+         return activityService.updateActivityStatus1(map);
+     }
+
+     @GetMapping("/getMaxActivityId")
+     public int getMaxActivityId() {
+         return activityService.getMaxActivityId();

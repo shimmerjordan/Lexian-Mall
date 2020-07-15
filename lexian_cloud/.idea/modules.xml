@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/lexian-backend.iml" filepath="$PROJECT_DIR$/lexian-backend.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/backend.iml" filepath="$PROJECT_DIR$/backend.iml" />
+>>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
+    </modules>
+  </component>
+</project>

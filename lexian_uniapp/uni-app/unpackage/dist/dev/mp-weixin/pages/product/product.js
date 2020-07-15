@@ -97,13 +97,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var f0 = _vm._f("timeStamp")(_vm.onecomment.commentTime)
+  var l0 = _vm.__map(_vm.commentList, function(comment, cIndex) {
+    var f0 = _vm._f("timeStamp")(comment.commentTime)
+
+    return {
+      $orig: _vm.__get_orig(comment),
+      f0: f0
+    }
+  })
 
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
-        f0: f0
+        l0: l0
       }
     }
   )
@@ -140,7 +147,23 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o) {if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var it,normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var share = function share() {__webpack_require__.e(/*! require.ensure | components/share */ "components/share").then((function () {return resolve(__webpack_require__(/*! @/components/share */ 258));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o) {if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var it,normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var share = function share() {__webpack_require__.e(/*! require.ensure | components/share */ "components/share").then((function () {return resolve(__webpack_require__(/*! @/components/share */ 259));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -332,8 +355,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       specClass: 'none',
+      speccClass: 'none',
       specSelected: [],
-
       favorite: true,
       shareList: [],
       imgList: [],
@@ -346,65 +369,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-      specList: [
-      {
-        id: 1,
-        name: '尺寸' },
-
-      {
-        id: 2,
-        name: '颜色' }],
-
-
-      specChildList: [
-      {
-        id: 1,
-        pid: 1,
-        name: 'XS' },
-
-      {
-        id: 2,
-        pid: 1,
-        name: 'S' },
-
-      {
-        id: 3,
-        pid: 1,
-        name: 'M' },
-
-      {
-        id: 4,
-        pid: 1,
-        name: 'L' },
-
-      {
-        id: 5,
-        pid: 1,
-        name: 'XL' },
-
-      {
-        id: 6,
-        pid: 1,
-        name: 'XXL' },
-
-      {
-        id: 7,
-        pid: 2,
-        name: '白色' },
-
-      {
-        id: 8,
-        pid: 2,
-        name: '珊瑚粉' },
-
-      {
-        id: 9,
-        pid: 2,
-        name: '草木绿' }],
-
-
+      specList: [],
+      specChildList: [],
       commodity: {},
-      onecomment: {} };
+      commentList: [],
+      commentCount: 0,
+      specsCount: 0,
+      uid: -1 };
 
   },
   onLoad: function onLoad(options) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var id, uid, _this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
@@ -412,6 +383,7 @@ __webpack_require__.r(__webpack_exports__);
               //接收传值,id里面放的是标题，因为测试数据并没写id 
               id = options.id;
               uid = options.uid ? options.uid : "";
+              _this2.uid = uid;
               _this = _this2;
               if (id) {
                 uni.request({
@@ -422,8 +394,21 @@ __webpack_require__.r(__webpack_exports__);
                     _this.imgList = [];
                     _this.imgList.push({ "src": res.data.image });
                     var commentList = res.data.commentList;
+                    _this.commentCount = commentList.length;
                     if (commentList && commentList.length > 0) {
-                      _this.onecomment = res.data.commentList[0];
+                      _this.commentList = res.data.commentList;
+                    }
+                    var specsList = res.data.specsList;
+                    _this.specsCount = specsList.length;
+                    if (_this.specsCount > 0) {
+                      specsList.forEach(function (val, index) {
+                        if (val.pid == 0) {
+                          _this.specList.push(val);
+                        } else {
+                          _this.specChildList.push(val);
+                        }
+
+                      });
                     }
 
                   } });
@@ -441,8 +426,8 @@ __webpack_require__.r(__webpack_exports__);
                       break; //forEach不能使用break
                     }
                   }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
-              });_context.next = 7;return (
-                _this2.$api.json('shareList'));case 7:_this2.shareList = _context.sent;case 8:case "end":return _context.stop();}}}, _callee);}))();
+              });_context.next = 8;return (
+                _this2.$api.json('shareList'));case 8:_this2.shareList = _context.sent;case 9:case "end":return _context.stop();}}}, _callee);}))();
   },
   methods: {
     //规格弹窗开关
@@ -456,12 +441,22 @@ __webpack_require__.r(__webpack_exports__);
         this.specClass = 'show';
       }
     },
+    toggleCoupon: function toggleCoupon() {var _this4 = this;
+      if (this.speccClass === 'show') {
+        this.speccClass = 'hide';
+        setTimeout(function () {
+          _this4.speccClass = 'none';
+        }, 250);
+      } else if (this.speccClass === 'none') {
+        this.speccClass = 'show';
+      }
+    },
     //选择规格
-    selectSpec: function selectSpec(index, pid) {var _this4 = this;
+    selectSpec: function selectSpec(index, pid) {var _this5 = this;
       var list = this.specChildList;
       list.forEach(function (item) {
         if (item.pid === pid) {
-          _this4.$set(item, 'selected', false);
+          _this5.$set(item, 'selected', false);
         }
       });
 
@@ -475,7 +470,7 @@ __webpack_require__.r(__webpack_exports__);
       this.specSelected = [];
       list.forEach(function (item) {
         if (item.selected === true) {
-          _this4.specSelected.push(item);
+          _this5.specSelected.push(item);
         }
       });
 
@@ -492,6 +487,13 @@ __webpack_require__.r(__webpack_exports__);
       uni.navigateTo({
         url: "/pages/order/createOrder" });
 
+    },
+    cart: function cart() {
+      if (this.uid) {
+
+      } else {
+        console.log("登陆");
+      }
     },
     stopPrevent: function stopPrevent() {} },
 
