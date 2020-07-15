@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f9a25fe5-c848-4a8a-bde6-0babf97f65a1" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/classes/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="spring-beans.schema" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getAllShopCommodity</find>
+      <find>HE</find>
+      <find>香</find>
+      <find>香香</find>
+      <find>HEAD</find>
+      <find>DeleteJiuFenOrder</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/lexian/entity/ShopGood.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/BackendApplication.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/entity/CodeMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/entity/Commodity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/ActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/controller/ActivityController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mappers/ActivityMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mappers/CustomerMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/entity/JiuFenOrder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/ActivityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/mapper/ActivityMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/CommodityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/CommodityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/mapper/CommodityMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/controller/ShopCommodityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/mapper/OrderMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mappers/CommodityMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/entity/taobaoData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/TaobaoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/TaobaoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/mapper/TaobaoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mappers/TaobaoData.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/lexian/controller/TaobaoDataController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mappers/TaobaoDataMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yaml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mappers/OrderMapper.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="216" />
+    <option name="y" value="136" />
+    <option name="width" value="1620" />
+    <option name="height" value="1030" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lexian_cloud" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lexian_springboot" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="lexian.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f9a25fe5-c848-4a8a-bde6-0babf97f65a1" name="Default Changelist" comment="" />
+      <created>1593857086443</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593857086443</updated>
+      <workItem from="1593857089952" duration="2273000" />
+      <workItem from="1593997334413" duration="10058000" />
+      <workItem from="1594029169680" duration="308000" />
+      <workItem from="1594050358021" duration="1049000" />
+      <workItem from="1594084706468" duration="9758000" />
+      <workItem from="1594110929327" duration="11153000" />
+      <workItem from="1594127982379" duration="3546000" />
+      <workItem from="1594132606745" duration="124000" />
+      <workItem from="1594132819394" duration="4550000" />
+      <workItem from="1594173705447" duration="1982000" />
+      <workItem from="1594176018282" duration="1107000" />
+      <workItem from="1594187683434" duration="6101000" />
+      <workItem from="1594221468647" duration="321000" />
+      <workItem from="1594221992348" duration="584000" />
+      <workItem from="1594257379405" duration="8687000" />
+      <workItem from="1594381846894" duration="4249000" />
+      <workItem from="1594437224603" duration="22838000" />
+      <workItem from="1594560854440" duration="1140000" />
+      <workItem from="1594650969611" duration="1067000" />
+      <workItem from="1594708582681" duration="8008000" />
+      <workItem from="1594720164414" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="98930000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="173" y="109" width="1296" height="824" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32875606" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.296034" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.24787535" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3230563" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.55382437" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.24787535" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/ActivityService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/JiuFenOrder.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/ActivityServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/mapper/ActivityMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/ShopController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/CommodityService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/CartList.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/Category.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/Commodity.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/Order.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/OrderService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/OrderServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/ActivityShopMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/AddressMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/BrowsingRecordMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/CartMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/CategoryMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/CommentMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/CouponMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/CustomerMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/ManagerMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/SpecsCommodityMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/SpecsMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/ActivityController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/SpecsCommodity.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/SpecsService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/SpecsServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/ShopManagerController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/CommentServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/ShopService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/TaobaoService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/mapper/SpecsCommodityMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/ShopManagerServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/mapper/CommodityMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/TaobaoServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/service/serviceImpl/CommodityServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/entity/taobaoData.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/ShopManagerMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/ShopMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/ActivityMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/CommodityMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/ActivityShopController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/ShopCommodityController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/TaobaoDataController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/mapper/TaobaoMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/TaobaoDataMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/controller/OrderController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexian/mapper/OrderMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mappers/OrderMapper.xml" />
+  </component>
+</project>

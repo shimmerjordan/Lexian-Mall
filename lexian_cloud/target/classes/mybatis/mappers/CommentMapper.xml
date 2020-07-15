@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lexian.mapper.CommentMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="lexian.entity.Comment">
+		<id column="comment_id" property="commentId" />
+		<result column="customer_id" property="customerId" />
+		<result column="commodity_id" property="commodityId" />
+		<result column="comment_level" property="commentLevel" />
+		<result column="comment_time" property="commentTime" />
+		<result column="comment_content" property="commentContent" />
+		<result column="comment_image" property="commentImage" />
+		<result column="additional_comment_content" property="additionalCommentContent" />
+		<result column="additional_comment_time" property="additionalCommentTime" />
+		<result column="additional_comment_image" property="additionalCommentImage" />
+		<result column="is_delete" property="isDelete" />
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		comment_id, customer_id, commodity_id, comment_level,
+		comment_time,
+		comment_content, comment_image,
+		additional_comment_content,
+		additional_comment_time,
+		additional_comment_image, is_delete
+	</sql>
+
+	<select id="selectByCommodityId" resultMap="BaseResultMap">
+		select
+		c.comment_id, c.customer_id, c.commodity_id, c.comment_level, c.comment_time,
+		c.comment_content, c.comment_image, c.additional_comment_content,
+		c.additional_comment_time, c.additional_comment_image,
+		c.is_delete,u.name as userName,u.user_image AS userImage
+		from comment c LEFT JOIN
+		customer u on c.customer_id = u.id
+		where commodity_id = #{commodityId}
+	</select>
+
+</mapper>

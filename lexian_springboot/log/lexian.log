@@ -4972,3 +4972,577 @@
 [DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
 [DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1e38c68b] was not registered for synchronization because synchronization is not active
 [DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1e38c68b]
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@55a770d1] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@230237829 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 9
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@55a770d1]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ec0d157] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2139996258 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 6
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ec0d157]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47f253db] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1044794197 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47f253db]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5049534] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@197360612 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 9
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5049534]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4afe71df] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1811079297 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 6
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4afe71df]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@131875a5] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@718376592 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@131875a5]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@620ed637] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@793705797 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]==>  Preparing: SELECT count(0) FROM orders INNER JOIN order_item ON order_item.order_id = orders.ID INNER JOIN commodity ON order_item.commodity_id = commodity.ID WHERE isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]==>  Preparing: SELECT orders.ID, orders.date, orders.description, orders.`comment`, orders.`status`, commodity.`name`, order_item.commodity_quantity, commodity.price FROM orders INNER JOIN order_item ON order_item.order_id = orders.ID INNER JOIN commodity ON order_item.commodity_id = commodity.ID WHERE isDelete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]==> Parameters: 20(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]<==      Total: 19
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@620ed637]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1bb1bfb4] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@360075954 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==>  Preparing: SELECT count(0) FROM jiufen WHERE is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==>  Preparing: SELECT ID,customer_id,order_id,shop_id,reason,result,status,handTime,applyTime FROM jiufen WHERE is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1bb1bfb4]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ad0ba87] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@605503917 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.DeleteJiuFenOrder]==>  Preparing: UPDATE jiufen SET is_delete=1 WHERE ID=? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.DeleteJiuFenOrder]==> Parameters: 7(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.DeleteJiuFenOrder]<==    Updates: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ad0ba87]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58d09a99] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1444376563 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==>  Preparing: SELECT count(0) FROM jiufen WHERE is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==>  Preparing: SELECT ID,customer_id,order_id,shop_id,reason,result,status,handTime,applyTime FROM jiufen WHERE is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58d09a99]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@154d753e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1108250568 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==>  Preparing: SELECT count(0) FROM jiufen WHERE is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==>  Preparing: SELECT ID,customer_id,order_id,shop_id,reason,result,status,handTime,applyTime FROM jiufen WHERE is_delete = 0 LIMIT ?, ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==> Parameters: 10(Integer), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@154d753e]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58790992] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@136116837 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==>  Preparing: SELECT count(0) FROM jiufen WHERE is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==>  Preparing: SELECT ID,customer_id,order_id,shop_id,reason,result,status,handTime,applyTime FROM jiufen WHERE is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getJiuFenOrder]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58790992]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23dcff8c] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@582463596 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]==>  Preparing: SELECT count(0) FROM commodity INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id INNER JOIN shop ON shop.ID = shop_commodity.shop_id WHERE commodity.is_delete = 0 AND shop_commodity.isDelete = 0 AND commodity.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]==> Parameters: %%(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id INNER JOIN shop ON shop.ID = shop_commodity.shop_id WHERE commodity.is_delete=0 AND shop_commodity.isDelete=0 AND commodity.name LIKE ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]==> Parameters: %%(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23dcff8c]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@30f74f8f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2131602906 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==>  Preparing: SELECT * FROM category WHERE is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1) 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@30f74f8f]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@752656e2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2078385718 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop_COUNT]==>  Preparing: SELECT count(0) FROM shop INNER JOIN shop_manager_shop ON shop.id = shop_manager_shop.shop_id INNER JOIN shop_manager ON shop_manager.id = shop_manager_shop.shop_manager_id WHERE shop.isDelete = 0 AND shop_manager_shop.is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop]==>  Preparing: select shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description from shop inner join shop_manager_shop on shop.id = shop_manager_shop.shop_id inner join shop_manager on shop_manager.id = shop_manager_shop.shop_manager_id where shop.isDelete = 0 and shop_manager_shop.is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop]==> Parameters: 20(Integer)
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop]<==      Total: 11
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@752656e2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a81d136] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1418062818 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getMaxShopId]==>  Preparing: select max(shop.id) from shop 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getMaxShopId]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getMaxShopId]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a81d136]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4cd5e3f2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1747079529 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity_COUNT]==>  Preparing: SELECT count(0) FROM activity WHERE activity.is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity]==>  Preparing: select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status from activity where activity.is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity]==> Parameters: 20(Integer)
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity]<==      Total: 13
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4cd5e3f2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bac71af] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@639193815 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity_COUNT]==>  Preparing: SELECT count(0) FROM activity WHERE activity.is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity]==>  Preparing: select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status from activity where activity.is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getAllActivity]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bac71af]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d96a7ed] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1155542769 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d96a7ed]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@401abb3a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1418289652 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@401abb3a]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c0ac714] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2038191455 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==>  Preparing: SELECT * FROM category WHERE is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1) 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c0ac714]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74bf9996] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1654844402 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==>  Preparing: SELECT count(0) FROM taobao 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==>  Preparing: SELECT ID,name,price,peopleNum FROM taobao LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.TaobaoMapper.getAlltaobaoGoods]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74bf9996]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@696675b2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1738639086 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]==>  Preparing: SELECT count(0) FROM orders INNER JOIN order_item ON order_item.order_id = orders.ID INNER JOIN commodity ON order_item.commodity_id = commodity.ID WHERE isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]==>  Preparing: SELECT orders.ID, orders.date, orders.description, orders.`comment`, orders.`status`, commodity.`name`, order_item.commodity_quantity, commodity.price FROM orders INNER JOIN order_item ON order_item.order_id = orders.ID INNER JOIN commodity ON order_item.commodity_id = commodity.ID WHERE isDelete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]==> Parameters: 20(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]<==      Total: 19
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@696675b2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5d0281c2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@777537813 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 9
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5d0281c2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b864d74] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@314825559 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 6
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b864d74]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c5563a3] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1976660144 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c5563a3]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@45cc5abb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@221062176 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 9
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@45cc5abb]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@422a781b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1704262503 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 2(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 6
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@422a781b]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@319502b8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@552488497 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==>  Preparing: SELECT system_manager.ID, system_manager.`name`, system_manager.phone, system_manager.age, system_manager.sex, system_manager.nick_name, system_manager.birthday, system_manager.role FROM system_manager WHERE role = ? AND is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]==> Parameters: 3(Integer)
+[DEBUG][20-07-14][lexian.mapper.ManagerMapper.getRoleManagers]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@319502b8]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bc4ad93] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1114816482 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]==>  Preparing: SELECT count(0) FROM orders INNER JOIN order_item ON order_item.order_id = orders.ID INNER JOIN commodity ON order_item.commodity_id = commodity.ID WHERE isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]==>  Preparing: SELECT orders.ID, orders.date, orders.description, orders.`comment`, orders.`status`, commodity.`name`, order_item.commodity_quantity, commodity.price FROM orders INNER JOIN order_item ON order_item.order_id = orders.ID INNER JOIN commodity ON order_item.commodity_id = commodity.ID WHERE isDelete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]==> Parameters: 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.OrderMapper.getAllOrder]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5bc4ad93]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b8b3289] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@436653947 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]==>  Preparing: SELECT count(0) FROM commodity INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id INNER JOIN shop ON shop.ID = shop_commodity.shop_id WHERE commodity.is_delete = 0 AND shop_commodity.isDelete = 0 AND commodity.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]==> Parameters: %%(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id INNER JOIN shop ON shop.ID = shop_commodity.shop_id WHERE commodity.is_delete=0 AND shop_commodity.isDelete=0 AND commodity.name LIKE ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]==> Parameters: %%(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b8b3289]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b9aa2a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1132232891 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==>  Preparing: SELECT * FROM category WHERE is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1) 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b9aa2a]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b22980] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1525067543 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==>  Preparing: SELECT * FROM category WHERE is_delete=0 AND (category.level=0 OR category.level=3 OR category.level=2 OR category.level=1) 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllCategory]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b22980]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ae8f41e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@700450784 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]==>  Preparing: SELECT count(0) FROM commodity INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id INNER JOIN shop ON shop.ID = shop_commodity.shop_id WHERE commodity.is_delete = 0 AND shop_commodity.isDelete = 0 AND commodity.name LIKE ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]==> Parameters: %%(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity INNER JOIN shop_commodity ON commodity.ID = shop_commodity.commodity_id INNER JOIN shop ON shop.ID = shop_commodity.shop_id WHERE commodity.is_delete=0 AND shop_commodity.isDelete=0 AND commodity.name LIKE ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]==> Parameters: %%(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getAllShopCommodityByName]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ae8f41e]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7fd2ec30] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1866821716 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop_COUNT]==>  Preparing: SELECT count(0) FROM shop INNER JOIN shop_manager_shop ON shop.id = shop_manager_shop.shop_id INNER JOIN shop_manager ON shop_manager.id = shop_manager_shop.shop_manager_id WHERE shop.isDelete = 0 AND shop_manager_shop.is_delete = 0 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop_COUNT]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop]==>  Preparing: select shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description from shop inner join shop_manager_shop on shop.id = shop_manager_shop.shop_id inner join shop_manager on shop_manager.id = shop_manager_shop.shop_manager_id where shop.isDelete = 0 and shop_manager_shop.is_delete = 0 LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop]==> Parameters: 20(Integer)
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getAllShop]<==      Total: 11
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7fd2ec30]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7ebb030d] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1237597954 wrapping com.mysql.cj.jdbc.ConnectionImpl@35823211] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getMaxShopId]==>  Preparing: select max(shop.id) from shop 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getMaxShopId]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.ShopMapper.getMaxShopId]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7ebb030d]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@433c6b9b] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@350638513 wrapping com.mysql.cj.jdbc.ConnectionImpl@33c20406] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity WHERE commodity.is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]<==      Total: 181
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@433c6b9b]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f019393]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1425441730 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: null
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 0
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f019393]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f019393]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f019393]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f019393]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69e4ce90] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1187149367 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69e4ce90]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c0db651] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@393267656 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c0db651]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffa3a53]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@17407688 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffa3a53]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffa3a53]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffa3a53]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ffa3a53]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e52155d]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@537123542 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e52155d]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e52155d]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e52155d]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e52155d]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5860f42] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@480202120 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5860f42]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@790e4d9e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1606676695 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity WHERE commodity.is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]<==      Total: 181
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@790e4d9e]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3140d8b7] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1572654263 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3140d8b7]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@308b6928] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@84152941 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==>  Preparing: SELECT count(0) FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN (SELECT sum(commodity_quantity) AS sales, commodity_id FROM order_item GROUP BY commodity_id) oi ON g.id = oi.commodity_id WHERE gc.category_id = ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==> Parameters: 8(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]==>  Preparing: SELECT g.ID, g.modify_time, g.introduction, g.NAME, g.image, g.price, g.STORAGE, g.specification, g.STATUS, g.is_delete, oi.sales FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN ( SELECT sum( commodity_quantity ) AS sales, commodity_id FROM order_item GROUP BY commodity_id ) oi ON g.id = oi.commodity_id where gc.category_id = ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]==> Parameters: 8(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@308b6928]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32ac9aa8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@127093610 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==>  Preparing: SELECT count(0) FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN (SELECT sum(commodity_quantity) AS sales, commodity_id FROM order_item GROUP BY commodity_id) oi ON g.id = oi.commodity_id WHERE gc.category_id = ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==> Parameters: 8(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]==>  Preparing: SELECT g.ID, g.modify_time, g.introduction, g.NAME, g.image, g.price, g.STORAGE, g.specification, g.STATUS, g.is_delete, oi.sales FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN ( SELECT sum( commodity_quantity ) AS sales, commodity_id FROM order_item GROUP BY commodity_id ) oi ON g.id = oi.commodity_id where gc.category_id = ? LIMIT ?, ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]==> Parameters: 8(String), 10(Integer), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32ac9aa8]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4993a1ce] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@343779854 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4993a1ce]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46b3739a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1469970979 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==>  Preparing: SELECT count(0) FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN (SELECT sum(commodity_quantity) AS sales, commodity_id FROM order_item GROUP BY commodity_id) oi ON g.id = oi.commodity_id WHERE gc.category_id = ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==> Parameters: 9(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46b3739a]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c8b8d21] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1125799820 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity WHERE commodity.is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]<==      Total: 181
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c8b8d21]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1dbbe829]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1442206200 wrapping com.mysql.cj.jdbc.ConnectionImpl@47bdb4b] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1dbbe829]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1dbbe829]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1dbbe829]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1dbbe829]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b0aa3a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1629836361 wrapping com.mysql.cj.jdbc.ConnectionImpl@3f16d2e6] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b0aa3a]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@51cdad6f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1520724085 wrapping com.mysql.cj.jdbc.ConnectionImpl@3f16d2e6] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==>  Preparing: SELECT * FROM customer WHERE login_name = ? 
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]==> Parameters: xinyi(String)
+[DEBUG][20-07-14][lexian.mapper.CustomerMapper.loginByName]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@51cdad6f]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a459388]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@728468854 wrapping com.mysql.cj.jdbc.ConnectionImpl@4a1cd164] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a459388]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a459388]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a459388]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a459388]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d727de4]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1638015766 wrapping com.mysql.cj.jdbc.ConnectionImpl@12654693] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d727de4]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d727de4]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d727de4]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d727de4]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58c8159] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@549354751 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58c8159]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@477c37be] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1512700960 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`status`, Commodity.`is_delete` FROM commodity WHERE commodity.is_delete=0 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.getIndexCommodity]<==      Total: 181
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@477c37be]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f0fc640] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1123895704 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f0fc640]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3859d52f] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1751885184 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==>  Preparing: SELECT count(0) FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN (SELECT sum(commodity_quantity) AS sales, commodity_id FROM order_item GROUP BY commodity_id) oi ON g.id = oi.commodity_id WHERE gc.category_id = ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==> Parameters: 8(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]<==      Total: 1
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]==>  Preparing: SELECT g.ID, g.modify_time, g.introduction, g.NAME, g.image, g.price, g.STORAGE, g.specification, g.STATUS, g.is_delete, oi.sales FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN ( SELECT sum( commodity_quantity ) AS sales, commodity_id FROM order_item GROUP BY commodity_id ) oi ON g.id = oi.commodity_id where gc.category_id = ? LIMIT ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]==> Parameters: 8(String), 10(Integer)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId]<==      Total: 10
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3859d52f]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b70b999] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@535880987 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==>  Preparing: select ID, name, description, level, is_delete from category 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]==> Parameters: 
+[DEBUG][20-07-14][lexian.mapper.CategoryMapper.selectAll]<==      Total: 41
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b70b999]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e41da7a] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@130656438 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will not be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==>  Preparing: SELECT count(0) FROM commodity g JOIN category_commodity gc ON g.ID = gc.commodity_id LEFT JOIN (SELECT sum(commodity_quantity) AS sales, commodity_id FROM order_item GROUP BY commodity_id) oi ON g.id = oi.commodity_id WHERE gc.category_id = ? 
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]==> Parameters: 9(String)
+[DEBUG][20-07-14][lexian.mapper.CommodityMapper.selectCommodityByCategoryId_COUNT]<==      Total: 1
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e41da7a]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77264232]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@841089470 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77264232]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77264232]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77264232]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77264232]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@184879a2]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1987180798 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@184879a2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@184879a2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@184879a2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@184879a2]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32b48806]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2056724695 wrapping com.mysql.cj.jdbc.ConnectionImpl@21dc12ad] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32b48806]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32b48806]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32b48806]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32b48806]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21c92338]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1681703076 wrapping com.mysql.cj.jdbc.ConnectionImpl@67f2b6c3] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21c92338]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21c92338]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21c92338]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21c92338]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cece78c]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@415580676 wrapping com.mysql.cj.jdbc.ConnectionImpl@67f2b6c3] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cece78c]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cece78c]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cece78c]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5cece78c]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66f92888]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1620771730 wrapping com.mysql.cj.jdbc.ConnectionImpl@67f2b6c3] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66f92888]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66f92888]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66f92888]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66f92888]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19a92b41]
+[DEBUG][20-07-14][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1409103773 wrapping com.mysql.cj.jdbc.ConnectionImpl@67f2b6c3] will be managed by Spring
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==>  Preparing: SELECT (@i :=@i + 1) AS id, commodity.`name`, commodity.price, commodity.image, commodity.`storage`, cart.`commodity_id`, cart.`commodity_quantity`, cart.`customer_id`, cart.`id` as cartID, specs.`specs_name` FROM commodity INNER JOIN cart ON cart.commodity_id = commodity.ID INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID INNER JOIN specs ON specs.id = specs_commodity.specs_id, (SELECT @i := 0) AS it WHERE cart.customer_id = ? AND cart.isDelete = 0 
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]==> Parameters: 1(Integer)
+[DEBUG][20-07-14][lexian.mapper.CartMapper.loadCart]<==      Total: 4
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19a92b41]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19a92b41]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19a92b41]
+[DEBUG][20-07-14][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19a92b41]
