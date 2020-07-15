@@ -26,18 +26,19 @@
     </div>
     <div>
       <el-form :data="user">
-        <el-form-item label="姓名" prop="name">
-          <el-input v-model="user.name" />
+        <el-form-item label="" />
+        <el-form-item label="用户姓名" prop="name">
+          <el-input v-model="user.name" style="width:500px" />
         </el-form-item>
         <el-form-item label="登录名称" prop="login_name">
-          <el-input v-model="user.login_name" />
+          <el-input v-model="user.login_name" style="width:500px" />
         </el-form-item>
         <el-form-item label="登录密码" prop="pwd">
-          <el-input v-model="user.pwd" :type="passw">
+          <el-input v-model="user.pwd" :type="passw" style="width:500px">
             <i slot="suffix" :class="icon" @click="showPass" />
           </el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="sex">
+        <el-form-item label="性别" prop="sex" style="150px">
           <el-radio-group v-model="user.sex">
             <el-radio
               v-for="item in sexList"
@@ -55,17 +56,18 @@
             type="date"
             unlink-panels
             :picker-options="pickerOptions"
+            style="width:500px"
           />
         </el-form-item>
         <el-form-item label="联系电话" prop="phone">
-          <el-input v-model="user.phone" />
+          <el-input v-model="user.phone" style="width:500px" />
         </el-form-item>
 
       </el-form>
     </div>
 
     <div>
-      <el-button type="success" plain :span="4" @click="submit()">更新</el-button>
+      <el-button type="success" plain @click="submit()">更新</el-button>
       <el-button type="primary" plain :span="4" @click="goBack()">取消</el-button>
       <el-button type="danger" plain :span="4" @click="del()">注销</el-button>
     </div>

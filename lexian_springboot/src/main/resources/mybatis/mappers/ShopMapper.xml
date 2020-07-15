@@ -18,9 +18,7 @@
     shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description
     from
     shop
-    inner join shop_manager_shop on shop.id = shop_manager_shop.shop_id
-    inner join shop_manager on shop_manager.id = shop_manager_shop.shop_manager_id
-    where shop.isDelete = 0 and shop_manager_shop.is_delete = 0
+    where shop.isDelete = 0
   </select>
   <select id="getMaxShopId" resultType="java.lang.Integer">
     select max(shop.id)
@@ -45,9 +43,8 @@
     select
     shop.id, shop.`name`, shop.establishTime, shop.kind, shop.status, shop.isDelete, shop.img, shop.tag ,shop.description
     from shop
-    inner join shop_manager_shop on shop.id = shop_manager_shop.shop_id
     <where>
-      shop.isDelete = 0 and shop_manager_shop.is_delete = 0
+      shop.isDelete = 0 
       <if test="name != '%null%' ">
       and shop.`name` like  #{name}
       </if>
@@ -64,9 +61,9 @@
   </select>
   <insert id="insertShop" parameterType="java.util.HashMap">
     insert into
-    shop(id, `name`,establishTime, kind, status, tag , description, isDelete)
+    shop(id, `name`,establishTime, kind, status, tag , description, isDelete, img)
     values
-    (#{shopId}, #{shopName}, #{date},#{unitId}, 0,#{tag}, #{description}, 0)
+    (#{shopId}, #{shopName}, #{date},#{unitId}, 0,#{tag}, #{description}, 0, 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg')
   </insert>
   <update id="updateShopStatus0" parameterType="java.util.List">
     update shop

@@ -47,6 +47,7 @@ public class ShopController {
         }
         else {
             resultList = shopService.getAllShop();
+            System.out.println(resultList);
         }
         PageInfo<Shop> result = new PageInfo<>(resultList);
         System.out.print(result);
