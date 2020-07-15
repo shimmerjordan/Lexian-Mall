@@ -12,6 +12,7 @@ public interface OrderService {
     boolean addOrder(Map<String,Object> map);
     boolean updateOrder(Map<String,Object> map);
     List<Order> getUserOrder(String userID);
+    List<Order> getCustomerOrder(Map<String, Object> map);
     List<JiuFenOrder> getJiuFenOrder();
     List<JiuFenOrder> getJiuFenOrderByID(Integer id);
     boolean DeleteJiuFenOrder(Map<String,Object> map);
