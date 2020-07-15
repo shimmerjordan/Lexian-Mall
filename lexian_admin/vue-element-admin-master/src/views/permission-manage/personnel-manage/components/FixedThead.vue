@@ -23,7 +23,7 @@
             <el-col :span="5">
               <el-row>
                 <el-button type="primary" icon="el-icon-edit" circle size="mini" @click="handleUpdate(scope.row,scope.column)" />
-                <el-button type="danger" icon="el-icon-delete" circle size="mini" />
+                <el-button type="danger" icon="el-icon-delete" circle size="mini" @click="deleteMember(scope.row,scope.column)" />
               </el-row>
             </el-col>
           </el-row>
@@ -77,7 +77,7 @@ const roleOptions = [
   { key: 3, name: 'visitor' }
 ]
 
-import { getAllManager, updateManager, addManager } from '@/api/manager'
+import { getAllManager, updateManager, addManager, deleteManager } from '@/api/manager'
 
 export default {
   data() {
@@ -224,6 +224,32 @@ export default {
           })
         }
         this.initTable()
+      })
+    },
+    deleteMember(row, column) {
+      if (column.label === 'admin') {
+        this.temp = this.admins[row.index]
+      } else if (column.label === 'editor') {
+        this.temp = this.editors[row.index]
+      } else if (column.label === 'visitor') {
+        this.temp = this.visitors[row.index]
+      }
+      deleteManager(this.temp.id).then(response => {
+        if (response.data) {
+          this.$notify({
+            title: 'Success',
+            message: '成功删除人员',
+            type: 'success',
+            duration: 2000
+          })
+        } else {
+          this.$notify({
+            title: 'Fail',
+            message: '人员删除失败',
+            type: 'fail',
+            duration: 2000
+          })
+        }
       })
     }
   }

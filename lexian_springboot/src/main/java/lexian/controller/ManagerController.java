@@ -32,4 +32,9 @@ public class ManagerController {
     public boolean updateManager(@RequestBody Map<String,Object> m){
         return managerService.updateManager(m);
     }
+
+    @GetMapping("/delete")
+    public boolean deleteManager(@RequestParam int index){
+        return managerService.deleteManager(index);
+    }
 }

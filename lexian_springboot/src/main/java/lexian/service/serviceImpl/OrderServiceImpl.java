@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean addOrder(Map<String, Object> map) {
         try {
-            map.put("timestamp",UTCToLocal((String)map.get("timestamp")));
+            map.put("date",UTCToLocal((String)map.get("date")));
             orderMapper.addOrder(map);
             int flag=orderMapper.addOrder_Item(map);
             return flag>0;
@@ -52,13 +52,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean updateOrder(Map<String, Object> map) {
-        try {
-            map.put("timestamp",UTCToLocal((String)map.get("timestamp")));
+        try{
+            map.put("date",UTCToLocal((String)map.get("date")));
             orderMapper.updateOrder(map);
             int flag=orderMapper.updateOrder_Item(map);
             return flag>0;
         }catch (Exception e){
-            return false;
+            return  false;
         }
     }
 
@@ -87,5 +87,11 @@ public class OrderServiceImpl implements OrderService {
     public boolean UpdateJiuFenOrder(Map<String, Object> map) {
         int flag=orderMapper.UpdateJiuFenOrder(map);
         return flag>1;
+    }
+
+    @Override
+    public boolean deleteOrder(int i) {
+        int flag=orderMapper.deleteOrder(i);
+        return flag>0;
     }
 }

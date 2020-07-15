@@ -16,4 +16,5 @@ public interface OrderService {
     List<JiuFenOrder> getJiuFenOrderByID(Integer id);
     boolean DeleteJiuFenOrder(Map<String,Object> map);
     boolean UpdateJiuFenOrder(Map<String,Object> map);
+    boolean deleteOrder(int i);
 }
