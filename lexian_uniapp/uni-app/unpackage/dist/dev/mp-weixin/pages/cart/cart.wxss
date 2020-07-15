@@ -808,7 +808,8 @@
   position: relative;
 }
 .cart-item .image-wrapper image {
-  border-radius: 8rpx;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
 }
 .cart-item .checkbox {
   position: absolute;
@@ -820,7 +821,8 @@
   padding: 4rpx;
   color: #c0c4cc;
   background: #fff;
-  border-radius: 50px;
+  -webkit-border-radius: 50px;
+          border-radius: 50px;
 }
 .cart-item .item-right {
   display: -webkit-box;
@@ -876,8 +878,10 @@
   height: 100rpx;
   padding: 0 30rpx;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
-  border-radius: 16rpx;
+  -webkit-box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 16rpx;
+          border-radius: 16rpx;
 }
 .action-section .checkbox {
   height: 52rpx;
@@ -901,7 +905,8 @@
   font-size: 28rpx;
   color: #fff;
   background: #c0c4cc;
-  border-radius: 0 50px 50px 0;
+  -webkit-border-radius: 0 50px 50px 0;
+          border-radius: 0 50px 50px 0;
   opacity: 0;
   -webkit-transition: .2s;
   transition: .2s;
@@ -938,12 +943,14 @@
 .action-section .confirm-btn {
   padding: 0 38rpx;
   margin: 0;
-  border-radius: 100px;
+  -webkit-border-radius: 100px;
+          border-radius: 100px;
   height: 76rpx;
   line-height: 76rpx;
   font-size: 30rpx;
   background: #fa436a;
-  box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);
+  -webkit-box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);
+          box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);
 }
 /* 复选框选中状态 */
 .action-section .checkbox.checked,
