@@ -55,7 +55,7 @@
 					</text>
 				</view>
 				<button type="primary" class="no-border confirm-btn" @click="createOrder">去结算</button>
-				<button type="primary" open-type="getUserInfo" @click="loadData">载入数据</button>
+				<!-- <button type="primary" open-type="getUserInfo" @click="loadData">载入数据</button> -->
 
 			</view>
 		</view>

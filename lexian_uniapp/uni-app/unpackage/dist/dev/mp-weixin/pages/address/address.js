@@ -158,28 +158,24 @@ var _default =
   data: function data() {
     return {
       source: 0,
-      addressList: [
-      {
-        name: '刘晓晓',
-        mobile: '18666666666',
-        addressName: '贵族皇仕牛排(东城店)',
-        address: '北京市东城区',
-        area: 'B区',
-        default: true },
-      {
-        name: '刘大大',
-        mobile: '18667766666',
-        addressName: '龙回1区12号楼',
-        address: '山东省济南市历城区',
-        area: '西单元302',
-        default: false }] };
-
-
+      uid: 0,
+      addressList: [] };
 
   },
   onLoad: function onLoad(option) {
-    console.log(option.source);
-    this.source = option.source;
+    this.uid = option.uid;
+    var _this = this;
+    uni.request({
+      url: this.apiServer + "/api/address/listByUid?uid=" + _this.uid,
+      dataType: "JSON",
+      success: function success(res) {
+        var result = res.data;
+        result.sort(function (a, b) {
+          return a.addressStatus - b.addressStatus;
+        });
+        _this.addressList = result;
+      } });
+
   },
   methods: {
     //选择地址
@@ -191,16 +187,21 @@ var _default =
       }
     },
     addAddress: function addAddress(type, item) {
+      var id = "";
+      var status = "";
+      if (item) {
+        id = item.id;
+        status = item.addressStatus;
+      }
       uni.navigateTo({
-        url: "/pages/address/addressManage?type=".concat(type, "&data=").concat(JSON.stringify(item)) });
+        url: "/pages/address/addressManage?type=".concat(type, "&uid=").concat(this.uid, "&id=").concat(id, "&status=").concat(status) });
 
     },
     //添加或修改成功之后回调
     refreshList: function refreshList(data, type) {
       //添加或修改后事件，这里直接在最前面添加了一条数据，实际应用中直接刷新地址列表即可
       this.addressList.unshift(data);
-
-      console.log(data, type);
+      console.log(data);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

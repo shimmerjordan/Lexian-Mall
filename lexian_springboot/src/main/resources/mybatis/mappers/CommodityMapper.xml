@@ -14,6 +14,7 @@
 		<result property="specification" column="Commodity.`specification`" />
 		<result property="status" column="Commodity.`status`" />
 		<result property="is_delete" column="Commodity.`is_delete`" />
+		<result property="index" column="Commodity.`index`"/>
 	</resultMap>
 
 	<select id="getAllShopCommodity" resultType="Commodity">
@@ -104,7 +105,7 @@
 		Commodity.`price`,
 		Commodity.`storage`,
 		Commodity.`specification`,
-		Commodity.`status`,
+		Commodity.`index`,
 		Commodity.`is_delete`
 		FROM
 		commodity
@@ -196,7 +197,7 @@
 		Commodity.`price`,
 		Commodity.`storage`,
 		Commodity.`specification`,
-		Commodity.`status`,
+		Commodity.`index`,
 		Commodity.`is_delete`
 		FROM
 		commodity

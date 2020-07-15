@@ -145,7 +145,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearch = function uniSearch() {__webpack_require__.e(/*! require.ensure | components/lee-search/lee-search */ "components/lee-search/lee-search").then((function () {return resolve(__webpack_require__(/*! ../../components/lee-search/lee-search.vue */ 252));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearch = function uniSearch() {__webpack_require__.e(/*! require.ensure | components/lee-search/lee-search */ "components/lee-search/lee-search").then((function () {return resolve(__webpack_require__(/*! ../../components/lee-search/lee-search.vue */ 260));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -400,7 +401,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       searchInfo: {
-        Name: '香香' },
+        Name: '' },
 
       searchList: [],
       titleNViewBackground: '',
@@ -457,17 +458,17 @@ __webpack_require__.r(__webpack_exports__);
                     var goodslist = res.data;
                     _this.goodslist = goodslist;
                     goodslist.forEach(function (item) {
-                      if (!item.status) {
+                      if (item.index == 1) {
                         _this.mGoodsList.push(item); //获取秒杀商品
-                      } else if (item.status == 2) {
+                      } else if (item.index == 2) {
                         _this.tGoodsList.push(item); //获取团购商品
-                      } else if (item.status == 3) {
+                      } else if (item.index == 3) {
                         _this.hGoodsList.push(item); //获取活动1商品
-                      } else if (item.status == 4) {
+                      } else if (item.index == 4) {
                         _this.dGoodsList.push(item); //获取活动2商品
-                      } else if (item.status == 5) {
+                      } else if (item.index == 5) {
                         _this.sGoodsList.push(item); //获取活动3商品
-                      } else if (item.status == 6) {
+                      } else if (item.index == 6) {
                         _this.gGoodsList.push(item); //猜你喜欢
                       } else {
                       }
@@ -484,7 +485,6 @@ __webpack_require__.r(__webpack_exports__);
         method: 'POST',
         success: function success(res) {
           var searchList = res.data;
-          console.log(res.data);
           _this2.searchList = searchList;
         } });
 
@@ -498,7 +498,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     //详情页
     navToDetailPage: function navToDetailPage(item) {
-      //测试数据没有写id，用title代替
       var id = item.ID;
       uni.navigateTo({
         url: "/pages/product/product?id=".concat(id) });
@@ -507,7 +506,7 @@ __webpack_require__.r(__webpack_exports__);
     navTo: function navTo(num) {
       var id = num;
       uni.navigateTo({
-        url: "/pages/category/category" });
+        url: "/pages/product/list" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
