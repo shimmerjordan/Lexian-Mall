@@ -147,7 +147,24 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o) {if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var it,normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var share = function share() {__webpack_require__.e(/*! require.ensure | components/share */ "components/share").then((function () {return resolve(__webpack_require__(/*! @/components/share */ 259));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o) {if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var it,normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var share = function share() {__webpack_require__.e(/*! require.ensure | components/share */ "components/share").then((function () {return resolve(__webpack_require__(/*! @/components/share */ 267));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniNumberBox = function uniNumberBox() {__webpack_require__.e(/*! require.ensure | components/uni-number-box */ "components/uni-number-box").then((function () {return resolve(__webpack_require__(/*! @/components/uni-number-box.vue */ 274));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -350,17 +367,18 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
-    share: share },
+    share: share, uniNumberBox: uniNumberBox },
 
   data: function data() {
     return {
       specClass: 'none',
-      speccClass: 'none',
+      speccClass: 0,
+      specsId: 0,
       specSelected: [],
-      favorite: true,
+      favorite: false,
       shareList: [],
       imgList: [],
-      desc: "\n\t\t\t\t<div style=\"width:100%\">\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd3.alicdn.com/imgextra/i4/479184430/O1CN01nCpuLc1iaz4bcSN17_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd2.alicdn.com/imgextra/i2/479184430/O1CN01gwbN931iaz4TzqzmG_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd3.alicdn.com/imgextra/i3/479184430/O1CN018wVjQh1iaz4aupv1A_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd4.alicdn.com/imgextra/i4/479184430/O1CN01tWg4Us1iaz4auqelt_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd1.alicdn.com/imgextra/i1/479184430/O1CN01Tnm1rU1iaz4aVKcwP_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t</div>\n\t\t\t",
+      desc: "\n\t\t\t\t\t<div style=\"width:100%\">\n\t\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd3.alicdn.com/imgextra/i4/479184430/O1CN01nCpuLc1iaz4bcSN17_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd2.alicdn.com/imgextra/i2/479184430/O1CN01gwbN931iaz4TzqzmG_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd3.alicdn.com/imgextra/i3/479184430/O1CN018wVjQh1iaz4aupv1A_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd4.alicdn.com/imgextra/i4/479184430/O1CN01tWg4Us1iaz4auqelt_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t\t<img style=\"width:100%;display:block;\" src=\"https://gd1.alicdn.com/imgextra/i1/479184430/O1CN01Tnm1rU1iaz4aVKcwP_!!479184430.jpg_400x400.jpg\" />\n\t\t\t\t\t</div>\n\t\t\t\t",
 
 
 
@@ -373,13 +391,17 @@ __webpack_require__.r(__webpack_exports__);
       specChildList: [],
       commodity: {},
       commentList: [],
+      couponList: [],
+      goodCout: 1,
       commentCount: 0,
       specsCount: 0,
+      couponCount: 0,
+      couponText: "选择优惠券",
+      specsName: '',
       uid: -1 };
 
   },
   onLoad: function onLoad(options) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var id, uid, _this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-
               //接收传值,id里面放的是标题，因为测试数据并没写id 
               id = options.id;
               uid = options.uid ? options.uid : "";
@@ -398,6 +420,12 @@ __webpack_require__.r(__webpack_exports__);
                     if (commentList && commentList.length > 0) {
                       _this.commentList = res.data.commentList;
                     }
+                    var addtime = res.data.addtime;
+                    if (!addtime) {
+                      _this.favorite = false;
+                    } else {
+                      _this.favorite = true;
+                    }
                     var specsList = res.data.specsList;
                     _this.specsCount = specsList.length;
                     if (_this.specsCount > 0) {
@@ -407,9 +435,19 @@ __webpack_require__.r(__webpack_exports__);
                         } else {
                           _this.specChildList.push(val);
                         }
-
                       });
                     }
+                    _this.couponList = res.data.couponList;
+                    _this.couponCount = _this.couponList.length;
+                    var divStr = '<div style="width:100%">';
+                    for (var i = 1; i <= 6; i++) {
+                      var imgSrc = res.data["image" + i];
+                      if (imgSrc) {
+                        divStr += '<img style="width:100%;display:block;" src="' + imgSrc + '" />';
+                      }
+                    }
+                    divStr += "</div>";
+                    _this.desc = divStr;
 
                   } });
 
@@ -432,6 +470,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     //规格弹窗开关
     toggleSpec: function toggleSpec() {var _this3 = this;
+      if (this.specsCount == 0) {
+        this.$api.msg('该商品没有其他规格了');
+        return;
+      }
       if (this.specClass === 'show') {
         this.specClass = 'hide';
         setTimeout(function () {
@@ -441,18 +483,24 @@ __webpack_require__.r(__webpack_exports__);
         this.specClass = 'show';
       }
     },
-    toggleCoupon: function toggleCoupon() {var _this4 = this;
-      if (this.speccClass === 'show') {
-        this.speccClass = 'hide';
-        setTimeout(function () {
-          _this4.speccClass = 'none';
-        }, 250);
-      } else if (this.speccClass === 'none') {
-        this.speccClass = 'show';
+    toggleCoupon: function toggleCoupon(type, id) {var _this4 = this;
+      if (this.couponCount == 0) {
+        this.$api.msg('无优惠卷可用');
+        return;
       }
+      if (id) {
+        var list = this.couponList;
+        this.couponText = "已选: " + list[type].name;
+      }
+      var timer = type === 'show' ? 10 : 300;
+      var state = type === 'show' ? 1 : 0;
+      this.speccClass = 2;
+      setTimeout(function () {
+        _this4.speccClass = state;
+      }, timer);
     },
     //选择规格
-    selectSpec: function selectSpec(index, pid) {var _this5 = this;
+    selectSpec: function selectSpec(index, pid, id) {var _this5 = this;
       var list = this.specChildList;
       list.forEach(function (item) {
         if (item.pid === pid) {
@@ -460,6 +508,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
 
+      this.specsId = id;
+      this.specsName = list[index].specsName;
       this.$set(list[index], 'selected', true);
       //存储已选择
       /**
@@ -479,20 +529,74 @@ __webpack_require__.r(__webpack_exports__);
     share: function share() {
       this.$refs.share.toggleMask();
     },
+    //数量
+    numberChange: function numberChange(data) {
+      this.goodCout = data.number;
+    },
     //收藏
     toFavorite: function toFavorite() {
-      this.favorite = !this.favorite;
+      var url = this.apiServer + "/api/favorites/save";
+      var params = {
+        commodityId: this.commodity.id };
+
+      var msg = "已添加到收藏夹";
+      var _this = this;
+      var method = "POST";
+      if (this.favorite) {
+        params.uid = this.uid;
+        url = this.apiServer + "/api/favorites/delete";
+        msg = "已移出收藏夹";
+        method = "GET";
+      } else {
+        params.customerId = this.uid;
+      }
+      uni.request({
+        url: url,
+        method: method,
+        dataType: "JSON",
+        data: params,
+        success: function success(res) {
+          var result = res.data;
+          if (result) {
+            _this.$api.msg(msg);
+            _this.favorite = !_this.favorite;
+          }
+        } });
+
+
     },
     buy: function buy() {
-      uni.navigateTo({
-        url: "/pages/order/createOrder" });
-
-    },
-    cart: function cart() {
       if (this.uid) {
+        uni.navigateTo({
+          url: "/pages/order/createOrder?commodityId=".concat(this.commodity.id, "&uid=").concat(this.uid, "&specsName=").concat(this.specsName, "&goodCout=").concat(this.goodCout) });
 
       } else {
-        console.log("登陆");
+        this.$api.msg('下单前请先登陆');
+      }
+    },
+    cart: function cart() {var _this6 = this;
+      if (this.uid) {
+        var params = {
+          "customerId": this.uid,
+          "commodityId": this.commodity.id,
+          "specs": this.specsId,
+          "commodityQuantity": this.goodCout };
+
+        uni.request({
+          url: this.apiServer + '/cart/save',
+          method: 'POST',
+          dataType: "json",
+          data: params,
+          success: function success(res) {
+            var result = res.data;
+            if (result) {
+              _this6.$api.msg('已添加到购物车');
+            }
+
+          } });
+
+      } else {
+        this.$api.msg('加入购物车前请先登陆');
       }
     },
     stopPrevent: function stopPrevent() {} },

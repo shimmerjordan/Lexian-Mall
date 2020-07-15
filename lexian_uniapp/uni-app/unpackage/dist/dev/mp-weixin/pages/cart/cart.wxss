@@ -837,7 +837,8 @@
   position: relative;
   padding-left: 30rpx;
 }
-.cart-item .item-right .title, .cart-item .item-right .price {
+.cart-item .item-right .title,
+.cart-item .item-right .price {
   font-size: 30rpx;
   color: #303133;
   height: 40rpx;

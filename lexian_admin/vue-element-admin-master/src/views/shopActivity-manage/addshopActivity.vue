@@ -18,66 +18,69 @@
         class="createPost-main-container"
       >
         <h3>基础信息</h3>
-        <el-row>
-          <el-col :span="12">
-            <el-form-item label="对应店铺" prop="activityShop" label-width="100px">
-              <el-select v-model="postForm.activityShop" clearable placeholder="请选择该活动对应店铺" size="small">
-                <el-option v-for="item in activityShopList" :key="item.id" :value="item.id" :label="item.id +'-' + item.name" />
-              </el-select>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-            <el-form-item label="活动编号" prop="shopActivityId" label-width="100px">
-              <el-input v-model="postForm.shopActivityId" disabled />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="活动名称" prop="shopActivityName" label-width="100px">
-              <el-input v-model="postForm.shopActivityName" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-
-        <el-row>
-          <el-col :span="12">
-            <el-form-item label="创建时间" prop="createTime">
-              <el-input v-model="postForm.createTime" disabled />
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="24">
-            <el-form-item label="活动时间" prop="timeRange">
-              <!-- <span class="demonstration">活动时间：</span> -->
-              <el-date-picker
-                v-model="timeRange"
-                value-format="yyyy-MM-dd HH:mm:ss"
-                type="datetimerange"
-                align="right"
-                unlink-panels
-                range-separator="至"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期"
-                :picker-options="pickerOptions"
-              />
-              <!-- <el-date-picker prop="beginTime" type="datetime" placeholder="请选择开始日期" />
-               至
-               <el-date-picker prop="endTime" type="datetime" placeholder="请选择结束日期" /> -->
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-            <el-form-item label="活动类型" prop="type" label-width="100px">
-              <el-select v-model="postForm.type" clearable placeholder="请选择" size="small">
-                <el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.label" />
-              </el-select>
-              <!-- <el-button icon="el-icon-plus" circle style="margin-left: 40px;" @click="addActivityType()" /> -->
-            </el-form-item>
-          </el-col>
-        </el-row>
+        <el-form label-width="100px">
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="对应店铺" prop="activityShop" label-width="100px">
+                <el-select v-model="postForm.activityShop" clearable placeholder="请选择该活动对应店铺" size="small">
+                  <el-option v-for="item in activityShopList" :key="item.id" :value="item.id" :label="item.id +'-' + item.name" />
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="活动编号" prop="shopActivityId" label-width="100px">
+                <el-input v-model="postForm.shopActivityId" disabled />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="活动名称" prop="shopActivityName" label-width="100px">
+                <el-input v-model="postForm.shopActivityName" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="创建时间" prop="createTime">
+                <el-input v-model="postForm.createTime" disabled />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <el-form-item label="活动时间" prop="timeRange">
+                <!-- <span class="demonstration">活动时间：</span> -->
+                <el-date-picker
+                  v-model="timeRange"
+                  value-format="yyyy-MM-dd HH:mm:ss"
+                  type="datetimerange"
+                  align="right"
+                  unlink-panels
+                  range-separator="至"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期"
+                  :picker-options="pickerOptions"
+                />
+                <!-- <el-date-picker prop="beginTime" type="datetime" placeholder="请选择开始日期" />
+                至
+                <el-date-picker prop="endTime" type="datetime" placeholder="请选择结束日期" /> -->
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="活动类型" prop="type" label-width="100px">
+                <el-select v-model="postForm.type" clearable placeholder="请选择" size="small">
+                  <el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.label" />
+                </el-select>
+                <!-- <el-button icon="el-icon-plus" circle style="margin-left: 40px;" @click="addActivityType()" /> -->
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
 
         <h3>门店活动简介<span style="font-size: 12px;color: darkgrey;">可以展示相关活动图片和对活动一定的描述</span></h3>
         <div class="components-container">
@@ -125,6 +128,17 @@ export default {
   filters: {},
   data() {
     return {
+      shopList: {
+        page: 1,
+        limit: 20,
+        id: null,
+        name: null,
+        status: null,
+        beginTime: null,
+        endTime: null,
+        // img: null,
+        sort: '+id'
+      },
       activityShopList: [],
       timeRange: '',
       textarea: '',
@@ -207,8 +221,8 @@ export default {
   },
   methods: {
     getActivityShopList() {
-      getAllShop().then(response => {
-        this.activityShopList = response.data
+      getAllShop(this.shopList).then(response => {
+        this.activityShopList = response.data.list
         console.log((this.activityShopList).length)
         //  for(let i = 0; i < (this.activityShopList).length; i++){
         //    this.activityShopList[i] = this.activityShopList[i].id +'--' +this.activityShopList[i].name

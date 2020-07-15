@@ -5,6 +5,7 @@ import lexian.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public interface OrderMapper {
     void updateOrder(Map<String,Object> m);
     int updateOrder_Item(Map<String,Object> m);
     List<Order> getUserOrder(String userID);
+    List<HashMap> getCustomerOrder(Map<String, Object> map);
     List<JiuFenOrder> getJiuFenOrder();
     List<JiuFenOrder> getJiuFenOrderByID(Integer id);
     int DeleteJiuFenOrder(Map<String,Object> map);

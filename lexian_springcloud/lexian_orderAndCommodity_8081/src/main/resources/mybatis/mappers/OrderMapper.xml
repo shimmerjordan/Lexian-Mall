@@ -163,4 +163,28 @@
         ID = #{id}
     </update>
 
+    <select id="getCustomerOrder" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        orders.date,
+        orders.ID,
+        orders.`status`,
+        order_address.address_id,
+        order_item.commodity_quantity,
+        commodity.`name`,
+        commodity.price,
+        commodity.image,
+        specs.specs_name
+        FROM
+        orders
+        INNER JOIN order_item ON order_item.order_id = orders.ID
+        INNER JOIN order_address ON order_address.order_id = orders.ID
+        INNER JOIN commodity ON order_item.commodity_id = commodity.ID
+        INNER JOIN specs_commodity ON specs_commodity.commodity_id = commodity.ID
+        INNER JOIN specs ON specs.id = specs_commodity.specs_id AND specs.id = specs_commodity.specs_id
+        INNER JOIN customer_order ON customer_order.order_id = orders.ID
+        WHERE
+        customer_order.customer_id = #{customerId}
+
+    </select>
+
 </mapper>

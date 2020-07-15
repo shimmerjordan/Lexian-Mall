@@ -7,6 +7,7 @@ import lexian.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -65,6 +66,35 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getUserOrder(String userID) {
         return orderMapper.getUserOrder(userID);
+    }
+
+    @Override
+    public List<HashMap> getCustomerOrder(Map<String, Object> map) {
+
+        List<HashMap> temp0 = orderMapper.getCustomerOrder(map);
+        List<HashMap> orderList = new ArrayList<>();
+        for(int i = 0; i < temp0.size(); i++){
+            HashMap<String, Object> flag0 = new HashMap<String, Object>();
+            HashMap<String, Object> result = new HashMap<String, Object>();
+            HashMap<String, Object> goodsMap = new HashMap<String, Object>();
+            List<HashMap> goodList = new ArrayList<>();
+            flag0 = temp0.get(i);
+
+            result.put("time",flag0.get("date"));
+            result.put("state",flag0.get("status"));
+            result.put("state",flag0.get("status"));
+            goodsMap.put("title",flag0.get("name"));
+            goodsMap.put("price",flag0.get("price"));
+            goodsMap.put("image",flag0.get("image"));
+            goodsMap.put("number",flag0.get("commodity_quantity"));
+            goodsMap.put("attr",flag0.get("specs_name"));
+            goodList.add(goodsMap);
+            result.put("goodList",goodList);
+            orderList.add(result);
+
+        }
+        System.out.println(orderList);
+        return orderList;
     }
 
     @Override
