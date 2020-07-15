@@ -175,7 +175,6 @@
         ID=#{id}
     </update>
 
-<<<<<<< HEAD
     <update id="deleteOrder" parameterType="java.lang.Integer">
         UPDATE
         orders
@@ -185,8 +184,6 @@
         orders.ID = #{ ID }
     </update>
 
-
-=======
     <select id="getCustomerOrder" resultType="java.util.HashMap" parameterType="java.util.HashMap">
       SELECT
         orders.date,
@@ -210,6 +207,5 @@
         AND orders.isDelete = 0
         AND customer_order.customer_id = #{customerId}
     </select>
->>>>>>> ccd9a1bdad14fd0bc836b13a211573fcff290f95
 
 </mapper>
