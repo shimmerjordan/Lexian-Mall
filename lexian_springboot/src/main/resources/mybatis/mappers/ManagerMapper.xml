@@ -48,4 +48,13 @@
         WHERE
         system_manager.ID=#{id}
     </update>
+
+    <update id="deleteManager" parameterType="java.lang.Integer">
+        UPDATE
+        system_manager
+        SET
+        is_delete = 1
+        WHERE
+        ID = #{ index }
+    </update>
 </mapper>

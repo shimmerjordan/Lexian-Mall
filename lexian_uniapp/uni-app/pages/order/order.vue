@@ -20,6 +20,7 @@
 				>
 					<!-- 空白页 -->
 					<empty v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty>
+					<view>{{tabItem.orderList.length}}</view>
 					
 					<!-- 订单列表 -->
 					<view 
@@ -151,7 +152,7 @@
 			//获取订单列表
 			initOrder(){
 				uni.request({
-					url: this.apiServer + "/order/customerOrder",
+					url: this.apiServer + "/order/getCustomerOrder",
 					//url:'http://localhost:8080/..."' ,
 					data:{
 						"customerId": this.userInfo.ID
@@ -161,9 +162,10 @@
 					let orderList = res.data;
 					console.log("orderList", orderList);
 					this.orderList = orderList;
+					console.log("orderList.length", this.orderList.length);
 					}
 				});
-				},
+			},
 
 			loadData(source){
 				this.initOrder();

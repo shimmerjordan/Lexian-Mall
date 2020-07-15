@@ -1,9 +1,0 @@
-diff a/lexian_springboot/src/main/resources/mybatis/mappers/CustomerMapper.xml b/lexian_springboot/src/main/resources/mybatis/mappers/CustomerMapper.xml	(rejected hunks)
-@@ -0,6 +0,7 @@
- 		), 0)
- 	</select>
- 
-+<<<<<<< HEAD:lexian_cloud/src/main/resources/mybatis/mappers/CustomerMapper.xml
- 
- 
- 

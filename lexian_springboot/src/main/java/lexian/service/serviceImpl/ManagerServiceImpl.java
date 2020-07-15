@@ -40,4 +40,10 @@ public class ManagerServiceImpl implements ManagerService {
         int res=managerMapper.updateManager(m);
         return  res>0;
     }
+
+    @Override
+    public boolean deleteManager(int index) {
+        int res = managerMapper.deleteManager(index);
+        return res>0;
+    }
 }
