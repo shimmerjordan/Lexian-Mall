@@ -183,13 +183,36 @@ var _default =
   data: function data() {
     return {
       payType: 1,
-      orderInfo: {} };
+      uid: 0,
+      moneyAmount: 0,
+      totalMoney: 0,
+      orderInfo: {},
+      goodNames: "",
+      walletId: 0,
+      orderId: 0 };
 
   },
   computed: {},
 
 
   onLoad: function onLoad(options) {
+    this.totalMoney = options.totalMoney;
+    this.uid = options.uid;
+    this.goodNames = options.goodNames;
+    this.orderId = options.orderId;
+    var _this = this;
+    uni.request({
+      url: this.apiServer + '/customer/getById',
+      dataType: "json",
+      data: {
+        "uid": _this.uid },
+
+      success: function success(res) {
+        var result = res.data;
+        _this.moneyAmount = result.moneyAmount;
+        _this.walletId = result.walletId;
+
+      } });
 
   },
 
@@ -199,9 +222,34 @@ var _default =
       this.payType = type;
     },
     //确认支付
-    confirm: function () {var _confirm = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                uni.redirectTo({
-                  url: '/pages/money/paySuccess' });case 1:case "end":return _context.stop();}}}, _callee);}));function confirm() {return _confirm.apply(this, arguments);}return confirm;}() } };exports.default = _default;
+    confirm: function () {var _confirm = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var params;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+                this.payType == 3)) {_context.next = 6;break;}if (!(
+                this.totalMoney > this.moneyAmount)) {_context.next = 4;break;}
+                this.$api.msg('余额不足');return _context.abrupt("return");case 4:
+
+
+                params = {
+                  "name": this.goodNames,
+                  "consumePrice": this.totalMoney,
+                  "customerId": this.uid,
+                  "walletId": this.walletId,
+                  "orderId": this.orderId };
+
+                uni.request({
+                  url: this.apiServer + "/api/pay/payBill",
+                  method: "POST",
+                  data: params,
+                  dataType: "json",
+                  success: function success(res) {
+                    var result = res.data;
+                    if (result) {
+                      uni.redirectTo({
+                        url: '/pages/money/paySuccess' });
+
+                    } else {
+                      _this.$api.msg("支付失败");
+                    }
+                  } });case 6:case "end":return _context.stop();}}}, _callee, this);}));function confirm() {return _confirm.apply(this, arguments);}return confirm;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
