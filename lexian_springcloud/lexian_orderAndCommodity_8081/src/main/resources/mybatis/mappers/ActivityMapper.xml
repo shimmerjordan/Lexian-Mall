@@ -13,6 +13,7 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="is_delete" property="is_delete" jdbcType="INTEGER" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, name, description, img, beginTime, endTime, type, status, is_delete
   </sql>
@@ -42,12 +43,12 @@
 
   <update id="updateActivityStatus0">
     update activity
-    set activity.status = 1
+    set activity.status = 0
     where activity.id = #{id}
   </update>
   <update id="updateActivityStatus1">
     update activity
-    set activity.status = 0
+    set activity.status = 1
     where activity.id = #{id}
   </update>
 
@@ -59,7 +60,6 @@
     AND activity.id > 10
   </select>
 
-
   <select id="getMaxActivityId" resultType="java.lang.Integer">
     select max(activity.id)
     from activity
@@ -67,10 +67,11 @@
 
   <insert id="insertActivity" parameterType="java.util.HashMap">
   insert into
-  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete)
+  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete, img)
   values
-(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, 'https://i.loli.net/2020/07/07/nsQIYyDPUWxBdNZ.jpg')
   </insert>
+
 
   <select id="searchActivityByInformation" resultType="Activity" parameterType="java.lang.String">
     select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
