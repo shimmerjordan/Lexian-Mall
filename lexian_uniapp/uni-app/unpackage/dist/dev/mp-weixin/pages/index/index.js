@@ -458,17 +458,17 @@ __webpack_require__.r(__webpack_exports__);
                     var goodslist = res.data;
                     _this.goodslist = goodslist;
                     goodslist.forEach(function (item) {
-                      if (item.status == 1) {
+                      if (item.index == 1) {
                         _this.mGoodsList.push(item); //获取秒杀商品
-                      } else if (item.status == 2) {
+                      } else if (item.index == 2) {
                         _this.tGoodsList.push(item); //获取团购商品
-                      } else if (item.status == 3) {
+                      } else if (item.index == 3) {
                         _this.hGoodsList.push(item); //获取活动1商品
-                      } else if (item.status == 4) {
+                      } else if (item.index == 4) {
                         _this.dGoodsList.push(item); //获取活动2商品
-                      } else if (item.status == 5) {
+                      } else if (item.index == 5) {
                         _this.sGoodsList.push(item); //获取活动3商品
-                      } else if (item.status == 6) {
+                      } else if (item.index == 6) {
                         _this.gGoodsList.push(item); //猜你喜欢
                       } else {
                       }

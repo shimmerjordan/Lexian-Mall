@@ -270,6 +270,7 @@ var _default =
       if (_this.manageType == 'edit') {
         url = this.apiServer + '/api/address/update';
       }
+      console.log(data);
       uni.request({
         url: url,
         method: 'POST',

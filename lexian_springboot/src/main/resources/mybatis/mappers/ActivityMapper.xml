@@ -43,12 +43,12 @@
 
   <update id="updateActivityStatus0">
     update activity
-    set activity.status = 1
+    set activity.status = 0
     where activity.id = #{id}
   </update>
   <update id="updateActivityStatus1">
     update activity
-    set activity.status = 0
+    set activity.status = 1
     where activity.id = #{id}
   </update>
 
@@ -67,9 +67,9 @@
 
   <insert id="insertActivity" parameterType="java.util.HashMap">
   insert into
-  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete)
+  activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete, img)
   values
-(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, 'https://i.loli.net/2020/07/07/nsQIYyDPUWxBdNZ.jpg')
   </insert>
 
 

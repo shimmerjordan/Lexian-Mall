@@ -311,17 +311,17 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					let goodslist =res.data;
 				    this.goodslist = goodslist;
 					goodslist.forEach(item=>{
-						if(item.status==1){
+						if(item.index==1){
 							this.mGoodsList.push(item);  //获取秒杀商品
-						}else if(item.status==2){
+						}else if(item.index==2){
 							this.tGoodsList.push(item);  //获取团购商品
-						}else if(item.status==3){
+						}else if(item.index==3){
 							this.hGoodsList.push(item);  //获取活动1商品
-						}else if(item.status==4){
+						}else if(item.index==4){
 							this.dGoodsList.push(item);  //获取活动2商品
-						}else if(item.status==5){
+						}else if(item.index==5){
 							this.sGoodsList.push(item);  //获取活动3商品
-						}else if(item.status==6){
+						}else if(item.index==6){
 							this.gGoodsList.push(item); //猜你喜欢
 						}else {
 						}
