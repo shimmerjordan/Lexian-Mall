@@ -10,6 +10,8 @@
 /lexian_cloud/.classpath
 /lexian_cloud/.project
 /lexian_cloud/.settings/
+/lexian_cloud/target/
+/lexian_cloud/.idea/
 
 /lexian_springboot/log/
 /lexian_springcloud/*/log/

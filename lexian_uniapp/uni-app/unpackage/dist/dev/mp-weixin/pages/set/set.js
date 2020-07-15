@@ -181,8 +181,16 @@ var _vuex = __webpack_require__(/*! vuex */ 6);function ownKeys(object, enumerab
   methods: _objectSpread({},
   (0, _vuex.mapMutations)(['logout']), {
 
-    navTo: function navTo(url) {
-      this.$api.msg("\u8DF3\u8F6C\u5230".concat(url));
+    navTo: function navTo(page) {
+
+      uni.navigateTo({
+        url: page,
+        success: function success(res) {
+
+        },
+        fail: function fail() {},
+        complete: function complete() {} });
+
     },
     //退出登录
     toLogout: function toLogout() {var _this = this;

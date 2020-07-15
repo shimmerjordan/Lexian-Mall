@@ -33,7 +33,7 @@
 			<image class="arc" src="/static/arc.png"></image>
 			
 			<view class="tj-sction">
-				<view class="tj-item" @click="navTo('/pages/user/favorites')">
+				<view class="tj-item" >
 					<text class="num">30</text>
 					<text>收藏夹商品</text>
 				</view>
@@ -76,10 +76,10 @@
 					<view 
 						v-for="(item, index) in itemHistory" :key="index"
 						class="floor-item"
-						@click=""
+						@click="navToDetailPage(item)"
 					>
 						<image :src="item.image" mode="aspectFill"></image>
-						<text class="time">{{item.browsingTime}}</text>
+						<text class="name">{{item.name}}</text>
 					</view>
 				</view>
 				</scroll-view>
@@ -110,7 +110,7 @@
 </template>  
 <script>  
 	import listCell from '@/components/mix-list-cell';
-	import common from'@/store/common'
+	import common from '@/store/common.js'
     import {  
         mapState 
     } from 'vuex';  
@@ -128,6 +128,7 @@
 			}
 		},
 		onLoad(){
+			this.getUser();
 		},
 		// #ifndef MP
 		onNavigationBarButtonTap(e) {
@@ -150,17 +151,22 @@
 		},
 		// #endif
         computed: {
-			...mapState(['hasLogin','userInfo'])
+			...mapState(['hasLogin'])
 		},
         methods: {
+			getUser() {
+							let that = this;
+							that.userInfo = common.getGlobalUserInfo();
+							// console.log("本地UserInfo",this.userInfo)
+						},
 			loadHistory(){
+				this.getUser();
 				//if(this.hasLogin){
-					let userID = '19';
 					uni.request({
 						url: this.apiServer + "/uniUser/getHistory",
 						//url:'http://localhost:8080/..."' ,
 						data:{
-							userID:userID,
+							"userID": this.userInfo.ID.toString(),
 							},
 						method: 'POST',
 						success: (res) => {
@@ -168,7 +174,6 @@
 						this.itemHistory = itemHistory;
 						}
 					});
-					console.log(this.itemHistory);
 					//}
 			},
 
@@ -176,6 +181,7 @@
 			 * 统一跳转接口,拦截未登录路由
 			 * navigator标签现在默认没有转场动画，所以用view
 			 */
+			
 			navTo(url){
 				if(!this.hasLogin){
 					url = '/pages/public/login';
@@ -184,6 +190,12 @@
 					url
 				})  
 			}, 
+			navToDetailPage(item) {
+				let id = item.ID;
+				uni.navigateTo({
+					url: `/pages/product/product?id=${id}`
+				})
+			},
 	
 			/**
 			 *  会员卡下拉和回弹
@@ -291,20 +303,6 @@
 			width: 380upx;
 			height: 260upx;
 		}
-		.b-btn{
-			position: absolute;
-			right: 20upx;
-			top: 16upx;
-			width: 132upx;
-			height: 40upx;
-			text-align: center;
-			line-height: 40upx;
-			font-size: 22upx;
-			color: #36343c;
-			border-radius: 20px;
-			background: linear-gradient(left, #f9e6af, #ffd465);
-			z-index: 1;
-		}
 		.tit{
 			font-size: $font-base+2upx;
 			color: #f7d680;
@@ -390,15 +388,23 @@
 				line-height: 40upx;
 			}
 		}
-		.h-list{
+		.floor-list{
 			white-space: nowrap;
-			padding: 30upx 30upx 0;
+		}
+		.scoll-wrapper{
+			display:flex;
+			align-items: flex-start;
+		}
+		.floor-item{
+			width: 150upx;
+			margin-right: 20upx;
+			font-size: $font-sm+2upx;
+			color: $font-color-dark;
+			line-height: 1.8;
 			image{
-				display:inline-block;
-				width: 160upx;
-				height: 160upx;
-				margin-right: 20upx;
-				border-radius: 10upx;
+				width: 150upx;
+				height: 150upx;
+				border-radius: 6upx;
 			}
 		}
 	}

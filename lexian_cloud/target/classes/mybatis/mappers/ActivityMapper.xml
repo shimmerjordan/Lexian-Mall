@@ -59,10 +59,7 @@
     AND activity.id > 10
   </select>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
   <select id="getMaxActivityId" resultType="java.lang.Integer">
     select max(activity.id)
     from activity
@@ -75,7 +72,6 @@
 (#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0)
   </insert>
 
-<<<<<<< HEAD
   <select id="searchActivityByInformation" resultType="Activity" parameterType="java.lang.String">
     select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
@@ -98,6 +94,4 @@
     </where>
   </select>
 
-=======
->>>>>>> 7cc8a3ed0c589d58079118b055ceedc47447ab83
 </mapper>

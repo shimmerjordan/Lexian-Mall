@@ -244,17 +244,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -263,42 +252,102 @@ var _default =
       desc: '', //备注
       payType: 1, //1微信 2支付宝
       couponList: [
-      {
-        title: '新用户专享优惠券',
-        price: 5 },
-
-      {
-        title: '庆五一发一波优惠券',
-        price: 10 },
-
-      {
-        title: '优惠券优惠券优惠券优惠券',
-        price: 15 }],
-
+        /* 					{
+                   						title: '新用户专享优惠券',
+                   						price: 5,
+                   					},
+                   					{
+                   						title: '庆五一发一波优惠券',
+                   						price: 10,
+                   					},
+                   					{
+                   						title: '优惠券优惠券优惠券优惠券',
+                   						price: 15,
+                   					} */],
 
       addressData: {
-        name: '许小星',
-        mobile: '13853989563',
-        addressName: '金九大道',
-        address: '山东省济南市历城区',
-        area: '149号',
-        default: false } };
+        /* 					name: '许小星',
+                    					mobile: '13853989563',
+                    					addressName: '金九大道',
+                    					address: '山东省济南市历城区',
+                    					area: '149号',
+                    					default: false, */},
+
+      uid: 0,
+      commodityList: [],
+      totalMoney: 0,
+      discountMoney: 0,
+      goodCout: 1,
+      goodNames: "",
+      addressUrl: "/pages/address/address?uid=",
+      addressId: 0,
+      specsName: "--" };
 
 
   },
-  onLoad: function onLoad(option) {
-    //商品数据
-    //let data = JSON.parse(option.data);
-    //console.log(data);
+  onLoad: function onLoad(options) {
+    this.uid = options.uid;
+    if (options.goodCout) {
+      this.goodCout = options.goodCout;
+    }
+    if (options.specsName) {
+      this.specsName = options.specsName;
+    }
+    var commodityId = options.commodityId;
+    var cartIds = options.cartIds;
+    var params = {
+      "uid": this.uid };
+
+    if (commodityId) {
+      params.commodityId = commodityId;
+    }
+    if (cartIds) {
+      params.cartIds = options.cartIds;
+    }
+
+    var _this = this;
+    uni.request({
+      url: this.apiServer + "/api/category/payment",
+      method: 'POST',
+      data: params,
+      dataType: "JSON",
+      success: function success(res) {
+        var result = res.data;
+        var addressList = result.addressList;
+        if (addressList.length > 0) {
+          addressList.forEach(function (item) {
+            if (item.addressStatus == 0) {
+              _this.addressData = item;
+              _this.addressId = item.id;
+              return;
+            }
+          });
+        }
+        _this.couponList = result.couponList;
+        _this.commodityList = result.commoditys;
+        var goodNameArr = [];
+        _this.commodityList.forEach(function (shop) {
+          shop.list.forEach(function (item) {
+            var goodCout = item.goodCout ? item.goodCout : _this.goodCout;
+            _this.totalMoney += item.price * goodCout;
+            goodNameArr.push(item.name);
+          });
+        });
+        _this.goodNames = goodNameArr.join(",");
+
+      } });
+
+
+
   },
   methods: {
     //显示优惠券面板
-    toggleMask: function toggleMask(type) {var _this = this;
+    toggleMask: function toggleMask(type) {var _this2 = this;
       var timer = type === 'show' ? 10 : 300;
       var state = type === 'show' ? 1 : 0;
       this.maskState = 2;
       setTimeout(function () {
-        _this.maskState = state;
+        _this2.maskState = state;
       }, timer);
     },
     numberChange: function numberChange(data) {
@@ -307,9 +356,42 @@ var _default =
     changePayType: function changePayType(type) {
       this.payType = type;
     },
-    submit: function submit() {
-      uni.redirectTo({
-        url: '/pages/money/pay' });
+    submit: function submit() {var _this3 = this;
+      var totalMoney = this.totalMoney;
+      var uid = this.uid;
+      var addressId = this.addressId;
+      var goodNames = this.goodNames;
+      var params = [];
+      this.commodityList.forEach(function (shop) {
+        var param = {};
+        param.shopId = shop.shopId;
+        var cids = [];
+        shop.list.forEach(function (item) {
+          cids.push({
+            "commodityId": item.id,
+            "goodCount": item.goodCount ? item.goodCount : _this3.goodCout });
+
+        });
+        param.cids = cids;
+        params.push(param);
+      });
+      var jsonStr = JSON.stringify(params);
+
+      uni.request({
+        url: this.apiServer + "/api/pay/placeOrder",
+        method: "POST",
+        data: {
+          "jsonStr": jsonStr,
+          "addressId": addressId,
+          "uid": uid },
+
+        dataType: "text",
+        success: function success(res) {
+          var orderId = res.data;
+          uni.redirectTo({
+            url: '/pages/money/pay?totalMoney=' + totalMoney + "&uid=" + uid + "&orderId=" + orderId + "&goodNames=" + goodNames });
+
+        } });
 
     },
     stopPrevent: function stopPrevent() {} } };exports.default = _default;

@@ -837,21 +837,6 @@
   width: 380rpx;
   height: 260rpx;
 }
-.vip-card-box .b-btn {
-  position: absolute;
-  right: 20rpx;
-  top: 16rpx;
-  width: 132rpx;
-  height: 40rpx;
-  text-align: center;
-  line-height: 40rpx;
-  font-size: 22rpx;
-  color: #36343c;
-  border-radius: 20px;
-  background: -webkit-linear-gradient(left, #f9e6af, #ffd465);
-  background: linear-gradient(left, #f9e6af, #ffd465);
-  z-index: 1;
-}
 .vip-card-box .tit {
   font-size: 30rpx;
   color: #f7d680;
@@ -938,15 +923,27 @@
   margin-right: 16rpx;
   line-height: 40rpx;
 }
-.history-section .h-list {
+.history-section .floor-list {
   white-space: nowrap;
-  padding: 30rpx 30rpx 0;
 }
-.history-section .h-list image {
-  display: inline-block;
-  width: 160rpx;
-  height: 160rpx;
+.history-section .scoll-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+}
+.history-section .floor-item {
+  width: 150rpx;
   margin-right: 20rpx;
-  border-radius: 10rpx;
+  font-size: 26rpx;
+  color: #303133;
+  line-height: 1.8;
+}
+.history-section .floor-item image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 6rpx;
 }
 
