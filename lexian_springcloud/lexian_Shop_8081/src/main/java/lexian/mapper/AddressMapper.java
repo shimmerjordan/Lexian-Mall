@@ -4,7 +4,9 @@
 package lexian.mapper;
 
 import lexian.entity.Address;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,9 @@ import java.util.Map;
  * @author yang990322
  *
  */
+
+@Mapper
+@Repository
 public interface AddressMapper {
 
 	List<Address> selectAddressByCustomerId(String customerId);

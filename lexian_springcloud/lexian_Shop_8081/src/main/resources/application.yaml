@@ -35,4 +35,12 @@ pagehelper:
   support-methods-arguments: true
   params: count=countsql
 
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: this is a eureka instance
+
 
