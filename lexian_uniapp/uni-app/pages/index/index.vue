@@ -4,9 +4,10 @@
 		<!-- #ifdef MP -->
 		<!-- 搜索框数据传递与页面跳转待实现-->
 		<view class="mp-search-box">
-		  <uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" class="ser-input" type="text"  btnLinkInput=true  v-model="searchInfo.Name"  @confirm="searchCommodity()" >
-		  </uni-search >
-		  <input   class="ser-input" type="text" v-model="searchInfo.Name"  @confirm="searchCommodity()" />
+	
+		  <uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" class="ser-input" type="text"  btnLinkInput=true  >
+			 </uni-search >
+			<input  class="ser-input" type="text" v-model="searchInfo.Name"  @confirm="searchCommodity()" />				  
 		 </view>
 		<!-- #endif -->
 		
@@ -253,7 +254,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 		data() {
 			return {
 				searchInfo:{
-					Name: '香香',
+					Name: '',
 				},
 				searchList: [],
 				titleNViewBackground: '',
@@ -310,17 +311,17 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					let goodslist =res.data;
 				    this.goodslist = goodslist;
 					goodslist.forEach(item=>{
-						if(!item.status){
+						if(item.index==1){
 							this.mGoodsList.push(item);  //获取秒杀商品
-						}else if(item.status==2){
+						}else if(item.index==2){
 							this.tGoodsList.push(item);  //获取团购商品
-						}else if(item.status==3){
+						}else if(item.index==3){
 							this.hGoodsList.push(item);  //获取活动1商品
-						}else if(item.status==4){
+						}else if(item.index==4){
 							this.dGoodsList.push(item);  //获取活动2商品
-						}else if(item.status==5){
+						}else if(item.index==5){
 							this.sGoodsList.push(item);  //获取活动3商品
-						}else if(item.status==6){
+						}else if(item.index==6){
 							this.gGoodsList.push(item); //猜你喜欢
 						}else {
 						}
@@ -337,7 +338,6 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					method: 'POST',
 					success: (res) => {
 					let searchList = res.data;
-					console.log(res.data);
 					this.searchList = searchList;
 					},
 				});
@@ -351,7 +351,6 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			},
 			//详情页
 			navToDetailPage(item) {
-				//测试数据没有写id，用title代替
 				let id = item.ID;
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
@@ -360,7 +359,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			navTo(num) {
 				let id = num;
 				uni.navigateTo({
-					url: `/pages/category/category`
+					url: `/pages/product/list`
 				})
 			},
 		},

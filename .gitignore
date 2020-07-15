@@ -1,0 +1,17 @@
+/lexian_springcloud/.settings/
+/lexian_springcloud/.idea/
+/lexian_springcloud/.project
+/lexian_springcloud/.classpath
+/lexian_springcloud/*/target/
+/lexian_springcloud/*/.classpath
+/lexian_springcloud/*/.project
+/lexian_springcloud/*/.settings/
+
+/lexian_cloud/.classpath
+/lexian_cloud/.project
+/lexian_cloud/.settings/
+/lexian_cloud/target/
+/lexian_cloud/.idea/
+
+/lexian_springboot/log/
+/lexian_springcloud/*/log/

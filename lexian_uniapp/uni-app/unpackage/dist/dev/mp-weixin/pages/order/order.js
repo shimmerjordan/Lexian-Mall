@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniLoadMore: function() {
-    return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more/uni-load-more.vue */ 280))
+    return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more/uni-load-more.vue */ 288))
   }
 }
 var render = function() {
@@ -134,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniLoadMore = function uniLoadMore() {__webpack_require__.e(/*! require.ensure | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then((function () {return resolve(__webpack_require__(/*! @/components/uni-load-more/uni-load-more.vue */ 280));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var empty = function empty() {__webpack_require__.e(/*! require.ensure | components/empty */ "components/empty").then((function () {return resolve(__webpack_require__(/*! @/components/empty */ 287));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -216,13 +216,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-{
+var _common = _interopRequireDefault(__webpack_require__(/*! @/store/common.js */ 84));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var uniLoadMore = function uniLoadMore() {__webpack_require__.e(/*! require.ensure | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then((function () {return resolve(__webpack_require__(/*! @/components/uni-load-more/uni-load-more.vue */ 288));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var empty = function empty() {__webpack_require__.e(/*! require.ensure | components/empty */ "components/empty").then((function () {return resolve(__webpack_require__(/*! @/components/empty */ 295));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+// import Json from '@/Json';
+var _default = {
   components: {
     uniLoadMore: uniLoadMore,
     empty: empty },
 
   data: function data() {
     return {
+      userInfo: {},
       tabCurrentIndex: 0,
       orderList: [],
       navList: [{
@@ -264,6 +267,9 @@ __webpack_require__.r(__webpack_exports__);
                                      * 修复app端点击除全部订单外的按钮进入时不加载数据的问题
                                      * 替换onLoad下代码即可
                                      */
+    this.userInfo = _common.default.getGlobalUserInfo();
+    // console.log("本地UserInfo",this.userInfo)
+
     this.tabCurrentIndex = +options.state;
 
 
@@ -277,21 +283,26 @@ __webpack_require__.r(__webpack_exports__);
   },
 
   methods: {
+
     //获取订单列表
     initOrder: function initOrder() {var _this = this;
       uni.request({
-        url: this.apiServer + "/oreder/userorder",
+        url: this.apiServer + "/order/customerOrder",
         //url:'http://localhost:8080/..."' ,
-        data: 'userinfo.ID',
+        data: {
+          "customerId": this.userInfo.ID },
+
         method: 'POST',
         success: function success(res) {
           var orderList = res.data;
+          console.log("orderList", orderList);
           _this.orderList = orderList;
         } });
 
     },
 
     loadData: function loadData(source) {var _this2 = this;
+      this.initOrder();
       //这里是将订单挂载到tab列表下
       var index = this.tabCurrentIndex;
       var navItem = this.navList[index];
@@ -310,7 +321,7 @@ __webpack_require__.r(__webpack_exports__);
       navItem.loadingType = 'loading';
 
       setTimeout(function () {
-        var orderList = Json.orderList.filter(function (item) {
+        var orderList = _this2.orderList.filter(function (item) {
           //添加不同状态下订单的表现形式
           item = Object.assign(item, _this2.orderStateExp(item.state));
           //演示数据所以自己进行状态筛选

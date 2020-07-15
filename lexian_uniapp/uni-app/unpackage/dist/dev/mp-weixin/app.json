@@ -25,7 +25,8 @@
     "components/moveVerify",
     "pages/public/forgetPwd",
     "components/popup",
-    "pages/user/favorites"
+    "pages/user/favorites",
+    "pages/user/certification"
   ],
   "subPackages": [],
   "window": {
