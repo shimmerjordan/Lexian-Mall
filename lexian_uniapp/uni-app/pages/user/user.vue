@@ -33,7 +33,7 @@
 			<image class="arc" src="/static/arc.png"></image>
 			
 			<view class="tj-sction">
-				<view class="tj-item" >
+				<view class="tj-item"  @click="navTo('/pages/user/favorites')">
 					<text class="num">30</text>
 					<text>收藏夹商品</text>
 				</view>
@@ -90,13 +90,13 @@
 				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="地址管理" ></list-cell>
 				</view>
 			   
-				<list-cell icon="icon-share" iconColor="#9789f7" title="分享" tips="邀请好友赢10万大礼"></list-cell>
+				<list-cell icon="icon-share" iconColor="#9789f7" title="分享" tips="邀请好友赢10万大礼" ></list-cell>
 			
                 
-				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="晒单" tips="晒单抢红包"></list-cell>
+				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="晒单" tips="晒单抢红包" ></list-cell>
 			
                 <view @click="navTo('/pages/user/favorites')">
-				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的收藏" @Click="navTo('/pages/user/favorites')"></list-cell>	
+				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的收藏" @Click="navTo('/pages/user/favorites')" ></list-cell>	
 				</view>
 	            <view @click="navTo('/pages/set/set')">
 				<list-cell icon="icon-shezhi1" iconColor="#e07472" title="设置" border=""></list-cell>
@@ -128,7 +128,7 @@
 			}
 		},
 		onLoad(){
-			this.getUser();
+			this.loadHistory()
 		},
 		// #ifndef MP
 		onNavigationBarButtonTap(e) {
@@ -191,7 +191,7 @@
 				})  
 			}, 
 			navToDetailPage(item) {
-				let id = item.ID;
+				let id = item.id;
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
 				})

@@ -206,6 +206,30 @@
         commodity.name LIKE #{name}
 	</select>
 
+	<select id="getFavorites" resultType="Commodity"
+			parameterType="java.lang.String">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		INNER JOIN
+		favorites ON commodity.ID =
+		favorites.commodity_id
+		WHERE
+		commodity.is_delete=0 AND
+		favorites.isDelete=0 AND
+        favorites.customer_id = #{userID}
+	</select>
+
 	<resultMap id="commodity_map2" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />

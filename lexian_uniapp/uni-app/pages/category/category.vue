@@ -43,7 +43,7 @@
 				    dataType: "JSON",
 				    success: function(res) {
 				      let list = res.data;
-						list.forEach(item=>{
+						list.forEach(function(item, index){
 							if(!item.level){
 								_this.flist.push(item);  //pid为父级id, 没有pid或者pid=0是一级分类
 							}else if(!item.description){
@@ -83,7 +83,7 @@
 			//计算右侧栏每个tab的高度等信息
 			calcSize(){
 				let h = 0;
-				this.slist.forEach(item=>{
+				this.slist.forEach(function(item, index){
 					let view = uni.createSelectorQuery().select("#main-" + item.id);
 					view.fields({
 						size: true

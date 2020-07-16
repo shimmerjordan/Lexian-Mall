@@ -33,23 +33,23 @@
 		<view class="cate-section">
 			<view class="cate-item" @click="navTo(1)">
 				<image src="/static/temp/i3.png" ></image>
-				<text >品牌美食</text>
+				<text >手机数码</text>
 			</view>
 			<view class="cate-item" @click="navTo(2)">
 				<image src="/static/temp/i5.png"></image>
-				<text >个护美妆</text>
+				<text >男装女装</text>
 			</view>
 			<view class="cate-item" @click="navTo(3)">
 				<image src="/static/temp/i6.png"></image>
-				<text >日用百货</text>
+				<text >儿童用品</text>
 			</view>
 			<view class="cate-item" @click="navTo(4)">
 				<image src="/static/temp/i7.png"></image>
-				<text >数码家电</text>
+				<text >工艺摆件</text>
 		     </view>
-			<view class="cate-item" @click="navToe(5)">
+			<view class="cate-item" @click="navTo(5)">
 				<image src="/static/temp/i8.png"></image>
-				<text >水果生鲜</text>
+				<text >零食</text>
 			</view>	
 		</view>
 		<!-- 店铺活动宣传 -->
@@ -351,7 +351,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			},
 			//详情页
 			navToDetailPage(item) {
-				let id = item.ID;
+				let id = item.id;
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
 				})
@@ -359,7 +359,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			navTo(num) {
 				let id = num;
 				uni.navigateTo({
-					url: `/pages/product/list`
+					url: `/pages/category/category?id=${id}`
 				})
 			},
 		},
