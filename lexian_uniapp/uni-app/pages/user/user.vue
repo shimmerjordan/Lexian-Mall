@@ -191,7 +191,7 @@
 				})  
 			}, 
 			navToDetailPage(item) {
-				let id = item.ID;
+				let id = item.id;
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
 				})
