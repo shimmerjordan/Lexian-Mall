@@ -35,4 +35,6 @@ public interface CommodityMapper {
 
 	List<Commodity> getAllShopCommodityByName(String name);
 
+	List<Commodity> getFavorites(String userID);
 }
+

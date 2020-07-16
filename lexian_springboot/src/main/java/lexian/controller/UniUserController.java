@@ -1,5 +1,6 @@
 package lexian.controller;
 
+import lexian.entity.Commodity;
 import lexian.entity.UniBrowsingRecord;
 import lexian.service.UniUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,11 @@ public class UniUserController {
     public List<UniBrowsingRecord> getUserHistory(@RequestBody Map<String,Object> map) {
         String userID= (String) map.get("userID");
         return uniUserService.getHistory(userID);
+    }
+
+    @PostMapping("/getFavorites")
+    public List<Commodity> getUserFavorites(@RequestBody Map<String,Object> map) {
+        String userID= (String) map.get("userID");
+        return uniUserService.getFavorites(userID);
     }
 }
