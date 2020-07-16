@@ -4,3 +4,96 @@
 [DEBUG][20-07-15][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-15][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [DEBUG][20-07-15][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1cadcd73] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1cadcd73]
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c4020c0] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1037168613 wrapping com.mysql.cj.jdbc.ConnectionImpl@5e66b01b] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c4020c0]
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2db4abe2] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@497591056 wrapping com.mysql.cj.jdbc.ConnectionImpl@5923b347] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2db4abe2]
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2e4faf69] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1937095871 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f002e8d] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2e4faf69]
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aac4feb] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@162411838 wrapping com.mysql.cj.jdbc.ConnectionImpl@1e8e12ad] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aac4feb]
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b153a93] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@903009153 wrapping com.mysql.cj.jdbc.ConnectionImpl@1e8e12ad] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b153a93]
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@282c9237] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@652962114 wrapping com.mysql.cj.jdbc.ConnectionImpl@1e8e12ad] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@282c9237]
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b6c12e8] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2100441541 wrapping com.mysql.cj.jdbc.ConnectionImpl@30ed8bb5] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b6c12e8]
+[DEBUG][20-07-16][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73a7af00] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1007223456 wrapping com.mysql.cj.jdbc.ConnectionImpl@29e3b1a4] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73a7af00]
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4fa498d1] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1097035605 wrapping com.mysql.cj.jdbc.ConnectionImpl@29e3b1a4] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4fa498d1]
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35c3898e] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@990142790 wrapping com.mysql.cj.jdbc.ConnectionImpl@29e3b1a4] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35c3898e]
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4da0df02] was not registered for synchronization because synchronization is not active
+[DEBUG][20-07-16][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@1130834118 wrapping com.mysql.cj.jdbc.ConnectionImpl@29e3b1a4] will not be managed by Spring
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==>  Preparing: select max(activity.id) from activity 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]==> Parameters: 
+[DEBUG][20-07-16][lexian.mapper.ActivityMapper.getMaxActivityId]<==      Total: 1
+[DEBUG][20-07-16][org.mybatis.spring.SqlSessionUtils]Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4da0df02]
