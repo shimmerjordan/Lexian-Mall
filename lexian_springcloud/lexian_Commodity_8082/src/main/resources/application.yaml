@@ -17,25 +17,24 @@ spring:
       maximum-pool-size: 60
       minimum-idle: 10
   application:
-    name: lexian-shop-provider
-
-#eureka
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:7001/eureka/
-  instance:
-    instance-id: lexian-shop-provider
-    appname: lexian-Shop-provider
+    name: lexian-commodity-provider
 
 #整合mybatis
 mybatis:
   type-aliases-package: lexian.entity
   mapper-locations: classpath:mybatis/mappers/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
-
+#乱码
 server:
-  port: 8081
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: lexian-commodity-provider
+    appname: lexian-commodity-provider
 
 #pagehelper分页插件
 pagehelper:
@@ -43,4 +42,5 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countsql
+
 

@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lexian_Shop_8081</artifactId>
+    <artifactId>lexian_Commodity_8082</artifactId>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka -->
         <dependency>
@@ -63,11 +64,6 @@
             <artifactId>servlet-api</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.2.0.Final</version>
-        </dependency>
     </dependencies>
 
 </project>

@@ -13,6 +13,7 @@
         <module>lexian_eureka_7001</module>
         <module>lexian_consumer_80</module>
         <module>lexian_zuul_9573</module>
+        <module>lexian_Commodity_8082</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lexian_consumer_80" />
-        <module name="lexian_eureka_7001" />
-        <module name="lexian_Shop_8081" />
-        <module name="lexian_zuul_9573" />
+        <module name="lexian_Commodity_8082" />
         <module name="lexian_api" />
+        <module name="lexian_zuul_9573" />
+        <module name="lexian_eureka_7001" />
+        <module name="lexian_consumer_80" />
+        <module name="lexian_Shop_8081" />
       </profile>
     </annotationProcessing>
   </component>
