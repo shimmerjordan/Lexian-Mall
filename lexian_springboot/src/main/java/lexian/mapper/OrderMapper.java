@@ -24,4 +24,5 @@ public interface OrderMapper {
     List<JiuFenOrder> getJiuFenOrderByID(Integer id);
     int DeleteJiuFenOrder(Map<String,Object> map);
     int UpdateJiuFenOrder(Map<String,Object> map);
+    int deleteOrder(int i);
 }

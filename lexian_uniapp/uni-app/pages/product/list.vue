@@ -228,7 +228,10 @@
 				uni.getStorage({
 				    key:"userInfo",
 			     	success(e){
-			      	userId = e.data.id//这就是你想要取的token
+			      	userId = e.data.id;//这就是你想要取的token
+					if(userId == undefined){
+						userId = e.data.ID;
+					}
 				}
 				});
 				uni.navigateTo({

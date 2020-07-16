@@ -56,7 +56,7 @@
 
 	</insert>
 
-	<select id="selectCart" resultType="Cart" parameterType="lexian.entity.Cart">
+	<select id="selectCart" resultMap="BaseResultMap" parameterType="lexian.entity.Cart">
 		select * from cart
 		<where>
 			<if test="customerId!=null and customerId!=''">

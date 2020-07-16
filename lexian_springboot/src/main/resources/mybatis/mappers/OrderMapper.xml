@@ -12,6 +12,7 @@
         <result property="status" column="status"/>
         <result property="quantity" column="commodity_quantity"/>
         <result property="price" column="price"/>
+        <result property="commodity" column="commodity_id"/>
     </resultMap>
 
     <select id="getAllOrder" resultMap="order_map">
@@ -23,7 +24,8 @@
         orders.`status`,
         commodity.`name`,
         order_item.commodity_quantity,
-        commodity.price
+        commodity.price,
+        order_item.commodity_id
         FROM
         orders
         INNER JOIN order_item ON order_item.order_id = orders.ID
@@ -56,7 +58,7 @@
         INSERT INTO
         orders(orders.date,orders.description,orders.`comment`,orders.`status`)
         VALUES
-        (#{timestamp },#{description},#{comment},#{status})
+        (#{date },#{description},#{comment},#{status})
     </insert>
 
     <insert id="addOrder_Item" parameterType="java.util.HashMap">
@@ -70,7 +72,7 @@
         UPDATE
         orders
         SET
-        orders.date=#{ timestamp },
+        orders.date=#{ date },
         orders.description=#{ description },
         orders.`comment`=#{ comment },
         orders.`status`=#{ status }
@@ -82,7 +84,8 @@
         UPDATE
         order_item
         SET
-        order_item.commodity_quantity=#{ quantity }
+        order_item.commodity_quantity=#{ quantity },
+        order_item.commodity_id = #{ commodity }
         WHERE
         order_item.order_id=#{ id }
     </update>
@@ -170,6 +173,15 @@
         is_delete=1
         WHERE
         ID=#{id}
+    </update>
+
+    <update id="deleteOrder" parameterType="java.lang.Integer">
+        UPDATE
+        orders
+        SET
+        isDelete = 1
+        WHERE
+        orders.ID = #{ ID }
     </update>
 
     <select id="getCustomerOrder" resultType="java.util.HashMap" parameterType="java.util.HashMap">

@@ -346,9 +346,9 @@ function upx2px(number, newDeviceWidth) {
   result = Math.floor(result + EPS);
   if (result === 0) {
     if (deviceDPR === 1 || !isIOS) {
-      result = 1;
+      return 1;
     } else {
-      result = 0.5;
+      return 0.5;
     }
   }
   return number < 0 ? -result : result;
@@ -421,10 +421,7 @@ var protocols = {
 
 
 var todos = [
-'vibrate',
-'preloadPage',
-'unPreloadPage',
-'loadSubPackage'];
+'vibrate'];
 
 var canIUses = [];
 
@@ -760,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2200,10 +2197,12 @@ if (true) {
   };
 
   formatComponentName = function (vm, includeFile) {
-    if (vm.$root === vm) {
-      if (vm.$options && vm.$options.__file) { // fixed by xxxxxx
-        return ('') + vm.$options.__file
+    {
+      if(vm.$scope && vm.$scope.is){
+        return vm.$scope.is
       }
+    }
+    if (vm.$root === vm) {
       return '<Root>'
     }
     var options = typeof vm === 'function' && vm.cid != null
@@ -2238,7 +2237,7 @@ if (true) {
     if (vm._isVue && vm.$parent) {
       var tree = [];
       var currentRecursiveSequence = 0;
-      while (vm && vm.$options.name !== 'PageBody') {
+      while (vm) {
         if (tree.length > 0) {
           var last = tree[tree.length - 1];
           if (last.constructor === vm.constructor) {
@@ -2250,7 +2249,7 @@ if (true) {
             currentRecursiveSequence = 0;
           }
         }
-        !vm.$options.isReserved && tree.push(vm);
+        tree.push(vm);
         vm = vm.$parent;
       }
       return '\n\nfound in\n\n' + tree
@@ -7096,7 +7095,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7117,14 +7116,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7200,7 +7199,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7370,10 +7369,9 @@ function getTarget(obj, path) {
   return getTarget(obj[key], parts.slice(1).join('.'))
 }
 
-function internalMixin(Vue ) {
+function internalMixin(Vue) {
 
-  Vue.config.errorHandler = function(err, vm, info) {
-    Vue.util.warn(("Error in " + info + ": \"" + (err.toString()) + "\""), vm);
+  Vue.config.errorHandler = function(err) {
     console.error(err);
     /* eslint-disable no-undef */
     var app = getApp();
@@ -7625,9 +7623,15 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
+<<<<<<< HEAD
+/*!***************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/pages.json ***!
+  \***************************************************************************/
+=======
 /*!******************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/pages.json ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/pages.json ***!
   \******************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7635,9 +7639,15 @@ module.exports = g;
 
 /***/ }),
 /* 5 */
+<<<<<<< HEAD
+/*!*******************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/store/index.js ***!
+  \*******************************************************************************/
+=======
 /*!**********************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/store/index.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/store/index.js ***!
   \**********************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8764,9 +8774,15 @@ function normalizeComponent (
 
 /***/ }),
 /* 13 */
+<<<<<<< HEAD
+/*!********************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
+  \********************************************************************************************************/
+=======
 /*!***********************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
   \***********************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8951,9 +8967,15 @@ var RouterMount = function RouterMount(Vim, el) {
 
 /***/ }),
 /* 14 */
+<<<<<<< HEAD
+/*!***************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
+  \***************************************************************************************************************/
+=======
 /*!******************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
   \******************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9216,9 +9238,15 @@ var copyObject = function copyObject(object) {
 
 /***/ }),
 /* 15 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9319,9 +9347,15 @@ var route = function route() {var object = arguments.length > 0 && arguments[0] 
 
 /***/ }),
 /* 16 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9354,9 +9388,15 @@ exports.vueMount = vueMount;
 
 /***/ }),
 /* 17 */
+<<<<<<< HEAD
+/*!***************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
+  \***************************************************************************************************************/
+=======
 /*!******************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
   \******************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9398,9 +9438,15 @@ var warnLock = function warnLock(errInfo) {
 
 /***/ }),
 /* 18 */
+<<<<<<< HEAD
+/*!******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
+  \******************************************************************************************************************/
+=======
 /*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
   \*********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9512,9 +9558,15 @@ navjump;exports.default = _default;
 
 /***/ }),
 /* 19 */
+<<<<<<< HEAD
+/*!******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
+  \******************************************************************************************************************/
+=======
 /*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
   \*********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10671,9 +10723,15 @@ if (hadRuntime) {
 
 /***/ }),
 /* 23 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/util.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/util.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/util.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10890,9 +10948,15 @@ var assertCanBack = function assertCanBack(page) {
 
 /***/ }),
 /* 24 */
+<<<<<<< HEAD
+/*!*******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/uniNav.js ***!
+  \*******************************************************************************************************************/
+=======
 /*!**********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/uniNav.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/uniNav.js ***!
   \**********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10935,9 +10999,15 @@ uniPushTo;exports.default = _default;
 
 /***/ }),
 /* 25 */
+<<<<<<< HEAD
+/*!**********************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/hooks.js ***!
+  \**********************************************************************************************************************/
+=======
 /*!*************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/hooks.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/hooks.js ***!
   \*************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11262,9 +11332,15 @@ var isNext = function isNext(Intercept, fnType, navCB) {var _this6 = this;var le
 
 /***/ }),
 /* 26 */
+<<<<<<< HEAD
+/*!*********************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/util.js ***!
+  \*********************************************************************************************************************/
+=======
 /*!************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/util.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/util.js ***!
   \************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11441,9 +11517,15 @@ var AppletsPageRoute = function AppletsPageRoute(pages, Vim) {var
 
 /***/ }),
 /* 27 */
+<<<<<<< HEAD
+/*!******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/compile.js ***!
+  \******************************************************************************************************************/
+=======
 /*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/compile.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/compile.js ***!
   \*********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11486,9 +11568,15 @@ var mp = function mp(fn) {
 
 /***/ }),
 /* 28 */
+<<<<<<< HEAD
+/*!***************************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/appletsNav.js ***!
+  \***************************************************************************************************************************/
+=======
 /*!******************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/appletsNav.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/appletsNav.js ***!
   \******************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11520,9 +11608,15 @@ appletsUniPushTo;exports.default = _default;
 
 /***/ }),
 /* 29 */
+<<<<<<< HEAD
+/*!**********************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/routerNav.js ***!
+  \**********************************************************************************************************************/
+=======
 /*!*************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/routerNav.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/routerNav.js ***!
   \*************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11551,9 +11645,15 @@ H5PushTo;exports.default = _default;
 
 /***/ }),
 /* 30 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/util.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/util.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/util.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12011,9 +12111,15 @@ var diffRouter = function diffRouter(Router, vueRouter, useUniConfig, routes) {
 
 /***/ }),
 /* 31 */
+<<<<<<< HEAD
+/*!************************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/proxy/proxy.js ***!
+  \************************************************************************************************************************/
+=======
 /*!***************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/proxy/proxy.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/proxy/proxy.js ***!
   \***************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12065,9 +12171,15 @@ var proxyEachHooks = function proxyEachHooks(Router, key, hookFun) {
 
 /***/ }),
 /* 32 */
+<<<<<<< HEAD
+/*!*******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/concat.js ***!
+  \*******************************************************************************************************************/
+=======
 /*!**********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/concat.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/concat.js ***!
   \**********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12383,9 +12495,15 @@ var registerRouter = function registerRouter(Router, vueRouter, vueRouterDev) {
 
 /***/ }),
 /* 33 */
+<<<<<<< HEAD
+/*!****************************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/extends/myArray.js ***!
+  \****************************************************************************************************************************/
+=======
 /*!*******************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/extends/myArray.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/extends/myArray.js ***!
   \*******************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12413,9 +12531,15 @@ MyArray;exports.default = _default;
 
 /***/ }),
 /* 34 */
+<<<<<<< HEAD
+/*!******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/lifeCycle/hooks.js ***!
+  \******************************************************************************************************************/
+=======
 /*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/lifeCycle/hooks.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/lifeCycle/hooks.js ***!
   \*********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12461,9 +12585,15 @@ var registerRouterHooks = function registerRouterHooks() {
 
 /***/ }),
 /* 35 */
+<<<<<<< HEAD
+/*!**********************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/applets-patch.js ***!
+  \**********************************************************************************************************************/
+=======
 /*!*************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/applets-patch.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/applets-patch.js ***!
   \*************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12481,9 +12611,15 @@ appletsMount;exports.default = _default;
 
 /***/ }),
 /* 36 */
+<<<<<<< HEAD
+/*!******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/app-patch.js ***!
+  \******************************************************************************************************************/
+=======
 /*!*********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/app-patch.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/app-patch.js ***!
   \*********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12499,9 +12635,15 @@ appMount;exports.default = _default;
 
 /***/ }),
 /* 37 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/mixins.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/mixins.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/mixins.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12569,9 +12711,15 @@ initMixins;exports.default = _default;
 
 /***/ }),
 /* 38 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/init.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/init.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/init.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12648,9 +12796,15 @@ init;exports.default = _default;
 
 /***/ }),
 /* 39 */
+<<<<<<< HEAD
+/*!*****************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/init.js ***!
+  \*****************************************************************************************************************/
+=======
 /*!********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/init.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/init.js ***!
   \********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12767,9 +12921,15 @@ var appInit = function appInit(Router) {
 
 /***/ }),
 /* 40 */
+<<<<<<< HEAD
+/*!*********************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/init.js ***!
+  \*********************************************************************************************************************/
+=======
 /*!************************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/init.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/init.js ***!
   \************************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12790,9 +12950,15 @@ appletsInit;exports.default = _default;
 
 /***/ }),
 /* 41 */
+<<<<<<< HEAD
+/*!*******************************************************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/urlQuery.js ***!
+  \*******************************************************************************************************************/
+=======
 /*!**********************************************************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/urlQuery.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/urlQuery.js ***!
   \**********************************************************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13291,9 +13457,15 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 /* 45 */
+<<<<<<< HEAD
+/*!************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/Json.js ***!
+  \************************************************************************/
+=======
 /*!***************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/Json.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/Json.js ***!
   \***************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13998,9 +14170,15 @@ var cateList = [{
 /* 82 */,
 /* 83 */,
 /* 84 */
+<<<<<<< HEAD
+/*!********************************************************************************!*\
+  !*** E:/workspace_eclipse/project_xy/xy/lexian_uniapp/uni-app/store/common.js ***!
+  \********************************************************************************/
+=======
 /*!***********************************************************!*\
-  !*** D:/中软实训/Group/lexian_uniapp/uni-app/store/common.js ***!
+  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/store/common.js ***!
   \***********************************************************/
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

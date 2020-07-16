@@ -95,4 +95,10 @@ public class OrderController {
         System.out.println(map);
         return orderService.UpdateJiuFenOrder(map);
     }
+
+    @GetMapping("/deleteOrder")
+    public boolean deleteOrder(@RequestParam("index") int index){
+        System.out.println(index);
+        return orderService.deleteOrder(index);
+    }
 }

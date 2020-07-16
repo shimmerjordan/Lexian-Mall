@@ -359,7 +359,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			navTo(num) {
 				let id = num;
 				uni.navigateTo({
-					url: `/pages/product/list`
+					url: `/pages/category/category`
 				})
 			},
 		},

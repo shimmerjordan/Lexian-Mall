@@ -59,3 +59,10 @@ export function UpdateJiuFenOrder(data) {
   })
 }
 
+export function DeleteOrder(index) {
+  return myrequest({
+    url: '/order/deleteOrder',
+    method: 'get',
+    params: { index }
+  })
+}
