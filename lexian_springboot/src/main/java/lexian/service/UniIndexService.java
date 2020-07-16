@@ -12,4 +12,6 @@ public interface UniIndexService {
     List<Activity> getIndexActivity();
 
     List<Commodity> getIndexSearchCommodity(String name);
+
+    List<Commodity> getSalesItem(String aID);
 }
