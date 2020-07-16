@@ -774,8 +774,7 @@
   -webkit-align-content: center;
           align-content: center;
   background: #fff;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .user-section {
   height: 520rpx;
@@ -807,8 +806,7 @@
   width: 130rpx;
   height: 130rpx;
   border: 5rpx solid #fff;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 .user-info-box .username {
   font-size: 38rpx;
@@ -825,11 +823,9 @@
           flex-direction: column;
   color: #f7d680;
   height: 240rpx;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.8)));
   background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
   background: linear-gradient(left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
-  -webkit-border-radius: 16rpx 16rpx 0 0;
-          border-radius: 16rpx 16rpx 0 0;
+  border-radius: 16rpx 16rpx 0 0;
   overflow: hidden;
   position: relative;
   padding: 20rpx 24rpx;
@@ -891,8 +887,7 @@
 .order-section .order-item {
   width: 120rpx;
   height: 120rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   font-size: 24rpx;
   color: #303133;
 }
@@ -908,8 +903,7 @@
   padding: 30rpx 0 0;
   margin-top: 20rpx;
   background: #fff;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .history-section .sec-header {
   display: -webkit-box;
@@ -950,7 +944,6 @@
 .history-section .floor-item image {
   width: 150rpx;
   height: 150rpx;
-  -webkit-border-radius: 6rpx;
-          border-radius: 6rpx;
+  border-radius: 6rpx;
 }
 

@@ -346,9 +346,9 @@ function upx2px(number, newDeviceWidth) {
   result = Math.floor(result + EPS);
   if (result === 0) {
     if (deviceDPR === 1 || !isIOS) {
-      return 1;
+      result = 1;
     } else {
-      return 0.5;
+      result = 0.5;
     }
   }
   return number < 0 ? -result : result;
@@ -421,7 +421,10 @@ var protocols = {
 
 
 var todos = [
-'vibrate'];
+'vibrate',
+'preloadPage',
+'unPreloadPage',
+'loadSubPackage'];
 
 var canIUses = [];
 
@@ -757,7 +760,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2197,12 +2200,10 @@ if (true) {
   };
 
   formatComponentName = function (vm, includeFile) {
-    {
-      if(vm.$scope && vm.$scope.is){
-        return vm.$scope.is
-      }
-    }
     if (vm.$root === vm) {
+      if (vm.$options && vm.$options.__file) { // fixed by xxxxxx
+        return ('') + vm.$options.__file
+      }
       return '<Root>'
     }
     var options = typeof vm === 'function' && vm.cid != null
@@ -2237,7 +2238,7 @@ if (true) {
     if (vm._isVue && vm.$parent) {
       var tree = [];
       var currentRecursiveSequence = 0;
-      while (vm) {
+      while (vm && vm.$options.name !== 'PageBody') {
         if (tree.length > 0) {
           var last = tree[tree.length - 1];
           if (last.constructor === vm.constructor) {
@@ -2249,7 +2250,7 @@ if (true) {
             currentRecursiveSequence = 0;
           }
         }
-        tree.push(vm);
+        !vm.$options.isReserved && tree.push(vm);
         vm = vm.$parent;
       }
       return '\n\nfound in\n\n' + tree
@@ -7095,7 +7096,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7116,14 +7117,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7199,7 +7200,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7369,9 +7370,10 @@ function getTarget(obj, path) {
   return getTarget(obj[key], parts.slice(1).join('.'))
 }
 
-function internalMixin(Vue) {
+function internalMixin(Vue ) {
 
-  Vue.config.errorHandler = function(err) {
+  Vue.config.errorHandler = function(err, vm, info) {
+    Vue.util.warn(("Error in " + info + ": \"" + (err.toString()) + "\""), vm);
     console.error(err);
     /* eslint-disable no-undef */
     var app = getApp();
@@ -7624,7 +7626,7 @@ module.exports = g;
 /***/ }),
 /* 4 */
 /*!******************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/pages.json ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/pages.json ***!
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7634,7 +7636,7 @@ module.exports = g;
 /***/ }),
 /* 5 */
 /*!**********************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/store/index.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/store/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8763,7 +8765,7 @@ function normalizeComponent (
 /***/ }),
 /* 13 */
 /*!***********************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/index.js ***!
   \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8950,7 +8952,7 @@ var RouterMount = function RouterMount(Vim, el) {
 /***/ }),
 /* 14 */
 /*!******************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/util.js ***!
   \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9215,7 +9217,7 @@ var copyObject = function copyObject(object) {
 /***/ }),
 /* 15 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/config.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9318,7 +9320,7 @@ var route = function route() {var object = arguments.length > 0 && arguments[0] 
 /***/ }),
 /* 16 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/base.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9353,7 +9355,7 @@ exports.vueMount = vueMount;
 /***/ }),
 /* 17 */
 /*!******************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/warn.js ***!
   \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9397,7 +9399,7 @@ var warnLock = function warnLock(errInfo) {
 /***/ }),
 /* 18 */
 /*!*********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/navJump.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9511,7 +9513,7 @@ navjump;exports.default = _default;
 /***/ }),
 /* 19 */
 /*!*********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/hooks.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -10670,7 +10672,7 @@ if (hadRuntime) {
 /***/ }),
 /* 23 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/util.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/util.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -10889,7 +10891,7 @@ var assertCanBack = function assertCanBack(page) {
 /***/ }),
 /* 24 */
 /*!**********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/uniNav.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/uniNav.js ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -10934,7 +10936,7 @@ uniPushTo;exports.default = _default;
 /***/ }),
 /* 25 */
 /*!*************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/hooks.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/hooks.js ***!
   \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11261,7 +11263,7 @@ var isNext = function isNext(Intercept, fnType, navCB) {var _this6 = this;var le
 /***/ }),
 /* 26 */
 /*!************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/util.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/util.js ***!
   \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11440,7 +11442,7 @@ var AppletsPageRoute = function AppletsPageRoute(pages, Vim) {var
 /***/ }),
 /* 27 */
 /*!*********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/compile.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/compile.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11485,7 +11487,7 @@ var mp = function mp(fn) {
 /***/ }),
 /* 28 */
 /*!******************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/appletsNav.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/appletsNav.js ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11519,7 +11521,7 @@ appletsUniPushTo;exports.default = _default;
 /***/ }),
 /* 29 */
 /*!*************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/routerNav.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/routerNav.js ***!
   \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11550,7 +11552,7 @@ H5PushTo;exports.default = _default;
 /***/ }),
 /* 30 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/util.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/util.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12010,7 +12012,7 @@ var diffRouter = function diffRouter(Router, vueRouter, useUniConfig, routes) {
 /***/ }),
 /* 31 */
 /*!***************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/proxy/proxy.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/proxy/proxy.js ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12064,7 +12066,7 @@ var proxyEachHooks = function proxyEachHooks(Router, key, hookFun) {
 /***/ }),
 /* 32 */
 /*!**********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/concat.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/concat.js ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12382,7 +12384,7 @@ var registerRouter = function registerRouter(Router, vueRouter, vueRouterDev) {
 /***/ }),
 /* 33 */
 /*!*******************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/extends/myArray.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/extends/myArray.js ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12412,7 +12414,7 @@ MyArray;exports.default = _default;
 /***/ }),
 /* 34 */
 /*!*********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/lifeCycle/hooks.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/lifeCycle/hooks.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12460,7 +12462,7 @@ var registerRouterHooks = function registerRouterHooks() {
 /***/ }),
 /* 35 */
 /*!*************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/applets-patch.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/applets-patch.js ***!
   \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12480,7 +12482,7 @@ appletsMount;exports.default = _default;
 /***/ }),
 /* 36 */
 /*!*********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/app-patch.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/patch/app-patch.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12498,7 +12500,7 @@ appMount;exports.default = _default;
 /***/ }),
 /* 37 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/mixins.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/mixins.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12568,7 +12570,7 @@ initMixins;exports.default = _default;
 /***/ }),
 /* 38 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/init.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/vueRouter/init.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12647,7 +12649,7 @@ init;exports.default = _default;
 /***/ }),
 /* 39 */
 /*!********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/init.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appRouter/init.js ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12766,7 +12768,7 @@ var appInit = function appInit(Router) {
 /***/ }),
 /* 40 */
 /*!************************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/init.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/appletsRouter/init.js ***!
   \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12789,7 +12791,7 @@ appletsInit;exports.default = _default;
 /***/ }),
 /* 41 */
 /*!**********************************************************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/urlQuery.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/node_modules/uni-simple-router/helpers/urlQuery.js ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -13290,7 +13292,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ }),
 /* 45 */
 /*!***************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/Json.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/Json.js ***!
   \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -13997,7 +13999,7 @@ var cateList = [{
 /* 83 */,
 /* 84 */
 /*!***********************************************************!*\
-  !*** H:/NEU_Lexian/lexian_uniapp/uni-app/store/common.js ***!
+  !*** D:/中软实训/Group/lexian_uniapp/uni-app/store/common.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
