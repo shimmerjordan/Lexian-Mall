@@ -20,7 +20,7 @@
 				>
 					<!-- 空白页 -->
 					<empty v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty>
-					<view>{{tabItem}}</view>
+					<!-- <view>{{tabItem}}</view> -->
 					<!-- 订单列表 -->
 					<view 
 						v-for="(item,index) in tabItem.orderList" :key="index"
@@ -36,18 +36,18 @@
 							></text>
 						</view>
 						
-						<scroll-view v-if="item.goodsList.length > 1" class="goods-box" scroll-x>
+						<scroll-view v-if="item.goodList.length > 1" class="goods-box" scroll-x>
 							<view
-								v-for="(goodsItem, goodsIndex) in item.goodsList" :key="goodsIndex"
+								v-for="(goodsItem, goodsIndex) in item.goodList" :key="goodsIndex"
 								class="goods-item"
 							>
 								<image class="goods-img" :src="goodsItem.image" mode="aspectFill"></image>
 							</view>
 						</scroll-view>
 						<view 
-							v-if="item.goodsList.length === 1" 
+							v-if="item.goodList.length === 1" 
 							class="goods-box-single"
-							v-for="(goodsItem, goodsIndex) in item.goodsList" :key="goodsIndex"
+							v-for="(goodsItem, goodsIndex) in item.goodList" :key="goodsIndex"
 						>
 							<image class="goods-img" :src="goodsItem.image" mode="aspectFill"></image>
 							<view class="right">
@@ -158,7 +158,7 @@
 					},
 					method: 'POST',
 					success: (res) => {
-					this.ordersList = res.data;;
+					this.ordersList = res.data;
 					console.log("后台返回的ordersList", this.ordersList);
 					console.log("ordersList.length", this.ordersList.length);
 					}
@@ -184,7 +184,7 @@
 				navItem.loadingType = 'loading';
 				
 				setTimeout(()=>{
-					let orderList = Json.orderList.filter(item=>{
+					let orderList = this.ordersList.filter(item=>{
 						//添加不同状态下订单的表现形式
 						item = Object.assign(item, this.orderStateExp(item.state));
 						//演示数据所以自己进行状态筛选

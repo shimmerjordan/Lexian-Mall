@@ -141,9 +141,9 @@
 <script>
 	import {mapState,mapMutations } from 'vuex';
 	// import Api from '@/store/model.js';
-	// import uniList from '@/components/uni-list/uni-list.vue'
-	// import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
-	// import uniPopup from '@/components/uni-popup/uni-popup.vue'
+	import uniList from "@/components/uni-list/uni-list.vue"
+	import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
+	import uniPopup from "@/components/uni-popup/uni-popup.vue"
 	export default {
 		components: {
 			uniList,
@@ -191,7 +191,7 @@
 				time: function time(value) {
 					if(!value){
 						return ''
-					}
+					} 
 					var year = value.substr(0, 4)
 					var month = value.substr(5, 2)
 					var day = value.substr(8, 2)
@@ -228,13 +228,13 @@
 				}
 				this.smsbtn.status = true; // 这段代码其实应该加在你request请求 短信发送成功后 
 				this.smsbtn.loading = true;
-				Api.methods.sendSms({"phone":this.tempPhone}).then(function(res){
-					console.log(res)
-					// if(res.data.res === -1){
-					// 	_self.$api.msg(res.data.msg)
-					// 	_self.smsbtn.loading = false;
-					// }
-				})
+				// Api.methods.sendSms({"phone":this.tempPhone}).then(function(res){
+				// 	console.log(res)
+				// 	// if(res.data.res === -1){
+				// 	// 	_self.$api.msg(res.data.msg)
+				// 	// 	_self.smsbtn.loading = false;
+				// 	// }
+				// })
 				this.timerId = setInterval(() => {
 						var codeTime = this.smsbtn.codeTime;
 						codeTime--;
@@ -268,23 +268,23 @@
 			},
 			loadUserInfo(){
 				var _self=this;
-				Api.methods.loadUserInfo().then(function(res){
-					if(res.data.code===200){
-						_self.login(res.data.data);
-						_self.userInfo=res.data.data;
-						_self.tempGender=res.data.data.gender
-						_self.tempName=res.data.data.username
-						_self.tempPhone=res.data.data.phone
-						_self.tempEmail=res.data.data.email
-						_self.token=res.data.data.token
-						console.log(res.data.data.token)
-					}else{
-						_self.logout()
-						uni.navigateTo({
-							url :'/pages/public/login'
-						})
-					}
-				})
+				// Api.methods.loadUserInfo().then(function(res){
+				// 	if(res.data.code===200){
+				// 		_self.login(res.data.data);
+				// 		_self.userInfo=res.data.data;
+				// 		_self.tempGender=res.data.data.gender
+				// 		_self.tempName=res.data.data.username
+				// 		_self.tempPhone=res.data.data.phone
+				// 		_self.tempEmail=res.data.data.email
+				// 		_self.token=res.data.data.token
+				// 		console.log(res.data.data.token)
+				// 	}else{
+				// 		_self.logout()
+				// 		uni.navigateTo({
+				// 			url :'/pages/public/login'
+				// 		})
+				// 	}
+				// })
 			},
 			cancel(type) {
 				if (type === 'tip') {
@@ -311,19 +311,19 @@
 				this.tempPhone=event.detail.value
 			},
 			upPhone(){
-				var _self = this;
-				/* 验证手机号验证码 */
-				Api.methods.checkSms({"code":this.code,"phone":this.tempPhone}).then(function(res){
-					console.log("hdafgsjh" + JSON.stringify(res))
-					if(res.data.code === 200){
-						_self.userInfo.phone = _self.tempPhone;
-						_self.cancel('phone');
-					}else{
-						_self.cancel('phone');
-						_self.$api.msg("验证码输入错误！")
-					}
+				// var _self = this;
+				// /* 验证手机号验证码 */
+				// Api.methods.checkSms({"code":this.code,"phone":this.tempPhone}).then(function(res){
+				// 	console.log("hdafgsjh" + JSON.stringify(res))
+				// 	if(res.data.code === 200){
+				// 		_self.userInfo.phone = _self.tempPhone;
+				// 		_self.cancel('phone');
+				// 	}else{
+				// 		_self.cancel('phone');
+				// 		_self.$api.msg("验证码输入错误！")
+				// 	}
 					
-				})
+				// })
 				
 			},
 			upUserInfo(){
