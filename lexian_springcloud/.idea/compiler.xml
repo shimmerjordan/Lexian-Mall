@@ -9,6 +9,7 @@
         <module name="lexian_consumer_80" />
         <module name="lexian_eureka_7001" />
         <module name="lexian_Shop_8081" />
+        <module name="lexian_zuul_9573" />
         <module name="lexian_api" />
       </profile>
     </annotationProcessing>

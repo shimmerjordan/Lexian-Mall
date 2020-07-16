@@ -2,12 +2,12 @@ package lexian;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableEurekaClient
-public class Consumer_80 {
+@EnableZuulProxy
+public class lexian_Zuul {
     public static void main(String[] args) {
-        SpringApplication.run(Consumer_80.class,args);
+        SpringApplication.run(lexian_Zuul.class,args);
     }
 }
