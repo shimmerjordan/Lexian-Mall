@@ -20,8 +20,7 @@
 				>
 					<!-- 空白页 -->
 					<empty v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty>
-					<view>{{tabItem.orderList.length}}</view>
-					
+					<view>{{tabItem}}</view>
 					<!-- 订单列表 -->
 					<view 
 						v-for="(item,index) in tabItem.orderList" :key="index"
@@ -82,7 +81,7 @@
 	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
 	import empty from "@/components/empty";
 	import common from '@/store/common.js'
-	// import Json from '@/Json';
+	import Json from '@/Json';
 	export default {
 		components: {
 			uniLoadMore,
@@ -92,7 +91,7 @@
 			return {
 				userInfo: {},
 				tabCurrentIndex: 0,
-				orderList: [],
+				ordersList: [],
 				navList: [{
 						state: 0,
 						text: '全部',
@@ -159,10 +158,9 @@
 					},
 					method: 'POST',
 					success: (res) => {
-					let orderList = res.data;
-					console.log("orderList", orderList);
-					this.orderList = orderList;
-					console.log("orderList.length", this.orderList.length);
+					this.ordersList = res.data;;
+					console.log("后台返回的ordersList", this.ordersList);
+					console.log("ordersList.length", this.ordersList.length);
 					}
 				});
 			},
@@ -173,7 +171,7 @@
 				let index = this.tabCurrentIndex;
 				let navItem = this.navList[index];
 				let state = navItem.state;
-				
+				console.log("调用了this.ordersList", this.ordersList);
 				if(source === 'tabChange' && navItem.loaded === true){
 					//tab切换只有第一次需要加载数据
 					return;
@@ -183,11 +181,10 @@
 					return;
 				}
 				
-				
 				navItem.loadingType = 'loading';
 				
 				setTimeout(()=>{
-					let orderList = this.orderList.filter(item=>{
+					let orderList = Json.orderList.filter(item=>{
 						//添加不同状态下订单的表现形式
 						item = Object.assign(item, this.orderStateExp(item.state));
 						//演示数据所以自己进行状态筛选
@@ -202,10 +199,12 @@
 					})
 					//loaded新字段用于表示数据加载完毕，如果为空可以显示空白页
 					this.$set(navItem, 'loaded', true);
+					console.log("Json.orderList", Json.orderList);
 					
 					//判断是否还有数据， 有改为 more， 没有改为noMore 
 					navItem.loadingType = 'more';
 				}, 600);	
+				
 			}, 
 
 			//swiper 切换

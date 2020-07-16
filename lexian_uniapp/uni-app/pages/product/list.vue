@@ -222,16 +222,18 @@
 			},
 			//详情
 			navToDetailPage(item){
+				//还有个问题 其他分类空
 				//测试数据没有写id，用title代替
 				let id = item.id;
 				let userId = "";
 				uni.getStorage({
 				    key:"userInfo",
 			     	success(e){
-			      	userId = e.data.id;//这就是你想要取的token
-					if(userId == undefined){
-						userId = e.data.ID;
-					}
+			      	userId = e.data.ID;//这就是你想要取的token
+					debugger
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
 				}
 				});
 				uni.navigateTo({
