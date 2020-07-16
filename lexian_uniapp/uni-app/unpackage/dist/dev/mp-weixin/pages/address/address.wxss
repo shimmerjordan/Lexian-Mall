@@ -793,7 +793,8 @@ page {
   margin-right: 10rpx;
   background: #fffafb;
   border: 1px solid #ffb4c7;
-  border-radius: 4rpx;
+  -webkit-border-radius: 4rpx;
+          border-radius: 4rpx;
   padding: 4rpx 10rpx;
   line-height: 1;
 }
@@ -841,7 +842,9 @@ page {
   font-size: 32rpx;
   color: #fff;
   background-color: #fa436a;
-  border-radius: 10rpx;
-  box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  -webkit-box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
+          box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
 }
 

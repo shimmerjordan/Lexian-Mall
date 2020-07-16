@@ -22,3 +22,11 @@ export function addManager(data) {
     data
   })
 }
+
+export function deleteManager(index) {
+  return myrequest({
+    url: '/manager/delete',
+    method: 'get',
+    params: { index }
+  })
+}

@@ -16,4 +16,6 @@ public interface ManagerMapper {
     int addManager(Map<String,Object> m);
 
     int updateManager(Map<String,Object> m);
+
+    int deleteManager(int index);
 }
