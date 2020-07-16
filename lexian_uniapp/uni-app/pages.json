@@ -57,9 +57,9 @@
 		},
 
 		{
-			"path": "pages/userinfo/userinfo",
+			"path": "pages/userinfo/userinfo-new",
 			"style": {
-				"navigationBarTitleText": "修改资料"
+				"navigationBarTitleText": "用户资料"
 			}
 		}, {
 			"path": "pages/cart/cart",
@@ -251,6 +251,7 @@
             	}
             }
         }
+        
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
