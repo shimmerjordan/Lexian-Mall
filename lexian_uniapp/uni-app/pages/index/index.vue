@@ -1,15 +1,19 @@
 <template>
 	<view class="container">
-		<!-- 小程序头部兼容 -->
-		<!-- #ifdef MP -->
-		<!-- 搜索框数据传递与页面跳转待实现-->
-		<view class="mp-search-box">
-	
-		  <uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" class="ser-input" type="text"  btnLinkInput=true  >
-			 </uni-search >
-			<input  class="ser-input" type="text" v-model="searchInfo.Name"  @confirm="searchCommodity()" />				  
-		 </view>
+		<!-- 小程序适配 搜索栏-->
+		<!-- #ifdef MP-->
+		<view class="content">
+			<uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" v-model="searchInfo.Name"  @confirm="searchCommodity()" >
+		</uni-search>
+		</view>
 		<!-- #endif -->
+		<!-- H5适配 搜索栏-->
+		<!-- #ifdef H5-->
+		 <view class="mp-search-box">
+			<input  class="ser-input" type="text"  v-model="searchInfo.Name"  @confirm="searchCommodity()" />				  
+		</view> 
+		<!-- #endif  -->
+		
 		
 		<!-- 头部轮播 -->
 		<view class="carousel-section">
@@ -18,7 +22,7 @@
 			<!-- 背景色区域 -->
 			<view class="titleNview-background" :style="{backgroundColor:titleNViewBackground}"></view>
 			<swiper class="carousel" circular @change="swiperChange">
-				<swiper-item v-for="(item , index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({title: '轮播广告'})">
+				<swiper-item v-for="(item , index) in carouselList" :key="index" class="carousel-item" @click="navToActivity(item)">
 					<image :src="item.img" mode:aspectFill />
 				</swiper-item>
 			</swiper>
@@ -31,29 +35,29 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" @click="navTo(1)">
-				<image src="/static/temp/i3.png" ></image>
+			<view class="cate-item" >
+				<image src="/static/temp/i3.png" @click="navTo()"></image>
 				<text >手机数码</text>
 			</view>
-			<view class="cate-item" @click="navTo(2)">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i5.png"></image>
 				<text >男装女装</text>
 			</view>
-			<view class="cate-item" @click="navTo(3)">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i6.png"></image>
 				<text >儿童用品</text>
 			</view>
-			<view class="cate-item" @click="navTo(4)">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i7.png"></image>
 				<text >工艺摆件</text>
 		     </view>
-			<view class="cate-item" @click="navTo(5)">
+			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i8.png"></image>
 				<text >零食</text>
 			</view>	
 		</view>
 		<!-- 店铺活动宣传 -->
-		<view class="ad-1" @click="navToDetailPage({title: '轮播广告'})">
+		<view class="ad-1" @click="navTo()">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
 		<!-- 店铺活动宣传的页面跳转 -->	
 		</view>
@@ -98,7 +102,7 @@
 				<swiper-item
 					class="g-swiper-item"
 					v-for="(item, index) in tGoodsList" :key="index"
-					v-if="index%2 === 0"
+			        v-if="index%2 === 0"
 					@click="navToDetailPage(item)"
 				>
 					<view class="g-item left">
@@ -120,11 +124,11 @@
 						            
 					</view>
 					<view class="g-item right">
-						<image :src="tGoodsList[index+1].image" mode="aspectFill"></image>
+						<image :src="tGoodsList[index].image" mode="aspectFill"></image>
 						<view class="t-box">
-							<text class="title clamp">{{tGoodsList[index+1].name}}</text>
+							<text class="title clamp">{{tGoodsList[index].name}}</text>
 							<view class="price-box">
-								<text class="price">￥{{tGoodsList[index+1].price}}</text> 
+								<text class="price">￥{{tGoodsList[index].price}}</text> 
 								<text class="m-price">￥39</text> 
 							</view>
 							<view class="pro-box">
@@ -250,6 +254,8 @@
 
 <script>
 import uniSearch from '../../components/lee-search/lee-search.vue'
+import common from '@/store/common.js'
+import {  mapState } from 'vuex';
 	export default {
 		data() {
 			return {
@@ -268,27 +274,38 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				dGoodsList: [],
 				sGoodsList: [],
 				gGoodsList: [],
+				salesItemList: [],
 				date: new Date(+new Date(new Date().toJSON())+8*3600*1000).toISOString(),
-					iconSrc: {
-						logo: '../../static/lee-search/icon_search.png',
-						voice: '../../static/lee-search/icon_voice.png',
-						scan: '../../static/lee-search/icon_scan.png',
-						clear:'../../static/lee-search/icon_clear.png'
-					},
-					inputAttr: {
-						backgroundColor: '#ccc',
-						placeholderText: '请输入关键字'
-					}
+				iconSrc: {
+					logo: '../../static/lee-search/icon_search.png',
+					voice: '../../static/lee-search/icon_voice.png',
+					scan: '../../static/lee-search/icon_scan.png',
+					clear:'../../static/lee-search/icon_clear.png'
+				},
+				inputAttr: {
+					backgroundColor: '#ccc',
+					placeholderText: '请输入内容'
+				},
 			};
 		},
       components:{
-     	 uniSearch
+		  uniSearch
       },
 		onLoad() {
 			this.loadData();
+			this.getUser();
+		},
+		computed: {
+			...mapState(['hasLogin'])
 		},
 		methods: {
-			
+			getUser() { 
+				         if(this.hasLogin){
+							let that = this;
+							that.userInfo = common.getGlobalUserInfo();
+							// console.log("本地UserInfo",this.userInfo)
+							}
+						},
 			async loadData() {
 				//获取活动数据
 				uni.request({
@@ -333,7 +350,7 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				let searchName= this.searchInfo.Name;
 				uni.request({
 					url: this.apiServer + "/uniIndex/indexSearch",
-					data: {searchName: searchName,
+					data: {searchName: searchName
 					},
 					method: 'POST',
 					success: (res) => {
@@ -341,7 +358,10 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 					this.searchList = searchList;
 					},
 				});
-					console.log(this.searchList);
+				let itemID = this.searchList[0].id;
+				uni.navigateTo({
+					 url: `/pages/product/product?id=${itemID}`
+				});
 				},
 			//轮播图切换修改背景色
 			swiperChange(e) {
@@ -349,31 +369,57 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 				this.swiperCurrent = index;
 				this.titleNViewBackground = this.carouselList[index].background;
 			},
+			//跳转到活动商品
+			navToActivity(item) {
+				console.log(item);
+				let aID = item.id;
+				uni.request({
+					url: this.apiServer + "/uniIndex/getSalesItem",
+					data: {aID: aID.toString()
+					},
+					method: 'POST',
+					success: (res) => {
+					let salesItemList = res.data;
+					this.salesItemList = salesItemList;
+					},
+				});
+				let itemID = this.salesItemList[0].id;
+				uni.navigateTo({
+					 url: `/pages/product/product?id=${itemID}`
+				});
+				},
 			//详情页
-			navToDetailPage(item) {
-				let id = item.id;
+			navToDetailPage(item) {		
+				let itemID = item.id;
+				let userId ="";
+				uni.getStorage({
+				    key:"userInfo",
+				 	success(e){
+				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
+				}
+				});
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
-				})
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
+				});
 			},
-			navTo(num) {
-				let id = num;
+			navTo() {
 				uni.navigateTo({
-					url: `/pages/category/category?id=${id}`
+					url: `pages/category/category`
 				})
 			},
 		},
 
 		// #ifndef MP
-		
-		
 		//点击导航栏 buttons 时触发
 		onNavigationBarButtonTap(e) {
 			const index = e.index;
 			if (index === 0) {
 				this.$api.msg('点击了扫描');
 			} else if (index === 1) {
-				// #ifdef APP-PLUS
+				// #ifdef  APP-PLUS
 				const pages = getCurrentPages();
 				const page = pages[pages.length - 1];
 				const currentWebview = page.$getAppWebview();
@@ -391,11 +437,10 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 </script>
 
 <style lang="scss">
-	/* #ifdef MP */
 	.mp-search-box{
 		position:absolute;
 		left: 0;
-		top: 20upx;
+		top: 17upx;
 		z-index: 9999;
 		width: 100%;
 		padding: 0 80upx;
@@ -409,6 +454,22 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			color:$font-color-base;
 			border-radius: 20px;
 			background: rgba(255, 255, 255, 0.6);
+		}
+		.content {
+			text-align: center;
+			height: 400upx;
+			.icon-wrap{
+				position:relative;
+				height:60upx;
+				top:0;
+				box-sizing: border-box;
+				.icon{
+					width:60upx;
+					height:60upx;
+					padding:10upx;
+					box-sizing: border-box;
+				}
+			}
 		}
 	
 	}
@@ -436,7 +497,6 @@ import uniSearch from '../../components/lee-search/lee-search.vue'
 			}
 		}
 	}
-	/* #endif */
 	
 	
 	page {
