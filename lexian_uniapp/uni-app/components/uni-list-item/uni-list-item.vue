@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import uniIcons from '@compoents/uni-icons/uni-icons.vue'
-import uniBadge from '@compoents/uni-badge/uni-badge.vue'
+import uniIcons from "../uni-icons/uni-icons.vue"
+import uniBadge from "../uni-badge/uni-badge.vue"
 export default {
   name: 'UniListItem',
   components: {

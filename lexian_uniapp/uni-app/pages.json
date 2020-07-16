@@ -64,7 +64,8 @@
 		}, {
 			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "购物车"
+				"navigationBarTitleText": "购物车",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/public/loginByPhone",
