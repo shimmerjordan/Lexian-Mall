@@ -1,0 +1,16 @@
+server:
+  port: 9573
+
+spring:
+  application:
+    name: lexian-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    appname: lexian-zuul
+    instance-id: lexian-zuul
+    prefer-ip-address: true
+

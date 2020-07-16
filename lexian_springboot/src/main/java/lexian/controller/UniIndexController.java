@@ -50,6 +50,11 @@ public class UniIndexController {
         return resultList;
     }
 
+    @PostMapping("/getSalesItem")
+    public List<Commodity> getSalesItem (@RequestBody Map<String,Object> map){
+        String aID=(String)map.get("aID");
+        return uniIndexService.getSalesItem(aID);
+    }
 
 
 }

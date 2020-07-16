@@ -14,7 +14,7 @@
 			</swiper>
 		</view>
 		
-		<view class="introduce-section" v-if="commodity">
+		<view class="introduce-section" >
 			<text class="title">{{commodity.name}}</text>
 			<view class="price-box">
 				<text class="price-tip">¥</text>

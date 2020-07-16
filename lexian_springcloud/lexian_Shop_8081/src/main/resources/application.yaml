@@ -1,9 +1,8 @@
 spring:
   datasource:
     username: root
-    password: password
-    url: "jdbc:mysql://server.natappfree.cc:46813/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-
+    password: 123
+    url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       # 连接只读数据库时配置为true， 保证安全
@@ -17,6 +16,17 @@ spring:
       # 连接池中允许的最大连接数。缺省值：10
       maximum-pool-size: 60
       minimum-idle: 10
+  application:
+    name: lexian-shop-provider
+
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: lexian-shop-provider
+    appname: lexian-Shop-provider
 
 #整合mybatis
 mybatis:
@@ -24,7 +34,6 @@ mybatis:
   mapper-locations: classpath:mybatis/mappers/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
 
-#乱码
 server:
   port: 8081
 
@@ -34,13 +43,4 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countsql
-
-#eureka
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:7001/eureka/
-  instance:
-    instance-id: this is a eureka instance
-
 

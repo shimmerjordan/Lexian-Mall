@@ -41,5 +41,9 @@ public class UniIndexServiceImpl implements UniIndexService{
     public List<Commodity> getIndexSearchCommodity(String name){
         return commodityMapper.getIndexSearchCommodity(name);
     }
+    @Override
+    public List<Commodity> getSalesItem(String aID){
+        return commodityMapper.getSalesItem(aID);
+    }
 }
 

@@ -766,8 +766,7 @@ page, .content {
   width: 100%;
   height: 80rpx;
   background: #fff;
-  -webkit-box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.06);
-          box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.06);
   z-index: 10;
 }
 .navbar .nav-item {
@@ -952,8 +951,7 @@ page, .content {
 .goods-list .image-wrapper {
   width: 100%;
   height: 330rpx;
-  -webkit-border-radius: 3px;
-          border-radius: 3px;
+  border-radius: 3px;
   overflow: hidden;
 }
 .goods-list .image-wrapper image {
