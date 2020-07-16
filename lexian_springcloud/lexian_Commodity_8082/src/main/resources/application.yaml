@@ -26,7 +26,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
-  port: 8080
+  port: 8082
 
 eureka:
   client:
