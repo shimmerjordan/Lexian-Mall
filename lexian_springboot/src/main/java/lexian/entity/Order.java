@@ -11,8 +11,9 @@ public class Order {
     private int status;
     private int quantity;
     private float price;
+    private int commodity;
 
-    public Order(int ID, Timestamp date, String description, String name, int comment, int status, int quantity, float price) {
+    public Order(int ID, Timestamp date, String description, String name, int comment, int status, int quantity, float price, int commodity) {
         this.ID = ID;
         this.date = date;
         this.description = description;
@@ -21,9 +22,18 @@ public class Order {
         this.status = status;
         this.quantity = quantity;
         this.price = price;
+        this.commodity = commodity;
     }
 
     public Order(){}
+
+    public int getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(int commodity) {
+        this.commodity = commodity;
+    }
 
     public int getID() {
         return ID;

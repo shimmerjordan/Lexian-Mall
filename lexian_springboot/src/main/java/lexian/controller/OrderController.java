@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,9 +52,9 @@ public class OrderController {
     @PostMapping("/userOrder")
     public List<Order> getUserOrder(String userID) { return orderService.getUserOrder(userID); }
 
-    @PostMapping("/customerOrder")
-    public List<Order> getCustomerOrder(@RequestBody Map<String, Object> map) {
-        List<Order> result = orderService.getCustomerOrder(map);
+    @PostMapping("/getCustomerOrder")
+    public List<HashMap> getCustomerOrder(@RequestBody Map<String, Object> map) {
+        List<HashMap> result = orderService.getCustomerOrder(map);
         return result;
     }
 
@@ -93,5 +94,11 @@ public class OrderController {
         map.put("handTime",time);
         System.out.println(map);
         return orderService.UpdateJiuFenOrder(map);
+    }
+
+    @GetMapping("/deleteOrder")
+    public boolean deleteOrder(@RequestParam("index") int index){
+        System.out.println(index);
+        return orderService.deleteOrder(index);
     }
 }

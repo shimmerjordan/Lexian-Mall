@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>lexian_api</module>
-        <module>lexian_orderAndCommodity_8081</module>
+        <module>lexian_Shop_8081</module>
         <module>lexian_eureka_7001</module>
         <module>lexian_consumer_80</module>
     </modules>

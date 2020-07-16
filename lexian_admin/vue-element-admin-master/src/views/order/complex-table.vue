@@ -67,7 +67,7 @@
       </el-table-column>
       <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
-          <el-button type="primary" size="mini" @click="handleUpdate(row)">
+          <el-button type="primary" size="mini" @click="handleUpdate(row,$index)">
             编辑
           </el-button>
           <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
@@ -84,8 +84,8 @@
         <el-form-item label="商品ID" prop="commodity">
           <el-input v-model="temp.commodity" />
         </el-form-item>
-        <el-form-item label="日期" prop="timestamp">
-          <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
+        <el-form-item label="日期" prop="date">
+          <el-date-picker v-model="temp.date" type="datetime" placeholder="Please pick a date" />
         </el-form-item>
         <el-form-item label="状态" prop="status">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import { getAllOrder, createOrder, updateOrder } from '@/api/order'
+import { getAllOrder, createOrder, updateOrder, DeleteOrder } from '@/api/order'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -213,7 +213,6 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      console.log(this.listQuery)
       getAllOrder(this.listQuery).then(response => {
         this.list = response.data.list
         this.total = response.data.total
@@ -246,7 +245,7 @@ export default {
     resetTemp() {
       this.temp = {
         comment: 1,
-        timestamp: new Date(),
+        date: new Date(),
         status: ''
       }
     },
@@ -283,10 +282,10 @@ export default {
         }
       })
     },
-    handleUpdate(row) {
-      this.resetTemp()
+    handleUpdate(row, index) {
+      this.temp = Object.assign({}, this.list[index])
+      this.temp.date = new Date(this.temp.date)
       this.dialogStatus = 'update'
-      this.temp.id = row.id
       this.dialogFormVisible = true
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
@@ -315,13 +314,26 @@ export default {
           })
         }
       })
+      this.getList()
     },
     handleDelete(row, index) {
-      this.$notify({
-        title: 'Success',
-        message: 'Delete Successfully',
-        type: 'success',
-        duration: 2000
+      console.log(row)
+      DeleteOrder(row.id).then(response => {
+        if (response.data) {
+          this.$notify({
+            title: 'Success',
+            message: '订单删除成功',
+            type: 'success',
+            duration: 2000
+          })
+        } else {
+          this.$notify({
+            title: 'Fail',
+            message: '订单修改失败',
+            type: 'fail',
+            duration: 2000
+          })
+        }
       })
       this.list.splice(index, 1)
     },

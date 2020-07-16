@@ -9,4 +9,5 @@ public interface ManagerService {
     List<List<Manager>> getAllRoleMember();
     boolean addManager(Map<String,Object> m);
     boolean updateManager(Map<String,Object> m);
+    boolean deleteManager(int index);
 }

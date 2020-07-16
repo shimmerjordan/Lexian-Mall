@@ -4,10 +4,27 @@
 		"ignore": []
 	},
 	"setting": {
+<<<<<<< HEAD
 		"urlCheck": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "",
+=======
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"coverView": true,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"useCompilerModule": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.2",
+>>>>>>> 7069ccaa0c012445e52313014556ebd9b36809b9
 	"appid": "touristappid",
 	"projectname": "uni-app",
 	"simulatorType": "wechat",

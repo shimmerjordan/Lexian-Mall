@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "",
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "shopro-mini-card": "/components/mini-card/mini-card"
+  }
 }
