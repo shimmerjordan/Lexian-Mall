@@ -11,7 +11,7 @@
 		},
 		onLaunch: function() {
 			let userInfo = uni.getStorageSync('userInfo') || '';
-			if(userInfo.id){
+			if(userInfo.ID){
 				//更新登陆状态
 				uni.getStorage({
 					key: 'userInfo',
@@ -28,6 +28,12 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
+		beforeUpdate: function(){
+			sessionStorage.setItem("store",JSON.stringify(this.$store.state))
+		},
+		onLoad: function(){
+			this.$store.replaceState(Object.assign({}, this.$store.state,JSON.parse(sessionStorage.getItem("store"))))
+		}
 	}
 </script>
 

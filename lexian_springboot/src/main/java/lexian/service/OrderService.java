@@ -2,11 +2,13 @@ package lexian.service;
 
 import lexian.entity.JiuFenOrder;
 import lexian.entity.Order;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Transactional
 public interface OrderService {
     List<Order> getAllOrder(Map<String,Object> map);
     int[] getDateRange(int start, int end);
