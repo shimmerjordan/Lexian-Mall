@@ -193,19 +193,20 @@
 				})  
 			}, 
 			navToDetailPage(item) {
-				let id = item.id;
+				let itemID = item.id;
 				let userId ="";
 				uni.getStorage({
 				    key:"userInfo",
 				 	success(e){
 				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
 				}
 				});
-				//执行跳转
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
-				})
-				
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
+				});
 			},
 	
 			/**
