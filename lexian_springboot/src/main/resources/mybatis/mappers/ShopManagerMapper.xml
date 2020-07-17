@@ -14,6 +14,7 @@
     <result column="shop_manager.phone" property="phone"/>
     <result column="shop_manager.is_delete" property="is_delete"/>
   </resultMap>
+<!--  SQL查找店铺管理员个人信息，通过传回来的id-->
   <select id="searchShopManager"  resultType="java.util.Map" parameterType="java.util.HashMap">
     select
     shop_manager.ID,shop_manager.name,shop_manager.age, shop_manager.sex, shop_manager.pwd,shop_manager.nick_name, shop_manager.user_image, shop_manager.birthday,
@@ -21,6 +22,8 @@
     from shop_manager
     where shop_manager.ID = #{id} and shop_manager.is_delete = 0
   </select>
+
+<!--  SQL更新店铺管理员个人信息，通过传回的参数-->
   <update id="updateShopManager" parameterType="java.util.HashMap">
     update shop_manager
     set
@@ -32,6 +35,8 @@
     shop_manager.login_name = #{login_name}
     where  shop_manager.ID = #{id}
   </update>
+
+<!--  SQL删除店铺管理员个人信息。通过传回的id-->
   <update id="deleteShopManager" parameterType="java.util.HashMap">
     update shop_manager
     set shop_manager.is_delete = 1

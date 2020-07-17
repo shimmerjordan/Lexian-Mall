@@ -2,24 +2,25 @@ package lexian.entity;
 
 import java.util.Date;
 
+//店铺信息实体类
 public class Shop {
-    private Integer id;
+    private Integer id;//店铺id
 
-    private String name;
+    private String name;//店铺名称
 
-    private Date establishTime;
+    private Date establishTime;//创建店铺时间
 
-    private String kind;
+    private String kind;//该店铺类型——旗舰店，自营店，进口店，
 
-    private Integer status;
+    private Integer status;//店铺状态
 
-    private Integer isDelete;
+    private Integer isDelete;//店铺删除标记
 
-    private String img;
+    private String img;//店铺图片
 
-    private String tag;
+    private String tag;//店铺的标签，分类——食品，服饰，电子设备
 
-    private  String description;
+    private  String description;//店铺描述
 
     public Shop(Integer id, String name, Date establishTime, String kind, Integer status, Integer isDelete, String img, String tag, String description) {
         this.id = id;
