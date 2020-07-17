@@ -17,6 +17,12 @@ import java.util.TimeZone;
 public class ShopServiceImpl implements ShopService{
     private ShopMapper shopMapper;
 
+    /**
+     * 转换时间格式
+     * @param UTC
+     * @return
+     * @throws ParseException
+     */
     private String UTCToLocal(String UTC) throws ParseException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -60,9 +66,10 @@ public class ShopServiceImpl implements ShopService{
     public List<Shop> searchShopByInformation(Map<String,Object> map) {
 //        return shopMapper.searchShopByInformation(map);
         try {
-            String beginTime = (String) map.get("beginTime");
+            String beginTime = (String) map.get("beginTime");//赋值
             String endTime = (String) map.get("endTime");
-            if(beginTime != null && endTime != null) {
+
+            if(beginTime != null && endTime != null) { //对时间段进行查询，必须满足开始、结束时间同时输入
                 map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
                 map.put("endTime",UTCToLocal((String)map.get("endTime")));
             }

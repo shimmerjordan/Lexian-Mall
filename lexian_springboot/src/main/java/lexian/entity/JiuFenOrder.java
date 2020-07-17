@@ -2,16 +2,20 @@ package lexian.entity;
 
 import java.sql.Date;
 
+
+/**
+ *纠纷订单实体类
+ */
 public class JiuFenOrder {
-    private int id;
-    private int customer_id;
-    private int order_id;
-    private int shop_id;
-    private String reason;
-    private String result;
-    private int status;
-    private Date handTime;
-    private Date applyTime;
+    private int id;   //纠纷编号
+    private int customer_id;  //顾客id
+    private int order_id;  //订单id
+    private int shop_id;   //店铺id
+    private String reason;  //纠纷原因
+    private String result;  //处理结果
+    private int status;   //处理状态
+    private Date handTime;  //处理时间
+    private Date applyTime;  //申请时间
 
     public JiuFenOrder(){}
 

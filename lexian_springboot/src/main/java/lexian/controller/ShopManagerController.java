@@ -20,6 +20,11 @@ public class ShopManagerController {
         this.shopManagerService = shopManagerService;
     }
 
+    /**
+     * 查询店铺管理员的个人信息
+     * @param map
+     * @return
+     */
     @PostMapping("/searchShopManager")
     public List<ShopManager> searchShopManager(@RequestBody Map<String,Object> map){
 //        System.out.println(map);
@@ -28,12 +33,22 @@ public class ShopManagerController {
         return result;
     }
 
+    /**
+     * 更新店铺管理员的个人信息
+     * @param map
+     * @return
+     */
     @PostMapping("/updateShopManager")
     public boolean updateShopManager(@RequestBody Map<String,Object> map) {
         System.out.println(map);
         return shopManagerService.updateShopManager(map);
     }
 
+    /**
+     * 删除店铺管理员的个人信息，注销（更新其删除标记）
+     * @param map
+     * @return
+     */
     @PostMapping("/deleteShopManager")
     public boolean deleteShopManager(@RequestBody Map<String,Object> map) {
         return shopManagerService.deleteShopManager(map);

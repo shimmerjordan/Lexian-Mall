@@ -26,8 +26,8 @@ public class ShopCommodityController {
     public PageInfo<Commodity> getAllShopCommodity(@RequestBody Map<String,Object> map) {
         //这里是分页的内容 前端传的是listQuery 其中包含了page和 limit属性
         //page选中的页数  limit是一页多少个元素
-        int pageNo = (int)map.get("page");
-        int limit = (int)map.get("limit");
+        int pageNo = Integer.parseInt(String.valueOf(map.get("page")));
+        int limit = Integer.parseInt(String.valueOf(map.get("limit")));
         PageHelper.startPage(pageNo,limit);
         List<Commodity> resultList;
         //这里是用于模糊查询 前端名字的输入框内容也包含在listQuery中的name属性
@@ -43,7 +43,7 @@ public class ShopCommodityController {
         else {
             resultList = commodityService.getAllShopCommodity();
         }
-        PageInfo<Commodity> result = new PageInfo<>(resultList);
+        PageInfo<Commodity> result = new PageInfo<Commodity>(resultList);
         System.out.print(result);
         return result;
     }

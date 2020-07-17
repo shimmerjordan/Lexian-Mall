@@ -103,7 +103,7 @@ public class CategoryController {
 			Map<String, List<Commodity>> mapl = commodityList.stream()
 					.collect(Collectors.groupingBy(Commodity::getShopId));
 			for (String key : mapl.keySet()) {
-				Map<String, Object> map = new HashMap<>();
+				Map<String, Object> map = new HashMap<String, Object>();
 				Commodity commodity = mapl.get(key).get(0);
 				map.put("shopId", commodity.getShopId());
 				map.put("shopName", commodity.getShopName());

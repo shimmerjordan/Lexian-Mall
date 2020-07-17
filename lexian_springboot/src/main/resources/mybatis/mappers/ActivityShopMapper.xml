@@ -10,6 +10,7 @@
     <sql id="Base_Column_List">
         id, shop_id, activity_id, is_delete
     </sql>
+<!--    SQL插入关系表数据，通过传回的店铺id和活动id-->
     <insert id="insertActivityShop" parameterType="java.util.HashMap">
         insert into
         activity_shop(shop_id, activity_id , is_delete)

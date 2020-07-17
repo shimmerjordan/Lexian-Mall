@@ -18,12 +18,15 @@
     id, name, description, img, beginTime, endTime, type, status, is_delete
   </sql>
 
+<!--SQL获取全部活动信息-->
   <select id="getAllActivity" resultType="Activity">
     select
     activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
     where activity.is_delete = 0
   </select>
+
+<!--  SQL更新活动信息，通过传回来的activity.id-->
   <update id="updateActivity" parameterType="java.util.HashMap">
     update activity
     set
@@ -35,23 +38,29 @@
     where
     activity.id = #{id}
   </update>
+
+<!--  SQL删除活动信息，将is_delete设为1，通过传回来的activity.id-->
   <update id="deleteActivity">
     update activity
     set activity.is_delete = 1
     where activity.id = #{id}
   </update>
 
+<!-- SQL更新活动状态为已发布，通过传回来的activity.id -->
   <update id="updateActivityStatus0">
     update activity
     set activity.status = 0
     where activity.id = #{id}
   </update>
+
+<!--  SQL更新活动状态为草稿，通过传回来的activity.id-->
   <update id="updateActivityStatus1">
     update activity
     set activity.status = 1
     where activity.id = #{id}
   </update>
 
+<!-- SQL -->
   <select id="getIndexActivity" resultType="Activity">
     select
     activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
@@ -60,11 +69,13 @@
     AND activity.id > 10
   </select>
 
+<!--  SQL获取活动最大id-->
   <select id="getMaxActivityId" resultType="java.lang.Integer">
     select max(activity.id)
     from activity
   </select>
 
+<!--  SQL插入活动信息，通过传回来的参数-->
   <insert id="insertActivity" parameterType="java.util.HashMap">
   insert into
   activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete, img)
@@ -72,7 +83,7 @@
 (#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, 'https://i.loli.net/2020/07/07/nsQIYyDPUWxBdNZ.jpg')
   </insert>
 
-
+<!--SQL查询店铺信息通过传入参数（id，name,beginTime,endTime）-->
   <select id="searchActivityByInformation" resultType="Activity" parameterType="java.lang.String">
     select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
