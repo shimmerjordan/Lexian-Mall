@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Commodity_8082 {
+public class Commodity_Provider {
     public static void main(String[] args) {
-        SpringApplication.run(Commodity_8082.class,args);
+        SpringApplication.run(Commodity_Provider.class,args);
     }
 }

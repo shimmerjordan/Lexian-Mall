@@ -20,8 +20,12 @@ import java.util.List;
 @RequestMapping("/api/address")
 public class AddressController {
 
-	@Autowired
     AddressService addressService;
+
+	@Autowired
+	public void setAddressService(AddressService addressService) {
+		this.addressService = addressService;
+	}
 
 	@RequestMapping("/listByUid")
 	public List<Address> listByUid(String uid) {
