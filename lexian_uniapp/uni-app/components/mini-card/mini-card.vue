@@ -1,9 +1,9 @@
 <template>
 	<view class="">
-		<view class="goods-box x-start" v-if="!type" @tap="jump('/pages/goods/detail/index', { id: detail.id })">
+		<view class="goods-box x-start" v-if="!type" @tap="jump('/pages/product/product', { id: detail.id })">
 			<image class="goods-img" :src="detail.image" mode="aspectFill"></image>
 			<view class="y-start">
-				<view class="goods-title more-t">{{ detail.title }}</view>
+				<view class="goods-title more-t">{{ detail.name }}</view>
 				<slot name="tipTag"></slot>
 				<view class="size-tip">{{ detail.goods_sku_text }}</view>
 				<slot name="goodsBottom">
@@ -22,14 +22,14 @@
 				</slot>
 			</view>
 		</view>
-		<view class="goods-box x-start" v-if="type === 'favorite'" @tap="jump('/pages/goods/detail/index', { id: detail.goods.id })">
-			<image class="goods-img" :src="detail.goods.image" mode=""></image>
+		<view class="goods-box x-start" v-if="type === 'favorite'" @click="navToDetailPage(detail)">
+			<image class="goods-img" :src="detail.image" mode=""></image>
 			<view class="y-start">
-				<view class="goods-title more-t">{{ detail.goods.title }}</view>
+				<view class="goods-title more-t">{{ detail.name }}</view>
 				<slot name="tipTag"></slot>
-				<view class="sub-tip more-t">{{ detail.goods.subtitle }}</view>
+				<view class="sub-tip more-t">{{ detail.introduction }}</view>
 				<slot name="goodsBottom">
-					<view class="price">￥{{ detail.goods.price }}</view>
+					<view class="price">￥{{ detail.price }}</view>
 				</slot>
 			</view>
 		</view>
@@ -79,7 +79,13 @@ export default {
 				path: path,
 				query: parmas
 			});
-		}
+		},
+		navToDetailPage(item) {
+			let itemID = item.id;
+			uni.navigateTo({
+				 url: `/pages/product/product?id=${itemID}`
+			});
+		},
 	}
 };
 </script>

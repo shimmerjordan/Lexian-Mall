@@ -37,7 +37,7 @@ public class ShopManagerServiceImpl implements ShopManagerService{
     @Override
     public boolean updateShopManager(Map<String ,Object> map){
         try {
-            map.put("birthday",UTCToLocal((String)map.get("birthday")));
+            map.put("birthday",UTCToLocal((String)map.get("birthday")));//更新信息时，对用户选择的生日格式进行转换
             System.out.println(map);
             int flag = shopManagerMapper.updateShopManager(map);
             return flag > 0;

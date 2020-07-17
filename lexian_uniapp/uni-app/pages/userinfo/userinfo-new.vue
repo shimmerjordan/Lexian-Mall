@@ -2,14 +2,14 @@
 	<view class="content">
 		<view class="bg-color-card"></view>
 		<view class="image">
-			<image class="heardimg" :src="userInfo.portrait || '/static/missing-face.png'" mode=""></image>
+			<image class="heardimg" :src="userInfo.user_image || '/static/missing-face.png'" mode=""></image>
 		</view>
 		<view class="info-card">
-			<text class="name" @click="togglePopup('center', 'tip')">{{userInfo.nickname}}</text>
+			<text class="name" @click="togglePopup('center', 'tip')">{{userInfo.nick_name}}</text>
 			<view class="sex">
-				<image v-if="userInfo.gender == 1" class="sex-img" src="../../static/man.png" @click="togglePopup('center', 'gender')" mode=""></image>
-				<image v-if="userInfo.gender == 2" class="sex-img" src="../../static/woman.png" @click="togglePopup('center', 'gender')" mode=""></image>
-				<image v-if="userInfo.gender == 0" class="sex-img" src="../../static/sex.png" @click="togglePopup('center', 'gender')" mode=""></image>
+				<image v-if="userInfo.sex == 0" class="sex-img" src="../../static/man.png" @click="togglePopup('center', 'sex')" mode=""></image>
+				<image v-if="userInfo.sex == 1" class="sex-img" src="../../static/woman.png" @click="togglePopup('center', 'sex')" mode=""></image>
+				<image v-if="userInfo.sex == 2" class="sex-img" src="../../static/sex.png" @click="togglePopup('center', 'sex')" mode=""></image>
 			</view>
 			<br>
 			<view class="phone">
@@ -38,7 +38,7 @@
 			<text class="text" @click="upUserInfo()">保存</text>
 		</view>
 		<view class="" style="text-align: center;width: 100%;bottom: 0rpx;">
-			<text style=" font-size: 20rpx ;">*点击信息进行修改*</text>
+			<text style=" font-size: 20rpx ;">*点击信息进行修改*</text> 
 		</view>
 		<!-- 修改弹出窗 -->
 		<uni-popup ref="edit" type="center" :custom="true" :mask-click="false">
@@ -46,7 +46,7 @@
 				<view class="uni-tip-title">修改</view>
 				<view class="uni-tip-content">
 					<text class="uni-tip-content-left">用户名：</text>
-					<input class="uni-tip-content-right" :value="userInfo.nickname" @input="uptempName"/>
+					<input class="uni-tip-content-right" :value="userInfo.nick_name" @input="uptempName"/>
 				</view>
 				<view class="uni-tip-content">
 					<text class="uni-tip-content-left">生&emsp;日：</text>
@@ -54,16 +54,16 @@
 				</view>
 				<view class="uni-tip-content">
 					<text class="uni-tip-content-left">手机号：</text>
-					<input class="uni-tip-content-right" :value="userInfo.birthday" @input="uptempName"/>
+					<input class="uni-tip-content-right" :value="userInfo.phone" @input="uptempName"/>
 				</view>
 				<view class="uni-tip-content">
 					<text class="uni-tip-content-left">性&emsp;别：</text>
 					<radio-group class="radio-group" bindchange="radioChange" @change="upTempGender">
 						<label class="radio" >
-							男<radio class="radio-style" value= 0 :checked="userInfo.gender == 0"/>
+							男<radio class="radio-style" value= 1 :checked="userInfo.sex == 1"/>
 						</label>
 						<label class="radio" >
-							女<radio class="radio-style" value= 1 :checked="userInfo.gender == 1"/>
+							女<radio class="radio-style" value= 0 :checked="userInfo.sex == 0"/>
 						</label>
 					</radio-group>
 				</view>
@@ -78,7 +78,7 @@
 		<uni-popup :show="show" :type="type" :custom="true" :mask-click="false">
 			<view class="uni-tip">
 				<view class="uni-tip-title">修改用户名</view>
-				<view class="uni-tip-content"><input :value="userInfo.nickname" @input="uptempName"/></view>
+				<view class="uni-tip-content"><input :value="userInfo.nick_name" @input="uptempName"/></view>
 				<view class="uni-tip-group-button">
 					<view class="uni-tip-button" @click="cancel('tip')">取消</view>
 					<view class="uni-tip-button" @click="upName()">确定</view>
@@ -96,19 +96,19 @@
 				</view>
 			</view>
 		</uni-popup>
-		<uni-popup ref="gender" :type="type" :custom="true" :mask-click="true">
+		<uni-popup ref="sex" :type="type" :custom="true" :mask-click="true">
 			<view class="uni-tip">
 				<view class="uni-tip-title">性别</view>
 				<radio-group class="radio-group" bindchange="radioChange" @change="upTempGender">
 					<label class="radio" >
-						男<radio class="radio-style" value= 1 :checked="userInfo.gender == 1"/>
+						男<radio class="radio-style" value= 1 :checked="userInfo.sex == 1"/>
 					</label>
 					<label class="radio" >
-						女<radio class="radio-style" value= 2 :checked="userInfo.gender == 2"/>
+						女<radio class="radio-style" value= 2 :checked="userInfo.sex == 0"/>
 					</label>
 				</radio-group>
 				<view class="uni-tip-group-button">
-					<view class="uni-tip-button" @click="cancel('gender')">取消</view>
+					<view class="uni-tip-button" @click="cancel('sex')">取消</view>
 					<view class="uni-tip-button" @click="upGender()">确定</view>
 				</view>
 			</view>
@@ -140,6 +140,7 @@
 
 <script>
 	import {mapState,mapMutations } from 'vuex';
+	import common from '@/store/common.js'
 	// import Api from '@/store/model.js';
 	import uniList from "@/components/uni-list/uni-list.vue"
 	import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
@@ -152,21 +153,22 @@
 		},
 		data() {
 			return {
+				userInfo: {},
 				show: false,
 				type: '',
 				tempName:'',
 				tempGender:0,
 				tempPhone:'',
 				tempEmail:'',
-				userInfo:{
-					username:"",
-					phone:"",
-					createTime:"",
-					balance2:"",
-					integration:"",
-					email:"",
-					birthday:"",
-				},
+				// userInfo:{
+				// 	username:"",
+				// 	phone:"",
+				// 	createTime:"",
+				// 	balance2:"",
+				// 	integration:"",
+				// 	email:"",
+				// 	birthday:"",
+				// },
 				time:false,
 				code:"",
 				token:"",
@@ -179,7 +181,7 @@
 			}; 
 		},
 		computed: {
-			...mapState(['hasLogin','userInfo']),
+			...mapState(['hasLogin']),
 			startDate() {
 				return this.getDate('start');
 			},
@@ -226,7 +228,7 @@
 					this.$api.msg("别着急！短信已经发送了~");
 					return false;
 				}
-				this.smsbtn.status = true; // 这段代码其实应该加在你request请求 短信发送成功后 
+				this.smsbtn.status = true; // 这段代码其实应该加在request请求 短信发送成功后 
 				this.smsbtn.loading = true;
 				// Api.methods.sendSms({"phone":this.tempPhone}).then(function(res){
 				// 	console.log(res)
@@ -268,6 +270,10 @@
 			},
 			loadUserInfo(){
 				var _self=this;
+				
+				_self.userInfo = common.getGlobalUserInfo();
+				console.log(_self.userInfo);
+				// console.log("本地UserInfo",this.userInfo)
 				// Api.methods.loadUserInfo().then(function(res){
 				// 	if(res.data.code===200){
 				// 		_self.login(res.data.data);
@@ -297,7 +303,7 @@
 				this.tempName=event.detail.value
 			},
 			upName(){
-				this.userInfo.nickname=this.tempName;
+				this.userInfo.nick_name = this.tempName;
 				this.cancel('tip')
 			},
 			uptempEmail(event){
@@ -328,21 +334,44 @@
 			},
 			upUserInfo(){
 				var _self = this;
-				Api.methods.upUserInfo(_self.userInfo).then(function(res){
-					var result = res.data
-					if(result.code === 200){
-						_self.$api.msg("修改成功")
-					}else{
-						_self.$api.msg("修改失败，请重试")
-					}
-				})
+				// Api.methods.upUserInfo(_self.userInfo).then(function(res){
+				// 	var result = res.data
+				// 	if(result.code === 200){
+				// 		_self.$api.msg("修改成功")
+				// 	}else{
+				// 		_self.$api.msg("修改失败，请重试")
+				// 	}
+				// })
+				uni.request({
+					url: this.apiServer+'/customer/updateUserInfo',
+					method: 'POST',
+					dataType: "json",
+					data:{
+						"nickName": this.userInfo.nick_name,
+						"email": this.userInfo.email,
+						"sex": this.userInfo.sex,
+						"mobile": this.userInfo.phone,
+						"customerId": this.userInfo.ID
+					},
+					success: (res) => {
+						const result = res.data;
+						console.log(result);
+						if(result){
+							uni.setStorage({//缓存用户登陆状态
+							    key: 'userInfo',  
+							    data: _self.userInfo  
+							}) 	
+							this.$api.msg('修改成功');
+						}
+				    }
+				});
 			},
 			upTempGender(event){
 				this.tempGender=event.detail.value
 			},
 			upGender(){
-				this.userInfo.gender=this.tempGender;
-				this.cancel('gender')
+				this.userInfo.sex=this.tempGender;
+				this.cancel('sex')
 			}
 		}
 	}

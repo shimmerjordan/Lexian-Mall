@@ -256,7 +256,7 @@
 		favorites.commodity_id
 		WHERE
 		commodity.is_delete=0 AND
-		favorites.isDelete=0 AND
+		favorites.is_delete=0 AND
         favorites.customer_id = #{userID}
 	</select>
 

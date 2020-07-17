@@ -39,7 +39,9 @@
 	<select id="loginByName" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT
-		*
+		*,
+		FROM_UNIXTIME(birthday,'%Y-%m-%d') as birthdayDate,
+		FROM_UNIXTIME(register_time,'%Y-%m-%d %H:%i:%s') as registerDateTime
 		FROM
 		customer
 		WHERE
@@ -118,5 +120,16 @@
 		  ID = #{customerId}
 	</update>
 
+	<update id="updateUserInfo" parameterType="java.util.HashMap">
+		UPDATE
+		  customer
+		SET
+		  nick_name = #{nickName},
+		  email = #{email},
+		  sex = #{sex},
+		  phone = #{mobile}
+		WHERE
+		  ID = #{customerId}
+	</update>
 
 </mapper>

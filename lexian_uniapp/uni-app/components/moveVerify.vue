@@ -65,11 +65,10 @@
 				this.count++;
 				this.x = this.oldx;
 				if ((this.oldx + 3) > (this.size.pathway - this.size.track)) {
-				
 					this.isOk = true;
 					this.$emit("result",{flag:true,count:this.count});
-				
 					this.checkPhoneExistance();
+						
 					this.countDown();
 					
 				} else {
@@ -89,6 +88,7 @@
 				this.count = 0;
 				this.isOk = false;
 			},
+			
 			/* 倒计时 */
 			countDown(){
 				//倒计时
@@ -119,10 +119,10 @@
 					success: (res) => {
 						const result = res.data
 						console.log(result)
-						if(result != 0){
-							this.phoneExistance = true;
-						}else{
+						if(result == 0){
 							this.phoneExistance = false;
+						}else{
+							this.phoneExistance = true;
 						}
 				    }
 				});

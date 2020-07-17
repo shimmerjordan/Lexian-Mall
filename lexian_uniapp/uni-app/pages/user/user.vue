@@ -3,7 +3,7 @@
 		<view class="user-section">
 			<image class="bg" src="/static/bg.jpg"></image>
 			<view class="user-info-box">
-				<view class="portrait-box">
+				<view class="portrait-box" >
 					<image class="portrait" :src="userInfo.portrait || '/static/missing-face.png'"></image>
 				</view>
 				<view class="info-box">
@@ -92,8 +92,9 @@
 			   
 				<list-cell icon="icon-share" iconColor="#9789f7" title="分享" tips="邀请好友赢10万大礼" ></list-cell>
 			
-                
-				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="晒单" tips="晒单抢红包" ></list-cell>
+                <view  @click="navTo('/pages/public/forgetPwd')">
+				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="修改密码" ></list-cell>
+				</view>
 			
                 <view @click="navTo('/pages/user/favorites')">
 				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的收藏" @Click="navTo('/pages/user/favorites')" ></list-cell>	
@@ -156,10 +157,10 @@
     
         methods: {
 			getUser() {
-							let that = this;
-							that.userInfo = common.getGlobalUserInfo();
-							// console.log("本地UserInfo",this.userInfo)
-						},
+				let that = this;
+				that.userInfo = common.getGlobalUserInfo();
+				// console.log("本地UserInfo",this.userInfo)
+			},
 			loadHistory(){
 				this.getUser();
 				   if(this.hasLogin){
@@ -175,8 +176,8 @@
 						this.itemHistory = itemHistory;
 						}
 					});
-					};
-					//}
+				};
+				//}
 			},
 
 			/**
@@ -193,19 +194,20 @@
 				})  
 			}, 
 			navToDetailPage(item) {
-				let id = item.id;
+				let itemID = item.id;
 				let userId ="";
 				uni.getStorage({
 				    key:"userInfo",
 				 	success(e){
 				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
 				}
 				});
-				//执行跳转
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
-				})
-				
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
+				});
 			},
 	
 			/**

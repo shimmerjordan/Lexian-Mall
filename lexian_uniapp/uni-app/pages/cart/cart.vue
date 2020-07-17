@@ -73,6 +73,9 @@
 		components: {
 			uniNumberBox
 		},
+		computed: {
+			...mapState(['hasLogin','userInfo'])
+		},
 		data() {
 			return {
 				total: 0, //总价格
@@ -85,7 +88,6 @@
 			};
 		},
 		onLoad() {
-			this.loadData();
 		},
 		onShow(){
 			this.loadData();
@@ -99,7 +101,7 @@
 				}
 			}
 		},
-		computed: {
+		computed:{
 			...mapState(['hasLogin'])
 		},
 		methods: {

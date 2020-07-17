@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -79,8 +80,11 @@ public class OrderServiceImpl implements OrderService {
             HashMap<String, Object> goodsMap = new HashMap<String, Object>();
             List<HashMap> goodList = new ArrayList<>();
             flag0 = temp0.get(i);
-
-            result.put("time",flag0.get("date"));
+            //将数据库中的timestamp类型数据转化为String类型返回到前台
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String tsStr = "";
+            tsStr = sdf.format(flag0.get("date"));
+            result.put("time",tsStr);
             result.put("state",flag0.get("status"));
             result.put("state",flag0.get("status"));
             goodsMap.put("title",flag0.get("name"));

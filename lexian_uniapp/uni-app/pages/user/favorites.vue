@@ -11,9 +11,9 @@
 				<view class="content_box">
 					<scroll-view scroll-y="true" @scrolltolower="loadMore" class="scroll-box">
 						<checkbox-group @change="onSel" v-if="favoriteList.length">
-							<view class="collect-list x-f" v-for="f in favoriteList" :key="f.id">
-								<checkbox v-if="isSel" :value="f.goods_id.toString()" :checked="f.checked" :class="{ checked: f.checked }" class="goods-radio round orange"></checkbox>
-								<shopro-mini-card :detail="f" :type="'favorite'"></shopro-mini-card>
+							<view class="collect-list x-f" v-for="(item , index) in favoriteList" :key="index">
+								<checkbox v-if="isSel" :value="item.id.toString()"  class="goods-radio round orange"></checkbox>
+								<shopro-mini-card :detail="item" :type="'favorite'"></shopro-mini-card>
 							</view>
 						</checkbox-group>
 						<!-- 缺省页 -->
@@ -38,6 +38,8 @@
 		
 		<script>
 		import shoproMiniCard from '@/components/mini-card/mini-card.vue';
+		import common from '@/store/common.js'
+		import {  mapState } from 'vuex';
 		export default {
 			components: {
 				shoproMiniCard,
@@ -48,7 +50,7 @@
 					allSel: false,
 					selList: [],
 					emptyData: {
-						img: '/static/imgs/empty/empty_goods.png',
+						img: '/static/emptyCart.jpg',
 						tip: '暂无收藏商品，赶紧去收藏好货吧~'
 					},
 					favoriteList: [],
@@ -58,24 +60,45 @@
 					lastPage: 0
 				};
 			},
-			computed: {},
+			computed: {
+				...mapState(['hasLogin'])
+			},
 			onLoad() {
 				this.init();
 			},
 			onHide() {
-				this.favoriteList = [];
 			},
 			methods: {
-				// init
+				getUser() {
+					         if(this.hasLogin){
+								let that = this;
+								that.userInfo = common.getGlobalUserInfo();
+								// console.log("本地UserInfo",this.userInfo)
+								}
+							},
 				init() {
-					return Promise.all([this.getFavoriteList()]);
+				   this.getUser();
+				   if(this.hasLogin){
+					uni.request({
+						url: this.apiServer + "/uniUser/getFavorites",
+						//url:'http://localhost:8080/..."' ,
+						data:{
+							"userID": this.userInfo.ID.toString(),
+							},
+						method: 'POST',
+						success: (res) => {
+						let favoriteList = res.data;
+						this.favoriteList = favoriteList;
+						}
+					});
+					};
 				},
 				onSel(e) {
 					let items = this.favoriteList,
 						values = e.detail.value;
 					this.selList = values;
 					items.forEach(i => {
-						if (values.includes(i.goods_id.toString())) {
+						if (values.includes(i.id.toString())) {
 							this.$set(i, 'checked', true);
 						} else {
 							this.$set(i, 'checked', false);
@@ -110,44 +133,22 @@
 						this.getFavoriteList();
 					}
 				},
-				// 收藏列表
-				getFavoriteList() {
-					let that = this;
-					that.loadStatus = 'loading';
-					that.$api('goods.favoriteList', {
-						pre_page: 10,
-						page: that.currentPage
-					}).then(res => {
-						if (res.code === 1) {
-							that.total = res.data.total;
-							that.favoriteList = [...that.favoriteList, ...res.data.data];
-							that.lastPage = res.data.last_page;
-							if (that.currentPage < res.data.last_page) {
-								that.loadStatus = '';
-							} else {
-								that.loadStatus = 'over';
-							}
-						}
+				navToDetailPage(item) {
+					let itemID = item.id;
+					let userId ="";
+					uni.getStorage({
+					    key:"userInfo",
+					 	success(e){
+					  	userId = e.data.ID;//这就是你想要取的token
+						// if(userId == undefined){
+						// 	userId = e.data.ID;
+						// }
+					}
+					});
+					uni.navigateTo({
+						 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 					});
 				},
-				// 取消收藏
-				cancelFavorite() {
-					let that = this;
-					let ids = that.selList;
-					const { favoriteList } = this;
-					that.$api('goods.favorite', {
-						goods_ids: ids
-					}).then(res => {
-						if (res.code === 1) {
-							if (that.allSel) {
-								that.favoriteList = [];
-							} else {
-								that.favoriteList = favoriteList.filter(f => !ids.includes(f.goods_id.toString()));
-								that.total = favoriteList.length;
-							}
-						}
-					});
-				}
 			}
 		};
 		</script>

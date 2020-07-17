@@ -20,4 +20,5 @@ public interface CustomerMapper {
     List<Customer> loginByName(Map<String,Object> map);
     boolean setCertificationId(Map<String, Object>map);
     Customer selectById(String id);
+    boolean updateUserInfo(Map<String, Object> map);
 }

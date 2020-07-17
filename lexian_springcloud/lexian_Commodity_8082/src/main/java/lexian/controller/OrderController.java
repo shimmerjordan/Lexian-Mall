@@ -25,6 +25,11 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    /**
+     * 获取满足当前条件order
+     * @param map 搜索订单的条件
+     * @return 满足条件的order的list
+     */
     @PostMapping("/getAllOrder")
     public PageInfo<Order> getAllOrder(@RequestBody Map<String,Object> map){
         int pageNo = (int)map.get("page");
@@ -33,36 +38,67 @@ public class OrderController {
         return new PageInfo<>(orderService.getAllOrder(map));
     }
 
+    /**
+     * 获取对应时间范围内的每一天的订单数量
+     * @param start 开始时间
+     * @param end 结束时间
+     * @return 一个数组表示每一天的订单数量
+     */
     @PostMapping("/getDataRange")
     public int[] getDataRange(@RequestParam(name= "start") int start,
                               @RequestParam(name = "end") int end){
         return orderService.getDateRange(start,end);
     }
 
+    /**
+     * 添加给定信息的一条order记录
+     * @param map 记录的新订单的信息
+     * @return 添加是否成功
+     */
     @PostMapping("/addOrder")
     public boolean addOrder(@RequestBody Map<String,Object> map){
         return orderService.addOrder(map);
     }
 
+    /**
+     * 更新订单
+     * @param map 新订单的对应信息
+     * @return 更新订单是否成功
+     */
     @PostMapping("/updateOrder")
     public boolean updateOrder(@RequestBody Map<String,Object> map){
         return orderService.updateOrder(map);
     }
 
+    /**
+     * 根据userID获取订单列表
+     * @param userID 依据的userID
+     * @return userID对应的订单列表
+     */
     @PostMapping("/userOrder")
     public List<Order> getUserOrder(String userID) { return orderService.getUserOrder(userID); }
 
+    /**
+     * 移动端获取顾客订单
+     * @param map 顾客信息
+     * @return 订单列表
+     */
     @PostMapping("/getCustomerOrder")
     public List<HashMap> getCustomerOrder(@RequestBody Map<String, Object> map) {
         List<HashMap> result = orderService.getCustomerOrder(map);
         return result;
     }
 
+    /**
+     * 移动端获取顾客订单
+     * @param map 顾客信息
+     * @return 订单列表
+     */
     @PostMapping("/jiufenOrder")
     public PageInfo<JiuFenOrder> getJiuFenOrder(@RequestBody Map<String,Object> map){
         System.out.println(map);
-        int pageNo = (int)map.get("page");
-        int limit = (int)map.get("limit");
+        int pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+        int limit = Integer.parseInt(String.valueOf(map.get("limit")));
         PageHelper.startPage(pageNo,limit);
         List<JiuFenOrder> resultList;
         String id= (String)map.get("name");
@@ -80,12 +116,22 @@ public class OrderController {
         return result;
     }
 
+    /**
+     * 删除纠纷订单
+     * @param map 被删除的纠纷订单信息
+     * @return 删除是否成功
+     */
     @PostMapping("/DeleteJiuFenOrder")
     public boolean DeleteJiuFenOrder(@RequestBody Map<String,Object> map){
         System.out.println(map);
         return orderService.DeleteJiuFenOrder(map);
     }
 
+    /**
+     * 更新纠纷订单信息
+     * @param map 被更新的纠纷订单信息
+     * @return 更新是否成功
+     */
     @PostMapping("/UpdateJiuFenOrder")
     public boolean UpdateJiuFenOrder(@RequestBody Map<String,Object> map){
         Date date = new Date();
@@ -96,6 +142,11 @@ public class OrderController {
         return orderService.UpdateJiuFenOrder(map);
     }
 
+    /**
+     * 删除订单
+     * @param index 需要被删除的订单ID
+     * @return 删除是否成功
+     */
     @GetMapping("/deleteOrder")
     public boolean deleteOrder(@RequestParam("index") int index){
         System.out.println(index);

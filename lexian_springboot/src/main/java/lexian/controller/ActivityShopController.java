@@ -17,6 +17,12 @@ public class ActivityShopController {
     public void setActivityShopService(ActivityShopService activityShopService) {
         this.activityShopService = activityShopService;
     }
+
+    /**
+     * 关系表插入活动—店铺信息
+     * @param map
+     * @return
+     */
     @PostMapping("/insertActivityShop")
     public boolean insertActivityShop(@RequestBody Map<String, Object>map) {
         System.out.println(map);

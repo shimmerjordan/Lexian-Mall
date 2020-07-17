@@ -2,10 +2,15 @@ package lexian.service;
 
 import java.util.List;
 import lexian.entity.taobaoData;
+import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 /**
  * 淘宝爬虫商品相关的Service
  */
+=======
+@Transactional
+>>>>>>> e38f94f6fcabce1f89d955f56935d216b56d926f
 public interface TaobaoService {
     /**
      * 获取淘宝的爬虫数据（参数name为空时）
