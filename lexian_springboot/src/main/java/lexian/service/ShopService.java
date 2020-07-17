@@ -1,10 +1,12 @@
 package lexian.service;
 
 import lexian.entity.Shop;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
 
+@Transactional
 public interface ShopService {
     List<Shop> getAllShop();
 

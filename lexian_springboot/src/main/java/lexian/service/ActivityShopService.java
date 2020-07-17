@@ -1,9 +1,10 @@
 package lexian.service;
 
-import lexian.entity.ActivityShop;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
+@Transactional
 public interface ActivityShopService {
     boolean insertActivityShop(Map<String ,Object>map);
 }

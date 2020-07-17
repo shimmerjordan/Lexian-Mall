@@ -64,7 +64,9 @@ public class CategoryController {
 	}
 
 	@RequestMapping("/getCommodity")
-	public Commodity getCommodity(String commodityId, String uid) {
+	public Commodity getCommodity(Map<String,Object> map) {
+		String commodityId=(String)map.get("commodityId");
+		String uid = (String)map.get("uid");
 		Commodity commodity = commodityService.getCommodity(commodityId);
 		commodity.setCommentList(commentService.listByCommodityId(commodityId));
 		commodity.setSpecsList(specsService.listSpecs(commodityId));

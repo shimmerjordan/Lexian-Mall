@@ -20,7 +20,7 @@
 						maxlength="11"
 						data-key="mobile"
 						@input="inputChange"
-						@change="checkExistPhone"
+						@change="verifyPhoneFormat"
 						@confirm="checkExistPhone"
 					/>
 				</view>
@@ -125,6 +125,7 @@
 			/* 校验结果回调函数 */
 			verifyResult(res){
 				console.log(res);
+				this.checkPhoneExistance();
 				this.resultData = res;
 			},
 			/* 校验插件重置 */
@@ -164,14 +165,36 @@
 					complete: () => {}
 				});
 			},
-			checkExistPhone(){
-				if(this.$refs.verifyElement.phoneExistance == true){
-					this.phoneExistance = true;
-					this.$api.msg("该手机号已被注册");
+			verifyPhoneFormat(){
+				let valid_rule = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;// 手机号码校验规则
+				if ( !valid_rule.test(this.mobile)) {
+					this.$api.msg('手机号码格式有误');
+					return false;
 				}else{
-					this.$api.msg("验证码已发送");
-					this.phoneExistance = false;
+					return true;
 				}
+			},
+			checkPhoneExistance(){
+				uni.request({
+					url: this.apiServer+'/customer/checkPhoneExistance',
+					method: 'POST',
+					dataType: "json",
+					data: { 
+					   "mobile": this.mobile,
+					},
+					success: (res) => {
+						const result = res.data
+						console.log(result)
+						if(result == 1){
+							this.phoneExistance = false;
+							this.$api.msg("短信验证码已发送" + this.mobile)
+						}else{
+							this.phoneExistance = true;
+							this.$api.msg("该手机号已注册，请登录");
+							this.verifyReset();
+						}
+				    }
+				});
 			},
 			checkExistName(){
 				console.log(this.loginName);

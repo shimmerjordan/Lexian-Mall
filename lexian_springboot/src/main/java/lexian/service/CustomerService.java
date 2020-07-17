@@ -15,5 +15,5 @@ public interface CustomerService {
     int checkNameExistance(Map<String,Object> map);
     boolean setCertificationId(Map<String, Object> map);
     Customer getById(String id);
-
+    boolean updateUserInfo(Map<String, Object> map);
 }

@@ -144,6 +144,9 @@
 									 	url: "/pages/user/user",
 									 	success: res => {}
 									 });
+								 }else{
+									 this.logining = false;
+									 this.$api.msg("用户名或密码错误");
 								 }
 							}
 						}

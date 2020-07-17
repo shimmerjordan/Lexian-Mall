@@ -29,8 +29,9 @@ public class FavoritesController {
 	}
 	
 	@RequestMapping("/delete")
-	public Boolean delete(String commodityId, String uid){
-		
+	public Boolean delete(Map<String,String> map){
+		String commodityId = map.get("commodityId");
+		String uid = map.get("uid");
 		return favoritesService.deleteByCidAndUid(commodityId,uid);
 	}
 	

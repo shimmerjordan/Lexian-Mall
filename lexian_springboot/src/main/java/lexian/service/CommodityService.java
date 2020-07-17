@@ -7,7 +7,9 @@ import com.github.pagehelper.PageInfo;
 
 import lexian.entity.Category;
 import lexian.entity.Commodity;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface CommodityService {
     List<Commodity> getAllShopCommodity();
 

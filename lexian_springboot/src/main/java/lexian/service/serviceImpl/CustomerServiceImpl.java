@@ -4,6 +4,7 @@ import lexian.entity.Customer;
 import lexian.mapper.CustomerMapper;
 import lexian.service.CustomerService;
 
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,4 +62,9 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer getById(String id) {
 		return customerMapper.selectById(id);
 	}
+
+	@Override
+    public boolean updateUserInfo(Map<String, Object> map){
+        return customerMapper.updateUserInfo(map);
+    }
 }

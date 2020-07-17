@@ -62,4 +62,10 @@ public class CustomerController {
 		System.out.println(map);
 		return customerService.setCertificationId(map);
 	}
+
+	@PostMapping("/updateUserInfo")
+	public boolean updateUserInfo(@RequestBody Map<String, Object> map){
+		System.out.println(map);
+		return customerService.updateUserInfo(map);
+	}
 }
