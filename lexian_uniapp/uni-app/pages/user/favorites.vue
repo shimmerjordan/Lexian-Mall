@@ -1,18 +1,19 @@
 <template>
 	<view class="page_box">
-		<view class="head_box x-bc" v-if="favoriteList.length">
-			<view class="count-box">
+		<view class="head_box x-bc" >
+		<button class="cu-btn back-btn" @click="navBack()">{{ '返回' }}</button>
+			<view class="count-box" v-if="favoriteList.length">
 				共
 				<text class="all-num">{{ total }}</text>
 				件商品
 			</view>
-		<button class="cu-btn set-btn" @tap="onSet">{{ isSel ? '完成' : '编辑' }}</button>
+		<button class="cu-btn set-btn" v-if="favoriteList.length" @tap="onSet">{{ isSel ? '完成' : '编辑' }}</button>
 				</view>
 				<view class="content_box">
-					<scroll-view scroll-y="true" @scrolltolower="loadMore" class="scroll-box">
+					<scroll-view scroll-y="true"  class="scroll-box">
 						<checkbox-group @change="onSel" v-if="favoriteList.length">
 							<view class="collect-list x-f" v-for="(item , index) in favoriteList" :key="index">
-								<checkbox v-if="isSel" :value="item.id.toString()"  class="goods-radio round orange"></checkbox>
+								<checkbox v-if="isSel" :value="item.id.toString()" :checked="item.checked" :class="{ checked: item.checked }" class="goods-radio round orange"></checkbox>
 								<shopro-mini-card :detail="item" :type="'favorite'"></shopro-mini-card>
 							</view>
 						</checkbox-group>
@@ -26,11 +27,11 @@
 				</view>
 				<view class="foot_box ">
 					<view class="tools-box x-bc" v-if="isSel && favoriteList.length">
-						<label class="check-all" @tap="onAllSel">
+						<label class="check-all" @tap="onAllSel"> 
 							<radio :checked="allSel" :class="{ checked: allSel }" class="check-all-radio orange"></radio>
 							<text>全选</text>
 						</label>
-						<button class="cu-btn close-btn" @tap="cancelFavorite">取消收藏</button>
+						<button class="cu-btn close-btn" @tap="cancelFavorite" >取消收藏</button>
 					</view>
 				</view>
 			</view>
@@ -66,7 +67,8 @@
 			onLoad() {
 				this.init();
 			},
-			onHide() {
+			onShow() {
+				this.init();
 			},
 			methods: {
 				getUser() {
@@ -77,6 +79,7 @@
 								}
 							},
 				init() {
+				   this.loadStatus = 'loading';
 				   this.getUser();
 				   if(this.hasLogin){
 					uni.request({
@@ -89,19 +92,24 @@
 						success: (res) => {
 						let favoriteList = res.data;
 						this.favoriteList = favoriteList;
+						this.total = favoriteList.length;
 						}
-					});
+					});		
 					};
+				},
+				navBack(){
+					uni.navigateBack({					
+					})
 				},
 				onSel(e) {
 					let items = this.favoriteList,
 						values = e.detail.value;
 					this.selList = values;
-					items.forEach(i => {
-						if (values.includes(i.id.toString())) {
-							this.$set(i, 'checked', true);
+					items.forEach(item => {
+						if (values.includes(item.id.toString())) {
+							this.$set(item, 'checked', true);
 						} else {
-							this.$set(i, 'checked', false);
+							this.$set(item, 'checked', false);
 						}
 					});
 					if (this.selList.length < items.length) {
@@ -113,52 +121,68 @@
 				onSet() {
 					this.isSel = !this.isSel;
 				},
-				onAllSel() {
+				onAllSel() {	
 					this.allSel = !this.allSel;
 					this.selList = [];
 					const { favoriteList } = this;
-					favoriteList.forEach(i => {
+					favoriteList.forEach(item => {
 						if (this.allSel) {
-							this.$set(i, 'checked', true);
-							this.selList.push(i.goods_id);
+							this.$set(item, 'checked', true);
+							this.selList.push(item.id);
 						} else {
-							this.$set(i, 'checked', false);
+							this.$set(item, 'checked', false);
 						}
 					});
-				},
-				// 加载更多
-				loadMore() {
-					if (this.currentPage < this.lastPage) {
-						this.currentPage += 1;
-						this.getFavoriteList();
-					}
-				},
-				navToDetailPage(item) {
+				},	
+				//商品跳转
+				navToDetailPage(item) { 
 					let itemID = item.id;
-					let userId ="";
-					uni.getStorage({
-					    key:"userInfo",
-					 	success(e){
-					  	userId = e.data.ID;//这就是你想要取的token
-						// if(userId == undefined){
-						// 	userId = e.data.ID;
-						// }
-					}
-					});
 					uni.navigateTo({
-						 url: `/pages/product/product?id=${itemID}&uid=${userId}`
+						 url: `/pages/product/product?id=${itemID}`
 					});
-				},
-			}
-		};
-		</script>
+				},	
+				//取消收藏
+				cancelFavorite() {
+					this.getUser();
+					let ids = this.selList;
+					console.log(ids);
+					ids.forEach(id => {
+					uni.request({
+						url: this.apiServer + "/uniUser/cancelFavorite",
+						//url:'http://localhost:8080/..."' ,
+						data:{
+							"ID": id,
+							"userID": this.userInfo.ID.toString(),
+							},
+						method: 'POST',
+						success: (res) => {
+						this.init();	
+						}
+					});	
+						});
+					uni.hideLoading();
+				}					
+		}
+	}
+	</script>
 
 <style lang="scss">
 .head_box {
 	height: 70rpx;
 	padding: 0 30rpx;
-
+    .back-btn{
+		position:absolute;
+		top: 0upx;
+	    left: 0;
+		width: 120upx;
+		height: 70upx;
+		background: #ffffff;
+		font-size: 26rpx;
+		color: #000000;
+	}
 	.count-box {
+		position:absolute;
+		left: 200upx;
 		font-size: 26rpx;
 		color: #999;
 
@@ -168,6 +192,11 @@
 	}
 
 	.set-btn {
+		position:absolute;
+		top: 0;
+		right: 20upx;
+		width: 200upx;
+		height: 70upx;
 		background: none;
 		font-size: 26rpx;
 		color: #a8700d;
@@ -207,6 +236,8 @@
 		border-radius: 35rpx;
 		padding: 0;
 		color: rgba(#fff, 0.9);
+		position:absolute;
+		right: 40upx;
 	}
 }
 </style>

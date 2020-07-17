@@ -27,5 +27,15 @@
 	#{uid}
 	</delete>
 
+	<update id="cancelFavorite" parameterType="java.util.HashMap">
+		UPDATE
+		favorites
+		SET
+		is_delete = 1
+		WHERE
+		commodity_id = #{ID} AND
+		customer_id = #{userID}
+	</update>
+
 
 </mapper>
