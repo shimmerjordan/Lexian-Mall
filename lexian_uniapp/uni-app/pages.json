@@ -6,7 +6,6 @@
 			"style": {
 				// #ifdef MP 
 				"navigationBarTitleText": "商城首页",
-				//"navigationStyle": "custom",
 				// #endif 
 				"app-plus": {
 					"titleNView": {
@@ -14,7 +13,7 @@
 						"searchInput": {
 							"backgroundColor": "rgba(231, 231, 231,.7)",
 							"borderRadius": "16px",
-							"placeholder": "请输入地址 如：大钟寺",
+							"placeholder": "请输入信息",
 							"disabled": true,
 							"placeholderColor": "#606266"
 						},
@@ -64,7 +63,8 @@
 		}, {
 			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "购物车"
+				"navigationBarTitleText": "购物车",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/public/loginByPhone",
@@ -184,10 +184,7 @@
         ,{
             "path" : "pages/category/category",
             "style" : {
-				"navigationBarTitleText": "分类",
-				"app-plus": {
-					"bounce": "none"
-				}
+				"navigationBarTitleText": "分类"
 			}
         }
         ,{

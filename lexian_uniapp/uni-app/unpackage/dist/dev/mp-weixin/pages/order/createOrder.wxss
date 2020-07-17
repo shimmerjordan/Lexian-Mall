@@ -839,8 +839,7 @@ page {
   display: block;
   width: 50rpx;
   height: 50rpx;
-  -webkit-border-radius: 100px;
-          border-radius: 100px;
+  border-radius: 100px;
 }
 .goods-section .name {
   font-size: 30rpx;
@@ -859,8 +858,7 @@ page {
   display: block;
   width: 140rpx;
   height: 140rpx;
-  -webkit-border-radius: 4rpx;
-          border-radius: 4rpx;
+  border-radius: 4rpx;
 }
 .goods-section .g-item .right {
   -webkit-box-flex: 1;
@@ -928,8 +926,7 @@ page {
   text-align: center;
   line-height: 32rpx;
   background: #f85e52;
-  -webkit-border-radius: 4rpx;
-          border-radius: 4rpx;
+  border-radius: 4rpx;
   margin-right: 12rpx;
 }
 .yt-list-cell .cell-icon.hb {
@@ -1047,8 +1044,7 @@ page {
   background-color: #fff;
   z-index: 998;
   color: #606266;
-  -webkit-box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
 }
 .footer .price-content {
   padding-left: 30rpx;
@@ -1216,8 +1212,7 @@ page {
   width: 20rpx;
   height: 20rpx;
   background: #f3f3f3;
-  -webkit-border-radius: 100px;
-          border-radius: 100px;
+  border-radius: 100px;
 }
 .coupon-item .circle.r {
   left: auto;

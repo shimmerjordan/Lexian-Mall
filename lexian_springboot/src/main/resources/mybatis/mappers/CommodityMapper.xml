@@ -270,4 +270,27 @@
         commodity.name LIKE #{name}
 	</select>
 
+	<select id="getSalesItem" resultType="Commodity"
+			parameterType="java.lang.String">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`status`,
+		Commodity.`is_delete`
+		FROM
+		commodity
+		INNER JOIN
+		activity_commodity ON commodity.ID =
+		activity_commodity.commodity_id
+		WHERE
+		commodity.is_delete=0 AND
+		activity_commodity.is_delete=0 AND
+        activity_commodity.activity_id = #{aID}
+	</select>
 </mapper>

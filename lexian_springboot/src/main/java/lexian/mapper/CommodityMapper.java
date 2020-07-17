@@ -36,5 +36,7 @@ public interface CommodityMapper {
 	List<Commodity> getAllShopCommodityByName(String name);
 
 	List<Commodity> getFavorites(String userID);
+
+	List<Commodity> getSalesItem(String aID);
 }
 

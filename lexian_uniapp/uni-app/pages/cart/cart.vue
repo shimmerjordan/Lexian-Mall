@@ -87,6 +87,9 @@
 		onLoad() {
 			this.loadData();
 		},
+		onShow(){
+			this.loadData();
+		},
 		watch: {
 			//显示空白页
 			cartList(e) {

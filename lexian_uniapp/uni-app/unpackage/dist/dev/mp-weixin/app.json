@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/product/product",
     "pages/set/set",
-    "pages/userinfo/userinfo",
+    "pages/userinfo/userinfo-new",
     "pages/cart/cart",
     "pages/public/loginByPhone",
     "pages/public/loginByName",
@@ -70,5 +70,5 @@
   "usingComponents": {
     "cu-custom": "/static/colorui/components/cu-custom"
   },
-  "sitemapLocation": "sitemap6.json"
+  "sitemapLocation": "sitemap70.json"
 }

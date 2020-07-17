@@ -116,6 +116,9 @@
     } from 'vuex';  
 	let startY = 0, moveY = 0, pageAtTop = true;
     export default {
+		computed: {
+			...mapState(['hasLogin'])
+		},
 		components: {
 			listCell
 		},
@@ -150,9 +153,7 @@
 			}
 		},
 		// #endif
-        computed: {
-			...mapState(['hasLogin'])
-		},
+    
         methods: {
 			getUser() {
 							let that = this;
@@ -161,7 +162,7 @@
 						},
 			loadHistory(){
 				this.getUser();
-				//if(this.hasLogin){
+				   if(this.hasLogin){
 					uni.request({
 						url: this.apiServer + "/uniUser/getHistory",
 						//url:'http://localhost:8080/..."' ,
@@ -174,6 +175,7 @@
 						this.itemHistory = itemHistory;
 						}
 					});
+					};
 					//}
 			},
 
@@ -192,9 +194,18 @@
 			}, 
 			navToDetailPage(item) {
 				let id = item.id;
+				let userId ="";
+				uni.getStorage({
+				    key:"userInfo",
+				 	success(e){
+				  	userId = e.data.ID;//这就是你想要取的token
+				}
+				});
+				//执行跳转
 				uni.navigateTo({
 					url: `/pages/product/product?id=${id}`
 				})
+				
 			},
 	
 			/**
