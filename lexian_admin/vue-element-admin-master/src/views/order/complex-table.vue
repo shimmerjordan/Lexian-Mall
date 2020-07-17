@@ -216,7 +216,6 @@ export default {
       getAllOrder(this.listQuery).then(response => {
         this.list = response.data.list
         this.total = response.data.total
-        this.total = this.list.length
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)

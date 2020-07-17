@@ -61,8 +61,8 @@ public class OrderController {
     @PostMapping("/jiufenOrder")
     public PageInfo<JiuFenOrder> getJiuFenOrder(@RequestBody Map<String,Object> map){
         System.out.println(map);
-        int pageNo = (int)map.get("page");
-        int limit = (int)map.get("limit");
+        int pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+        int limit = Integer.parseInt(String.valueOf(map.get("limit")));
         PageHelper.startPage(pageNo,limit);
         List<JiuFenOrder> resultList;
         String id= (String)map.get("name");
@@ -101,4 +101,5 @@ public class OrderController {
         System.out.println(index);
         return orderService.deleteOrder(index);
     }
+
 }

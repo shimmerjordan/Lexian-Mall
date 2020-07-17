@@ -30,7 +30,10 @@ public class OrderController {
         int pageNo = (int)map.get("page");
         int limit = (int)map.get("limit");
         PageHelper.startPage(pageNo,limit);
-        return new PageInfo<>(orderService.getAllOrder(map));
+        List<Order> result = orderService.getAllOrder(map);
+        PageInfo<Order> res = new PageInfo<>(result);
+        System.out.print(res);
+        return res;
     }
 
     @PostMapping("/getDataRange")
