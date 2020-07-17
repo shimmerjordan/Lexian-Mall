@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @SpringBootApplication
 @EnableZuulProxy
 public class lexian_Zuul {
-    public static void main(String[] args) {
+public static void main(String[] args) {
         SpringApplication.run(lexian_Zuul.class,args);
-    }
-}
+        }
+        }

@@ -30,8 +30,8 @@ public class ActivityController {
 
     @PostMapping("/getAllActivity")
     public PageInfo<Activity> getAllActivity(@RequestBody Map<String,Object> map) {
-        int pageNo = (int)map.get("page");
-        int limit = (int)map.get("limit");
+        int pageNo = Integer.parseInt(String.valueOf(map.get("page")));
+        int limit = Integer.parseInt(String.valueOf(map.get("limit")));
         PageHelper.startPage(pageNo,limit);
         List<Activity> resultList;
         String name=(String)map.get("name");
@@ -50,7 +50,7 @@ public class ActivityController {
         else {
             resultList = activityService.getAllActivity();
         }
-        PageInfo<Activity> result = new PageInfo<>(resultList);
+        PageInfo<Activity> result = new PageInfo<Activity>(resultList);
         System.out.print(result);
         return result;
     }

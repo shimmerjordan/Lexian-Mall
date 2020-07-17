@@ -8,17 +8,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+
+/**
+ * 商品的实体类
+ */
 public class Commodity extends GoodDetailsModel {
-    private int ID;
-    private String name;
-    private double price;
-    private String image;
-    private String introduction;
-    private int storage;
-    private String specification;
-    private Date modify_time;
-    private int status;
-    private int is_delete;
+    private int ID;   //商品ID
+    private String name;  //商品名字
+    private double price; //商品价格
+    private String image; //商品图片
+    private String introduction;  //商品介绍
+    private int storage;  //商品库存
+    private String specification;  //商品规格
+    private Date modify_time;  //修改时间
+    private int status;  //商品状态
+    private int is_delete;  //是否删除
     private int index;
 
 
