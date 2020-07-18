@@ -6,7 +6,7 @@
         <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
       </el-select>
       <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         Search
@@ -132,11 +132,11 @@ import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 const calendarTypeOptions = [
-  { key: '0', display_name: '订单已被取消' },
-  { key: '1', display_name: '发货' },
-  { key: '2', display_name: '已收获' },
-  { key: '3', display_name: '已退货' },
-  { key: '4', display_name: '正在申请退货' }
+  { key: '1', display_name: '待付款' },
+  { key: '2', display_name: '待收货' },
+  { key: '3', display_name: '待评价' },
+  { key: '4', display_name: '售后' },
+  { key: '9', display_name: '已取消' }
 ]
 
 // arr to obj, such as { CN : "China", US : "USA" }
@@ -152,7 +152,7 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        '1': '代付款',
+        '1': '待付款',
         '2': '待收货',
         '3': '待评价',
         '4': '售后',
@@ -172,7 +172,7 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
         comment: undefined,
         name: undefined,
         status: undefined

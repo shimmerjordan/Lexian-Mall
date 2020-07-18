@@ -195,8 +195,8 @@ export default {
             this.dialogFormVisible = false
           })
         }
-        this.initTable()
       })
+      this.initTable()
     },
     createData() {
       var d = this.temp.birthday
