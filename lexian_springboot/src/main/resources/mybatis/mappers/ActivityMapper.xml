@@ -60,7 +60,7 @@
     where activity.id = #{id}
   </update>
 
-<!-- SQL -->
+<!-- SQL获取UniApp端的首页活动数据 -->
   <select id="getIndexActivity" resultType="Activity">
     select
     activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status

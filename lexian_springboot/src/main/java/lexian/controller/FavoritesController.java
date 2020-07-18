@@ -25,13 +25,11 @@ public class FavoritesController {
 
 	@RequestMapping("/save")
 	public Boolean save(@RequestBody Map<String, Object> favorites){
-		
 		return favoritesService.save(favorites);
 	}
 	
 	@RequestMapping("/delete")
 	public Boolean delete(String commodityId, String uid){
-		
 		return favoritesService.deleteByCidAndUid(commodityId,uid);
 	}
 	

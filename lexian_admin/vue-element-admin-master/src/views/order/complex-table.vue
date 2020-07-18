@@ -152,11 +152,11 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        '0': '订单已被取消',
-        '1': '发货',
-        '2': '已收获',
-        '3': '已退货',
-        '4': '正在申请退货'
+        '1': '代付款',
+        '2': '待收货',
+        '3': '待评价',
+        '4': '售后',
+        '9': '已取消'
       }
       return statusMap[status]
     },

@@ -9,16 +9,13 @@ import lexian.entity.Category;
 import lexian.entity.Commodity;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
 /**
  * 商品相关的Service
  */
-=======
 @Transactional
->>>>>>> e38f94f6fcabce1f89d955f56935d216b56d926f
 public interface CommodityService {
 	/**
-	 * 获取所有的商品列表
+	 * 获取所有的商品列表F
 	 * @return
 	 */
     List<Commodity> getAllShopCommodity();
