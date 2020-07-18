@@ -19,6 +19,12 @@ public interface OrderMapper {
     void updateOrder(Map<String,Object> m);
     int updateOrder_Item(Map<String,Object> m);
     List<Order> getUserOrder(String userID);
+
+    /**
+     * 移动端获取顾客订单
+     * @param map 顾客信息
+     * @return 订单列表
+     */
     List<HashMap> getCustomerOrder(Map<String, Object> map);
     List<JiuFenOrder> getJiuFenOrder();
     List<JiuFenOrder> getJiuFenOrderByID(Integer id);

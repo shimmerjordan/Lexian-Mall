@@ -4,7 +4,7 @@
 			<image class="bg" src="/static/bg.jpg"></image>
 			<view class="user-info-box">
 				<view class="portrait-box" >
-					<image class="portrait" :src="userInfo.image || '/static/missing-face.png'"></image>
+					<image class="portrait" :src="userInfo.user_image || '/static/missing-face.png'"></image>
 				</view>
 				<view class="info-box">
 					<text class="username">{{userInfo.nick_name || '游客'}}</text>
@@ -138,6 +138,7 @@
 			this.loadHistory()
 		},
 		onShow(){
+			this.$forceUpdate()
 			setTimeout(()=>{
 				this.getUser();
 			}, 200)
