@@ -151,6 +151,11 @@
             <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
           </el-select>
         </el-form-item>
+        <el-form-item label="活动类型" prop="type">
+          <el-select v-model="temp.type" placeholder="请选择活动类型">
+            <el-option v-for="item in typeOptions" :key="item.key" :label="item.label" :value="item.label" />
+          </el-select>
+        </el-form-item>
         <el-form-item label="活动图片">
           <!-- 目前设定为活动的图片不可更改 -->
           <img :src="temp.img" width="200px" height="200px" align="center">
@@ -221,7 +226,7 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
         beginTime: null,
         endTime: null,
         id: null,
@@ -229,7 +234,7 @@ export default {
         status: null,
         sort: '+id'
       },
-      // importanceOptions: [1, 2, 3],
+      typeOptions: [{ label: '秒杀', value: 0 }, { label: '团购', value: 1 }, { label: '节日限定', value: 2 }],
       statusOptions,
       // sortOptions: [{ label: 'ID正序排列', key: '+id' }, { label: 'ID倒序排列', key: '-id' }],
       showReviewer: false,
@@ -331,8 +336,8 @@ export default {
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
+        this.getList()
       })
-      this.list.splice(index, 1)
     },
     // 修改活动状态为草稿
     handleModifyStatus1(row, index) {
@@ -347,8 +352,8 @@ export default {
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
+        this.getList()
       })
-      this.list.splice(index, 1)
     },
     // handleModifyStatus(row, status) {
     //   this.$message({
@@ -441,10 +446,10 @@ export default {
             setTimeout(() => {
               this.listLoading = false
             }, 1.5 * 1000)
+            this.getList()
           })
         }
       })
-      this.getList() // 刷新列表
     },
 
     // 删除操作
@@ -460,6 +465,7 @@ export default {
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
+        this.getList()
       })
       this.list.splice(index, 1)
     },
@@ -474,20 +480,24 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
+        const tHeader = ['ID', '活动名称', '活动类型', '活动图片', '创建时间', '开始时间', '结束时间', '活动状态']
+        const filterVal = ['id', 'name', 'type', 'img', 'createTime', 'beginTime', 'endTime', 'status']
         const data = this.formatJson(filterVal)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'table-list'
+          filename: 'shopActivity-list'
         })
         this.downloadLoading = false
       })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
+        if (j === 'createTime') {
+          return parseTime(v[j])
+        } else if (j === 'beginTime') {
+          return parseTime(v[j])
+        } else if (j === 'endTime') {
           return parseTime(v[j])
         } else {
           return v[j]
