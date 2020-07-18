@@ -1,5 +1,7 @@
 <template>
+  <!--添加新的商品页面-->
   <div class="createPost-container">
+    <!--数据绑定在postForm 确认修改将该数据传给后端处理-->
     <el-form
       ref="postForm"
       class="form-container"
@@ -8,6 +10,7 @@
       label-width="80px"
       label-position="right"
     >
+      <!--一个插件 用于标题展示-->
       <sticky :class-name="'sub-navbar published'" :z-index="2" width="50px">
         <div align="center">新增商品</div>
       </sticky>
@@ -15,6 +18,7 @@
         class="createPost-main-container"
       >
         <h3>基础信息</h3>
+        <!--商品名称输入框-->
         <el-row>
           <el-col :span="10">
             <el-form-item label="商品名称" prop="name">
@@ -22,6 +26,7 @@
             </el-form-item>
           </el-col>
         </el-row>
+        <!--操作时间 不可自选 船舰页面自动获取当前时间-->
         <el-row>
           <el-col :span="10">
             <el-form-item label="操作时间" prop="modify_time">
@@ -29,6 +34,7 @@
             </el-form-item>
           </el-col>
         </el-row>
+        <!--商品单价输入框-->
         <el-row>
           <el-col :span="10">
             <el-form-item label="商品单价" prop="price">
@@ -36,6 +42,7 @@
             </el-form-item>
           </el-col>
         </el-row>
+        <!--商品库存输入框-->
         <el-row>
           <el-col :span="10">
             <el-form-item label="商品库存" prop="storage">
@@ -43,17 +50,18 @@
             </el-form-item>
           </el-col>
         </el-row>
-
+        <!--商品计量单位选择框-->
         <el-row>
           <el-col :span="12">
             <el-form-item label="计量单位" prop="specification">
               <el-select v-model="postForm.specification" clearable placeholder="请选择" size="small">
+                <!--可选择内容保存在unitList中-->
                 <el-option v-for="item in unitList" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
           </el-col>
         </el-row>
-
+        <!--是否直接上架单选-->
         <el-row>
           <el-col :span="12">
             <el-form-item label="直接上架" prop="status">
@@ -72,13 +80,17 @@
           <aside width="{100}">商品图片</aside>
           <div class="editor-container" width="50px">
             <dropzone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS" />
+            <!--商品描述添加-->
             <div style="margin: 10px 0;">
               <aside>商品简介</aside>
               <el-input v-model="postForm.introduction" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
             </div>
             <div magin="10px 0">
+              <!--新增按钮和取消按钮-->
               <el-row>
+                <!--新增调用submitForm方法-->
                 <el-button style="float: right: 40px;" type="success" @click="submitForm()">新增</el-button>
+                <!--新增调用cancel方法-->
                 <el-button style="float: right: 40px;" type="warning" @click="cancel()">取消</el-button>
               </el-row>
             </div>
@@ -103,6 +115,7 @@ export default {
     return {
       textarea: '',
       date: '',
+      // 添加的商品信息数据保存 确认后将该数据传给后端
       postForm: {
         name: '',
         modify_time: '',
@@ -114,14 +127,16 @@ export default {
         introduction: ''
       },
       loading: false,
+      // 商品计量单位的下拉框选择项
       unitList: [{ label: '件', value: 0 }, { label: '条', value: 2 }, { label: '桶', value: 3 }, { label: '个', value: 4 }],
-      tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }, { id: 4, name: '电子产品' }],
+      // tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }, { id: 4, name: '电子产品' }],
       checkAllTag: true,
       isIndeterminateTag: true
     }
   },
   computed: {},
   created() {},
+  // 页面创建后 计算当前时间 并修改postForm中的modify_time
   mounted() {
     const yy = new Date().getFullYear()
     const mm = new Date().getMonth() + 1
@@ -140,6 +155,7 @@ export default {
         }, 1.5 * 1000)
       })
     },
+    // 上传图片方法调用
     dropzoneS(file) {
       console.log(file)
       this.$message({ message: 'Upload success', type: 'success' })
@@ -148,11 +164,13 @@ export default {
       console.log(file)
       this.$message({ message: 'Delete success', type: 'success' })
     },
-
+    // 提交添加的商品数据
     submitForm() {
       this.$refs['postForm'].validate((valid) => {
         if (valid) {
+          // 调用api中的AddShopGood方法（参数是postForm）
           AddShopGood(this.postForm).then(response => {
+            // 成功后弹窗提示添加成功
             alert('添加成功')
             this.$notify({
               title: 'Success',
@@ -166,25 +184,27 @@ export default {
           })
         }
       })
+      // 回到首页
       this.$router.go(-1)
     },
 
+    // 取消后回到首页
     cancel() {
       this.$router.go(-1)
-    },
-    handleCheckAllTagChange(event) {
-      const tags = []
-      for (const tag of this.tags) {
-        tags.push(tag.id)
-      }
-      this.postForm.tags = event.target.checked ? tags : []
-      this.isIndeterminateTag = false
-    },
-    handleCheckedTagsChange(value) {
-      const checkedCount = value.length
-      this.checkAllTag = checkedCount === this.tags.length
-      this.isIndeterminateTag = checkedCount > 0 && checkedCount < this.tags.length
     }
+    // handleCheckAllTagChange(event) {
+    //   const tags = []
+    //   for (const tag of this.tags) {
+    //     tags.push(tag.id)
+    //   }
+    //   this.postForm.tags = event.target.checked ? tags : []
+    //   this.isIndeterminateTag = false
+    // },
+    // handleCheckedTagsChange(value) {
+    //   const checkedCount = value.length
+    //   this.checkAllTag = checkedCount === this.tags.length
+    //   this.isIndeterminateTag = checkedCount > 0 && checkedCount < this.tags.length
+    // }
 
   }
 }

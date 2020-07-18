@@ -1,8 +1,13 @@
 spring:
   datasource:
     username: root
+<<<<<<< HEAD
+    password: Xy990919
+    url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+=======
     password: password
     url: "jdbc:mysql://server.natappfree.cc:33458/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+>>>>>>> 9dfc9bec9445b1f0c9b271e7fdca19765ae3035e
 
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -25,7 +30,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
-  port: 8088
+  port: 8080
   servlet:
     #context-path: /ocp
     encoding:

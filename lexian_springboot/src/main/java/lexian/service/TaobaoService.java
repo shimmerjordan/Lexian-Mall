@@ -7,6 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 淘宝爬虫商品相关的Service
  */
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9dfc9bec9445b1f0c9b271e7fdca19765ae3035e
 @Transactional
 public interface TaobaoService {
     /**
