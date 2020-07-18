@@ -6,6 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 有关店铺的service
+ */
 @Transactional
 public interface ShopService {
     List<Shop> getAllShop();

@@ -25,18 +25,26 @@ public class ShopController {
         this.shopService = shopService;
     }
 
-
+    /**
+     * 获取全部店铺信息
+     * @param map
+     * @return
+     */
     @PostMapping("/getAllShop")
     public PageInfo<Shop> getAllShop(@RequestBody Map<String,Object> map) {
         int pageNo = (int)map.get("page");
         int limit = (int)map.get("limit");
         PageHelper.startPage(pageNo,limit);
         List<Shop> resultList;
+
+        //获取传入值
         String name=(String)map.get("name");
         String id = (String)map.get("id");
         String beginTime = (String) map.get("beginTime");
         String endTime = (String) map.get("endTime");
         String status = (String)map.get("status");
+
+        //同ActivityController一致，对条件进行判断，不为空则查询；为空，获取全部值
         if(name!=null || id != null || status != null
                 || (beginTime != null && endTime !=null)){
             String changeName="%"+name+"%";
@@ -54,11 +62,20 @@ public class ShopController {
         return result;
     }
 
+    /**
+     * 获取此时店铺最大id
+     * @return
+     */
     @GetMapping("/getMaxShopId")
     public int getMaxShopId() {
         return shopService.getMaxShopId();
     }
 
+    /**
+     * 更新店铺信息
+     * @param map
+     * @return
+     */
     @PostMapping("/updateShop")
     public boolean updateShop(@RequestBody Map<String,Object> map){
 //        commodityService.updateGood(updateGood);
@@ -68,18 +85,33 @@ public class ShopController {
         return shopService.updateShop(map);
     }
 
+    /**
+     * 删除店铺信息（更新店铺的删除标记）
+     * @param map
+     * @return
+     */
     @PostMapping("/deleteShop")
     public boolean deleteShop(@RequestBody Map<String,Object> map) {
         System.out.println(map);
         return shopService.deleteShop(map);
     }
 
+    /**
+     * 插入店铺信息
+     * @param map
+     * @return
+     */
     @PostMapping("/insertShop")
     public boolean insertShop(@RequestBody Map<String,Object> map) {
         System.out.println(map);
         return shopService.insertShop(map);
     }
 
+    /**
+     * 批量更新店铺此时的状态为正营业
+     * @param list
+     * @return
+     */
     @PostMapping("/updateShopStatus0")
     public boolean updateShopStatus0(@RequestBody List<Object> list) {
 //        for (int i = 0; i <= array.size(); i++) {
@@ -91,6 +123,11 @@ public class ShopController {
 
     }
 
+    /**
+     * 批量更新店铺状态为暂停营业
+     * @param list
+     * @return
+     */
     @PostMapping("/updateShopStatus1")
     public boolean updateShopStatus1(@RequestBody List<Object> list) {
         System.out.println(list);
@@ -98,6 +135,11 @@ public class ShopController {
 
     }
 
+    /**
+     * 批量更新店铺状态为店铺关闭
+     * @param list
+     * @return
+     */
     @PostMapping("/updateShopStatus2")
     public boolean updateShopStatus2(@RequestBody List<Object> list) {
         System.out.println(list);

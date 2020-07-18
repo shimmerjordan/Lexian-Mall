@@ -13,6 +13,10 @@ import com.github.pagehelper.PageInfo;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 商品相关的Service接口实现
+ */
+
 @Service
 public class CommodityServiceImpl implements CommodityService {
 	private CommodityMapper commodityMapper;
@@ -22,17 +26,31 @@ public class CommodityServiceImpl implements CommodityService {
 		this.commodityMapper = commodityMapper;
 	}
 
+	/**
+	 * 获取所有商品信息列表方法重写
+	 * @return
+	 */
 	@Override
 	public List<Commodity> getAllShopCommodity() {
 		return commodityMapper.getAllShopCommodity();
 	}
 
+	/**
+	 * 更新商品方法重写
+	 * @param map
+	 * @return
+	 */
 	@Override
 	public boolean updateGood(Map<String, Object> map) {
 		int flag = commodityMapper.updateGood(map);
 		return flag > 0;
 	}
 
+	/**
+	 * 根据类别ID获取商品方法重写
+	 * @param commodity
+	 * @return
+	 */
 	@Override
 	public PageInfo<Commodity> listCommodityByCategoryId(Commodity commodity) {
 		int pageNo = commodity.getPageNo();
@@ -42,6 +60,11 @@ public class CommodityServiceImpl implements CommodityService {
 		return pageInfo;
 	}
 
+	/**
+	 * 删除商品方法重写
+	 * @param map
+	 * @return
+	 */
 	@Override
 	public boolean deleteGood(Map<String, Object> map) {
 		int flag = commodityMapper.deleteGood(map);
@@ -57,23 +80,42 @@ public class CommodityServiceImpl implements CommodityService {
 		return false;
 	}
 
+	/**
+	 * 添加商品方法重写
+	 * @param map
+	 * @return
+	 */
 	@Override
 	public boolean addGood(Map<String, Object> map) {
 		int flag = commodityMapper.addGood(map);
 		return flag > 0;
 	}
 
+	/**
+	 * 商品id查商品方法重写
+	 * @param commodityId
+	 * @return
+	 */
 	@Override
 	public Commodity getCommodity(String commodityId) {
 		Commodity commodity = commodityMapper.selectCommodityById(commodityId);		
 		return commodity;
 	}
 
+	/**
+	 * 获取所有商品类别方法重写
+	 * @return
+	 */
 	@Override
 	public List<Category> getAllCategory() {
 		return commodityMapper.getAllCategory();
 	}
 
+	/**
+	 * 商品名字查商品方法重写
+	 * @param name
+	 * @return
+	 */
 	@Override
 	public List<Commodity> getAllShopCommodityByName(String name) {
 		return commodityMapper.getAllShopCommodityByName(name);

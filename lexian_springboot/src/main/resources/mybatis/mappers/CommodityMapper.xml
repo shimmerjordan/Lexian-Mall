@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lexian.mapper.CommodityMapper">
+	<!--
+		resultMap匹配查询数据和实体类
+	-->
 	<resultMap id="commodity_map" type="Commodity">
 		<id property="ID" column="Commodity.ID" />
 		<result property="modify_time" column="Commodity.modify_time" />
@@ -17,6 +20,9 @@
 		<result property="index" column="Commodity.`index`"/>
 	</resultMap>
 
+	<!--
+		查询所有的商品信息数据
+	-->
 	<select id="getAllShopCommodity" resultType="Commodity">
 		SELECT
 		Commodity.ID,
@@ -40,6 +46,9 @@
 		shop_commodity.isDelete=0
 	</select>
 
+	<!--
+		更新修改的商品数据
+	-->
 	<update id="updateGood" parameterType="java.util.HashMap">
 		UPDATE commodity
 		SET
@@ -52,6 +61,9 @@
 		commodity.ID=#{id}
 	</update>
 
+	<!--
+		根据种类id选择对应的商品
+	-->
 	<select id="selectCommodityByCategoryId" resultType="lexian.entity.Commodity"
 		parameterType="lexian.entity.Commodity">
 		SELECT
@@ -95,6 +107,9 @@
 		WHERE shop_commodity.commodity_id=#{id}
 	</update>
 
+	<!--
+		获取商品的id
+	-->
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT
 		Commodity.ID,
@@ -113,6 +128,9 @@
 		commodity.is_delete=0
 	</select>
 
+	<!--
+		添加新的商品到数据库中
+	-->
 	<insert id="addGood" parameterType="java.util.HashMap">
 		INSERT INTO
 		commodity(name,modify_time,price,storage,specification,status,image,introduction,is_delete)
@@ -120,6 +138,9 @@
 		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
 	</insert>
 
+	<!--
+		根据商品id选择对应的商品
+	-->
 	<select id="selectCommodityById" parameterType="java.lang.String"
 		resultType="lexian.entity.Commodity">
 		SELECT
@@ -178,6 +199,9 @@
 		<result property="is_delete" column="Category.`is_delete`" />
 	</resultMap>
 
+	<!--
+		查询所有的商品类别信息
+	-->
 	<select id="getAllCategory" resultType="Category">
 		SELECT *
 		FROM
@@ -187,6 +211,9 @@
 		category.level=2 OR category.level=1)
 	</select>
 
+	<!--
+		根据id寻找商品
+	-->
 	<select id="getIndexSearchCommodity" resultType="Commodity" parameterType="java.lang.String">
 		SELECT
 		Commodity.ID,
@@ -206,6 +233,9 @@
         commodity.name LIKE #{name}
 	</select>
 
+	<!--
+		获取顾客收藏夹的商品信息
+	-->
 	<select id="getFavorites" resultType="Commodity"
 			parameterType="java.lang.String">
 		SELECT
@@ -226,7 +256,7 @@
 		favorites.commodity_id
 		WHERE
 		commodity.is_delete=0 AND
-		favorites.isDelete=0 AND
+		favorites.is_delete=0 AND
         favorites.customer_id = #{userID}
 	</select>
 
@@ -243,6 +273,9 @@
 		<result property="is_delete" column="Commodity.`is_delete`" />
 	</resultMap>
 
+	<!--
+		根据商品名字查询对应的商品
+	-->
 	<select id="getAllShopCommodityByName" resultType="Commodity"
 		parameterType="java.lang.String">
 		SELECT
@@ -270,6 +303,9 @@
         commodity.name LIKE #{name}
 	</select>
 
+	<!--
+		获取所有在售的商品信息
+	-->
 	<select id="getSalesItem" resultType="Commodity"
 			parameterType="java.lang.String">
 		SELECT

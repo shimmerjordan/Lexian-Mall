@@ -25043,3 +25043,23 @@
 [DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5df3decd]
 [DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5df3decd]
 [DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5df3decd]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5342fc2a]
+[DEBUG][20-07-18][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@2084708483 wrapping com.mysql.cj.jdbc.ConnectionImpl@5cc6e796] will be managed by Spring
+[DEBUG][20-07-18][lexian.mapper.CommodityMapper.getIndexCommodity]==>  Preparing: SELECT Commodity.ID, Commodity.modify_time, Commodity.introduction, Commodity.`name`, Commodity.`image`, Commodity.`price`, Commodity.`storage`, Commodity.`specification`, Commodity.`index`, Commodity.`is_delete` FROM commodity WHERE commodity.is_delete=0 
+[DEBUG][20-07-18][lexian.mapper.CommodityMapper.getIndexCommodity]==> Parameters: 
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Creating a new SqlSession
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11b6e1b4]
+[DEBUG][20-07-18][org.mybatis.spring.transaction.SpringManagedTransaction]JDBC Connection [HikariProxyConnection@51604588 wrapping com.mysql.cj.jdbc.ConnectionImpl@65b7975e] will be managed by Spring
+[DEBUG][20-07-18][lexian.mapper.ActivityMapper.getIndexActivity]==>  Preparing: select activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status from activity where activity.is_delete = 0 AND activity.id > 10 
+[DEBUG][20-07-18][lexian.mapper.ActivityMapper.getIndexActivity]==> Parameters: 
+[DEBUG][20-07-18][lexian.mapper.ActivityMapper.getIndexActivity]<==      Total: 5
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11b6e1b4]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11b6e1b4]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11b6e1b4]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11b6e1b4]
+[DEBUG][20-07-18][lexian.mapper.CommodityMapper.getIndexCommodity]<==      Total: 181
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5342fc2a]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5342fc2a]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5342fc2a]
+[DEBUG][20-07-18][org.mybatis.spring.SqlSessionUtils]Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5342fc2a]

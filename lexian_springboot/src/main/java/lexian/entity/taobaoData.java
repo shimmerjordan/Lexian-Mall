@@ -1,10 +1,13 @@
 package lexian.entity;
 
+/**
+ * 淘宝商品实体类
+ */
 public class taobaoData {
-    private int id;
-    private String name;
-    private String price;
-    private String peopleNum;
+    private int id;  //商品id
+    private String name; //商品名字
+    private String price;  //商品价格
+    private String peopleNum;  //商品销量
 
     public taobaoData(){}
 

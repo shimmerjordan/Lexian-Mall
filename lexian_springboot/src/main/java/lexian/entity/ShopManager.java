@@ -2,28 +2,29 @@ package lexian.entity;
 
 import java.util.Date;
 
+//店铺管理员信息实体类
 public class ShopManager {
-    private Integer id;
+    private Integer id;//店铺管理员id
 
-    private String name;
+    private String name;//店铺管理员名字
 
-    private Integer age;
+    private Integer age;//店铺管理员年龄
 
-    private String sex;
+    private String sex;//性别
 
-    private String pwd;
+    private String pwd;//登录密码
 
-    private String nick_name;
+    private String nick_name;//昵称
 
-    private String user_image;
+    private String user_image;//头像
 
-    private Date birthday;
+    private Date birthday;//生日
 
-    private String login_name;
+    private String login_name;//登录名称
 
-    private String phone;
+    private String phone;//电话号码
 
-    private Integer is_delete;
+    private Integer is_delete;//删除标记
 
     public ShopManager(Integer id, String name, Integer age, String sex, String pwd, String nick_name, String user_image, Date birthday, String login_name, String phone, Integer is_delete) {
         this.id = id;

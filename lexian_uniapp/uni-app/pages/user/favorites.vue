@@ -1,19 +1,20 @@
 <template>
 	<view class="page_box">
-		<view class="head_box x-bc" v-if="favoriteList.length">
-			<view class="count-box">
+		<view class="head_box x-bc" >
+		<button class="cu-btn back-btn" @click="navBack()">{{ '返回' }}</button>
+			<view class="count-box" v-if="favoriteList.length">
 				共
 				<text class="all-num">{{ total }}</text>
 				件商品
 			</view>
-		<button class="cu-btn set-btn" @tap="onSet">{{ isSel ? '完成' : '编辑' }}</button>
+		<button class="cu-btn set-btn" v-if="favoriteList.length" @tap="onSet">{{ isSel ? '完成' : '编辑' }}</button>
 				</view>
 				<view class="content_box">
-					<scroll-view scroll-y="true" @scrolltolower="loadMore" class="scroll-box">
+					<scroll-view scroll-y="true"  class="scroll-box">
 						<checkbox-group @change="onSel" v-if="favoriteList.length">
-							<view class="collect-list x-f" v-for="f in favoriteList" :key="f.id">
-								<checkbox v-if="isSel" :value="f.goods_id.toString()" :checked="f.checked" :class="{ checked: f.checked }" class="goods-radio round orange"></checkbox>
-								<shopro-mini-card :detail="f" :type="'favorite'"></shopro-mini-card>
+							<view class="collect-list x-f" v-for="(item , index) in favoriteList" :key="index">
+								<checkbox v-if="isSel" :value="item.id.toString()" :checked="item.checked" :class="{ checked: item.checked }" class="goods-radio round orange"></checkbox>
+								<shopro-mini-card :detail="item" :type="'favorite'"></shopro-mini-card>
 							</view>
 						</checkbox-group>
 						<!-- 缺省页 -->
@@ -26,11 +27,11 @@
 				</view>
 				<view class="foot_box ">
 					<view class="tools-box x-bc" v-if="isSel && favoriteList.length">
-						<label class="check-all" @tap="onAllSel">
+						<label class="check-all" @tap="onAllSel"> 
 							<radio :checked="allSel" :class="{ checked: allSel }" class="check-all-radio orange"></radio>
 							<text>全选</text>
 						</label>
-						<button class="cu-btn close-btn" @tap="cancelFavorite">取消收藏</button>
+						<button class="cu-btn close-btn" @tap="cancelFavorite" >取消收藏</button>
 					</view>
 				</view>
 			</view>
@@ -38,6 +39,8 @@
 		
 		<script>
 		import shoproMiniCard from '@/components/mini-card/mini-card.vue';
+		import common from '@/store/common.js'
+		import {  mapState } from 'vuex';
 		export default {
 			components: {
 				shoproMiniCard,
@@ -48,7 +51,7 @@
 					allSel: false,
 					selList: [],
 					emptyData: {
-						img: '/static/imgs/empty/empty_goods.png',
+						img: '/static/emptyCart.jpg',
 						tip: '暂无收藏商品，赶紧去收藏好货吧~'
 					},
 					favoriteList: [],
@@ -58,27 +61,55 @@
 					lastPage: 0
 				};
 			},
-			computed: {},
+			computed: {
+				...mapState(['hasLogin'])
+			},
 			onLoad() {
 				this.init();
 			},
-			onHide() {
-				this.favoriteList = [];
+			onShow() {
+				this.init();
 			},
 			methods: {
-				// init
+				getUser() {
+					         if(this.hasLogin){
+								let that = this;
+								that.userInfo = common.getGlobalUserInfo();
+								// console.log("本地UserInfo",this.userInfo)
+								}
+							},
 				init() {
-					return Promise.all([this.getFavoriteList()]);
+				   this.loadStatus = 'loading';
+				   this.getUser();
+				   if(this.hasLogin){
+					uni.request({
+						url: this.apiServer + "/uniUser/getFavorites",
+						//url:'http://localhost:8080/..."' ,
+						data:{
+							"userID": this.userInfo.ID.toString(),
+							},
+						method: 'POST',
+						success: (res) => {
+						let favoriteList = res.data;
+						this.favoriteList = favoriteList;
+						this.total = favoriteList.length;
+						}
+					});		
+					};
+				},
+				navBack(){
+					uni.navigateBack({					
+					})
 				},
 				onSel(e) {
 					let items = this.favoriteList,
 						values = e.detail.value;
 					this.selList = values;
-					items.forEach(i => {
-						if (values.includes(i.goods_id.toString())) {
-							this.$set(i, 'checked', true);
+					items.forEach(item => {
+						if (values.includes(item.id.toString())) {
+							this.$set(item, 'checked', true);
 						} else {
-							this.$set(i, 'checked', false);
+							this.$set(item, 'checked', false);
 						}
 					});
 					if (this.selList.length < items.length) {
@@ -90,74 +121,68 @@
 				onSet() {
 					this.isSel = !this.isSel;
 				},
-				onAllSel() {
+				onAllSel() {	
 					this.allSel = !this.allSel;
 					this.selList = [];
 					const { favoriteList } = this;
-					favoriteList.forEach(i => {
+					favoriteList.forEach(item => {
 						if (this.allSel) {
-							this.$set(i, 'checked', true);
-							this.selList.push(i.goods_id);
+							this.$set(item, 'checked', true);
+							this.selList.push(item.id);
 						} else {
-							this.$set(i, 'checked', false);
+							this.$set(item, 'checked', false);
 						}
 					});
-				},
-				// 加载更多
-				loadMore() {
-					if (this.currentPage < this.lastPage) {
-						this.currentPage += 1;
-						this.getFavoriteList();
-					}
-				},
-				// 收藏列表
-				getFavoriteList() {
-					let that = this;
-					that.loadStatus = 'loading';
-					that.$api('goods.favoriteList', {
-						pre_page: 10,
-						page: that.currentPage
-					}).then(res => {
-						if (res.code === 1) {
-							that.total = res.data.total;
-							that.favoriteList = [...that.favoriteList, ...res.data.data];
-							that.lastPage = res.data.last_page;
-							if (that.currentPage < res.data.last_page) {
-								that.loadStatus = '';
-							} else {
-								that.loadStatus = 'over';
-							}
-						}
+				},	
+				//商品跳转
+				navToDetailPage(item) { 
+					let itemID = item.id;
+					uni.navigateTo({
+						 url: `/pages/product/product?id=${itemID}`
 					});
-				},
-				// 取消收藏
+				},	
+				//取消收藏
 				cancelFavorite() {
-					let that = this;
-					let ids = that.selList;
-					const { favoriteList } = this;
-					that.$api('goods.favorite', {
-						goods_ids: ids
-					}).then(res => {
-						if (res.code === 1) {
-							if (that.allSel) {
-								that.favoriteList = [];
-							} else {
-								that.favoriteList = favoriteList.filter(f => !ids.includes(f.goods_id.toString()));
-								that.total = favoriteList.length;
-							}
+					this.getUser();
+					let ids = this.selList;
+					console.log(ids);
+					ids.forEach(id => {
+					uni.request({
+						url: this.apiServer + "/uniUser/cancelFavorite",
+						//url:'http://localhost:8080/..."' ,
+						data:{
+							"ID": id,
+							"userID": this.userInfo.ID.toString(),
+							},
+						method: 'POST',
+						success: (res) => {
+						this.init();	
 						}
-					});
-				}
-			}
-		};
-		</script>
+					});	
+						});
+					uni.hideLoading();
+				}					
+		}
+	}
+	</script>
 
 <style lang="scss">
 .head_box {
 	height: 70rpx;
 	padding: 0 30rpx;
-
+    .back-btn{
+		position:absolute;
+		top: 0upx;
+	    left: 0;
+		width: 120upx;
+		height: 70upx;
+		background: #ffffff;
+		font-size: 26rpx;
+		color: #000000;
+	}
 	.count-box {
+		position:absolute;
+		left: 200upx;
 		font-size: 26rpx;
 		color: #999;
 
@@ -167,6 +192,11 @@
 	}
 
 	.set-btn {
+		position:absolute;
+		top: 0;
+		right: 20upx;
+		width: 200upx;
+		height: 70upx;
 		background: none;
 		font-size: 26rpx;
 		color: #a8700d;
@@ -206,6 +236,8 @@
 		border-radius: 35rpx;
 		padding: 0;
 		color: rgba(#fff, 0.9);
+		position:absolute;
+		right: 40upx;
 	}
 }
 </style>

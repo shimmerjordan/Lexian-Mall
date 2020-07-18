@@ -33,4 +33,11 @@ public class UniUserController {
         String userID= (String) map.get("userID");
         return uniUserService.getFavorites(userID);
     }
+
+    @PostMapping("/cancelFavorite")
+    public boolean cancelFavorite(@RequestBody Map<String, Object> map) {
+        boolean result = uniUserService.cancelFavorite(map);
+        System.out.println(map);
+        return result;
+    }
 }

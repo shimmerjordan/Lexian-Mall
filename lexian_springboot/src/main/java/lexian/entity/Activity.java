@@ -5,29 +5,33 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+//店铺活动实体类
 public class Activity {
-    private Integer id;
+    private Integer id;//活动id
 
-    private String name;
+    private String name;//活动名称
 
-    private String description;
+    private String description;//活动描述
 
-    private String img;
+    private String img;//活动图片
+
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
+    private Date createTime;//创建活动时间
+
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 //    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date beginTime;
+    private Date beginTime;//活动开始时间
+
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 //    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date endTime;
+    private Date endTime;//活动结束时间
 
-    private String type;
+    private String type;//活动类型
 
-    private Integer status;
+    private Integer status;//活动状态——已发布，是草稿
 
-    private Integer is_delete;
+    private Integer is_delete;//活动删除标记
 
     public Activity(Integer id, String name, String description, String img, Date createTime,Date beginTime, Date endTime, String type, Integer status, Integer is_delete) {
         this.id = id;
