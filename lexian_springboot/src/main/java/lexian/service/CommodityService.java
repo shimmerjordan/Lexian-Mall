@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface CommodityService {
 	/**
-	 * 获取所有的商品列表
+	 * 获取所有的商品列表F
 	 * @return
 	 */
     List<Commodity> getAllShopCommodity();

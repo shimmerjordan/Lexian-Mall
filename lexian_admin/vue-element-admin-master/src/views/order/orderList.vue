@@ -6,13 +6,16 @@
         <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
       </el-select>
       <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         Search
       </el-button>
       <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
         Add
+      </el-button>
+      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleDownload">
+        导出
       </el-button>
     </div>
 
@@ -26,7 +29,12 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+      <el-table-column label="序号" width="50" align="center">
+        <template scope="scope">
+          <span>{{ scope.$index + 1 }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column v-if="showID" label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
@@ -84,9 +92,6 @@
         <el-form-item label="商品ID" prop="commodity">
           <el-input v-model="temp.commodity" />
         </el-form-item>
-        <el-form-item label="日期" prop="date">
-          <el-date-picker v-model="temp.date" type="datetime" placeholder="Please pick a date" />
-        </el-form-item>
         <el-form-item label="状态" prop="status">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
@@ -95,10 +100,12 @@
         <el-form-item label="数量" prop="quantity">
           <el-input v-model="temp.quantity" />
         </el-form-item>
+        <el-form-item label="日期" prop="date">
+          <el-date-picker v-model="temp.date" type="datetime" placeholder="Please pick a date" />
+        </el-form-item>
         <el-form-item label="描述" prop="description">
           <el-input v-model="temp.description" />
         </el-form-item>
-
         <el-form-item label="评价">
           <el-rate v-model="temp.comment" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
         </el-form-item>
@@ -128,15 +135,14 @@
 <script>
 import { getAllOrder, createOrder, updateOrder, DeleteOrder } from '@/api/order'
 import waves from '@/directive/waves' // waves directive
-import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 const calendarTypeOptions = [
-  { key: '0', display_name: '订单已被取消' },
-  { key: '1', display_name: '发货' },
-  { key: '2', display_name: '已收获' },
-  { key: '3', display_name: '已退货' },
-  { key: '4', display_name: '正在申请退货' }
+  { key: '1', display_name: '待付款' },
+  { key: '2', display_name: '待收货' },
+  { key: '3', display_name: '待评价' },
+  { key: '4', display_name: '售后' },
+  { key: '9', display_name: '已取消' }
 ]
 
 // arr to obj, such as { CN : "China", US : "USA" }
@@ -152,11 +158,11 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        '0': '订单已被取消',
-        '1': '发货',
-        '2': '已收获',
-        '3': '已退货',
-        '4': '正在申请退货'
+        '1': '待付款',
+        '2': '待收货',
+        '3': '待评价',
+        '4': '售后',
+        '9': '已取消'
       }
       return statusMap[status]
     },
@@ -172,7 +178,7 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
         comment: undefined,
         name: undefined,
         status: undefined
@@ -204,7 +210,8 @@ export default {
         status: [{ required: true, message: '请输入订单状态', trigger: 'blur' }],
         quantity: [{ required: true, message: '请输入数量', trigger: 'change' }]
       },
-      downloadLoading: false
+      downloadLoading: false,
+      showID: false
     }
   },
   created() {
@@ -310,10 +317,10 @@ export default {
               })
             }
             this.dialogFormVisible = false
+            this.getList()
           })
         }
       })
-      this.getList()
     },
     handleDelete(row, index) {
       console.log(row)
@@ -336,10 +343,24 @@ export default {
       })
       this.list.splice(index, 1)
     },
+    handleDownload() {
+      this.downloadLoading = true
+      import('@/vendor/Export2Excel').then(excel => {
+        const tHeader = ['date', 'description', 'name', 'comment', 'price', 'quantity']
+        const filterVal = ['date', 'description', 'name', 'comment', 'price', 'quantity']
+        const data = this.formatJson(filterVal)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename: 'order-list'
+        })
+        this.downloadLoading = false
+      })
+    },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
-          return parseTime(v[j])
+        if (j === 'date') {
+          return new Date(v[j])
         } else {
           return v[j]
         }

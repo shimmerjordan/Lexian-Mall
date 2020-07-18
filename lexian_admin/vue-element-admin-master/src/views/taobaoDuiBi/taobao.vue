@@ -1,28 +1,18 @@
 <template>
   <div class="app-container">
-
+    <!--淘宝爬虫商品信息展示页面-->
     <div class="filter-container">
+      <!--搜索商品名字的输入框-->
       <el-input v-model="listQuery.name" placeholder="商品名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <!-- <el-select v-model="listQuery.importance" placeholder="评价" clearable style="width: 90px" class="filter-item">
-        <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
-      </el-select> -->
-      <!-- <el-select v-model="listQuery.status" placeholder="状态" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
-      </el-select> -->
-      <!-- <el-select v-model="listQuery.sort" style="left:10px;width: 140px" class="filter-item" @change="handleFilter">
-        <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
-      </el-select> -->
+      <!--搜索按钮和导出按钮-->
       <el-button v-waves class="filter-item" type="primary" style="margin-left: 20px;" icon="el-icon-search" @click="handleFilter">
         搜索
       </el-button>
-      <!-- <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
-        Add
-      </el-button> -->
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
         导出
       </el-button>
     </div>
-
+    <!--商品信息展示表 绑定数据list后端传回的数据-->
     <el-table
       :key="tableKey"
       v-loading="listLoading"
@@ -33,41 +23,41 @@
       style="width: 71.7%;"
       @sort-change="sortChange"
     >
+      <!--商品id-->
       <el-table-column label="ID" prop="ID" sortable="custom" align="center" width="100px" :class-name="getSortClass('ID')">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
-
+      <!--商品名称-->
       <el-table-column label="商品名称" width="320px" align="center">
         <template slot-scope="{row}">
           <span>{{ row.name }}</span>
         </template>
       </el-table-column>
-
+      <!--商品单价-->
       <el-table-column label="商品单价" align="center" width="250px">
         <template slot-scope="{row}">
           <span>{{ row.price }}</span>
         </template>
       </el-table-column>
-
+      <!--商品销量-->
       <el-table-column label="商品销量" align="center" width="250px">
         <template slot-scope="{row}">
           <span style="color:red;">{{ row.peopleNum }}</span>
         </template>
       </el-table-column>
     </el-table>
-
+    <!--分页的一些东西 页码 页面数据量等 变动就调用getList方法-->
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
   </div>
 </template>
 
 <script>
-// import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
-import { fetchPv, createArticle } from '@/api/article'
+import { createArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
-import { UpdateShopGood, DeleteShopGood } from '@/api/shopGood'
+import { UpdateShopGood } from '@/api/shopGood'
 import { getAlltaobaoGoods } from '@/api/taobaoGood'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
@@ -106,6 +96,7 @@ export default {
       list: null,
       total: 0,
       listLoading: true,
+      // listQuery存储page limit等属性 传给后端
       listQuery: {
         page: 1,
         limit: 10,
@@ -151,16 +142,9 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      // fetchList(this.listQuery).then(response => {
-      //   this.list = response.data.items
-      //   this.total = response.data.total
-
-      //   // Just to simulate the time of the request
-      //   setTimeout(() => {
-      //     this.listLoading = false
-      //   }, 1.5 * 1000)
-      // })
+      // 调用api中的getAlltaobaoGoods方法（参数listQuery）
       getAlltaobaoGoods(this.listQuery).then(response => {
+        // 返回数据保存在list中 数据总数保存在total中
         this.list = response.data.list
         this.total = response.data.total
         console.log(this.list)
@@ -240,20 +224,6 @@ export default {
     updateData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          // const tempData = Object.assign({}, this.temp)
-          // tempData.modify_time = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          // updateArticle(tempData).then(() => {
-          //   const index = this.list.findIndex(v => v.id === this.temp.id)
-          //   this.list.splice(index, 1, this.temp)
-          //   this.dialogFormVisible = false
-          //   this.$notify({
-          //     title: 'Success',
-          //     message: 'Update Successfully',
-          //     type: 'success',
-          //     duration: 2000
-          //   })
-          // })
-
           UpdateShopGood(this.temp).then(response => {
             alert('修改成功')
             this.dialogFormVisible = false
@@ -270,29 +240,6 @@ export default {
         }
       })
       this.getList()
-    },
-
-    handleDelete(row, index) {
-      DeleteShopGood(row).then(response => {
-        alert('删除成功')
-        this.$notify({
-          title: 'Success',
-          message: 'Delete Successfully',
-          type: 'success',
-          duration: 2000
-        })
-        setTimeout(() => {
-          this.listLoading = false
-        }, 1.5 * 1000)
-      })
-      this.list.splice(index, 1)
-    },
-
-    handleFetchPv(pv) {
-      fetchPv(pv).then(response => {
-        this.pvData = response.data.pvData
-        this.dialogPvVisible = true
-      })
     },
     handleDownload() {
       this.downloadLoading = true

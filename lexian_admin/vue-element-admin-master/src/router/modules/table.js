@@ -14,7 +14,7 @@ const tableRouter = {
   children: [
     {
       path: 'complex-table',
-      component: () => import('@/views/order/complex-table'),
+      component: () => import('@/views/order/orderList'),
       name: 'ComplexTable',
       meta: { title: '订单列表' }
     },

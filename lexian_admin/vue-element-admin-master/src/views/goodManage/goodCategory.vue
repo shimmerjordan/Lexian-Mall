@@ -1,23 +1,24 @@
 <template>
+  <!--商品种类页面-->
   <div class="app-container" left="100px">
     <div align="center" style="font-size:24px;color:red">商品分类详情</div>
+    <!--绑定数据是categoryList从后端返回的数据-->
     <el-table :data="categoryList" style="width: 800px;margin-top:30px;margin-left:250px" border>
+      <!--类别id-->
       <el-table-column align="center" label="类别编号" width="100px">
         <template slot-scope="scope">
           {{ scope.row.id }}
         </template>
       </el-table-column>
+      <!--类别名称-->
       <el-table-column align="center" label="类别名称" width="200px">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <!-- <el-table-column align="center" label="图片路径">
-        <template slot-scope="scope">
-          {{ scope.row.description }}
-        </template>
-      </el-table-column> -->
+
       <el-table-column align="center" label="级别" width="250px">
+        <!--分类级别 用v-if控制 tag的type属性 做到不同分类不同的表现形式-->
         <template slot-scope="scope">
           <el-tag v-if="scope.row.level==0" type="success">
             一级类别
@@ -33,8 +34,10 @@
           </el-tag>
         </template>
       </el-table-column>
+      <!--查看分类中的商品详情操作-->
       <el-table-column align="center" label="操作" width="250px">
         <template slot-scope="scope">
+          <!--绑定handleWatch方法，传的参数是当前行的商品类别-->
           <el-button type="primary" size="small" @click="handleWatch(scope)">查看商品</el-button>
         </template>
       </el-table-column>
@@ -89,6 +92,8 @@ export default {
       })
       this.listLoading = false
     },
+    // 查看具体商品分类
+    // 跳转到分类对应的商品页面
     handleWatch() {
       this.$router.push('/goodManage/categoryGood')
     }

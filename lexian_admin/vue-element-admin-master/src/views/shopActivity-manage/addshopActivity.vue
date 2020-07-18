@@ -1,13 +1,14 @@
 <template>
   <div class="createPost-container">
+    <!-- 新增活动信息 -->
     <el-form
       ref="postForm"
       class="form-container"
       :model="postForm"
-
       label-width="80px"
       label-position="right"
     >
+      <!-- sticky组件，使得此始终保持在顶部 -->
       <sticky :class-name="'sub-navbar published'" :z-index="2" width="100px">
         <div style="float: left;">新增门店活动信息</div>
         <el-button style="float: right: 40px;" type="success" :span="4" @click="submitForm()">新增</el-button>
@@ -21,6 +22,7 @@
         <el-form label-width="100px">
           <el-row>
             <el-col :span="12">
+              <!-- 对应店铺全部列表，选择该活动所属门店 -->
               <el-form-item label="对应店铺" prop="activityShop" label-width="100px">
                 <el-select v-model="postForm.activityShop" clearable placeholder="请选择该活动对应店铺" size="small">
                   <el-option v-for="item in activityShopList" :key="item.id" :value="item.id" :label="item.id +'-' + item.name" />
@@ -30,6 +32,7 @@
           </el-row>
           <el-row>
             <el-col :span="12">
+              <!-- 活动编号由系统获取，不可更改 -->
               <el-form-item label="活动编号" prop="shopActivityId" label-width="100px">
                 <el-input v-model="postForm.shopActivityId" disabled />
               </el-form-item>
@@ -44,6 +47,7 @@
           </el-row>
           <el-row>
             <el-col :span="12">
+              <!-- 创建时间有系统获取，不可更改 -->
               <el-form-item label="创建时间" prop="createTime">
                 <el-input v-model="postForm.createTime" disabled />
               </el-form-item>
@@ -64,9 +68,6 @@
                   end-placeholder="结束日期"
                   :picker-options="pickerOptions"
                 />
-                <!-- <el-date-picker prop="beginTime" type="datetime" placeholder="请选择开始日期" />
-                至
-                <el-date-picker prop="endTime" type="datetime" placeholder="请选择结束日期" /> -->
               </el-form-item>
             </el-col>
           </el-row>
@@ -84,7 +85,7 @@
 
         <h3>门店活动简介<span style="font-size: 12px;color: darkgrey;">可以展示相关活动图片和对活动一定的描述</span></h3>
         <div class="components-container">
-          <!--活动图片-->
+          <!--活动图片，使用dropzone组件进行图片上传-->
           <div class="editor-container">
             <div style="margin: 20px 0;">
               <aside>门店活动介绍</aside>
@@ -128,6 +129,7 @@ export default {
   filters: {},
   data() {
     return {
+      // 数据初始化
       shopList: {
         page: 1,
         limit: 20,
@@ -155,10 +157,11 @@ export default {
         description: ''
       },
       loading: false,
+      // 活动类型列表
       typeList: [{ label: '秒杀', value: 0 }, { label: '团购', value: 1 }, { label: '节日限定', value: 2 }],
-      //   tags: [{ id: 1, name: '服饰' }, { id: 2, name: '食品' }, { id: 3, name: '日常用品' }],
-      checkAllTag: true,
+      // checkAllTag: true,
       isIndeterminateTag: true,
+      // 时间段操作，分隔成开始时间和结束时间
       pickerOptions: {
         onPick: ({ maxDate, minDate }) => {
           if (maxDate != null && minDate != null) {
@@ -207,10 +210,11 @@ export default {
   },
   computed: {},
   created() {
-    this.getMaxActivity()
-    this.getActivityShopList()
+    this.getMaxActivity() // 页面加载时，获取最大活动id
+    this.getActivityShopList() // 获取店铺列表
   },
   mounted() {
+    // 获取当前系统时间，并转换好格式
     const yy = new Date().getFullYear()
     const mm = new Date().getMonth() + 1
     const dd = new Date().getDate()
@@ -221,38 +225,39 @@ export default {
   },
   methods: {
     getActivityShopList() {
+      // 获取店铺信息
       getAllShop(this.shopList).then(response => {
-        this.activityShopList = response.data.list
+        this.activityShopList = response.data.list // 将获取的数据赋值给list
         console.log((this.activityShopList).length)
-        //  for(let i = 0; i < (this.activityShopList).length; i++){
-        //    this.activityShopList[i] = this.activityShopList[i].id +'--' +this.activityShopList[i].name
-        //  }
-        //  console.log(this.activityShopList)
       })
     },
     getMaxActivity() {
+      // 获取最大活动id
       getMaxActivityId().then(response => {
-        this.postForm.shopActivityId = response.data + 1
+        this.postForm.shopActivityId = response.data + 1 // 获取后，加一赋值给此时的活动id
         // console.log(Object.keys($shopActivityId).length)
         setTimeout(() => {
         }, 1.5 * 1000)
       })
     },
+    // dropzone组件，上传图片
     dropzoneS(file) {
       console.log(file)
       this.$message({ message: 'Upload success', type: 'success' })
     },
+    // 移除上传的图片
     dropzoneR(file) {
       console.log(file)
       this.$message({ message: 'Delete success', type: 'success' })
     },
     submitForm() {
+      // 提交新增的活动信息
       // this.$router.go(-1)
       this.$refs['postForm'].validate((valid) => {
         if (valid) {
           console.log(this.postForm)
           insertActivity(this.postForm).then(response => {
-            alert('添加成功')
+            alert('添加成功') // 操作成功，提示
             this.$notify({
               title: 'Success',
               message: '添加成功',
@@ -265,10 +270,11 @@ export default {
           })
         }
       })
-      this.$router.push({ path: '/shopActivity/shopActivity-manage' })
+      this.$router.push({ path: '/shopActivity/shopActivity-manage' }) // 新增完成后，跳转到活动列表界面
       this.submitActivityShop()
     },
     submitActivityShop() {
+      // 新增活动——店铺管理，同时新增
       this.$refs['postForm'].validate((valid) => {
         if (valid) {
           insertActivityShop(this.postForm).then(response => {
@@ -285,6 +291,7 @@ export default {
         }
       })
     },
+    // 点击取消时，返回到活动列表
     cancel() {
       this.$router.push({ path: '/shopActivity/shopActivity-manage' })
     }

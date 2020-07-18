@@ -230,7 +230,6 @@
 				    key:"userInfo",
 			     	success(e){
 			      	userId = e.data.ID;//这就是你想要取的token
-					debugger
 					// if(userId == undefined){
 					// 	userId = e.data.ID;
 					// }

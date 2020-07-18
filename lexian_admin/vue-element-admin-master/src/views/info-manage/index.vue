@@ -5,7 +5,7 @@
       <!-- <pan-thumb >
         <image src="@/assets/test-images/test.jpg" width="100px">
       </pan-thumb> -->
-
+      <!-- 个人中心界面  -->
       <el-button type="primary" icon="el-icon-upload" style="margin-left: 40px;" @click="imagecropperShow=true">
         更换头像
       </el-button>
@@ -13,6 +13,7 @@
         返回管理中心
       </el-button>
 
+      <!-- 头像展示 -->
       <image-cropper
         v-show="imagecropperShow"
         :key="imagecropperKey"
@@ -25,6 +26,7 @@
       />
     </div>
     <div>
+      <!-- 表单元素，展示对应id下的个人信息，并根据用户意愿对其信息进行更新注销等操作-->
       <el-form :data="user">
         <el-form-item label="" />
         <el-form-item label="用户姓名" prop="name">
@@ -35,10 +37,12 @@
         </el-form-item>
         <el-form-item label="登录密码" prop="pwd">
           <el-input v-model="user.pwd" :type="passw" style="width:500px">
+            <!-- 设置密码可见方法，使用户可以对自己的密码进行查看 -->
             <i slot="suffix" :class="icon" @click="showPass" />
           </el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex" style="150px">
+          <!-- 单一选项 -->
           <el-radio-group v-model="user.sex">
             <el-radio
               v-for="item in sexList"
@@ -75,7 +79,6 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
 import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
 import { searchShopManager, updateShopManager, deleteShopManager } from '@/api/shopManager'
@@ -85,12 +88,11 @@ export default {
   components: { ImageCropper, PanThumb },
   data() {
     return {
-      // identity: '系统管理员',
-      //  id: 1,
+      // 数据初始化
       passw: 'password',
       icon: 'el-icon-view',
-      temp: { identity: '店铺管理员', id: 2 },
-      user_image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191',
+      temp: { identity: '店铺管理员', id: 1 },
+      user_image: ' ',
       sexList: [{ label: '男', value: 0 }, { label: '女', value: 1 }],
       imagecropperShow: false,
       imagecropperKey: 0,
@@ -104,6 +106,7 @@ export default {
         birthday: undefined,
         phone: undefined
       },
+      // 日期选择限制，用户更新的生日不可晚于系统当天
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now() - 8.64e6
@@ -122,6 +125,7 @@ export default {
     this.getUser()
   },
   methods: {
+    // 根据用户选择对密码的可见进行展示，当密码输入框为text格式时，点击icon则对密码进行隐藏，否则点击icon时，密码格式则为text格式
     showPass() {
       if (this.passw === 'text') {
         this.passw = 'password'
@@ -131,6 +135,7 @@ export default {
         this.icon = 'el-icon-finished'
       }
     },
+    // 头像上传
     cropSuccess(resData) {
       this.imagecropperShow = false
       this.imagecropperKey = this.imagecropperKey + 1
@@ -139,6 +144,7 @@ export default {
     close() {
       this.imagecropperShow = false
     },
+    // 获取该id对应下的管理员信息
     getUser() {
       console.log(this.temp)
       searchShopManager(this.temp).then(response => {
@@ -152,16 +158,16 @@ export default {
       //   avatar: this.avatar
       // }
     },
+    // 返回主页
     goBack() {
       this.$router.push('dashboard')
     },
+    // 更新信息提交
     submit() {
-      // this.$refs['dataForm'].validate((valid) => {
-      //   if(valid) {
       this.user.id = this.temp.id
       console.log(this.user)
       updateShopManager(this.user).then(response => {
-        alert('修改成功')
+        alert('修改成功')// 修改成功则弹出提示弹窗
         this.$notify({
           title: 'Success',
           message: 'Update Successfully',
@@ -176,10 +182,11 @@ export default {
       //  })
       //  this.getUser()
     },
+    // 注销管理员信息操作
     del() {
       this.user.id = this.temp.id
       deleteShopManager(this.user).then(response => {
-        alert('删除成功')
+        alert('删除成功')// 操作成功弹出提示弹窗
         this.$notify({
           title: 'Sucess',
           message: 'Delete Sucessfully',
@@ -190,6 +197,11 @@ export default {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+      this.logout()
+    },
+    async logout() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
 }

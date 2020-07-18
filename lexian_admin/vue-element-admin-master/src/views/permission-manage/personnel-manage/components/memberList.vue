@@ -193,9 +193,9 @@ export default {
               })
             }
             this.dialogFormVisible = false
+            this.initTable()
           })
         }
-        this.initTable()
       })
     },
     createData() {
@@ -221,9 +221,9 @@ export default {
               })
             }
             this.dialogFormVisible = false
+            this.initTable()
           })
         }
-        this.initTable()
       })
     },
     deleteMember(row, column) {
@@ -250,6 +250,7 @@ export default {
             duration: 2000
           })
         }
+        this.initTable()
       })
     }
   }
