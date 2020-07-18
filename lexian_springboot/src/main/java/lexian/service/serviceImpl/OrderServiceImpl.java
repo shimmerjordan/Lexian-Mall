@@ -120,7 +120,7 @@ public class OrderServiceImpl implements OrderService {
 
             result.put("time",flag0.get("date"));
             result.put("state",flag0.get("status"));
-            result.put("state",flag0.get("status"));
+            result.put("orderID",flag0.get("ID"));
             goodsMap.put("title",flag0.get("name"));
             goodsMap.put("price",flag0.get("price"));
             goodsMap.put("image",flag0.get("image"));
@@ -185,5 +185,23 @@ public class OrderServiceImpl implements OrderService {
     public boolean deleteOrder(int i) {
         int flag=orderMapper.deleteOrder(i);
         return flag>0;
+    }
+
+    /**
+     * @note 取消订单接口，将取消的订单state设为9
+     * @parameter orderID
+     */
+    @Override
+    public boolean cancelCustomerOrder(Map<String, Object> map){
+        return orderMapper.cancelCustomerOrder(map);
+    }
+
+    /**
+     * @note 删除订单，将取消的订单的isDelete设为1
+     * @parameter  orderID
+     */
+    @Override
+    public boolean deleteCustomerOrder(Map<String, Object> map){
+        return orderMapper.deleteCustomerOrder(map);
     }
 }

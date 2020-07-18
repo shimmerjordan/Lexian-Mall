@@ -100,4 +100,18 @@ public interface OrderMapper {
      * @return
      */
     int deleteOrder(int i);
+
+    /**
+     * @note 取消订单接口，将取消的订单state设为9
+     * @parameter  orderID
+     * @note 接口cancelCustomerOrder
+     */
+    boolean cancelCustomerOrder(Map<String, Object> map);
+
+    /**
+     * @note 删除订单，将取消的订单的isDelete设为1
+     * @parameter  orderID
+     * @note 接口deleteCustomerOrder
+     */
+    boolean deleteCustomerOrder(Map<String, Object> map);
 }

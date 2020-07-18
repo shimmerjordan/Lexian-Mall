@@ -25,6 +25,7 @@
 		#{loginName}, #{nickName})
 	</insert>
 
+	<!-- 用户名登录模块，根据用户登录名查找密码 -->
 	<select id="getPwdByName" parameterType="java.util.HashMap"
 		resultType="java.lang.String">
 		SELECT
@@ -35,7 +36,7 @@
 		login_name = #{loginName}
 	</select>
 
-
+	<!-- 根据用户登录名获取用户的所有信息，并将birthday以及register_time这两个字段利用内置函数转化时间类型 -->
 	<select id="loginByName" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT
@@ -48,6 +49,7 @@
 		login_name = #{loginName}
 	</select>
 
+	<!-- 根据用户手机号进行登录，查找用户的所有信息 -->
 	<select id="loginByPhone" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT
@@ -58,6 +60,7 @@
 		phone = #{mobile}
 	</select>
 
+	<!-- 核查手机号是否存在，使用IFNULL函数，若存在记录则返回该条记录，若不存在则返回0 -->
 	<select id="checkPhoneExistance" parameterType="java.util.HashMap"
 		resultType="java.lang.Integer">
 		select IFNULL(
@@ -68,6 +71,7 @@
 		), 0)
 	</select>
 
+	<!-- 核查登录名（唯一）是否存在，使用IFNULL函数，若存在记录则返回该条记录，拖不存在则返回0 -->
 	<select id="checkNameExistance" parameterType="java.util.HashMap"
 		resultType="java.lang.Integer">
 		select IFNULL(
@@ -78,6 +82,7 @@
 		), 0)
 	</select>
 
+	<!-- 更新用户密码 -->
 	<update id="updateCustomerPwd" parameterType="java.util.HashMap">
 		update customer
 		set
@@ -85,6 +90,7 @@
 		where phone = #{mobile}
 	</update>
 
+	<!-- 默认修改信息的方法 -->
 	<update id="updateByPrimaryKey" parameterType="lexian.entity.Customer">
 		update customer
 		set name = #{name,jdbcType=VARCHAR},
@@ -103,6 +109,7 @@
 		#{id,jdbcType=INTEGER}
 	</update>
 
+	<!-- 根据用户ID选择钱包的相关字段信息 -->
 	<select id="selectById" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
 		SELECT c.*,w.money_amount as moneyAmount,w.wallet_pwd as
@@ -110,6 +117,7 @@
 		where c.ID = #{id}
 	</select>
 
+	<!-- 身份认证 -->
 	<update id="setCertificationId" parameterType="java.util.HashMap">
 		UPDATE
 		  customer
@@ -120,6 +128,7 @@
 		  ID = #{customerId}
 	</update>
 
+	<!-- 个人信息的修改 -->
 	<update id="updateUserInfo" parameterType="java.util.HashMap">
 		UPDATE
 		  customer
