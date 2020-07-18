@@ -429,20 +429,20 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
+        const tHeader = ['id', '店铺名称', '店铺图片', '开店日期', '店铺类型', '标签', '当前状态']
+        const filterVal = ['id', 'name', 'img', 'establishTime', 'kind', 'tag', 'status']
         const data = this.formatJson(filterVal)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'table-list'
+          filename: 'shop-list'
         })
         this.downloadLoading = false
       })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
+        if (j === 'establishTime') {
           return parseTime(v[j])
         } else {
           return v[j]
