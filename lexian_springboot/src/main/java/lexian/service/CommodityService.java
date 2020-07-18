@@ -9,10 +9,6 @@ import lexian.entity.Category;
 import lexian.entity.Commodity;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dfc9bec9445b1f0c9b271e7fdca19765ae3035e
 /**
  * 商品相关的Service
  */
