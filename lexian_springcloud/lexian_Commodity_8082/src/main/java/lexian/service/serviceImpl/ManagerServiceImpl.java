@@ -20,6 +20,10 @@ public class ManagerServiceImpl implements ManagerService {
         this.managerMapper = managerMapper;
     }
 
+    /**
+     * 获取三种系统角色类型对应的系统管理员
+     * @return
+     */
     @Override
     public List<List<Manager>> getAllRoleMember() {
         List<List<Manager>> res=new ArrayList<>();
@@ -29,18 +33,33 @@ public class ManagerServiceImpl implements ManagerService {
         return res;
     }
 
+    /**
+     * 增加一条管理员记录
+     * @param m
+     * @return
+     */
     @Override
     public boolean addManager(Map<String,Object> m) {
         int res=managerMapper.addManager(m);
         return res>0;
     }
 
+    /**
+     * 更新系统管理员的信息
+     * @param m
+     * @return
+     */
     @Override
     public boolean updateManager(Map<String, Object> m) {
         int res=managerMapper.updateManager(m);
         return  res>0;
     }
 
+    /**
+     * 删除一条系统管理员记录
+     * @param index
+     * @return
+     */
     @Override
     public boolean deleteManager(int index) {
         int res = managerMapper.deleteManager(index);

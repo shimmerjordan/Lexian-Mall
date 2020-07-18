@@ -30,7 +30,7 @@
 							<text class="time">{{item.time}}</text>
 							<text class="state" :style="{color: item.stateTipColor}">{{item.stateTip}}</text>
 							<text 
-								v-if="item.state===9" 
+								v-if="item.state==9" 
 								class="del-btn yticon icon-iconfontshanchu1"
 								@click="deleteOrder(index)"
 							></text>
@@ -47,7 +47,7 @@
 						<view 
 							v-if="item.goodList.length === 1" 
 							class="goods-box-single"
-							v-for="(goodsItem, goodsIndex) in item.goodList" :key="goodsIndex"
+							v-for="(goodsItem, goodsIndex1) in item.goodList" :key="goodsIndex1"
 						>
 							<image class="goods-img" :src="goodsItem.image" mode="aspectFill"></image>
 							<view class="right">
@@ -58,14 +58,20 @@
 						</view>
 						
 						<view class="price-box">
-							共
-							<text class="num">7</text>
-							件商品 实付款
-							<text class="price">143.7</text>
+							<view  v-for="(goodsItem, index) in item.goodList" :key="index">
+								共
+								<text class="num">{{goodsItem.number}}</text>
+								件商品 实付款
+								<text class="price">{{goodsItem.price}}</text>
+							</view>
 						</view>
-						<view class="action-box b-t" v-if="item.state != 9">
+						<view class="action-box b-t" v-if="item.state == 1">
 							<button class="action-btn" @click="cancelOrder(item)">取消订单</button>
-							<button class="action-btn recom">立即支付</button>
+							<button class="action-btn recom" >立即支付</button>	
+						</view>
+						<view class="action-box b-t" v-if="item.state == 2">
+							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
+							<button class="action-btn recom">确认收货</button>
 						</view>
 					</view>
 					 
@@ -160,7 +166,6 @@
 					success: (res) => {
 					this.ordersList = res.data;
 					console.log("后台返回的ordersList", this.ordersList);
-					console.log("ordersList.length", this.ordersList.length);
 					}
 				});
 			},
@@ -171,12 +176,12 @@
 				let index = this.tabCurrentIndex;
 				let navItem = this.navList[index];
 				let state = navItem.state;
-				console.log("调用了this.ordersList", this.ordersList);
+				// console.log("调用了this.ordersList", this.ordersList);
 				if(source === 'tabChange' && navItem.loaded === true){
 					//tab切换只有第一次需要加载数据
 					return;
 				}
-				if(navItem.loadingType === 'loading'){
+				if(navItem.loadingType === 'loading' || navItem.loadingType === 'noMore' ){
 					//防止重复加载
 					return;
 				}
@@ -192,6 +197,9 @@
 							//0为全部订单
 							return item;
 						}
+						if(state == item.state){
+							return item;
+						}
 						return item.state === state
 					});
 					orderList.forEach(item=>{
@@ -199,11 +207,11 @@
 					})
 					//loaded新字段用于表示数据加载完毕，如果为空可以显示空白页
 					this.$set(navItem, 'loaded', true);
-					console.log("Json.orderList", Json.orderList);
+					// console.log("Json.orderList", Json.orderList);
 					
 					//判断是否还有数据， 有改为 more， 没有改为noMore 
-					navItem.loadingType = 'more';
-				}, 600);	
+					navItem.loadingType = 'noMore';
+				}, 1000);	
 				
 			}, 
 
@@ -218,34 +226,61 @@
 			},
 			//删除订单
 			deleteOrder(index){
+				let list = this.navList[this.tabCurrentIndex].orderList[index];
+				console.log(list.orderID)
 				uni.showLoading({
 					title: '请稍后'
 				})
-				setTimeout(()=>{
-					this.navList[this.tabCurrentIndex].orderList.splice(index, 1);
-					uni.hideLoading();
-				}, 600)
+				uni.request({
+					url: this.apiServer + "/order/deleteCustomerOrder",
+					data:{
+						"orderID": list.orderID
+					},
+					method: 'POST',
+					success: (res) => {
+						setTimeout(()=>{
+							this.navList[this.tabCurrentIndex].orderList.splice(index, 1);
+							this.onload();
+							uni.hideLoading();
+						}, 600)
+					}
+				});
+				
 			},
 			//取消订单
 			cancelOrder(item){ 
+				// 这里获取当前点击的订单对应orderID返回后端
+				let list = this.navList[this.tabCurrentIndex].orderList;
+				let index = list.findIndex(val=>val.id === item.id);
+				console.log(list[index].orderID)
 				uni.showLoading({
 					title: '请稍后'
 				})
-				setTimeout(()=>{
-					let {stateTip, stateTipColor} = this.orderStateExp(9);
-					item = Object.assign(item, {
-						state: 9,
-						stateTip, 
-						stateTipColor
-					})
-					
-					//取消订单后删除待付款中该项
-					let list = this.navList[1].orderList;
-					let index = list.findIndex(val=>val.id === item.id);
-					index !== -1 && list.splice(index, 1);
-					
-					uni.hideLoading();
-				}, 600)
+				uni.request({
+					url: this.apiServer + "/order/cancelCustomerOrder",
+					data:{
+						"orderID": list[index].orderID
+					},
+					method: 'POST',
+					success: (res) => {
+						console.log(res.data)
+						setTimeout(()=>{
+							let {stateTip, stateTipColor} = this.orderStateExp(9);
+							item = Object.assign(item, {
+								state: 9,
+								stateTip, 
+								stateTipColor
+							})
+							
+							//取消订单后删除待付款中该项
+							index !== -1 && list.splice(index, 1);
+							this.onload();
+							uni.hideLoading();
+							
+						}, 600)
+					}
+				});
+				
 			},
 
 			//订单状态文字和颜色
