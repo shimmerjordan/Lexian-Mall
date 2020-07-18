@@ -186,6 +186,7 @@
 
     <select id="getCustomerOrder" resultType="java.util.HashMap" parameterType="java.util.HashMap">
       SELECT
+        orders.ID,
         orders.date,
         orders.description,
         orders.`comment`,
@@ -207,5 +208,30 @@
         AND orders.isDelete = 0
         AND customer_order.customer_id = #{customerId}
     </select>
+
+
+    <!-- @note 取消订单接口，将取消的订单status设为9 -->
+    <!-- @parameter orderID -->
+    <!-- @note 接口cancelCustomerOrder -->
+    <update id="cancelCustomerOrder" parameterType="java.util.HashMap">
+        UPDATE
+            orders
+        SET
+            status = 9
+        WHERE
+            orders.ID = #{ orderID }
+    </update>
+
+    <!-- @note 取消订单接口，将取消的订单isDelete设为1 -->
+    <!-- @parameter orderID -->
+    <!-- @note 接口deleteCustomerOrder -->
+    <update id="deleteCustomerOrder" parameterType="java.util.HashMap">
+        UPDATE
+            orders
+        SET
+            isDelete = 1
+        WHERE
+            orders.ID = #{ orderID }
+    </update>
 
 </mapper>

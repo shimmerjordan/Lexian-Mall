@@ -4,7 +4,7 @@
 			<image class="bg" src="/static/bg.jpg"></image>
 			<view class="user-info-box">
 				<view class="portrait-box" >
-					<image class="portrait" :src="userInfo.portrait || '/static/missing-face.png'"></image>
+					<image class="portrait" :src="userInfo.image || '/static/missing-face.png'"></image>
 				</view>
 				<view class="info-box">
 					<text class="username">{{userInfo.nick_name || '游客'}}</text>
@@ -132,7 +132,16 @@
 			}
 		},
 		onLoad(){
+			setTimeout(()=>{
+				this.getUser();
+			}, 200)
 			this.loadHistory()
+		},
+		onShow(){
+			setTimeout(()=>{
+				this.getUser();
+			}, 200)
+			this.loadHistory();
 		},
 		// #ifndef MP
 		onNavigationBarButtonTap(e) {
@@ -187,11 +196,15 @@
 			
 			navTo(url){
 				if(!this.hasLogin){
-					url = '/pages/public/login';
+					this.$api.msg("请先登录");
+					url = '/pages/public/loginByName';
 				}
-				uni.navigateTo({  
-					url
-				})  
+				setTimeout(()=>{
+					uni.navigateTo({
+						url
+					})  
+				}, 2500)
+				
 			}, 
 			navToDetailPage(item) {
 				let id = item.id;

@@ -88,6 +88,7 @@
 			};
 		},
 		onLoad() {
+			this.loadData();
 		},
 		onShow(){
 			this.loadData();
@@ -269,20 +270,18 @@
 			//创建订单
 			createOrder() {
 				let list = this.cartList;
-				let goodsData = [];
+				console.log("list:",list);
+				let flag = [];
+				
 				list.forEach(item => {
 					if (item.checked) {
-						goodsData.push({
-							specs_name: item.specs_name,
-							commodity_quantity: item.commodity_quantity
-						})
+						flag.push(item.cartID);
 					}
 				})
-
+				let carts_id = flag.join(',')
+				
 				uni.navigateTo({
-					url: `/pages/order/createOrder?data=${JSON.stringify({
-  						goodsData: goodsData
-  					})}`
+					url: `/pages/order/createOrder?cartIds=${carts_id}&uid=${list[0].customer_id}`
 				})
 				this.$api.msg('跳转下一页 sendData');
 			}
