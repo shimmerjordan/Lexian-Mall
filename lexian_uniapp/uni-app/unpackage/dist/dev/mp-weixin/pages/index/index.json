@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "商城首页",
-  "usingComponents": {
-    "uni-search": "/components/lee-search/lee-search"
-  }
-}

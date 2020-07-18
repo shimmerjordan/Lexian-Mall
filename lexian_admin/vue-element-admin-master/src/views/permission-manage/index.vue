@@ -1,6 +1,5 @@
 <template>
   <div class="app-container">
-    <!-- <el-button type="primary" icon="el-icon-plus" @click="handleAddRole">新增角色</el-button> -->
     <h3>角色权限信息展示</h3>
     <el-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
       <el-table-column align="center" label="角色要点" width="220">
@@ -20,6 +19,7 @@
       </el-table-column>
       <el-table-column align="center" label="操作">
         <template slot-scope="scope">
+          <!-- 获取角色具体信息，点击按钮时，弹唱显示 -->
           <el-button type="primary" size="small" @click="lookInfo(scope)">查看详情</el-button>
           <!-- <el-button type="danger" size="small" @click="handleDelete(scope)">删除</el-button> -->
         </template>
@@ -39,15 +39,7 @@
           />
         </el-form-item>
         <el-form-item label="页面权限">
-          <!-- <el-tree
-            ref="tree"
-            :check-strictly="checkStrictly"
-            :data="routesData"
-            :props="defaultProps"
-            show-checkbox
-            node-key="path"
-            class="permission-tree"
-          /> -->
+          <!-- 利用cheeckbox展示角色的页面权限 -->
           <el-checkbox-group v-model="routesData">
             <el-checkbox v-for="route in routesList" :key="route.key" :label="route.key" :value="route.key">
               {{ route.label }}
@@ -63,17 +55,6 @@
 </template>
 
 <script>
-// import path from 'path'
-// import { deepClone } from '@/utils'
-// import { getRoutes, getRoles, addRole, deleteRole, updateRole } from '@/api/role'
-
-// const defaultRole = {
-//   key: '',
-//   name: '',
-//   description: '',
-//   routes: []
-// }
-
 export default {
   data() {
     return {
@@ -88,6 +69,7 @@ export default {
         { key: 4, label: '活动管理' },
         { key: 5, label: '数据查看' }
       ],
+      // 角色对应的信息
       rolesList: [
         { key: 'SystemAdmin', name: 'SystemAdmin', description: '系统管理员，整体管理和维护系统信息及功能', routes: [0, 1, 2, 3, 4, 5] },
         { key: 'ShopAdmin', name: 'ShopAdmin', description: '店铺管理员，主要管理与自己相关的店铺和店铺活动订单等', routes: [0, 1, 2, 3, 4] }
@@ -102,109 +84,18 @@ export default {
     }
   },
   computed: {
-    // routesData() {
-    //   return this.routes
-    // }
   },
   created() {
-    // Mock: get all routes and roles list from server
-    // this.getRoutes()
-    // this.getRoles()
     this.rolesList
   },
   methods: {
+    // 展示对应角色下的权限详情
     lookInfo(scope) {
       this.dialogVisible = true
       this.role = scope.row
       this.routesData = scope.row.routes
       console.log(this.routesData)
     }
-    // handleDelete({ $index, row }) {
-    //   this.$confirm('Confirm to remove the role?', 'Warning', {
-    //     confirmButtonText: 'Confirm',
-    //     cancelButtonText: 'Cancel',
-    //     type: 'warning'
-    //   })
-    //     .then(async() => {
-    //       await deleteRole(row.key)
-    //       this.rolesList.splice($index, 1)
-    //       this.$message({
-    //         type: 'success',
-    //         message: 'Delete succed!'
-    //       })
-    //     })
-    //     .catch(err => { console.error(err) })
-    // },
-    // generateTree(routes, basePath = '/', checkedKeys) {
-    //   const res = []
-
-    //   for (const route of routes) {
-    //     const routePath = path.resolve(basePath, route.path)
-
-    //     // recursive child routes
-    //     if (route.children) {
-    //       route.children = this.generateTree(route.children, routePath, checkedKeys)
-    //     }
-
-    //     if (checkedKeys.includes(routePath) || (route.children && route.children.length >= 1)) {
-    //       res.push(route)
-    //     }
-    //   }
-    //   return res
-    // },
-    // async confirmRole() {
-    //   const isEdit = this.dialogType === 'edit'
-
-    //   const checkedKeys = this.$refs.tree.getCheckedKeys()
-    //   this.role.routes = this.generateTree(deepClone(this.serviceRoutes), '/', checkedKeys)
-
-    //   if (isEdit) {
-    //     await updateRole(this.role.key, this.role)
-    //     for (let index = 0; index < this.rolesList.length; index++) {
-    //       if (this.rolesList[index].key === this.role.key) {
-    //         this.rolesList.splice(index, 1, Object.assign({}, this.role))
-    //         break
-    //       }
-    //     }
-    //   } else {
-    //     const { data } = await addRole(this.role)
-    //     this.role.key = data.key
-    //     this.rolesList.push(this.role)
-    //   }
-
-    //   const { description, key, name } = this.role
-    //   this.dialogVisible = false
-    //   this.$notify({
-    //     title: 'Success',
-    //     dangerouslyUseHTMLString: true,
-    //     message: `
-    //         <div>Role Key: ${key}</div>
-    //         <div>Role Name: ${name}</div>
-    //         <div>Description: ${description}</div>
-    //       `,
-    //     type: 'success'
-    //   })
-    // },
-    // reference: src/view/layout/components/Sidebar/SidebarItem.vue
-    // onlyOneShowingChild(children = [], parent) {
-    //   let onlyOneChild = null
-    //   const showingChildren = children.filter(item => !item.hidden)
-
-    //   // When there is only one child route, the child route is displayed by default
-    //   if (showingChildren.length === 1) {
-    //     onlyOneChild = showingChildren[0]
-    //     onlyOneChild.path = path.resolve(parent.path, onlyOneChild.path)
-    //     return onlyOneChild
-    //   }
-
-    //   // Show parent if there are no child route to display
-    //   if (showingChildren.length === 0) {
-    //     onlyOneChild = { ... parent, path: '', noShowingChildren: true }
-    //     return onlyOneChild
-    //   }
-
-    //   return false
-    // }
   }
 }
 </script>

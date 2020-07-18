@@ -1,5 +1,6 @@
 import myrequest from '@/utils/myrequest'
 
+// 获取全部活动信息
 export function getAllActivity(data) {
   return myrequest({
     url: '/getAllActivity',
@@ -8,6 +9,7 @@ export function getAllActivity(data) {
   })
 }
 
+// 更新活动信息
 export function updateActivity(data) {
   return myrequest({
     url: '/updateActivity',
@@ -16,6 +18,7 @@ export function updateActivity(data) {
   })
 }
 
+// 删除活动信息
 export function deleteActivity(data) {
   return myrequest({
     url: '/deleteActivity',
@@ -24,6 +27,7 @@ export function deleteActivity(data) {
   })
 }
 
+// 更新活动状态为已发布
 export function updateActivityStatus0(data) {
   return myrequest({
     url: '/updateActivityStatus0',
@@ -32,6 +36,7 @@ export function updateActivityStatus0(data) {
   })
 }
 
+// 更新活动状态为是草稿
 export function updateActivityStatus1(data) {
   return myrequest({
     url: '/updateActivityStatus1',
@@ -40,6 +45,7 @@ export function updateActivityStatus1(data) {
   })
 }
 
+// 获取此时活动的最大id
 export function getMaxActivityId() {
   return myrequest({
     url: '/getMaxActivityId',
@@ -47,6 +53,7 @@ export function getMaxActivityId() {
   })
 }
 
+// 插入活动信息
 export function insertActivity(data) {
   return myrequest({
     url: '/insertActivity',

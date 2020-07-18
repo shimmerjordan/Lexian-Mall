@@ -64,7 +64,7 @@
 			"path": "pages/cart/cart",
 			"style": {
 				"navigationBarTitleText": "购物车",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "pages/public/loginByPhone",
@@ -229,8 +229,7 @@
         ,{
             "path" : "pages/user/favorites",
             "style" : {
-            	"navigationBarTitleText": "",
-            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "商品收藏夹",
             	"app-plus": {
             		"titleNView": false,
             		"animationType": "slide-in-bottom"

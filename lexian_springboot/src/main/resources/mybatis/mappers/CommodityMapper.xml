@@ -108,7 +108,7 @@
 	</update>
 
 	<!--
-		获取商品的id
+		获取UniApp首页的商品数据
 	-->
 	<select id="getIndexCommodity" resultType="Commodity">
 		SELECT
@@ -212,7 +212,7 @@
 	</select>
 
 	<!--
-		根据id寻找商品
+		获取用户在UniApp首页所搜索查找的商品数据
 	-->
 	<select id="getIndexSearchCommodity" resultType="Commodity" parameterType="java.lang.String">
 		SELECT
@@ -304,7 +304,7 @@
 	</select>
 
 	<!--
-		获取所有在售的商品信息
+		通过活动编号，获取UniApp端首页活动推广的商品数据
 	-->
 	<select id="getSalesItem" resultType="Commodity"
 			parameterType="java.lang.String">

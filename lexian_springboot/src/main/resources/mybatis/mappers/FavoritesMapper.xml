@@ -26,6 +26,18 @@
 	#{commodityId} AND customer_id =
 	#{uid}
 	</delete>
+	<!--
+        更新数据库，完成用户收藏夹商品的逻辑删除
+     -->
+	<update id="cancelFavorite" parameterType="java.util.HashMap">
+		UPDATE
+		favorites
+		SET
+		is_delete = 1
+		WHERE
+		commodity_id = #{ID} AND
+		customer_id = #{userID}
+	</update>
 
 
 </mapper>

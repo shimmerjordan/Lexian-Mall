@@ -155,4 +155,23 @@ public class OrderController {
         System.out.println(index);
         return orderService.deleteOrder(index);
     }
+
+    /**
+     * @note 取消订单接口，将取消的订单state设为9
+     * @parameter  orderID
+     */
+    @PostMapping("/cancelCustomerOrder")
+    public boolean cancelCustomerOrder(@RequestBody Map<String, Object> map){
+        return orderService.cancelCustomerOrder(map);
+    }
+
+
+    /**
+     * @note 关闭订单接口，将取消的订单isDelete设为1
+     * @parameter  orderID
+     */
+    @PostMapping("/deleteCustomerOrder")
+    public boolean deleteCustomerOrder(@RequestBody Map<String, Object> map){
+        return orderService.deleteCustomerOrder(map);
+    }
 }

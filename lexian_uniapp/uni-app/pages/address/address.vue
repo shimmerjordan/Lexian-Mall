@@ -22,6 +22,7 @@
 </template>
 
 <script>
+	import common from '@/store/common.js'
 	export default {
 		data() {
 			return {
@@ -31,7 +32,8 @@
 			}
 		},
 		onLoad(option){
-			this.uid = option.uid;
+			
+			this.uid = common.getGlobalUserInfo().ID;
 			let _this = this;
 			uni.request({
 			    url: this.apiServer + "/api/address/listByUid?uid="+_this.uid,
