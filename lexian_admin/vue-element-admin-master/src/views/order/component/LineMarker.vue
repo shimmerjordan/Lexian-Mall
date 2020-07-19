@@ -42,6 +42,7 @@ export default {
       default: 'chart'
     }
   },
+  // 数据初始化为0
   data() {
     return {
       chart: null,
@@ -53,7 +54,7 @@ export default {
       total: 0,
       average: 0,
       x: ['07.06', '07.07', '07.08', '07.09', '07.10', '07.11', '07.12', '07.13', '07.14'],
-      point: [3, 0, 2, 1, 5, 2, 0, 0, 1]
+      point: [0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
   },
   mounted() {
@@ -120,6 +121,7 @@ export default {
       }
       this.average = (this.total / this.x.length).toFixed(2)
     },
+    // 初始化统计图颜色
     initChart() {
       this.chart = echarts.init(document.getElementById(this.id))
       this.chart.setOption({
