@@ -1,6 +1,6 @@
 <template>
 	<view class="empty-content">
-		<image class="empty-content-image" :src="setSrc" mode="aspectFit"></image>
+		<image class="empty-content-image" :src="setSrc" mode="aspectFit" @click="forceLoad"></image>
 	</view>
 </template>
 
@@ -25,6 +25,11 @@
 			setSrc() {
 				return this.typeSrc[this.src];
 			},
+		},
+		methods: {
+			forceLoad(){
+				this.$forceUpdate()
+			}
 		}
 	}
 </script>

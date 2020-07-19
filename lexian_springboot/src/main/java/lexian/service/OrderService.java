@@ -45,9 +45,9 @@ public interface OrderService {
     List<Order> getUserOrder(String userID);
 
     /**
-     * 根据customer的条件获取订单列表
-     * @param map
-     * @return hashmap存储
+     * 移动端获取顾客订单
+     * @param map 顾客信息
+     * @return 订单列表
      */
     List<HashMap> getCustomerOrder(Map<String, Object> map);
 

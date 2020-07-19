@@ -43,8 +43,11 @@
 					券
 				</view>
 				<text class="cell-tit clamp">优惠券</text>
-				<text class="cell-tip active">
+				<text class="cell-tip active" v-if="discountMoney == 0">
 					选择优惠券
+				</text>
+				<text class="cell-tip active" v-if="discountMoney != 0">
+					{{couponName}}
 				</text>
 				<text class="cell-more wanjia wanjia-gengduo-d"></text>
 			</view>
@@ -98,7 +101,7 @@
 						</view>
 						<view class="right">
 							<text class="price">{{item.discountedPrice}}</text>
-							<text>{{item.cousume_min}}</text>
+							<text>满{{item.cousumeMin}}可用</text>
 						</view>
 						
 						<view class="circle l"></view>
@@ -120,7 +123,7 @@
 				desc: '', //备注
 				payType: 1, //1微信 2支付宝
 				couponList: [
-/* 					{
+				/* 	{
 						title: '新用户专享优惠券',
 						price: 5,
 					},
@@ -134,7 +137,7 @@
 					} */
 				],
 				addressData: {
-/* 					name: '许小星',
+				/*	name: '许小星',
 					mobile: '13853989563',
 					addressName: '金九大道',
 					address: '山东省济南市历城区',
@@ -145,6 +148,7 @@
 				commodityList:[],
 				totalMoney:0,
 				discountMoney:0,
+				couponName: '',
 				goodCout:1,
 				goodNames:"",
 				addressUrl:"/pages/address/address?uid=",
@@ -223,6 +227,18 @@
 			},
 			changePayType(type){
 				this.payType = type;
+			},
+			toggleCoupon(index, id){
+				if(this.totalMoney > this.couponList[index].cousumeMin){
+					this.discountMoney = this.couponList[index].discountedPrice;
+					this.couponName = this.couponList[index].name + '(' + this.couponList[index].type + ')';
+					this.toggleMask('none');
+				}else{
+					this.$api.msg("不满足满减条件");
+					this.toggleMask('none');
+				}
+			
+				
 			},
 			submit(){
 				let totalMoney = this.totalMoney;

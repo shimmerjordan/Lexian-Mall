@@ -22,7 +22,7 @@
           <div class="card-panel-text">
             订单总数
           </div>
-          <count-to :start-val="0" :end-val="527" :duration="1100" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="42" :duration="1100" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -35,7 +35,7 @@
           <div class="card-panel-text">
             商品总数
           </div>
-          <count-to :start-val="0" :end-val="781" :duration="1200" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="116" :duration="1200" class="card-panel-num" />
         </div>
       </div>
     </el-col>
