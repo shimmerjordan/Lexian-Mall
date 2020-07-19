@@ -3,6 +3,7 @@
 
     <div class="filter-container">
       <el-input v-model="listQuery.name" placeholder="订单ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <!--递增递减排序-->
       <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
         <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
       </el-select>
@@ -92,7 +93,7 @@
             <el-option v-for="item in calendarTypeOptions" :key="item.display_name" :label="item.display_name" :value="item.display_name" />
           </el-select>
         </el-form-item>
-        <el-form-item label="商品描述">
+        <el-form-item label="其他备注">
           <el-input v-model="desciption" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="如有特殊说明请填写" />
         </el-form-item>
       </el-form>
@@ -171,7 +172,7 @@ export default {
       },
       importanceOptions: [1, 2, 3],
       calendarTypeOptions,
-      sortOptions: [{ label: 'ID 递增排序', key: '+id' }, { label: 'ID 递减排序', key: '-id' }],
+      sortOptions: [{ label: 'ID 递增排序', key: '+id' }],
       statusOptions: ['published', 'draft', 'deleted'],
       showReviewer: false,
       temp: {
@@ -233,7 +234,7 @@ export default {
 
     sortChange(data) {
       const { prop, order } = data
-      if (prop === 'id') {
+      if (prop === 'ID') {
         this.sortByID(order)
       }
     },
@@ -337,20 +338,20 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
+        const tHeader = ['ID', '申请时间', '申请原因', '处理状态', '处理结果']
+        const filterVal = ['id', 'applyTime', 'reason', 'status', 'result']
         const data = this.formatJson(filterVal)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'table-list'
+          filename: '纠纷订单'
         })
         this.downloadLoading = false
       })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
+        if (j === 'applyTime') {
           return parseTime(v[j])
         } else {
           return v[j]

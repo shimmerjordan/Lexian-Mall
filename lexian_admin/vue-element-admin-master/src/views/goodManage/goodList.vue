@@ -326,14 +326,14 @@ export default {
               type: 'success',
               duration: 2000
             })
+            this.getList()
             setTimeout(() => {
               this.listLoading = false
-            }, 1.5 * 1000)
+            }, 2 * 1000)
           })
         }
       })
       // 用于实时动态更新数据 修改数据后就调用getList从数据库中取到新的数据展示
-      this.getList()
     },
     /*
       删除商品数据
@@ -362,20 +362,20 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
+        const tHeader = ['ID', '修改时间', '商品名称', '商品单价', '库存', '规格', '当前状态']
+        const filterVal = ['id', 'modify_time', 'name', 'price', 'storage', 'specification', 'status']
         const data = this.formatJson(filterVal)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'table-list'
+          filename: '商品列表'
         })
         this.downloadLoading = false
       })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
+        if (j === 'modify_time') {
           return parseTime(v[j])
         } else {
           return v[j]

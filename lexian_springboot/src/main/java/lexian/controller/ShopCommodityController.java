@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.jws.Oneway;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +65,7 @@ public class ShopCommodityController {
      */
     @PostMapping("/api/shop/updateGood")
     public boolean updateGood(@RequestBody Map<String, Object> map) {
+
         System.out.println(map);
         /*
           前端传过来的商品数据利用map去接收
@@ -92,6 +94,16 @@ public class ShopCommodityController {
      */
     @PostMapping("/api/shop/addGood")
     public boolean addGood(@RequestBody Map<String,Object> map){
+        int sta = (int)map.get("specification");
+        System.out.println("2222222222222222222"+sta);
+        if(sta==0){
+            String s = "件";
+            map.put("specification",s);
+        }
+        else{
+            String s = "条";
+            map.put("specification",s);
+        }
         System.out.println(map);
         return commodityService.addGood(map);
     }
@@ -105,6 +117,28 @@ public class ShopCommodityController {
         //返回数据类型为查询的所有数据 List
         List<Category> result = commodityService.getAllCategory();
         System.out.println(result);
+        return result;
+    }
+
+    @PostMapping("/api/shop/getAllCommodityByCategory")
+    public PageInfo<Commodity> getAllCommodityByCategory(@RequestBody Map<String,Object> map){
+        System.out.println(map);
+        //这里是分页的内容 前端传的是listQuery 其中包含了page(页码)和 limit（每页多少条数据）属性
+        //page选中的页数  limit是一页多少个元素
+        int pageNo = (int)map.get("page");
+        int limit = (int)map.get("limit");
+        //模糊查询
+        String name=(String)map.get("name");
+        //这里包装成sql语句 例如 '%香香鸡%' 直接包装好 sql语句直接Like #{name}即可
+        name="%"+name+"%";
+        map.put("name",name);
+        System.out.println(name);
+        PageHelper.startPage(pageNo,limit);
+        List<Commodity> resultList;
+        //对查询的数据进行分页操作
+        resultList=commodityService.getAllCommodityByCategory(map);
+        PageInfo<Commodity> result = new PageInfo<>(resultList);
+        System.out.print(result);
         return result;
     }
 

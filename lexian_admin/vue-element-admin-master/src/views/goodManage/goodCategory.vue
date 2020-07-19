@@ -23,14 +23,8 @@
           <el-tag v-if="scope.row.level==0" type="success">
             一级类别
           </el-tag>
-          <el-tag v-if="scope.row.level==1" type="danger">
+          <el-tag v-if="scope.row.level>=1" type="warning">
             二级类别
-          </el-tag>
-          <el-tag v-if="scope.row.level==2" type="info">
-            三级类别
-          </el-tag>
-          <el-tag v-if="scope.row.level==3" type="warning">
-            四级类别
           </el-tag>
         </template>
       </el-table-column>
@@ -38,7 +32,7 @@
       <el-table-column align="center" label="操作" width="250px">
         <template slot-scope="scope">
           <!--绑定handleWatch方法，传的参数是当前行的商品类别-->
-          <el-button type="primary" size="small" @click="handleWatch(scope)">查看商品</el-button>
+          <el-button v-if="scope.row.level>0" type="primary" size="small" @click="handleWatch(scope.row)">查看商品</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -94,8 +88,9 @@ export default {
     },
     // 查看具体商品分类
     // 跳转到分类对应的商品页面
-    handleWatch() {
-      this.$router.push('/goodManage/categoryGood')
+    handleWatch(data) {
+      // console.log(data.id)
+      this.$router.push({ path: '/goodManage/categoryGood', query: { id: data.id }})
     }
   }
 }
