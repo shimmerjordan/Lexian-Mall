@@ -61,9 +61,9 @@ public interface OrderMapper {
     List<Order> getUserOrder(String userID);
 
     /**
-     * 获取当前顾客条件对应的订单信息
-     * @param map
-     * @return
+     * 移动端获取顾客订单
+     * @param map 顾客信息
+     * @return 订单列表
      */
     List<HashMap> getCustomerOrder(Map<String, Object> map);
 

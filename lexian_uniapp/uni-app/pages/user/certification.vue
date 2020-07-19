@@ -145,16 +145,14 @@
 				uni.chooseImage({
 					count: 1, //默认9
 					sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album','camera'], //从相册选择
+					sourceType: ['album','camera'], //从	相册选择
 					success: (res) => {
 						if (res.tempFilePaths.length == 0) {
 							this.imgList = res.tempFilePaths
-							console.log('2')
 							console.log("this.imgList.length", this.imgList.length)
 						} else {
 							this.imgList = this.imgList.concat(res.tempFilePaths)
 							this.urlTobase64(res.tempFilePaths[0]);
-							console.log('1')
 						}
 					}
 				});

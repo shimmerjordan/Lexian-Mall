@@ -9,6 +9,8 @@
 			jdbcType="INTEGER" />
 		<result column="isDelete" property="isDelete" jdbcType="INTEGER" />
 	</resultMap>
+
+	<!-- loadCart返回resultMap -->
 	<resultMap id="cart_map" type="CartList">
 		<id column="id" property="id" />
 		<result property="name" column="commodity.`name`" />
@@ -21,6 +23,8 @@
 		<result property="customerId" column="cart.`customer_id`" />
 		<result property="specsName" column="specs.`specs_name`" />
 	</resultMap>
+
+	<!-- 根据前端返回用户ID和删除标记搜索购物车相关信息并将提取信息自动编号 -->
 	<select id="loadCart" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT
@@ -48,6 +52,7 @@
 		AND cart.isDelete = 0
 	</select>
 
+	<!-- 添加购物车信息 -->
 	<insert id="insert" parameterType="lexian.entity.Cart">
 		insert
 		into
@@ -56,6 +61,7 @@
 
 	</insert>
 
+	<!-- 选择购物车单体记录 -->
 	<select id="selectCart" resultMap="BaseResultMap" parameterType="lexian.entity.Cart">
 		select * from cart
 		<where>
@@ -68,6 +74,7 @@
 		</where>
 	</select>
 
+	<!-- 更新购物车相关信息 -->
 	<update id="update" parameterType="lexian.entity.Cart">
 		update cart set customer_id =
 		#{customerId},commodity_id =
@@ -77,7 +84,7 @@
 
 	</update>
 
-
+	<!-- 根据购物车的ID选择商品ID -->
 	<select id="selectCommodityByCartIds" resultType="lexian.entity.Commodity"
 		parameterType="java.util.List">
 		select g.*,s.specs_name as specsText,
@@ -121,6 +128,8 @@
 		</foreach>
 
 	</select>
+
+	<!-- 在前端改变购物车内商品数量的同时修改数据库中的数量记录 -->
 	<update id="updateQuantity" parameterType="java.util.HashMap">
 		UPDATE
 		cart
@@ -132,6 +141,7 @@
 		customer_id = #{customerID}
 	</update>
 
+	<!-- 删除购物车物品，isDelete置1 -->
 	<update id="deleteCartItem" parameterType="java.util.HashMap">
 		UPDATE
 		cart
@@ -144,6 +154,7 @@
 		customer_id = #{customerID}
 	</update>
 
+	<!-- 清空购物车，批量置isDelete为1 -->
 	<update id="clearCart" parameterType="java.util.List">
 		update cart
 		set cart.isDelete = 1
