@@ -157,7 +157,7 @@ export default {
     },
     // 上传图片方法调用
     dropzoneS(file) {
-      console.log(file)
+      console.log(file.dataURL)
       this.$message({ message: 'Upload success', type: 'success' })
     },
     dropzoneR(file) {
