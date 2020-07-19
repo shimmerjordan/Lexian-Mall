@@ -45,13 +45,14 @@ public class ShopController {
         String status = (String)map.get("status");
 
         //同ActivityController一致，对条件进行判断，不为空则查询；为空，获取全部值
-        if(name!=null || id != null || status != null
-                || (beginTime != null && endTime !=null)){
+        if(name!="" || id != "" || status != ""
+                || (beginTime != "" && endTime !="")){
             String changeName="%"+name+"%";
             map.put("name",changeName);
 //            map.put("status",changeStatus);
             System.out.println(map);
             resultList = shopService.searchShopByInformation(map);
+            System.out.println("xxxx"+resultList);
         }
         else {
             resultList = shopService.getAllShop();

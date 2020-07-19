@@ -4,8 +4,8 @@
     <div class="filter-container">
       <!-- 页面查询信息 -->
       <el-row>
-        <el-input v-model="listQuery.id" placeholder="ID" style="width: 200px;margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
-        <el-input v-model="listQuery.name" placeholder="活动名称" style="width: 200px;margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.id" placeholder="ID" style="width: 200px;margin-right:20px" class="filter-item" clearable @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.name" placeholder="活动名称" style="width: 200px;margin-right:20px" class="filter-item" clearable @keyup.enter.native="handleFilter" />
         <el-select v-model="listQuery.status" placeholder="活动状态" clearable class="filter-item" style="width: 130px;margin-right:20px">
           <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
@@ -227,11 +227,11 @@ export default {
       listQuery: {
         page: 1,
         limit: 10,
-        beginTime: null,
-        endTime: null,
-        id: null,
-        name: null,
-        status: null,
+        beginTime: '',
+        endTime: '',
+        id: '',
+        name: '',
+        status: '',
         sort: '+id'
       },
       typeOptions: [{ label: '秒杀', value: 0 }, { label: '团购', value: 1 }, { label: '节日限定', value: 2 }],

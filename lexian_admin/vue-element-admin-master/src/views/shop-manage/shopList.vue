@@ -246,11 +246,11 @@ export default {
       listQuery: {
         page: 1,
         limit: 10,
-        id: null,
-        name: null,
-        status: null,
-        beginTime: null,
-        endTime: null,
+        id: '',
+        name: '',
+        status: '',
+        beginTime: '',
+        endTime: '',
         // img: null,
         sort: '+id'
       },
@@ -330,6 +330,7 @@ export default {
     getList() {
       this.listLoading = true
       getAllShop(this.listQuery).then(response => {
+        console.log(this.listQuery)
         this.list = response.data.list // 获取取到的数据
         this.total = response.data.total
         console.log(this.list)

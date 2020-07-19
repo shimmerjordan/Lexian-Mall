@@ -92,16 +92,16 @@
     inner join shop on shop.id = activity_shop.shop_id
     <where>
       activity.is_delete = 0 and activity_shop.is_delete = 0
-      <if test="id != null">
+      <if test="id != ''">
         and activity.id = #{id}
       </if>
-      <if test="name != '%null%'">
+      <if test="name != '%%'">
         and activity.`name` like #{name}
       </if>
-      <if test="beginTime != null and endTime != null">
+      <if test="beginTime != '' and endTime != ''">
         and activity.beginTime <![CDATA[>=]]>#{beginTime} and activity.endTime <![CDATA[<=]]>#{endTime}
       </if>
-      <if test="status != null ">
+      <if test="status != '' ">
         and activity.status = #{status}
       </if>
     </where>

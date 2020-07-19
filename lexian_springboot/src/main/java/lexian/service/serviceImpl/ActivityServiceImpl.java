@@ -100,7 +100,7 @@ public class ActivityServiceImpl implements ActivityService {
             String endTime = (String) map.get("endTime");
 
             //只有当开始、结束时间都输入时，才需要对时间格式转换并进行查询
-            if(beginTime != null && endTime != null) {
+            if(beginTime != "" && endTime != "") {
                 map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
                 map.put("endTime",UTCToLocal((String)map.get("endTime")));
             }
