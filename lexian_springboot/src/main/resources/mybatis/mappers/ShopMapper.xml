@@ -35,7 +35,8 @@
     shop.`name` = #{name},
     shop.kind = #{kind},
     shop.status = #{status},
-    shop.tag = #{tag}
+    shop.tag = #{tag},
+    shop.description = #{description}
     where
     shop.id = #{id}
   </update>
