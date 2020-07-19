@@ -136,7 +136,8 @@
 		  nick_name = #{nickName},
 		  email = #{email},
 		  sex = #{sex},
-		  phone = #{mobile}
+		  phone = #{mobile},
+		  user_image = #{user_img}
 		WHERE
 		  ID = #{customerId}
 	</update>

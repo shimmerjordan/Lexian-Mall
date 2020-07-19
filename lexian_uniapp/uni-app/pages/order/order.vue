@@ -73,6 +73,14 @@
 							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
 							<button class="action-btn recom">确认收货</button>
 						</view>
+						<view class="action-box b-t" v-if="item.state == 3">
+							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
+							<button class="action-btn recom">确认收货</button>
+						</view>
+						<view class="action-box b-t" v-if="item.state == 4">
+							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
+							<button class="action-btn recom">确认收货</button>
+						</view>
 					</view>
 					 
 					<uni-load-more :status="tabItem.loadingType"></uni-load-more>

@@ -10,7 +10,7 @@
     >
       <!-- sticky组件，使得此始终保持在顶部 -->
       <sticky :class-name="'sub-navbar published'" :z-index="2" width="100px">
-        <div style="float: left;">新增门店活动信息</div>
+        <div style="float: left">新增门店活动信息</div>
         <el-button style="float: right: 40px;" type="success" :span="4" @click="submitForm()">新增</el-button>
 
         <el-button style="float: right: 40px;" type="warning" :span="4" @click="cancel()">取消</el-button>
@@ -133,11 +133,11 @@ export default {
       shopList: {
         page: 1,
         limit: 20,
-        id: null,
-        name: null,
-        status: null,
-        beginTime: null,
-        endTime: null,
+        id: '',
+        name: '',
+        status: '',
+        beginTime: '',
+        endTime: '',
         // img: null,
         sort: '+id'
       },

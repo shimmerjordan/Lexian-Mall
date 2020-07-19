@@ -31,7 +31,7 @@
 				addressList: []
 			}
 		},
-		onLoad(option){
+		onLoad(option){ 
 			
 			this.uid = common.getGlobalUserInfo().ID;
 			let _this = this;

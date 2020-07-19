@@ -40,6 +40,7 @@
 	import {  
 	    mapMutations  
 	} from 'vuex';
+	import common from '@/store/common.js';
 	export default {
 		data() {
 			return {
@@ -66,10 +67,22 @@
 				    content: '确定要退出登录么',
 				    success: (e)=>{
 				    	if(e.confirm){
-				    		this.logout();
+							console.log(e)
 				    		setTimeout(()=>{
-				    			uni.navigateBack();
-				    		}, 200)
+								this.logout();
+				    			uni.switchTab({
+				    				
+				    				url: '/pages/user/user',
+				    				success: res => {
+										common.getGlobalUserInfo();
+									},
+				    				fail: () => {
+										console.log("fail")
+									},
+				    				complete: () => {}
+				    			});
+				    		}, 500)
+							
 				    	}
 				    }
 				});

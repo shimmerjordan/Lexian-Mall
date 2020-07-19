@@ -5,9 +5,9 @@
     <div v-if="!selectShops.length" class="filter-container">
       <el-row>
         <!-- 页面搜索框 -->
-        <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px; margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
-        <el-input v-model="listQuery.name" placeholder="店铺名称" style="width: 200px; margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
-        <el-select v-model="listQuery.status" placeholder="店铺状态" clearable class="filter-item" style="width: 130px; margin-right:20px">
+        <el-input v-model="listQuery.id" placeholder="店铺ID" style="width: 200px; margin-right:20px" class="filter-item" clearable @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.name" placeholder="店铺名称" style="width: 200px; margin-right:20px" class="filter-item" clearable @keyup.enter.native="handleFilter" />
+        <el-select v-model="listQuery.status" placeholder="店铺状态" class="filter-item" style="width: 130px; margin-right:20px" clearable>
           <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
         <!-- 时间段内查询，获取在此时间段内开店的店铺 -->
@@ -245,12 +245,12 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
-        id: null,
-        name: null,
-        status: null,
-        beginTime: null,
-        endTime: null,
+        limit: 10,
+        id: '',
+        name: '',
+        status: '',
+        beginTime: '',
+        endTime: '',
         // img: null,
         sort: '+id'
       },
@@ -330,6 +330,7 @@ export default {
     getList() {
       this.listLoading = true
       getAllShop(this.listQuery).then(response => {
+        console.log(this.listQuery)
         this.list = response.data.list // 获取取到的数据
         this.total = response.data.total
         console.log(this.list)
@@ -395,10 +396,10 @@ export default {
             setTimeout(() => {
               this.listLoading = false
             }, 1.5 * 1000)
+            this.getList()// 更新完店铺信息后，对店铺列表进行刷新
           })
         }
       })
-      this.getList()// 更新完店铺信息后，对店铺列表进行刷新
     },
     // 删除店铺信息
     handleDelete(row, index) {
@@ -429,20 +430,20 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
+        const tHeader = ['id', '店铺名称', '店铺图片', '开店日期', '店铺类型', '标签', '当前状态']
+        const filterVal = ['id', 'name', 'img', 'establishTime', 'kind', 'tag', 'status']
         const data = this.formatJson(filterVal)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'table-list'
+          filename: 'shop-list'
         })
         this.downloadLoading = false
       })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
+        if (j === 'establishTime') {
           return parseTime(v[j])
         } else {
           return v[j]
@@ -479,8 +480,8 @@ export default {
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
+        this.getList() // 重新获取列表信息
       })
-      this.getList() // 重新获取列表信息
     },
     // 批量更新店铺状态为暂停营业
     updateStatus1() {
@@ -495,8 +496,8 @@ export default {
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
+        this.getList() // 重新加载店铺信息
       })
-      this.getList() // 重新加载店铺信息
     },
     // 批量更新店铺状态为店铺关闭
     updateStatus2() {
@@ -511,8 +512,8 @@ export default {
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)
+        this.getList()
       })
-      this.getList()
     }
   }
 }

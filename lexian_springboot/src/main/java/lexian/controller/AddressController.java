@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import lexian.entity.Address;
 import lexian.service.AddressService;
 
-/**
- * @author yang990322
- *
- */
 @RestController
 @RequestMapping("/api/address")
 public class AddressController {

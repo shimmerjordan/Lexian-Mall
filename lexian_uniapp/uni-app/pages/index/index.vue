@@ -68,9 +68,9 @@
            	<view class="s-header">
            		<image class="s-img" src="/static/temp/secskill-img.jpg" mode="widthFix"></image>
            		<text class="tip">{{date.slice(0, 10)}}</text>
-				<view class="hour timer">{{date.slice(11, 13)}}</view>
-           		<view class="minute timer">{{date.slice(14, 16)}}</view>
-				<view class="second timer">{{date.slice(17, 19)}}</view>
+				<view class="hour timer">{{countDownHour}}</view>
+           		<view class="minute timer">{{countDownMinute}}</view>
+				<view class="second timer">{{countDownSecond}}</view>
            		<text class="yticon icon-you"></text>
            	</view>
 			<scroll-view class="floor-list" scroll-x>
@@ -255,6 +255,7 @@
 <script>
 import uniSearch from '../../components/lee-search/lee-search.vue'
 import common from '@/store/common.js'
+import util from '@/store/utils.js'
 import {  mapState } from 'vuex';
 	export default {
 		data() {
@@ -262,6 +263,9 @@ import {  mapState } from 'vuex';
 				searchInfo:{
 					Name: '',
 				},
+				countDownHour: 0, //倒计时 -时
+				countDownMinute: 0,  //倒计时 -分
+				countDownSecond: 0,  //倒计时-秒
 				searchList: [],
 				titleNViewBackground: '',
 				swiperCurrent: 0,
@@ -294,18 +298,60 @@ import {  mapState } from 'vuex';
 		onLoad() {
 			this.loadData();
 			this.getUser();
+			//设置倒计时时间，1s变换一次
+			var interval = setInterval(function () {
+				var d = new Date();   //获取系统日期和时间
+				var nowHour = d.getHours(); //小时
+				var nowMinutes = d.getMinutes(); //分
+				var nowSeconds = d.getSeconds(); //秒
+
+				// 显示在倒计时中的小时位
+				var hour = 24 - nowHour;
+
+				// 显示在倒计时中的分钟位
+				var minutes = 60 - nowMinutes;
+				// 显示在倒计时中的秒数
+				var seconds = 60 - nowSeconds;
+				//当小时、分钟、秒都为0时，活动结束，倒计时显示为00:00:00
+				if (hour == 0 && minutes == 0 && seconds == 0) {
+
+					clearInterval(interval);
+					uni.showToast({
+						title: '活动已结束',
+					});
+					console.log(totalSecond);
+		                           
+					this.countDownHour =  '00';
+					this.countDownMinute = '00';
+					this.countDownSecond= '00';
+				}
+				//当小时位、分钟位、秒位小于10时，用字符串拼接的方式显示，例如：06:08:02
+				if (hour < 10) {
+					hour = "0" + hour;
+				}
+				if (minutes < 10) {
+					minutes = "0" + minutes;
+				}
+				if (seconds < 10) {
+					seconds = "0" + seconds;
+				}
+				this.countDownHour = hour;
+				this.countDownMinute = minutes;
+				this.countDownSecond = seconds;
+			}.bind(this), 1000);
+
 		},
 		computed: {
 			...mapState(['hasLogin'])
 		},
 		methods: {
 			getUser() { 
-				         if(this.hasLogin){
-							let that = this;
-							that.userInfo = common.getGlobalUserInfo();
-							// console.log("本地UserInfo",this.userInfo)
-							}
-						},
+				if(this.hasLogin){
+					let that = this;
+					that.userInfo = common.getGlobalUserInfo();
+					// console.log("本地UserInfo",this.userInfo)
+					}
+			},
 			async loadData() {
 				//获取活动数据
 				uni.request({

@@ -102,22 +102,35 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
-     * 获取客户条件对应的订单列表
-     * @param map
-     * @return
+     * 移动端获取顾客订单
+     * @param map 顾客信息
+     * @return 订单列表
      */
     @Override
     public List<HashMap> getCustomerOrder(Map<String, Object> map) {
-
+        //Mapper返回的List类型数据（List内为HashMap）
         List<HashMap> temp0 = orderMapper.getCustomerOrder(map);
         List<HashMap> orderList = new ArrayList<>();
         for(int i = 0; i < temp0.size(); i++){
+            //用于存储List单个元素的HashMap
             HashMap<String, Object> flag0 = new HashMap<String, Object>();
             HashMap<String, Object> result = new HashMap<String, Object>();
+            //结果List中的每个订单对应的goodsMap
             HashMap<String, Object> goodsMap = new HashMap<String, Object>();
+
+            //最终返回前端的结果List
             List<HashMap> goodList = new ArrayList<>();
+
+            //取Mapper返回的List中第i个HashMap数据
             flag0 = temp0.get(i);
 
+            //将数据库中的timestamp类型数据转化为String类型返回到前台
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String tsStr = "";
+            tsStr = sdf.format(flag0.get("date"));
+            result.put("time",tsStr);
+
+            //逐个将flag0中值存放入对应HashMap中
             result.put("time",flag0.get("date"));
             result.put("state",flag0.get("status"));
             result.put("orderID",flag0.get("ID"));
@@ -128,8 +141,9 @@ public class OrderServiceImpl implements OrderService {
             goodsMap.put("attr",flag0.get("specs_name"));
             goodList.add(goodsMap);
             result.put("goodList",goodList);
-            orderList.add(result);
 
+            //因为前端接收数据类型需要为List这里添加到List中返回
+            orderList.add(result);
         }
         System.out.println(orderList);
         return orderList;

@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<view class="bg-color-card"></view>
-		<view class="image">
+		<view class="image" @click="uploadCustomerImage">
 			<image class="heardimg" :src="userInfo.user_image || '/static/missing-face.png'" mode=""></image>
 		</view>
 		<view class="info-card">
@@ -153,6 +153,7 @@
 		},
 		data() {
 			return {
+				imagURL: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595088688219&di=8b2816726f0436f92edf12ba33fb38fc&imgtype=0&src=http%3A%2F%2Fp2.so.qhimgs1.com%2Ft01dfcbc38578dac4c2.jpg',
 				userInfo: {},
 				show: false,
 				type: '',
@@ -221,6 +222,36 @@
 			},
 			bindDateChange: function(e) {
 				this.userInfo.birthday = e.target.value
+			},
+			uploadCustomerImage(){
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    sourceType: ['album','camera'], //从相册选择
+					success: (res) => {
+						if (res.tempFilePaths.length == 0) {
+							let imgList = res.tempFilePaths
+							console.log("this.imgList.length", imgList.length)
+						} else {
+							this.urlTobase64(res.tempFilePaths[0]);
+						}
+					}
+				});
+			},
+			//转base64码
+			urlTobase64(url) {
+			 	uni.request({
+			 		url: url,
+			 		method: 'GET',
+			 		responseType: 'arraybuffer',
+			 		success: res => {
+			 			let base64 = wx.arrayBufferToBase64(res.data); //把arraybuffer转成base64
+			 			// this.imageBase64Str = base64 = 'data:image/jpeg;base64,' + base64; //不加上这串字符，在页面无法显示
+			 			// this.imageBase64Str = base64;
+			 			// console.log(this.imageBase64Str);
+						// upload();
+			 		}
+			 	});
 			},
 			getsmscode: function() {
 				var _self=this;
@@ -351,6 +382,7 @@
 						"email": this.userInfo.email,
 						"sex": this.userInfo.sex,
 						"mobile": this.userInfo.phone,
+						"user_img": this.imagURL,
 						"customerId": this.userInfo.ID
 					},
 					success: (res) => {
