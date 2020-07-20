@@ -143,15 +143,23 @@
 					   "loginName": this.loginName,
 					},
 					success: (res) => {
+						if(result.status == 500){
+							this.$api.msg("网络错误")
+							return;
+						}
 						const result = res.data
 						console.log(result)
+						
 						if(result != 0){
 							this.nameExistance = true;
 						}else{
 							this.$api.msg("用户名有误或未注册")
 							this.nameExistance = false;
 						}
-				    }
+				    },
+					fail: () => {
+						this.$api.msg("网络错误")
+					}
 				});
 			},
 			toGuidance(){
@@ -179,19 +187,31 @@
 						dataType: "json",
 						data: { 
 						   "password": this.password,
-						   "mobile": this.mobile
+						   "mobile": this.mobile,
+						   "loginName": this.loginName
 						},
 						success: (res) => {
 							console.log(result)
 							const result = res.data
+							if(result.status == 500){
+								this.$api.msg("网络错误")
+								return;
+							}
 							
-							this.$api.msg("找回成功，请登录")
-							setTimeout(() => {
-								uni.navigateTo({
-									url: '/pages/public/loginByName',
-								});
-							}, 3000)
-					    }
+							if(result){
+								this.$api.msg("找回成功，请登录")
+								setTimeout(() => {
+									uni.navigateTo({
+										url: '/pages/public/loginByName',
+									});
+								}, 3000)
+							}else{
+								this.$api.msg("用户名或手机号有误")
+							}
+					    },
+						fail: () => {
+							this.$api.msg("网络错误")
+						}
 					});
 				}
 				

@@ -108,6 +108,7 @@ public class CategoryController {
 			map.put("shopId", commodity.getShopId());
 			map.put("shopName", commodity.getShopName());
 			map.put("shopImg", commodity.getShopImg());
+			map.put("goodCount", commodity.getGoodCount());
 			map.put("list", list);
 			commoditys.add(map);
 		} else {
@@ -120,6 +121,7 @@ public class CategoryController {
 				map.put("shopId", commodity.getShopId());
 				map.put("shopName", commodity.getShopName());
 				map.put("shopImg", commodity.getShopImg());
+				map.put("goodCount", commodity.getGoodCount());
 				map.put("list", mapl.get(key));
 				commoditys.add(map);
 			}

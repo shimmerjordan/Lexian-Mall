@@ -30,7 +30,7 @@
 					<text class="spec">{{item.specsText ? item.specsText : specsName}}</text>
 					<view class="price-box">
 						<text class="price">￥{{item.price}}</text>
-						<text class="number">x {{item.gootCount ? item.gootCount : goodCout}}</text>
+						<text class="number">x {{item.goodCount ? item.goodCount : goodCount}}</text>
 					</view>
 				</view>
 			</view>
@@ -149,7 +149,7 @@
 				totalMoney:0,
 				discountMoney:0,
 				couponName: '',
-				goodCout:1,
+				goodCount:1,
 				goodNames:"",
 				addressUrl:"/pages/address/address?uid=",
 				addressId:0,
@@ -159,8 +159,8 @@
 		},
 		onLoad(options){
 			this.uid = options.uid;
-			if(options.goodCout){
-			   this.goodCout = options.goodCout;
+			if(options.goodCount){
+			   this.goodCount = options.goodCount;
 			}
 			if(options.specsName){
 				this.specsName = options.specsName;
@@ -197,11 +197,12 @@
 				   }
 				   _this.couponList = result.couponList;
 				   _this.commodityList = result.commoditys;
+				   console.log("_this.commodityList:",_this.commodityList)
 				   let goodNameArr = [];
 				    _this.commodityList.forEach(shop=>{
 						shop.list.forEach(item =>{
-							 let goodCout = item.goodCout ? item.goodCout :_this.goodCout;
-							_this.totalMoney += item.price * goodCout;
+							 let goodCount = item.goodCount ? item.goodCount :_this.goodCount;
+							_this.totalMoney += item.price * goodCount;
 							goodNameArr.push(item.name);
 						})  
 				   }); 
@@ -253,7 +254,7 @@
 					shop.list.forEach(item =>{
 						cids.push({
 						   "commodityId":item.id,
-						   "goodCount":item.goodCount ? item.goodCount : this.goodCout
+						   "goodCount":item.goodCount ? item.goodCount : this.goodCount
 						});
 					});
 					param.cids = cids;

@@ -142,4 +142,13 @@
 		  ID = #{customerId}
 	</update>
 
+	<select id="selectNameByPhone" parameterType="java.util.HashMap" resultType="java.lang.String">
+		select
+			login_name
+		from
+			customer
+		where
+			phone = #{mobile}
+	</select>
+
 </mapper>
