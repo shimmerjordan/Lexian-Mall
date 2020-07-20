@@ -148,7 +148,7 @@
 			<view class="mask"></view>
 			<view class="layer attr-content" @click.stop="stopPrevent">
 				<view class="a-t">
-					<image src="https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg"></image>
+					<image :src="commodity.image"></image>
 					<view class="right">
 						<text class="price">¥{{commodity.price}}</text>
 						<text class="stock">库存：{{commodity.storage}}件</text>

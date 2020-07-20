@@ -30,9 +30,11 @@
 			<text class="cell-tip">当前版本 1.0.3</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
+		
 		<view class="list-cell log-out-btn" @click="toLogout">
 			<text class="cell-tit">退出登录</text>
 		</view>
+		
 	</view>
 </template>
 
@@ -44,7 +46,6 @@
 	export default {
 		data() {
 			return {
-				
 			};
 		},
 		methods:{

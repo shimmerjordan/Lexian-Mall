@@ -174,4 +174,28 @@ public class OrderController {
     public boolean deleteCustomerOrder(@RequestBody Map<String, Object> map){
         return orderService.deleteCustomerOrder(map);
     }
+
+    /**
+     * @apiNote 用户提交纠纷订单
+     * @param map
+     */
+    @PostMapping("/applyCustomerJiufenOrder")
+    public boolean applyCustomerJiufenOrder(@RequestBody Map<String, Object> map){
+        return orderService.applyCustomerJiufenOrder(map);
+    }
+
+    /**
+     * @note 修改用户订单状态的api
+     * @param map
+     * @return
+     */
+    @PostMapping("/modifyCustomerOrderState")
+    public boolean modifyCustomerOrderState(@RequestBody Map<String, Object> map){
+        return orderService.modifyCustomerOrderState(map);
+    }
+
+    @PostMapping("/commentOrder")
+    public boolean commentOrder(@RequestBody Map<String, Object> map){
+        return orderService.commentOrder(map);
+    }
 }

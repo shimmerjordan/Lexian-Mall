@@ -53,7 +53,7 @@
 							<view class="right">
 								<text class="title clamp">{{goodsItem.title}}</text>
 								<text class="attr-box">{{goodsItem.attr}}  x {{goodsItem.number}}</text>
-								<text class="price">{{goodsItem.price}}</text>
+								<text class="price">{{goodsItem.price}} x {{goodsItem.number}}</text>
 							</view>
 						</view>
 						
@@ -62,24 +62,39 @@
 								共
 								<text class="num">{{goodsItem.number}}</text>
 								件商品 实付款
-								<text class="price">{{goodsItem.price}}</text>
+								<text class="price">{{goodsItem.price * goodsItem.number}}</text>
 							</view>
 						</view>
 						<view class="action-box b-t" v-if="item.state == 1">
 							<button class="action-btn" @click="cancelOrder(item)">取消订单</button>
-							<button class="action-btn recom" >立即支付</button>	
+							<button class="action-btn recom" @click="toPay(item)">立即支付</button>	
 						</view>
+						
 						<view class="action-box b-t" v-if="item.state == 2">
-							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
-							<button class="action-btn recom">确认收货</button>
+							<button class="action-btn" @click="appeal(item, 2)">申请退款</button>
+							<button class="action-btn recom" @click="toFinishOrder(item,3)">确认收货</button>
 						</view>
-						<view class="action-box b-t" v-if="item.state == 3">
-							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
-							<button class="action-btn recom">确认收货</button>
+						<view class="action-box b-t" v-if="item.state == 5">
+							<button class="action-btn" @click="appeal(item, 5)">正在退款</button>
+							<button class="action-btn recom" @click="toFinishOrder(item,0)">确认完结</button>
 						</view>
+						
+						<view class="action-box b-t" v-if="item.state == 3 ">
+							<button class="action-btn" @click="appeal(item, 3)">申请售后</button>
+							<button class="action-btn recom" @click="toComment(item)">立即评价</button>
+						</view>
+						<view class="action-box b-t" v-if="item.state == 6">
+							<button class="action-btn" @click="appeal(item, 6)">售后待理</button>
+							<button class="action-btn recom" @click="toComment(item)">立即评价</button>
+						</view>
+						
 						<view class="action-box b-t" v-if="item.state == 4">
-							<button class="action-btn" @click="cancelOrder(item)">申请退款</button>
-							<button class="action-btn recom">确认收货</button>
+							<button class="action-btn" @click="appeal(item, 4)">申诉</button>
+							<button class="action-btn recom" @click="toFinishOrder(item,0)">取消申诉</button>
+						</view>
+						<view class="action-box b-t" v-if="item.state == 7">
+							<button class="action-btn" @click="appeal(item, 7)">正在处理</button>
+							<button class="action-btn recom" @click="toFinishOrder(item,0)">完结确认</button>
 						</view>
 					</view>
 					 
@@ -94,7 +109,7 @@
 <script>
 	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
 	import empty from "@/components/empty";
-	import common from '@/store/common.js'
+	import common from '@/store/common.js';
 	import Json from '@/Json';
 	export default {
 		components: {
@@ -103,6 +118,7 @@
 		},
 		data() {
 			return {
+				flag: false,
 				userInfo: {},
 				tabCurrentIndex: 0,
 				ordersList: [],
@@ -135,7 +151,8 @@
 						text: '售后',
 						loadingType: 'more',
 						orderList: []
-					}
+					},
+					
 				],
 			};
 		},
@@ -156,10 +173,20 @@
 			if(options.state == 0){
 				this.loadData()
 			}
+			if(options.flag == true){
+				this.flag = true
+			}
 			// #endif
 			
 		},
-		 
+		onPullDownRefresh() {
+			 //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+			 console.log('refresh');
+			 location.reload();
+			 setTimeout(function () {
+				 uni.stopPullDownRefresh();  //停止下拉刷新动画
+			 }, 1000);
+		},
 		methods: {
 			
 			//获取订单列表
@@ -205,7 +232,8 @@
 							//0为全部订单
 							return item;
 						}
-						if(state == item.state){
+						//由于这里订单有两种状态，正在处理和提交申请，这里每组状态的差值为3，这样设置方便tabItem的显示
+						if(state == item.state || state == item.state - 3){
 							return item;
 						}
 						return item.state === state
@@ -232,6 +260,80 @@
 			tabClick(index){
 				this.tabCurrentIndex = index;
 			},
+			//跳转支付页面
+			toPay(item){
+				let total = item.goodList[0].number * item.goodList[0].price;
+				let goodName = item.goodList[0].title;
+				let commodityID = item.goodList[0].commodityID;
+				uni.navigateTo({
+					url: `/pages/money/pay?totalMoney=${total}&uid=${this.userInfo.ID}&orderID=${item.orderID}&goodNames=${goodName}&commodityID=${commodityID}`
+				})
+			},
+			//申请退货退款
+			appeal(item, index){
+				console.log(item);
+				let total = item.goodList[0].number * item.goodList[0].price;
+				let singlePrice = item.goodList[0].price;
+				let num = item.goodList[0].number;
+				let commodityID = item.goodList[0].commodityID;
+				uni.showLoading({
+					title: '请稍后'
+				})
+				setTimeout(()=>{
+					setTimeout(() => {
+						uni.hideLoading();
+					}, 600)
+					
+					uni.navigateTo({
+						url: `/pages/order/refund?orderID=${item.orderID}&&commodityID=${commodityID}&attr=${item.goodList[0].attr}&orderImg=${item.goodList[0].image}&singlePrice=${singlePrice}&quantity=${num}&commodityName=${item.goodList[0].title}`,
+						success: (res) => {},
+						complete: () =>{}
+					});
+				}, 600)
+			},
+			//前往评价
+			toComment(item){
+				let total = item.goodList[0].number * item.goodList[0].price;
+				let singlePrice = item.goodList[0].price;
+				let num = item.goodList[0].number;
+				let commodityID = item.goodList[0].commodityID;
+				uni.showLoading({
+					title: '请稍后'
+				})
+				setTimeout(()=>{
+					setTimeout(() => {
+						uni.hideLoading();
+					}, 600)
+					
+					uni.navigateTo({
+						url: `/pages/order/comment?orderID=${item.orderID}&commodityID=${commodityID}&attr=${item.goodList[0].attr}&orderImg=${item.goodList[0].image}&singlePrice=${singlePrice}&quantity=${num}&commodityName=${item.goodList[0].title}`,
+						success: (res) => {},
+						complete: () =>{}
+					});
+				}, 600)
+				//已经评价完成了，肯定是完成订单了
+				this.toFinishOrder(item,0);
+			},
+			//订单完结
+			toFinishOrder(item,index){
+				let list =  item;
+				console.log(list)
+				uni.showLoading({
+					title: '正在确认'
+				})
+				uni.request({
+					url: this.apiServer + "/order/modifyCustomerOrderState",
+					data:{
+						"orderID": list.orderID,
+						"status": index
+						},
+					method: 'POST',
+					success: (res) => {
+						this.$forceUpdate();
+						uni.hideLoading();
+					}
+				});
+			},
 			//删除订单
 			deleteOrder(index){
 				let list = this.navList[this.tabCurrentIndex].orderList[index];
@@ -248,7 +350,7 @@
 					success: (res) => {
 						setTimeout(()=>{
 							this.navList[this.tabCurrentIndex].orderList.splice(index, 1);
-							this.onload();
+							this.$forceUpdate();
 							uni.hideLoading();
 						}, 600)
 					}
@@ -282,7 +384,7 @@
 							
 							//取消订单后删除待付款中该项
 							index !== -1 && list.splice(index, 1);
-							this.onload();
+							this.$forceUpdate();
 							uni.hideLoading();
 							
 						}, 600)
@@ -296,10 +398,22 @@
 				let stateTip = '',
 					stateTipColor = '#fa436a';
 				switch(+state){
+					case 0:
+						stateTip = '已完成'; break;
 					case 1:
 						stateTip = '待付款'; break;
 					case 2:
-						stateTip = '待发货'; break;
+						stateTip = '待收货'; break;
+					case 3:
+						stateTip = '待评价'; break;
+					case 4:
+						stateTip = '待售后'; break;
+					case 5:
+						stateTip = '正在退款'; break;
+					case 6:
+						stateTip = '售后待处理'; break;
+					case 7:
+						stateTip = '申诉审核中'; break;
 					case 9:
 						stateTip = '订单已关闭'; 
 						stateTipColor = '#909399';

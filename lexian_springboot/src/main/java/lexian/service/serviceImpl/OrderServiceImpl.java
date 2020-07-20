@@ -125,19 +125,19 @@ public class OrderServiceImpl implements OrderService {
             flag0 = temp0.get(i);
 
             //将数据库中的timestamp类型数据转化为String类型返回到前台
-            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String tsStr = "";
             tsStr = sdf.format(flag0.get("date"));
             result.put("time",tsStr);
 
             //逐个将flag0中值存放入对应HashMap中
-            result.put("time",flag0.get("date"));
             result.put("state",flag0.get("status"));
             result.put("orderID",flag0.get("ID"));
             goodsMap.put("title",flag0.get("name"));
             goodsMap.put("price",flag0.get("price"));
             goodsMap.put("image",flag0.get("image"));
             goodsMap.put("number",flag0.get("commodity_quantity"));
+            goodsMap.put("commodityID", flag0.get("commodity_id"));
             goodsMap.put("attr",flag0.get("specs_name"));
             goodList.add(goodsMap);
             result.put("goodList",goodList);
@@ -217,5 +217,58 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean deleteCustomerOrder(Map<String, Object> map){
         return orderMapper.deleteCustomerOrder(map);
+    }
+
+    /**
+     * @param map
+     * @return
+     */
+    @Override
+    public boolean applyCustomerJiufenOrder(Map<String, Object> map) {
+
+        //同时判断更新订单状态和工单提交情况是否操作成功
+        boolean flag;
+        boolean modifyOrderState;
+        //把前端传过来的map中的orderID取出来
+        Object orderID = map.get("orderID");
+        //存在一个临时的HashMap中传给selecthopOrder(HashMap)
+        HashMap<String, Object> temp0 = new HashMap<>();
+        temp0.put("status", map.get("orderState"));
+        temp0.put("orderID", orderID);
+
+        //通过selectShopOrder(HashMap)提出订单商品对应的店铺
+        Object shopID = (Object)orderMapper.selectShopByOrder(temp0);
+
+        //存入原始传入的map中
+        map.put("shopID", shopID);
+
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        map.put("applyTime", formatter.format(date));
+
+        boolean result = orderMapper.applyCustomerJiufenOrder(map);
+        if(result){
+            modifyOrderState = orderMapper.updateOrderState(temp0);
+            flag = modifyOrderState && result;
+            return flag;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean modifyCustomerOrderState(Map<String, Object> map) {
+        return orderMapper.updateOrderState(map);
+    }
+
+    @Override
+    public boolean commentOrder(Map<String, Object> map){
+        //获取当前时间为comment_time
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        map.put("comment_time", formatter.format(date));
+
+        boolean result = orderMapper.commentOrder(map);
+        return result;
     }
 }

@@ -97,7 +97,7 @@ public class CustomerServiceImpl implements CustomerService {
      * @return 操作成功与否boolean
      */
 	@Override
-	public Customer getById(String id) {
+	public List<Customer> getById(String id) {
 		return customerMapper.selectById(id);
 	}
 

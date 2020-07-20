@@ -64,7 +64,7 @@
 			"path": "pages/cart/cart",
 			"style": {
 				"navigationBarTitleText": "购物车",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/public/loginByPhone",
@@ -141,6 +141,16 @@
 			"path": "pages/order/order",
 			"style": {
 				"navigationBarTitleText": "我的订单",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		}, {
+			"path": "pages/order/refund",
+			"style": {
+				"navigationBarTitleText": "纠纷订单",
+				"enablePullDownRefresh": true,
 				"app-plus": {
 					"bounce": "none"
 				}
@@ -248,6 +258,12 @@
             }
         }
         
+        ,{
+            "path" : "pages/order/comment",
+            "style" : {
+				"navigationBarTitleText": "商品评论"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
