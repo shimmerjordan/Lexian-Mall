@@ -148,7 +148,9 @@
 			}
 		}, {
 			"path": "pages/money/money",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "我的钱包"
+			}
 		}, {
 			"path": "pages/order/createOrder",
 			"style": {

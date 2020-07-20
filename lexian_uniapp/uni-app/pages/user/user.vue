@@ -83,7 +83,7 @@
 					</view>
 				</view>
 				</scroll-view>
-				<view @click="navTo('/pages/money/pay')">
+				<view @click="navTo('/pages/money/money')">
 				<list-cell icon="icon-iconfontweixin" iconColor="#e07472" title="我的钱包" tips="管理支付信息" ></list-cell>
 			    </view>
 				<view @click="navTo('/pages/address/address')">
