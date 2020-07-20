@@ -79,7 +79,7 @@
 						@click="navToDetailPage(item)"
 					>
 						<image :src="item.image" mode="aspectFill"></image>
-						<text class="name">{{item.name}}</text>
+						<text class="title clamp in2line">{{item.name}}</text>
 					</view>
 				</view>
 				</scroll-view>

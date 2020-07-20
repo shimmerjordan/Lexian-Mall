@@ -6,7 +6,6 @@
 		</view>
 
 		<view class="pay-type-list">
-
 			<view class="type-item b-b" @click="changePayType(1)">
 				<text class="icon yticon icon-weixinzhifu"></text>
 				<view class="con">
@@ -31,28 +30,28 @@
 			<view class="type-item" @click="changePayType(3)">
 				<text class="icon yticon icon-erjiye-yucunkuan"></text>
 				<view class="con">
-					<text class="tit">预存款支付</text>
-					<text>可用余额 ¥{{moneyAmount}}</text>
+					<text class="tit">余额支付</text>
+					<text>使用预存款支付</text>
 				</view>
 				<label class="radio">
 					<radio value="" color="#fa436a" :checked='payType == 3' />
 					</radio>
 				</label>
 			</view>
-		</view>
-		
+		</view>	
 		<text class="mix-btn" @click="confirm">确认支付</text>
 	</view>
 </template>
 
 <script>
-
+	import common from '@/store/common.js'
+	import { mapState } from 'vuex';  
 	export default {
 		data() {
 			return {
 				payType: 1,
 				uid:0,
-				moneyAmount:0,
+				moneyAmount:1000,
 				totalMoney:0,
 				orderInfo: {},
 				goodNames:"",
@@ -61,7 +60,7 @@
 			};
 		},
 		computed: {
-		
+		...mapState(['hasLogin'])
 		},
 		onLoad(options) {
 			this.totalMoney = options.totalMoney;
@@ -78,13 +77,12 @@
 				success: (res) => {
 					const result = res.data;
                      _this.moneyAmount = result.moneyAmount;
-					 _this.walletId = result.walletId;
-					
+					 _this.walletId = result.walletId;					
 			    }
 			});
 		},
 
-		methods: {
+		methods:{
 			//选择支付方式
 			changePayType(type) {
 				this.payType = type;
@@ -120,7 +118,6 @@
 							 },
 						});
 				}
-
 			},
 		}
 	}
