@@ -192,6 +192,7 @@
         orders.`comment`,
         orders.`status`,
         order_item.commodity_quantity,
+        order_item.commodity_id,
         commodity.`name`,
         commodity.price,
         commodity.image,
@@ -233,5 +234,40 @@
         WHERE
             orders.ID = #{ orderID }
     </update>
+
+    <!-- 根据订单查询店铺ID -->
+    <select id="selectShopByOrder" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        SELECT
+            shop_commodity.shop_id
+        FROM
+            order_item
+            INNER JOIN orders ON order_item.order_id = orders.ID
+            INNER JOIN shop_commodity ON order_item.commodity_id = shop_commodity.commodity_id
+        WHERE
+            orders.ID = #{orderID}
+    </select>
+
+    <insert id="applyCustomerJiufenOrder" parameterType="java.util.HashMap">
+        INSERT INTO
+        jiufen(customer_id,order_id,shop_id,reason,applyTime,status,is_delete)
+        VALUES
+        (#{userID},#{orderID},#{shopID},#{reason},#{applyTime},0,0)
+    </insert>
+
+    <update id="updateOrderState" parameterType="java.util.HashMap">
+        UPDATE
+            orders
+        SET
+            status = #{status}
+        WHERE
+            orders.ID = #{ orderID }
+    </update>
+
+    <insert id="commentOrder" parameterType="java.util.HashMap">
+        INSERT INTO
+        comment(customer_id,commodity_id,comment_level,comment_time,comment_content,is_delete)
+        VALUES
+        (#{userID},#{commodityID},#{commentLevel},#{comment_time},#{commentContent},0)
+    </insert>
 
 </mapper>

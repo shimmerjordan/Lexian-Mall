@@ -1,6 +1,6 @@
 <template>
-	<view class="empty-content">
-		<image class="empty-content-image" :src="setSrc" mode="aspectFit" @click="forceLoad"></image>
+	<view class="empty-content"  @click="forceLoad">
+		<image class="empty-content-image" :src="setSrc" mode="aspectFit"></image>
 	</view>
 </template>
 
@@ -28,7 +28,7 @@
 		},
 		methods: {
 			forceLoad(){
-				this.$forceUpdate()
+				this.$forceUpdate();
 			}
 		}
 	}

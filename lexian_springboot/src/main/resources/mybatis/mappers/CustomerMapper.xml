@@ -111,7 +111,7 @@
 
 	<!-- 根据用户ID选择钱包的相关字段信息 -->
 	<select id="selectById" parameterType="java.lang.String"
-		resultMap="BaseResultMap">
+		resultType="java.util.HashMap">
 		SELECT c.*,w.money_amount as moneyAmount,w.wallet_pwd as
 		walletPwd,w.id as walletId FROM `customer` c left JOIN wallet w on c.ID = w.customer_id
 		where c.ID = #{id}

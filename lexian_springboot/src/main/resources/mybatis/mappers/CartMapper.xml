@@ -57,7 +57,7 @@
 		insert
 		into
 		cart(customer_id,commodity_id,commodity_quantity,specs,isDelete)
-		values(#{customerId},#{commodityId},#{specs},#{commodityQuantity},0)
+		values(#{customerId},#{commodityId},#{commodityQuantity},#{specs},0)
 
 	</insert>
 
