@@ -329,6 +329,7 @@ export default {
     // 获取店铺列表
     getList() {
       this.listLoading = true
+      // try{
       getAllShop(this.listQuery).then(response => {
         console.log(this.listQuery)
         this.list = response.data.list // 获取取到的数据
@@ -339,6 +340,18 @@ export default {
         }, 1.5 * 1000)
       })
       this.listLoading = false
+      //  if(this.listLoading){
+      //    this.$message({
+      //     message: '请求数据库错误',
+      //     type:'error'
+      //   })
+      // }
+      // }catch(e){
+      //   this.$message({
+      //     message: '请求数据库错误',
+      //     type:'error'
+      //   })
+      // }
     },
 
     handleFilter() {

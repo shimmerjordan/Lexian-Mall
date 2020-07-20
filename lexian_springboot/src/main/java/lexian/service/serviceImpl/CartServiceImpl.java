@@ -59,8 +59,11 @@ public class CartServiceImpl implements CartService {
 	public boolean save(Cart cart) {
 		Cart scart = cartMapper.selectCart(cart);
 		if (null != scart) {
-			scart.setCommodityQuantity(scart.getCommodityQuantity() + cart.getCommodityQuantity());
-			return cartMapper.update(scart) > 0;
+			//当且仅当购物车内有此种商品并且isDelete标识为0的时候才进行Quantity相加的操作
+			if(scart.getIsDelete() == 0){
+				scart.setCommodityQuantity(scart.getCommodityQuantity() + cart.getCommodityQuantity());
+				return cartMapper.update(scart) > 0;
+			}
 		}
 		return cartMapper.insert(cart) > 0;
 	}
@@ -81,4 +84,5 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.clearCart(cartIdList);
 
 	}
+
 }

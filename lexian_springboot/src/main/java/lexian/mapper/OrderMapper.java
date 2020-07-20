@@ -114,4 +114,27 @@ public interface OrderMapper {
      * @note 接口deleteCustomerOrder
      */
     boolean deleteCustomerOrder(Map<String, Object> map);
+
+    /**
+     * @note 用于根据订单查询店铺ID
+     * @param map
+     * @return int类型的店铺ID
+     */
+    int selectShopByOrder(Map<String, Object> map);
+
+    /**
+     * @note 客户端提交纠纷订单信息
+     * @param map
+     * @return 标识操作成功的boolean变量
+     */
+    boolean applyCustomerJiufenOrder(Map<String, Object> map);
+
+    /**
+     * @note 更新用户订单状态
+     * @param map
+     * @return 标识操作成功的boolean变量
+     */
+    boolean updateOrderState(Map<String, Object> map);
+
+    boolean commentOrder(Map<String ,Object> map);
 }

@@ -88,7 +88,7 @@ public class CustomerController {
 	 * @return 操作成功与否boolean
 	 */
 	@RequestMapping("/getById")
-	public Customer getById(String uid) {
+	public List<Customer> getById(String uid) {
 		return customerService.getById(uid);
 	}
 

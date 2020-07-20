@@ -22,7 +22,7 @@
 						<view class="image-wrapper">
 							<!-- <image :src="item.image" :class="[item.loaded]" mode="aspectFill" lazy-load @load="onImageLoad('cartList', index)"
 							 @error="onImageError('cartList', index)"> -->
-							<image :src="item.image" class="loaded" mode="aspectFill">
+							<image :src="item.image" class="loaded" mode="aspectFill" @click="navTo('/pages/product/product?id='+item.commodity_id+'&uid='+item.customer_id)">
 							</image>
 							<view class="yticon icon-xuanzhong2 checkbox" :class="{checked: item.checked}" @click="check('item', index)"></view>
 						</view>
@@ -94,6 +94,14 @@
 		onShow(){
 			this.loadData();
 		},
+		onPullDownRefresh() {
+			 //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+			 console.log('refresh');
+			 this.loadData();
+			 setTimeout(function () {
+				 uni.stopPullDownRefresh();  //停止下拉刷新动画
+			 }, 1000);
+		},
 		watch: {
 			//显示空白页
 			cartList(e) {
@@ -107,6 +115,19 @@
 			...mapState(['hasLogin'])
 		},
 		methods: {
+			navTo(url){
+				if(!this.hasLogin){
+					this.$api.msg("请先登录");
+					setTimeout(()=>{
+						 
+					}, 1500)
+					url = '/pages/public/loginByName';
+				}
+				uni.navigateTo({
+					url
+				})  
+				
+			},
 			getUser() {
 				let that = this;
 				that.userInfo = common.getGlobalUserInfo();
@@ -196,7 +217,7 @@
 				let id = row.id;
 				console.log(index);
 				console.log(this.cartList[index]);
-				// console.log("this.cartList[index - 1].commodity_id : ",this.cartList[index].commodity_id)
+				// console.log("this.cartList[index].commodity_id : ",this.cartList[index].commodity_id)
 				this.cartList.splice(index, 1);
 				//删除数据库Cart表相应记录，采用的方法是设置isDelete字段为1
 				uni.request({
@@ -204,8 +225,8 @@
 					method: 'POST',
 					dataType: "json",
 					data: {
-						"commodityID": this.cartList[index].commodity_id,
-						"commodityQuantity": this.cartList[index].commodity_quantity,
+						"commodityID": row.commodity_id,
+						"commodityQuantity": row.commodity_quantity,
 						"customerID": this.userInfo.ID
 					},
 					success: (res) => {

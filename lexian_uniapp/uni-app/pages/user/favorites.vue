@@ -1,7 +1,6 @@
 <template>
 	<view class="page_box">
 		<view class="head_box x-bc" >
-		<button class="cu-btn back-btn" @click="navBack()">{{ '返回' }}</button>
 			<view class="count-box" v-if="favoriteList.length">
 				共
 				<text class="all-num">{{ total }}</text>
@@ -182,7 +181,7 @@
 	}
 	.count-box {
 		position:absolute;
-		left: 200upx;
+		left: 20upx;
 		font-size: 26rpx;
 		color: #999;
 
