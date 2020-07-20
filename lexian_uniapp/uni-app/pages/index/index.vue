@@ -3,14 +3,14 @@
 		<!-- 小程序适配 搜索栏-->
 		<!-- #ifdef MP-->
 		<view class="content">
-			<uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" v-model="searchInfo.Name"  @confirm="searchCommodity()" >
+			<uni-search :iconSrc="iconSrc" :inputAttr="inputAttr" v-model="searchName"  @confirm="searchCommodity()" >
 		</uni-search>
 		</view>
 		<!-- #endif -->
 		<!-- H5适配 搜索栏-->
 		<!-- #ifdef H5-->
 		 <view class="mp-search-box">
-			<input  class="ser-input" type="text"  v-model="searchInfo.Name"  @confirm="searchCommodity()" />				  
+			<input  class="ser-input" type="text" placeholder="请输入商品数据"  v-model="searchName" @input="inputChange" @confirm="searchCommodity()" />				  
 		</view> 
 		<!-- #endif  -->
 		
@@ -36,7 +36,7 @@
 		<!-- 分类 -->
 		<view class="cate-section">
 			<view class="cate-item" >
-				<image src="/static/temp/i3.png" @click="navTo()"></image>
+				<image src="/static/temp/i7.png" @click="navTo()"></image>
 				<text >手机数码</text>
 			</view>
 			<view class="cate-item" @click="navTo()">
@@ -44,16 +44,16 @@
 				<text >男装女装</text>
 			</view>
 			<view class="cate-item" @click="navTo()">
-				<image src="/static/temp/i6.png"></image>
+				<image src="/static/temp/i4.png"></image>
 				<text >儿童用品</text>
 			</view>
 			<view class="cate-item" @click="navTo()">
-				<image src="/static/temp/i7.png"></image>
+				<image src="/static/temp/i6.png"></image>
 				<text >工艺摆件</text>
 		     </view>
 			<view class="cate-item" @click="navTo()">
 				<image src="/static/temp/i8.png"></image>
-				<text >零食</text>
+				<text >零食水果</text>
 			</view>	
 		</view>
 		<!-- 店铺活动宣传 -->
@@ -106,7 +106,7 @@
 					@click="navToDetailPage(item)"
 				>
 					<view class="g-item left">
-						<image :src="item.image" mode="aspectFill"></image>
+						<image :src="item.image" mode="aspectFit"></image>
 						<view class="t-box">
 							<text class="title clamp">{{item.name}}</text>
 							<view class="price-box">
@@ -124,7 +124,7 @@
 						            
 					</view>
 					<view class="g-item right">
-						<image :src="tGoodsList[index].image" mode="aspectFill"></image>
+						<image :src="tGoodsList[index].image" mode="aspectFit"></image>
 						<view class="t-box">
 							<text class="title clamp">{{tGoodsList[index].name}}</text>
 							<view class="price-box">
@@ -179,7 +179,7 @@
 		</view>
 		<view class="hot-floor">
 			<view class="floor-img-box">
-				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409984228&di=dee176242038c2d545b7690b303d65ea&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5ef4da9f17faaf4612f0d5046f4161e556e9bbcfdb5b-rHjf00_fw658" mode="scaleToFill"></image>
+				<image class="floor-img" src="https://s1.ax1x.com/2020/07/19/URLhX6.jpg" mode="scaleToFill"></image>
 			</view>
 			<scroll-view class="floor-list" scroll-x>
 				<view class="scoll-wrapper">
@@ -202,7 +202,7 @@
 		<view class="hot-floor">
 			<view class="floor-img-box">
 				
-				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594290990162&di=b19ff603fc393b8c714f181badfe2ec0&imgtype=0&src=http%3A%2F%2Fwww.aiimg.com%2Fuploads%2Fuserup%2F1307%2F231539221627.jpg" mode="scaleToFill"></image>
+				<image class="floor-img" src="https://s1.ax1x.com/2020/07/19/UROB8A.jpg" mode="scaleToFill"></image>
 	
 			</view>
 			<scroll-view class="floor-list" scroll-x>
@@ -260,9 +260,7 @@ import {  mapState } from 'vuex';
 	export default {
 		data() {
 			return {
-				searchInfo:{
-					Name: '',
-				},
+				searchName: '',
 				countDownHour: 0, //倒计时 -时
 				countDownMinute: 0,  //倒计时 -分
 				countDownSecond: 0,  //倒计时-秒
@@ -392,8 +390,15 @@ import {  mapState } from 'vuex';
 					}
 				});
 			},
+			inputChange(e) {
+			console.log(e.detail);
+			const keyword = event.detail.value;
+			this.searchName = keyword;
+			console.log(this.searchName);
+			},
 			searchCommodity() {
-				let searchName= this.searchInfo.Name;
+				let searchName= this.searchName;
+				console.log(searchName);
 				uni.request({
 					url: this.apiServer + "/uniIndex/indexSearch",
 					data: {searchName: searchName
@@ -456,7 +461,6 @@ import {  mapState } from 'vuex';
 					url: `pages/category/category`
 				})
 			},
-		},
 
 		// #ifndef MP
 		//点击导航栏 buttons 时触发
@@ -479,7 +483,8 @@ import {  mapState } from 'vuex';
 			}
 		}
 		// #endif
-	}
+	},
+}
 </script>
 
 <style lang="scss">
@@ -499,7 +504,7 @@ import {  mapState } from 'vuex';
 			font-size: 28upx;
 			color:$font-color-base;
 			border-radius: 20px;
-			background: rgba(255, 255, 255, 0.6);
+			background: rgba(221, 230, 255, 0.6);
 		}
 		.content {
 			text-align: center;
@@ -543,8 +548,6 @@ import {  mapState } from 'vuex';
 			}
 		}
 	}
-	
-	
 	page {
 		background: #f5f5f5;
 	}
@@ -757,7 +760,7 @@ import {  mapState } from 'vuex';
 			padding: 0 30upx;
 			display:flex;
 		}
-		image{
+		.image{
 			width: 100%;
 			height: 460upx;
 			border-radius: 4px;

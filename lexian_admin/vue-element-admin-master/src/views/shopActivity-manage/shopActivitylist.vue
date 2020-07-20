@@ -319,6 +319,12 @@ export default {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+      //  if(this.listLoading){
+      //    this.$message({
+      //     message: '请求数据库错误',
+      //     type:'error'
+      //   })
+      // }
       this.listLoading = false
     },
     // 刷新

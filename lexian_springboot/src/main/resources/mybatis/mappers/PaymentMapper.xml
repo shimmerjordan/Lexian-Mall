@@ -63,7 +63,7 @@
 
 	<update id="updateOrderStatus" parameterType="java.lang.String">
 		UPDATE orders SET
-		status = 1 WHERE
+		status = 2 WHERE
 		ID =
 		#{orderId}
 

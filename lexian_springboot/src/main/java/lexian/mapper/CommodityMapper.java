@@ -1,5 +1,6 @@
 package lexian.mapper;
 
+
 import lexian.entity.Category;
 import lexian.entity.Commodity;
 import org.mapstruct.Mapper;
