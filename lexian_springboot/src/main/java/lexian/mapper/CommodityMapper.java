@@ -1,6 +1,5 @@
 package lexian.mapper;
 
-import javafx.beans.binding.ObjectExpression;
 import lexian.entity.Category;
 import lexian.entity.Commodity;
 import org.mapstruct.Mapper;

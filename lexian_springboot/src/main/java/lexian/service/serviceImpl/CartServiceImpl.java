@@ -84,5 +84,4 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.clearCart(cartIdList);
 
 	}
-
 }

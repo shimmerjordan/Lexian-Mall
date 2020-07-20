@@ -15,7 +15,7 @@
 				<view class="mid">
 					<view class="title in2line">{{
 						commodityName
-					}}</view>
+					}}</view> 
 					<view class="data">
 						{{ attr  || singleSkuText }}
 					</view>

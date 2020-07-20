@@ -185,7 +185,7 @@
 					success: (res) => {
 						const result = res.data
 						console.log(result)
-						if(result == 1){
+						if(result == 0){
 							this.phoneExistance = false;
 							this.$api.msg("短信验证码已发送" + this.mobile)
 						}else{
