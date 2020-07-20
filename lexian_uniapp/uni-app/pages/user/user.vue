@@ -3,8 +3,8 @@
 		<view class="user-section">
 			<image class="bg" src="/static/bg.jpg"></image>
 			<view class="user-info-box">
-				<view class="portrait-box" >
-					<image class="portrait" :src="userInfo.user_image || '/static/missing-face.png'"></image>
+				<view class="portrait-box">
+					<image class="portrait" :src="userInfo.user_image || '/static/missing-face.png'"  @click="navTo('/pages/userinfo/userinfo-new')"></image>
 				</view>
 				<view class="info-box">
 					<text class="username">{{userInfo.nick_name || '游客'}}</text>
@@ -182,8 +182,8 @@
 							},
 						method: 'POST',
 						success: (res) => {
-						let itemHistory = res.data;
-						this.itemHistory = itemHistory;
+							let itemHistory = res.data;
+							this.itemHistory = itemHistory;
 						}
 					});
 				};
@@ -198,13 +198,14 @@
 			navTo(url){
 				if(!this.hasLogin){
 					this.$api.msg("请先登录");
+					setTimeout(()=>{
+						 
+					}, 1500)
 					url = '/pages/public/loginByName';
 				}
-				setTimeout(()=>{
-					uni.navigateTo({
-						url
-					})  
-				}, 2500)
+				uni.navigateTo({
+					url
+				})  
 				
 			}, 
 			navToDetailPage(item) {

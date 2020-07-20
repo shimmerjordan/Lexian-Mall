@@ -120,4 +120,9 @@ public class CommodityServiceImpl implements CommodityService {
 	public List<Commodity> getAllShopCommodityByName(String name) {
 		return commodityMapper.getAllShopCommodityByName(name);
 	}
+
+	@Override
+	public List<Commodity> getAllCommodityByCategory(Map<String, Object> map) {
+		return commodityMapper.getAllCommodityByCategory(map);
+	}
 }

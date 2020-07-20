@@ -3,6 +3,8 @@ import store from './store'
 import App from './App'
 
 import cuCustom from '@/static/colorui/components/cu-custom.vue'
+import $mConstDataConfig from '@/store/constData.config.js';
+import $mSettingConfig from '@/store/setting.config.js';
 
 import {
 	RouterMount
@@ -48,15 +50,33 @@ const prePage = ()=>{
 	return prePage.$vm;
 }
 
-
+Vue.prototype.moneySymbol = $mConstDataConfig.moneySymbol;
+Vue.prototype.singleSkuText = $mConstDataConfig.singleSkuText;
 Vue.config.productionTip = false
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, json, prePage};
 Vue.component('cu-custom', cuCustom);
-Vue.prototype.apiServer = 'http://localhost:8088'
+Vue.prototype.apiServer = 'http://localhost:8088';
+Vue.prototype.$store = store;
+Vue.prototype.$mConstDataConfig = $mConstDataConfig;
+Vue.prototype.$mSettingConfig = $mSettingConfig;
 
 App.mpType = 'app'
+
+
+Vue.mixin({
+	computed: {
+		themeColor: {
+			get () {
+				return store.getters.themeColor;
+			},
+			set (val) {
+				store.state.themeColor = val;
+			}
+		}
+	}
+});
 
 const app = new Vue({
     ...App

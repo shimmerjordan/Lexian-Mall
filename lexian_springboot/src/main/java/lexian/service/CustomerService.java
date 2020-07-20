@@ -61,7 +61,7 @@ public interface CustomerService {
      * @param id
      * @return 操作成功与否boolean
      */
-    Customer getById(String id);
+    List<Customer> getById(String id);
 
     /**
      * @note 修改用户信息的操作

@@ -1,5 +1,6 @@
 package lexian.mapper;
 
+//import javafx.beans.binding.ObjectExpression;
 import lexian.entity.Category;
 import lexian.entity.Commodity;
 import org.mapstruct.Mapper;
@@ -105,5 +106,12 @@ public interface CommodityMapper {
 	 * @return
 	 */
 	List<Commodity> getSalesItem(String aID);
+
+	/**
+	 * 根据种类查询所有商品
+	 * @param map
+	 * @return
+	 */
+	List<Commodity> getAllCommodityByCategory(Map<String, Object> map);
 }
 

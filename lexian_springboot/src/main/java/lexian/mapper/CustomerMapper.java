@@ -66,7 +66,7 @@ public interface CustomerMapper {
      * @param id
      * @return 操作成功与否boolean
      */
-    Customer selectById(String id);
+    List<Customer> selectById(String id);
 
     /**
      * @note 修改用户信息的操作

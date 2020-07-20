@@ -13,7 +13,7 @@
       <sticky :class-name="'sub-navbar published'" :z-index="2" width="100px">
         <div style="float: left;">新增门店信息</div>
         <!-- 新增店铺操作 -->
-        <el-button style="float: right: 40px;" type="success" :span="4" @click="submitForm()">新增</el-button>
+        <el-button style="float: right: 40px;" type="success" :span="4" @click="submit()">新增</el-button>
         <el-button style="float: right: 40px;" type="warning" :span="4" @click="cancel()">取消</el-button>
       </sticky>
       <div
@@ -119,7 +119,7 @@ export default {
         description: '',
         shopName: '',
         shopId: '',
-        unitId: undefined,
+        unitId: '',
         tag: ''
       },
       loading: false,
@@ -171,10 +171,27 @@ export default {
       // console.log(file)
       this.$message({ message: 'Delete success', type: 'success' })
     },
+    // 审核提交的新增店铺信息是否符合要求
+    submit() {
+      console.log(this.postForm)
+      const des = this.postForm.description
+      const sname = this.postForm.shopName
+      const uid = this.postForm.unitId
+      const t = this.postForm.tag
+      if (des === '' || sname === '' || uid === '' || t === '') {
+        this.$message({
+          message: '请将店铺信息填写完整后，再次尝试提交！',
+          type: 'error'
+        })
+      } else {
+        this.submitForm()
+      }
+    },
     // 点击新增按钮后，向后端传入店铺新增信息
     submitForm() {
       this.$refs['postForm'].validate((valid) => {
         console.log(this.postForm)
+
         if (valid) {
           insertShop(this.postForm).then(response => {
             alert('添加成功') // 操作成功后，弹出提示框

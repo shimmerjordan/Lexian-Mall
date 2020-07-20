@@ -4,10 +4,10 @@
     <div class="filter-container">
       <!-- 页面查询信息 -->
       <el-row>
-        <el-input v-model="listQuery.id" placeholder="ID" style="width: 200px;margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
-        <el-input v-model="listQuery.name" placeholder="活动名称" style="width: 200px;margin-right:20px" class="filter-item" @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.id" placeholder="ID" style="width: 200px;margin-right:20px" class="filter-item" clearable @keyup.enter.native="handleFilter" />
+        <el-input v-model="listQuery.name" placeholder="活动名称" style="width: 200px;margin-right:20px" class="filter-item" clearable @keyup.enter.native="handleFilter" />
         <el-select v-model="listQuery.status" placeholder="活动状态" clearable class="filter-item" style="width: 130px;margin-right:20px">
-          <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+          <el-option v-for="item in statusList" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
         </el-select>
         <!-- <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
           <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key" />
@@ -36,8 +36,8 @@
         <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
           导出
         </el-button>
-        <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-          审核人
+        <el-checkbox v-model="showDescription" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
+          活动描述
         </el-checkbox>
       </el-row>
     </div>
@@ -89,10 +89,10 @@
           <span>{{ row.endTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <!-- 审核人隐藏，当点击显示时，审核人该列进行展示 -->
-      <el-table-column v-if="showReviewer" label="审核人" width="110px" align="center">
+      <!-- 活动描述隐藏，当点击显示时，描述该列进行展示 -->
+      <el-table-column v-if="showDescription" label="活动描述" width="110px" align="center">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.reviewer }}</span>
+          <span style="color:gray;">{{ row.description }}</span>
         </template>
       </el-table-column>
       <el-table-column label="活动状态" class-name="status-col" width="100">
@@ -147,8 +147,8 @@
           <el-date-picker v-model="temp.endTime" type="datetime" placeholder="请选择结束日期" />
         </el-form-item>
         <el-form-item label="活动状态" prop="status">
-          <el-select v-model="statusOptions[temp.status]" class="filter-item" placeholder="请选择活动状态">
-            <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+          <el-select v-model="temp.status" class="filter-item" placeholder="请选择活动状态">
+            <el-option v-for="item in statusOptions" :key="item.value" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="活动类型" prop="type">
@@ -169,7 +169,7 @@
         <el-button @click="dialogFormVisible = false">
           取消
         </el-button>
-        <el-button type="primary" @click="updateData()">
+        <el-button type="primary" @click="update()">
           提交
         </el-button>
       </div>
@@ -196,13 +196,13 @@ import Pagination from '@/components/Pagination' // secondary package based on e
 import { getAllActivity, updateActivity, deleteActivity, updateActivityStatus0, updateActivityStatus1 } from '@/api/activity'
 
 // 活动状态列表
-const statusOptions = [
+const statusList = [
   { key: '0', display_name: '发布' },
   { key: '1', display_name: '草稿' }
 ]
 
 // 赋值
-const statusKeyValue = statusOptions.reduce((acc, cur) => {
+const statusKeyValue = statusList.reduce((acc, cur) => {
   acc[cur.key] = cur.display_name
   return acc
 }, {})
@@ -227,25 +227,27 @@ export default {
       listQuery: {
         page: 1,
         limit: 10,
-        beginTime: null,
-        endTime: null,
-        id: null,
-        name: null,
-        status: null,
+        createTime: '',
+        beginTime: '',
+        endTime: '',
+        id: '',
+        name: '',
+        status: '',
         sort: '+id'
       },
+      statusList,
       typeOptions: [{ label: '秒杀', value: 0 }, { label: '团购', value: 1 }, { label: '节日限定', value: 2 }],
-      statusOptions,
-      // sortOptions: [{ label: 'ID正序排列', key: '+id' }, { label: 'ID倒序排列', key: '-id' }],
-      showReviewer: false,
+      statusOptions: [{ label: '发布', value: 0 }, { label: '草稿', value: 1 }],
+      showDescription: false,
       temp: {
-        id: undefined,
-        importance: 1,
-        remark: '',
-        timestamp: new Date(),
-        title: '',
-        type: '',
-        status: 'published'
+        id: '',
+        createTime: '',
+        beginTime: '',
+        endTime: '',
+        name: '',
+        status: '',
+        description: '',
+        type: ''
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -308,6 +310,7 @@ export default {
     // 获取活动列表，当查找框输入为空时，则获取全部活动信息；不为空时，则根据条件进行查询
     getList() {
       this.listLoading = true
+      console.log(this.listQuery)
       getAllActivity(this.listQuery).then(response => {
         this.list = response.data.list // 将获取的数据进行赋值
         this.total = response.data.total
@@ -316,6 +319,12 @@ export default {
           this.listLoading = false
         }, 1.5 * 1000)
       })
+      //  if(this.listLoading){
+      //    this.$message({
+      //     message: '请求数据库错误',
+      //     type:'error'
+      //   })
+      // }
       this.listLoading = false
     },
     // 刷新
@@ -426,12 +435,28 @@ export default {
         this.$refs['dataForm'].clearValidate()
       })
     },
-
+    // 审核提交的更新活动信息
+    update() {
+      // console.log(statusOptions[0])
+      console.log(this.temp)
+      const bt = this.temp.beginTime
+      const et = this.temp.endTime
+      const n = this.temp.name
+      const des = this.temp.description
+      if (bt === '' || et === '' || n === '' || des === '') {
+        this.$message({
+          message: '请填写完整的更新活动信息后，再次尝试提交',
+          type: 'error'
+        })
+      } else {
+        this.updateData()
+      }
+    },
     // 更新活动
     updateData() {
       this.$refs['dataForm'].validate((valid) => {
         console.log(this.temp.beginTime)
-        this.temp.beginTime
+        // this.temp.beginTime
         if (valid) {
           console.log(this.temp)
           updateActivity(this.temp).then(response => {

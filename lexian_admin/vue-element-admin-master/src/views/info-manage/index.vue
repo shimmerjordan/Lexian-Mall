@@ -151,6 +151,10 @@ export default {
         this.user = response.data[0]
         this.user_image = response.data[0].user_image
       })
+      // this.$message({
+      //   message:'请求数据库错误',
+      //   type:'error'
+      // })
       // this.user = {
       //   name: this.name,
       //   role: this.roles.join(' | '),
@@ -162,8 +166,23 @@ export default {
     goBack() {
       this.$router.push('dashboard')
     },
-    // 更新信息提交
+    // 审核提交的个人信息是否符合
     submit() {
+      const un = this.user.name
+      const pw = this.user.pwd
+      const ph = this.user.phone
+      const br = this.user.birthday
+      if (un === '' || pw === '' || ph === '' || br === '') {
+        this.$message({
+          message: '请完整填写个人信息后，再次尝试提交',
+          type: 'error'
+        })
+      } else {
+        this.submitData()
+      }
+    },
+    // 更新信息提交
+    submitData() {
       this.user.id = this.temp.id
       console.log(this.user)
       updateShopManager(this.user).then(response => {

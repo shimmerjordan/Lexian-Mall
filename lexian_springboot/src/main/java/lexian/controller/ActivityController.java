@@ -46,8 +46,8 @@ public class ActivityController {
         String status = (String)map.get("status");
 
         //判断是否需要根据前端传回的值进行查询操作，如果任一项不为空则执行查询操作。如果为空，获取全部活动信息
-        if(name!=null || id != null || status != null
-                || (beginTime != null && endTime !=null)){
+        if(name!="" || id != "" || status != ""
+                || (beginTime != "" && endTime !="")){
             String changeName="%"+name+"%";
             map.put("name",changeName);//模糊查询操作，将前端输入的名字赋值为%xx%，方便SQL操作
             System.out.println(map);

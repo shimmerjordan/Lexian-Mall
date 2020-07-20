@@ -96,4 +96,20 @@ public interface OrderService {
      * @parameter  orderID
      */
     boolean deleteCustomerOrder(Map<String, Object> map);
+
+    /**
+     * @note 客户端提交纠纷订单信息
+     * @param map
+     * @return 标识操作成功的boolean变量
+     */
+    boolean applyCustomerJiufenOrder(Map<String, Object> map);
+
+    /**
+     * @note 修改用户订单状态
+     * @param map
+     * @return
+     */
+    boolean modifyCustomerOrderState(Map<String, Object> map);
+
+    boolean commentOrder(Map<String, Object> map);
 }

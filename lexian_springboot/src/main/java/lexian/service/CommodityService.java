@@ -82,4 +82,11 @@ public interface CommodityService {
 	 */
 	List<Commodity> getAllShopCommodityByName(String name);
 
+	/**
+	 * 查询对应种类的所有商品
+	 * @param map
+	 * @return
+	 */
+	List<Commodity> getAllCommodityByCategory(Map<String,Object> map);
+
 }

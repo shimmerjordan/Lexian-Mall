@@ -43,3 +43,12 @@ export function getAllCategory() {
     method: 'post'
   })
 }
+
+// 获取对应商品类别的所有商品数据
+export function getAllCommodityByCategory(data) {
+  return myrequest({
+    url: '/api/shop/getAllCommodityByCategory',
+    method: 'post',
+    data
+  })
+}
