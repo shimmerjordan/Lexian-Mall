@@ -65,11 +65,12 @@ public class ShopServiceImpl implements ShopService{
     @Override
     public List<Shop> searchShopByInformation(Map<String,Object> map) {
 //        return shopMapper.searchShopByInformation(map);
+        System.out.println(map);
         try {
             String beginTime = (String) map.get("beginTime");//赋值
             String endTime = (String) map.get("endTime");
 
-            if(beginTime != null && endTime != null) { //对时间段进行查询，必须满足开始、结束时间同时输入
+            if(beginTime != "" && endTime != "") { //对时间段进行查询，必须满足开始、结束时间同时输入
                 map.put("beginTime",UTCToLocal((String)map.get("beginTime")));
                 map.put("endTime",UTCToLocal((String)map.get("endTime")));
             }

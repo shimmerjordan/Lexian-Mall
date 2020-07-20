@@ -164,7 +164,7 @@
 
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
-import { getAllShopGoods, UpdateShopGood, DeleteShopGood } from '@/api/shopGood'
+import { getAllCommodityByCategory, UpdateShopGood, DeleteShopGood } from '@/api/shopGood'
 import Pagination from '@/components/Pagination'
 
 // 商品的几种状态
@@ -180,7 +180,7 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
 }, {})
 
 export default {
-  name: 'GoodList',
+  name: 'CategoryGood',
   components: { Pagination },
   directives: { waves },
   filters: {
@@ -205,6 +205,7 @@ export default {
       listLoading: true,
       // listQuery保存当前页码、页面数据量限制、模糊查询的商品名字
       listQuery: {
+        id: 0,
         page: 1,
         limit: 10,
         name: '',
@@ -248,16 +249,20 @@ export default {
   },
   // 页面创建调用getList方法去数据库取商品数据
   created() {
+    this.listQuery.id = this.$route.query.id
+    console.log(this.id)
     this.getList()
   },
+
   methods: {
     getList() {
       this.listLoading = true
       // 调用api中的getAllShopGoods（参数是listQuery-->包含页面、页面数量等信息方便分页）
-      getAllShopGoods(this.listQuery).then(response => {
+      getAllCommodityByCategory(this.listQuery).then(response => {
         // 返回数据保存在list中 商品数量保存在total中
         this.list = response.data.list
         this.total = response.data.total
+        debugger
         console.log(this.list)
         setTimeout(() => {
           this.listLoading = false
@@ -323,14 +328,14 @@ export default {
               type: 'success',
               duration: 2000
             })
+            // 用于实时动态更新数据 修改数据后就调用getList从数据库中取到新的数据展示
+            this.getList()
             setTimeout(() => {
               this.listLoading = false
             }, 1.5 * 1000)
           })
         }
       })
-      // 用于实时动态更新数据 修改数据后就调用getList从数据库中取到新的数据展示
-      this.getList()
     },
     /*
       删除商品数据
@@ -359,20 +364,20 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
+        const tHeader = ['ID', '修改时间', '商品名称', '商品单价', '库存', '规格', '当前状态']
+        const filterVal = ['id', 'modify_time', 'name', 'price', 'storage', 'specification', 'status']
         const data = this.formatJson(filterVal)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'table-list'
+          filename: '种类商品详情'
         })
         this.downloadLoading = false
       })
     },
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
+        if (j === 'modify_time') {
           return parseTime(v[j])
         } else {
           return v[j]

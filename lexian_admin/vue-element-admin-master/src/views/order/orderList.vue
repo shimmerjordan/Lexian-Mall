@@ -34,7 +34,7 @@
           <span>{{ scope.$index + 1 }}</span>
         </template>
       </el-table-column>
-      <el-table-column v-if="showID" label="ID" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+      <el-table-column v-if="showID" label="ID" prop="id" sortable="custom" align="center" width="80">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
@@ -119,16 +119,6 @@
         </el-button>
       </div>
     </el-dialog>
-
-    <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
-      <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
-        <el-table-column prop="key" label="Channel" />
-        <el-table-column prop="pv" label="Pv" />
-      </el-table>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false">Confirm</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
@@ -145,7 +135,7 @@ const calendarTypeOptions = [
   { key: '9', display_name: '已取消' }
 ]
 
-// arr to obj, such as { CN : "China", US : "USA" }
+// 发货状态选择
 const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
   acc[cur.key] = cur.display_name
   return acc
@@ -155,6 +145,7 @@ export default {
   name: 'ComplexTable',
   components: { Pagination },
   directives: { waves },
+  // 用来映射搜索框的搜索条件
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -173,9 +164,12 @@ export default {
   data() {
     return {
       tableKey: 0,
+      // 表格数据
       list: null,
       total: 0,
+      // 表示表格数据的加载状态
       listLoading: true,
+      // 表格搜索条件
       listQuery: {
         page: 1,
         limit: 10,
@@ -187,6 +181,7 @@ export default {
       calendarTypeOptions,
       statusOptions: [0, 1, 2, 3, 4],
       showReviewer: false,
+      // 记录弹窗的数据
       temp: {
         id: '',
         commodity: undefined,
@@ -196,14 +191,13 @@ export default {
         status: 0,
         quantity: ''
       },
+      // 控制弹窗可见
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
         update: '编辑',
         create: '新建'
       },
-      dialogPvVisible: false,
-      pvData: [],
       rules: {
         commodity: [{ required: true, message: '请输入商品ID', trigger: 'change' }],
         timestamp: [{ type: 'date', required: true, message: '请输入时间', trigger: 'change' }],
@@ -218,6 +212,7 @@ export default {
     this.getList()
   },
   methods: {
+    // 根据条件搜索订单，如果无条件则相当于初始化表格
     getList() {
       this.listLoading = true
       getAllOrder(this.listQuery).then(response => {
@@ -229,17 +224,19 @@ export default {
       })
       this.listLoading = false
     },
+    // 根据条件搜索订单
     handleFilter() {
       this.listQuery.page = 1
       this.getList()
     },
-
+    // 表格排序
     sortChange(data) {
       const { prop, order } = data
       if (prop === 'id') {
         this.sortByID(order)
       }
     },
+    // 根据ID排序
     sortByID(order) {
       if (order === 'ascending') {
         this.listQuery.sort = '+id'
@@ -248,6 +245,7 @@ export default {
       }
       this.handleFilter()
     },
+    // 重置弹窗的数据
     resetTemp() {
       this.temp = {
         comment: 1,
@@ -255,6 +253,7 @@ export default {
         status: ''
       }
     },
+    // 处理Add按钮，新建一条订单数据
     handleCreate() {
       this.resetTemp()
       this.dialogStatus = 'create'
@@ -263,6 +262,7 @@ export default {
         this.$refs['dataForm'].clearValidate()
       })
     },
+    // 根据弹窗的输入新建订单
     createData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
@@ -283,11 +283,13 @@ export default {
               })
             }
             this.dialogFormVisible = false
+            // 在数据库新增了一条订单记录后，重新获取数据，实现自动刷新
             this.getList()
           })
         }
       })
     },
+    // 订单的更新请求
     handleUpdate(row, index) {
       this.temp = Object.assign({}, this.list[index])
       this.temp.date = new Date(this.temp.date)
@@ -297,6 +299,7 @@ export default {
         this.$refs['dataForm'].clearValidate()
       })
     },
+    // 更新订单
     updateData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
@@ -322,6 +325,7 @@ export default {
         }
       })
     },
+    // 处理删除订单请求
     handleDelete(row, index) {
       console.log(row)
       DeleteOrder(row.id).then(response => {
@@ -343,6 +347,7 @@ export default {
       })
       this.list.splice(index, 1)
     },
+    // 订单列表导出
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
@@ -357,6 +362,7 @@ export default {
         this.downloadLoading = false
       })
     },
+    // 将时间戳转化成时间格式
     formatJson(filterVal) {
       return this.list.map(v => filterVal.map(j => {
         if (j === 'date') {
@@ -365,10 +371,6 @@ export default {
           return v[j]
         }
       }))
-    },
-    getSortClass: function(key) {
-      const sort = this.listQuery.sort
-      return sort === `+${key}` ? 'ascending' : 'descending'
     }
   }
 }

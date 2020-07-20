@@ -37,13 +37,8 @@
 		Commodity.`is_delete`
 		FROM
 		commodity
-		INNER JOIN shop_commodity ON commodity.ID =
-		shop_commodity.commodity_id
-		INNER JOIN shop ON shop.ID =
-		shop_commodity.shop_id
 		WHERE
-		commodity.is_delete=0 AND
-		shop_commodity.isDelete=0
+		commodity.is_delete=0
 	</select>
 
 	<!--
@@ -102,9 +97,9 @@
 	</select>
 
 	<update id="deleteGood">
-		UPDATE shop_commodity
-		SET shop_commodity.isDelete=1
-		WHERE shop_commodity.commodity_id=#{id}
+		UPDATE commodity
+		SET commodity.is_delete=1
+		WHERE commodity.ID=#{id}
 	</update>
 
 	<!--
@@ -133,9 +128,9 @@
 	-->
 	<insert id="addGood" parameterType="java.util.HashMap">
 		INSERT INTO
-		commodity(name,modify_time,price,storage,specification,status,image,introduction,is_delete)
+		commodity(name,modify_time,price,storage,specification,status,image,introduction)
 		VALUES
-		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction},0)
+		(#{name},#{modify_time},#{price},#{storage},#{specification},#{status},#{image},#{introduction})
 	</insert>
 
 	<!--
@@ -291,16 +286,11 @@
 		Commodity.`is_delete`
 		FROM
 		commodity
-		INNER JOIN
-		shop_commodity ON commodity.ID =
-		shop_commodity.commodity_id
-		INNER JOIN
-		shop ON shop.ID =
-		shop_commodity.shop_id
+
 		WHERE
-		commodity.is_delete=0 AND
-		shop_commodity.isDelete=0 AND
-        commodity.name LIKE #{name}
+		commodity.is_delete=0
+		AND
+		commodity.name LIKE #{name}
 	</select>
 
 	<!--
@@ -329,4 +319,31 @@
 		activity_commodity.is_delete=0 AND
         activity_commodity.activity_id = #{aID}
 	</select>
+
+	<!--获取对应商品类别的所有商品-->
+	<select id="getAllCommodityByCategory" resultType="Commodity" parameterType="java.util.HashMap">
+		SELECT
+		Commodity.ID,
+		Commodity.modify_time,
+		Commodity.introduction,
+		Commodity.`name`,
+		Commodity.`image`,
+		Commodity.`price`,
+		Commodity.`storage`,
+		Commodity.`specification`,
+		Commodity.`index`,
+		Commodity.`is_delete`
+		FROM
+		category
+		INNER JOIN category_commodity ON category.ID=category_commodity.category_id
+		INNER JOIN commodity ON commodity.ID=category_commodity.commodity_id
+		WHERE
+		category_commodity.is_delete=0
+		AND
+		category.level=#{id}
+		<if test="name!='%%'">
+		AND commodity.name LIKE #{name}
+		</if>
+	</select>
+
 </mapper>

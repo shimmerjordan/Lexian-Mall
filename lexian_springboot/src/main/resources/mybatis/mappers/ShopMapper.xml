@@ -35,7 +35,8 @@
     shop.`name` = #{name},
     shop.kind = #{kind},
     shop.status = #{status},
-    shop.tag = #{tag}
+    shop.tag = #{tag},
+    shop.description = #{description}
     where
     shop.id = #{id}
   </update>
@@ -54,16 +55,16 @@
     from shop
     <where>
       shop.isDelete = 0 
-      <if test="name != '%null%' ">
+      <if test="name != '%%' ">
       and shop.`name` like  #{name}
       </if>
-      <if test="id != null">
+      <if test="id != ''">
         and shop.id = #{id}
       </if>
-      <if test="beginTime != null and endTime != null">
+      <if test="beginTime != '' and endTime != ''">
         and shop.establishTime<![CDATA[>=]]>#{beginTime} and shop.establishTime<![CDATA[<=]]>#{endTime}
       </if>
-      <if test="status != null">
+      <if test="status != ''">
         and shop.status = #{status}
       </if>
     </where>

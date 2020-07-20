@@ -1,6 +1,7 @@
 package lexian.entity;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 
 /**
@@ -14,12 +15,12 @@ public class JiuFenOrder {
     private String reason;  //纠纷原因
     private String result;  //处理结果
     private int status;   //处理状态
-    private Date handTime;  //处理时间
-    private Date applyTime;  //申请时间
+    private Timestamp handTime;  //处理时间
+    private Timestamp applyTime;  //申请时间
 
     public JiuFenOrder(){}
 
-    public JiuFenOrder(int id, int customer_id, int order_id, int shop_id, String reason, String result, int status, Date handTime, Date applyTime) {
+    public JiuFenOrder(int id, int customer_id, int order_id, int shop_id, String reason, String result, int status, Timestamp handTime, Timestamp applyTime) {
         this.id = id;
         this.customer_id = customer_id;
         this.order_id = order_id;
@@ -28,6 +29,30 @@ public class JiuFenOrder {
         this.result = result;
         this.status = status;
         this.handTime = handTime;
+        this.applyTime = applyTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Timestamp getHandTime() {
+        return handTime;
+    }
+
+    public void setHandTime(Timestamp handTime) {
+        this.handTime = handTime;
+    }
+
+    public Timestamp getApplyTime() {
+        return applyTime;
+    }
+
+    public void setApplyTime(Timestamp applyTime) {
         this.applyTime = applyTime;
     }
 
@@ -77,29 +102,5 @@ public class JiuFenOrder {
 
     public void setResult(String result) {
         this.result = result;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public Date getHandTime() {
-        return handTime;
-    }
-
-    public void setHandTime(Date handTime) {
-        this.handTime = handTime;
-    }
-
-    public Date getApplyTime() {
-        return applyTime;
-    }
-
-    public void setApplyTime(Date applyTime) {
-        this.applyTime = applyTime;
     }
 }

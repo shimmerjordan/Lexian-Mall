@@ -35,8 +35,8 @@
         <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
           导出
         </el-button>
-        <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
-          操作员
+        <el-checkbox v-model="showDescription" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
+          门店描述
         </el-checkbox>
       </el-row>
     </div>
@@ -100,10 +100,10 @@
           <span>{{ row.establishTime | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <!-- 当点击显示操作员时才可显示此列 -->
-      <el-table-column v-if="showReviewer" label="Reviewer" width="110px" align="center">
+      <!-- 当点击显示门店描述时才可显示此列 -->
+      <el-table-column v-if="showDescription" label="门店描述" width="110px" align="center">
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.reviewer }}</span>
+          <span style="color:gray;">{{ row.description }}</span>
         </template>
       </el-table-column>
       <el-table-column label="店铺类型" width="80px">
@@ -160,7 +160,7 @@
         </el-form-item>
         <el-form-item label="店铺状态">
           <el-select v-model="temp.status" class="filter-item" placeholder="请选择店铺状态">
-            <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+            <el-option v-for="item in statusList" :key="item.value" :label="item.label" :value="item.value" />
             <!-- <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" /> -->
           </el-select>
         </el-form-item>
@@ -187,7 +187,7 @@
         <el-button @click="dialogFormVisible = false">
           取消
         </el-button>
-        <el-button type="primary" @click="updateData()">
+        <el-button type="primary" @click="update()">
           提交
         </el-button>
       </div>
@@ -221,20 +221,20 @@ const statusOptions = [
 
 ]
 // 转换成可展示
-const statusKeyValue = statusOptions.reduce((acc, cur) => {
-  acc[cur.key] = cur.display_name
-  return acc
-}, {})
+// const statusKeyValue = statusOptions.reduce((acc, cur) => {
+//   acc[cur.key] = cur.display_name
+//   return acc
+// }, {})
 
 export default {
   name: 'ShopList',
   components: { Pagination },
   directives: { waves },
-  filters: {
-    typeFilter(type) {
-      return statusKeyValue[type]
-    }
-  },
+  // filters: {
+  //   typeFilter(type) {
+  //     return statusKeyValue[type]
+  //   }
+  // },
   data() {
     return {
       // 数据初始化
@@ -246,22 +246,22 @@ export default {
       listQuery: {
         page: 1,
         limit: 10,
-        id: null,
-        name: null,
-        status: null,
-        beginTime: null,
-        endTime: null,
+        id: '',
+        name: '',
+        status: '',
+        beginTime: '',
+        endTime: '',
         // img: null,
         sort: '+id'
       },
       // 店铺营业状态
-      status: [{ label: '正在营业', key: '0' }, { label: '暂停营业', key: '1' }, { label: '店铺关闭', key: '2' }],
+      statusList: [{ label: '正在营业', value: 0 }, { label: '暂停营业', value: 1 }, { label: '店铺关闭', value: 2 }],
       statusOptions,
       // 店铺类型
       kindOptions: ['旗舰店', '自营店', '普通店', '进口店'],
       // 店铺标签选择
       tagOptions: ['服饰', '食品', '日常用品', '电子产品'],
-      showReviewer: false,
+      showDescription: false,
       temp: {
         id: undefined,
         name: undefined,
@@ -330,6 +330,7 @@ export default {
     getList() {
       this.listLoading = true
       getAllShop(this.listQuery).then(response => {
+        console.log(this.listQuery)
         this.list = response.data.list // 获取取到的数据
         this.total = response.data.total
         console.log(this.list)
@@ -378,6 +379,20 @@ export default {
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
       })
+    },
+    // 审核提交更新店铺信息
+    update() {
+      console.log(this.temp)
+      const nam = this.temp.name
+      const des = this.temp.description
+      if (nam === '' || des === '') {
+        this.$message({
+          message: '请将更改店铺信息填写完整后，再次尝试提交',
+          type: 'error'
+        })
+      } else {
+        this.updateData()
+      }
     },
     // 更新店铺信息
     updateData() {
