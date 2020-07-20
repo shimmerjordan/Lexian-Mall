@@ -74,4 +74,6 @@ public interface CustomerMapper {
      * @return 操作成功与否boolean
      */
     boolean updateUserInfo(Map<String, Object> map);
+
+    String selectNameByPhone(Map<String, Object> map);
 }

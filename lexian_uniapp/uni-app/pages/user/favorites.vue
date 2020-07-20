@@ -1,6 +1,9 @@
 <template>
 	<view class="page_box">
 		<view class="head_box x-bc" >
+			<view class="count-box" v-if="!favoriteList.length">
+				<text>空空如也</text>
+				</view>
 			<view class="count-box" v-if="favoriteList.length">
 				共
 				<text class="all-num">{{ total }}</text>

@@ -37,7 +37,12 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public boolean updateCustomerPwd(Map<String, Object> map) {
-        return customerMapper.updateCustomerPwd(map);
+        Object temp0 = (Object)customerMapper.selectNameByPhone(map);
+        if(temp0 == map.get("loginName")){
+            return customerMapper.updateCustomerPwd(map);
+        }else{
+            return false;
+        }
     }
 
     /**
