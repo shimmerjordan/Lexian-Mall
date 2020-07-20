@@ -1,13 +1,8 @@
 spring:
   datasource:
     username: root
-<<<<<<< HEAD
-    password: 123
-    url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
-=======
     password: password
-    url: "jdbc:mysql://server.natappfree.cc:43888/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
->>>>>>> e8b33d57805543073bd4c1bb5824f86175535e27
+    url: "jdbc:mysql://server.natappfree.cc:40893/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
 
 
     driver-class-name: com.mysql.cj.jdbc.Driver
