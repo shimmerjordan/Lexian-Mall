@@ -258,6 +258,9 @@ import common from '@/store/common.js'
 import util from '@/store/utils.js'
 import {  mapState } from 'vuex';
 	export default {
+		computed: {
+			...mapState(['hasLogin'])
+		},
 		data() {
 			return {
 				searchName: '',
@@ -293,9 +296,17 @@ import {  mapState } from 'vuex';
       components:{
 		  uniSearch
       },
+	  onShow(){
+	  	this.$forceUpdate()
+	  	setTimeout(()=>{
+	  		this.getUser();
+	  	}, 200)
+		},
 		onLoad() {
+			setTimeout(()=>{
+				this.getUser();
+			}, 200)
 			this.loadData();
-			this.getUser();
 			//设置倒计时时间，1s变换一次
 			var interval = setInterval(function () {
 				var d = new Date();   //获取系统日期和时间
@@ -410,8 +421,18 @@ import {  mapState } from 'vuex';
 					},
 				});
 				let itemID = this.searchList[0].id;
+				let userId ="";
+				uni.getStorage({
+				    key:"userInfo",
+				 	success(e){
+				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
+				}
+				});
 				uni.navigateTo({
-					 url: `/pages/product/product?id=${itemID}`
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 				});
 				},
 			//轮播图切换修改背景色
@@ -422,7 +443,6 @@ import {  mapState } from 'vuex';
 			},
 			//跳转到活动商品
 			navToActivity(item) {
-				console.log(item);
 				let aID = item.id;
 				uni.request({
 					url: this.apiServer + "/uniIndex/getSalesItem",
@@ -435,8 +455,18 @@ import {  mapState } from 'vuex';
 					},
 				});
 				let itemID = this.salesItemList[0].id;
+				let userId ="";
+				uni.getStorage({
+				    key:"userInfo",
+				 	success(e){
+				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
+				}
+				});
 				uni.navigateTo({
-					 url: `/pages/product/product?id=${itemID}`
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 				});
 				},
 			//详情页

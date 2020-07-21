@@ -139,6 +139,10 @@
 
 		<!-- 加载 spring boot redis 包 -->
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
@@ -163,5 +167,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
