@@ -190,7 +190,7 @@
         orders.date,
         orders.description,
         orders.`comment`,
-        orders.`status`,
+        order_item.`status`,
         order_item.commodity_quantity,
         order_item.commodity_id,
         commodity.`name`,
@@ -207,6 +207,7 @@
       WHERE
         customer_order.is_delete = 0
         AND orders.isDelete = 0
+        AND order_item.is_delete = 0
         AND customer_order.customer_id = #{customerId}
       order by orders.ID desc
     </select>
@@ -217,11 +218,14 @@
     <!-- @note 接口cancelCustomerOrder -->
     <update id="cancelCustomerOrder" parameterType="java.util.HashMap">
         UPDATE
-            orders
+            orders,
+            order_item
         SET
-            status = 8
+            order_item.status = 8
         WHERE
             orders.ID = #{ orderID }
+            AND order_item.order_id = orders.ID
+            AND order_item.commodity_id = #{commodityID}
     </update>
 
     <!-- @note 取消订单接口，将取消的订单isDelete设为1 -->
@@ -229,11 +233,14 @@
     <!-- @note 接口deleteCustomerOrder -->
     <update id="deleteCustomerOrder" parameterType="java.util.HashMap">
         UPDATE
-            orders
+            orders,
+            order_item
         SET
-            isDelete = 1
+            order_item.is_delete = 1
         WHERE
             orders.ID = #{ orderID }
+            AND order_item.order_id = orders.ID
+            AND order_item.commodity_id = #{commodityID}
     </update>
 
     <!-- 根据订单查询店铺ID -->
@@ -246,6 +253,7 @@
             INNER JOIN shop_commodity ON order_item.commodity_id = shop_commodity.commodity_id
         WHERE
             orders.ID = #{orderID}
+            AND order_item.commodity_id = #{commodityID}
     </select>
 
     <insert id="applyCustomerJiufenOrder" parameterType="java.util.HashMap">
@@ -257,11 +265,14 @@
 
     <update id="updateOrderState" parameterType="java.util.HashMap">
         UPDATE
-            orders
+            orders,
+            order_item
         SET
-            status = #{status}
+            order_item.status = #{status}
         WHERE
-            ID = #{ orderID }
+            orders.ID = #{ orderID }
+            AND order_item.order_id = orders.ID
+            AND order_item.commodity_id = #{commodityID}
     </update>
 
     <insert id="commentOrder" parameterType="java.util.HashMap">

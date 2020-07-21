@@ -49,6 +49,11 @@ public class PaymentServiceImpl implements PaymentService {
 		return order.getID();
 	}
 
+	/**
+	 *
+	 * @param params
+	 * @return
+	 */
 	@Transactional
 	@Override
 	public boolean payBill(Map<String, Object> params) {
@@ -60,7 +65,10 @@ public class PaymentServiceImpl implements PaymentService {
 		params.put("billId", params.get("id"));
 		paymentMapper.insertWalletBill(params);
 		params.put("consumePrice", Double.parseDouble(String.valueOf(params.get("consumePrice"))));
+
+		//这里进行订单状态Map的put操作
 		map.put("orderId", params.get("orderId"));
+		map.put("commodityID", params.get("commodityID"));
 		System.out.println(params);
 		System.out.println(map);
 		paymentMapper.updateOrderStatus(map);
