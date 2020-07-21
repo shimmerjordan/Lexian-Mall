@@ -4,10 +4,7 @@
 package lexian.service.serviceImpl;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +50,9 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Transactional
-	public Boolean payBill(Map<String, Object> params) {
+	@Override
+	public boolean payBill(Map<String, Object> params) {
+		HashMap<String, Object> map = new HashMap<>();
 		params.put("orderNumber", getNum15());
 		params.put("consumeTime", new Date());
 		params.put("orderStatus", "待收货");
@@ -61,7 +60,11 @@ public class PaymentServiceImpl implements PaymentService {
 		params.put("billId", params.get("id"));
 		paymentMapper.insertWalletBill(params);
 		params.put("consumePrice", Double.parseDouble(String.valueOf(params.get("consumePrice"))));
-		paymentMapper.updateOrderStatus(String.valueOf(params.get("orderId")));
+		map.put("orderId", params.get("orderId"));
+		System.out.println(params);
+		System.out.println(map);
+		paymentMapper.updateOrderStatus(map);
+		System.out.println(paymentMapper.updateOrderStatus(map));
 		return paymentMapper.updateBalance(params) > 0;
 	}
 

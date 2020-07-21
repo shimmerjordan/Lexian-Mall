@@ -51,7 +51,7 @@
 			return {
 				payType: 1,
 				uid:0,
-				moneyAmount:1000,
+				moneyAmount:10000000,
 				totalMoney:0,
 				orderInfo: {},
 				goodNames:"",
@@ -66,7 +66,7 @@
 			this.totalMoney = options.totalMoney;
 			this.uid = options.uid;
 			this.goodNames = options.goodNames;
-			this.orderId = options.orderId;
+			this.orderId = options.orderID;
 			var _this = this;
 			uni.request({
 				url: this.apiServer+'/customer/getById',
@@ -75,9 +75,11 @@
 					"uid": _this.uid
 				},
 				success: (res) => {
-					const result = res.data;
+					console.log(res.data);
+					const result = res.data[0];
                      _this.moneyAmount = result.moneyAmount;
-					 _this.walletId = result.walletId;					
+					 _this.walletId = result.walletId;	
+					console.log( _this.walletId)
 			    }
 			});
 		},
@@ -95,16 +97,22 @@
 						return;
 					}
 					var params = {
+						"orderId":this.orderId,
 						"name":this.goodNames,
 						"consumePrice":this.totalMoney,
 						"customerId":this.uid,
-						"walletId":this.walletId,
-						"orderId":this.orderId
+						"walletId":this.walletId
 					};
 					uni.request({
 					    url: this.apiServer + "/api/pay/payBill",
 							 method:"POST",
-							 data:params,
+							 data:{
+								"orderId": this.orderId,
+								"name": this.goodNames,
+								"consumePrice":this.totalMoney,
+								"customerId":this.uid,
+								"walletId":this.walletId
+							},
 							 dataType: "json",
 							 success: function(res) {
 							   const result = res.data;

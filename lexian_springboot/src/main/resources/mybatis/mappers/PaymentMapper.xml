@@ -61,12 +61,12 @@
 		#{customerId}
 	</update>
 
-	<update id="updateOrderStatus" parameterType="java.lang.String">
-		UPDATE orders SET
-		status = 2 WHERE
-		ID =
-		#{orderId}
-
+	<update id="updateOrderStatus" parameterType="java.util.HashMap">
+		UPDATE orders
+		SET
+		status = 2
+		WHERE
+		ID = #{orderId}
 	</update>
 
 </mapper>

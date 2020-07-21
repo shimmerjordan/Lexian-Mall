@@ -211,14 +211,14 @@
     </select>
 
 
-    <!-- @note 取消订单接口，将取消的订单status设为9 -->
+    <!-- @note 取消订单接口，将取消的订单status设为8 -->
     <!-- @parameter orderID -->
     <!-- @note 接口cancelCustomerOrder -->
     <update id="cancelCustomerOrder" parameterType="java.util.HashMap">
         UPDATE
             orders
         SET
-            status = 9
+            status = 8
         WHERE
             orders.ID = #{ orderID }
     </update>
@@ -260,7 +260,7 @@
         SET
             status = #{status}
         WHERE
-            orders.ID = #{ orderID }
+            ID = #{ orderID }
     </update>
 
     <insert id="commentOrder" parameterType="java.util.HashMap">

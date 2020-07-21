@@ -425,14 +425,14 @@
 		}
 		.floor-item{
 			width: 150upx;
-			margin-right: 20upx;
+			margin-right: 25upx;
 			font-size: $font-sm+2upx;
 			color: $font-color-dark;
 			line-height: 1.8;
 			image{
 				width: 150upx;
 				height: 150upx;
-				border-radius: 6upx;
+				border-radius: 15upx;
 			}
 		}
 	}
