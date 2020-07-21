@@ -76,7 +76,7 @@ export default {
 		postMoney() {
 			// this.apply();
 			this.showModal = false;
-			this.$api.msg('提现成功');
+			this.$api.msg('请先绑定银行卡');
 		},
 		onInput() {
 			// if (+this.userinfo.money > 0 && +this.userinfo.money < +this.money) {
@@ -96,16 +96,7 @@ export default {
 			// 		that.getUserInfo();
 			// 	}
 			// });
-		},
-		// 提现规则
-		getApplyRules() {
-			// let that = this;
-			// that.$api('user_wallet_apply.rule').then(res => {
-			// 	if (res.code === 1) {
-			// 		that.rules = res.data;
-			// 	}
-			// });
-		},
+		},		
 		onWithdrawals() {
 				this.$api.msg('充值功能尚未开放');
 				this.showModal = true;

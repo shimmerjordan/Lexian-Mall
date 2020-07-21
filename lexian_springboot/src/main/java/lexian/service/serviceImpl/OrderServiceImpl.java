@@ -235,13 +235,17 @@ public class OrderServiceImpl implements OrderService {
         HashMap<String, Object> temp0 = new HashMap<>();
         temp0.put("status", map.get("orderState"));
         temp0.put("orderID", orderID);
-
+        temp0.put("commodityID",map.get("commodityID"));
         //通过selectShopOrder(HashMap)提出订单商品对应的店铺
+        System.out.println("commodityID"+map.get("commodityID"));
+        System.out.println("temp0="+temp0);
+        System.out.println("map="+map);
         Object shopID = (Object)orderMapper.selectShopByOrder(temp0);
+
 
         //存入原始传入的map中
         map.put("shopID", shopID);
-
+        System.out.println("map="+map);
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         map.put("applyTime", formatter.format(date));
