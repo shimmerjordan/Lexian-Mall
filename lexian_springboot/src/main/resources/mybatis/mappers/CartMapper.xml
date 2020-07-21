@@ -50,6 +50,7 @@
 		WHERE
 		cart.customer_id = #{customerID}
 		AND cart.isDelete = 0
+		order by id desc
 	</select>
 
 	<!-- 添加购物车信息 -->
