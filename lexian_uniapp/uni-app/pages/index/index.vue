@@ -35,29 +35,39 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" >
-				<image src="/static/temp/i7.png" @click="navTo()"></image>
-				<text >手机数码</text>
+		  <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >			
+				<image src="/static/temp/i7.png"></image>
+				<text >手机数码</text>	
 			</view>
-			<view class="cate-item" @click="navTo()">
+		   </navigator>
+		    <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >
 				<image src="/static/temp/i5.png"></image>
 				<text >男装女装</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+			</navigator>
+		 <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item">
 				<image src="/static/temp/i4.png"></image>
 				<text >儿童用品</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+		   </navigator>			
+	      <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >
 				<image src="/static/temp/i6.png"></image>
 				<text >工艺摆件</text>
 		     </view>
-			<view class="cate-item" @click="navTo()">
+		   </navigator>			 
+		  <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >
 				<image src="/static/temp/i8.png"></image>
 				<text >零食水果</text>
 			</view>	
+		   </navigator>			
 		</view>
 		<!-- 店铺活动宣传 -->
-		<view class="ad-1" @click="navTo()">
+		<view class="ad-1">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
 		<!-- 店铺活动宣传的页面跳转 -->	
 		</view>
@@ -296,12 +306,6 @@ import {  mapState } from 'vuex';
       components:{
 		  uniSearch
       },
-	  onShow(){
-	  	this.$forceUpdate()
-	  	setTimeout(()=>{
-	  		this.getUser();
-	  	}, 200)
-		},
 		onLoad() {
 			setTimeout(()=>{
 				this.getUser();
@@ -402,7 +406,7 @@ import {  mapState } from 'vuex';
 				});
 			},
 			inputChange(e) {
-			console.log(e.detail);
+			console.log(e.detail.value);
 			const keyword = event.detail.value;
 			this.searchName = keyword;
 			console.log(this.searchName);
@@ -420,6 +424,7 @@ import {  mapState } from 'vuex';
 					this.searchList = searchList;
 					},
 				});
+				if(this.searchList.length){
 				let itemID = this.searchList[0].id;
 				let userId ="";
 				uni.getStorage({
@@ -434,7 +439,12 @@ import {  mapState } from 'vuex';
 				uni.navigateTo({
 					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 				});
-				},
+				}else{
+					this.$api.msg('未找到搜索的商品');
+					this.searchName='';
+					
+				}
+			},
 			//轮播图切换修改背景色
 			swiperChange(e) {
 				const index = e.detail.current;
@@ -454,7 +464,9 @@ import {  mapState } from 'vuex';
 					this.salesItemList = salesItemList;
 					},
 				});
+				if(this.salesItemList.length){
 				let itemID = this.salesItemList[0].id;
+				console.log(itemID);
 				let userId ="";
 				uni.getStorage({
 				    key:"userInfo",
@@ -468,6 +480,9 @@ import {  mapState } from 'vuex';
 				uni.navigateTo({
 					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 				});
+				}else{
+					this.$api.msg('未找活动对应的商品');
+					}
 				},
 			//详情页
 			navToDetailPage(item) {		
@@ -486,12 +501,6 @@ import {  mapState } from 'vuex';
 					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 				});
 			},
-			navTo() {
-				uni.navigateTo({
-					url: `pages/category/category`
-				})
-			},
-
 		// #ifndef MP
 		//点击导航栏 buttons 时触发
 		onNavigationBarButtonTap(e) {
