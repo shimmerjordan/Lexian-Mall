@@ -41,6 +41,16 @@ public class UniBrowsingRecord {
      */
     private String image;
 
+    /**
+     * 商品名称
+     */
+    private String name;
+
+    /**
+     * 商品价格
+     */
+    private double price;
+
     public Integer getCommodityId() {
         return commodityId;
     }
@@ -113,15 +123,6 @@ public class UniBrowsingRecord {
         this.price = price;
     }
 
-    /**
-     * 商品名称
-     */
-    private String name;
-
-    /**
-     * 商品价格
-     */
-    private double price;
 
     public UniBrowsingRecord(){}
     public UniBrowsingRecord(Integer commodityId, Integer customerId, Date browsingTime, Integer isDelete, Date date, Integer id, String image, String name, double price) {
