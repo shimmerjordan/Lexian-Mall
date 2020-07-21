@@ -208,6 +208,7 @@
         customer_order.is_delete = 0
         AND orders.isDelete = 0
         AND customer_order.customer_id = #{customerId}
+      order by orders.ID desc
     </select>
 
 
