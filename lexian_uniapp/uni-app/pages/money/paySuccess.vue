@@ -1,8 +1,12 @@
 <template>
 	<view class="content">
-		<text class="success-icon yticon icon-xuanzhong2"></text>
-		<text class="tit">支付成功</text>
-		
+		<text class="success-icon yticon icon-xuanzhong2"></text>	
+			<view class="tips-wrapper">
+				<view class="content">
+                     <text class="tit">支付成功</text>
+					<view class="tip">感谢您的购买</view>
+				</view>
+			</view>
 		<view class="btn-group">
 			<navigator url="/pages/order/order?state=0" open-type="redirect" class="mix-btn">查看订单</navigator>
 			<navigator url="/pages/index/index" open-type="switchTab" class="mix-btn hollow">返回首页</navigator>
