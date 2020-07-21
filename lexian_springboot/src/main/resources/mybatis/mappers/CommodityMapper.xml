@@ -82,6 +82,9 @@
 		BY commodity_id ) oi ON g.id = oi.commodity_id
 		where gc.category_id =
 		#{categoryId}
+		<if test="name !=null and name != ''">
+		    and g.NAME like CONCAT('%',#{name},'%')  
+		</if>
 		<if test="sortType != null and sortType !=''">
 			<if test="sortType == 1">
 				order by oi.sales desc
