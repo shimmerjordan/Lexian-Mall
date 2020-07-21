@@ -231,6 +231,7 @@ export default {
 		},
 		handleRefundTypeChange(e) {
 			this.refund_type = e.detail.value;
+			console.log(this.refund_type)
 		},
 		// 跳转页面
 		navTo(route){
@@ -260,7 +261,7 @@ export default {
 			// }
 			
 			//选择修改订单的类型（目标），根据refund_type
-			if(this.refund_type == '仅退款' && this.refund_type == '退货退款' ){
+			if(this.refund_type == '仅退款' || this.refund_type == '退货退款' ){
 				this.modify_type = 5
 			}
 			if(this.refund_type == '申请售后'){
@@ -276,13 +277,14 @@ export default {
 					"userID": common.getGlobalUserInfo().ID,
 					"orderID": this.orderID,
 					"reason": this.refund_reason + ' : ' + this.refund_explain,
+					"commodityID": this.commodityID,
 					"orderState": this.modify_type
 					},
 				method: 'POST',
 				success: (res) => {
 					console.log(res.data);
 					uni.navigateTo({
-						url: `/pages/order/order?state=0&flag=${res.data}`
+						url: `/pages/order/order?state=4&flag=${res.data}`
 					})
 				}
 			});

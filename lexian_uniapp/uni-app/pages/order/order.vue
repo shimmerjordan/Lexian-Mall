@@ -236,6 +236,9 @@
 						if(state == item.state){
 							return item;
 						}
+						if(item.state > 4 && state == 4){
+							return item;
+						}
 						return item.state === state
 					});
 					orderList.forEach(item=>{
@@ -266,10 +269,12 @@
 				let goodName = item.goodList[0].title;
 				let commodityID = item.goodList[0].commodityID;
 				
+				//首先设置订单商品为未付款状态
 				uni.request({
 					url: this.apiServer + "/order/modifyCustomerOrderState",
 					data:{
 						"orderID": item.orderID,
+						"commodityID": commodityID,
 						"status": 1
 						},
 					method: 'POST',
@@ -337,6 +342,7 @@
 					url: this.apiServer + "/order/modifyCustomerOrderState",
 					data:{
 						"orderID": list.orderID,
+						"commodityID": list.goodList[0].commodityID,
 						"status": index
 						},
 					method: 'POST',
@@ -356,7 +362,8 @@
 				uni.request({
 					url: this.apiServer + "/order/deleteCustomerOrder",
 					data:{
-						"orderID": list.orderID
+						"orderID": list.orderID,
+						"commodityID": list.goodList[0].commodityID
 					},
 					method: 'POST',
 					success: (res) => {
@@ -380,7 +387,8 @@
 				uni.request({
 					url: this.apiServer + "/order/cancelCustomerOrder",
 					data:{
-						"orderID": item.orderID
+						"orderID": item.orderID,
+						"commodityID": list.goodList[0].commodityID
 					},
 					method: 'POST',
 					success: (res) => {

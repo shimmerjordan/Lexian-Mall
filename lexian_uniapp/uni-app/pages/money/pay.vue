@@ -67,6 +67,7 @@
 			this.uid = options.uid;
 			this.goodNames = options.goodNames;
 			this.orderId = options.orderID;
+			this.commodityID = options.commodityID;
 			var _this = this;
 			uni.request({
 				url: this.apiServer+'/customer/getById',
@@ -101,7 +102,8 @@
 						"name":this.goodNames,
 						"consumePrice":this.totalMoney,
 						"customerId":this.uid,
-						"walletId":this.walletId
+						"walletId":this.walletId,
+						"commodityID": this.commodityID
 					};
 					uni.request({
 					    url: this.apiServer + "/api/pay/payBill",
@@ -111,7 +113,8 @@
 								"name": this.goodNames,
 								"consumePrice":this.totalMoney,
 								"customerId":this.uid,
-								"walletId":this.walletId
+								"walletId":this.walletId,
+								"commodityID": this.commodityID
 							},
 							 dataType: "json",
 							 success: function(res) {
