@@ -1,8 +1,14 @@
 spring:
   datasource:
     username: root
+<<<<<<< HEAD
     password: 123
     url: jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+=======
+    password: password
+#   url: "jdbc:mysql://localhost:3306/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+    url: "jdbc:mysql://server.natappfree.cc:45287/lexian?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+>>>>>>> 9c886c91a42e1a3d48a017f5ee4e0e88e1f13ea7
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       # 连接只读数据库时配置为true， 保证安全
@@ -21,7 +27,7 @@ spring:
     database:
       host: 127.0.0.1
       port: 6379
-      password:
+      password: root123
       jedis:
         pool:
           max-active: 100
@@ -36,7 +42,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
 #乱码
 server:
-  port: 8080
+  port: 8088
   servlet:
     #context-path: /ocp
     encoding:

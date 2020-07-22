@@ -255,7 +255,7 @@
 		async onLoad(options){		
 			//接收传值,id里面放的是标题，因为测试数据并没写id 
 			let id = options.id;
-			let uid = options.uid ? options.uid : "";
+			let uid = (options.uid && options.uid != "undefined") ? options.uid : "";
 			this.uid = uid;
 			let _this = this;
 			if(id){

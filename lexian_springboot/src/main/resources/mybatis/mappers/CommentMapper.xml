@@ -29,13 +29,26 @@
 
 	<select id="selectByCommodityId" resultMap="BaseResultMap">
 		select
-		c.comment_id, c.customer_id, c.commodity_id, c.comment_level, c.comment_time,
+		c.comment_id,
+		c.customer_id, c.commodity_id, c.comment_level, c.comment_time,
 		c.comment_content, c.comment_image, c.additional_comment_content,
 		c.additional_comment_time, c.additional_comment_image,
 		c.is_delete,u.name as userName,u.user_image AS userImage
-		from comment c LEFT JOIN
+		from comment c
+		LEFT JOIN
 		customer u on c.customer_id = u.id
-		where commodity_id = #{commodityId}
+		where commodity_id =
+		#{commodityId}
 	</select>
+
+	<select id="countByCommodityId" resultType="java.lang.Long">
+		select
+		count(*)
+		from
+		comment
+		where commodity_id =
+		#{commodityId}
+	</select>
+
 
 </mapper>

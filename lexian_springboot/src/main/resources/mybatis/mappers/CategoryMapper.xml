@@ -22,4 +22,10 @@
 		from category
 	</select>
 
+	<select id="countAll" resultType="java.lang.Long">
+		select
+		count(*)
+		from category
+	</select>
+
 </mapper>
