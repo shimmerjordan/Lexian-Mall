@@ -21,7 +21,7 @@
 						</checkbox-group>
 						<!-- 缺省页 -->
 						<view v-if="!favoriteList.length">
-							<view :emptyData="emptyData"></view>
+							<navigator class="navigator" v-if="hasLogin" url="../index/index" open-type="switchTab">随便逛逛></navigator>
 						</view> 
 						<!-- 更多 -->
 						<view v-if="favoriteList.length" class="cu-load text-gray" :class="loadStatus"></view>
@@ -52,10 +52,6 @@
 					isSel: false,
 					allSel: false,
 					selList: [],
-					emptyData: {
-						img: '/static/emptyCart.jpg',
-						tip: '暂无收藏商品，赶紧去收藏好货吧~'
-					},
 					favoriteList: [],
 					total: 0,
 					loadStatus: '', //loading,over

@@ -31,8 +31,8 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<Comment> listByCommodityId(String commodityId) {
 		Long xx = redisTemplate.opsForList().size(commodityId);
-		Long count = commentMapper.countByCommodityId(commodityId);
-		if (xx == count) {
+		//Long count = commentMapper.countByCommodityId(commodityId);
+		if (xx > 0) {
 			List<String> lists = redisTemplate.opsForList().range(commodityId, 0, -1);
 			return JSON.parseArray(lists.toString(), Comment.class);
 		}

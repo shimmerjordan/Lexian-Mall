@@ -16,5 +16,5 @@ public interface PaymentService {
 
 	int saveOrder(Map<String, Object> params);
 
-	Boolean payBill(Map<String, Object> params);
+	boolean payBill(Map<String, Object> params);
 }

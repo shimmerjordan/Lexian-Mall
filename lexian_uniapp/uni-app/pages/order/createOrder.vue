@@ -144,6 +144,7 @@
 					area: '149号',
 					default: false, */
 				},
+				orderId: 0,
 				uid:0,
 				commodityList:[],
 				totalMoney:0,
@@ -242,6 +243,7 @@
 				
 			},
 			submit(){
+				var _this = this;
 				let totalMoney = this.totalMoney;
 				let uid = this.uid;
 				let addressId = this.addressId;
@@ -272,12 +274,26 @@
 					 },
 				     dataType: "text",
 				     success: function(res) {
-					   let orderId = res.data; 
+					   _this.orderId = res.data; 
+					   _this.setOrderUnpaid();
 					   uni.redirectTo({
-					   	url: '/pages/money/pay?totalMoney='+totalMoney+"&uid="+uid+"&orderId="+orderId+"&goodNames="+goodNames
+							url: '/pages/money/pay?totalMoney='+totalMoney+"&uid="+uid+"&orderId="+_this.orderId+"&goodNames="+goodNames
 					   })
-					 }
-				   })
+					}
+				})
+				
+			},
+			setOrderUnpaid(){
+				//这里将订单设置为未付款状态
+				uni.request({
+					url: this.apiServer + "/order/modifyCustomerOrderState",
+					data:{
+						"orderID": this.orderId,
+						"status": 1
+						},
+					method: 'POST',
+					success: (res) => {}
+				});
 			},
 			stopPrevent(){}
 		}

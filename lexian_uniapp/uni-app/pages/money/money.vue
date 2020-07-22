@@ -10,11 +10,11 @@
 					<text class="money-num">{{ 1000 }}</text>
 					<text class="add">{{ rules }}</text>
 				</view>
-				<button class="cu-btn cash-btn" @tap="onWithdrawals">提现</button>
+				<button class="cu-btn cash-btn" @tap="onWithdrawals">充值</button>
 			</view>
 		</view>
 		<view class="content_box">
-			<view class="resale-list x-bc" @tap="jump('/pages/money/paySucess')">
+			<view class="resale-list x-bc" @tap="bandleCard()">
 				<view class="x-f">
 					<text class=" cuicon cuIcon-vipcard"></text>
 					<text>绑定银行卡</text>
@@ -42,10 +42,6 @@
 				</view>
 			</block>
 		</shopro-modal>
-		<!-- 自定义底部导航 -->
-		<shopro-tabbar></shopro-tabbar>
-		<!-- 关注弹窗 -->
-		<shopro-float-btn></shopro-float-btn>
 	</view>
 </template>
 
@@ -80,6 +76,7 @@ export default {
 		postMoney() {
 			// this.apply();
 			this.showModal = false;
+			this.$api.msg('请先绑定银行卡');
 		},
 		onInput() {
 			// if (+this.userinfo.money > 0 && +this.userinfo.money < +this.money) {
@@ -99,19 +96,15 @@ export default {
 			// 		that.getUserInfo();
 			// 	}
 			// });
-		},
-		// 提现规则
-		getApplyRules() {
-			// let that = this;
-			// that.$api('user_wallet_apply.rule').then(res => {
-			// 	if (res.code === 1) {
-			// 		that.rules = res.data;
-			// 	}
-			// });
-		},
+		},		
 		onWithdrawals() {
+				this.$api.msg('充值功能尚未开放');
 				this.showModal = true;
-			}
+			},
+		bandleCard(){	
+		this.$api.msg('银行卡绑定成功');
+		},
+		
 		}
 	}
 </script>

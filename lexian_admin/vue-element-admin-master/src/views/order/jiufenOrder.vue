@@ -296,7 +296,6 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           UpdateJiuFenOrder(this.temp).then(response => {
-            alert('修改成功')
             this.dialogFormVisible = false
             this.$notify({
               title: 'Success',
@@ -315,7 +314,6 @@ export default {
 
     handleDelete(row, index) {
       DeleteJiuFenOrder(row).then(response => {
-        alert('删除成功')
         this.$notify({
           title: 'Success',
           message: 'Delete Successfully',

@@ -37,8 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> list() {
 		Long xx = redisTemplate.opsForList().size(CacheStatic.categotyCache);
 		List<Category> categoryList = new ArrayList<>();
-		Long count = categoryMapper.countAll();
-		if (xx == count) {
+		//Long count = categoryMapper.countAll();
+		if (xx >0) {
 			List<String> lists = redisTemplate.opsForList().range(CacheStatic.categotyCache, 0, -1);
 			return JSON.parseArray(lists.toString(), Category.class);
 		}

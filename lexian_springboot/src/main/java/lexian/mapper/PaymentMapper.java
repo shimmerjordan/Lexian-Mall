@@ -10,11 +10,13 @@ import org.apache.ibatis.annotations.Param;
 
 import lexian.entity.Order;
 import lexian.entity.model.GoodDetailsModel;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author yang990322
  *
  */
+@Repository
 public interface PaymentMapper {
 
 	int insertOrder(Order order);
@@ -33,5 +35,5 @@ public interface PaymentMapper {
 	
 	int updateBalance(Map<String, Object> params);
 	
-	int updateOrderStatus(String orderId);
+	int updateOrderStatus(Map<String, Object> map);
 }

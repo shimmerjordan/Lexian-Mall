@@ -21,11 +21,11 @@
 	</insert>
 
 	<insert id="insertOrderItem" parameterType="java.util.List">
-		insert into order_item(order_id,commodity_id,commodity_quantity)
+		insert into order_item(order_id,commodity_id,commodity_quantity,status)
 		values
 		<foreach collection="gdms" item="gdm" index="index" separator=",">
 			(
-			#{orderId},#{gdm.commodityId},#{gdm.goodCount}
+			#{orderId},#{gdm.commodityId},#{gdm.goodCount},1
 			)
 		</foreach>
 	</insert>
@@ -61,12 +61,16 @@
 		#{customerId}
 	</update>
 
-	<update id="updateOrderStatus" parameterType="java.lang.String">
-		UPDATE orders SET
-		status = 2 WHERE
-		ID =
-		#{orderId}
-
+	<update id="updateOrderStatus" parameterType="java.util.HashMap">
+		UPDATE
+            orders,
+            order_item
+        SET
+            order_item.status = #{status}
+        WHERE
+            orders.ID = #{ orderID }
+            AND order_item.order_id = orders.ID
+            AND order_item.commodity_id = #{commodityID}
 	</update>
 
 </mapper>

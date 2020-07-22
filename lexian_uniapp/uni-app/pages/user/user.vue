@@ -34,15 +34,15 @@
 			
 			<view class="tj-sction">
 				<view class="tj-item"  @click="navTo('/pages/user/favorites')">
-					<text class="num">30</text>
+					<text class="num"></text>
 					<text>收藏夹商品</text>
 				</view>
 				<view class="tj-item">
-					<text class="num">0</text>
+					<text class="num"></text>
 					<text>优惠券</text>
 				</view>
 				<view class="tj-item">
-					<text class="num">20</text>
+					<text class="num"></text>
 					<text>积分</text>
 				</view>
 			</view>
