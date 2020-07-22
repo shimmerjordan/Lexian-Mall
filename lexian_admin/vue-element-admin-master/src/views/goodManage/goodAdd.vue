@@ -165,6 +165,9 @@ export default {
     }
   },
   computed: {},
+  // 页面创建后制作七牛云服务的token
+  // 添加的图片先上传到云服务器 云服务器返回url
+  // url添加到数据库中
   created() {
     this.nowTime = this.getDate()
     console.log(this.nowTime)
@@ -206,7 +209,6 @@ export default {
           // 调用api中的AddShopGood方法（参数是postForm）
           AddShopGood(this.postForm).then(response => {
             // 成功后弹窗提示添加成功
-            alert('添加成功')
             this.$notify({
               title: 'Success',
               message: '添加成功',

@@ -15,4 +15,5 @@ public interface CommentMapper {
 
 	List<Comment> selectByCommodityId(String commodityId);
 
+	Long countByCommodityId(String commodityId);
 }
