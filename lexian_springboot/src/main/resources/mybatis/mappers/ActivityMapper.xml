@@ -23,7 +23,9 @@
     select
     activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
-    where activity.is_delete = 0
+    inner join activity_shop on activity.id = activity_shop.activity_id
+    inner join shop on shop.id = activity_shop.shop_id
+    where  activity.is_delete = 0 and activity_shop.is_delete = 0
   </select>
 
 <!--  SQL更新活动信息，通过传回来的activity.id-->
