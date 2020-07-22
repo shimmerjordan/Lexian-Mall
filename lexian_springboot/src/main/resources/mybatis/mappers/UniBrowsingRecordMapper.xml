@@ -22,8 +22,9 @@
 	-->
 	<select id="getHistory" parameterType="java.lang.String" resultType="UniBrowsingRecord">
 		SELECT
-		browsing_record.browsing_time,
 		commodity.ID,
+		browsing_record.browsing_time,
+		browsing_record.commodity_id,
 		commodity.`name`,
 	    commodity.price,
 	    commodity.image
@@ -33,6 +34,7 @@
 		WHERE
 		browsing_record.customer_id = #{userID}
 		AND browsing_record.isDelete= 0
+		ORDER BY browsing_record.ID DESC
 	</select>
 
 

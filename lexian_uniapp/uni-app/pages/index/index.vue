@@ -35,29 +35,39 @@
 		</view>
 		<!-- 分类 -->
 		<view class="cate-section">
-			<view class="cate-item" >
-				<image src="/static/temp/i7.png" @click="navTo()"></image>
-				<text >手机数码</text>
+		  <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >			
+				<image src="/static/temp/i7.png"></image>
+				<text >手机数码</text>	
 			</view>
-			<view class="cate-item" @click="navTo()">
+		   </navigator>
+		    <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >
 				<image src="/static/temp/i5.png"></image>
 				<text >男装女装</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+			</navigator>
+		 <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item">
 				<image src="/static/temp/i4.png"></image>
 				<text >儿童用品</text>
 			</view>
-			<view class="cate-item" @click="navTo()">
+		   </navigator>			
+	      <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >
 				<image src="/static/temp/i6.png"></image>
 				<text >工艺摆件</text>
 		     </view>
-			<view class="cate-item" @click="navTo()">
+		   </navigator>			 
+		  <navigator url="../category/category" open-type="switchTab">
+			<view class="cate-item" >
 				<image src="/static/temp/i8.png"></image>
 				<text >零食水果</text>
 			</view>	
+		   </navigator>			
 		</view>
 		<!-- 店铺活动宣传 -->
-		<view class="ad-1" @click="navTo()">
+		<view class="ad-1">
 			<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
 		<!-- 店铺活动宣传的页面跳转 -->	
 		</view>
@@ -258,6 +268,9 @@ import common from '@/store/common.js'
 import util from '@/store/utils.js'
 import {  mapState } from 'vuex';
 	export default {
+		computed: {
+			...mapState(['hasLogin'])
+		},
 		data() {
 			return {
 				searchName: '',
@@ -294,8 +307,10 @@ import {  mapState } from 'vuex';
 		  uniSearch
       },
 		onLoad() {
+			setTimeout(()=>{
+				this.getUser();
+			}, 200)
 			this.loadData();
-			this.getUser();
 			//设置倒计时时间，1s变换一次
 			var interval = setInterval(function () {
 				var d = new Date();   //获取系统日期和时间
@@ -391,7 +406,7 @@ import {  mapState } from 'vuex';
 				});
 			},
 			inputChange(e) {
-			console.log(e.detail);
+			console.log(e.detail.value);
 			const keyword = event.detail.value;
 			this.searchName = keyword;
 			console.log(this.searchName);
@@ -409,11 +424,27 @@ import {  mapState } from 'vuex';
 					this.searchList = searchList;
 					},
 				});
+				if(this.searchList.length){
 				let itemID = this.searchList[0].id;
-				uni.navigateTo({
-					 url: `/pages/product/product?id=${itemID}`
+				let userId ="";
+				uni.getStorage({
+				    key:"userInfo",
+				 	success(e){
+				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
+				}
 				});
-				},
+				uni.navigateTo({
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
+				});
+				}else{
+					this.$api.msg('未找到搜索的商品');
+					this.searchName='';
+					
+				}
+			},
 			//轮播图切换修改背景色
 			swiperChange(e) {
 				const index = e.detail.current;
@@ -422,7 +453,6 @@ import {  mapState } from 'vuex';
 			},
 			//跳转到活动商品
 			navToActivity(item) {
-				console.log(item);
 				let aID = item.id;
 				uni.request({
 					url: this.apiServer + "/uniIndex/getSalesItem",
@@ -434,10 +464,25 @@ import {  mapState } from 'vuex';
 					this.salesItemList = salesItemList;
 					},
 				});
+				if(this.salesItemList.length){
 				let itemID = this.salesItemList[0].id;
-				uni.navigateTo({
-					 url: `/pages/product/product?id=${itemID}`
+				console.log(itemID);
+				let userId ="";
+				uni.getStorage({
+				    key:"userInfo",
+				 	success(e){
+				  	userId = e.data.ID;//这就是你想要取的token
+					// if(userId == undefined){
+					// 	userId = e.data.ID;
+					// }
+				}
 				});
+				uni.navigateTo({
+					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
+				});
+				}else{
+					this.$api.msg('未找活动对应的商品');
+					}
 				},
 			//详情页
 			navToDetailPage(item) {		
@@ -456,12 +501,6 @@ import {  mapState } from 'vuex';
 					 url: `/pages/product/product?id=${itemID}&uid=${userId}`
 				});
 			},
-			navTo() {
-				uni.navigateTo({
-					url: `pages/category/category`
-				})
-			},
-
 		// #ifndef MP
 		//点击导航栏 buttons 时触发
 		onNavigationBarButtonTap(e) {

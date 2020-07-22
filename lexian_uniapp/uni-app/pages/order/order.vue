@@ -30,7 +30,6 @@
 							<text class="time">{{item.time}}</text>
 							<text class="state" :style="{color: item.stateTipColor}">{{item.stateTip}}</text>
 							<text 
-								v-if="item.state==9" 
 								class="del-btn yticon icon-iconfontshanchu1"
 								@click="deleteOrder(index)"
 							></text>
@@ -75,7 +74,7 @@
 							<button class="action-btn recom" @click="toFinishOrder(item,3)">确认收货</button>
 						</view>
 						<view class="action-box b-t" v-if="item.state == 5">
-							<button class="action-btn" @click="appeal(item, 5)">正在退款</button>
+							<button class="action-btn">正在退款</button>
 							<button class="action-btn recom" @click="toFinishOrder(item,0)">确认完结</button>
 						</view>
 						
@@ -84,7 +83,7 @@
 							<button class="action-btn recom" @click="toComment(item)">立即评价</button>
 						</view>
 						<view class="action-box b-t" v-if="item.state == 6">
-							<button class="action-btn" @click="appeal(item, 6)">售后待理</button>
+							<button class="action-btn">售后待理</button>
 							<button class="action-btn recom" @click="toComment(item)">立即评价</button>
 						</view>
 						
@@ -93,7 +92,7 @@
 							<button class="action-btn recom" @click="toFinishOrder(item,0)">取消申诉</button>
 						</view>
 						<view class="action-box b-t" v-if="item.state == 7">
-							<button class="action-btn" @click="appeal(item, 7)">正在处理</button>
+							<button class="action-btn">正在处理</button>
 							<button class="action-btn recom" @click="toFinishOrder(item,0)">完结确认</button>
 						</view>
 					</view>
@@ -199,8 +198,8 @@
 					},
 					method: 'POST',
 					success: (res) => {
-					this.ordersList = res.data;
-					console.log("后台返回的ordersList", this.ordersList);
+						this.ordersList = res.data;
+						console.log("后台返回的ordersList", this.ordersList);
 					}
 				});
 			},
@@ -228,12 +227,16 @@
 						//添加不同状态下订单的表现形式
 						item = Object.assign(item, this.orderStateExp(item.state));
 						//演示数据所以自己进行状态筛选
-						if(state === 0){
+						
+						if(state == 0){
 							//0为全部订单
 							return item;
 						}
-						//由于这里订单有两种状态，正在处理和提交申请，这里每组状态的差值为3，这样设置方便tabItem的显示
-						if(state == item.state || state == item.state - 3){
+						//由于这里订单有两种状态，正在处理和提交申请
+						if(state == item.state){
+							return item;
+						}
+						if(item.state > 4 && state == 4){
 							return item;
 						}
 						return item.state === state
@@ -265,6 +268,20 @@
 				let total = item.goodList[0].number * item.goodList[0].price;
 				let goodName = item.goodList[0].title;
 				let commodityID = item.goodList[0].commodityID;
+				
+				//首先设置订单商品为未付款状态
+				uni.request({
+					url: this.apiServer + "/order/modifyCustomerOrderState",
+					data:{
+						"orderID": item.orderID,
+						"commodityID": commodityID,
+						"status": 1
+						},
+					method: 'POST',
+					success: (res) => {
+						this.$forceUpdate();
+					}
+				});
 				uni.navigateTo({
 					url: `/pages/money/pay?totalMoney=${total}&uid=${this.userInfo.ID}&orderID=${item.orderID}&goodNames=${goodName}&commodityID=${commodityID}`
 				})
@@ -325,6 +342,7 @@
 					url: this.apiServer + "/order/modifyCustomerOrderState",
 					data:{
 						"orderID": list.orderID,
+						"commodityID": list.goodList[0].commodityID,
 						"status": index
 						},
 					method: 'POST',
@@ -344,7 +362,8 @@
 				uni.request({
 					url: this.apiServer + "/order/deleteCustomerOrder",
 					data:{
-						"orderID": list.orderID
+						"orderID": list.orderID,
+						"commodityID": list.goodList[0].commodityID
 					},
 					method: 'POST',
 					success: (res) => {
@@ -362,22 +381,22 @@
 				// 这里获取当前点击的订单对应orderID返回后端
 				let list = this.navList[this.tabCurrentIndex].orderList;
 				let index = list.findIndex(val=>val.id === item.id);
-				console.log(list[index].orderID)
 				uni.showLoading({
 					title: '请稍后'
 				})
 				uni.request({
 					url: this.apiServer + "/order/cancelCustomerOrder",
 					data:{
-						"orderID": list[index].orderID
+						"orderID": item.orderID,
+						"commodityID": list.goodList[0].commodityID
 					},
 					method: 'POST',
 					success: (res) => {
 						console.log(res.data)
 						setTimeout(()=>{
-							let {stateTip, stateTipColor} = this.orderStateExp(9);
+							let {stateTip, stateTipColor} = this.orderStateExp(8);
 							item = Object.assign(item, {
-								state: 9,
+								state: 8,
 								stateTip, 
 								stateTipColor
 							})
@@ -388,6 +407,10 @@
 							uni.hideLoading();
 							
 						}, 600)
+					},
+					fail: () => {
+						this.$api.msg('网络错误');
+						uni.hideLoading();
 					}
 				});
 				
@@ -414,6 +437,10 @@
 						stateTip = '售后待处理'; break;
 					case 7:
 						stateTip = '申诉审核中'; break;
+					case 8:
+						stateTip = '订单已关闭';
+						stateTipColor = '#909399';
+						break;
 					case 9:
 						stateTip = '订单已关闭'; 
 						stateTipColor = '#909399';

@@ -56,7 +56,7 @@
         </div>
 
         <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
-          选择登录身份
+          其他登录方式
         </el-button>
       </div>
     </el-form>

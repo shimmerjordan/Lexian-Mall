@@ -16,6 +16,9 @@
 			</view>
 			<text class="cate-item yticon icon-fenlei1" @click="toggleCateMask('show')"></text>
 		</view>
+		<view class="mp-search-box navbar" :style="{position:headerPosition,top:headerTop1}">
+			<input  class="ser-input" type="text" placeholder="请输入商品数据"  v-model="searchName" @confirm="searchCommodity()" />				  
+		</view> 
 		<view class="goods-list">
 			<view 
 				v-for="(item, index) in goodsList" :key="index"
@@ -66,6 +69,7 @@
 				categoryId:-1,
 				headerPosition:"fixed",
 				headerTop:"0px",
+				headerTop1:"81px",
 				loadingType: 'more', //加载更多状态
 				filterIndex: 0, 
 				//cateId: 0, //已选三级分类id
@@ -73,7 +77,8 @@
 				cateList: [],
 				goodsList: [],
 				pageNo:1,
-				pageSize:10
+				pageSize:10,
+				searchName: ''
 			};
 		},
 		
@@ -140,7 +145,8 @@
 				let params = {
 				          "categoryId":this.categoryId,
 				          "pageNo":this.pageNo,
-						  "pageSize":this.pageSize					  
+						  "pageSize":this.pageSize,
+						  "name":this.searchName
 				    }
 				if(this.filterIndex === 1){	
 					params.sortType = 1;
@@ -191,6 +197,13 @@
 					duration: 300,
 					scrollTop: 0
 				})
+				this.pageNo = 1;
+				this.loadData('refresh', 1);
+				uni.showLoading({
+					title: '正在加载'
+				})
+			},
+			searchCommodity(){
 				this.pageNo = 1;
 				this.loadData('refresh', 1);
 				uni.showLoading({
@@ -385,7 +398,7 @@
 	.goods-list{
 		display:flex;
 		flex-wrap:wrap;
-		padding: 0 30upx;
+		padding: 30px 30upx;
 		background: #fff;
 		.goods-item{
 			display:flex;
@@ -430,6 +443,25 @@
 			}
 		}
 	}
-	
+	.mp-search-box{
+		position:absolute;
+		left: 0;
+		top: 80upx;
+		z-index: 9999;
+		width: 100%;
+		padding: 0 80upx;
+		display: inline-block;
+	.ser-input{
+		flex:1;
+		height: 56upx;
+		line-height: 56upx;
+		text-align: center;
+		margin-top: 5px;
+		font-size: 28upx;
+		color:$font-color-base;
+		border-radius: 20px;
+		background: rgba(221, 230, 255, 0.6);
+	}
+	}
 
 </style>
