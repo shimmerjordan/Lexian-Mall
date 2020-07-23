@@ -239,8 +239,6 @@
 					this.$api.msg("不满足满减条件");
 					this.toggleMask('none');
 				}
-			
-				
 			},
 			submit(){
 				var _this = this;
