@@ -83,7 +83,7 @@
   insert into
   activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete, img)
   values
-(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, 'https://i.loli.net/2020/07/07/nsQIYyDPUWxBdNZ.jpg')
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, #{img})
   </insert>
 
 <!--SQL查询店铺信息通过传入参数（id，name,beginTime,endTime）-->
