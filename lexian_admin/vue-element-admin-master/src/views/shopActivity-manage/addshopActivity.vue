@@ -91,8 +91,29 @@
               <aside>门店活动介绍</aside>
               <el-input v-model="postForm.description" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" />
             </div>
-            <aside>上传门店活动图片</aside>
-            <dropzone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS" />
+            <aside width="{100}">商品图片</aside>
+            <div class="editor-container" width="50px">
+              <el-upload
+                class="upload-pic"
+                :action="domain"
+                :data="QiniuData"
+                :on-remove="handleRemove"
+                :on-error="uploadError"
+                :on-success="uploadSuccess"
+                :before-remove="beforeRemove"
+                :before-upload="beforeAvatarUpload"
+                multiple
+                :limit="1"
+                :on-exceed="handleExceed"
+                :file-list="fileList"
+              >
+                <el-button size="small" type="primary">点击上传图片</el-button>
+                <div slot="tip" class="el-upload__tip" style="color:red">只能上传jpg/png文件，且不超过2MB</div>
+              </el-upload>
+              <div>
+                <img v-if="postForm.img" class="pic-box" :src="postForm.img" width="150px" height="150px">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -117,18 +138,28 @@
 </template>
 
 <script>
-import Dropzone from '@/components/Dropzone'
 import Sticky from '../../components/Sticky/index.vue'
 import { getMaxActivityId, insertActivity } from '@/api/activity'
 import { getAllShop } from '@/api/shop'
 import { insertActivityShop } from '@/api/activityShop'
+import { genUpToken } from '../../utils/qiuToken'
 
 export default {
   name: 'AddShopActivity',
-  components: { Dropzone, Sticky },
+  components: { Sticky },
   filters: {},
   data() {
     return {
+      QiniuData: {
+        key: '', // 图片名字处理
+        token: '' // token
+      },
+      domain: 'http://up-z1.qiniup.com', // 七牛云的上传地址（华南区）
+      qiniuaddr: 'http://qdrwvmqsv.bkt.clouddn.com/', // 七牛云的图片外链地址 你的七牛云里配置有
+      // uploadPicUrl: "", //提交到后台图片地址
+      fileList: [],
+      nowTime: '',
+      fileExtension: '',
       // 数据初始化
       shopList: {
         page: 1,
@@ -151,6 +182,7 @@ export default {
         shopActivityId: '',
         createTime: '',
         shopActivityName: '',
+        img: '',
         beginTime: '',
         endTime: '',
         type: '',
@@ -212,6 +244,19 @@ export default {
   created() {
     this.getMaxActivity() // 页面加载时，获取最大活动id
     this.getActivityShopList() // 获取店铺列表
+    this.nowTime = this.getDate()
+    console.log(this.nowTime)
+    var token
+    var policy = {}
+    var bucketName = 'xinyi0919'// 你的七牛桶名称
+    var AK = '2q1L4kfkKIJKqCWxhFs3e7BVhD-asgHXJJH2gbLY' // 你的七牛AK
+    var SK = 'RcliijVOtUHBZ7uz3qPH_0ifMKVXv3Tzr-qMTNiw'// 你的七牛SK
+    var deadline = Math.round(new Date().getTime() / 1000) + 360000
+    policy.scope = bucketName
+    policy.deadline = deadline
+    token = genUpToken(AK, SK, policy)
+    this.QiniuData.token = token
+    console.log(this.QiniuData.token)
   },
   mounted() {
     // 获取当前系统时间，并转换好格式
@@ -239,16 +284,6 @@ export default {
         setTimeout(() => {
         }, 1.5 * 1000)
       })
-    },
-    // dropzone组件，上传图片
-    dropzoneS(file) {
-      console.log(file)
-      this.$message({ message: 'Upload success', type: 'success' })
-    },
-    // 移除上传的图片
-    dropzoneR(file) {
-      console.log(file)
-      this.$message({ message: 'Delete success', type: 'success' })
     },
     // 审核提交的新增活动信息
     submit() {
@@ -311,6 +346,92 @@ export default {
     // 点击取消时，返回到活动列表
     cancel() {
       this.$router.push({ path: '/shopActivity/shopActivity-manage' })
+    },
+    handleRemove(file, fileList) {
+      this.postForm.img = ''
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(
+        `当前限制选择 1 张图片，如需更换，请删除上一张图片在重新选择！`
+      )
+    },
+    beforeAvatarUpload(file) {
+      const isPNG = file.type === 'image/png'
+      const isJPEG = file.type === 'image/jpeg'
+      const isJPG = file.type === 'image/jpg'
+      const isLt2M = file.size / 1024 / 1024 < 2
+
+      if (!isPNG && !isJPEG && !isJPG) {
+        this.$message.error('上传头像图片只能是 jpg、png、jpeg 格式!')
+        return false
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+        return false
+      }
+      // const isSize = new Promise(function(resolve, reject) {
+      //   const width = 100
+      //   const height = 100
+      //   const _URL = window.URL || window.webkitURL
+      //   const img = new Image()
+      //   img.onload = function() {
+      //             		// 在这里可以获取你上传图片的宽高size
+      //     console.log(`img.width:${img.width} img.height:${img.height} img.size:${file.size}`)
+      //     const valid = img.width >= width && img.height >= height
+      //     valid ? resolve() : reject()
+      //   }
+      //   img.src = _URL.createObjectURL(file)
+      // }).then(() => {
+      //   return file
+      // }, () => {
+      //   this.$message.error('上传的icon必须是等于或大于100*100!')
+      //   return Promise.reject()
+      // })
+      console.log(this.nowTime)
+      console.log(this.nowTime)
+      // 这个this.fileExtension是文件名的后缀
+      this.fileExtension = file.name.split('.').pop()
+      console.log(this.fileExtension)
+      // 这里的key给加上了时间戳，目的是为了防止上传冲突
+      this.QiniuData.key = `upload_pic_${this.nowTime}.${this.fileExtension}`
+    },
+    uploadSuccess(response, file, fileList) {
+      console.log(fileList)
+      this.postForm.img = `${this.qiniuaddr}/${response.key}`
+      console.log(this.postForm.img)
+      // 在这里你就可以获取到上传到七牛的外链URL了
+    },
+    uploadError(err, file, fileList) {
+      if (err) {
+        console.log(err)
+      }
+      this.$message({
+        message: '上传出错，请重试！',
+        type: 'error',
+        center: true
+      })
+    },
+    beforeRemove(file, fileList) {
+      // return this.$confirm(`确定移除 ${ file.name }？`);
+    },
+    // 以下是时间戳函数
+    getDate() {
+      var myDate = new Date()
+      // 获取当前年
+      var year = myDate.getFullYear()
+      // 获取当前月
+      var month = myDate.getMonth() + 1
+      // 获取当前日
+      var date = myDate.getDate()
+      var h = myDate.getHours() // 获取当前小时数(0-23)
+      var m = myDate.getMinutes() // 获取当前分钟数(0-59)
+      var s = myDate.getSeconds()
+      // 获取当前时间
+      var now = year + '_' + this.conver(month) + '_' + this.conver(date) + '_' + this.conver(h) + '_' + this.conver(m) + '_' + this.conver(s)
+      return now
+    },
+    conver(s) {
+      return s < 10 ? '0' + s : s
     }
   }
 }

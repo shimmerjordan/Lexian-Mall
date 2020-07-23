@@ -75,7 +75,7 @@
     insert into
     shop(id, `name`,establishTime, kind, status, tag , description, isDelete, img)
     values
-    (#{shopId}, #{shopName}, #{date},#{unitId}, 0,#{tag}, #{description}, 0, 'https://i.loli.net/2020/07/07/nsQIYyDPUWxBdNZ.jpg')
+    (#{shopId}, #{shopName}, #{date},#{unitId}, 0,#{tag}, #{description}, 0, #{img})
   </insert>
 
 <!--  批量更新店铺状态为正在营业，根据传过来的list，用foreach循环逐个更细状态-->
