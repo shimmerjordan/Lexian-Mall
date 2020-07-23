@@ -22,8 +22,7 @@ public class BrowsingRecordServiceImpl implements BrowsingRecordService {
 	
 	@Override
 	public void save(BrowsingRecord browsingRecord) {
-		browsingRecordMapper.insert(browsingRecord);
-		
+		browsingRecordMapper.insert(browsingRecord);	
 	}
 
 }

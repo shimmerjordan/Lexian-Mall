@@ -447,7 +447,7 @@
 		position:absolute;
 		left: 0;
 		top: 80upx;
-		z-index: 9999;
+		z-index: 80;
 		width: 100%;
 		padding: 0 80upx;
 		display: inline-block;

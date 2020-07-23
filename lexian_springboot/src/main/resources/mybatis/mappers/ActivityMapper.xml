@@ -23,7 +23,9 @@
     select
     activity.id, activity.`name`, activity.description, activity.img, activity.createTime, activity.beginTime, activity.endTime, activity.type, activity.status
     from activity
-    where activity.is_delete = 0
+    inner join activity_shop on activity.id = activity_shop.activity_id
+    inner join shop on shop.id = activity_shop.shop_id
+    where  activity.is_delete = 0 and activity_shop.is_delete = 0
   </select>
 
 <!--  SQL更新活动信息，通过传回来的activity.id-->
@@ -81,7 +83,7 @@
   insert into
   activity(id, `name`, description, createTime, beginTime, endTime, type, status, is_delete, img)
   values
-(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, 'https://i.loli.net/2020/07/07/nsQIYyDPUWxBdNZ.jpg')
+(#{shopActivityId},#{shopActivityName},#{description},#{createTime},#{beginTime},#{endTime},#{type},1,0, #{img})
   </insert>
 
 <!--SQL查询店铺信息通过传入参数（id，name,beginTime,endTime）-->

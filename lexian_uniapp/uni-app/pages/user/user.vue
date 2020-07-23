@@ -34,15 +34,15 @@
 			
 			<view class="tj-sction">
 				<view class="tj-item"  @click="navTo('/pages/user/favorites')">
-					<text class="num">30</text>
+					<text class="num"></text>
 					<text>收藏夹商品</text>
 				</view>
 				<view class="tj-item">
-					<text class="num">0</text>
+					<text class="num"></text>
 					<text>优惠券</text>
 				</view>
 				<view class="tj-item">
-					<text class="num">20</text>
+					<text class="num"></text>
 					<text>积分</text>
 				</view>
 			</view>
@@ -425,14 +425,14 @@
 		}
 		.floor-item{
 			width: 150upx;
-			margin-right: 25upx;
+			margin-right: 20upx;
 			font-size: $font-sm+2upx;
 			color: $font-color-dark;
 			line-height: 1.8;
 			image{
 				width: 150upx;
 				height: 150upx;
-				border-radius: 15upx;
+				border-radius: 6upx;
 			}
 		}
 	}

@@ -69,12 +69,11 @@
 </template>
 
 <script>
-const defaultFormThead = ['admin', 'editor']
+const defaultFormThead = ['SystemAdmin', 'ShopAdmin']
 
 const roleOptions = [
-  { key: 1, name: 'admin' },
-  { key: 2, name: 'editor' },
-  { key: 3, name: 'visitor' }
+  { key: 1, name: 'SystemAdmin' },
+  { key: 2, name: 'ShopAdmin' }
 ]
 
 import { getAllManager, updateManager, addManager, deleteManager } from '@/api/manager'
@@ -84,7 +83,7 @@ export default {
     return {
       tableData: [],
       key: 1, // table key
-      formTheadOptions: ['admin', 'editor', 'visitor'],
+      formTheadOptions: ['SystemAdmin', 'ShopAdmin'],
       checkboxVal: defaultFormThead, // checkboxVal
       formThead: defaultFormThead, // 默认表头 Default header]
       admins: [],
@@ -123,6 +122,7 @@ export default {
         this.visitors = response.data[2]
         this.length.push(this.visitors.length)
         this.setTable()
+        console.log(this.tableData)
       })
     },
     setTable() {
@@ -131,20 +131,16 @@ export default {
       for (let i = 0; i < l; i++) {
         var ob = {}
         ob.name = ''
-        ob.admin = ''
-        ob.editor = ''
-        ob.visitor = ''
+        ob.SystemAdmin = ''
+        ob.ShopAdmin = ''
         this.tableData.push(ob)
       }
       this.tableData[0].name = '人员姓名'
       for (let i = 0; i < this.admins.length; i++) {
-        this.tableData[i].admin = this.admins[i].nickname
+        this.tableData[i].SystemAdmin = this.admins[i].nickname
       }
       for (let i = 0; i < this.editors.length; i++) {
-        this.tableData[i].editor = this.editors[i].nickname
-      }
-      for (let i = 0; i < this.visitors.length; i++) {
-        this.tableData[i].visitor = this.visitors[i].nickname
+        this.tableData[i].ShopAdmin = this.editors[i].nickname
       }
     },
     getCellIndex: function({ row, column, rowIndex, columnIndex }) {
@@ -153,12 +149,10 @@ export default {
     },
     handleUpdate(row, column) {
       this.dialogFormVisible = true
-      if (column.label === 'admin') {
+      if (column.label === 'SystemAdmin') {
         this.temp = this.admins[row.index]
-      } else if (column.label === 'editor') {
+      } else if (column.label === 'ShopAdmin') {
         this.temp = this.editors[row.index]
-      } else if (column.label === 'visitor') {
-        this.temp = this.visitors[row.index]
       }
       this.dialogStatus = 'update'
       this.temp.birthday = new Date(this.temp.birthday)
@@ -227,12 +221,10 @@ export default {
       })
     },
     deleteMember(row, column) {
-      if (column.label === 'admin') {
+      if (column.label === 'SystemAdmin') {
         this.temp = this.admins[row.index]
-      } else if (column.label === 'editor') {
+      } else if (column.label === 'ShopAdmin') {
         this.temp = this.editors[row.index]
-      } else if (column.label === 'visitor') {
-        this.temp = this.visitors[row.index]
       }
       deleteManager(this.temp.id).then(response => {
         if (response.data) {
