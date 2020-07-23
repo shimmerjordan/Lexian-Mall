@@ -221,12 +221,10 @@ export default {
       })
     },
     deleteMember(row, column) {
-      if (column.label === 'admin') {
+      if (column.label === 'SystemAdmin') {
         this.temp = this.admins[row.index]
-      } else if (column.label === 'editor') {
+      } else if (column.label === 'ShopAdmin') {
         this.temp = this.editors[row.index]
-      } else if (column.label === 'visitor') {
-        this.temp = this.visitors[row.index]
       }
       deleteManager(this.temp.id).then(response => {
         if (response.data) {
