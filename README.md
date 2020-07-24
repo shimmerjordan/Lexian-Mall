@@ -227,4 +227,6 @@
 
   # 项目地址
 
+  github：https://github.com/shimmerjordan/Lexian-Mall
+  
   gitee：https://gitee.com/xin_yi0919/NEU_Lexian
