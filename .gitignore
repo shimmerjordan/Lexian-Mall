@@ -15,5 +15,6 @@
 
 /lexian_springboot/log/
 /lexian_springcloud/*/log/
-
+*/.log
+*/.idea
 /lexian_uniapp/uni-app/unpackage/dist/

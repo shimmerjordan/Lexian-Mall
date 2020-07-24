@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : server.natappfree.cc
+ Source Server         : dc2-user
  Source Server Type    : MySQL
  Source Server Version : 80020
- Source Host           : server.natappfree.cc:41026
+ Source Host           : server.natappfree.cc:39965
  Source Schema         : lexian
 
  Target Server Type    : MySQL
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 18/07/2020 19:09:06
+ Date: 23/07/2020 22:16:23
 */
 
 SET NAMES utf8mb4;
@@ -138,7 +138,7 @@ CREATE TABLE `address`  (
   INDEX `ID_3`(`ID`) USING BTREE,
   INDEX `ID_4`(`ID`) USING BTREE,
   INDEX `ID_5`(`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客地址信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客地址信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
@@ -147,7 +147,7 @@ INSERT INTO `address` VALUES (1, '湖北省', '武汉市', '武昌区', '安国�
 INSERT INTO `address` VALUES (2, '山东省', '济南市', '历下区', '百花街真新六街坊', 250000, '潘敏智', '13978654124', 0);
 INSERT INTO `address` VALUES (3, '辽宁省', '沈阳市', '和平区', '白城路和亭佳苑', 110000, '魏鹤轩', '13978654125', 0);
 INSERT INTO `address` VALUES (4, '北京市', '北京市', '朝阳区', '宝昌路协通公寓', 100000, '崔和悦', '13978654126', 0);
-INSERT INTO `address` VALUES (5, '辽宁省', '沈阳市', '浑南区', '白渡路博泰新苑', 110000, '朱奇邃', '13978654127', 0);
+INSERT INTO `address` VALUES (5, '河南省', '洛阳市', '涧西区', '天津路(云峰国际)', 110000, '朱奇邃', '13978654127', 0);
 INSERT INTO `address` VALUES (6, '浙江省', '杭州市', '西湖区', '宝安路菊园五街坊', 310012, '龚玉泽', '13978654128', 0);
 INSERT INTO `address` VALUES (7, '湖南省', '长沙市', '岳麓区', '白城南住友嘉馨名园', 410006, '乔紫丝', '13978654129', 0);
 INSERT INTO `address` VALUES (8, '河南省', '郑州市', '中原区', '安澜路阳光翠竹苑', 450000, '邓洁静', '13978654130', 0);
@@ -163,6 +163,8 @@ INSERT INTO `address` VALUES (17, '浙江省', '杭州市', '余杭区', '半淞
 INSERT INTO `address` VALUES (18, '湖南省', '长沙市', '芙蓉区', '百色路天人新苑', 410000, '贾从蓉', '13978654140', 0);
 INSERT INTO `address` VALUES (19, '河南省', '郑州市', '金水区', '包头路爱佳公寓', 450000, '王友琴', '13978654141', 0);
 INSERT INTO `address` VALUES (20, '云南省', '昆明市', '五华区', '安汾路金色家园', 650000, '秦君丽', '13978654142', 0);
+INSERT INTO `address` VALUES (41, '河南省', '郑州', '市', '金水区黄河南路(金水区中义·阿卡迪亚(黄河南路西))', NULL, '金砖', '13840510891', 0);
+INSERT INTO `address` VALUES (42, '湖南省', '长沙市', '岳麓区', '岳麓大道218号(中共长沙市委员会)', NULL, 'x', '13241231231', 0);
 
 -- ----------------------------
 -- Table structure for authority
@@ -198,7 +200,7 @@ CREATE TABLE `bill`  (
   `order_status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '账单状态',
   `is_delete` int(0) NOT NULL DEFAULT 0 COMMENT '删除标记',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '账单明细表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '账单明细表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bill
@@ -232,6 +234,20 @@ INSERT INTO `bill` VALUES (26, '806945236921616', '罗技无线键盘', 120.00, 
 INSERT INTO `bill` VALUES (27, '806945236921617', '戴尔笔记本', 4999.00, '2020-07-01 13:01:01', '待收货', 0);
 INSERT INTO `bill` VALUES (28, '806945236921618', 'A4纸500张', 20.00, '2020-07-02 13:01:01', '等待退款', 0);
 INSERT INTO `bill` VALUES (29, '806945236921619', '保温杯', 35.00, '2020-07-03 13:01:01', '待评价', 0);
+INSERT INTO `bill` VALUES (46, '772900721021614', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:16:14', '待收货', 0);
+INSERT INTO `bill` VALUES (47, '763500721021853', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:18:53', '待收货', 0);
+INSERT INTO `bill` VALUES (48, '975200721022011', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:20:12', '待收货', 0);
+INSERT INTO `bill` VALUES (49, '940600721022530', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:25:31', '待收货', 0);
+INSERT INTO `bill` VALUES (50, '308400721023117', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:31:18', '待收货', 0);
+INSERT INTO `bill` VALUES (51, '639800721023442', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:34:43', '待收货', 0);
+INSERT INTO `bill` VALUES (52, '663900721023805', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:38:06', '待收货', 0);
+INSERT INTO `bill` VALUES (53, '804300721023857', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-20 18:38:58', '待收货', 0);
+INSERT INTO `bill` VALUES (54, '386500721115756', '电视柜摆件凤凰轻奢工艺美式家居软装摆设客厅欧式装饰品结婚礼物', 108.58, '2020-07-21 03:57:57', '待收货', 0);
+INSERT INTO `bill` VALUES (55, '169700721122037', '皮卡丘联名短袖t恤男士', 342.00, '2020-07-21 04:20:38', '待收货', 0);
+INSERT INTO `bill` VALUES (56, '221700722144439', '华为旗下荣耀手机荣耀9X麒麟810芯片4800万超清双摄全面屏智能手机官网旗舰', 1099.98, '2020-07-22 06:44:40', '待收货', 0);
+INSERT INTO `bill` VALUES (57, '962200722144451', '华为旗下荣耀手机荣耀9X麒麟810芯片4800万超清双摄全面屏智能手机官网旗舰', 1099.98, '2020-07-22 06:44:52', '待收货', 0);
+INSERT INTO `bill` VALUES (58, '852900723210317', 'OPPO Reno Ace骁龙855plus智能游戏手机全面屏65W闪充官方旗舰店renoace3', 2899.58, '2020-07-23 13:03:18', '待收货', 0);
+INSERT INTO `bill` VALUES (59, '105500723210359', 'OPPO Reno Ace骁龙855plus智能游戏手机全面屏65W闪充官方旗舰店renoace3', 2899.58, '2020-07-23 13:03:59', '待收货', 0);
 
 -- ----------------------------
 -- Table structure for browsing_record
@@ -249,7 +265,7 @@ CREATE TABLE `browsing_record`  (
   INDEX `browsing_customer`(`customer_id`) USING BTREE,
   CONSTRAINT `browsing_commodity` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `browsing_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 132 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '浏览记录（关系表）' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 295 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '浏览记录（关系表）' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of browsing_record
@@ -299,6 +315,130 @@ INSERT INTO `browsing_record` VALUES (80, 1, '2020-07-18 09:03:10', 0, '2020-07-
 INSERT INTO `browsing_record` VALUES (81, 1, '2020-07-18 09:03:22', 0, '2020-07-18 09:03:22.206000', 180);
 INSERT INTO `browsing_record` VALUES (83, 1, '2020-07-18 09:03:35', 0, '2020-07-18 09:03:35.362000', 181);
 INSERT INTO `browsing_record` VALUES (13, 1, '2020-07-18 09:03:51', 0, '2020-07-18 09:03:50.692000', 182);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-18 12:06:24', 0, '2020-07-18 12:06:24.388000', 183);
+INSERT INTO `browsing_record` VALUES (3, 1, '2020-07-18 12:06:34', 0, '2020-07-18 12:06:33.561000', 184);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-18 14:57:48', 0, '2020-07-18 14:57:47.991000', 185);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-19 04:28:22', 0, '2020-07-19 04:28:21.511000', 186);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-19 04:28:39', 0, '2020-07-19 04:28:39.071000', 187);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-19 04:29:19', 0, '2020-07-19 04:29:18.979000', 188);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-19 04:33:38', 0, '2020-07-19 04:33:37.812000', 189);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-19 04:34:07', 0, '2020-07-19 04:34:06.975000', 190);
+INSERT INTO `browsing_record` VALUES (3, 1, '2020-07-19 04:34:22', 0, '2020-07-19 04:34:21.822000', 191);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-19 04:34:30', 0, '2020-07-19 04:34:30.133000', 192);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-19 04:34:51', 0, '2020-07-19 04:34:50.936000', 193);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-19 04:35:13', 0, '2020-07-19 04:35:12.897000', 194);
+INSERT INTO `browsing_record` VALUES (70, 1, '2020-07-19 04:41:53', 0, '2020-07-19 04:41:53.335000', 195);
+INSERT INTO `browsing_record` VALUES (70, 1, '2020-07-19 04:45:57', 0, '2020-07-19 04:45:56.940000', 196);
+INSERT INTO `browsing_record` VALUES (70, 1, '2020-07-19 04:47:14', 0, '2020-07-19 04:47:13.507000', 197);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-19 04:47:47', 0, '2020-07-19 04:47:46.860000', 198);
+INSERT INTO `browsing_record` VALUES (70, 1, '2020-07-19 04:50:00', 0, '2020-07-19 04:49:59.803000', 199);
+INSERT INTO `browsing_record` VALUES (60, 1, '2020-07-19 04:51:28', 0, '2020-07-19 04:51:27.633000', 200);
+INSERT INTO `browsing_record` VALUES (68, 1, '2020-07-19 04:53:41', 0, '2020-07-19 04:53:41.158000', 201);
+INSERT INTO `browsing_record` VALUES (65, 1, '2020-07-19 04:53:58', 0, '2020-07-19 04:53:58.352000', 202);
+INSERT INTO `browsing_record` VALUES (84, 1, '2020-07-19 04:54:06', 0, '2020-07-19 04:54:06.161000', 203);
+INSERT INTO `browsing_record` VALUES (68, 1, '2020-07-19 05:06:44', 0, '2020-07-19 05:06:43.823000', 204);
+INSERT INTO `browsing_record` VALUES (68, 1, '2020-07-19 05:09:02', 0, '2020-07-19 05:09:01.578000', 205);
+INSERT INTO `browsing_record` VALUES (78, 1, '2020-07-19 07:59:33', 0, '2020-07-19 07:59:33.251000', 206);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-20 06:53:40', 0, '2020-07-20 06:53:39.922000', 207);
+INSERT INTO `browsing_record` VALUES (12, 1, '2020-07-20 06:54:15', 0, '2020-07-20 06:54:14.854000', 208);
+INSERT INTO `browsing_record` VALUES (12, 1, '2020-07-20 07:19:11', 0, '2020-07-20 07:19:10.866000', 209);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-20 08:33:41', 0, '2020-07-20 08:33:40.868000', 210);
+INSERT INTO `browsing_record` VALUES (4, 1, '2020-07-20 08:59:03', 0, '2020-07-20 08:59:02.600000', 211);
+INSERT INTO `browsing_record` VALUES (12, 1, '2020-07-20 09:00:03', 0, '2020-07-20 09:00:02.679000', 212);
+INSERT INTO `browsing_record` VALUES (6, 1, '2020-07-20 09:00:08', 0, '2020-07-20 09:00:08.163000', 213);
+INSERT INTO `browsing_record` VALUES (68, 1, '2020-07-20 09:00:57', 0, '2020-07-20 09:00:57.408000', 214);
+INSERT INTO `browsing_record` VALUES (5, 1, '2020-07-20 09:02:01', 0, '2020-07-20 09:02:00.970000', 215);
+INSERT INTO `browsing_record` VALUES (3, 1, '2020-07-20 09:37:03', 0, '2020-07-20 09:37:03.259000', 216);
+INSERT INTO `browsing_record` VALUES (35, 1, '2020-07-20 12:56:59', 0, '2020-07-20 12:56:59.185000', 217);
+INSERT INTO `browsing_record` VALUES (36, 1, '2020-07-20 12:57:06', 0, '2020-07-20 12:57:06.441000', 218);
+INSERT INTO `browsing_record` VALUES (79, 1, '2020-07-20 12:57:14', 0, '2020-07-20 12:57:13.608000', 219);
+INSERT INTO `browsing_record` VALUES (79, 1, '2020-07-20 12:57:22', 0, '2020-07-20 12:57:22.374000', 220);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-20 12:58:17', 0, '2020-07-20 12:58:17.212000', 221);
+INSERT INTO `browsing_record` VALUES (61, 1, '2020-07-20 12:59:42', 0, '2020-07-20 12:59:42.496000', 222);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-20 13:01:16', 0, '2020-07-20 13:01:16.131000', 223);
+INSERT INTO `browsing_record` VALUES (8, 1, '2020-07-20 13:01:18', 0, '2020-07-20 13:01:17.994000', 224);
+INSERT INTO `browsing_record` VALUES (55, 1, '2020-07-20 13:01:35', 0, '2020-07-20 13:01:35.363000', 225);
+INSERT INTO `browsing_record` VALUES (57, 1, '2020-07-20 13:02:04', 0, '2020-07-20 13:02:04.484000', 226);
+INSERT INTO `browsing_record` VALUES (73, 1, '2020-07-20 13:02:21', 0, '2020-07-20 13:02:21.457000', 227);
+INSERT INTO `browsing_record` VALUES (13, 1, '2020-07-20 15:18:29', 0, '2020-07-20 15:18:28.518000', 228);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-20 15:26:09', 0, '2020-07-20 15:26:09.095000', 229);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-20 15:26:35', 0, '2020-07-20 15:26:34.623000', 230);
+INSERT INTO `browsing_record` VALUES (81, 1, '2020-07-20 15:26:53', 0, '2020-07-20 15:26:52.864000', 231);
+INSERT INTO `browsing_record` VALUES (73, 1, '2020-07-20 16:54:43', 0, '2020-07-20 16:54:42.938000', 232);
+INSERT INTO `browsing_record` VALUES (51, 1, '2020-07-20 16:56:59', 0, '2020-07-20 16:56:59.225000', 233);
+INSERT INTO `browsing_record` VALUES (57, 1, '2020-07-20 16:59:57', 0, '2020-07-20 16:59:56.698000', 234);
+INSERT INTO `browsing_record` VALUES (80, 1, '2020-07-20 17:00:03', 0, '2020-07-20 17:00:02.627000', 235);
+INSERT INTO `browsing_record` VALUES (74, 1, '2020-07-20 17:06:05', 0, '2020-07-20 17:06:05.443000', 236);
+INSERT INTO `browsing_record` VALUES (80, 1, '2020-07-20 17:11:42', 0, '2020-07-20 17:11:42.077000', 237);
+INSERT INTO `browsing_record` VALUES (80, 1, '2020-07-20 17:26:13', 0, '2020-07-20 17:26:12.994000', 238);
+INSERT INTO `browsing_record` VALUES (17, 1, '2020-07-20 17:32:12', 0, '2020-07-20 17:32:12.122000', 239);
+INSERT INTO `browsing_record` VALUES (67, 1, '2020-07-20 18:03:10', 0, '2020-07-20 18:03:09.917000', 240);
+INSERT INTO `browsing_record` VALUES (13, 1, '2020-07-21 01:43:00', 0, '2020-07-21 01:43:00.445000', 241);
+INSERT INTO `browsing_record` VALUES (63, 1, '2020-07-21 01:43:18', 0, '2020-07-21 01:43:17.556000', 242);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 01:43:22', 0, '2020-07-21 01:43:22.257000', 243);
+INSERT INTO `browsing_record` VALUES (55, 1, '2020-07-21 01:44:30', 0, '2020-07-21 01:44:29.715000', 244);
+INSERT INTO `browsing_record` VALUES (13, 1, '2020-07-21 01:51:43', 0, '2020-07-21 01:51:42.701000', 245);
+INSERT INTO `browsing_record` VALUES (51, 1, '2020-07-21 02:08:19', 0, '2020-07-21 02:08:18.522000', 246);
+INSERT INTO `browsing_record` VALUES (11, 1, '2020-07-21 02:10:30', 0, '2020-07-21 02:10:29.559000', 247);
+INSERT INTO `browsing_record` VALUES (12, 1, '2020-07-21 02:10:39', 0, '2020-07-21 02:10:39.264000', 248);
+INSERT INTO `browsing_record` VALUES (51, 1, '2020-07-21 02:11:08', 0, '2020-07-21 02:11:08.137000', 249);
+INSERT INTO `browsing_record` VALUES (7, 1, '2020-07-21 02:11:21', 0, '2020-07-21 02:11:21.057000', 250);
+INSERT INTO `browsing_record` VALUES (6, 1, '2020-07-21 02:11:41', 0, '2020-07-21 02:11:40.811000', 251);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 02:12:26', 0, '2020-07-21 02:12:25.670000', 252);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 02:21:35', 0, '2020-07-21 02:21:34.605000', 253);
+INSERT INTO `browsing_record` VALUES (63, 1, '2020-07-21 02:21:57', 0, '2020-07-21 02:21:56.969000', 254);
+INSERT INTO `browsing_record` VALUES (73, 1, '2020-07-21 02:27:20', 0, '2020-07-21 02:27:19.718000', 255);
+INSERT INTO `browsing_record` VALUES (38, 1, '2020-07-21 02:42:31', 0, '2020-07-21 02:42:30.692000', 256);
+INSERT INTO `browsing_record` VALUES (3, 1, '2020-07-21 02:45:54', 0, '2020-07-21 02:45:53.642000', 257);
+INSERT INTO `browsing_record` VALUES (84, 1, '2020-07-21 03:02:53', 0, '2020-07-21 03:02:52.576000', 258);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 03:03:10', 0, '2020-07-21 03:03:09.946000', 259);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 03:03:34', 0, '2020-07-21 03:03:34.307000', 260);
+INSERT INTO `browsing_record` VALUES (56, 1, '2020-07-21 03:05:08', 0, '2020-07-21 03:05:07.971000', 261);
+INSERT INTO `browsing_record` VALUES (13, 1, '2020-07-21 03:15:21', 0, '2020-07-21 03:15:20.734000', 262);
+INSERT INTO `browsing_record` VALUES (84, 1, '2020-07-21 03:15:27', 0, '2020-07-21 03:15:26.882000', 263);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 03:15:31', 0, '2020-07-21 03:15:30.640000', 264);
+INSERT INTO `browsing_record` VALUES (8, 1, '2020-07-21 03:15:41', 0, '2020-07-21 03:15:41.419000', 265);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 03:15:58', 0, '2020-07-21 03:15:57.773000', 266);
+INSERT INTO `browsing_record` VALUES (13, 1, '2020-07-21 03:17:43', 0, '2020-07-21 03:17:43.364000', 267);
+INSERT INTO `browsing_record` VALUES (4, 1, '2020-07-21 03:33:57', 0, '2020-07-21 03:33:57.094000', 268);
+INSERT INTO `browsing_record` VALUES (10, 1, '2020-07-21 03:34:31', 0, '2020-07-21 03:34:30.760000', 269);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 03:35:16', 0, '2020-07-21 03:35:15.589000', 270);
+INSERT INTO `browsing_record` VALUES (55, 1, '2020-07-21 03:45:00', 0, '2020-07-21 03:44:59.561000', 271);
+INSERT INTO `browsing_record` VALUES (67, 1, '2020-07-21 04:20:19', 0, '2020-07-21 04:20:19.368000', 272);
+INSERT INTO `browsing_record` VALUES (12, 1, '2020-07-21 05:30:42', 0, '2020-07-21 05:30:41.774000', 273);
+INSERT INTO `browsing_record` VALUES (17, 1, '2020-07-21 05:54:17', 0, '2020-07-21 05:54:16.519000', 274);
+INSERT INTO `browsing_record` VALUES (57, 1, '2020-07-21 05:54:23', 0, '2020-07-21 05:54:22.975000', 275);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 06:02:29', 0, '2020-07-21 06:02:28.503000', 276);
+INSERT INTO `browsing_record` VALUES (5, 1, '2020-07-21 06:09:23', 0, '2020-07-21 06:09:23.074000', 277);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-21 06:13:33', 0, '2020-07-21 06:13:33.442000', 278);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-21 06:13:40', 0, '2020-07-21 06:13:39.958000', 279);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 06:20:35', 0, '2020-07-21 06:20:34.641000', 280);
+INSERT INTO `browsing_record` VALUES (38, 1, '2020-07-21 06:21:17', 0, '2020-07-21 06:21:17.104000', 281);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-21 06:21:24', 0, '2020-07-21 06:21:23.868000', 282);
+INSERT INTO `browsing_record` VALUES (39, 1, '2020-07-21 06:22:21', 0, '2020-07-21 06:22:21.396000', 283);
+INSERT INTO `browsing_record` VALUES (39, 1, '2020-07-21 06:22:31', 0, '2020-07-21 06:22:31.247000', 284);
+INSERT INTO `browsing_record` VALUES (5, 1, '2020-07-21 06:24:28', 0, '2020-07-21 06:24:27.954000', 285);
+INSERT INTO `browsing_record` VALUES (1, 4, '2020-07-22 06:43:27', 0, '2020-07-22 06:43:26.695000', 286);
+INSERT INTO `browsing_record` VALUES (1, 4, '2020-07-22 06:44:28', 0, '2020-07-22 06:44:28.301000', 287);
+INSERT INTO `browsing_record` VALUES (1, 4, '2020-07-22 06:47:48', 0, '2020-07-22 06:47:47.760000', 288);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-23 11:53:11', 0, '2020-07-23 11:53:11.192000', 289);
+INSERT INTO `browsing_record` VALUES (11, 1, '2020-07-23 11:56:20', 0, '2020-07-23 11:56:20.097000', 290);
+INSERT INTO `browsing_record` VALUES (14, 1, '2020-07-23 11:57:03', 0, '2020-07-23 11:57:02.806000', 291);
+INSERT INTO `browsing_record` VALUES (11, 1, '2020-07-23 11:59:07', 0, '2020-07-23 11:59:07.017000', 292);
+INSERT INTO `browsing_record` VALUES (11, 1, '2020-07-23 13:01:38', 0, '2020-07-23 13:01:37.561000', 293);
+INSERT INTO `browsing_record` VALUES (14, 1, '2020-07-23 13:02:17', 0, '2020-07-23 13:02:17.154000', 294);
+INSERT INTO `browsing_record` VALUES (1, 1, '2020-07-23 13:44:46', 0, '2020-07-23 13:44:46.114000', 295);
+INSERT INTO `browsing_record` VALUES (6, 1, '2020-07-23 13:50:37', 0, '2020-07-23 13:50:37.278000', 296);
+INSERT INTO `browsing_record` VALUES (1, 3, '2020-07-23 13:55:45', 0, '2020-07-23 13:55:45.093000', 297);
+INSERT INTO `browsing_record` VALUES (2, 1, '2020-07-23 14:02:48', 0, '2020-07-23 14:02:47.851000', 298);
+INSERT INTO `browsing_record` VALUES (3, 1, '2020-07-23 14:02:54', 0, '2020-07-23 14:02:53.568000', 299);
+INSERT INTO `browsing_record` VALUES (4, 1, '2020-07-23 14:03:00', 0, '2020-07-23 14:02:59.670000', 300);
+INSERT INTO `browsing_record` VALUES (10, 1, '2020-07-23 14:03:06', 0, '2020-07-23 14:03:06.019000', 301);
+INSERT INTO `browsing_record` VALUES (30, 3, '2020-07-23 14:12:33', 0, '2020-07-23 14:12:32.810000', 302);
+INSERT INTO `browsing_record` VALUES (27, 3, '2020-07-23 14:12:39', 0, '2020-07-23 14:12:38.865000', 303);
+INSERT INTO `browsing_record` VALUES (53, 3, '2020-07-23 14:15:48', 0, '2020-07-23 14:15:48.016000', 304);
+INSERT INTO `browsing_record` VALUES (72, 3, '2020-07-23 14:15:59', 0, '2020-07-23 14:15:59.012000', 305);
+INSERT INTO `browsing_record` VALUES (72, 3, '2020-07-23 14:16:08', 0, '2020-07-23 14:16:07.844000', 306);
 
 -- ----------------------------
 -- Table structure for cart
@@ -316,17 +456,17 @@ CREATE TABLE `cart`  (
   INDEX `cart_customer`(`customer_id`) USING BTREE,
   CONSTRAINT `cart_commodity` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cart_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '连接customer和commodity的关系表，实质为购物车集合' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 260 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '连接customer和commodity的关系表，实质为购物车集合' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
-INSERT INTO `cart` VALUES (1, 1, 1, 5, 0, 1);
-INSERT INTO `cart` VALUES (2, 1, 2, 5, 0, 1);
-INSERT INTO `cart` VALUES (3, 1, 3, 5, 0, 1);
-INSERT INTO `cart` VALUES (4, 1, 4, 5, 0, 1);
-INSERT INTO `cart` VALUES (5, 1, 5, 5, 0, 1);
-INSERT INTO `cart` VALUES (6, 1, 6, 5, 0, 1);
+INSERT INTO `cart` VALUES (1, 1, 1, 4, 1, 1);
+INSERT INTO `cart` VALUES (2, 1, 2, 6, 1, 1);
+INSERT INTO `cart` VALUES (3, 1, 3, 6, 1, 1);
+INSERT INTO `cart` VALUES (4, 1, 4, 5, 1, 1);
+INSERT INTO `cart` VALUES (5, 1, 5, 2, 0, 1);
+INSERT INTO `cart` VALUES (6, 1, 6, 2, 0, 1);
 INSERT INTO `cart` VALUES (7, 2, 1, 5, 0, 1);
 INSERT INTO `cart` VALUES (8, 2, 2, 5, 0, 1);
 INSERT INTO `cart` VALUES (9, 2, 3, 5, 0, 1);
@@ -340,7 +480,14 @@ INSERT INTO `cart` VALUES (16, 3, 5, 5, 0, 1);
 INSERT INTO `cart` VALUES (17, 4, 1, 5, 0, 1);
 INSERT INTO `cart` VALUES (18, 4, 2, 5, 0, 1);
 INSERT INTO `cart` VALUES (19, 4, 3, 5, 0, 1);
-INSERT INTO `cart` VALUES (20, 4, 4, 5, 0, 1);
+INSERT INTO `cart` VALUES (20, 1, 68, 1, 1, 0);
+INSERT INTO `cart` VALUES (21, 1, 12, 1, 0, 0);
+INSERT INTO `cart` VALUES (254, 1, 8, 1, 0, 0);
+INSERT INTO `cart` VALUES (255, 1, 55, 1, 0, 0);
+INSERT INTO `cart` VALUES (256, 1, 57, 1, 0, 0);
+INSERT INTO `cart` VALUES (257, 1, 73, 1, 0, 0);
+INSERT INTO `cart` VALUES (258, 1, 1, 1, 0, 0);
+INSERT INTO `cart` VALUES (259, 1, 11, 3, 0, 0);
 
 -- ----------------------------
 -- Table structure for category
@@ -415,7 +562,7 @@ CREATE TABLE `category_commodity`  (
   INDEX `commodityid`(`commodity_id`) USING BTREE,
   CONSTRAINT `categoryid` FOREIGN KEY (`category_id`) REFERENCES `category` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `commodityid` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 196 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of category_commodity
@@ -510,7 +657,7 @@ INSERT INTO `category_commodity` VALUES (84, 42, 84, 0);
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment`  (
-  `comment_id` int(0) NOT NULL COMMENT '评论的ID',
+  `comment_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '评论的ID',
   `customer_id` int(0) NOT NULL COMMENT '连接customer表的ID',
   `commodity_id` int(0) NOT NULL COMMENT '连接commodity的ID',
   `comment_level` int(0) NOT NULL COMMENT '商品综合评价等级',
@@ -526,20 +673,20 @@ CREATE TABLE `comment`  (
   INDEX `commnet_customer`(`customer_id`) USING BTREE,
   CONSTRAINT `comment_commodity` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `commnet_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '商品评价表，评价ID是唯一的主键，为了节省数据库空间，评论内容可为空，如果为空，前端应显示“用户没有填写评价，系统默认好评”' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '商品评价表，评价ID是唯一的主键，为了节省数据库空间，评论内容可为空，如果为空，前端应显示“用户没有填写评价，系统默认好评”' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES (1, 1, 1, 8, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoU4f.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:50:36', '\r\n<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (1, 1, 1, 8, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoU4f.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:50:36', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
 INSERT INTO `comment` VALUES (2, 1, 2, 8, '2020-06-21 14:07:36', '收到货，第一时间拆包装，感觉质量还是比较好的，与卖家描述的还是一致的，非常满意，发货速度比较快，物流公司服务态度很好，运送速度很快，总的来说这次是很满意的一次购物，感谢卖家。', 'https://s1.ax1x.com/2020/07/18/Ucow8S.jpg', '收到货，第一时间拆包装，感觉质量还是比较好的，与卖家描述的还是一致的，非常满意，发货速度比较快，物流公司服务态度很好，运送速度很快，总的来说这次是很满意的一次购物，感谢卖家。', '2020-06-22 15:53:06', NULL, 0);
 INSERT INTO `comment` VALUES (3, 1, 3, 8, '2020-06-21 14:07:36', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次;看得出来商家很用心。宝贝真心不错，与图片相符，没有任何差异，真的是物超所值。', 'https://s1.ax1x.com/2020/07/18/Uco0gg.jpg', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次;看得出来商家很用心。宝贝真心不错，与图片相符，没有任何差异，真的是物超所值。', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (4, 1, 4, 8, '2020-12-31 14:40:31', '我觉得挺好的，买的时候看见评论里都说好就买了，看到发货的时候挺激动的，到了之后，满怀期待一激动得从快递员那里拿回了寝室，试一下，结果挺不错啊！而且客服小姐姐也特别的好，很有礼貌，客服小姐姐也是秒回我的疑问呢，嘻嘻，下次还会回购哒。', 'https://s1.ax1x.com/2020/07/18/UcodC8.jpg', '我觉得挺好的，买的时候看见评论里都说好就买了，看到发货的时候挺激动的，到了之后，满怀期待一激动得从快递员那里拿回了寝室，试一下，结果挺不错啊！而且客服小姐姐也特别的好，很有礼貌，客服小姐姐也是秒回我的疑问呢，嘻嘻，下次还会回购哒。', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (5, 1, 5, 8, '2020-06-21 14:07:36', '掌柜的bai服务态度真好，发货很快。商品质量也相du当不错。太喜欢了，zhi谢谢！', 'https://s1.ax1x.com/2020/07/18/UcoNUP.jpg', '掌柜的bai服务态度真好，发货很快。商品质量也相du当不错。太喜欢了，zhi谢谢！', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (6, 1, 6, 8, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcosDs.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
-INSERT INTO `comment` VALUES (7, 1, 7, 8, '2020-06-21 14:07:36', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', 'https://s1.ax1x.com/2020/07/18/UcoBvQ.jpg', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', '2020-06-20 15:52:17', '\r\n<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (7, 1, 7, 8, '2020-06-21 14:07:36', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', 'https://s1.ax1x.com/2020/07/18/UcoBvQ.jpg', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', '2020-06-20 15:52:17', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
 INSERT INTO `comment` VALUES (8, 1, 8, 8, '2020-12-15 18:19:03', '卖家服务真周到。以后带同事一起来。', 'https://s1.ax1x.com/2020/07/18/Ucoruj.jpg', '卖家服务真周到。以后带同事一起来。', NULL, NULL, 0);
-INSERT INTO `comment` VALUES (9, 2, 9, 8, '2020-06-22 15:52:47', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcocEq.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:52:22', '\r\n<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (9, 2, 9, 8, '2020-06-22 15:52:47', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcocEq.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:52:22', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
 INSERT INTO `comment` VALUES (10, 2, 10, 8, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/Ucoybn.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (11, 2, 11, 8, '2020-06-21 14:07:36', '宝贝质量不错，很喜欢了。谢谢掌柜。', 'https://s1.ax1x.com/2020/07/18/UcogU0.jpg', '宝贝质量不错，很喜欢了。谢谢掌柜。', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (12, 2, 12, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoWCT.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
@@ -559,6 +706,62 @@ INSERT INTO `comment` VALUES (25, 3, 25, 7, '2020-12-30 15:31:17', '好卖家，
 INSERT INTO `comment` VALUES (26, 4, 26, 7, '2016-03-31 10:29:09', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoVBR.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (27, 4, 27, 7, '2020-12-15 17:44:44', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/Ucou4K.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
 INSERT INTO `comment` VALUES (28, 4, 28, 8, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UconN6.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (29, 1, 29, 8, '2020-07-20 12:23:32', '售后态度好 : 真的很快，早上买下午到！', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `comment` VALUES (30, 1, 30, 10, '2020-07-21 12:33:10', '售后态度好 : 有些不懂的地方，商家解决很好', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `comment` VALUES (31, 3, 31, 9, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoU4f.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:50:36', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (32, 3, 32, 9, '2020-06-21 14:07:36', '收到货，第一时间拆包装，感觉质量还是比较好的，与卖家描述的还是一致的，非常满意，发货速度比较快，物流公司服务态度很好，运送速度很快，总的来说这次是很满意的一次购物，感谢卖家。', 'https://s1.ax1x.com/2020/07/18/Ucow8S.jpg', '收到货，第一时间拆包装，感觉质量还是比较好的，与卖家描述的还是一致的，非常满意，发货速度比较快，物流公司服务态度很好，运送速度很快，总的来说这次是很满意的一次购物，感谢卖家。', '2020-06-22 15:53:06', NULL, 0);
+INSERT INTO `comment` VALUES (33, 3, 33, 9, '2020-06-21 14:07:36', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次;看得出来商家很用心。宝贝真心不错，与图片相符，没有任何差异，真的是物超所值。', 'https://s1.ax1x.com/2020/07/18/Uco0gg.jpg', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次;看得出来商家很用心。宝贝真心不错，与图片相符，没有任何差异，真的是物超所值。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (34, 3, 34, 9, '2020-12-31 14:40:31', '我觉得挺好的，买的时候看见评论里都说好就买了，看到发货的时候挺激动的，到了之后，满怀期待一激动得从快递员那里拿回了寝室，试一下，结果挺不错啊！而且客服小姐姐也特别的好，很有礼貌，客服小姐姐也是秒回我的疑问呢，嘻嘻，下次还会回购哒。', 'https://s1.ax1x.com/2020/07/18/UcodC8.jpg', '我觉得挺好的，买的时候看见评论里都说好就买了，看到发货的时候挺激动的，到了之后，满怀期待一激动得从快递员那里拿回了寝室，试一下，结果挺不错啊！而且客服小姐姐也特别的好，很有礼貌，客服小姐姐也是秒回我的疑问呢，嘻嘻，下次还会回购哒。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (35, 3, 35, 9, '2020-06-21 14:07:36', '掌柜的bai服务态度真好，发货很快。商品质量也相du当不错。太喜欢了，zhi谢谢！', 'https://s1.ax1x.com/2020/07/18/UcoNUP.jpg', '掌柜的bai服务态度真好，发货很快。商品质量也相du当不错。太喜欢了，zhi谢谢！', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (36, 3, 36, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcosDs.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (37, 3, 37, 9, '2020-06-21 14:07:36', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', 'https://s1.ax1x.com/2020/07/18/UcoBvQ.jpg', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', '2020-06-20 15:52:17', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (38, 4, 38, 9, '2020-12-15 18:19:03', '卖家服务真周到。以后带同事一起来。', 'https://s1.ax1x.com/2020/07/18/Ucoruj.jpg', '卖家服务真周到。以后带同事一起来。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (39, 4, 39, 9, '2020-06-22 15:52:47', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcocEq.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:52:22', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (40, 4, 40, 7, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/Ucoybn.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (41, 1, 41, 7, '2020-06-21 14:07:36', '宝贝质量不错，很喜欢了。谢谢掌柜。', 'https://s1.ax1x.com/2020/07/18/UcogU0.jpg', '宝贝质量不错，很喜欢了。谢谢掌柜。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (42, 1, 42, 7, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoWCT.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (43, 3, 43, 8, '2020-06-21 14:07:36', '真的超级喜欢，非常支bai持，质量非常好，与卖家描述的完全一致，非常满意,真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoIKJ.jpg', '真的超级喜欢，非常支bai持，质量非常好，与卖家描述的完全一致，非常满意,真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (44, 3, 44, 8, '2020-06-21 14:07:36', '终于收到我需要的宝贝了，东西很好，价美物廉，谢谢掌柜的！说实在，这是我淘宝购物来让我最满意的一次购物。无论是掌柜的态度还是对物品，我都非常满意的。', 'https://s1.ax1x.com/2020/07/18/Ucoh2F.jpg', '终于收到我需要的宝贝了，东西很好，价美物廉，谢谢掌柜的！说实在，这是我淘宝购物来让我最满意的一次购物。无论是掌柜的态度还是对物品，我都非常满意的。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (45, 3, 45, 10, '2020-06-21 14:07:36', '\"掌柜态度很专业热情，有问必答，回复也很快，我问了不少问题，他都不觉得烦，都会认真回答我，这点我向掌柜表示由衷的敬意，这样的好掌柜可不多。', 'https://s1.ax1x.com/2020/07/18/Uco4v4.jpg', '\"掌柜态度很专业热情，有问必答，回复也很快，我问了不少问题，他都不觉得烦，都会认真回答我，这点我向掌柜表示由衷的敬意，这样的好掌柜可不多。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (46, 3, 46, 9, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcIx7q.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (47, 3, 47, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoSA0.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (48, 3, 48, 9, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoP9U.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (49, 3, 49, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcopNV.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (50, 4, 50, 9, '2020-06-21 14:07:36', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次；看得出来商家很用心。', 'https://s1.ax1x.com/2020/07/18/UcIvBn.jpg', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次；看得出来商家很用心。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (51, 4, 51, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/Uco9hT.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (52, 4, 52, 9, '2020-12-30 14:09:13', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/Ucoi3F.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (53, 1, 53, 9, '2020-12-30 14:15:23', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoFc4.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (54, 1, 54, 9, '2020-12-30 14:28:37', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcokjJ.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (55, 2, 55, 7, '2020-12-30 15:31:17', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoEu9.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (56, 2, 56, 7, '2016-03-31 10:29:09', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoVBR.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (57, 2, 57, 7, '2020-12-15 17:44:44', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/Ucou4K.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (58, 3, 58, 8, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UconN6.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (59, 3, 59, 8, '2020-07-20 12:23:32', '售后态度好 : 真的很快，早上买下午到！', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `comment` VALUES (60, 3, 60, 10, '2020-07-21 12:33:10', '售后态度好 : 有些不懂的地方，商家解决很好', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `comment` VALUES (61, 3, 61, 9, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoU4f.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:50:36', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (62, 2, 62, 9, '2020-06-21 14:07:36', '收到货，第一时间拆包装，感觉质量还是比较好的，与卖家描述的还是一致的，非常满意，发货速度比较快，物流公司服务态度很好，运送速度很快，总的来说这次是很满意的一次购物，感谢卖家。', 'https://s1.ax1x.com/2020/07/18/Ucow8S.jpg', '收到货，第一时间拆包装，感觉质量还是比较好的，与卖家描述的还是一致的，非常满意，发货速度比较快，物流公司服务态度很好，运送速度很快，总的来说这次是很满意的一次购物，感谢卖家。', '2020-06-22 15:53:06', NULL, 0);
+INSERT INTO `comment` VALUES (63, 2, 63, 9, '2020-06-21 14:07:36', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次;看得出来商家很用心。宝贝真心不错，与图片相符，没有任何差异，真的是物超所值。', 'https://s1.ax1x.com/2020/07/18/Uco0gg.jpg', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次;看得出来商家很用心。宝贝真心不错，与图片相符，没有任何差异，真的是物超所值。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (64, 2, 64, 9, '2020-12-31 14:40:31', '我觉得挺好的，买的时候看见评论里都说好就买了，看到发货的时候挺激动的，到了之后，满怀期待一激动得从快递员那里拿回了寝室，试一下，结果挺不错啊！而且客服小姐姐也特别的好，很有礼貌，客服小姐姐也是秒回我的疑问呢，嘻嘻，下次还会回购哒。', 'https://s1.ax1x.com/2020/07/18/UcodC8.jpg', '我觉得挺好的，买的时候看见评论里都说好就买了，看到发货的时候挺激动的，到了之后，满怀期待一激动得从快递员那里拿回了寝室，试一下，结果挺不错啊！而且客服小姐姐也特别的好，很有礼貌，客服小姐姐也是秒回我的疑问呢，嘻嘻，下次还会回购哒。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (65, 3, 65, 9, '2020-06-21 14:07:36', '掌柜的bai服务态度真好，发货很快。商品质量也相du当不错。太喜欢了，zhi谢谢！', 'https://s1.ax1x.com/2020/07/18/UcoNUP.jpg', '掌柜的bai服务态度真好，发货很快。商品质量也相du当不错。太喜欢了，zhi谢谢！', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (66, 3, 66, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcosDs.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (67, 3, 67, 9, '2020-06-21 14:07:36', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', 'https://s1.ax1x.com/2020/07/18/UcoBvQ.jpg', '掌柜太善良了，真是干一行懂一行呀。在掌柜的指导下我都快变内行人士了！', '2020-06-20 15:52:17', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (68, 3, 68, 9, '2020-12-15 18:19:03', '卖家服务真周到。以后带同事一起来。', 'https://s1.ax1x.com/2020/07/18/Ucoruj.jpg', '卖家服务真周到。以后带同事一起来。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (69, 4, 69, 9, '2020-06-22 15:52:47', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcocEq.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', '2020-06-22 15:52:22', '<p><img alt=\"\" src=\"https://t9.baidu.com/it/u=1307125826,3433407105&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg\" style=\"width:100%\" /></p>', 0);
+INSERT INTO `comment` VALUES (70, 4, 70, 7, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/Ucoybn.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (71, 4, 71, 7, '2020-06-21 14:07:36', '宝贝质量不错，很喜欢了。谢谢掌柜。', 'https://s1.ax1x.com/2020/07/18/UcogU0.jpg', '宝贝质量不错，很喜欢了。谢谢掌柜。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (72, 1, 72, 7, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoWCT.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (73, 1, 73, 8, '2020-06-21 14:07:36', '真的超级喜欢，非常支bai持，质量非常好，与卖家描述的完全一致，非常满意,真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoIKJ.jpg', '真的超级喜欢，非常支bai持，质量非常好，与卖家描述的完全一致，非常满意,真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (74, 3, 74, 8, '2020-06-21 14:07:36', '终于收到我需要的宝贝了，东西很好，价美物廉，谢谢掌柜的！说实在，这是我淘宝购物来让我最满意的一次购物。无论是掌柜的态度还是对物品，我都非常满意的。', 'https://s1.ax1x.com/2020/07/18/Ucoh2F.jpg', '终于收到我需要的宝贝了，东西很好，价美物廉，谢谢掌柜的！说实在，这是我淘宝购物来让我最满意的一次购物。无论是掌柜的态度还是对物品，我都非常满意的。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (75, 3, 75, 10, '2020-06-21 14:07:36', '\"掌柜态度很专业热情，有问必答，回复也很快，我问了不少问题，他都不觉得烦，都会认真回答我，这点我向掌柜表示由衷的敬意，这样的好掌柜可不多。', 'https://s1.ax1x.com/2020/07/18/Uco4v4.jpg', '\"掌柜态度很专业热情，有问必答，回复也很快，我问了不少问题，他都不觉得烦，都会认真回答我，这点我向掌柜表示由衷的敬意，这样的好掌柜可不多。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (76, 3, 76, 9, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcIx7q.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (77, 3, 77, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoSA0.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (78, 3, 78, 9, '2020-06-21 14:07:36', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcoP9U.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (79, 3, 79, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcopNV.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (80, 1, 80, 9, '2020-06-21 14:07:36', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次；看得出来商家很用心。', 'https://s1.ax1x.com/2020/07/18/UcIvBn.jpg', '宝贝收到了，卖家发货很快，物流也非常给力,客服服务态度极好，很有耐心、给人一种亲切感，好喜欢。还有包装精美，高端大气上档次；看得出来商家很用心。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (81, 2, 81, 9, '2020-06-21 14:07:36', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/Uco9hT.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (82, 3, 82, 9, '2020-12-30 14:09:13', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/Ucoi3F.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (83, 1, 83, 9, '2020-12-30 14:15:23', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', 'https://s1.ax1x.com/2020/07/18/UcoFc4.jpg', '好卖家，真有耐心，我终于买到想要的东西了。谢谢卖家。', NULL, NULL, 0);
+INSERT INTO `comment` VALUES (84, 2, 84, 9, '2020-12-30 14:28:37', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', 'https://s1.ax1x.com/2020/07/18/UcokjJ.jpg', '质量非常好，与卖家描述的完全一致，非常满意，真的很喜欢，完全超出期望值，发货速度非常快，包装非常仔细、严实，物流公司服务态度很好，运送速度很快，很满意的一次购物。', NULL, NULL, 0);
 
 -- ----------------------------
 -- Table structure for commodity
@@ -592,7 +795,7 @@ CREATE TABLE `commodity`  (
   INDEX `ID_13`(`ID`) USING BTREE,
   INDEX `ID_14`(`ID`) USING BTREE,
   INDEX `specification`(`specification`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '商品信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 316 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '商品信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of commodity
@@ -602,7 +805,7 @@ INSERT INTO `commodity` VALUES (2, '红米K30i 双模5G新品手机4800万旗舰
 INSERT INTO `commodity` VALUES (3, 'vjvj X21S正品学生价水滴全面屏安卓指纹游戏电信全网通智能手机', 748.58, 'https://s1.ax1x.com/2020/07/18/Uco0gg.jpg', '网络类型	4G+全网通\n网络模式	双卡双待\nCPU信息CPU信息\nCPU品牌	联发科\nCPU型号	MTK6763\nCPU核心数	八核', 100, '件', '2020-07-18 16:06:44', 1, 0, 0);
 INSERT INTO `commodity` VALUES (4, 'OPPO A11官方正品超清AI四摄大内存长续航全面屏学生老人手机官方旗舰正品a5', 899.99, 'https://s1.ax1x.com/2020/07/18/UcodC8.jpg', '3C规格型号：PCGM00 （电源适配器：VC54JBCH，VC54GBCH，VC54HBCH；输出：5.0VDC...产品名称：OPPO A11OPPO型号: A11', 500, '件', '2020-07-18 16:06:44', 1, 0, 0);
 INSERT INTO `commodity` VALUES (5, 'Redmi 10X天玑820双卡5g新品手机4800万拍照游戏全面屏智能学生店红米10x', 1599.89, 'https://s1.ax1x.com/2020/07/18/UcoNUP.jpg', 'C规格型号：M2004J7AC(电源适配器：MDY-11-EM 输出：5.0VDC 3.0A / 9.0VDC ...产品名称：Xiaomi/小米 Redmi 10X型号: REDMI 10X', 499, '件', '2020-07-18 16:06:45', 0, 0, 0);
-INSERT INTO `commodity` VALUES (6, 'DOOV/朵唯X11 Pro学生价游戏智能手机水滴全面屏全网通千百元官方旗舰曲面正品送老人老年oppo小米鼠华为耳机', 799.85, 'https://s1.ax1x.com/2020/07/18/UcosDs.jpg', '3C规格型号：DOOV V31c（电源适配器：ES007-U050050XOC 输出:5Vdc,500mA）产品名称：DOOV/朵唯 X11 Pro型号: X11 Pro', 488, '件', '2020-07-18 16:06:45', 1, 0, 6);
+INSERT INTO `commodity` VALUES (6, 'DOOV/朵唯X11 Pro学生价游戏智能手机水滴全面屏手机', 799.85, 'https://s1.ax1x.com/2020/07/18/UcosDs.jpg', '3C规格型号：DOOV V31c（电源适配器：ES007-U050050XOC 输出:5Vdc,500mA）产品名称：DOOV/朵唯 X11 Pro型号: X11 Pro', 488, '件', '2020-07-19 22:28:39', 1, 0, 6);
 INSERT INTO `commodity` VALUES (7, '华为旗下荣耀X10手机5G麒麟820全面屏官方旗舰店新品正品10X学生拍照游戏智能游戏机', 2399.99, 'https://s1.ax1x.com/2020/07/18/UcoBvQ.jpg', '3C规格型号：TEL-TN00（开关电源适配器：HW-100225C00 输出：输出: 5VDC, 2A 或 9V...产品名称：honor/荣耀 荣耀X10型号: 荣耀X10', 477, '件', '2020-07-18 16:06:45', 0, 0, 6);
 INSERT INTO `commodity` VALUES (8, 'Samsung/三星Galaxy S10 SM-G9730骁龙855 4G游戏官方全面屏智能手机', 3699.88, 'https://s1.ax1x.com/2020/07/18/Ucoruj.jpg', '3C规格型号：SM-G9730（旅行充电器：EP-TA200 输出： 9.0VDC 1.67A 或 5.0VDC ...产品名称：Samsung/三星 Galaxy S10...三星型号: Galaxy S10 SM-G9730', 588, '件', '2020-07-18 16:06:45', 1, 0, 6);
 INSERT INTO `commodity` VALUES (9, '12+256G全网通5G网络新手机P40水滴屏学生价智能游戏', 1599.88, 'https://s1.ax1x.com/2020/07/18/UcocEq.jpg', '摄像头类型: 四摄像头（前一后三）\n电信设备进网许可证编号: 02-C757-180418\n附加功能: CT011007 OTG Touch ID、气压计', 680, '件', '2020-07-18 16:06:46', 1, 0, 0);
@@ -631,12 +834,12 @@ INSERT INTO `commodity` VALUES (31, '美图 MP1801 V7', 3000.00, 'https://i.loli
 INSERT INTO `commodity` VALUES (32, '美图T9', 1129.00, 'https://i.loli.net/2020/07/18/t6wZSnqrLaWoQMi.jpg', ' 【咨询立减80】Meitu/美图 T9美颜自拍全网通美图手机旗舰店官方T8s正品m8 m8s t8 m6s V6 V7', 500, '件', '2020-07-18 16:06:53', 1, 0, 0);
 INSERT INTO `commodity` VALUES (33, 'vivo X50 Pro', 4998.00, 'https://i.loli.net/2020/07/18/6c5jUwLBzS38ouP.jpg', ' 【新品首发 享24期免息】vivo X50 Pro+双模5G智能手机官方旗舰店官网正品全新限量版vivox50 x30 s6 pro', 380, '件', '2020-07-18 16:06:53', 0, 0, 0);
 INSERT INTO `commodity` VALUES (34, 'vivo NEX 3S 高通骁龙865全网通', 5298.00, 'https://i.loli.net/2020/07/18/aTBY6DecmC1LdXV.jpg', ' 【24期免息】vivo NEX 3S 高通骁龙865全网通游戏5G智能手机官方旗舰店官网正品全新限量版vivonex3', 420, '件', '2020-07-18 16:06:53', 1, 0, 0);
-INSERT INTO `commodity` VALUES (35, 'vivo iQOO Z1新品双模', 2198.00, 'https://i.loli.net/2020/07/18/ERWLOtGH2Qo5ube.jpg', ' 【12期免息 至高省30】vivo iQOO Z1新品双模5g旗舰游戏144Hz手机官网旗舰店正品vivoiqoo neo3 vivoz5xz6', 380, '件', '2020-07-18 16:06:54', 1, 0, 4);
-INSERT INTO `commodity` VALUES (36, 'vivo X30双模5G新品手机', 4698.00, 'https://i.loli.net/2020/07/18/iH5lEXItMZhFSwV.jpg', ' 【立减300元 12期免息】vivo X30双模5G新品手机官方旗舰店官网新款正品学生vivox30限量版x27pro x23 s6 S5', 570, '件', '2020-07-18 16:06:54', 0, 0, 4);
-INSERT INTO `commodity` VALUES (37, 'OPPO Find X2 骁龙865双模5G', 4999.00, 'https://i.loli.net/2020/07/18/2cZSwO6dPWAx9K1.jpg', ' 【限时减300 6期免息】OPPO Find X2 骁龙865双模5G旗舰拍照手机120Hz超感屏官方旗舰店正品oppofindx2', 580, '件', '2020-07-18 16:06:54', 0, 0, 4);
-INSERT INTO `commodity` VALUES (38, 'Dell/戴尔成就5000十代', 5799.00, 'https://i.loli.net/2020/07/18/6P9OXEMo4hHnryZ.jpg', ' 【三边窄边框金属本】Dell/戴尔成就5000十代4核i7独显512G/1TPcleSSD2年服务轻薄便携笔记本电脑Vostro5391', 600, '件', '2020-07-18 16:06:54', 1, 0, 4);
+INSERT INTO `commodity` VALUES (35, 'vivo iQOO Z1新品双模', 2198.00, 'https://i.loli.net/2020/07/18/6c5jUwLBzS38ouP.jpg', ' 【12期免息 至高省30】vivo iQOO Z1新品双模5g旗舰游戏144Hz手机官网旗舰店正品vivoiqoo neo3 vivoz5xz6', 380, '件', '2020-07-20 20:56:47', 1, 0, 4);
+INSERT INTO `commodity` VALUES (36, 'vivo X30双模5G新品手机', 4698.00, 'https://i.loli.net/2020/07/18/OowZXaI2yUE83Mq.jpg', ' 【立减300元 12期免息】vivo X30双模5G新品手机官方旗舰店官网新款正品学生vivox30限量版x27pro x23 s6 S5', 570, '件', '2020-07-20 20:55:12', 0, 0, 4);
+INSERT INTO `commodity` VALUES (37, 'OPPO Find X2 骁龙865双模5G', 4999.00, 'https://i.loli.net/2020/07/18/BJm5y6h7UPb9KfV.jpg', ' 【限时减300 6期免息】OPPO Find X2 骁龙865双模5G旗舰拍照手机120Hz超感屏官方旗舰店正品oppofindx2', 580, '件', '2020-07-20 20:55:41', 0, 0, 4);
+INSERT INTO `commodity` VALUES (38, 'Dell/戴尔成就5000十代', 5799.00, 'https://i.loli.net/2020/07/18/iH5lEXItMZhFSwV.jpg', ' 【三边窄边框金属本】Dell/戴尔成就5000十代4核i7独显512G/1TPcleSSD2年服务轻薄便携笔记本电脑Vostro5391', 600, '件', '2020-07-20 20:55:20', 1, 0, 4);
 INSERT INTO `commodity` VALUES (39, 'Dell戴尔成就5590笔记本电脑', 6599.00, 'https://i.loli.net/2020/07/18/OowZXaI2yUE83Mq.jpg', ' Dell戴尔成就5590笔记本电脑十代酷睿i7超薄轻薄便携学生商务办公游戏独显设计手提电脑2020款戴尔旗舰店官网', 470, '件', '2020-07-18 16:06:55', 0, 0, 4);
-INSERT INTO `commodity` VALUES (40, 'Dell/戴尔 新G3 3500', 6499.00, 'https://i.loli.net/2020/07/18/BJm5y6h7UPb9KfV.jpg', ' 【吃鸡性能】Dell/戴尔 新G3 3500十代酷睿i7/1660ti笔记本电脑游匣G7游戏本吃鸡外星人1868官方旗舰店官网', 900, '件', '2020-07-18 16:06:55', 1, 0, 4);
+INSERT INTO `commodity` VALUES (40, 'Dell/戴尔 新G3 3500', 6499.00, 'https://i.loli.net/2020/07/18/2cZSwO6dPWAx9K1.jpg', ' 【吃鸡性能】Dell/戴尔 新G3 3500十代酷睿i7/1660ti笔记本电脑游匣G7游戏本吃鸡外星人1868官方旗舰店官网', 900, '件', '2020-07-20 20:55:47', 1, 0, 4);
 INSERT INTO `commodity` VALUES (41, 'ALIENWARE外星人全新m15 2020版R3', 14999.00, 'https://i.loli.net/2020/07/18/WesuXYvtP7L5KS9.jpg', ' 【12期免息 现货】ALIENWARE外星人全新m15 2020版R3十代酷睿i7游戏轻薄1660ti笔记本电脑15.6英寸电竞本5725', 980, '件', '2020-07-18 16:06:55', 0, 0, 4);
 INSERT INTO `commodity` VALUES (42, 'HP/惠普光影精灵6 十代酷睿暗夜暗影精灵6', 7899.00, 'https://i.loli.net/2020/07/18/7YT3ncL1BXFb8Ay.jpg', ' 【2020新品】HP/惠普光影精灵6 十代酷睿暗夜暗影精灵6电竞游戏本学生吃鸡手提笔记本电脑惠普官方旗舰店官网', 177, '件', '2020-07-18 16:06:55', 1, 0, 0);
 INSERT INTO `commodity` VALUES (43, 'Lenovo/联想12寸平板电脑', 1199.00, 'https://i.loli.net/2020/07/18/ht7ZDm3V6AlnoBw.jpg', 'Lenovo/联想12寸平板电脑学习机中小学英语点读机十核王者吃鸡', 567, '件', '2020-07-18 16:06:56', 0, 0, 6);
@@ -737,17 +940,18 @@ CREATE TABLE `customer`  (
   INDEX `ID_7`(`ID`) USING BTREE,
   INDEX `ID_8`(`ID`) USING BTREE,
   INDEX `ID_9`(`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES (1, '辛毅', '18624065210', 20, 1, 'xinyipwd', 'XinYi', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg\"', '1999-09-19', 'xinyi', '321102199902264916', 0, '2020-07-18 15:27:04', 'xiny0919@163.com');
-INSERT INTO `customer` VALUES (2, '鞠桥丹', '18624065255', 21, 0, 'juqiaodan', '用户sdsads', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg\"', '1999-09-20', 'juqiaodan', NULL, 0, NULL, NULL);
-INSERT INTO `customer` VALUES (3, '曾德歆', '18611112222', 20, 0, 'zengdexin', '用户asdsad', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg\"', '1999-09-21', 'zengdexin', NULL, 0, NULL, NULL);
-INSERT INTO `customer` VALUES (4, '金卓然', '17654268562', 22, 0, 'jinzhuoran', '用户asddgfhgfh', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg\"', '1999-09-22', 'jinzhuoran', NULL, 0, NULL, NULL);
-INSERT INTO `customer` VALUES (5, '易忱', '17654255663', 21, 0, 'yichen', '用户uitcvbcvn', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg\"', '1999-09-23', 'yichen', NULL, 0, NULL, NULL);
-INSERT INTO `customer` VALUES (6, '杨佳玉', '18611121342', 20, 1, 'yangjiayu', '用户bvnsfsd', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg\"', '1999-09-24', 'yangjiayu', NULL, 0, NULL, NULL);
+INSERT INTO `customer` VALUES (1, '辛毅', '18624065210', 20, 1, 'xinyipwd', 'XinYibaobao', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595088688219&di=8b2816726f0436f92edf12ba33fb38fc&imgtype=0&src=http%3A%2F%2Fp2.so.qhimgs1.com%2Ft01dfcbc38578dac4c2.jpg', '1999-09-19', 'xinyi', '321102199902264916', 0, '2020-07-18 21:24:36', 'xiny0919@163.com');
+INSERT INTO `customer` VALUES (2, '鞠桥丹', '18624065255', 21, 0, 'juqiaodan', '用户sdsads', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1732264759,4009793510&fm=26&gp=0.jpg', '1999-09-20', 'juqiaodan', NULL, 0, '2020-07-18 19:59:15', NULL);
+INSERT INTO `customer` VALUES (3, '曾德歆', '18611112222', 20, 0, 'zengdexin', '用户asdsad', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2803690759,2446328855&fm=26&gp=0.jpg', '1999-09-21', 'zengdexin', NULL, 0, '2020-07-18 19:59:32', NULL);
+INSERT INTO `customer` VALUES (4, '金卓然', '17654268562', 22, 0, 'jinzhuoran', '用户asddgfhgfh', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3496844071,1524827572&fm=26&gp=0.jpg', '1999-09-22', 'jinzhuoran', NULL, 0, '2020-07-18 19:59:43', NULL);
+INSERT INTO `customer` VALUES (5, '易忱', '17654255663', 21, 0, 'yichen', '用户uitcvbcvn', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3346392905,3474712278&fm=26&gp=0.jpg', '1999-09-23', 'yichen', NULL, 0, '2020-07-18 19:59:54', NULL);
+INSERT INTO `customer` VALUES (6, '杨佳玉', '18611121342', 20, 1, 'yangjiayu', '用户bvnsfsd', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1091405991,859863778&fm=26&gp=0.jpg', '1999-09-24', 'yangjiayu', NULL, 0, '2020-07-18 19:59:58', NULL);
+INSERT INTO `customer` VALUES (7, NULL, '18540171008', NULL, NULL, 'taiyanggege', '阿丹宝宝', NULL, NULL, 'adandan', NULL, 0, '2020-07-20 22:43:26', NULL);
 
 -- ----------------------------
 -- Table structure for customer_address
@@ -764,16 +968,16 @@ CREATE TABLE `customer_address`  (
   INDEX `customer_address_ibfk_2`(`customer_id`) USING BTREE,
   CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `customer_address_ibfk_2` FOREIGN KEY (`address_id`) REFERENCES `address` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客收货地址关系表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客收货地址关系表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customer_address
 -- ----------------------------
-INSERT INTO `customer_address` VALUES (1, 1, 0, 1, 0);
+INSERT INTO `customer_address` VALUES (1, 1, 1, 1, 0);
 INSERT INTO `customer_address` VALUES (2, 1, 1, 2, 0);
 INSERT INTO `customer_address` VALUES (3, 1, 1, 3, 0);
 INSERT INTO `customer_address` VALUES (4, 1, 1, 4, 0);
-INSERT INTO `customer_address` VALUES (5, 1, 1, 5, 0);
+INSERT INTO `customer_address` VALUES (5, 1, 0, 5, 0);
 INSERT INTO `customer_address` VALUES (6, 1, 1, 6, 0);
 INSERT INTO `customer_address` VALUES (7, 1, 1, 7, 0);
 INSERT INTO `customer_address` VALUES (8, 1, 1, 8, 0);
@@ -789,6 +993,8 @@ INSERT INTO `customer_address` VALUES (17, 3, 1, 17, 0);
 INSERT INTO `customer_address` VALUES (18, 3, 1, 18, 0);
 INSERT INTO `customer_address` VALUES (19, 3, 1, 19, 0);
 INSERT INTO `customer_address` VALUES (20, 3, 0, 20, 0);
+INSERT INTO `customer_address` VALUES (41, 1, 1, 23, 0);
+INSERT INTO `customer_address` VALUES (42, 4, 0, 24, 0);
 
 -- ----------------------------
 -- Table structure for customer_order
@@ -804,7 +1010,7 @@ CREATE TABLE `customer_order`  (
   INDEX `customer_order_ibfk_2`(`order_id`) USING BTREE,
   CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客订单关系表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '顾客订单关系表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customer_order
@@ -838,6 +1044,39 @@ INSERT INTO `customer_order` VALUES (26, 1, 31, 0);
 INSERT INTO `customer_order` VALUES (27, 1, 32, 0);
 INSERT INTO `customer_order` VALUES (28, 1, 33, 0);
 INSERT INTO `customer_order` VALUES (29, 1, 34, 0);
+INSERT INTO `customer_order` VALUES (30, 1, 35, 0);
+INSERT INTO `customer_order` VALUES (31, 1, 36, 0);
+INSERT INTO `customer_order` VALUES (32, 1, 37, 0);
+INSERT INTO `customer_order` VALUES (33, 1, 38, 0);
+INSERT INTO `customer_order` VALUES (34, 1, 39, 0);
+INSERT INTO `customer_order` VALUES (35, 1, 40, 0);
+INSERT INTO `customer_order` VALUES (36, 1, 41, 0);
+INSERT INTO `customer_order` VALUES (37, 1, 42, 0);
+INSERT INTO `customer_order` VALUES (38, 1, 43, 0);
+INSERT INTO `customer_order` VALUES (39, 1, 44, 0);
+INSERT INTO `customer_order` VALUES (40, 1, 45, 0);
+INSERT INTO `customer_order` VALUES (41, 1, 46, 0);
+INSERT INTO `customer_order` VALUES (42, 1, 47, 0);
+INSERT INTO `customer_order` VALUES (43, 1, 48, 0);
+INSERT INTO `customer_order` VALUES (44, 1, 49, 0);
+INSERT INTO `customer_order` VALUES (45, 1, 50, 0);
+INSERT INTO `customer_order` VALUES (46, 1, 51, 0);
+INSERT INTO `customer_order` VALUES (47, 1, 52, 0);
+INSERT INTO `customer_order` VALUES (48, 1, 53, 0);
+INSERT INTO `customer_order` VALUES (49, 1, 54, 0);
+INSERT INTO `customer_order` VALUES (50, 1, 55, 0);
+INSERT INTO `customer_order` VALUES (51, 1, 56, 0);
+INSERT INTO `customer_order` VALUES (52, 1, 57, 0);
+INSERT INTO `customer_order` VALUES (53, 1, 58, 0);
+INSERT INTO `customer_order` VALUES (54, 1, 59, 0);
+INSERT INTO `customer_order` VALUES (55, 1, 60, 0);
+INSERT INTO `customer_order` VALUES (56, 1, 61, 0);
+INSERT INTO `customer_order` VALUES (57, 1, 62, 0);
+INSERT INTO `customer_order` VALUES (58, 1, 63, 0);
+INSERT INTO `customer_order` VALUES (59, 1, 64, 0);
+INSERT INTO `customer_order` VALUES (60, 1, 65, 0);
+INSERT INTO `customer_order` VALUES (61, 4, 66, 0);
+INSERT INTO `customer_order` VALUES (62, 1, 67, 0);
 
 -- ----------------------------
 -- Table structure for customer_settings
@@ -936,7 +1175,6 @@ CREATE TABLE `favorites`  (
 -- ----------------------------
 -- Records of favorites
 -- ----------------------------
-INSERT INTO `favorites` VALUES (11, 1, '2020-06-08 10:25:05', 0);
 INSERT INTO `favorites` VALUES (12, 1, '2020-06-08 10:25:05', 0);
 INSERT INTO `favorites` VALUES (13, 1, '2020-06-08 10:25:05', 0);
 INSERT INTO `favorites` VALUES (14, 4, '2020-06-08 10:25:05', 0);
@@ -963,6 +1201,9 @@ INSERT INTO `favorites` VALUES (45, 5, '2020-06-21 14:07:29', 0);
 INSERT INTO `favorites` VALUES (46, 6, '2020-06-21 14:07:11', 0);
 INSERT INTO `favorites` VALUES (11, 2, '2020-06-08 10:25:05', 0);
 INSERT INTO `favorites` VALUES (1, 2, '2020-07-14 04:00:41', 0);
+INSERT INTO `favorites` VALUES (11, 1, '2020-07-23 13:01:48', 0);
+INSERT INTO `favorites` VALUES (14, 1, '2020-07-23 13:02:22', 0);
+INSERT INTO `favorites` VALUES (1, 1, '2020-07-23 13:47:06', 0);
 
 -- ----------------------------
 -- Table structure for graphic_commodity
@@ -979,7 +1220,7 @@ CREATE TABLE `graphic_commodity`  (
   `image6` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图片6',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of graphic_commodity
@@ -1141,23 +1382,32 @@ CREATE TABLE `jiufen`  (
   `applyTime` datetime(0) NOT NULL,
   `is_delete` int(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of jiufen
 -- ----------------------------
-INSERT INTO `jiufen` VALUES (1, 3, 1, 1, '质量问题', '', '0', '2020-07-14 17:23:16', '2020-06-24 12:12:32', 0);
+INSERT INTO `jiufen` VALUES (1, 3, 1, 1, '质量问题', '同意退货退款', '1', '2020-07-21 09:53:08', '2020-06-24 12:12:32', 0);
 INSERT INTO `jiufen` VALUES (2, 2, 9, 15, '尺码不合适', '', '0', '2020-07-11 21:13:50', '2020-06-24 12:15:33', 0);
 INSERT INTO `jiufen` VALUES (3, 1, 10, 10, '不喜欢', '', '0', '2020-07-11 21:14:54', '2020-06-24 12:15:33', 0);
 INSERT INTO `jiufen` VALUES (4, 3, 4, 5, '质量问题', '', '0', '2020-07-11 21:12:11', '2020-06-24 12:15:33', 0);
-INSERT INTO `jiufen` VALUES (5, 8, 8, 8, '尺码不合适', '', '0', '2020-07-11 21:03:51', '2020-06-24 12:15:33', 0);
-INSERT INTO `jiufen` VALUES (6, 15, 20, 15, '七天无理由', '', '0', '2020-07-11 21:01:32', '2020-07-07 20:01:25', 0);
+INSERT INTO `jiufen` VALUES (5, 8, 8, 8, '尺码不合适', '驳回买家请求', '1', '2020-07-23 22:01:04', '2020-06-24 12:15:33', 0);
+INSERT INTO `jiufen` VALUES (6, 15, 20, 15, '七天无理由', '同意退货退款', '1', '2020-07-21 09:52:17', '2020-07-07 20:01:25', 1);
 INSERT INTO `jiufen` VALUES (7, 16, 19, 15, '七天无理由', '同意退货退款', '1', '2020-07-10 20:03:01', '2020-07-07 20:01:25', 0);
 INSERT INTO `jiufen` VALUES (8, 17, 21, 15, '质量问题', '同意退货退款', '1', '2020-07-10 20:03:01', '2020-07-07 20:01:25', 0);
 INSERT INTO `jiufen` VALUES (9, 18, 23, 15, '质量问题', '同意退货退款', '1', '2020-07-10 20:03:01', '2020-07-07 20:01:25', 0);
 INSERT INTO `jiufen` VALUES (10, 19, 24, 15, '质量问题', '同意退货退款', '1', '2020-07-10 20:03:01', '2020-07-07 20:01:25', 0);
 INSERT INTO `jiufen` VALUES (11, 8, 12, 8, '尺码不合适', '驳回买家请求', '1', '2020-07-11 21:15:09', '2020-06-24 12:15:33', 0);
 INSERT INTO `jiufen` VALUES (12, 7, 13, 8, '尺码不合适', '同意退货退款', '1', '2020-07-11 21:15:14', '2020-06-24 12:15:33', 0);
+INSERT INTO `jiufen` VALUES (13, 1, 20, 1, '质量问题 : 手感不喜欢呢', NULL, '0', NULL, '2020-07-20 01:55:56', 0);
+INSERT INTO `jiufen` VALUES (15, 1, 20, 1, '商品信息描述不符 : 不太喜欢这个手感', NULL, '0', NULL, '2020-07-20 10:10:33', 0);
+INSERT INTO `jiufen` VALUES (16, 1, 34, 2, '未按约定时间发货 : 有一点不会用，求指导', NULL, '0', NULL, '2020-07-20 10:19:28', 0);
+INSERT INTO `jiufen` VALUES (17, 1, 20, 1, '少件含缺少配件 : 少给我个耳机，很烦', '驳回买家请求', '1', '2020-07-23 21:58:23', '2020-07-20 10:48:54', 0);
+INSERT INTO `jiufen` VALUES (18, 1, 35, 5, '少件含缺少配件 : ', '同意退货退款', '1', '2020-07-23 21:58:56', '2020-07-21 00:55:23', 0);
+INSERT INTO `jiufen` VALUES (19, 1, 59, 5, '质量问题 : 有点不喜欢，太薄了，想退了', NULL, '0', NULL, '2020-07-21 12:10:14', 0);
+INSERT INTO `jiufen` VALUES (20, 1, 62, 5, '包装/商品损坏/污渍 : 有点脏不好', NULL, '0', NULL, '2020-07-21 12:20:58', 0);
+INSERT INTO `jiufen` VALUES (22, 1, 61, 3, '卖家发错货 : ', NULL, '0', NULL, '2020-07-21 13:15:21', 0);
+INSERT INTO `jiufen` VALUES (23, 1, 36, 1, '未按约定时间发货 : ', NULL, '0', NULL, '2020-07-21 13:55:45', 0);
 
 -- ----------------------------
 -- Table structure for order_address
@@ -1197,14 +1447,47 @@ INSERT INTO `order_address` VALUES (9, 3, 0);
 INSERT INTO `order_address` VALUES (11, 2, 0);
 INSERT INTO `order_address` VALUES (14, 7, 0);
 INSERT INTO `order_address` VALUES (21, 1, 0);
-INSERT INTO `order_address` VALUES (24, 0, 0);
-INSERT INTO `order_address` VALUES (26, 0, 0);
-INSERT INTO `order_address` VALUES (27, 0, 0);
-INSERT INTO `order_address` VALUES (29, 0, 0);
-INSERT INTO `order_address` VALUES (31, 0, 0);
-INSERT INTO `order_address` VALUES (32, 0, 0);
-INSERT INTO `order_address` VALUES (33, 0, 0);
-INSERT INTO `order_address` VALUES (34, 1, 0);
+INSERT INTO `order_address` VALUES (24, 1, 0);
+INSERT INTO `order_address` VALUES (26, 2, 0);
+INSERT INTO `order_address` VALUES (27, 2, 0);
+INSERT INTO `order_address` VALUES (29, 4, 0);
+INSERT INTO `order_address` VALUES (31, 3, 0);
+INSERT INTO `order_address` VALUES (32, 4, 0);
+INSERT INTO `order_address` VALUES (33, 5, 0);
+INSERT INTO `order_address` VALUES (34, 2, 0);
+INSERT INTO `order_address` VALUES (35, 1, 0);
+INSERT INTO `order_address` VALUES (36, 1, 0);
+INSERT INTO `order_address` VALUES (37, 1, 0);
+INSERT INTO `order_address` VALUES (38, 1, 0);
+INSERT INTO `order_address` VALUES (39, 1, 0);
+INSERT INTO `order_address` VALUES (40, 1, 0);
+INSERT INTO `order_address` VALUES (41, 1, 0);
+INSERT INTO `order_address` VALUES (42, 1, 0);
+INSERT INTO `order_address` VALUES (43, 1, 0);
+INSERT INTO `order_address` VALUES (44, 1, 0);
+INSERT INTO `order_address` VALUES (45, 1, 0);
+INSERT INTO `order_address` VALUES (46, 1, 0);
+INSERT INTO `order_address` VALUES (47, 1, 0);
+INSERT INTO `order_address` VALUES (48, 1, 0);
+INSERT INTO `order_address` VALUES (49, 1, 0);
+INSERT INTO `order_address` VALUES (50, 1, 0);
+INSERT INTO `order_address` VALUES (51, 1, 0);
+INSERT INTO `order_address` VALUES (52, 1, 0);
+INSERT INTO `order_address` VALUES (53, 1, 0);
+INSERT INTO `order_address` VALUES (54, 1, 0);
+INSERT INTO `order_address` VALUES (55, 1, 0);
+INSERT INTO `order_address` VALUES (56, 1, 0);
+INSERT INTO `order_address` VALUES (57, 1, 0);
+INSERT INTO `order_address` VALUES (58, 1, 0);
+INSERT INTO `order_address` VALUES (59, 1, 0);
+INSERT INTO `order_address` VALUES (60, 1, 0);
+INSERT INTO `order_address` VALUES (61, 41, 0);
+INSERT INTO `order_address` VALUES (62, 41, 0);
+INSERT INTO `order_address` VALUES (63, 41, 0);
+INSERT INTO `order_address` VALUES (64, 41, 0);
+INSERT INTO `order_address` VALUES (65, 41, 0);
+INSERT INTO `order_address` VALUES (66, 42, 0);
+INSERT INTO `order_address` VALUES (67, 5, 0);
 
 -- ----------------------------
 -- Table structure for order_item
@@ -1216,46 +1499,116 @@ CREATE TABLE `order_item`  (
   `commodity_id` int(0) NOT NULL COMMENT 'commodity表内的商品ID',
   `commodity_quantity` int(0) NOT NULL DEFAULT 0 COMMENT '商品数量',
   `is_delete` int(0) NOT NULL DEFAULT 0 COMMENT '删除标记',
+  `status` int(0) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `order_item_ibfk_1`(`order_id`) USING BTREE,
   INDEX `order_item_ibfk_2`(`commodity_id`) USING BTREE,
   CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '订单与商品的关系表，存储订单细节' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '订单与商品的关系表，存储订单细节' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of order_item
 -- ----------------------------
-INSERT INTO `order_item` VALUES (1, 1, 20, 3, 0);
-INSERT INTO `order_item` VALUES (2, 2, 13, 2, 0);
-INSERT INTO `order_item` VALUES (3, 2, 17, 2, 0);
-INSERT INTO `order_item` VALUES (4, 3, 1, 10, 0);
-INSERT INTO `order_item` VALUES (5, 4, 19, 3, 0);
-INSERT INTO `order_item` VALUES (6, 5, 5, 1, 0);
-INSERT INTO `order_item` VALUES (7, 6, 18, 4, 0);
-INSERT INTO `order_item` VALUES (8, 7, 9, 5, 0);
-INSERT INTO `order_item` VALUES (9, 8, 12, 2, 0);
-INSERT INTO `order_item` VALUES (10, 8, 10, 2, 0);
-INSERT INTO `order_item` VALUES (11, 9, 11, 4, 0);
-INSERT INTO `order_item` VALUES (12, 9, 6, 2, 0);
-INSERT INTO `order_item` VALUES (13, 10, 15, 2, 0);
-INSERT INTO `order_item` VALUES (14, 15, 4, 3, 0);
-INSERT INTO `order_item` VALUES (15, 11, 14, 4, 0);
-INSERT INTO `order_item` VALUES (16, 12, 8, 5, 0);
-INSERT INTO `order_item` VALUES (17, 13, 16, 5, 0);
-INSERT INTO `order_item` VALUES (18, 14, 3, 1, 0);
-INSERT INTO `order_item` VALUES (19, 16, 54, 8, 0);
-INSERT INTO `order_item` VALUES (20, 17, 43, 6, 0);
-INSERT INTO `order_item` VALUES (22, 18, 4, 5, 0);
-INSERT INTO `order_item` VALUES (23, 19, 54, 4, 0);
-INSERT INTO `order_item` VALUES (24, 19, 32, 1, 0);
-INSERT INTO `order_item` VALUES (25, 19, 11, 9, 0);
-INSERT INTO `order_item` VALUES (26, 20, 1, 5, 0);
-INSERT INTO `order_item` VALUES (27, 21, 42, 1, 0);
-INSERT INTO `order_item` VALUES (28, 22, 35, 1, 0);
-INSERT INTO `order_item` VALUES (29, 23, 21, 2, 0);
-INSERT INTO `order_item` VALUES (30, 24, 37, 3, 0);
-INSERT INTO `order_item` VALUES (31, 34, 2, 1, 0);
+INSERT INTO `order_item` VALUES (1, 1, 20, 4, 0, 1);
+INSERT INTO `order_item` VALUES (2, 2, 13, 2, 0, 2);
+INSERT INTO `order_item` VALUES (3, 2, 17, 2, 0, 4);
+INSERT INTO `order_item` VALUES (4, 3, 1, 10, 0, 4);
+INSERT INTO `order_item` VALUES (5, 4, 19, 3, 0, 2);
+INSERT INTO `order_item` VALUES (6, 5, 5, 1, 0, 2);
+INSERT INTO `order_item` VALUES (7, 6, 18, 4, 0, 4);
+INSERT INTO `order_item` VALUES (8, 7, 9, 5, 0, 1);
+INSERT INTO `order_item` VALUES (9, 8, 12, 2, 0, 2);
+INSERT INTO `order_item` VALUES (10, 8, 10, 2, 0, 2);
+INSERT INTO `order_item` VALUES (11, 9, 11, 4, 0, 3);
+INSERT INTO `order_item` VALUES (12, 9, 6, 2, 0, 1);
+INSERT INTO `order_item` VALUES (13, 10, 15, 2, 0, 2);
+INSERT INTO `order_item` VALUES (14, 15, 4, 3, 0, 2);
+INSERT INTO `order_item` VALUES (15, 11, 14, 4, 0, 3);
+INSERT INTO `order_item` VALUES (16, 12, 8, 5, 0, 1);
+INSERT INTO `order_item` VALUES (17, 13, 16, 5, 0, 3);
+INSERT INTO `order_item` VALUES (18, 14, 3, 1, 0, 4);
+INSERT INTO `order_item` VALUES (19, 16, 54, 8, 0, 2);
+INSERT INTO `order_item` VALUES (20, 17, 43, 6, 0, 4);
+INSERT INTO `order_item` VALUES (22, 18, 4, 5, 0, 2);
+INSERT INTO `order_item` VALUES (23, 19, 54, 4, 0, 2);
+INSERT INTO `order_item` VALUES (24, 19, 32, 1, 0, 4);
+INSERT INTO `order_item` VALUES (25, 19, 11, 9, 0, 2);
+INSERT INTO `order_item` VALUES (26, 20, 1, 5, 0, 1);
+INSERT INTO `order_item` VALUES (27, 21, 42, 1, 0, 3);
+INSERT INTO `order_item` VALUES (28, 22, 35, 1, 0, 2);
+INSERT INTO `order_item` VALUES (29, 23, 21, 2, 0, 4);
+INSERT INTO `order_item` VALUES (30, 24, 37, 3, 0, 2);
+INSERT INTO `order_item` VALUES (31, 34, 2, 1, 0, 4);
+INSERT INTO `order_item` VALUES (32, 35, 78, 1, 0, 2);
+INSERT INTO `order_item` VALUES (33, 33, 54, 2, 0, 3);
+INSERT INTO `order_item` VALUES (34, 34, 14, 3, 0, 1);
+INSERT INTO `order_item` VALUES (35, 32, 51, 2, 0, 2);
+INSERT INTO `order_item` VALUES (36, 31, 65, 5, 0, 4);
+INSERT INTO `order_item` VALUES (37, 30, 59, 6, 0, 4);
+INSERT INTO `order_item` VALUES (38, 29, 33, 2, 0, 0);
+INSERT INTO `order_item` VALUES (39, 28, 76, 6, 0, 4);
+INSERT INTO `order_item` VALUES (40, 27, 16, 10, 0, 8);
+INSERT INTO `order_item` VALUES (41, 26, 15, 2, 0, 2);
+INSERT INTO `order_item` VALUES (42, 25, 60, 6, 0, 4);
+INSERT INTO `order_item` VALUES (43, 36, 1, 2, 0, 7);
+INSERT INTO `order_item` VALUES (44, 37, 1, 2, 0, 7);
+INSERT INTO `order_item` VALUES (45, 38, 6, 2, 0, 8);
+INSERT INTO `order_item` VALUES (46, 38, 12, 1, 0, 4);
+INSERT INTO `order_item` VALUES (47, 38, 8, 1, 0, 9);
+INSERT INTO `order_item` VALUES (48, 38, 5, 5, 0, 2);
+INSERT INTO `order_item` VALUES (49, 38, 55, 1, 0, 3);
+INSERT INTO `order_item` VALUES (50, 38, 57, 1, 0, 5);
+INSERT INTO `order_item` VALUES (51, 38, 73, 1, 0, 7);
+INSERT INTO `order_item` VALUES (52, 39, 6, 2, 0, 5);
+INSERT INTO `order_item` VALUES (53, 39, 12, 1, 0, 5);
+INSERT INTO `order_item` VALUES (54, 39, 8, 1, 0, 5);
+INSERT INTO `order_item` VALUES (55, 39, 5, 5, 0, 5);
+INSERT INTO `order_item` VALUES (56, 39, 55, 1, 0, 5);
+INSERT INTO `order_item` VALUES (57, 39, 57, 1, 0, 5);
+INSERT INTO `order_item` VALUES (58, 39, 73, 1, 0, 5);
+INSERT INTO `order_item` VALUES (59, 40, 6, 2, 0, 5);
+INSERT INTO `order_item` VALUES (60, 40, 12, 1, 0, 5);
+INSERT INTO `order_item` VALUES (61, 40, 8, 1, 0, 5);
+INSERT INTO `order_item` VALUES (62, 40, 5, 5, 0, 5);
+INSERT INTO `order_item` VALUES (63, 40, 55, 1, 0, 5);
+INSERT INTO `order_item` VALUES (64, 40, 57, 1, 0, 5);
+INSERT INTO `order_item` VALUES (65, 40, 73, 1, 0, 5);
+INSERT INTO `order_item` VALUES (66, 41, 57, 1, 0, 5);
+INSERT INTO `order_item` VALUES (67, 42, 73, 1, 0, 5);
+INSERT INTO `order_item` VALUES (68, 43, 51, 1, 0, 5);
+INSERT INTO `order_item` VALUES (69, 44, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (70, 45, 74, 1, 0, 5);
+INSERT INTO `order_item` VALUES (71, 46, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (72, 47, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (73, 48, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (74, 49, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (75, 50, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (76, 51, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (77, 52, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (78, 53, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (79, 54, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (80, 55, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (81, 56, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (82, 57, 80, 1, 0, 5);
+INSERT INTO `order_item` VALUES (83, 58, 17, 1, 0, 5);
+INSERT INTO `order_item` VALUES (84, 59, 67, 1, 0, 5);
+INSERT INTO `order_item` VALUES (85, 60, 56, 1, 0, 0);
+INSERT INTO `order_item` VALUES (86, 61, 55, 1, 0, 5);
+INSERT INTO `order_item` VALUES (87, 61, 57, 1, 0, 5);
+INSERT INTO `order_item` VALUES (88, 61, 73, 1, 0, 5);
+INSERT INTO `order_item` VALUES (89, 62, 67, 1, 0, 5);
+INSERT INTO `order_item` VALUES (90, 63, 12, 1, 1, 0);
+INSERT INTO `order_item` VALUES (91, 63, 8, 1, 1, 0);
+INSERT INTO `order_item` VALUES (92, 63, 55, 1, 1, 0);
+INSERT INTO `order_item` VALUES (93, 64, 12, 1, 1, 0);
+INSERT INTO `order_item` VALUES (94, 64, 8, 1, 1, 0);
+INSERT INTO `order_item` VALUES (95, 64, 55, 1, 1, 0);
+INSERT INTO `order_item` VALUES (96, 65, 12, 1, 0, 1);
+INSERT INTO `order_item` VALUES (97, 65, 8, 1, 0, 1);
+INSERT INTO `order_item` VALUES (98, 65, 55, 1, 1, 1);
+INSERT INTO `order_item` VALUES (99, 66, 1, 1, 0, 1);
+INSERT INTO `order_item` VALUES (100, 67, 14, 1, 0, 1);
 
 -- ----------------------------
 -- Table structure for orders
@@ -1275,12 +1628,12 @@ CREATE TABLE `orders`  (
   INDEX `ID_4`(`ID`) USING BTREE,
   INDEX `ID_5`(`ID`) USING BTREE,
   INDEX `ID_6`(`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (1, '2020-07-18 14:51:00', '麻烦尽快发货，急用！', 1, '1', 0);
+INSERT INTO `orders` VALUES (1, '2020-07-18 22:51:00', '麻烦尽快发货，急用！', 1, '1', 0);
 INSERT INTO `orders` VALUES (2, '2020-07-18 14:50:56', '请发顺丰快递', 1, '2', 0);
 INSERT INTO `orders` VALUES (3, '2020-07-18 14:50:19', '麻烦尽快发货，急用！', 1, '3', 0);
 INSERT INTO `orders` VALUES (4, '2020-07-18 14:50:57', '请发顺丰快递', 1, '2', 0);
@@ -1289,21 +1642,44 @@ INSERT INTO `orders` VALUES (6, '2020-07-18 14:50:16', '麻烦尽快发货，急
 INSERT INTO `orders` VALUES (7, '2020-07-18 14:46:44', '生鲜订单，当日送达', 3, '1', 0);
 INSERT INTO `orders` VALUES (8, '2020-07-18 14:47:32', '请发顺丰快递', 3, '2', 0);
 INSERT INTO `orders` VALUES (9, '2020-07-18 14:47:57', '麻烦尽快发货，急用！', 1, '1', 0);
-INSERT INTO `orders` VALUES (10, '2020-07-18 14:48:08', '生鲜订单，当日送达', 1, '0', 0);
+INSERT INTO `orders` VALUES (10, '2020-07-18 20:11:10', '生鲜订单，当日送达', 1, '1', 0);
 INSERT INTO `orders` VALUES (11, '2020-07-18 14:48:28', '商品不符合描述，差评！', 1, '4', 0);
 INSERT INTO `orders` VALUES (12, '2020-07-18 14:49:14', '麻烦尽快发货，急用！', 2, '1', 0);
 INSERT INTO `orders` VALUES (13, '2020-07-18 14:49:18', '生鲜订单，当日送达', 2, '1', 0);
 INSERT INTO `orders` VALUES (14, '2020-07-18 14:49:53', '麻烦尽快发货，急用！', 2, '2', 0);
 INSERT INTO `orders` VALUES (15, '2020-07-18 14:46:59', '用起来很好，实力推荐', 1, '3', 0);
 INSERT INTO `orders` VALUES (16, '2020-07-18 14:49:20', '生鲜订单，当日送达', 1, '4', 0);
-INSERT INTO `orders` VALUES (17, '2020-07-18 14:50:14', '麻烦尽快发货，急用！', 1, '9', 0);
-INSERT INTO `orders` VALUES (18, '2020-07-18 14:47:41', '下次还会购买的！', 1, '1', 0);
+INSERT INTO `orders` VALUES (17, '2020-07-19 14:20:06', '麻烦尽快发货，急用！', 1, '2', 0);
+INSERT INTO `orders` VALUES (18, '2020-07-19 20:48:04', '下次还会购买的！', 1, '2', 0);
 INSERT INTO `orders` VALUES (19, '2020-07-18 14:50:46', '生鲜订单，当日送达', 3, '1', 0);
-INSERT INTO `orders` VALUES (20, '2020-07-18 14:50:42', '麻烦尽快发货，急用！', 2, '2', 0);
+INSERT INTO `orders` VALUES (20, '2020-07-21 00:30:06', '麻烦尽快发货，急用！', 2, '8', 1);
 INSERT INTO `orders` VALUES (21, '2020-07-18 14:50:47', '生鲜订单，当日送达', 2, '1', 0);
-INSERT INTO `orders` VALUES (22, '2020-07-18 14:50:49', '生鲜订单，当日送达', 2, '1', 0);
-INSERT INTO `orders` VALUES (24, '2020-07-18 14:50:40', '麻烦尽快发货，急用！', 1, '9', 0);
-INSERT INTO `orders` VALUES (34, '2020-07-18 07:18:13', NULL, 0, '0', 0);
+INSERT INTO `orders` VALUES (22, '2020-07-19 20:48:05', '生鲜订单，当日送达', 2, '2', 0);
+INSERT INTO `orders` VALUES (24, '2020-07-21 12:30:26', '麻烦尽快发货，急用！', 1, '0', 0);
+INSERT INTO `orders` VALUES (25, '2020-07-20 09:30:06', '发货', 2, '2', 0);
+INSERT INTO `orders` VALUES (26, '2020-07-20 09:30:06', '快发货', 2, '1', 0);
+INSERT INTO `orders` VALUES (27, '2020-07-20 12:11:45', '发货', 1, '0', 0);
+INSERT INTO `orders` VALUES (28, '2020-07-20 09:30:06', '推荐', 4, '2', 0);
+INSERT INTO `orders` VALUES (29, '2020-07-21 00:40:53', '好用的', 2, '8', 0);
+INSERT INTO `orders` VALUES (30, '2020-07-20 12:17:16', '期待', 1, '3', 0);
+INSERT INTO `orders` VALUES (31, '2020-07-21 00:53:20', '麻烦了', 2, '4', 1);
+INSERT INTO `orders` VALUES (32, '2020-07-21 01:49:45', '急用', 1, '4', 1);
+INSERT INTO `orders` VALUES (33, '2020-07-21 01:49:36', '朋友推荐', 1, '2', 0);
+INSERT INTO `orders` VALUES (34, '2020-07-21 01:49:47', '试用', 2, '4', 1);
+INSERT INTO `orders` VALUES (35, '2020-07-21 10:32:12', '试试看', 3, '0', 0);
+INSERT INTO `orders` VALUES (36, '2020-07-21 00:32:43', NULL, 0, '8', 0);
+INSERT INTO `orders` VALUES (37, '2020-07-21 00:53:57', NULL, 0, '8', 1);
+INSERT INTO `orders` VALUES (57, '2020-07-21 01:49:51', NULL, 0, '4', 0);
+INSERT INTO `orders` VALUES (58, '2020-07-21 01:49:40', NULL, 0, '2', 0);
+INSERT INTO `orders` VALUES (59, '2020-07-21 12:20:10', NULL, 0, '0', 1);
+INSERT INTO `orders` VALUES (60, '2020-07-21 11:59:44', NULL, 0, '8', 0);
+INSERT INTO `orders` VALUES (61, '2020-07-21 13:15:22', NULL, 0, '6', 0);
+INSERT INTO `orders` VALUES (62, '2020-07-21 12:21:00', NULL, 0, '5', 0);
+INSERT INTO `orders` VALUES (63, '2020-07-21 05:30:51', NULL, 0, '0', 0);
+INSERT INTO `orders` VALUES (64, '2020-07-21 05:40:34', NULL, 0, '0', 0);
+INSERT INTO `orders` VALUES (65, '2020-07-21 05:54:32', NULL, 0, '0', 0);
+INSERT INTO `orders` VALUES (66, '2020-07-22 06:44:37', NULL, 0, '0', 0);
+INSERT INTO `orders` VALUES (67, '2020-07-23 13:03:13', NULL, 0, '0', 0);
 
 -- ----------------------------
 -- Table structure for role
@@ -1419,7 +1795,7 @@ CREATE TABLE `shop_commodity`  (
   INDEX `commodity_id`(`commodity_id`) USING BTREE,
   CONSTRAINT `shop_commodity_ibfk_2` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_commodity_ibfk_3` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '店铺_商品关系表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '店铺_商品关系表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of shop_commodity
@@ -1531,17 +1907,17 @@ CREATE TABLE `shop_manager`  (
 -- ----------------------------
 -- Records of shop_manager
 -- ----------------------------
-INSERT INTO `shop_manager` VALUES (1, '黄道明', 20, '男', '123', 'fastman', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-04', 'user1234567', '18940409778', 0);
-INSERT INTO `shop_manager` VALUES (2, '张美琳', 21, '男', '123', '小红', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-05', 'user1234568', '18940409779', 0);
-INSERT INTO `shop_manager` VALUES (3, '秦欢馨', 22, '女', '123', '饿啊', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-06', 'user1234569', '18940409780', 0);
-INSERT INTO `shop_manager` VALUES (4, '王龙', 23, '男', '123', '龙哥哥', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-07', 'user1234570', '18940409781', 0);
-INSERT INTO `shop_manager` VALUES (5, '张浩', 18, '女', '123', '张浩', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-08', 'user1234571', '18940409782', 0);
-INSERT INTO `shop_manager` VALUES (6, '李昊佳', 19, '男', '123', '李昊佳', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-09', 'user1234572', '18940409783', 0);
-INSERT INTO `shop_manager` VALUES (7, '王低都', 20, '男', '123', '王低都', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-10', 'user1234573', '18940409784', 0);
-INSERT INTO `shop_manager` VALUES (8, '邱君', 21, '女', '123', '邱君', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-11', 'user1234574', '18940409785', 0);
-INSERT INTO `shop_manager` VALUES (9, '夏之光', 22, '男', 'xzg', '瞎逛', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-12', 'user1234575', '18940409786', 0);
-INSERT INTO `shop_manager` VALUES (10, '赵磊', 18, '女', 'leige', '磊哥', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-13', 'user1234576', '18940409787', 0);
-INSERT INTO `shop_manager` VALUES (11, '焉诩嘉', 19, '女', 'jiajia', '旺仔', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-14', 'user1234577', '18940409788', 0);
+INSERT INTO `shop_manager` VALUES (1, '黄道明', 20, '男', '123', 'fastman', 'https://s1.ax1x.com/2020/07/19/URUirQ.jpg', '2000-01-04', 'user1234567', '18940409778', 0);
+INSERT INTO `shop_manager` VALUES (2, '张美琳', 21, '男', '123', '小红', 'https://s1.ax1x.com/2020/07/19/URUPKg.jpg', '2000-01-05', 'user1234568', '18940409779', 0);
+INSERT INTO `shop_manager` VALUES (3, '秦欢馨', 22, '女', '123', '饿啊', 'https://s1.ax1x.com/2020/07/19/URU9xS.jpg', '2000-01-06', 'user1234569', '18940409780', 0);
+INSERT INTO `shop_manager` VALUES (4, '王龙', 23, '男', '123', '龙哥哥', 'https://s1.ax1x.com/2020/07/19/URUFbj.jpg', '2000-01-07', 'user1234570', '18940409781', 0);
+INSERT INTO `shop_manager` VALUES (5, '张浩', 18, '女', '123', '张浩', 'https://s1.ax1x.com/2020/07/19/URUp28.jpg', '2000-01-08', 'user1234571', '18940409782', 0);
+INSERT INTO `shop_manager` VALUES (6, '李昊佳', 19, '男', '123', '李昊佳', 'https://s1.ax1x.com/2020/07/19/URUAVs.jpg', '2000-01-09', 'user1234572', '18940409783', 0);
+INSERT INTO `shop_manager` VALUES (7, '王低都', 20, '男', '123', '王低都', 'https://s1.ax1x.com/2020/07/19/URUV5q.jpg', '2000-01-10', 'user1234573', '18940409784', 0);
+INSERT INTO `shop_manager` VALUES (8, '邱君', 21, '女', '123', '邱君', 'https://s1.ax1x.com/2020/07/19/URUEan.jpg', '2000-01-11', 'user1234574', '18940409785', 0);
+INSERT INTO `shop_manager` VALUES (9, '夏之光', 22, '男', 'xzg', '瞎逛', 'https://s1.ax1x.com/2020/07/19/URUeP0.jpg', '2000-01-12', 'user1234575', '18940409786', 0);
+INSERT INTO `shop_manager` VALUES (10, '赵磊', 18, '女', 'leige', '磊哥', 'https://s1.ax1x.com/2020/07/19/URUmGV.jpg', '2000-01-13', 'user1234576', '18940409787', 0);
+INSERT INTO `shop_manager` VALUES (11, '焉诩嘉', 19, '女', 'jiajia', '旺仔', 'https://s1.ax1x.com/2020/07/19/URUn2T.jpg', '2000-01-14', 'user1234577', '18940409788', 0);
 INSERT INTO `shop_manager` VALUES (12, '任豪', 20, '男', 'renhao', '郝总', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-15', 'user1234578', '18940409789', 0);
 INSERT INTO `shop_manager` VALUES (13, '王境泽', 21, '男', '123', '王敬则', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-16', 'user1234579', '18940409790', 0);
 INSERT INTO `shop_manager` VALUES (14, '亦匡新', 22, '女', '123', '公孙新', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-17', 'user1234580', '18940409791', 0);
@@ -1650,7 +2026,7 @@ CREATE TABLE `shop_order`  (
   INDEX `order_id`(`order_id`) USING BTREE,
   CONSTRAINT `shop_order_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_order_ibfk_3` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '店铺_订单关系表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 344 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '店铺_订单关系表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of shop_order
@@ -1679,6 +2055,52 @@ INSERT INTO `shop_order` VALUES (21, 6, 21, 0);
 INSERT INTO `shop_order` VALUES (22, 6, 22, 0);
 INSERT INTO `shop_order` VALUES (23, 6, 23, 0);
 INSERT INTO `shop_order` VALUES (24, 6, 24, 0);
+INSERT INTO `shop_order` VALUES (298, 5, 35, 0);
+INSERT INTO `shop_order` VALUES (299, 1, 36, 0);
+INSERT INTO `shop_order` VALUES (300, 1, 37, 0);
+INSERT INTO `shop_order` VALUES (301, 1, 38, 0);
+INSERT INTO `shop_order` VALUES (302, 2, 38, 0);
+INSERT INTO `shop_order` VALUES (303, 3, 38, 0);
+INSERT INTO `shop_order` VALUES (304, 5, 38, 0);
+INSERT INTO `shop_order` VALUES (305, 1, 39, 0);
+INSERT INTO `shop_order` VALUES (306, 2, 39, 0);
+INSERT INTO `shop_order` VALUES (307, 3, 39, 0);
+INSERT INTO `shop_order` VALUES (308, 5, 39, 0);
+INSERT INTO `shop_order` VALUES (309, 1, 40, 0);
+INSERT INTO `shop_order` VALUES (310, 2, 40, 0);
+INSERT INTO `shop_order` VALUES (311, 3, 40, 0);
+INSERT INTO `shop_order` VALUES (312, 5, 40, 0);
+INSERT INTO `shop_order` VALUES (313, 3, 41, 0);
+INSERT INTO `shop_order` VALUES (314, 5, 42, 0);
+INSERT INTO `shop_order` VALUES (315, 1, 43, 0);
+INSERT INTO `shop_order` VALUES (316, 6, 44, 0);
+INSERT INTO `shop_order` VALUES (317, 5, 45, 0);
+INSERT INTO `shop_order` VALUES (318, 6, 46, 0);
+INSERT INTO `shop_order` VALUES (319, 6, 47, 0);
+INSERT INTO `shop_order` VALUES (320, 6, 48, 0);
+INSERT INTO `shop_order` VALUES (321, 6, 49, 0);
+INSERT INTO `shop_order` VALUES (322, 6, 50, 0);
+INSERT INTO `shop_order` VALUES (323, 6, 51, 0);
+INSERT INTO `shop_order` VALUES (324, 6, 52, 0);
+INSERT INTO `shop_order` VALUES (325, 6, 53, 0);
+INSERT INTO `shop_order` VALUES (326, 6, 54, 0);
+INSERT INTO `shop_order` VALUES (327, 6, 55, 0);
+INSERT INTO `shop_order` VALUES (328, 6, 56, 0);
+INSERT INTO `shop_order` VALUES (329, 6, 57, 0);
+INSERT INTO `shop_order` VALUES (330, 2, 58, 0);
+INSERT INTO `shop_order` VALUES (331, 5, 59, 0);
+INSERT INTO `shop_order` VALUES (332, 3, 60, 0);
+INSERT INTO `shop_order` VALUES (333, 3, 61, 0);
+INSERT INTO `shop_order` VALUES (334, 5, 61, 0);
+INSERT INTO `shop_order` VALUES (335, 5, 62, 0);
+INSERT INTO `shop_order` VALUES (336, 1, 63, 0);
+INSERT INTO `shop_order` VALUES (337, 3, 63, 0);
+INSERT INTO `shop_order` VALUES (338, 1, 64, 0);
+INSERT INTO `shop_order` VALUES (339, 3, 64, 0);
+INSERT INTO `shop_order` VALUES (340, 1, 65, 0);
+INSERT INTO `shop_order` VALUES (341, 3, 65, 0);
+INSERT INTO `shop_order` VALUES (342, 1, 66, 0);
+INSERT INTO `shop_order` VALUES (343, 1, 67, 0);
 
 -- ----------------------------
 -- Table structure for specs
@@ -1690,7 +2112,7 @@ CREATE TABLE `specs`  (
   `pid` int(0) NULL DEFAULT NULL COMMENT '父id',
   `sort` int(0) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 177 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of specs
@@ -1732,7 +2154,7 @@ CREATE TABLE `specs_commodity`  (
   `commodity_id` int(0) NULL DEFAULT NULL COMMENT '商品id',
   `specs_id` int(0) NULL DEFAULT NULL COMMENT '规格id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of specs_commodity
@@ -1845,7 +2267,7 @@ CREATE TABLE `system_manager`  (
 -- ----------------------------
 -- Records of system_manager
 -- ----------------------------
-INSERT INTO `system_manager` VALUES (1, '黄道明', '20190608001', 18, '男', '123', 'fastman', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-04', 'user1234567', '1', 0);
+INSERT INTO `system_manager` VALUES (1, '黄道明', '20190608001', 18, '男', '123', 'fastmanse', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-04', 'user1234567', '1', 0);
 INSERT INTO `system_manager` VALUES (2, '张美琳', '18940409779', 21, '男', '123', '小红', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-05', 'user1234568', '1', 1);
 INSERT INTO `system_manager` VALUES (3, '秦欢馨', '18940409780', 22, '女', '123', '小黄', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-06', 'user1234569', '1', 0);
 INSERT INTO `system_manager` VALUES (4, '小绿', '18940409781', 23, '男', '123', '小绿', 'http://image.yy.com/yywebalbumbs2bucket/144152f8680f421599233c6ffcfcef49_1476265267104.jpeg', '2000-01-07', 'user1234570', '3', 0);
@@ -1979,7 +2401,7 @@ DROP TABLE IF EXISTS `wallet`;
 CREATE TABLE `wallet`  (
   `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '钱包的自增id唯一',
   `customer_id` int(0) NOT NULL COMMENT '钱包对应的顾客id',
-  `money_amount` decimal(20, 2) NOT NULL COMMENT '钱包余额',
+  `money_amount` double(20, 2) NOT NULL COMMENT '钱包余额',
   `wallet_pwd` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '钱包的二级保护密码',
   `is_delete` int(0) NOT NULL DEFAULT 0 COMMENT '字段有效标志，0表示有效，1表示已经删除',
   PRIMARY KEY (`id`) USING BTREE,
@@ -1990,13 +2412,13 @@ CREATE TABLE `wallet`  (
 -- ----------------------------
 -- Records of wallet
 -- ----------------------------
-INSERT INTO `wallet` VALUES (1, 1, 6.00, NULL, 0);
-INSERT INTO `wallet` VALUES (2, 2, 152.00, 'password2', 0);
-INSERT INTO `wallet` VALUES (3, 3, 156.30, NULL, 0);
-INSERT INTO `wallet` VALUES (4, 4, 302.00, NULL, 0);
-INSERT INTO `wallet` VALUES (5, 5, 158.00, NULL, 0);
-INSERT INTO `wallet` VALUES (6, 6, 18.00, NULL, 0);
-INSERT INTO `wallet` VALUES (7, 7, 16.00, NULL, 0);
+INSERT INTO `wallet` VALUES (1, 1, 9991014.26, NULL, 0);
+INSERT INTO `wallet` VALUES (2, 2, 100000000000.00, 'password2', 0);
+INSERT INTO `wallet` VALUES (3, 3, 10100000000.00, NULL, 0);
+INSERT INTO `wallet` VALUES (4, 4, 9999997800.04, NULL, 0);
+INSERT INTO `wallet` VALUES (5, 5, 10000000000000000.00, NULL, 0);
+INSERT INTO `wallet` VALUES (6, 6, 2010000000.00, NULL, 0);
+INSERT INTO `wallet` VALUES (7, 7, 20000000000.00, NULL, 0);
 INSERT INTO `wallet` VALUES (8, 8, 25.00, NULL, 0);
 INSERT INTO `wallet` VALUES (9, 9, 784.00, NULL, 0);
 INSERT INTO `wallet` VALUES (10, 10, 201.00, NULL, 0);
@@ -2057,5 +2479,19 @@ INSERT INTO `wallet_bill` VALUES (16, 26, 0);
 INSERT INTO `wallet_bill` VALUES (17, 27, 0);
 INSERT INTO `wallet_bill` VALUES (18, 28, 0);
 INSERT INTO `wallet_bill` VALUES (19, 29, 0);
+INSERT INTO `wallet_bill` VALUES (1, 46, 0);
+INSERT INTO `wallet_bill` VALUES (0, 47, 0);
+INSERT INTO `wallet_bill` VALUES (0, 48, 0);
+INSERT INTO `wallet_bill` VALUES (0, 49, 0);
+INSERT INTO `wallet_bill` VALUES (0, 50, 0);
+INSERT INTO `wallet_bill` VALUES (1, 51, 0);
+INSERT INTO `wallet_bill` VALUES (1, 52, 0);
+INSERT INTO `wallet_bill` VALUES (1, 53, 0);
+INSERT INTO `wallet_bill` VALUES (1, 54, 0);
+INSERT INTO `wallet_bill` VALUES (1, 55, 0);
+INSERT INTO `wallet_bill` VALUES (4, 56, 0);
+INSERT INTO `wallet_bill` VALUES (0, 57, 0);
+INSERT INTO `wallet_bill` VALUES (1, 58, 0);
+INSERT INTO `wallet_bill` VALUES (1, 59, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

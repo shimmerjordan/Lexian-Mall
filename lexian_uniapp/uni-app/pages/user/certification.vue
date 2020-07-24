@@ -92,7 +92,7 @@
 			// var that=this;
 			// token验证
 			this.getAccess_token();
-		},
+		}, 
 		methods: {
 			certificate() {
 				console.log(common.getGlobalUserInfo().ID,this.name,this.certificationId);
