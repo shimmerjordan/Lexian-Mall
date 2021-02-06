@@ -229,4 +229,4 @@
 
   github：https://github.com/shimmerjordan/Lexian-Mall
   
-  gitee：https://gitee.com/xin_yi0919/NEU_Lexian
+  gitee：https://gitee.com/shimmerjordan/Lexian-Mall
