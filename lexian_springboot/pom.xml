@@ -91,7 +91,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.54</version>
+			<version>1.2.83</version>
 		</dependency>
 
 		<!--数据库连接jdbc依赖 -->
@@ -135,7 +135,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.17</version>
+			<version>1.2.83</version>
 		</dependency>
 
 		<!-- 加载 spring boot redis 包 -->
